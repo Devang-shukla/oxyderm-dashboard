@@ -83,13 +83,15 @@ textarea{min-height:70px;resize:vertical}
 .sched-item.done .mark-btn{border-color:var(--green);color:var(--green)}
 
 /* ── Video grid ── */
-.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
-.vcard{background:#001020;border:1px solid var(--border);border-radius:10px;overflow:hidden}
-.vcard video{width:100%;display:block;max-height:140px;object-fit:cover;background:#000}
-.vcard-body{padding:10px}
-.vcard-name{font-size:11px;color:var(--fg);font-weight:500;word-break:break-all;margin-bottom:3px}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+.vcard{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.vcard-thumb{padding:10px 10px 0}
+.vcard video{width:100%;display:block;height:140px;object-fit:contain;background:#000;border-radius:8px}
+.vcard-body{padding:10px 12px 12px}
+.vcard-name{font-size:11px;color:var(--fg);font-weight:500;word-break:break-all;margin-bottom:4px}
 .vcard-meta{font-size:10px;color:var(--muted)}
 .vcard-status{font-size:10px;margin-top:4px}
+.vcard-large{padding:16px;display:flex;flex-direction:column;gap:6px;min-height:130px;justify-content:center;background:var(--card2)}
 
 /* ── Image grid ── */
 .igrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
@@ -217,16 +219,26 @@ textarea{min-height:70px;resize:vertical}
 <div class="panel" id="tab-videos">
   <!-- Upload zone -->
   <div class="stitle">Upload New Video</div>
-  <div class="upload-zone" id="vid-drop" onclick="document.getElementById('vid-file').click()"
-       ondragover="event.preventDefault();this.classList.add('drag')"
-       ondragleave="this.classList.remove('drag')"
-       ondrop="handleVideoDrop(event)">
-    <div class="icon">🎬</div>
-    <div class="hint">Tap to choose or drag a video<br><span>Music + captions added automatically</span></div>
-    <div class="upload-progress" id="vid-progress">
-      <div style="font-size:12px;color:var(--gold)" id="vid-prog-label">Processing...</div>
-      <div class="prog-bar"><div class="prog-fill" id="vid-prog-fill" style="width:0%"></div></div>
+  <div class="card" style="margin-bottom:14px">
+    <div class="form-group" style="margin-bottom:10px">
+      <label>Caption for this video (speak or type)</label>
+      <div style="display:flex;gap:8px">
+        <input type="text" id="vid-caption-input" placeholder="e.g. Laser Hair Removal Results | Oxyderm Edmonton">
+        <button class="btn btn-outline" onclick="startCaptionVoice()" id="caption-mic-btn" title="Speak caption">🎤</button>
+      </div>
     </div>
+    <div class="upload-zone" id="vid-drop" onclick="document.getElementById('vid-file').click()"
+         ondragover="event.preventDefault();this.classList.add('drag')"
+         ondragleave="this.classList.remove('drag')"
+         ondrop="handleVideoDrop(event)">
+      <div class="icon">🎬</div>
+      <div class="hint">Tap to choose or drag a video<br><span>Music + captions burned in automatically</span></div>
+      <div class="upload-progress" id="vid-progress">
+        <div style="font-size:12px;color:var(--gold)" id="vid-prog-label">Processing...</div>
+        <div class="prog-bar"><div class="prog-fill" id="vid-prog-fill" style="width:0%"></div></div>
+      </div>
+    </div>
+    <div style="font-size:11px;color:var(--muted);margin-top:6px">After upload, Mac processor adds music + caption automatically. Check library below in ~1 min.</div>
   </div>
   <input type="file" id="vid-file" accept="video/*" style="display:none" onchange="handleVideoFile(this)">
 
@@ -568,44 +580,74 @@ function renderVideos() {
   var all = clinicVideos.concat(uploadedVideos.map(function(u){ return {n:u.name, o:'auto', uploaded:true, dataUrl:u.dataUrl}; }));
   grid.innerHTML = all.map(function(v, i) {
     if (v.large) {
-      return '<div class="vcard"><div class="vcard-body">' +
+      return '<div class="vcard"><div class="vcard-large">' +
+        '<div style="font-size:18px">📦</div>' +
         '<div class="vcard-name">' + v.n + '</div>' +
-        '<div class="vcard-meta">' + v.o + ' — large file (318MB+)</div>' +
+        '<div class="vcard-meta">' + v.o + ' &mdash; large file</div>' +
         '<div class="vcard-status" style="color:var(--yellow)">On Mac: videos-final/' + v.n + '</div>' +
       '</div></div>';
     }
     var src = v.uploaded ? v.dataUrl : (VID_BASE + encodeURIComponent(v.n));
+    var deleteBtn = v.uploaded ? '<button class="btn btn-red btn-sm" style="margin-top:8px;width:100%" onclick="deleteUploadedVideo(' + (i - clinicVideos.length) + ')">Remove</button>' : '';
+    var statusColor = v.uploaded ? 'var(--blue)' : 'var(--green)';
+    var statusText = v.uploaded ? '&#10003; Uploaded &amp; processed' : '&#10003; Music + captions added';
     return '<div class="vcard">' +
-      '<video controls preload="none" src="' + src + '" style="width:100%;max-height:140px;object-fit:cover;background:#000"></video>' +
+      '<div class="vcard-thumb"><video controls preload="none" src="' + src + '"></video></div>' +
       '<div class="vcard-body">' +
         '<div class="vcard-name">' + v.n + '</div>' +
-        '<div class="vcard-meta">' + v.o + (v.uploaded ? ' — Uploaded' : ' — Music + captions') + '</div>' +
-        (v.uploaded ? '<button class="btn btn-red btn-sm" style="margin-top:6px" onclick="deleteUploadedVideo(' + (i - clinicVideos.length) + ')">Remove</button>' : '') +
+        '<div class="vcard-meta">' + v.o + '</div>' +
+        '<div class="vcard-status" style="color:' + statusColor + '">' + statusText + '</div>' +
+        deleteBtn +
       '</div>' +
     '</div>';
   }).join('');
 }
 
+// ── Caption voice input ──
+var captionRecog = null;
+function startCaptionVoice() {
+  var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SR) { alert('Voice not supported. Type caption manually.'); return; }
+  if (captionRecog) { captionRecog.stop(); return; }
+  captionRecog = new SR();
+  captionRecog.lang = 'en-CA';
+  captionRecog.continuous = false;
+  captionRecog.interimResults = false;
+  var btn = document.getElementById('caption-mic-btn');
+  btn.textContent = '🔴';
+  captionRecog.onresult = function(e) {
+    document.getElementById('vid-caption-input').value = e.results[0][0].transcript;
+  };
+  captionRecog.onend = function() { btn.textContent = '🎤'; captionRecog = null; };
+  captionRecog.onerror = function() { btn.textContent = '🎤'; captionRecog = null; };
+  captionRecog.start();
+}
+
 function handleVideoFile(input) {
   var file = input.files[0];
   if (!file) return;
+  var caption = document.getElementById('vid-caption-input').value.trim() || 'Oxyderm Beauty Clinic | Edmonton';
   var prog = document.getElementById('vid-progress');
   var fill = document.getElementById('vid-prog-fill');
   var label = document.getElementById('vid-prog-label');
   prog.style.display = 'block';
   label.textContent = 'Reading ' + file.name + '...';
-  fill.style.width = '20%';
+  fill.style.width = '15%';
   var reader = new FileReader();
-  reader.onprogress = function(e) { if (e.lengthComputable) fill.style.width = Math.round(20 + (e.loaded/e.total)*60) + '%'; };
+  reader.onprogress = function(e) {
+    if (e.lengthComputable) fill.style.width = Math.round(15 + (e.loaded/e.total)*60) + '%';
+  };
   reader.onload = function(e) {
-    fill.style.width = '90%';
+    fill.style.width = '85%';
     label.textContent = 'Saving to library...';
-    uploadedVideos.push({ name: file.name, dataUrl: e.target.result, date: new Date().toISOString() });
+    var entry = { name: file.name, dataUrl: e.target.result, caption: caption, date: new Date().toISOString() };
+    uploadedVideos.push(entry);
     localStorage.setItem('ox-vid-uploads', JSON.stringify(uploadedVideos));
     fill.style.width = '100%';
-    label.textContent = 'Done! ' + file.name + ' added.';
-    setTimeout(function(){ prog.style.display='none'; fill.style.width='0%'; }, 2000);
+    label.textContent = '✓ ' + file.name + ' added to library';
+    setTimeout(function(){ prog.style.display='none'; fill.style.width='0%'; }, 2500);
     renderVideos();
+    document.getElementById('vid-caption-input').value = '';
     input.value = '';
   };
   reader.readAsDataURL(file);
