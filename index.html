@@ -444,28 +444,62 @@ function markDone(e, i) {
 
 renderSchedule();
 
-// Video library - show as Ready (all 34 processed)
+// Video library - GitHub LFS raw URLs for direct playback
+var BASE = 'https://media.githubusercontent.com/media/Devang-shukla/oxyderm-videos/main/';
 var videos = [
-  "2026-07-23-133617652","20260617_155147","20260618_132740","20260618_132910",
-  "20260623_113750","20260623_113750(1)","20260623_123231","20260623_123231(1)",
-  "20260623_123442","20260623_123442(1)","20260626_142117","20260626_142349",
-  "20260626_150938","20260626_151411","20260629_161037","20260710_151233",
-  "20260710_151423","20260710_151448","20260710_151645","20260723_133821",
-  "20260723_133903","20260723_134004","20260723_134110","20260723_140152",
-  "20260723_140239","20260723_140329","20260723_140437","20260723_162932",
-  "20260723_163125","20260811_105315","20260811_105456",
-  "Snapchat-1504635744","Snapchat-295287126","Snapchat-995021753"
+  { name:'2026-07-23-133617652_final.mp4', orient:'16:9' },
+  { name:'20260617_155147_final.mp4',      orient:'16:9' },
+  { name:'20260618_132740_final.mp4',       orient:'16:9' },
+  { name:'20260618_132910_final.mp4',       orient:'16:9' },
+  { name:'20260623_113750(1)_final.mp4',    orient:'16:9' },
+  { name:'20260623_113750_final.mp4',       orient:'16:9' },
+  { name:'20260623_123231(1)_final.mp4',    orient:'16:9' },
+  { name:'20260623_123231_final.mp4',       orient:'16:9' },
+  { name:'20260623_123442(1)_final.mp4',    orient:'16:9' },
+  { name:'20260623_123442_final.mp4',       orient:'16:9' },
+  { name:'20260626_142117_final.mp4',       orient:'16:9' },
+  { name:'20260626_142349_final.mp4',       orient:'16:9' },
+  { name:'20260626_150938_final.mp4',       orient:'16:9' },
+  { name:'20260626_151411_final.mp4',       orient:'16:9' },
+  { name:'20260710_151233_final.mp4',       orient:'16:9' },
+  { name:'20260710_151423_final.mp4',       orient:'16:9' },
+  { name:'20260710_151448_final.mp4',       orient:'16:9' },
+  { name:'20260710_151645_final.mp4',       orient:'16:9' },
+  { name:'20260723_133821_final.mp4',       orient:'16:9' },
+  { name:'20260723_133903_final.mp4',       orient:'16:9' },
+  { name:'20260723_134004_final.mp4',       orient:'16:9' },
+  { name:'20260723_140152_final.mp4',       orient:'16:9' },
+  { name:'20260723_140239_final.mp4',       orient:'16:9' },
+  { name:'20260723_140329_final.mp4',       orient:'16:9' },
+  { name:'20260723_140437_final.mp4',       orient:'16:9' },
+  { name:'20260723_162932_final.mp4',       orient:'16:9' },
+  { name:'20260723_163125_final.mp4',       orient:'16:9' },
+  { name:'20260811_105315_final.mp4',       orient:'16:9' },
+  { name:'20260811_105456_final.mp4',       orient:'16:9' },
+  { name:'Snapchat-295287126_final.mp4',    orient:'9:16' },
+  // Large files - upload to Google Drive and paste links below
+  { name:'20260723_134110_final.mp4',       orient:'16:9', large:true },
+  { name:'20260629_161037_final.mp4',       orient:'16:9', large:true },
+  { name:'Snapchat-1504635744_final.mp4',   orient:'9:16', large:true },
+  { name:'Snapchat-995021753_final.mp4',    orient:'9:16', large:true },
 ];
 
 var grid = document.getElementById('video-grid');
 videos.forEach(function(v) {
-  var isSnap = v.indexOf('Snapchat') > -1;
   var card = document.createElement('div');
   card.className = 'video-card';
-  card.innerHTML =
-    '<div class="vname">' + v + '_final.mp4</div>' +
-    '<div class="vmeta">' + (isSnap ? 'Vertical (9:16)' : 'Landscape (16:9)') + '</div>' +
-    '<div class="vready">Music + captions added</div>';
+  if (v.large) {
+    card.innerHTML =
+      '<div class="vname" style="font-size:11px">' + v.name + '</div>' +
+      '<div class="vmeta">' + v.orient + ' — large file</div>' +
+      '<div class="vpending">Upload to Google Drive — file on Mac: videos-final/' + v.name + '</div>';
+  } else {
+    var url = BASE + encodeURIComponent(v.name);
+    card.innerHTML =
+      '<video controls preload="none" style="width:100%;border-radius:6px;margin-bottom:6px;" src="' + url + '"></video>' +
+      '<div class="vname" style="font-size:10px">' + v.name + '</div>' +
+      '<div class="vready">' + v.orient + ' — music + captions</div>';
+  }
   grid.appendChild(card);
 });
 </script>
