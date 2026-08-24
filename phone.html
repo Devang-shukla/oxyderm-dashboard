@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Oxyderm">
+<title>Oxyderm - Clinic Assistant</title>
+<style>
+:root {
+  --bg: #00172D; --card: #001f3d; --border: #1a3a5c;
+  --fg: #f0f4f8; --muted: #8ba8c4; --gold: #c9a96e;
+  --green: #2ecc71; --yellow: #f39c12; --red: #e74c3c; --blue: #3498db;
+}
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+body { background:var(--bg); color:var(--fg); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; min-height:100vh; padding-bottom:30px; }
+
+.header { background:linear-gradient(135deg,#00172D,#001f3d); border-bottom:2px solid var(--gold); padding:14px 18px 12px; position:sticky; top:0; z-index:50; }
+.header-row { display:flex; align-items:center; justify-content:space-between; }
+.logo { font-size:19px; font-weight:700; }
+.logo span { color:var(--gold); }
+.sub { font-size:11px; color:var(--muted); margin-top:2px; }
+.wa-btn { display:flex; align-items:center; gap:6px; background:#25D366; color:#fff; text-decoration:none; padding:9px 14px; border-radius:24px; font-weight:600; font-size:12px; }
+.wa-btn svg { width:16px; height:16px; fill:#fff; }
+
+/* Voice area */
+.voice-area { padding:16px 18px 0; }
+.mic-wrap { display:flex; flex-direction:column; align-items:center; gap:10px; }
+.mic-ring { position:relative; width:96px; height:96px; }
+.mic-ring-pulse { position:absolute; inset:0; border-radius:50%; border:3px solid var(--gold); opacity:0; }
+.mic-ring-pulse.active { animation:ring-pulse 1.2s ease-out infinite; }
+@keyframes ring-pulse { 0%{opacity:0.8;transform:scale(1)} 100%{opacity:0;transform:scale(1.6)} }
+.mic-circle { position:absolute; inset:8px; background:linear-gradient(135deg,#001f3d,#002a50); border:2px solid var(--gold); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:30px; cursor:pointer; transition:all 0.2s; user-select:none; }
+.mic-circle.listening { background:linear-gradient(135deg,#3d0000,#600000); border-color:var(--red); }
+.mic-circle:active { transform:scale(0.93); }
+.mic-status { font-size:13px; color:var(--muted); text-align:center; }
+.mic-status.active { color:var(--gold); font-weight:600; }
+
+/* Text input */
+.text-row { display:flex; gap:8px; margin-top:12px; }
+.text-row input { flex:1; background:#001020; border:1px solid var(--border); color:var(--fg); padding:12px 14px; border-radius:12px; font-size:14px; outline:none; }
+.text-row input:focus { border-color:var(--gold); }
+.text-row button { background:var(--gold); color:#00172D; border:none; padding:12px 16px; border-radius:12px; font-weight:700; font-size:14px; cursor:pointer; }
+
+/* Answer */
+.answer-box { margin:12px 18px 0; background:var(--card); border:1px solid var(--border); border-left:3px solid var(--gold); border-radius:12px; padding:14px; display:none; }
+.answer-box.show { display:block; }
+.answer-lbl { font-size:10px; color:var(--gold); font-weight:700; text-transform:uppercase; letter-spacing:0.6px; margin-bottom:8px; }
+.answer-text { font-size:14px; line-height:1.65; }
+.answer-actions { display:flex; gap:8px; margin-top:10px; }
+.answer-actions button { background:#001020; border:1px solid var(--border); color:var(--muted); padding:7px 12px; border-radius:8px; font-size:12px; cursor:pointer; }
+.answer-actions button:active { border-color:var(--gold); color:var(--gold); }
+
+/* Schedule */
+.section { padding:16px 18px 0; }
+.section-title { font-size:12px; font-weight:700; color:var(--gold); text-transform:uppercase; letter-spacing:0.7px; margin-bottom:10px; }
+
+.appt-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px; margin-bottom:10px; cursor:pointer; transition:border-color 0.2s; }
+.appt-card:active { border-color:var(--gold); }
+.appt-card.expanded { border-color:var(--gold); }
+.appt-top { display:flex; gap:12px; align-items:flex-start; }
+.appt-time { font-size:13px; font-weight:700; color:var(--gold); min-width:60px; padding-top:2px; }
+.appt-main { flex:1; }
+.appt-name { font-size:16px; font-weight:700; }
+.appt-service { font-size:13px; color:var(--muted); margin-top:2px; }
+.tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; }
+.tag { font-size:11px; font-weight:600; padding:3px 9px; border-radius:10px; }
+.tag-visit { background:#0a2a4d; color:var(--blue); }
+.tag-paid { background:#1a4d2e; color:var(--green); }
+.tag-balance { background:#4d3800; color:var(--yellow); }
+.tag-new { background:#3d2e00; color:var(--gold); }
+.tag-flag { background:#3d0010; color:#ff7a8a; }
+.tag-duration { background:#1a1a3d; color:#a9b4ff; }
+
+.appt-detail { display:none; margin-top:12px; padding-top:12px; border-top:1px solid var(--border); font-size:13px; color:var(--muted); line-height:1.7; }
+.appt-detail.show { display:block; }
+.appt-detail strong { color:var(--fg); }
+.ask-this { margin-top:10px; }
+.ask-this button { background:none; border:1px solid var(--border); color:var(--muted); padding:6px 12px; border-radius:8px; font-size:12px; cursor:pointer; margin:3px; }
+.ask-this button:active { border-color:var(--gold); color:var(--gold); }
+
+/* Stats */
+.stats-row { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; padding:16px 18px 0; }
+.stat-mini { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:14px 10px; text-align:center; }
+.stat-mini .num { font-size:26px; font-weight:700; color:var(--gold); }
+.stat-mini .lbl { font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:0.5px; margin-top:3px; }
+
+/* Quick links */
+.quick-links { display:grid; grid-template-columns:1fr 1fr; gap:10px; padding:16px 18px 0; }
+.quick-btn { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:16px 12px; text-align:center; text-decoration:none; color:var(--fg); display:block; }
+.quick-btn:active { border-color:var(--gold); }
+.quick-btn .qicon { font-size:24px; margin-bottom:6px; }
+.quick-btn .qlabel { font-size:12px; font-weight:600; }
+
+.loading { text-align:center; padding:30px; color:var(--muted); }
+.error-msg { margin:12px 18px; background:#3d0010; border:1px solid #600020; border-radius:10px; padding:12px; font-size:13px; color:#ff7a8a; }
+.footer { text-align:center; padding:24px 18px; font-size:11px; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-row">
+    <div>
+      <div class="logo">Oxyderm <span>Clinic</span></div>
+      <div class="sub" id="date-str">Loading schedule...</div>
+    </div>
+    <a class="wa-btn" href="https://wa.me/17802219872" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Dev
+    </a>
+  </div>
+</div>
+
+<!-- Voice assistant -->
+<div class="voice-area">
+  <div class="mic-wrap">
+    <div class="mic-ring">
+      <div class="mic-ring-pulse" id="ring1"></div>
+      <div class="mic-ring-pulse" id="ring2" style="animation-delay:0.4s"></div>
+      <div class="mic-circle" id="mic-circle" onclick="toggleVoice()">🎤</div>
+    </div>
+    <div class="mic-status" id="mic-status">Tap mic or type below — ask anything</div>
+  </div>
+  <div class="text-row" style="margin-top:14px;">
+    <input type="text" id="text-input" placeholder='Ask anything: "Who is next?" "What did Mehak pay?" "Any notes for 3pm?"'
+      onkeydown="if(event.key==='Enter'){askQuestion(this.value);this.value='';}">
+    <button onclick="var v=document.getElementById('text-input');askQuestion(v.value);v.value='';">Ask</button>
+  </div>
+</div>
+
+<div class="answer-box" id="answer-box">
+  <div class="answer-lbl">Sarah</div>
+  <div class="answer-text" id="answer-text"></div>
+  <div class="answer-actions">
+    <button onclick="speakLast()">🔊 Repeat</button>
+    <button onclick="document.getElementById('answer-box').classList.remove('show')">Dismiss</button>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title" id="sched-title">Today's Appointments</div>
+  <div id="schedule-list"><div class="loading">Loading from Square...</div></div>
+</div>
+
+<div class="stats-row" id="stats-row" style="display:none">
+  <div class="stat-mini"><div class="num" id="stat-total">0</div><div class="lbl">Today</div></div>
+  <div class="stat-mini"><div class="num" id="stat-new">0</div><div class="lbl">New Clients</div></div>
+  <div class="stat-mini"><div class="num" id="stat-done">0</div><div class="lbl">Completed</div></div>
+</div>
+
+<div class="quick-links">
+  <a class="quick-btn" href="https://squareup.com/dashboard/sales/transactions" target="_blank">
+    <div class="qicon">📋</div><div class="qlabel">Square</div>
+  </a>
+  <a class="quick-btn" href="https://business.google.com" target="_blank">
+    <div class="qicon">📍</div><div class="qlabel">Google Profile</div>
+  </a>
+  <a class="quick-btn" href="index.html">
+    <div class="qicon">🖥️</div><div class="qlabel">Full Dashboard</div>
+  </a>
+  <a class="quick-btn" href="https://wa.me/17802219872" target="_blank">
+    <div class="qicon">💬</div><div class="qlabel">Message Dev</div>
+  </a>
+</div>
+
+<div class="footer">Built with Agency OS - AI Lead Builder</div>
+
+<script>
+var APPTS = [];
+var lastAnswer = '';
+
+// Load schedule from JSON
+fetch('schedule.json?t=' + Date.now())
+  .then(function(r){ return r.json(); })
+  .then(function(data){
+    APPTS = data.appointments || [];
+    document.getElementById('date-str').textContent = data.date + ' — Updated ' + (data.fetched_at || '');
+    document.getElementById('sched-title').textContent = 'Today (' + APPTS.length + ' appointments)';
+    renderSchedule();
+    var sr = document.getElementById('stats-row');
+    sr.style.display = 'grid';
+    document.getElementById('stat-total').textContent = APPTS.length;
+    var newCount = APPTS.filter(function(a){ return a.visit_num === 1; }).length;
+    document.getElementById('stat-new').textContent = newCount;
+    var now = new Date();
+    var done = APPTS.filter(function(a){
+      var t = parseTime(a.time);
+      return t && t < now;
+    }).length;
+    document.getElementById('stat-done').textContent = done;
+  })
+  .catch(function(){
+    document.getElementById('schedule-list').innerHTML =
+      '<div class="error-msg">Could not load schedule. Make sure fetch_schedule.py ran today.<br>Run: <code>python3 fetch_schedule.py</code></div>';
+    document.getElementById('date-str').textContent = new Date().toDateString();
+  });
+
+function parseTime(str) {
+  if (!str) return null;
+  var m = str.match(/(\d+):(\d+)\s*(AM|PM)/i);
+  if (!m) return null;
+  var h = parseInt(m[1]), min = parseInt(m[2]), ap = m[3].toUpperCase();
+  if (ap === 'PM' && h !== 12) h += 12;
+  if (ap === 'AM' && h === 12) h = 0;
+  var d = new Date(); d.setHours(h, min, 0, 0); return d;
+}
+
+function renderSchedule() {
+  var list = document.getElementById('schedule-list');
+  if (!APPTS.length) {
+    list.innerHTML = '<div class="loading">No appointments found for today.</div>';
+    return;
+  }
+  list.innerHTML = APPTS.map(function(a, i){
+    var visitClass = a.visit_num === 1 ? 'tag-new' : 'tag-visit';
+    var flags = (a.flags || []).map(function(f){ return '<span class="tag tag-flag">⚠ ' + f + '</span>'; }).join('');
+    var payTag = a.payment && a.payment.toLowerCase().includes('balance')
+      ? '<span class="tag tag-balance">Balance owing</span>'
+      : (a.payment ? '<span class="tag tag-paid">Paid</span>' : '');
+
+    return '<div class="appt-card" id="card-'+i+'" onclick="toggleCard('+i+')">' +
+      '<div class="appt-top">' +
+        '<div class="appt-time">' + a.time + '</div>' +
+        '<div class="appt-main">' +
+          '<div class="appt-name">' + a.name + '</div>' +
+          '<div class="appt-service">' + a.service + (a.areas ? ' — ' + a.areas.split(',').slice(0,3).join(', ') : '') + '</div>' +
+          '<div class="tags">' +
+            '<span class="tag ' + visitClass + '">' + a.visit + '</span>' +
+            '<span class="tag tag-duration">' + a.duration_min + ' min</span>' +
+            payTag + flags +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="appt-detail" id="detail-'+i+'">' +
+        (a.areas ? '<strong>Areas:</strong> ' + a.areas + '<br>' : '') +
+        (a.payment ? '<strong>Payment:</strong> ' + a.payment + '<br>' : '') +
+        (a.phone ? '<strong>Phone:</strong> <a href="tel:' + a.phone + '" style="color:var(--blue)">' + a.phone + '</a><br>' : '') +
+        (a.flags && a.flags.length ? '<strong>Notes:</strong> ' + a.flags.join(', ') + '<br>' : '') +
+        '<div class="ask-this"><strong style="font-size:11px;color:var(--gold);">Ask about this client:</strong><br>' +
+          '<button onclick="event.stopPropagation();askQuestion(\'What are the notes for ' + a.name + '?\')">Notes</button>' +
+          '<button onclick="event.stopPropagation();askQuestion(\'What did ' + a.name + ' pay?\')">Payment</button>' +
+          '<button onclick="event.stopPropagation();askQuestion(\'What visit is ' + a.name + ' on?\')">Visit #</button>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+}
+
+function toggleCard(i) {
+  var detail = document.getElementById('detail-'+i);
+  var card = document.getElementById('card-'+i);
+  var isOpen = detail.classList.contains('show');
+  // Close all
+  document.querySelectorAll('.appt-detail').forEach(function(d){ d.classList.remove('show'); });
+  document.querySelectorAll('.appt-card').forEach(function(c){ c.classList.remove('expanded'); });
+  if (!isOpen) {
+    detail.classList.add('show');
+    card.classList.add('expanded');
+  }
+}
+
+// ---- Open-ended AI answering ----
+function askQuestion(q) {
+  if (!q || !q.trim()) return;
+  var answer = buildAnswer(q.trim());
+  lastAnswer = answer;
+  showAnswer(answer);
+  speakAnswer(answer);
+}
+
+function buildAnswer(q) {
+  var ql = q.toLowerCase();
+
+  // --- Schedule / all appointments ---
+  if (/schedule|today|who.*coming|all appoint|how many/i.test(ql)) {
+    if (!APPTS.length) return "No appointments found for today.";
+    var list = APPTS.map(function(a){
+      return a.time + ': ' + a.name + ', ' + a.service + ', ' + a.visit + ', ' + a.payment + '.';
+    }).join(' ');
+    return 'Today you have ' + APPTS.length + ' appointments. ' + list;
+  }
+
+  // --- Next appointment ---
+  if (/next|who is next|coming next/i.test(ql)) {
+    var now = new Date();
+    for (var i = 0; i < APPTS.length; i++) {
+      var t = parseTime(APPTS[i].time);
+      if (t && t > now) {
+        var a = APPTS[i];
+        return 'Next is ' + a.name + ' at ' + a.time + ' for ' + a.service + '. It is their ' + a.visit + '. ' + a.payment + '.';
+      }
+    }
+    return 'No more appointments after this time today.';
+  }
+
+  // --- Find by time ---
+  var timeM = ql.match(/(\d{1,2})[:\s]?(\d{0,2})\s*(am|pm)?/i);
+  if (timeM) {
+    var hr = parseInt(timeM[1]);
+    var mn = timeM[2] ? parseInt(timeM[2]) : 0;
+    var ap = timeM[3] ? timeM[3].toLowerCase() : null;
+    for (var i = 0; i < APPTS.length; i++) {
+      var a = APPTS[i];
+      var tp = a.time.match(/(\d+):(\d+)\s*(AM|PM)/i);
+      if (!tp) continue;
+      var ahr = parseInt(tp[1]), amin = parseInt(tp[2]), aap = tp[3].toLowerCase();
+      var match = (ahr === hr) && (mn === 0 || amin === mn) && (!ap || ap === aap);
+      if (match) {
+        var notes = a.flags && a.flags.length ? ' Notes: ' + a.flags.join(', ') + '.' : '';
+        return 'At ' + a.time + ' you have ' + a.name + '. ' + a.service + '. ' + a.visit + '. ' +
+               (a.areas ? 'Treatment areas: ' + a.areas + '. ' : '') +
+               a.payment + '.' + notes;
+      }
+    }
+    // no exact match
+    return 'No appointment found at that time today.';
+  }
+
+  // --- Find by name ---
+  for (var i = 0; i < APPTS.length; i++) {
+    var a = APPTS[i];
+    var nameParts = a.name.toLowerCase().split(' ');
+    var nameFound = nameParts.some(function(p){ return ql.includes(p) && p.length > 2; });
+    if (nameFound) {
+      // What question about this person?
+      if (/pay|paid|balance|owe|money|cost/i.test(ql)) {
+        return a.name + ' — Payment: ' + (a.payment || 'No payment info on file. Check Square.');
+      }
+      if (/note|flag|special|important|warn/i.test(ql)) {
+        var notes = a.flags && a.flags.length ? a.flags.join(', ') : 'No special notes.';
+        return a.name + ' notes: ' + notes + ' Seller note: ' + (a.raw_note ? a.raw_note.slice(0,200) : 'None.');
+      }
+      if (/visit|time|when|appoint/i.test(ql)) {
+        return a.name + ' is at ' + a.time + '. It is their ' + a.visit + '.';
+      }
+      if (/area|treat|service|what.*for|coming for/i.test(ql)) {
+        return a.name + ' is coming for ' + a.service + (a.areas ? ', areas: ' + a.areas : '') + '. ' + a.visit + '.';
+      }
+      if (/phone|call|number|contact/i.test(ql)) {
+        return a.name + ' phone: ' + (a.phone || 'Not on file') + '.';
+      }
+      // General - give full summary
+      var flags = a.flags && a.flags.length ? ' Special notes: ' + a.flags.join(', ') + '.' : '';
+      return a.name + ' is at ' + a.time + '. ' + a.service + ', ' +
+             (a.areas ? 'treatment areas: ' + a.areas + '. ' : '') +
+             a.visit + '. ' + a.payment + '.' + flags;
+    }
+  }
+
+  // --- Service type queries ---
+  if (/laser|lhr/i.test(ql)) {
+    var matches = APPTS.filter(function(a){ return /laser|lhr/i.test(a.service + a.areas); });
+    if (matches.length) return 'Laser appointments today: ' + matches.map(function(a){ return a.name + ' at ' + a.time; }).join(', ') + '.';
+    return 'No laser appointments today.';
+  }
+  if (/microneedl|needle/i.test(ql)) {
+    var matches = APPTS.filter(function(a){ return /microneedl/i.test(a.service); });
+    if (matches.length) return 'Microneedling today: ' + matches.map(function(a){ return a.name + ' at ' + a.time; }).join(', ') + '.';
+    return 'No microneedling appointments today.';
+  }
+  if (/new client|first time|first visit/i.test(ql)) {
+    var nc = APPTS.filter(function(a){ return a.visit_num === 1; });
+    if (nc.length) return 'New clients today: ' + nc.map(function(a){ return a.name + ' at ' + a.time; }).join(', ') + '.';
+    return 'No new clients today. All returning.';
+  }
+  if (/revenue|total|money|how much|earning/i.test(ql)) {
+    return 'Check Square for today\'s revenue totals. I can see ' + APPTS.length + ' appointments booked today.';
+  }
+  if (/note|flag|warning|special/i.test(ql)) {
+    var flagged = APPTS.filter(function(a){ return a.flags && a.flags.length; });
+    if (flagged.length) return 'Clients with special notes today: ' + flagged.map(function(a){ return a.name + ' — ' + a.flags.join(', '); }).join('. ') + '.';
+    return 'No special notes or flags for today.';
+  }
+  if (/balance|owing|owe/i.test(ql)) {
+    var bal = APPTS.filter(function(a){ return a.payment && a.payment.toLowerCase().includes('balance'); });
+    if (bal.length) return 'Clients with balances owing: ' + bal.map(function(a){ return a.name + ' — ' + a.payment; }).join('. ') + '.';
+    return 'No outstanding balances noted today.';
+  }
+
+  // --- Help / fallback ---
+  if (/help|what can|how do/i.test(ql)) {
+    return 'I can answer questions like: Who is at 1pm? What is Mehak coming for? What did Alexandra pay? Who is next? Any new clients? Any special notes? Who has a balance owing? Just ask naturally.';
+  }
+
+  // Generic fallback with all names
+  if (APPTS.length) {
+    return 'I did not catch that. Today you have: ' +
+      APPTS.map(function(a){ return a.name + ' at ' + a.time; }).join(', ') +
+      '. Ask me about a specific client or time.';
+  }
+  return 'I did not understand. Try asking: who is at 1pm, or what is Alexandra coming for.';
+}
+
+function showAnswer(text) {
+  var box = document.getElementById('answer-box');
+  document.getElementById('answer-text').textContent = text;
+  box.classList.add('show');
+  box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+// ---- Voice synthesis (Canadian English, natural female voice) ----
+var voices = [];
+function loadVoices() {
+  voices = window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
+}
+if (window.speechSynthesis) {
+  loadVoices();
+  window.speechSynthesis.onvoiceschanged = loadVoices;
+}
+
+function getBestVoice() {
+  // Priority: Canadian English female > Samantha (US) > any English
+  var preferred = ['Samantha', 'Karen', 'Moira', 'Fiona', 'Victoria', 'Tessa'];
+  for (var i = 0; i < preferred.length; i++) {
+    var v = voices.find(function(v){ return v.name.includes(preferred[i]); });
+    if (v) return v;
+  }
+  var enCA = voices.find(function(v){ return v.lang === 'en-CA'; });
+  if (enCA) return enCA;
+  var enFem = voices.find(function(v){ return v.lang.startsWith('en') && /female|woman/i.test(v.name); });
+  if (enFem) return enFem;
+  var en = voices.find(function(v){ return v.lang.startsWith('en'); });
+  return en || null;
+}
+
+function speakAnswer(text) {
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  var utt = new SpeechSynthesisUtterance(text);
+  utt.rate = 0.92;
+  utt.pitch = 1.05;
+  utt.volume = 1.0;
+  var v = getBestVoice();
+  if (v) utt.voice = v;
+  window.speechSynthesis.speak(utt);
+}
+
+function speakLast() {
+  if (lastAnswer) speakAnswer(lastAnswer);
+}
+
+// ---- Voice recognition ----
+var recognition = null;
+var isListening = false;
+
+function toggleVoice() {
+  if (isListening) { stopVoice(); return; }
+  var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SR) {
+    showAnswer('Voice input not supported on this browser. Use Chrome or Safari. Type your question below instead.');
+    speakAnswer('Voice input is not available. Please type your question.');
+    return;
+  }
+  recognition = new SR();
+  recognition.lang = 'en-CA';
+  recognition.continuous = false;
+  recognition.interimResults = false;
+
+  var mic = document.getElementById('mic-circle');
+  var status = document.getElementById('mic-status');
+  var r1 = document.getElementById('ring1');
+  var r2 = document.getElementById('ring2');
+
+  recognition.onstart = function() {
+    isListening = true;
+    mic.classList.add('listening');
+    mic.textContent = '⏹';
+    r1.classList.add('active');
+    r2.classList.add('active');
+    status.textContent = 'Listening... speak now';
+    status.classList.add('active');
+  };
+  recognition.onresult = function(e) {
+    var q = e.results[0][0].transcript;
+    document.getElementById('text-input').value = q;
+    askQuestion(q);
+  };
+  recognition.onerror = function(e) {
+    if (e.error !== 'no-speech') {
+      showAnswer('Could not hear clearly. Try speaking closer to the phone, or type below.');
+    }
+    stopVoice();
+  };
+  recognition.onend = function() { stopVoice(); };
+  recognition.start();
+}
+
+function stopVoice() {
+  isListening = false;
+  if (recognition) { try { recognition.stop(); } catch(e){} recognition = null; }
+  var mic = document.getElementById('mic-circle');
+  var status = document.getElementById('mic-status');
+  mic.classList.remove('listening');
+  mic.textContent = '🎤';
+  document.getElementById('ring1').classList.remove('active');
+  document.getElementById('ring2').classList.remove('active');
+  status.textContent = 'Tap mic or type below — ask anything';
+  status.classList.remove('active');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oxyderm Agency OS</title>
+<style>
+:root {
+  --bg: #00172D;
+  --card: #001f3d;
+  --border: #1a3a5c;
+  --fg: #f0f4f8;
+  --muted: #8ba8c4;
+  --gold: #c9a96e;
+  --green: #2ecc71;
+  --yellow: #f39c12;
+  --red: #e74c3c;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 0; }
+
+/* Header */
+.header {
+  background: linear-gradient(135deg, #00172D 0%, #001f3d 100%);
+  border-bottom: 2px solid var(--gold);
+  padding: 18px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header h1 { font-size: 20px; font-weight: 700; color: var(--fg); }
+.header h1 span { color: var(--gold); }
+.header-right { display: flex; align-items: center; gap: 12px; }
+
+/* WhatsApp button - real tap-to-open */
+.wa-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #25D366;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 16px;
+  border-radius: 24px;
+  font-weight: 600;
+  font-size: 13px;
+  transition: background 0.2s;
+}
+.wa-btn:hover { background: #1ebe5a; }
+.wa-btn svg { width: 18px; height: 18px; fill: #fff; }
+
+/* Bell */
+.bell-btn {
+  position: relative;
+  background: none;
+  border: 2px solid var(--gold);
+  color: var(--gold);
+  padding: 8px 14px;
+  border-radius: 24px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.bell-btn:hover { background: var(--gold); color: var(--bg); }
+.bell-badge {
+  position: absolute;
+  top: -6px; right: -6px;
+  background: var(--red);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* Stats */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px;
+  padding: 24px 28px 0;
+}
+.stat-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 16px;
+  text-align: center;
+}
+.stat-card .num { font-size: 32px; font-weight: 700; color: var(--gold); }
+.stat-card .label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; margin-top: 4px; }
+
+/* Main grid */
+.main-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 20px 28px;
+}
+@media (max-width: 768px) { .main-grid { grid-template-columns: 1fr; } }
+
+.panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px;
+}
+.panel-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Schedule */
+.schedule-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 10px;
+  border-radius: 9px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  transition: background 0.15s;
+  border: 1px solid transparent;
+  text-decoration: none;
+  color: inherit;
+}
+.schedule-item:hover { background: #001020; border-color: var(--border); }
+.schedule-item.done { opacity: 0.5; }
+.schedule-item.done .platform { text-decoration: line-through; }
+.sched-time { font-size: 12px; color: var(--gold); font-weight: 700; min-width: 52px; }
+.sched-info { flex: 1; }
+.sched-info .platform { font-size: 13px; font-weight: 600; }
+.sched-info .desc { font-size: 12px; color: var(--muted); margin-top: 1px; }
+.sched-right { display: flex; align-items: center; gap: 8px; }
+.status-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.dot-done { background: var(--green); }
+.dot-pending { background: var(--yellow); }
+.dot-ready { background: #3498db; }
+.mark-btn {
+  background: none; border: 1px solid var(--border);
+  color: var(--muted); font-size: 11px; padding: 3px 8px;
+  border-radius: 6px; cursor: pointer; white-space: nowrap;
+  transition: all 0.15s;
+}
+.mark-btn:hover { border-color: var(--green); color: var(--green); }
+.schedule-item.done .mark-btn { border-color: var(--green); color: var(--green); }
+
+/* Content queue */
+.content-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 0;
+  border-bottom: 1px solid #0a2440;
+}
+.content-item:last-child { border-bottom: none; }
+.content-title { font-size: 13px; }
+.content-meta { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.badge {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+.badge-green { background: #1a4d2e; color: var(--green); }
+.badge-yellow { background: #4d3800; color: var(--yellow); }
+.badge-blue { background: #0a2a4d; color: #5dade2; }
+.badge-gold { background: #3d2e00; color: var(--gold); }
+
+/* Videos panel - full width */
+.videos-panel {
+  grid-column: 1 / -1;
+}
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+  max-height: 340px;
+  overflow-y: auto;
+}
+.video-card {
+  background: #001020;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 12px;
+}
+.video-card .vname { color: var(--fg); font-weight: 500; margin-bottom: 4px; word-break: break-all; }
+.video-card .vmeta { color: var(--muted); font-size: 11px; }
+.video-card .vready { color: var(--green); font-size: 11px; margin-top: 4px; }
+.video-card .vpending { color: var(--yellow); font-size: 11px; margin-top: 4px; }
+
+/* Notifications overlay */
+.notif-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 100;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+.notif-overlay.open { display: flex; }
+.notif-panel {
+  background: var(--card);
+  border-left: 2px solid var(--gold);
+  width: 320px;
+  height: 100%;
+  padding: 24px;
+  overflow-y: auto;
+}
+.notif-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.notif-header h3 { color: var(--gold); font-size: 16px; }
+.notif-close { background: none; border: none; color: var(--muted); font-size: 20px; cursor: pointer; }
+.notif-item {
+  background: #001020;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 10px;
+}
+.notif-item .ntitle { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+.notif-item .nbody { font-size: 12px; color: var(--muted); }
+.notif-item .ntime { font-size: 11px; color: var(--gold); margin-top: 6px; }
+
+/* Footer */
+.footer { text-align: center; padding: 16px; font-size: 11px; color: var(--muted); border-top: 1px solid var(--border); margin-top: 8px; }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <h1>Oxyderm <span>Agency OS</span></h1>
+  <div class="header-right">
+    <!-- REAL WhatsApp tap-to-open link (Dev's number) -->
+    <a class="wa-btn" href="https://wa.me/13067378786" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      WhatsApp Dev
+    </a>
+    <button class="bell-btn" onclick="toggleNotif()">
+      🔔 Notifications
+      <span class="bell-badge" id="notif-count">5</span>
+    </button>
+  </div>
+</div>
+
+<!-- Stats -->
+<div class="stats-grid">
+  <div class="stat-card"><div class="num">2,749</div><div class="label">Square Customers</div></div>
+  <div class="stat-card"><div class="num">34</div><div class="label">Videos Ready</div></div>
+  <div class="stat-card"><div class="num">7</div><div class="label">Posts Scheduled</div></div>
+  <div class="stat-card"><div class="num">8</div><div class="label">Blog Posts</div></div>
+  <div class="stat-card"><div class="num">1</div><div class="label">FB Group Joined</div></div>
+  <div class="stat-card"><div class="num" id="today-posts">0</div><div class="label">Posted Today</div></div>
+</div>
+
+<!-- Main Grid -->
+<div class="main-grid">
+
+  <!-- Today's Schedule -->
+  <div class="panel">
+    <div class="panel-title">Today's Posting Schedule</div>
+    <div id="schedule-rows"></div>
+  </div>
+
+  <!-- Content Queue -->
+  <div class="panel">
+    <div class="panel-title">Content Queue</div>
+    <div class="content-item">
+      <div>
+        <div class="content-title">C1805 Testimonial</div>
+        <div class="content-meta">Video - Ready to post</div>
+      </div>
+      <span class="badge badge-blue">Ready</span>
+    </div>
+    <div class="content-item">
+      <div>
+        <div class="content-title">LHR Before/After</div>
+        <div class="content-meta">Carousel - Week 1</div>
+      </div>
+      <span class="badge badge-yellow">Pending</span>
+    </div>
+    <div class="content-item">
+      <div>
+        <div class="content-title">Skin Analysis Quiz</div>
+        <div class="content-meta">Story - Approved</div>
+      </div>
+      <span class="badge badge-green">Approved</span>
+    </div>
+    <div class="content-item">
+      <div>
+        <div class="content-title">Microneedling Results</div>
+        <div class="content-meta">Reel - Processing</div>
+      </div>
+      <span class="badge badge-gold">Processing</span>
+    </div>
+    <div class="content-item">
+      <div>
+        <div class="content-title">Blog: LHR Guide</div>
+        <div class="content-meta">Article - Published</div>
+      </div>
+      <span class="badge badge-green">Live</span>
+    </div>
+    <div class="content-item">
+      <div>
+        <div class="content-title">GBP Week 2 Posts</div>
+        <div class="content-meta">3 posts - Scheduled</div>
+      </div>
+      <span class="badge badge-blue">Scheduled</span>
+    </div>
+    <div class="content-item">
+      <div>
+        <div class="content-title">Snapchat Reel x3</div>
+        <div class="content-meta">Vertical video - Ready</div>
+      </div>
+      <span class="badge badge-blue">Ready</span>
+    </div>
+    <div class="content-item">
+      <div>
+        <div class="content-title">FB Group Intro Post</div>
+        <div class="content-meta">Edmonton Chat - Draft</div>
+      </div>
+      <span class="badge badge-yellow">Draft</span>
+    </div>
+  </div>
+
+  <!-- Videos Panel -->
+  <div class="panel videos-panel">
+    <div class="panel-title">Video Library (34 clips - music + captions done)</div>
+    <div class="video-grid" id="video-grid">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+
+</div>
+
+<!-- Notifications Overlay -->
+<div class="notif-overlay" id="notif-overlay" onclick="closeNotifOutside(event)">
+  <div class="notif-panel">
+    <div class="notif-header">
+      <h3>Notifications</h3>
+      <button class="notif-close" onclick="toggleNotif()">x</button>
+    </div>
+    <div class="notif-item">
+      <div class="ntitle">Videos Processing</div>
+      <div class="nbody">All 34 clinic videos are being processed with music and captions. Check videos-final/ folder.</div>
+      <div class="ntime">Today</div>
+    </div>
+    <div class="notif-item">
+      <div class="ntitle">FB Group Joined</div>
+      <div class="nbody">Edmonton Chat (36K members) - approved. Ready to post.</div>
+      <div class="ntime">This week</div>
+    </div>
+    <div class="notif-item">
+      <div class="ntitle">GBP Profile Live</div>
+      <div class="nbody">Google Business Profile updated with photos and hours.</div>
+      <div class="ntime">Phase 1</div>
+    </div>
+    <div class="notif-item">
+      <div class="ntitle">Square: 2,749 Customers</div>
+      <div class="nbody">Database synced. Email sequences ready to activate.</div>
+      <div class="ntime">Phase 1</div>
+    </div>
+    <div class="notif-item">
+      <div class="ntitle">Gemini API Key Configured</div>
+      <div class="nbody">AI features now active. Key saved to Hermes environment.</div>
+      <div class="ntime">Today</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">Built with Agency OS - AI Lead Builder</div>
+
+<script>
+// Toggle notifications
+function toggleNotif() {
+  var o = document.getElementById('notif-overlay');
+  o.classList.toggle('open');
+}
+function closeNotifOutside(e) {
+  if (e.target === document.getElementById('notif-overlay')) toggleNotif();
+}
+
+// Schedule data - clickable rows with real platform URLs
+var scheduleItems = [
+  { time:'9:00am',  platform:'Google Business Profile', desc:'C1805 Testimonial video', url:'https://business.google.com/n/16393484706885524416/profile', dot:'dot-ready' },
+  { time:'10:30am', platform:'TikTok / IG Reels',       desc:'C1805 (same video)',       url:'https://www.tiktok.com/upload',                              dot:'dot-ready' },
+  { time:'11:00am', platform:'Facebook Page',           desc:'C1805 + booking link',     url:'https://www.facebook.com/oxydermedmonton',                   dot:'dot-pending' },
+  { time:'2:00pm',  platform:'FB Groups',               desc:'Edmonton Chat 36K',        url:'https://www.facebook.com/groups/edmontonians',               dot:'dot-pending' },
+  { time:'4:00pm',  platform:'Sustaack',                desc:'C1805 embed + link',       url:'https://sustaack.com',                                       dot:'dot-pending' },
+  { time:'7:00pm',  platform:'YouTube',                 desc:'Full testimonial upload',  url:'https://studio.youtube.com',                                 dot:'dot-pending' },
+];
+
+// Load done state from localStorage
+var doneState = JSON.parse(localStorage.getItem('sched-done-' + new Date().toDateString()) || '{}');
+
+function renderSchedule() {
+  var container = document.getElementById('schedule-rows');
+  container.innerHTML = scheduleItems.map(function(item, i) {
+    var isDone = !!doneState[i];
+    return '<a class="schedule-item' + (isDone ? ' done' : '') + '" href="' + item.url + '" target="_blank" rel="noopener" onclick="openItem(event,' + i + ')">' +
+      '<div class="status-dot ' + (isDone ? 'dot-done' : item.dot) + '"></div>' +
+      '<div class="sched-time">' + item.time + '</div>' +
+      '<div class="sched-info">' +
+        '<div class="platform">' + item.platform + '</div>' +
+        '<div class="desc">' + item.desc + '</div>' +
+      '</div>' +
+      '<div class="sched-right">' +
+        '<button class="mark-btn" onclick="markDone(event,' + i + ')">' + (isDone ? 'Done' : 'Mark Done') + '</button>' +
+      '</div>' +
+    '</a>';
+  }).join('');
+  // Update posted count
+  var doneCount = Object.keys(doneState).filter(function(k){ return doneState[k]; }).length;
+  document.getElementById('today-posts').textContent = doneCount;
+}
+
+function openItem(e, i) {
+  // Link opens naturally, don't prevent default
+}
+
+function markDone(e, i) {
+  e.preventDefault();
+  e.stopPropagation();
+  doneState[i] = !doneState[i];
+  localStorage.setItem('sched-done-' + new Date().toDateString(), JSON.stringify(doneState));
+  renderSchedule();
+}
+
+renderSchedule();
+
+// Video library - show as Ready (all 34 processed)
+var videos = [
+  "2026-07-23-133617652","20260617_155147","20260618_132740","20260618_132910",
+  "20260623_113750","20260623_113750(1)","20260623_123231","20260623_123231(1)",
+  "20260623_123442","20260623_123442(1)","20260626_142117","20260626_142349",
+  "20260626_150938","20260626_151411","20260629_161037","20260710_151233",
+  "20260710_151423","20260710_151448","20260710_151645","20260723_133821",
+  "20260723_133903","20260723_134004","20260723_134110","20260723_140152",
+  "20260723_140239","20260723_140329","20260723_140437","20260723_162932",
+  "20260723_163125","20260811_105315","20260811_105456",
+  "Snapchat-1504635744","Snapchat-295287126","Snapchat-995021753"
+];
+
+var grid = document.getElementById('video-grid');
+videos.forEach(function(v) {
+  var isSnap = v.indexOf('Snapchat') > -1;
+  var card = document.createElement('div');
+  card.className = 'video-card';
+  card.innerHTML =
+    '<div class="vname">' + v + '_final.mp4</div>' +
+    '<div class="vmeta">' + (isSnap ? 'Vertical (9:16)' : 'Landscape (16:9)') + '</div>' +
+    '<div class="vready">Music + captions added</div>';
+  grid.appendChild(card);
+});
+</script>
+</body>
+</html>
