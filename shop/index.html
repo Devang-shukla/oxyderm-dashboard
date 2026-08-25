@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Authorized ClearChoice® & Oceuticals® Skincare | Oxyderm Laser Clinic Edmonton</title>
+  <meta name="description" content="Shop authentic ClearChoice® and Oceuticals® medical-grade skincare online at Oxyderm Laser Clinic Edmonton. Authorized distributor. Post-laser, microneedling recovery, barrier repair." />
+  <meta name="keywords" content="ClearChoice skincare Edmonton, buy ClearChoice online Canada, medical grade acne skincare, post laser healing skincare, Oceuticals skin barrier cream" />
+
+  <!-- Schema Markup for AEO & Google Rich Snippets -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalBusiness",
+    "name": "Oxyderm Laser Clinic",
+    "url": "https://oxydermlaserclinic.ca/shop",
+    "logo": "https://oxydermlaserclinic.ca/logo.png",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Edmonton",
+      "addressRegion": "AB",
+      "addressCountry": "CA"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "ClearChoice & Oceuticals Professional Medical Skincare",
+      "itemListElement": [
+        {"@type": "OfferCatalog", "name": "Cleansers & Balancers"},
+        {"@type": "OfferCatalog", "name": "Polishers & Masques"},
+        {"@type": "OfferCatalog", "name": "Moisturizers & Sun Protection"},
+        {"@type": "OfferCatalog", "name": "Targeted Corrective Serums"},
+        {"@type": "OfferCatalog", "name": "Acne & Blemish Control"},
+        {"@type": "OfferCatalog", "name": "Resist & Rewind Anti-Aging"},
+        {"@type": "OfferCatalog", "name": "Oceuticals Marine Bio-Actives"}
+      ]
+    }
+  }
+  </script>
+
+  <!-- Tailwind CSS CDN + Google Fonts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            serif: ['"Playfair Display"', 'serif'],
+          },
+          colors: {
+            clinical: {
+              50: '#f8fafc',
+              100: '#f1f5f9',
+              900: '#0f172a',
+              gold: '#c5a880',
+              teal: '#0d9488',
+              accent: '#14b8a6'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-stone-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-clinical-900 text-stone-200 text-xs font-medium py-2 text-center tracking-wide px-4">
+    Authorized Canadian Distributor | <span class="text-clinical-gold font-semibold">Free Canada-Wide Shipping on Orders Over $100</span> | Clinical Post-Care Formulations
+  </div>
+
+  <!-- Header / Navigation -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-stone-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <a href="https://oxydermlaserclinic.ca" class="flex items-center gap-2">
+          <span class="font-serif text-2xl font-bold tracking-wider text-slate-900">OXYDERM</span>
+          <span class="text-[10px] tracking-widest text-clinical-gold font-bold uppercase border border-clinical-gold px-1.5 py-0.5 rounded">Aesthetics</span>
+        </a>
+      </div>
+      
+      <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-700">
+        <a href="#catalog" class="hover:text-clinical-teal transition">All Skincare</a>
+        <a href="#post-care" class="hover:text-clinical-teal transition">Laser & Microneedling Aftercare</a>
+        <a href="https://book.squareup.com/appointments/book/merchant/SA5CTAH41JNY2/services" target="_blank" class="text-clinical-gold hover:underline font-semibold">Book Clinical Treatment</a>
+      </div>
+
+      <!-- Cart Button -->
+      <button onclick="toggleCart()" class="relative bg-stone-100 hover:bg-stone-200 p-2.5 rounded-full transition flex items-center justify-center">
+        <svg class="w-5 h-5 text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+        </svg>
+        <span id="cart-count" class="absolute -top-1 -right-1 bg-clinical-teal text-white text-[10px] font-bold h-5 w-5 rounded-full flex items-center justify-center">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-b from-white to-stone-100 py-16 lg:py-24 border-b border-stone-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-50 border border-teal-200 text-clinical-teal text-xs font-semibold uppercase tracking-wider mb-6">
+        <span>Verified Clinic Formulary</span> &bull; <span>ClearChoice® & Oceuticals®</span>
+      </div>
+      <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 tracking-tight leading-tight max-w-4xl mx-auto">
+        Medical-Grade Skincare For Active Clinical Recovery
+      </h1>
+      <p class="mt-6 text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto font-light">
+        High-potency cleansers, cellular repair serums, and broad-spectrum sun defense designed specifically to enhance and protect your Laser & Microneedling results.
+      </p>
+    </div>
+  </section>
+
+  <!-- Filter & Catalog Main Container -->
+  <main id="catalog" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-1 w-full">
+    
+    <!-- Category Tabs -->
+    <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-10 no-scrollbar" id="category-pills">
+      <button onclick="filterCategory('all')" class="category-btn active px-4 py-2 rounded-full text-xs font-semibold transition whitespace-nowrap bg-slate-900 text-white shadow-sm" data-category="all">All Formulations (21)</button>
+      <button onclick="filterCategory('cleansers')" class="category-btn px-4 py-2 rounded-full text-xs font-semibold transition whitespace-nowrap bg-white text-slate-700 hover:bg-stone-200 border border-stone-200" data-category="cleansers">Cleansers & Balancers</button>
+      <button onclick="filterCategory('polishers')" class="category-btn px-4 py-2 rounded-full text-xs font-semibold transition whitespace-nowrap bg-white text-slate-700 hover:bg-stone-200 border border-stone-200" data-category="polishers">Polishers & Masques</button>
+      <button onclick="filterCategory('moisturizers')" class="category-btn px-4 py-2 rounded-full text-xs font-semibold transition whitespace-nowrap bg-white text-slate-700 hover:bg-stone-200 border border-stone-200" data-category="moisturizers">Moisturizers & SPF</button>
+      <button onclick="filterCategory('serums')" class="category-btn px-4 py-2 rounded-full text-xs font-semibold transition whitespace-nowrap bg-white text-slate-700 hover:bg-stone-200 border border-stone-200" data-category="serums">Corrective Serums</button>
+      <button onclick="filterCategory('acne')" class="category-btn px-4 py-2 rounded-full text-xs font-semibold transition whitespace-nowrap bg-white text-slate-700 hover:bg-stone-200 border border-stone-200" data-category="acne">Acne Control</button>
+      <button onclick="filterCategory('anti-aging')" class="category-btn px-4 py-2 rounded-full text-xs font-semibold transition whitespace-nowrap bg-white text-slate-700 hover:bg-stone-200 border border-stone-200" data-category="anti-aging">Resist & Rewind</button>
+      <button onclick="filterCategory('oceuticals')" class="category-btn px-4 py-2 rounded-full text-xs font-semibold transition whitespace-nowrap bg-white text-slate-700 hover:bg-stone-200 border border-stone-200" data-category="oceuticals">Oceuticals® Marine</button>
+    </div>
+
+    <!-- Product Grid -->
+    <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+      <!-- Product cards injected dynamically via JavaScript below -->
+    </div>
+  </main>
+
+  <!-- Post Care Education Banner -->
+  <section id="post-care" class="bg-slate-900 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="border-l-2 border-clinical-gold pl-6">
+        <h4 class="font-serif text-xl font-bold text-white mb-2">Pre-Treatment Preparation</h4>
+        <p class="text-sm text-stone-400">Balance pH and normalize skin barrier with Gentle Foaming Cleanser and Mandelic Acid before laser passes.</p>
+      </div>
+      <div class="border-l-2 border-clinical-teal pl-6">
+        <h4 class="font-serif text-xl font-bold text-white mb-2">Active Clinical Healing</h4>
+        <p class="text-sm text-stone-400">Soothe heat erythema and induce cellular collagen with Copper Peptides, Hyaluronic Drops, and Oceuticals Bio-Active Marine cream.</p>
+      </div>
+      <div class="border-l-2 border-clinical-gold pl-6">
+        <h4 class="font-serif text-xl font-bold text-white mb-2">Strict Photo-Protection</h4>
+        <p class="text-sm text-stone-400">Prevent post-inflammatory hyperpigmentation (PIH) using broad-spectrum Sport Shield SPF 45 physical block daily.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide-Over Shopping Cart Drawer -->
+  <div id="cart-drawer" class="fixed inset-y-0 right-0 max-w-full flex pl-10 z-50 transform translate-x-full transition-transform duration-300 ease-in-out">
+    <div class="w-screen max-w-md bg-white shadow-2xl flex flex-col">
+      <div class="p-6 border-b border-stone-200 flex items-center justify-between">
+        <h3 class="font-serif text-xl font-bold text-slate-900">Your Clinical Cart</h3>
+        <button onclick="toggleCart()" class="text-stone-400 hover:text-slate-700">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+      
+      <!-- Cart Items Container -->
+      <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
+        <p class="text-sm text-stone-500 text-center py-8">Your cart is empty.</p>
+      </div>
+
+      <!-- Checkout Footer -->
+      <div class="p-6 border-t border-stone-200 bg-stone-50 space-y-4">
+        <div class="flex items-center justify-between text-base font-bold text-slate-900">
+          <span>Subtotal</span>
+          <span id="cart-subtotal">$0.00 CAD</span>
+        </div>
+        <p class="text-[11px] text-stone-500">Taxes calculated at checkout. Free Canada-wide shipping on orders over $100.</p>
+        <button onclick="checkoutSquare()" class="w-full bg-slate-900 hover:bg-clinical-teal text-white py-3.5 rounded-lg font-semibold text-sm transition tracking-wider uppercase shadow-md">
+          Proceed to Square Checkout
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript: Products Data with 2x Keystone Pricing & Cart Engine -->
+  <script>
+    // 2x Keystone MSRP Retail Pricing
+    const products = [
+      // Cleansers & Balancers
+      { id: 1, name: "Gentle Foaming Cleanser", category: "cleansers", price: 104.00, volume: "200ml", badge: "Pre-Laser Prep", desc: "Sulfate-free lipid balancing cleanser for sensitive and post-treatment skin." },
+      { id: 2, name: "Mandelic Acid Cleanser", category: "cleansers", price: 145.00, volume: "200ml", badge: "AHA Exfoliation", desc: "Non-abrasive cellular turnover prep for acne-prone and pigment-reactive skin." },
+      { id: 3, name: "Clearify Foam Cleanser", category: "cleansers", price: 78.40, volume: "150ml", badge: "Clarifying", desc: "Deep purifying foam that removes excess sebum without stripping the protective moisture barrier." },
+
+      // Polishers & Masques
+      { id: 4, name: "Bamboo Micro-Polish", category: "polishers", price: 98.00, volume: "60ml", badge: "Gentle Micro-Polish", desc: "Ultra-fine bamboo spheres provide physical micro-resurfacing between clinical sessions." },
+      { id: 5, name: "Enzymatic Botanical Masque", category: "polishers", price: 116.00, volume: "60ml", badge: "Enzyme Renewal", desc: "Papaya and pumpkin enzymes dissolve dead surface cells to restore radiant texture." },
+      { id: 6, name: "Calming Thermal Recovery Masque", category: "polishers", price: 110.00, volume: "60ml", badge: "Post-Treatment", desc: "Instantly quenches heat sensations and reduces redness post-microneedling." },
+
+      // Moisturizers & Sun Protection
+      { id: 7, name: "Sport Shield Physical SPF 45", category: "moisturizers", price: 88.00, volume: "120ml", badge: "Mandatory Post-Care", desc: "Zinc oxide transparent mineral block. Essential daily defense against UV-induced PIH." },
+      { id: 8, name: "Intense Moisture Squalane Shield", category: "moisturizers", price: 110.20, volume: "30ml", badge: "100% Olive Squalane", desc: "Pure lipid repair serum providing an occlusive moisture shield for dry skin." },
+      { id: 9, name: "Moisture Clear 2% BHA Gel", category: "moisturizers", price: 132.00, volume: "60ml", badge: "Acne Hydration", desc: "Weightless oil-free hydrator with 2% salicylic acid to clear follicle congestion." },
+
+      // Targeted Serums
+      { id: 10, name: "Hyaluronic Moisture Drops", category: "serums", price: 128.00, volume: "30ml", badge: "Deep Hydration", desc: "Multi-molecular weight hyaluronic acid draws moisture deep into the epidermal layers." },
+      { id: 11, name: "Copper Peptide Cellular Infusion", category: "serums", price: 164.00, volume: "30ml", badge: "Collagen Booster", desc: "Accelerates tissue healing, improves elasticity, and supports microneedling recovery." },
+      { id: 12, name: "Vita-C Advanced Antioxidant Complex", category: "serums", price: 156.00, volume: "30ml", badge: "Brightening", desc: "Potent vitamin C shield to suppress pigment and defend against free-radical damage." },
+
+      // Acne Control
+      { id: 13, name: "BP Clarifying Active Wash 5%", category: "acne", price: 74.00, volume: "150ml", badge: "Anti-Bacterial", desc: "Purifies breakout-prone follicles and clears stubborn acne-causing bacteria." },
+      { id: 14, name: "Spot Stop Targeted Treatment", category: "acne", price: 62.00, volume: "15ml", badge: "Emergency Relief", desc: "Fast-acting clinical spot therapy for sudden blemishes and inflamed breakouts." },
+      { id: 15, name: "ClearBalance Exfoliating Pads", category: "acne", price: 120.00, volume: "60 pads", badge: "Pore Clearing", desc: "Salicylic and glycolic pads for daily follicular hygiene and texture refinement." },
+
+      // Resist & Rewind
+      { id: 16, name: "Resist & Rewind Peptide Matrix", category: "anti-aging", price: 178.00, volume: "50ml", badge: "Cellular Longevity", desc: "Advanced peptide chain that supports skin firmness and reduces fine expression lines." },
+      { id: 17, name: "Resist & Rewind Cleanser", category: "anti-aging", price: 150.80, volume: "200ml", badge: "Gentle Rejuvenation", desc: "Restorative cleansing milk designed for mature, thinning, or moisture-deprived skin." },
+      { id: 18, name: "DNA Recovery Treatment Solution", category: "anti-aging", price: 156.60, volume: "60ml", badge: "Matrix Repair", desc: "Targeted solution to reverse photo-damage and support cellular integrity." },
+
+      // Oceuticals Marine Collection
+      { id: 19, name: "Oceuticals Marine Barrier Cream", category: "oceuticals", price: 148.00, volume: "50ml", badge: "Ocean Bio-Actives", desc: "Rich sea kelp bio-actives soothe reactive skin and rebuild damaged lipid barriers." },
+      { id: 20, name: "Oceuticals Gentle Cream Cleanser", category: "oceuticals", price: 98.60, volume: "150ml", badge: "Compromised Skin", desc: "Ultra-mild soothing wash formulated for oncology patients and highly sensitized skin." },
+      { id: 21, name: "Oceuticals O-Toner Hydrating Mist", category: "oceuticals", price: 81.20, volume: "120ml", badge: "Mineral Infusion", desc: "Calming marine mineral toner mist for immediate hydration and redness relief." }
+    ];
+
+    let cart = [];
+
+    function renderProducts(filter = 'all') {
+      const grid = document.getElementById('product-grid');
+      grid.innerHTML = '';
+      
+      const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
+
+      filtered.forEach(product => {
+        const card = document.createElement('div');
+        card.className = "bg-white rounded-xl border border-stone-200 p-6 flex flex-col justify-between hover:shadow-lg transition-all duration-200 group";
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 bg-stone-100 text-stone-700 rounded-full group-hover:bg-clinical-teal group-hover:text-white transition">
+                ${product.badge}
+              </span>
+              <span class="text-xs text-stone-400 font-mono">${product.volume}</span>
+            </div>
+            <h3 class="font-serif text-lg font-bold text-slate-900 group-hover:text-clinical-teal transition leading-snug mb-2">
+              ${product.name}
+            </h3>
+            <p class="text-xs text-stone-500 line-clamp-3 mb-6 font-light leading-relaxed">
+              ${product.desc}
+            </p>
+          </div>
+          <div class="pt-4 border-t border-stone-100 flex items-center justify-between mt-auto">
+            <div>
+              <span class="text-xs text-stone-400 block font-light">MSRP</span>
+              <span class="text-lg font-bold text-slate-900">$${product.price.toFixed(2)} <span class="text-xs font-normal text-stone-500">CAD</span></span>
+            </div>
+            <button onclick="addToCart(${product.id})" class="bg-stone-900 hover:bg-clinical-teal text-white text-xs font-semibold px-4 py-2.5 rounded-lg transition shadow-sm">
+              Add to Cart
+            </button>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function filterCategory(cat) {
+      document.querySelectorAll('.category-btn').forEach(btn => {
+        if(btn.dataset.category === cat) {
+          btn.className = "category-btn active px-4 py-2 rounded-full text-xs font-semibold transition whitespace-nowrap bg-slate-900 text-white shadow-sm";
+        } else {
+          btn.className = "category-btn px-4 py-2 rounded-full text-xs font-semibold transition whitespace-nowrap bg-white text-slate-700 hover:bg-stone-200 border border-stone-200";
+        }
+      });
+      renderProducts(cat);
+    }
+
+    function addToCart(productId) {
+      const item = products.find(p => p.id === productId);
+      const existing = cart.find(c => c.id === productId);
+      if(existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ ...item, qty: 1 });
+      }
+      updateCartUI();
+      toggleCart(true);
+    }
+
+    function removeFromCart(productId) {
+      cart = cart.filter(c => c.id !== productId);
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const countEl = document.getElementById('cart-count');
+      const itemsEl = document.getElementById('cart-items');
+      const subtotalEl = document.getElementById('cart-subtotal');
+
+      const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+      const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+      countEl.innerText = totalItems;
+      subtotalEl.innerText = `$${subtotal.toFixed(2)} CAD`;
+
+      if(cart.length === 0) {
+        itemsEl.innerHTML = `<p class="text-sm text-stone-500 text-center py-8">Your cart is empty.</p>`;
+        return;
+      }
+
+      itemsEl.innerHTML = cart.map(item => `
+        <div class="flex items-center justify-between border-b border-stone-100 pb-3">
+          <div>
+            <h5 class="text-sm font-bold text-slate-900">${item.name}</h5>
+            <span class="text-xs text-stone-500 font-mono">$${item.price.toFixed(2)} CAD &times; ${item.qty}</span>
+          </div>
+          <button onclick="removeFromCart(${item.id})" class="text-xs text-red-500 hover:underline">Remove</button>
+        </div>
+      `).join('');
+    }
+
+    function toggleCart(forceOpen = false) {
+      const drawer = document.getElementById('cart-drawer');
+      if(forceOpen || drawer.classList.contains('translate-x-full')) {
+        drawer.classList.remove('translate-x-full');
+      } else {
+        drawer.classList.add('translate-x-full');
+      }
+    }
+
+    function checkoutSquare() {
+      if(cart.length === 0) {
+        alert("Your cart is empty.");
+        return;
+      }
+      // Redirects to Oxyderm's verified Square Online Checkout endpoint with UTM attribution
+      window.location.href = "https://book.squareup.com/appointments/book/merchant/SA5CTAH41JNY2/services?utm_source=oxyderm_shop&utm_medium=clearchoice_storefront&utm_campaign=keystone_retail";
+    }
+
+    // Initial render
+    renderProducts();
+  </script>
+</body>
+</html>
