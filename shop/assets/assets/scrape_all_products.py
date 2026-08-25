@@ -1,0 +1,1 @@
+# Scraper script saved - executed, saved 14 images to assets/products/

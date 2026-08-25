@@ -3,437 +3,237 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Buy ClearChoice® & Oceuticals® Medical-Grade Skincare Online | Oxyderm Laser Clinic Edmonton</title>
-  <meta name="description" content="Shop authentic ClearChoice® and Oceuticals® medical-grade skincare online, shipped across Canada. Authorized Oxyderm Laser Clinic distributor — cleansers, serums, SPF, and post-laser/microneedling recovery formulas." />
-  <meta name="keywords" content="ClearChoice skincare Edmonton, buy ClearChoice online Canada, medical grade skincare Canada, post laser healing skincare, Oceuticals skin barrier cream, Oxyderm skincare shop" />
-  <link rel="canonical" href="https://devang-shukla.github.io/oxyderm-dashboard/shop/" />
-
-  <!-- Open Graph / Facebook / Instagram -->
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Oxyderm Laser Clinic" />
-  <meta property="og:title" content="Buy ClearChoice® & Oceuticals® Medical-Grade Skincare Online | Oxyderm" />
-  <meta property="og:description" content="Authentic ClearChoice® and Oceuticals® medical-grade skincare, shipped across Canada. Authorized distributor — cleansers, serums, SPF, post-laser recovery." />
-  <meta property="og:url" content="https://devang-shukla.github.io/oxyderm-dashboard/shop/" />
-  <meta property="og:image" content="https://devang-shukla.github.io/oxyderm-dashboard/shop/assets/skinfx/36-clearchoice-agevity-heavy-serum-am.png" />
-  <meta property="og:locale" content="en_CA" />
-
-  <!-- Twitter / X -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Buy ClearChoice® & Oceuticals® Medical-Grade Skincare Online | Oxyderm" />
-  <meta name="twitter:description" content="Authentic ClearChoice® and Oceuticals® medical-grade skincare, shipped across Canada. Authorized distributor." />
-  <meta name="twitter:image" content="https://devang-shukla.github.io/oxyderm-dashboard/shop/assets/skinfx/36-clearchoice-agevity-heavy-serum-am.png" />
-
-  <!-- Schema Markup for AEO & Google Rich Snippets -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "MedicalBusiness",
-    "name": "Oxyderm Laser Clinic",
-    "url": "https://oxydermlaserclinic.ca/shop",
-    "logo": "https://oxydermlaserclinic.ca/logo.png",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Edmonton",
-      "addressRegion": "AB",
-      "addressCountry": "CA"
-    },
-    "areaServed": { "@type": "Country", "name": "Canada" },
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "ClearChoice & Oceuticals Professional Medical Skincare",
-      "itemListElement": [
-        {"@type": "OfferCatalog", "name": "Cleansers & Balancers"},
-        {"@type": "OfferCatalog", "name": "Polishers & Masques"},
-        {"@type": "OfferCatalog", "name": "Moisturizers & Sun Protection"},
-        {"@type": "OfferCatalog", "name": "Corrective Serums"},
-        {"@type": "OfferCatalog", "name": "Acne & Blemish Control"},
-        {"@type": "OfferCatalog", "name": "Oceuticals Marine Bio-Actives"}
-      ]
-    }
-  }
-  </script>
-
-  <!-- Tailwind CSS CDN + Google Fonts -->
+  <title>ClearChoice® & Oceuticals® Medical Skincare | Oxyderm Laser Clinic Edmonton</title>
+  <meta name="description" content="Authorized ClearChoice® & Oceuticals® medical-grade skincare. Post-laser and microneedling recovery formulations. Oxyderm Laser Clinic Edmonton." />
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-            serif: ['"Playfair Display"', 'serif'],
-          },
-          colors: {
-            clinical: {
-              50: '#f8fafc',
-              100: '#f1f5f9',
-              900: '#0f172a',
-              gold: '#c5a880',
-              teal: '#0d9488',
-              accent: '#14b8a6'
-            }
-          }
-        }
-      }
-    }
-  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .font-display { font-family: 'Cormorant Garamond', serif; }
+    .product-card { transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
+    .product-card:hover { transform: translateY(-4px); }
+    .product-card:hover .product-img { transform: scale(1.06); }
+    .product-img { transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); }
+    .cart-drawer { transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); }
+    .gold { color: #c9a96e; }
+    .bg-gold { background: #c9a96e; }
+    .border-gold { border-color: #c9a96e; }
+    .navy { color: #00172D; }
+    .bg-navy { background: #00172D; }
+    .pill-active { background: #00172D; color: white; }
+    .pill-inactive { background: white; color: #334155; border: 1px solid #e2e8f0; }
+    .badge { font-size: 9px; letter-spacing: .08em; font-weight: 700; text-transform: uppercase; }
+    no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .img-wrap { background: linear-gradient(135deg, #f8f5f0 0%, #f0ece6 100%); }
+  </style>
 </head>
-<body class="bg-stone-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+<body class="bg-stone-50 text-slate-800 antialiased min-h-screen flex flex-col">
 
-  <!-- Top Announcement Bar -->
-  <div class="bg-clinical-900 text-stone-200 text-xs font-medium py-2 text-center tracking-wide px-4">
-    Authorized Canadian Distributor | <span class="text-clinical-gold font-semibold">Free Shipping on Orders Over $120 CAD</span> | Shipping across Canada only — US coming soon
+  <!-- Promo Bar -->
+  <div class="bg-[#00172D] text-stone-300 text-[11px] font-medium py-2.5 text-center tracking-widest px-4 uppercase">
+    Authorized Canadian Distributor &nbsp;·&nbsp; <span class="text-[#c9a96e] font-semibold">Free Shipping $120+</span> &nbsp;·&nbsp; Clinical Recovery Formulations
   </div>
 
-  <!-- Header / Navigation -->
-  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-stone-200 shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-      <div class="flex items-center space-x-3">
-        <a href="https://oxydermlaserclinic.ca" class="flex items-center gap-2">
-          <span class="font-serif text-2xl font-bold tracking-wider text-slate-900">OXYDERM</span>
-          <span class="text-[10px] tracking-widest text-clinical-gold font-bold uppercase border border-clinical-gold px-1.5 py-0.5 rounded">Aesthetics</span>
-        </a>
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-stone-100 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 py-4 flex items-center justify-between gap-4">
+      <a href="https://oxydermlaserclinic.ca" class="flex items-center gap-3 shrink-0">
+        <img src="https://www.oxydermlaserclinic.ca/wp-content/uploads/2026/03/Oxyderm-Laser-Clinic-Laser-Clinic-Edmonton-Logo.png" alt="Oxyderm" class="h-10 w-auto" onerror="this.style.display='none'; document.getElementById('logo-text').style.display='flex'">
+        <div id="logo-text" style="display:none" class="items-center gap-2">
+          <span class="font-display text-2xl font-bold tracking-wider text-slate-900">OXYDERM</span>
+          <span class="text-[9px] tracking-widest text-[#c9a96e] font-bold uppercase border border-[#c9a96e] px-1.5 py-0.5 rounded">Store</span>
+        </div>
+      </a>
+
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+        <a href="#catalog" class="hover:text-[#c9a96e] transition">All Products</a>
+        <a href="#aftercare" class="hover:text-[#c9a96e] transition">Post-Treatment</a>
+        <a href="https://book.squareup.com/appointments/book/merchant/SA5CTAH41JNY2/services" target="_blank" class="text-[#c9a96e] font-semibold hover:underline">Book Treatment →</a>
       </div>
 
-      <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-700">
-        <a href="#catalog" class="hover:text-clinical-teal transition">All Skincare</a>
-        <a href="#post-care" class="hover:text-clinical-teal transition">Laser & Microneedling Aftercare</a>
-        <a href="terms.html" class="hover:text-clinical-teal transition">Terms &amp; Shipping</a>
-        <a href="https://book.squareup.com/appointments/book/merchant/SA5CTAH41JNY2/services" target="_blank" class="text-clinical-gold hover:underline font-semibold">Book Clinical Treatment</a>
-      </div>
-
-      <!-- Cart Button -->
-      <button onclick="toggleCart()" class="relative bg-stone-100 hover:bg-stone-200 p-2.5 rounded-full transition flex items-center justify-center">
-        <svg class="w-5 h-5 text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
-        </svg>
-        <span id="cart-count" class="absolute -top-1 -right-1 bg-clinical-teal text-white text-[10px] font-bold h-5 w-5 rounded-full flex items-center justify-center">0</span>
+      <button onclick="toggleCart()" class="relative p-2.5 rounded-full bg-stone-100 hover:bg-stone-200 transition shrink-0">
+        <svg class="w-5 h-5 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+        <span id="cart-count" class="absolute -top-1 -right-1 bg-[#00172D] text-white text-[10px] font-bold h-5 w-5 rounded-full flex items-center justify-center">0</span>
       </button>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="bg-gradient-to-b from-white to-stone-100 py-16 lg:py-24 border-b border-stone-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-50 border border-teal-200 text-clinical-teal text-xs font-semibold uppercase tracking-wider mb-6">
-        <span>Verified Clinic Formulary</span> &bull; <span>ClearChoice® & Oceuticals®</span>
+  <!-- Hero -->
+  <section class="relative bg-[#00172D] text-white overflow-hidden">
+    <div class="absolute inset-0 opacity-20" style="background: radial-gradient(ellipse at 70% 50%, #33699D 0%, transparent 70%);"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <div class="inline-flex items-center gap-2 border border-[#c9a96e]/40 text-[#c9a96e] text-[10px] font-semibold uppercase tracking-widest px-3 py-1.5 rounded-full mb-6">
+          ✦ Verified Clinic Distributor · Edmonton AB
+        </div>
+        <h1 class="font-display text-5xl lg:text-6xl font-bold leading-tight mb-4">
+          ClearChoice®<br><span class="text-[#c9a96e]">&amp; Oceuticals®</span>
+        </h1>
+        <p class="text-stone-300 text-base font-light max-w-md leading-relaxed mb-8">
+          Medical-grade formulations engineered for post-laser cellular repair, microneedling recovery, and clinical barrier maintenance.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="#catalog" class="bg-[#c9a96e] hover:bg-[#b8945a] text-[#00172D] font-semibold text-sm px-6 py-3 rounded-lg transition">
+            Shop All Products
+          </a>
+          <a href="https://book.squareup.com/appointments/book/merchant/SA5CTAH41JNY2/services" target="_blank" class="border border-white/30 hover:border-[#c9a96e] text-white text-sm px-6 py-3 rounded-lg transition">
+            Book a Treatment
+          </a>
+        </div>
       </div>
-      <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 tracking-tight leading-tight max-w-4xl mx-auto">
-        Medical-Grade Skincare For Active Clinical Recovery
-      </h1>
-      <p class="mt-6 text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto font-light">
-        High-potency cleansers, cellular repair serums, and broad-spectrum sun defense designed specifically to enhance and protect your Laser & Microneedling results. Shipping across Canada.
-      </p>
+      <div class="hidden lg:grid grid-cols-3 gap-3">
+        <img src="assets/skinfx/04-clearchoice-gentle-foaming-cleanser.jpg" class="rounded-xl object-contain bg-white/10 p-3 h-40 w-full" alt="Gentle Foaming Cleanser">
+        <img src="assets/skinfx/20-clearchoice-sport-shield-spf-45.png" class="rounded-xl object-contain bg-white/10 p-3 h-40 w-full mt-6" alt="Sport Shield SPF 45">
+        <img src="assets/skinfx/28-clearchoice-copperice-cream.png" class="rounded-xl object-contain bg-white/10 p-3 h-40 w-full" alt="CopperIce Cream">
+        <img src="assets/skinfx/06-clearchoice-mandelic-cleanser.png" class="rounded-xl object-contain bg-white/10 p-3 h-40 w-full mt-6" alt="Mandelic Cleanser">
+        <img src="assets/skinfx/60-clearchoice-oceuticals-opti-cream.jpg" class="rounded-xl object-contain bg-white/10 p-3 h-40 w-full" alt="Oceuticals Opti Cream">
+        <img src="assets/skinfx/41-clearchoice-vita-c-b5-complex.png" class="rounded-xl object-contain bg-white/10 p-3 h-40 w-full mt-6" alt="Vita C B5 Complex">
+      </div>
     </div>
   </section>
 
-  <!-- Filter & Catalog Main Container -->
+  <!-- Category Pills + Grid -->
   <main id="catalog" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-1 w-full">
 
-    <!-- Category Tabs -->
-    <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-10 no-scrollbar" id="category-pills">
-      <button onclick="filterCategory('all')" class="category-btn active px-4 py-2 rounded-full text-xs font-semibold transition whitespace-nowrap bg-slate-900 text-white shadow-sm" data-category="all">All Formulations (57)</button>
-      <button onclick="filterCategory('cleansers')" class="category-btn px-4 py-2 rounded-full text-xs font-semibold transition whitespace-nowrap bg-white text-slate-700 hover:bg-stone-200 border border-stone-200" data-category="cleansers">Cleansers & Balancers</button>
-      <button onclick="filterCategory('polishers')" class="category-btn px-4 py-2 rounded-full text-xs font-semibold transition whitespace-nowrap bg-white text-slate-700 hover:bg-stone-200 border border-stone-200" data-category="polishers">Polishers & Masques</button>
-      <button onclick="filterCategory('moisturizers')" class="category-btn px-4 py-2 rounded-full text-xs font-semibold transition whitespace-nowrap bg-white text-slate-700 hover:bg-stone-200 border border-stone-200" data-category="moisturizers">Moisturizers & SPF</button>
-      <button onclick="filterCategory('serums')" class="category-btn px-4 py-2 rounded-full text-xs font-semibold transition whitespace-nowrap bg-white text-slate-700 hover:bg-stone-200 border border-stone-200" data-category="serums">Corrective Serums</button>
-      <button onclick="filterCategory('acne')" class="category-btn px-4 py-2 rounded-full text-xs font-semibold transition whitespace-nowrap bg-white text-slate-700 hover:bg-stone-200 border border-stone-200" data-category="acne">Acne Control</button>
-      <button onclick="filterCategory('oceuticals')" class="category-btn px-4 py-2 rounded-full text-xs font-semibold transition whitespace-nowrap bg-white text-slate-700 hover:bg-stone-200 border border-stone-200" data-category="oceuticals">Oceuticals® Marine</button>
+    <!-- Filter Pills -->
+    <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-10 no-scrollbar">
+      <button onclick="filterCat('all')" class="category-btn pill-active px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition" data-cat="all">All (21)</button>
+      <button onclick="filterCat('cleansers')" class="category-btn pill-inactive px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition" data-cat="cleansers">Cleansers & Balancers</button>
+      <button onclick="filterCat('polishers')" class="category-btn pill-inactive px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition" data-cat="polishers">Polishers & Masques</button>
+      <button onclick="filterCat('moisturizers')" class="category-btn pill-inactive px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition" data-cat="moisturizers">Moisturizers & SPF</button>
+      <button onclick="filterCat('serums')" class="category-btn pill-inactive px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition" data-cat="serums">Targeted Serums</button>
+      <button onclick="filterCat('acne')" class="category-btn pill-inactive px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition" data-cat="acne">Acne Control</button>
+      <button onclick="filterCat('anti-aging')" class="category-btn pill-inactive px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition" data-cat="anti-aging">Resist & Rewind</button>
+      <button onclick="filterCat('oceuticals')" class="category-btn pill-inactive px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition" data-cat="oceuticals">Oceuticals® Marine</button>
     </div>
 
     <!-- Product Grid -->
-    <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-      <!-- Product cards injected dynamically via JavaScript below -->
-    </div>
+    <div id="product-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5"></div>
   </main>
 
-  <!-- Post Care Education Banner -->
-  <section id="post-care" class="bg-slate-900 text-white py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div class="border-l-2 border-clinical-gold pl-6">
-        <h4 class="font-serif text-xl font-bold text-white mb-2">Pre-Treatment Preparation</h4>
-        <p class="text-sm text-stone-400">Balance pH and normalize skin barrier with Gentle Foaming Cleanser and Mandelic Acid before laser passes.</p>
-      </div>
-      <div class="border-l-2 border-clinical-teal pl-6">
-        <h4 class="font-serif text-xl font-bold text-white mb-2">Active Clinical Healing</h4>
-        <p class="text-sm text-stone-400">Soothe heat erythema and induce cellular collagen with Copper Peptides, Hyaluronic Drops, and Oceuticals Bio-Active Marine cream.</p>
-      </div>
-      <div class="border-l-2 border-clinical-gold pl-6">
-        <h4 class="font-serif text-xl font-bold text-white mb-2">Strict Photo-Protection</h4>
-        <p class="text-sm text-stone-400">Prevent post-inflammatory hyperpigmentation (PIH) using broad-spectrum Sport Shield SPF 45 physical block daily.</p>
+  <!-- Post-Treatment Section -->
+  <section id="aftercare" class="bg-[#00172D] text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="font-display text-3xl font-bold text-center mb-2">Clinical Recovery Protocol</h2>
+      <p class="text-stone-400 text-center text-sm mb-10">Paired with every Oxyderm treatment</p>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="border-t-2 border-[#c9a96e] pt-6">
+          <div class="text-[#c9a96e] text-xs font-bold uppercase tracking-widest mb-3">Step 1 · Pre-Treatment</div>
+          <h3 class="font-display text-xl font-semibold mb-2">Cleanse & Balance</h3>
+          <p class="text-stone-400 text-sm font-light leading-relaxed">pH-normalize your skin barrier with Gentle Foaming Cleanser or Mandelic Acid Cleanser 3 days before your laser or microneedling session.</p>
+        </div>
+        <div class="border-t-2 border-[#33699D] pt-6">
+          <div class="text-[#33699D] text-xs font-bold uppercase tracking-widest mb-3">Step 2 · Active Healing</div>
+          <h3 class="font-display text-xl font-semibold mb-2">Repair & Recover</h3>
+          <p class="text-stone-400 text-sm font-light leading-relaxed">Copper Peptide Infusion, Hyaluronic Moisture Drops, and Oceuticals Marine Barrier Cream rebuild your skin at a cellular level post-treatment.</p>
+        </div>
+        <div class="border-t-2 border-[#c9a96e] pt-6">
+          <div class="text-[#c9a96e] text-xs font-bold uppercase tracking-widest mb-3">Step 3 · Ongoing Defense</div>
+          <h3 class="font-display text-xl font-semibold mb-2">Protect Daily</h3>
+          <p class="text-stone-400 text-sm font-light leading-relaxed">Sport Shield SPF 45 physical zinc oxide block is non-negotiable after laser. Prevents PIH and protects your investment every single day.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-white border-t border-stone-200 py-10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-500">
-      <div>&copy; 2026 Oxyderm Laser Clinic. Authorized ClearChoice® & Oceuticals® distributor. Edmonton, AB, Canada.</div>
-      <div class="flex gap-5">
-        <a href="terms.html" class="hover:text-clinical-teal">Terms &amp; Conditions</a>
-        <a href="terms.html#shipping" class="hover:text-clinical-teal">Shipping Policy</a>
-        <a href="terms.html#returns" class="hover:text-clinical-teal">Returns</a>
-        <a href="terms.html#privacy" class="hover:text-clinical-teal">Privacy</a>
-      </div>
+  <!-- Cart Drawer -->
+  <div id="cart-overlay" onclick="toggleCart()" class="fixed inset-0 bg-black/40 z-40 hidden"></div>
+  <div id="cart-drawer" class="cart-drawer fixed inset-y-0 right-0 w-full max-w-md bg-white z-50 flex flex-col shadow-2xl translate-x-full">
+    <div class="p-6 border-b border-stone-100 flex items-center justify-between">
+      <h3 class="font-display text-2xl font-bold text-slate-900">Your Cart</h3>
+      <button onclick="toggleCart()" class="text-stone-400 hover:text-slate-700 transition">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
     </div>
+    <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
+      <p class="text-sm text-stone-400 text-center py-12">Your cart is empty.</p>
+    </div>
+    <div class="p-6 border-t border-stone-100 bg-stone-50 space-y-4">
+      <div class="flex justify-between font-semibold text-slate-900">
+        <span>Subtotal</span>
+        <span id="cart-subtotal">$0.00 CAD</span>
+      </div>
+      <p class="text-[11px] text-stone-400">Free Canada-wide shipping on orders over $120. Taxes at checkout.</p>
+      <button onclick="checkoutSquare()" class="w-full bg-[#00172D] hover:bg-[#33699D] text-white py-3.5 rounded-lg font-semibold text-sm transition tracking-wider uppercase">
+        Checkout via Square
+      </button>
+    </div>
+  </div>
+
+  <footer class="bg-[#00172D] text-stone-500 text-xs text-center py-6">
+    © 2026 Oxyderm Laser Clinic Edmonton · Authorized ClearChoice® & Oceuticals® Distributor · Built with Agency OS - AI Lead Builder
   </footer>
 
-  <!-- Slide-Over Shopping Cart Drawer -->
-  <!-- Product Details Modal -->
-  <div id="detail-modal" class="hidden fixed inset-0 z-[60] flex items-center justify-center p-4">
-    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="closeDetails()"></div>
-    <div class="relative bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
-      <button onclick="closeDetails()" class="absolute top-4 right-4 z-10 bg-white/90 hover:bg-stone-100 rounded-full p-2 shadow-sm">
-        <svg class="w-5 h-5 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-      </button>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-0">
-        <div class="bg-stone-50 flex items-center justify-center p-8 sm:p-10">
-          <img id="detail-img" src="" alt="" class="max-w-full max-h-72 object-contain">
-        </div>
-        <div class="p-6 sm:p-8">
-          <span id="detail-badge" class="inline-block text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 bg-stone-100 text-stone-700 rounded-full mb-3"></span>
-          <h2 id="detail-name" class="font-serif text-2xl font-bold text-slate-900 mb-1"></h2>
-          <p id="detail-size" class="text-xs text-stone-400 mb-3"></p>
-          <p id="detail-price" class="text-xl font-bold text-slate-900 mb-5"></p>
-          <button id="detail-addbtn" onclick="" class="w-full bg-stone-900 hover:bg-clinical-teal text-white text-sm font-semibold py-3 rounded-lg transition shadow-sm mb-6">
-            Add to Cart
-          </button>
-
-          <div class="mb-5">
-            <h4 class="text-xs font-bold uppercase tracking-wider text-clinical-teal mb-2">What It Does</h4>
-            <p id="detail-desc" class="text-sm text-stone-600 leading-relaxed whitespace-pre-line"></p>
-          </div>
-          <div class="mb-5">
-            <h4 class="text-xs font-bold uppercase tracking-wider text-clinical-teal mb-2">How To Use</h4>
-            <p id="detail-directions" class="text-sm text-stone-600 leading-relaxed whitespace-pre-line"></p>
-          </div>
-          <div>
-            <h4 class="text-xs font-bold uppercase tracking-wider text-clinical-teal mb-2">Ingredients</h4>
-            <p id="detail-ingredients" class="text-[11px] text-stone-400 leading-relaxed whitespace-pre-line"></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="cart-drawer" class="fixed inset-y-0 right-0 max-w-full flex pl-10 z-50 transform translate-x-full transition-transform duration-300 ease-in-out">
-    <div class="w-screen max-w-md bg-white shadow-2xl flex flex-col">
-      <div class="p-6 border-b border-stone-200 flex items-center justify-between">
-        <h3 class="font-serif text-xl font-bold text-slate-900">Your Clinical Cart</h3>
-        <button onclick="toggleCart()" class="text-stone-400 hover:text-slate-700">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-        </button>
-      </div>
-
-      <!-- Cart Items Container -->
-      <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
-        <p class="text-sm text-stone-500 text-center py-8">Your cart is empty.</p>
-      </div>
-
-      <!-- Checkout Footer -->
-      <div class="p-6 border-t border-stone-200 bg-stone-50 space-y-3">
-        <div class="flex items-center justify-between text-sm text-stone-600">
-          <span>Subtotal</span>
-          <span id="cart-subtotal">$0.00 CAD</span>
-        </div>
-        <div class="flex items-center justify-between text-sm text-stone-600">
-          <span>Shipping <span id="ship-tier-label" class="text-[10px] text-stone-400"></span></span>
-          <span id="cart-shipping">$0.00 CAD</span>
-        </div>
-        <div id="free-ship-nudge" class="text-[11px] text-clinical-teal font-medium hidden"></div>
-        <div class="flex items-center justify-between text-base font-bold text-slate-900 pt-2 border-t border-stone-200">
-          <span>Total</span>
-          <span id="cart-total">$0.00 CAD</span>
-        </div>
-        <p class="text-[11px] text-stone-500">Taxes calculated at checkout. Shipping within Canada only. Free shipping on orders $120 CAD and over.</p>
-        <button onclick="checkoutSquare()" class="w-full bg-slate-900 hover:bg-clinical-teal text-white py-3.5 rounded-lg font-semibold text-sm transition tracking-wider uppercase shadow-md">
-          Proceed to Square Checkout
-        </button>
-        <p class="text-[10px] text-stone-400 text-center">By checking out you agree to our <a href="terms.html" class="underline hover:text-clinical-teal">Terms &amp; Conditions</a></p>
-      </div>
-    </div>
-  </div>
-
-  <!-- JavaScript: Products Data with 2x Keystone Pricing, Weight-Tiered Shipping & Cart Engine -->
   <script>
-    // Real ClearChoice/Oceuticals products scraped from SkinFX (authorized Edmonton distributor)
-    // Retail price = 2x wholesale keystone. Weight in grams (est. incl. packaging) used for shipping tiers.
+    const SQUARE_URL = 'https://book.squareup.com/appointments/book/merchant/SA5CTAH41JNY2/services?utm_source=oxyderm_shop&utm_medium=clearchoice&utm_campaign=skincare_retail';
+
     const products = [
-      { id:1, name:'ClearChoice Clearify Foam Cleanser', category:'cleansers', price:39.2, weight:280, badge:'Cleansers & Balancers', img:'assets/skinfx/00-clearchoice-clearify-foam-cleanser.png' },
-      { id:2, name:'ClearChoice Trauma Spray', category:'cleansers', price:45.5, weight:220, badge:'Cleansers & Balancers', img:'assets/skinfx/01-clearchoice-trauma-spray.png' },
-      { id:3, name:'ClearChoice Micro-Dose Cleanser', category:'cleansers', price:84.1, weight:280, badge:'Cleansers & Balancers', img:'assets/skinfx/02-clearchoice-micro-dose-cleanser.png' },
-      { id:4, name:'ClearChoice Sensi Cream Cleanser', category:'cleansers', price:72.5, weight:220, badge:'Cleansers & Balancers', img:'assets/skinfx/03-clearchoice-sensi-cream-cleanser.png' },
-      { id:5, name:'ClearChoice Gentle Foaming Cleanser', category:'cleansers', price:52.2, weight:280, badge:'Cleansers & Balancers', img:'assets/skinfx/04-clearchoice-gentle-foaming-cleanser.jpg' },
-      { id:6, name:'ClearChoice Hydrating Cleanser', category:'cleansers', price:63.8, weight:280, badge:'Cleansers & Balancers', img:'assets/skinfx/05-clearchoice-hydrating-cleanser.png' },
-      { id:7, name:'ClearChoice Mandelic Cleanser', category:'cleansers', price:72.5, weight:280, badge:'Cleansers & Balancers', img:'assets/skinfx/06-clearchoice-mandelic-cleanser.png' },
-      { id:8, name:'ClearChoice Resist/Rewind Cleanser', category:'cleansers', price:75.4, weight:280, badge:'Cleansers & Balancers', img:'assets/skinfx/07-clearchoice-resist-rewind-cleanser.png' },
-      { id:9, name:'ClearChoice Hydrating Balance', category:'cleansers', price:49.3, weight:200, badge:'Cleansers & Balancers', img:'assets/skinfx/08-clearchoice-hydrating-balance.png' },
-      { id:10, name:'ClearChoice LactiBiome Solution', category:'cleansers', price:63.8, weight:280, badge:'Cleansers & Balancers', img:'assets/skinfx/09-clearchoice-lactibiome-solution.png' },
-      { id:11, name:'ClearChoice Hyperpigmentation TX Solution', category:'cleansers', price:78.3, weight:280, badge:'Cleansers & Balancers', img:'assets/skinfx/10-clearchoice-hyperpigmentation-tx-solution.png' },
-      { id:12, name:'ClearChoice Resist/Rewind Tx Solution', category:'cleansers', price:78.3, weight:280, badge:'Cleansers & Balancers', img:'assets/skinfx/11-clearchoice-resist-rewind-tx-solution.png' },
-      { id:13, name:'ClearChoice GlyBright Pads', category:'cleansers', price:58.0, weight:80, badge:'Cleansers & Balancers', img:'assets/skinfx/12-clearchoice-glybright-pads.jpg' },
-      { id:14, name:'ClearChoice CopperICE Pads', category:'cleansers', price:58.0, weight:80, badge:'Cleansers & Balancers', img:'assets/skinfx/13-clearchoice-copperice-pads.jpg' },
-      { id:15, name:'ClearChoice DN-A Pads', category:'cleansers', price:58.0, weight:80, badge:'Cleansers & Balancers', img:'assets/skinfx/14-clearchoice-dn-a-pads.jpg' },
-      { id:16, name:'ClearChoice Sachet Sample Pack', category:'cleansers', price:11.9, weight:80, badge:'Cleansers & Balancers', img:'assets/skinfx/15-clearchoice-sachet-sample-pack.png' },
-      { id:17, name:'ClearChoice Mini Facial', category:'polishers', price:87.0, weight:60, badge:'Polishers & Masques', img:'assets/skinfx/16-clearchoice-mini-facial.png' },
-      { id:18, name:'ClearChoice Hydrating Masque + Night Therapy', category:'polishers', price:92.8, weight:220, badge:'Polishers & Masques', img:'assets/skinfx/17-clearchoice-hydrating-masque-night-therapy.png' },
-      { id:19, name:'ClearChoice Lumi Enzyme Masque', category:'polishers', price:92.8, weight:220, badge:'Polishers & Masques', img:'assets/skinfx/18-clearchoice-lumi-enzyme-masque.jpg' },
-      { id:20, name:'ClearChoice Post-Op Sheet Mask', category:'polishers', price:21.5, weight:60, badge:'Polishers & Masques', img:'assets/skinfx/19-clearchoice-post-op-sheet-mask.png' },
-      { id:21, name:'ClearChoice Sport Shield SPF 45', category:'moisturizers', price:29.0, weight:280, badge:'Moisturizers & SPF', img:'assets/skinfx/20-clearchoice-sport-shield-spf-45.png' },
-      { id:22, name:'ClearChoice Sun Shield Plus SPF 30', category:'moisturizers', price:52.2, weight:280, badge:'Moisturizers & SPF', img:'assets/skinfx/21-clearchoice-sun-shield-plus-spf-30.jpg' },
-      { id:23, name:'ClearChoice Skin Rehab', category:'moisturizers', price:49.3, weight:200, badge:'Moisturizers & SPF', img:'assets/skinfx/24-clearchoice-skin-rehab.png' },
-      { id:24, name:'ClearChoice Resist/Rewind Sun Shield Plus SPF30', category:'moisturizers', price:55.1, weight:280, badge:'Moisturizers & SPF', img:'assets/skinfx/25-clearchoice-resist-rewind-sun-shield-plus-spf30.jpg' },
-      { id:25, name:'ClearChoice Resist/Rewind Night Cream', category:'moisturizers', price:66.7, weight:220, badge:'Moisturizers & SPF', img:'assets/skinfx/26-clearchoice-resist-rewind-night-cream.png' },
-      { id:26, name:'ClearChoice ISO Moisture', category:'moisturizers', price:78.3, weight:220, badge:'Moisturizers & SPF', img:'assets/skinfx/27-clearchoice-iso-moisture.png' },
-      { id:27, name:'ClearChoice CopperICE Cream', category:'moisturizers', price:104.4, weight:220, badge:'Moisturizers & SPF', img:'assets/skinfx/28-clearchoice-copperice-cream.png' },
-      { id:28, name:'ClearChoice Reconstructive Brightening Creem', category:'moisturizers', price:101.5, weight:200, badge:'Moisturizers & SPF', img:'assets/skinfx/29-clearchoice-reconstructive-brightening-creem.jpg' },
-      { id:29, name:'ClearChoice Intense Moisture', category:'moisturizers', price:55.1, weight:220, badge:'Moisturizers & SPF', img:'assets/skinfx/31-clearchoice-intense-moisture.png' },
-      { id:30, name:'ClearChoice Post Care Protectant', category:'moisturizers', price:43.5, weight:200, badge:'Moisturizers & SPF', img:'assets/skinfx/32-clearchoice-post-care-protectant.png' },
-      { id:31, name:'ClearChoice ISO Eye Cream', category:'moisturizers', price:72.5, weight:220, badge:'Moisturizers & SPF', img:'assets/skinfx/33-clearchoice-iso-eye-cream.png' },
-      { id:32, name:'ClearChoice Soothing Healing Lotion', category:'moisturizers', price:66.7, weight:220, badge:'Moisturizers & SPF', img:'assets/skinfx/35-clearchoice-soothing-healing-lotion.jpg' },
-      { id:33, name:'ClearChoice Agevity Heavy Serum AM', category:'serums', price:181.3, weight:150, badge:'Corrective Serums', img:'assets/skinfx/36-clearchoice-agevity-heavy-serum-am.png' },
-      { id:34, name:'ClearChoice Agevity Cushion Serum PM', category:'serums', price:181.3, weight:150, badge:'Corrective Serums', img:'assets/skinfx/37-clearchoice-agevity-cushion-serum-pm.png' },
-      { id:35, name:'ClearChoice Anti Wrinkle Retinox XR', category:'serums', price:126.0, weight:200, badge:'Corrective Serums', img:'assets/skinfx/38-clearchoice-anti-wrinkle-retinox-xr.png' },
-      { id:36, name:'ClearChoice Anti Wrinkle Retinox', category:'serums', price:87.0, weight:200, badge:'Corrective Serums', img:'assets/skinfx/39-clearchoice-anti-wrinkle-retinox.png' },
-      { id:37, name:'ClearChoice Even Tone', category:'serums', price:98.6, weight:200, badge:'Corrective Serums', img:'assets/skinfx/40-clearchoice-even-tone.png' },
-      { id:38, name:'ClearChoice Vita C-B5 Complex', category:'serums', price:139.2, weight:150, badge:'Corrective Serums', img:'assets/skinfx/41-clearchoice-vita-c-b5-complex.png' },
-      { id:39, name:'ClearChoice Advanced K', category:'serums', price:66.7, weight:200, badge:'Corrective Serums', img:'assets/skinfx/42-clearchoice-advanced-k.png' },
-      { id:40, name:'ClearChoice Sodium Hyaluronate', category:'serums', price:89.9, weight:200, badge:'Corrective Serums', img:'assets/skinfx/43-clearchoice-sodium-hyaluronate.png' },
-      { id:41, name:'ClearChoice Lumi Lacti-C', category:'serums', price:139.2, weight:200, badge:'Corrective Serums', img:'assets/skinfx/45-clearchoice-lumi-lacti-c.jpg' },
-      { id:42, name:'ClearChoice Oceuticals - Night Shield', category:'serums', price:92.8, weight:280, badge:'Corrective Serums', img:'assets/skinfx/46-clearchoice-oceuticals-night-shield.png' },
-      { id:43, name:'Prana SpaCeuticals Arnica Recovery Gel', category:'serums', price:8.5, weight:150, badge:'Corrective Serums', img:'assets/skinfx/48-prana-spaceuticals-arnica-recovery-gel.jpg' },
-      { id:44, name:'ClearChoice UnderCover Patch', category:'acne', price:14.0, weight:80, badge:'Acne Control', img:'assets/skinfx/49-clearchoice-undercover-patch.png' },
-      { id:45, name:'ClearChoice BP 8%', category:'acne', price:46.4, weight:200, badge:'Acne Control', img:'assets/skinfx/50-clearchoice-bp-8.png' },
-      { id:46, name:'ClearChoice Clinical Spot', category:'acne', price:52.2, weight:200, badge:'Acne Control', img:'assets/skinfx/51-clearchoice-clinical-spot.png' },
-      { id:47, name:'ClearChoice Resist/Rewind System', category:'acne', price:221.9, weight:280, badge:'Acne Control', img:'assets/skinfx/52-clearchoice-resist-rewind-system.jpg' },
-      { id:48, name:'ClearChoice Oceuticals - Cream Cleanser', category:'oceuticals', price:49.3, weight:220, badge:'Oceuticals Marine', img:'assets/skinfx/53-clearchoice-oceuticals-cream-cleanser.jpg' },
-      { id:49, name:'ClearChoice Oceuticals - Copper Tide Mist', category:'oceuticals', price:49.3, weight:150, badge:'Oceuticals Marine', img:'assets/skinfx/54-clearchoice-oceuticals-copper-tide-mist.jpg' },
-      { id:50, name:'ClearChoice Oceuticals - Greybiotics Mist/Scalp Spray', category:'oceuticals', price:81.2, weight:150, badge:'Oceuticals Marine', img:'assets/skinfx/55-clearchoice-oceuticals-greybiotics-mist-scalp-spra.png' },
-      { id:51, name:'ClearChoice Oceuticals - O-Toner', category:'oceuticals', price:40.6, weight:150, badge:'Oceuticals Marine', img:'assets/skinfx/56-clearchoice-oceuticals-o-toner.jpg' },
-      { id:52, name:'ClearChoice Oceuticals - Routine Oil', category:'oceuticals', price:69.6, weight:150, badge:'Oceuticals Marine', img:'assets/skinfx/57-clearchoice-oceuticals-routine-oil.png' },
-      { id:53, name:'ClearChoice Oceuticals - B5 Healing Complex', category:'oceuticals', price:92.4, weight:150, badge:'Oceuticals Marine', img:'assets/skinfx/58-clearchoice-oceuticals-b5-healing-complex.png' },
-      { id:54, name:'ClearChoice Oceuticals - Flare', category:'oceuticals', price:182.0, weight:200, badge:'Oceuticals Marine', img:'assets/skinfx/59-clearchoice-oceuticals-flare.png' },
-      { id:55, name:'ClearChoice Oceuticals - Opti-Cream', category:'oceuticals', price:69.6, weight:220, badge:'Oceuticals Marine', img:'assets/skinfx/60-clearchoice-oceuticals-opti-cream.jpg' },
-      { id:56, name:'ClearChoice Oceuticals - CopperTide Masque', category:'oceuticals', price:52.2, weight:220, badge:'Oceuticals Marine', img:'assets/skinfx/61-clearchoice-oceuticals-coppertide-masque.jpg' },
-      { id:57, name:'ClearChoice Oceuticals - Eyedeal Lid Lift', category:'oceuticals', price:66.7, weight:150, badge:'Oceuticals Marine', img:'assets/skinfx/62-clearchoice-oceuticals-eyedeal-lid-lift.jpg' },
+      // CLEANSERS & BALANCERS
+      { id:1, name:"Clearify Foam Cleanser", cat:"cleansers", price:78.40, vol:"150ml", badge:"Clarifying", img:"assets/skinfx/00-clearchoice-clearify-foam-cleanser.png", desc:"Deep purifying foam. Removes sebum without stripping the barrier." },
+      { id:2, name:"Gentle Foaming Cleanser", cat:"cleansers", price:104.00, vol:"200ml", badge:"Pre-Laser Prep", img:"assets/skinfx/04-clearchoice-gentle-foaming-cleanser.jpg", desc:"Sulfate-free lipid-balancing cleanser for sensitive post-treatment skin." },
+      { id:3, name:"Hydrating Cleanser", cat:"cleansers", price:96.00, vol:"200ml", badge:"Barrier Safe", img:"assets/skinfx/05-clearchoice-hydrating-cleanser.png", desc:"Moisture-preserving formula for dry and compromised skin types." },
+      { id:4, name:"Mandelic Acid Cleanser", cat:"cleansers", price:145.00, vol:"200ml", badge:"AHA Exfoliation", img:"assets/skinfx/06-clearchoice-mandelic-cleanser.png", desc:"Non-abrasive cellular turnover prep for acne-prone and pigment-reactive skin." },
+
+      // POLISHERS & MASQUES
+      { id:5, name:"Lumi Enzyme Masque", cat:"polishers", price:116.00, vol:"60ml", badge:"Enzyme Renewal", img:"assets/skinfx/18-clearchoice-lumi-enzyme-masque.jpg", desc:"Papaya and pumpkin enzymes dissolve dead surface cells to restore radiant texture." },
+      { id:6, name:"Post-Op Sheet Mask", cat:"polishers", price:48.00, vol:"5 masks", badge:"Post-Treatment", img:"assets/skinfx/19-clearchoice-post-op-sheet-mask.png", desc:"Clinical soothing mask for immediate post-procedure skin calming." },
+      { id:7, name:"Hydrating Masque Night Therapy", cat:"polishers", price:110.00, vol:"60ml", badge:"Overnight Repair", img:"assets/skinfx/17-clearchoice-hydrating-masque-night-therapy.png", desc:"Overnight hydration surge that rebuilds moisture reserves while you sleep." },
+
+      // MOISTURIZERS & SPF
+      { id:8, name:"Sport Shield SPF 45", cat:"moisturizers", price:88.00, vol:"120ml", badge:"Mandatory Post-Care", img:"assets/skinfx/20-clearchoice-sport-shield-spf-45.png", desc:"Zinc oxide mineral block. Essential defense against post-laser PIH." },
+      { id:9, name:"Sun Shield Plus SPF 30", cat:"moisturizers", price:76.00, vol:"120ml", badge:"Daily Defense", img:"assets/skinfx/21-clearchoice-sun-shield-plus-spf-30.jpg", desc:"Lightweight broad-spectrum SPF 30 for daily clinical sun protection." },
+      { id:10, name:"Iso Moisture", cat:"moisturizers", price:110.20, vol:"50ml", badge:"Deep Moisture", img:"assets/skinfx/27-clearchoice-iso-moisture.png", desc:"Intense barrier-repairing cream for compromised or reactive skin." },
+      { id:11, name:"Post Care Protectant", cat:"moisturizers", price:88.00, vol:"60ml", badge:"After Laser", img:"assets/skinfx/32-clearchoice-post-care-protectant.png", desc:"Soothes heat erythema and locks in moisture after laser treatments." },
+
+      // TARGETED SERUMS
+      { id:12, name:"CopperIce Cream", cat:"serums", price:164.00, vol:"50ml", badge:"Collagen Booster", img:"assets/skinfx/28-clearchoice-copperice-cream.png", desc:"Copper peptide formula accelerates healing and supports microneedling recovery." },
+      { id:13, name:"Vita-C B5 Complex", cat:"serums", price:156.00, vol:"30ml", badge:"Brightening", img:"assets/skinfx/41-clearchoice-vita-c-b5-complex.png", desc:"Potent vitamin C + B5 shield to suppress pigment and defend against free radicals." },
+      { id:14, name:"Sodium Hyaluronate", cat:"serums", price:128.00, vol:"30ml", badge:"Deep Hydration", img:"assets/skinfx/43-clearchoice-sodium-hyaluronate.png", desc:"Multi-molecular weight HA draws moisture deep into epidermal layers." },
+      { id:15, name:"Lumi Lacti-C", cat:"serums", price:142.00, vol:"30ml", badge:"Radiance", img:"assets/skinfx/45-clearchoice-lumi-lacti-c.jpg", desc:"Lactic acid and vitamin C combined for brightening and cellular renewal." },
+
+      // ACNE CONTROL
+      { id:16, name:"BP 8% Clarifying Wash", cat:"acne", price:74.00, vol:"150ml", badge:"Anti-Bacterial", img:"assets/skinfx/50-clearchoice-bp-8.png", desc:"Purifies breakout-prone follicles and eliminates stubborn acne bacteria." },
+      { id:17, name:"Clinical Spot Treatment", cat:"acne", price:62.00, vol:"15ml", badge:"Emergency Relief", img:"assets/skinfx/51-clearchoice-clinical-spot.png", desc:"Fast-acting targeted therapy for inflamed blemishes and active breakouts." },
+      { id:18, name:"GlyBright Exfoliating Pads", cat:"acne", price:120.00, vol:"60 pads", badge:"Pore Clearing", img:"assets/skinfx/12-clearchoice-glybright-pads.jpg", desc:"Glycolic and brightening pads for daily follicular hygiene and texture refinement." },
+
+      // RESIST & REWIND
+      { id:19, name:"Resist & Rewind Cleanser", cat:"anti-aging", price:150.80, vol:"200ml", badge:"Age Defying", img:"assets/skinfx/07-clearchoice-resist-rewind-cleanser.png", desc:"Restorative cleansing milk designed for mature or moisture-deprived skin." },
+      { id:20, name:"Resist & Rewind Night Cream", cat:"anti-aging", price:178.00, vol:"50ml", badge:"Overnight Repair", img:"assets/skinfx/26-clearchoice-resist-rewind-night-cream.png", desc:"Advanced peptide and retinol complex for overnight cellular regeneration." },
+
+      // OCEUTICALS MARINE
+      { id:21, name:"Oceuticals Opti-Cream", cat:"oceuticals", price:148.00, vol:"50ml", badge:"Marine Bio-Actives", img:"assets/skinfx/60-clearchoice-oceuticals-opti-cream.jpg", desc:"Rich sea kelp bio-actives soothe reactive skin and rebuild lipid barriers." },
     ];
-
-    // Real product descriptions, ingredients, size, directions — scraped from skinfx.ca
-    const PRODUCT_DETAILS = {
-  1: { desc:'Clearify™ Foam Cleanser is a modern, inflammation-aware cleansing solution designed to purify the skin while protecting barrier integrity. This lightweight foam effectively removes buildup, excess oil, and impurities while supporting controlled exfoliation and pore decongestion—without overstimulating the skin or disrupting essential lipids. Formulated with glycolic acid, Clearify™ promotes gentle surface renewal to improve texture and clarity, while salicylic acid penetrates follicular pathways to reduce  congestion and regulate oil accumulation at the source. Together, these acids work synergistically to refine pores and support a smoother, more balanced complexion.\n\nTrue to Dermastart’s clinically driven philosophy, Clearify™ prioritizes skin intelligence—helping recalibrate function rather than force results. The outcome is clean, comfortable skin that feels refreshed, resilient, and prepared for corrective treatments or daily care. Ideal for clients seeking clarity with sensitivity in mind.\n\nPerfect For: \n\nPost-procedure patients (chemical peels, laser treatments, micro-needling, or minor dermatological procedures) who require support for rapid healing and barrier restoration\n', ingredients:'Purified Water, C14-C16 Alpha Olefin Sulfonate, Glycerin, Cocamidopropyl Betaine, Glycolic Acid, Saccharide Isomerate, Aminopropyl Ascorbyl Phosphate, Tocopheryl Acetate, Butylene Glycol, Salicylic Acid, PEG-16 Macadamia Glycerides, Sodium Hydroxide, d-panthenol, Dextran, Niacinamide, Potassium Azeloyl Diglycinate, Diazolidinyl Urea, Palmitoyl Tripeptide-8, Iodopropynyl Butylcarbamate, Zingiber Officinale (Ginger) Root Oil, Phenoxyethanol, Citrus Limon (Lemon) Peel, Ethylhexylglycerin', size:'4oz/120ml', directions:'Apply 2-3 pumps into dry hands.\nMassage into your face, neck, and décolleté\nWork into the skin to dissolve SPF, makeup, dirt etc. \nRinse with tepid water. Repeat if necessary' },
-  2: { desc:'Trauma Spray is an ultra-gentle, 500ppm hypochlorous acid dermal mist formulated to cleanse, purify, and protect compromised or sensitive skin. Ideal for post-procedure care, minor injuries, or irritated areas, this universal facial spray reduces inflammation, redness, and discomfort while promoting rapid healing and tissue recovery.\n\nIts non-cytotoxic, lightweight formula calms burning, stinging, and irritation within minutes, restores barrier balance, and provides hydration for long-lasting comfort. Trauma Spray is carefully designed to neutralize bacteria and impurities without harsh chemicals, making it safe for all skin types, including the most sensitive.\n\nPerfect for on-the-go use, treatment rooms, or daily routines, it’s an essential tool to maintain clean, healthy, and refreshed skin year-round. Customers love it for its versatility, effectiveness, and soothing results, making Trauma Spray a must-have for any skincare regimen or professional practice.\n\nPerfect For: \n\nPost-procedure patients (chemical peels, laser treatments, micro-needling, or minor dermatological procedures) who require support for rapid healing and barrier restoration\nSkincare professionals and esthetici', ingredients:'Purified Electrolyzed Water (Aqua), Sodium Chloride, Hypochlorous Acid (HOCl).', size:'4oz/120ml', directions:'Lightly mist entire facial area\nAllow to air dry - do not rinse\nReapply as needed' },
-  3: { desc:'Powered by micro-dosed retinol to gently support cellular turnover without irritation.\n\nUnlike traditional high-strength retinoids, our sub-perceptual approach delivers visible\n\nresults—smoother texture, reﬁned pores, and enhanced radiance—while respecting even the most sensitive skin barriers.  A skin-smoothing creamy cleanser that supports daily cellular turnover using precision-dosed retinol—low enough to reduce irritation, strong enough to reveal radiant, more even skin.\n\nPerfect For: \n\nDull, uneven skin tone seeking gentle yet effective daily resurfacing\nTextural irregularities or enlarged pores needing refinement without irritation\nSensitive or reactive skin types who cannot tolerate traditional high-strength retinoids\nEarly signs of aging\nPost-treatment clients needing controlled cellular turnover to maintain andenhance professional results\n\nWhy Choose Micro-Dose Cleanser? \n\nPrecision Drone Technology: Delivers micro-dosed retinol directly to the targetcells for maximum efficacy with minimal irritation, enhancing corrective resultswhile protecting surrounding tissues.\nDermal-Sensory Correction™: Supports long-term skin balance and comfort\nDual-Action Formula: Combines correc', ingredients:'Aqua (Purified Water), Cocamidopropyl Betaine, Sodium Lauryl Sulfoacetate, Disodium Laureth Sulfosuccinate, Glyceryl Stearate, Glycol Distearate, Glycerin, Inulin, Alpha-Glucan Oligosaccharide, Chamomilla Recutita (Matricaria) Flower Extract, Saccharide Isomerate, Cucumis Sativus (Cucumber) Seed Extract, Camellia Sinensis (Green Tea) Leaf extract, Tocopherol (vitamin E), Retinol, Palmitoyl Tripeptide-8, Nicotinamide Adenine Dinucleotide (NAD), Aloe Barbadensis Leaf Juice, Phenoxyethanol, Acetyl Tetrapeptide-40, Caprylyl Glycol, Citric Acid, Butylene Glycol, Glucose Oxidase, Glutathione, Hyacin', size:'6.6oz', directions:'Apply 2-3 pumps to dry, clean hands and massage into your face, neck, and\n\ndecollete to dissolve makeup and daily debris. Add a slight amount of water and continue\n\nmassage to create a light lather. Rinse thoroughly with water. Avoid removing eye makeup.' },
-  4: { desc:'Sensi Cream Cleanser encourages restoration and protection for sensitized skin. Formulated to help with aggravated skin by reducing inflammation caused by various triggers such as allergens, stress, hormonal changes, pollution, or harsh climates. Calming properties effortlessly remove stubborn makeup and impurities while restoring calm and balance to the skin. Regular use encourages skin defense, helping to prevent future flare-ups.\n\nKey Benefits:\n\nCream-to-Oil Texture – Effortlessly melts away makeup and impurities while maintaining hydration. Infused with Gentle Mandelic Acid – Provides mild exfoliation without irritation, making it suitable for even the most sensitive skin. \nSupports the Skin Barrier – Strengthens and reinforces the skin’s \nprotective layer to reduce future sensitivity.  Deeply Hydrating Formula – Infused with botanical extracts to nourish and soothe the skin. \nEffortless Cleansing – Effectively removes daily buildup, pollution, and excess oil without stripping the skin.\n\nConditions/Recommendations:\n\nIndividuals with sensitive, reactive, or stressed skin\nThose exposed to harsh climates, pollution, or allergens \nAnyone looking for a gentle yet effective makeup re', ingredients:'Aqua (Purified Water), Cocamidopropyl Betaine, Sodium Lauryl Sulfoacetate, Disodium Laureth Sulfosuccinate, Glyceryl Stearate, Glycol Distearate, Glycerin, Inulin, Alpha-Glucan Oligosaccharide, Chamomilla Recutita (Matricaria) Flower Extract, Saccharide Isomerate, Cucumis Sativus (Cucumber) Seed Extract, Camellia Sinensis (Green Tea) Leaf Extract, Tocopherol (vitamin E), mandelic Acid, Palmitoyl Tripeptide-8, Aloe Barbadensis Leaf Juice, Phenoxyethanol, Acetyl Tetrapeptide-40, Caprylyl Glycol, Fisetin, Citric Acid, Butylene Glycol, Glucose Oxidase, Glutathione, Lactoperoxidase, Sodium Gluconat', size:'6.6oz/200ml', directions:'Place a small amount in moistened hands. Mix into a rich lather. Apply to face/neck and gently massage. Rinse with tepid water. Repeat if necessary.' },
-  5: { desc:'GLUTEN FREE \n\nA soap-free foaming cleansing gel designed to help your skin achieve its natural pH balance. Removes excess impurities and dissolves make-up residue without harsh dryness. Surfactant Free.\n\nConditions/Recommendations:\n\nAll Skin Types including Sensitive skin\nMild enough to use several times per day\nSuperior for acne prone, sensitive, and irritated skin types\nDesigned to gently cleanse without stripping or drying\nCalming and healing ingredients\nPerfect for post-care laser and after TCA, Jessner, Lactic, Glycolic, or any other Peels\nSodium Laurel Sulfate (SLS, ALS) Free', ingredients:'Purified Water (Aqua), Certified Organic Aloe Vera Gel, Cocamidopropyl Betaine, Caprylic/Capric Triglycerides, Sodium Hydroxymethyl, USP Glycerin, Glycol Stearate, Soapwort, Yucca and Alpha Bisabolol (Chamomile), Sodium Lactate, Extracts.', size:'6.7oz/198ml or 32oz (Back Bar)  - not for resale)', directions:'Directions: Place small amount in moistened hands. Mix into a rich lather. Apply to face/neck and gently massage. Rinse with tepid water. Repeat if necessary\n\nProfessional Use\n\nFor extra exfoliation, mix a quarter-size portion of Gentle Foaming Cleanser with 1cc Lactic Peel. Or mix a nickel-size portion of Gentle Foaming Cleanser with a quarter-size portion of Pumpkin Enzyme Complex. Steam for 5-10 minutes.\n\nReviews\nRated 5 out of 5 stars.\n5.0\nBased on 1 review\nLeave a Review\n5 stars\n1\n4 stars\n0' },
-  6: { desc:'PLEASE NOTE YOU MAY ONLY ORDER ONE SAMPLE PACK OF THIS PRODUCT PER ORDER\n\nGLUTEN FREE\n\nThis rich soothing cleanser develops delicate skin and helps preserve the hydrolipid barrier leaving the skin radiant. Especially designed for rosacea, sensitive skin, and skin types exposed to harsh weather conditions. Effectively removes dirt, debris, and makeup without stripping skin of essential moisture. Surfactant free.\n\nConditions/Recommendations:\n\nNormal/Dry/Dehydrated/Mature/Sensitive Skin\nHelps to eliminate Trans Epidermal Water Loss (TEWL)\nRe-hydrates skin\nGreat for Rosacea\nMay use for home care after peels, microdermabrasion & laser procedures\nCools & Calms inflamed skin\nSulfate-Free\nEliminates Residual Hot Spots\n\nPRO TIP: Can be used to neutralize ClearChoice/Prana SpaCeuticals peels or calm hot spots from self-neutralizing peels.', ingredients:'Certified Organic Aloe Vera Gel, Hyaluronic Acid, Squalane, Vitamin E, Dimethylaminoethanol (DMAE), Alpha Lipoic Acid, d-Panthenol (Vitamin B5), Yucca Extract, USP Glycerin, Dimethyl MEA, Caprylic/Capric Triglycerides, Soapwort, Cucumis Sativus (Cucumber) Fruit Extract, Vitamin C (L-Ascorbic Acid), Chamomilla Recutita (Matricaria) Flower Extract, Azulene, Cucumber Extract, Allantoin, Orange Extract, Phenoxyethanol.', size:'6.7oz/198ml or 32oz (Back Bar not for resale)', directions:'Place small amount in clean dry hands. Mix into a rich lather. Apply to face / neck and gently massage. Rinse with tepid water. Gentle enough to remove eye makeup.' },
-  7: { desc:'PLEASE NOTE YOU MAY ONLY ORDER ONE SAMPLE PACK OF THIS PRODUCT PER ORDER\n\nInstantly refine your skin every time you cleanse. This gel cleanser combines Mandelic Acid, Enzymes, and Turmeric to gently exfoliate and remove impurities from the skin. These powerful ingredients work to reduce inflammation while a unique blend of silk proteins helps restore balance and hydration leaving your skin with sheer clarity. Mandelic Acid is an appropriate treatment for a wide variety of skin concerns, from hyperpigmentation to wrinkles. Mandelic Acid also provides excellent results when used in the treatment of acne. It can improve inflammatory pustular, comedonal, and papular acne and has been shown to be effective even in individuals resistant to antibiotics. Mandelic has a larger molecular structure than Glycolic Acid making it less harsh and better tolerated on the skin. Mandelic is known to be a less harsh alternative to Salicylic Acid.\n\nConditions/Recommendations:\n\nHormonal Acne\nSun Damaged Skin\nGreat for people who have a low tolerance to AHA’s\nCleanse & Exfoliates giving instant clarity\nGentle, does not result in skin irritation or burning\nReduces inflammation\nSuitable for treating an arr', ingredients:'Certified Organic Aloe Vera, Cocamidopropyl Betaine, PEG-100, Disodium Cocoamphodiacetate, Lactamide MEA, Tocopheryl Acetate, Alpha Bisabolol (Chamomile), Disodium Lauryl Sulfosuccinate, Sodium Hyaluronate, Mandelic Acid, Camelia Sinensis (Green Tea), (2s)- 2- Amino- 5- Guanidinopentanoic Acid, Cocamide MIPA, Prunus Armeniaca (Apricot Kernel Oil), Punica ranatum (Pomegranate), Hydratis Candensis (Goldenseal), Humulus Lupulus (Hops), Cymbopogon Schoenanthus (West Indian Lemon Grass), Organic Simmondsia Chinensis (Jojoba Oil), Panthenol, Organic Rosmarinus Officinalis (Rosemary), Curcuma Longa (', size:'6.6oz/200ml', directions:'Place a small amount in moistened hands. Mix into a rich lather. Apply to face/neck and gently massage. Rinse with tepid water. Repeat if necessary.\n\nReviews\nRated 4.5 out of 5 stars.\n4.5\nBased on 2 reviews\nLeave a Review\n5 stars\n1\n4 stars\n1\n3 stars\n0\n2 stars\n0\n1 star\n0\n2 reviews\nFilter by rating:\nAll stars\nSort by:\nMost Relevant\nMB\n•\nSep 10, 2025\nRated 4 out of 5 stars.\nGreat Cleanser!\n\nI\'ve been using this cleanser for the past few months and it is gentle on the skin, I have rosacea and have n' },
-  8: { desc:'This superior cleanser contains a rapid new technology that allows a continuous all day active release of acne fighting, Benzoyl Peroxide. R/R Cleanser penetrates deep down into the pores to eliminate the source, Propionibacterium acnes, acne causing bacteria. This gel like cleanser combines Mandelic Acid, Enzymes, and Turmeric to gently exfoliate and remove impurities from the skin. These powerful ingredients work to reduce inflammation while a unique blend of silk proteins helps restore balance and hydration leaving your skin with sheer clarity and results without the irritation that some BPO leave behind.\n\nConditions/Recommendations:\n\nIdeal for Adult/Hormonal Acne\nAnti-Aging\nSun Damage\nPost Inflammatory Marks\nEffectively penetrates pores to remove debris\nRenews pores and rough texture\nImproves skin’s appearance for a youthful healthy complexion\nGreat for Sensitive skin types\nLow tolerance to AHA’s\n\nActive', ingredients:'5% Benzoyl Peroxide. Inactive Ingredients: Certified Organic Aloe Vera, Cocamidopropyl Betaine, PEG-100, Disodium Cocoamphodiacetate, Lactamide MEA, Tocopheryl Acetate, Alpha Bisabolol (Chamomile), Disodium Lauryl Sulfosuccinate, Sodium Hyaluronate, Mandelic Acid, Camelia Sinensis (Green Tea), (2s)-2-Amino-5-Guanidinopentanoic Acid, Cocamide MIPA, Prunus Armeniaca (Apricot Kernel Oil), Punica Ranatum (Pomegranate), Hydratis Candensis (Goldenseal), Humulus Lupulus (Hops), Cymbopogon Schoenanthus (West Indian Lemon Grass), Organic Simmondsia Chinensis (Jojoba Oil), Panthenol, Organic Rosmarinus ', size:'6.7oz/198ml', directions:'Use once or twice daily, or as directed by your skin care professional. Apply a small quarter- sized amount to damp skin, cleanse in a circular motion and gentle pressure, rinse with tepid water, pat dry. Apply topical treatment and / or sunscreen.' },
-  9: { desc:'GLUTEN FREE \n\nHydrating Balance is formulated for all skin types and gives a refreshing boost of rejuvenation. It helps to prolong makeup and refreshes dehydrated skin from excessive exposure to heat and wind.\n\nConditions/Recommendations:\n\nAll Skin Types\nSunburn/Windburn\nHot Flashes & Menopausal\nPeri-Rosacea\nRemoves any remaining oils\nHelps tighten pores\nWill help combat sallowness\nHelps restore ones natural pH\nProlongs makeup\nEnhances skin tautness', ingredients:'Purified Water (Aqua), Cucumber Extracts, Certified Organic Aloe Vera Gel, Alpha Bisabolol (Chamomile), Witch Hazel, Sodium Hyaluronate, USP Glycerin, Polysorbate 20, Sodium PCA, Allantoin, Azulene, Pantothenic Acid, Panthenol (Vitamin B5), Retinyl Palmitate (Vitamin A),Ergocalciferol (Vitamin D), Tocopheryl Acetate, Linoleic Acid, Cyanocobalamin (Vitamin B12), L-Ascorbic Acid ( Vitamin C), Chlorophyll.', size:'6.2oz/183.36ml or 32oz (Back Bar - not for resale)', directions:'Mist Hydrating Balance over clean face/neck area. Use AM and PM. Follow up with ClearChoice® moisturizer and/or sunscreen. Avoid eye area.\n\nProfessional Use\n\nAtomize throughout facial service.' },
-  10: { desc:'Bye Bye Redness, Hello Hydration! \n\nRestore your skin with this multitasking lactic acid solution designed to balance, brighten, and refine your skin. Using a combination of peptides to mitigate, prevent, and reverse signs of neurogenic inflammation and helps accelerate the skin’s natural recovery process.  \n\nLactiBiome Solution uses Dermal Sensory Correction technology—This unique system addresses neurogenic inflammation, calming the skin at the sensory nerve level.  Multi-targeted action reduces breakouts and tackles redness, rosacea, Perimenopause breakouts, and vascular concerns like neovascularization, making it far more comprehensive than typical single-focus treatments. \n\nPerfect For: \n\n Peri-Menopause breakouts, Dull, Congested, Lackluster skin   \nDehydrated, sensitive and reactive skin types  \nImproving Rosacea and restoring the skin to a normal threshold  \n\nWhy Choose Lactibiome Solution? \n\nProbiotic-derived bio-actives — These support the skin’s microbiome and enhance barrier function, something many standard acne treatments overlook. \n\nKey Benefits: \n\n·        Balances and strengthens the skin microbiome \n\n·        Reduces visible redness and vascular concerns \n\n·      ', ingredients:'Distilled Water, Lactic Acid, Aloe Barbadensis Leaf Extract, Propanediol, Sodium PCA, Witch Hazel, Paeonia Lactiflora Root Extract, Sodium Hydroxide, Palmitoyl Tripeptide-8, Centella Asiatica Extract, Lactococcus Ferment Lysate, Aspergillus Ferment, Inulin, Rosmarinyl Glucoside, Beta-Glucan, Caffeyl Glucoside, Sodium Hyaluronate, Gallyl Glucoside, Tetrahexyldecyl Ascorbate, Agastache Mexicana Flower/Leaf/Stem Extract, Lecithin, Glycerine, Ethylhexylglycerin, Butylene Glycol.', size:'4oz (120ml)', directions:'Professional Use:   Add 1-2 pumps into hydrating masque to boost exfoliation, brighten and revitalize the skinUse as a finishing toning step in a hydrating or soothing facial for a boost of exfoliation and to brighten the skin\n\nHome Use:   Apply 1-2 Pumps on a cotton round and sweep across a clean dry face.Recommended for night use onlyDo not rinse offSlight tingle is normal, disregard use if your skin becomes drySun protection is highly recommendedAdd 1-2 pumps into hydrating masque to boost ex' },
-  11: { desc:'GLUTEN FREE \n\nPhytic Acid is clinically proven to improve skin’s clarity by 52% and diminish\nhyperpigmentation by 34%. Using this targeted acid, hyperpigmentation is decreased by chelating copper to inhibit Tyrosinase enzymes involved in melanin formation.\n\nConditions/Recommendations:\n\nHyperpigmentation\nMelasama\nPost-Inflammatory Marks\nUneven Color/Texture\nLarge Pores\nIncreases brightness\nRestores a youthful epidermis\nHelps eliminate traces of post acne inflammation\nHydroquinone alternative\nBoosts effects of Hydroquinone\nReduces redness', ingredients:'Phytic Acid and Niacinamide in an aqueous solution.', size:'3.4oz/100.55ml', directions:'Directions: With a cotton ball, apply Hyperpigmentation Tx Solution to clean, dry skin. Follow with ClearChoice® Serum and/or moisturizer.\n\nProfessional Use\n\nMay be used before or after peels to enhance lightening of hyperpigmentation and/or increase delivery of topicals.' },
-  12: { desc:'This treatment solution helps to re-balance the skin’s pH level, while infusing the skin with nourishing, brightening, and anti-inflammatory ingredients that help to reduce free radicals and acne breakouts. Using daily promotes healthy dermal cell renewal and a glowing complexion.\n\nConditions/Recommendations:\n\nSensitive/Sensitized Skin\nHormonal/Menopausal Skin\nHormonal/Acne\nProvides Anti-Aging benefits for Hormonal Acne & Sensitive skin types\nPrevents Dehydration\nAnti-Inflammatory\nHealing properties ideal for those suffering from conditions such as eczema or skin rashes', ingredients:'Purified Aqua (Water), Organic Aloe Barbadensis Leaf (Aloe Vera), Mandelic Acid, Methylsulfonylmethane (MSM), L-Ascorbic Acid (Vitamin C), Caprylic/Capric Triglyceride, Tocopheryl Acetate (Vitamin E), Hamamelis Virginiana (Witch Hazel), Crithmum Maritimum Extract (Sea Fennel Wax), Ferulic Acid, Sodium Hyaluronate, Palmitoyl Oligopeptide, Palmitoyl Tetrapeptide-7 (Matrixyl 3000), Malva Sylvestris Extract, Mentha Piperita Leaf Extract, Primula Veris Extract, Alchemilla Vulgaris Extract, Veronica Officinalis, Melissa Officinalis, Achillea Millefolium Extract, L-Pyrolidone, Sodium Lactate, L-Argin', size:'3.4oz/120ml', directions:'Apply to clean skin. Saturate dabber sponge, wipe entire face. Active ingredients will migrate to all areas of the face, rub excess solution into skin. Follow up with Resist/Rewind Lotion or SPF.' },
-  13: { desc:'GlyBright Pads promote cellular renewal by gently exfoliating dull, dead dermal cells and helps maintain a brighter complexion. These perfect on-the-go super charged pads are infused with skin brighteners, nourishing botanicals, and Glycolic Acid that helps to boost cell regeneration, enhance your natural glow, and smooth appearance. Hydroquinone Free.\n\nConditions/Recommendations:\n\nNormal/ Oily/Combo Skin Types\nAnti-Aging\nHyperpigmentation\nFine Lines/ Wrinkles\nTexture Irregularities\nExfoliate, Brighten & tone\nSmoothes texture to enhance a more natural radiant complexion\nProvides Nourishment & Hydration to the skin', ingredients:'Purified Water (Aqua), Certified Organic Aloe Vera Gel, Alpha Bisabolol (Chamomile), Witch Hazel, Camellia Sinensis Leaf Extract (Green Tea), Sodium Hyaluronate,USP Glycerin, Alpha-Arbutin, Ganoderma Lucidum (Kojic Acid), Organic Glycyrrhiza Glabra (Licorice), Arctostaphylos Uva Ursi Leaf Extract, L-Carnitine, Glycolic Acid, Polysorbate 20, Sodium PCA, Allantoin Malva Sylvestris (Mallow) Extract, Mentha Piperita (Peppermint) Leaf Extract, Primula Veris Extract, Alchemilla Vulgaris Extract, Veronica Officinalis Extract, Melissa Officinalis Leaf Extract, Achillea Millefolium Extract, Azulene, d-', size:'50 pads', directions:'Use A.M. / P.M. to refresh skin. Avoid eyes and mucous membranes.\n\nReviews\nRated 5 out of 5 stars.\n5.0\nBased on 1 review\nLeave a Review\n5 stars\n1\n4 stars\n0\n3 stars\n0\n2 stars\n0\n1 star\n0\n1 review\nFilter by rating:\nAll stars\nSort by:\nMost Relevant\nOn The Spot Beauty Bar\n•\nDec 12, 2025\nRated 5 out of 5 stars.\nVerified\nGlycolic Psds\n\nAwesome product to use in between your peels.\n\nWas this helpful?\nYes\nRelated Products\nQuick View\nBackBar/Samples Available\n\nClearChoice Gentle Foaming Cleanser\n\nPrice\n$2' },
-  14: { desc:'Maintains its natural bio-protective properties and promotes keratinocyte growth and fibroblast adhesion for a skin regenerating effect and enhanced wound healing. Enhances skin firmness and elasticity, reduces the appearance of wrinkles, and promotes skin cell turnover.\n\nConditions/Recommendations:\n\nGreat for all skin types\nEspecially beneficial for Aging, Sensitive, and Acne Skin Types\nCell Communicating Ingredients\nAccelerated healing properties increasing collagen & elastin production\nPrevents dryness\nProtects skin from extreme weather conditions\nImproves epidermis texture', ingredients:'Purified Water (Aqua), Certified Organic Aloe Vera Gel, Alpha Bisabolol (Chamomile), Witch Hazel, Camellia Sinensis Leaf Extract (Green Tea), Sodium Hyaluronate, USPGlycerin, Polysorbate 20, Sodium PCA, Copper Gluconate, Allantoin, Pseudoalteromonas Ferment Extract, Azulene, Pantothenic Acid, Polygonum Avicular Extract, L-Cartitine, Super Oxide Dismutase, Leontopodium Apinum Extract, Bambusa Vulgaris (Bamboo) Extract, d-Panthenol(Vitamin B5), and Ergocalciferol (Vitamin D), Tocopheryl Acetate, Linoleic Acid, Watermelon Extract, Cyanocobalamin (Vitamin B12), Phenoxyethanol.', size:'50 pads', directions:'Use A.M. / P.M. to refresh skin. Avoid eyes and mucous membranes. Wipe entire Face/Neck with Saturated Pad.' },
-  15: { desc:'A peptide derived from growth factors that activates skin’s natural repair function, reduces the appearance of fine lines and slows the aging process. Boosts the production of DEJ components (collagen VII, laminin-5, fibronectin) and activates natural skin repair. Inhibits glycation, avoiding the formation of AGE’s (Advanced Glycation Endproducts), protecting skin from the loss of elasticity.\n\nConditions/Recommendations:\n\nBeneficial for Aging & Acneic Skin Types\nDNA Repair\nLoss of Elasticity\nSun Damage\nAnti-glycation\nBalances the skins pH level\nBoosts natural skin repairing abilities\nEnhances healthy collagen productions\nAGE’s prevention\nTreats loss of elasticity, dehydration, photodamage & highly reactive skin\nPre treatment for peels', ingredients:'Purified Water (Aqua), Certified Organic Aloe Vera Gel, Alpha Bisabolol (Chamomile), Witch Hazel, Camellia Sinensis Leaf Extract (Green Tea), Sodium Hyaluronate,USP Glycerin, Retinol , Retinyl Palmitate (Vitamin A), Polysorbate 20, Sodium PCA, Allantoin,Tripeptide-9 Citrulline and L - Lysine HCI, Caprooyl Tetrapeptide-3, Azulene, Pantothenic Acid, Poria Cocos Polysaccharide, Leontopodium Apinum Extract, d-Panthenol (Vitamin B5), and Ergocalciferol (Vitamin D), Tocopheryl Acetate, Linoleic Acid, Cyanocobalamin (Vitamin B12), Phenoxyethanol.', size:'50 pads', directions:'Use A.M. / P.M. to refresh skin. Avoid eyes and mucous membranes.' },
-  16: { desc:'', ingredients:'', size:'', directions:'' },
-  17: { desc:'PLEASE NOTE YOU MAY ONLY ORDER ONE SAMPLE PACK OF THIS PRODUCT PER ORDER\n\nMini Facial is an invigorating (daily/weekly) treatment encompassed with all\nthe essential ingredients to dissolve blackheads, balance sebum production,\nstimulate the defense system, and recapture your skin’s youth for a radiant\nglow. Recommended for all skin types.\n\nConditions/Recommendations:\n\nAll Skin Types\nFace & Body Acne\nMen\nActive Lifestyles\nCongested/Clogged pores\nPre treatment for High-Definition Makeup\nEnhances skin tone\nRevitalizes Complexion\nSoftens skin\nHelps cellular stimulation\nHydrating, never feeling oily\nHelps alleviate stress (aromatherapy)', ingredients:'Purified Water (Aqua), Certified Organic Aloe Vera Gel, Cetearyl Alcohol and Ceteareth-20, Caprylic/Capric Triglycerides, Sunflower Seed Oil, Micronized Zinc Oxide, Glyceryl Stearate, USP Glycerin, Tocopheryl Acetate (Vitamin E), Sesame Seed Oil, Camphor, Bambusa Arundinacea (Bamboo Stems), Hyaluronic Acid, Wheat Protein, Amino Acids, Soy Isoflavonoids, Evening Primrose Oil, Ground Walnut Shells, Sodium PCA, Ginseng, Grape Seed, Alpha Bisabolol (Chamomile), Green Tea, Horse Chestnut, Allantoin, Phenoxyethanol, Sodium Chlorophyllin.', size:'4oz/118ml or', directions:'Apply to clean skin. Leave on for 10 minutes, then rinse. Use 2-3 times per week. Recommended in shower.\n\nProfessional Use\n\nCan be used with steam. Extract all unwanted impurities after removal.' },
-  18: { desc:'PLEASE NOTE YOU MAY ONLY ORDER ONE SAMPLE PACK OF THIS PRODUCT PER ORDER\n\nGLUTEN FREE\n\nThis soothing masque is infused with ingredients that nourish, rehydrate, repair and firm all skin types, even sensitive skin. This combination treatment masque can be used as a night moisturizer to replenish thirsty skin and treat rosacea flare-ups. Try using this wonderful healing masque on swollen tired eyes.\n\nConditions/Recommendations:\n\nSensitive, Normal, Dry, Dehydrated Skin Types\nRosacea Types I\nMenopausal\nHelps Firm Skin\nRehydrates Skin\nCan use this after any peels, dermabrasion and laser procedures\nCools & Calms inflamed skin\nThis is absolutely one of the best Treatment Masques formulated for today’s modern procedures!!', ingredients:'Certified Organic Aloe Vera, Sodium Hyaluronate, Squalane, Vitamin E, DMAE, Alpha Lipoic Acid, Vitamin B5, Chamomile Extract, Azulene, Cucumber Extract, Vitamin C (L-Ascorbic Acid), Allantoin, Orange Extract.', size:'2oz/60ml', directions:'Apply as a treatment masque to boost hydration. Leave on for 5-10 minutes, then rinse. Follow with moisturizer. Use 2-3 times per week. For an added boost, apply at night after cleaning and leave on until following morning.\n\nProfessional Use\n\nApply masque for 5-10 minutes. Can be used over eyelids with Hydrating Eye Pads.' },
-  19: { desc:'Gently purifies, soothes & clarifies all skin types. This is perfect therapy for Acne, Rosacea, and skin brightening treatments. Contains fortified vitamins & antioxidants to replenish and protect the skin. Suggesting skin lighteners\nprior to treatment will intensify clarity to the skin.\n\nConditions/Recommendations:\n\nAll Skin Types\nSallow Lifeless Skin\nAccelerates Cell Turnover\nSuperior for Acne and Hyper-pigmentation\nEases Patient Discomfort\nImproves appearance of photo aged facial skin\nControls sebum (oil) production\nHelps to brighten the skin\nRe-textures skin\nControls breakouts\nRemoves (PIH) Post Inflammatory Hyper-pigmentation\nResidual acne marks', ingredients:'Purified Water (Aqua), Certified Organic Aloe Vera Gel, Pineapple Extract, Bromelain,Ginseng Root Extract, Chamomile Extract, Papain, Extracts of Chlorella and Centella Asiatica, MicronizedTitanium Dioxide, Olive Oil, Glyceryl Stearate, Hyaluronic Acid, Stearic Acid, Green Tea Extract, Wheat Protein Hydrolysate, Cetearyl Alcohol (and) Ceteareth-20, Vitamin E Acetate, Squalane, Shea Butter, Soy Lecithin, Molasses Extract (and) Sodium Lactate, Extract of Usnea Barbata, Kojic Acid, Phytomenadione (Vitamin K), Azelaic Acid, Papain Enzyme, Pycnogenol, Grape Seed Extract and Annatto Extract', size:'2oz/60ml', directions:'' },
-  20: { desc:'Our bio cellulose face mask generates a moisture reservoir and protects the skin from dehydration. They work to decrease pores, hydrate, decrease wrinkles, and improve skin tone. These sheet masks are fragrance-free and deliver a concentrated formula that will unveil a well-hydrated and dewy face!\n\nYou can use these sheet masks alone or along with your regular face routine. Wear following a professional treatment or after cleansing, toning, and exfoliating to restore your skin to a soft, supple state.\n\nA quick fix when on the run.\nGet ready for pre-vacation treatment. Intense infusion uses active ingredients in a short period of time.\nFragrance-free sheet masks are excellent after professional treatments.\nNot all sheet masks are created equal. That’s why the ingredients are so important!\n\nBENEFITS\n\nImmersed in a nutrition-packed solution it allows you to tighten those tough jowls.\nProven deep hydration by generating a moisture reservoir that lasts for 72 hours.\nHydrocolloid sheet masks help create a long-lasting skin barrier of protection.\nProvides visibly smoother skin and generates a moisture reservoir that protects the skin.\nPerfect for after laser, chemical peels, microdermabra', ingredients:'Aqua, Glycerin, Betaine, Algin, Xanthan Gum, Carbomer, Sodium Polyglutamate, Squalane, Allantoin, Dipotassium Glycyrrhizate, Hydrogenated Lecithin, Aloe Barbadensis Leaf Extract, Olea Europaea (Olive) Leaf Extract, Olea Europaea (Olive) Fruit Oil, Sodium Hyaluronate, 2-Hexanediol, Thamnolia Vermicularis Leaf Extract, Sparassis Crispa Extract, Chlorphenesin, Phenoxyethanol, Saccharide Isomerate, Tasmannia Lanceolata Fruit Extract, Pentylene Glycol, Ethylhexylglycerin, Sodium Acetylated Hyaluronate, Sodium Hyaluronate Crosspolymer, Hydrolyzed Sodium Hyaluronate, Ceramide 3, Ceramide 6 Ii, Cerami', size:'Individual or 5 Pack', directions:'Cleanse the face.\nOpen the sachet and take out the Mask.\nAdjust the mask to adhere entirely over the face positioning openings for eyes and mouth.\nStretch to attach to ears.\nLift up the chin layer and attach it to the ears.\nPress the mask lightly with both hands until it adheres completely.\nRemove the mask after 10 ~ 15 minutes and gently massage the remaining essence into the skin.\n\nFor best results, Use 2 to 3 times a week. \n\nProfessional Use\n\nThis mask is perfect for after laser, chemical pee' },
-  21: { desc:'Effective August 25, 2026 -  2oz & 4oz will be back in stock mid September (no exact date as yet) - with new packaging design.  Please check back to this page often for updates and/or click on "Notify Me" to get an email when it is back in stock. \n\nConsider these great products in the meantime - ClearChoice Urban Shield or ClearChoice Level Up Primer or Aira Skin Health SunGlow SPF30\n\nSunblock and light moisturizer formulated for daily use for the face (non-comedogenic), chest, hands, and arms. Contains antioxidants to help combat free radical damage, which can cause premature aging. Superior for all skin types. Specially formulated to resist sweat and water for 80 minutes. Combined with the most powerful protection Zinc. PABA-free - Safe for sensitive skin.\n\nConditions/Recommendations:\n\nAll Skin Types\n\nAvid Sport Players\n\nExtreme Sun Exposure\n\nActive Outdoors Exposure\n\nMinimizes superficial fine lines and premature aging\n\nWaterproof & Sweat proof - won’t run into your eyes\n\nNon-comedogenic (won’t clog pores!)\n\nExcellent for daily use or under make-up\n\nOil free/PABA free\n\nGreat for Rosacea types I & II\n\nContains no chemical sunscreens', ingredients:'', size:'', directions:'Apply over face, neck and décolleté. If desired, apply over a ClearChoice® moisturizer.\n\nReviews\nRated 5 out of 5 stars.\n5.0\nBased on 3 reviews\nLeave a Review\n5 stars\n3\n4 stars\n0\n3 stars\n0\n2 stars\n0\n1 star\n0\n3 reviews\nFilter by rating:\nAll stars\nSort by:\nMost Relevant\nL. Polidoro\n•\nMay 21, 2025\nRated 5 out of 5 stars.\nOur best selling sunscreen\n\nLight and moisturizing, never greasy, does not leave a white cast. Great sun protection even in extreme heat.\n\nWas this helpful?\nYes\nShaemain Cordner\n•\n' },
-  22: { desc:'PLEASE NOTE YOU MAY ONLY ORDER ONE SAMPLE PACK OF THIS PRODUCT PER ORDER\n\nRecommended for Oily/Acneic skin types to help protect against harmful sun exposure. Using Sun Shield Plus SPF 30 daily will help control future breakouts and over active sebaceous glands.\n\nConditions/Recommendations:\n\nCombination, Oily/Acneic Skin Types\nAll Levels of Acne\nRosacea II\nNon- Greasy\nPABA free\nHelps control breakouts\nMinimizes oil\nEasy 1 step application for teens & young adults\nEasy carry tube for active patients\n\nActive Ingredient: 9% Zinc Oxide.\nInactive', ingredients:'Purified Water (Aqua), Certified Organic Aloe Vera Gel, Caprylic/Capric Triglycerides, Prunus Amygdalus Oil, Persea Gratissima Oil, Sesamum Indicum Seed Oil, Zinc Oxide, Glyceryl Stearate, Montmorillonite Clay, Glycerin, Hyaluronic Acid, Sodium PCA, Dimethicone Crosspolymer, Rosa Rubiginosa (Rosehip) Seed Oil, Oenothera Biennis (Evening Primrose) Oil, Borago Ocinalis Seed Oil, Camphor, Sulfur, Bentonite Clay, Tocopheryl Acetate, Hydrolyzed Wheat Protein, Hydrolyzed Silk, Glycine Soya Extract, Panax Ginseng Root Extract, Bisabolol, Dexpanthenol (Vitamin B12), Ginkgo Biloba Leaf Extract, Vitis V', size:'2oz/60ml (Retail) or', directions:'Apply on face, neck and décolleté. For added hydration, layer over a ClearChoice® Serum.\n\nProfessional Use\n\nUse at the end of a treatment to protect the skin.' },
-  23: { desc:'PLEASE NOTE YOU MAY ONLY ORDER ONE SAMPLE PACK OF THIS PRODUCT PER ORDER\n\nParched, flaky, or stressed skin? This whipped hydration helps to aid the skin barrier and reinforces the skin\'s moisture balance for all-day healing. Alleviates post-chemical breakdown without burning or further irritation. Consciously conditioning, SKIN REHAB WHIPPED HYDRATION becomes a protective shield on areas when performing treatments such as peels and other induced trauma.\n\nConditions/Recommendations:\n\n• Fast Absorbing\n• Post Invasive Modalities\n• Facial Waxing\n• Accelerates Healing\n• Barrier Protection\n• Deep Hydration', ingredients:'Cocos Nuclfera (coconut Water) Endosperm. Cocos Nucifera Fruit Juice, Aloe Barbadensls Leaf Juice, Olea Europaea Squalane (Olive) Fruit Oil Persea Gratlsslma (Avocado) Oil Slmmondsla Chlnensrs (JoJobal seed Oil) Vitls Vinlfera (Grape) Seed Oil, Papaver Somniferum (Blue) seed, Citrullus Lanatus (Watermelon) Seed Oil, Glycerin, Butyrospermum Parkii (Shea Butter), Caprylic/Capric Triglyceride, Stearic Acid, Tocopherol (Vitamin E), Cetyl Alcohol, Phenoxyethanol.', size:'51.75ml/1.75oz', directions:'Apply as needed. Start with one pump onto your fingertips, then rub both hands together and gently pat over face.\n\nProfessional Use\n\nSame as home use.' },
-  24: { desc:'AKA: Resist/Rewind Day Lotion is recommended for Oily/Acneic skin types to help protect against harmful sun exposure. Using daily will help control future breakouts and over active sebaceous glands.\n\nConditions/Recommendations:\n\nIdeal for Adult/Hormonal Acne\nOily/Combination, Acneic Skin Types\nMinimizes Sebum Production\nRosacea Type II\nPrevents Breakouts\nNon- Greasy\nPABA free\nHelps control breakouts\nMinimizes oil\n\nActive', ingredients:'Zinc Oxide. Inactive Ingredients: Purified Water (Aqua), Certified Organic Aloe Vera Gel, Caprylic/Capric Triglycerides, Prunus Amygdalus Oil, Persea Gratissima Oil, Sesamum Indicum Seed Oil, Zinc Oxide, Glyceryl Stearate, Montmorillonite Clay, Glycerin, Hyaluronic Acid, Sodium PCA, Dimethicone Crosspolymer, Rosa Rubiginosa (Rosehip) Seed Oil, Oenothera Biennis (Evening Primrose) Oil, Borago Ocinalis Seed Oil, Camphor, Sulfur, Bentonite Clay, Tocopheryl Acetate, Hydrolyzed Wheat Protein, Hydrolyzed Silk, Glycine Soya Extract, Panax Ginseng Root Extract, Bisabolol, Dexpanthenol (Vitamin B12), G', size:'1.7oz/50ml', directions:'Apply on face, neck and décolleté. For added hydration, layer over a ClearChoice® Serum.\n\nProfessional Use\n\nUse at the end of a treatment to protect the skin.\n\nAirless Pumps\n\nThis product is in an Airless Pump......\n\nMany ClearChoice products come in AIRLESS PUMPS, so you may need to pump several times to release any excess air or air bubbles that may have occurred during the filling process by the manufacturer.  The product is then sucked up into the pump and dispensed.  As you use the product ' },
-  25: { desc:'As your skin demands critical night time repair, Resist/Rewind Night Lotion Cream penetrates deep within your skin to help fight against breakdown and breakout. While you sleep; Peptides, Antioxidants, and Monk’s Pepper work together as damaging defenders. This renewal state is essential for resisting against future breakouts, diminishing the depth of lines and wrinkles, giving tautness to the skin, and speeding up the regeneration process of skin cells for a clear healthy complexion.\n\nConditions/Recommendations:\n\nIdeal for Adult/Hormonal Acne\nOily/Combination, Acneic, Oily Rosacea Skin Types\nEnhances Collagen\nAll Levels of Acne\nFirms & improves the appearance of fine lines and wrinkles\nEnhances healthy cells and cellular repair\nStimulates collagen and elastin production\nSkin brightening\nPlant stem cell recovery\n\nActive', ingredients:'8% Benzoyl Peroxide Inactive Ingredients: Purified Water, Certified Organic Aloe Vera Gel, Japanese Green Tea Extract, Vegetable Glycerin, Cetearyl Alcohol (and) Ceteareth-20, Benzoyl Peroxide, Caprylic/Capric Triglycerides, Crithmum Maritimum Extract (Sea Fennel Wax), Matrixyl 3000, Palmitoyl- Tripeptide-5, Cucumis Sativus (Cucumber Hydrosol), Organic Curcuma Longa (Turmeric), Carbomer, (2s) - 2 - Amino -5- guanidinopentanoic Acid, Organic Beeswax, Organic Simmondsia Chinensis (Jojoba Oil), Calophyllum Inophyllum (Tamanu Oil), Camellia Sinensis (Green Tea), Thioctic (Alpha Lipoic) Acid, Arcto', size:'1.7oz/50ml', directions:'Apply in the evening. For optimal results use recommended Age Defying Acne System Together. After cleansing, toning, pump R/R Night Lotion on clean hands/fingers, massage into face and neck. Apply any acne spot treatments as last step.\n\nAirless Pumps\n\nThis product is in an Airless Pump......\n\nMany ClearChoice products come in AIRLESS PUMPS, so you may need to pump several times to release any excess air or air bubbles that may have occurred during the filling process by the manufacturer.  The pr' },
-  26: { desc:'This moisturizer has a special blend of nourishing botanicals (Centella Asiatica, Green Tea, and Soy) that help fight free radicals that could lead to nutrient deprived skin. Recent studies have proven that Green Tea is a superior extract for anti-aging, strengthening elasticity, and calming rosacea.\n\nConditions/Recommendations:\n\nSensitive, Normal/Dry Skin Types\nExtreme Weather Conditions\nMature\nRosacea Type I\nPeri-Menopausal\nHelps replenish lost nutrients caused by everyday wear \nUltimate protection against free radicals\nApplies smoothly and absorbs quickly\nHydrating skin all day, leaving skin soft supple \nProtects against thermal aging', ingredients:'Purified Water (Aqua), Certified Organic Aloe Vera Gel, Cetearyl Alcohol, Ceteareth-20,Caprylic/Capric Triglycerides, Sunflower Seed Oil, Glycol Stearate, USP Glycerin, Polygonum Aviculare Extract, Tocopheryl Acetate (Vitamin E), Sesame Seed Oil, Hyaluronic Acid, Wheat Protein Amino Acids, Soy Isoflavonoids, Evening Primrose Oil, Sodium PCA, Ginseng Extract, Grape Seed Extract, Alpha Bisabolol (Chamomile), Green Tea Extract, Horse Chestnut Extract, Allantoin, Sodium Chlorophyll.', size:'1.7oz/50ml  or 8oz (Back Bar - not for resale)', directions:'After cleansing, toning, and application of serums, apply a small amount to entire face, neck, and décolleté.\n\nProfessional Use\n\nUse at conclusion of facial service and follow up with sun protection.\n\nAirless Pumps\n\nThis product is in an Airless Pump......\n\nMany ClearChoice products come in AIRLESS PUMPS, so you may need to pump several times to release any excess air or air bubbles that may have occurred during the filling process by the manufacturer.  The product is then sucked up into the pum' },
-  27: { desc:'PLEASE NOTE YOU MAY ONLY ORDER ONE SAMPLE PACK OF THIS PRODUCT PER ORDER\n\nMaintains its natural bio-protective properties and promotes keratinocyte growth with fibroblast adhesion for a skin regenerating effect. Using daily will enhanced wound healing, skin firmness, elasticity, reduces the appearance of wrinkles, and promotes cellular turnover.\n\nConditions/Recommendations:\n\nAll Skin Types\nExtreme Weather Conditions\nMature\nPeri-Menopausal\nCell Communicating Ingredients\nAccelerated healing properties increasing collagen & elastin production\nPrevents dryness\nProtects skin from extreme weather conditions\nImproves epidermis texture', ingredients:'Purified Water (Aqua), Certified Organic Aloe Vera Gel, Camellia Sinensis Leaf Extract (Green Tea), Sodium Hyaluronate, USP Glycerin, L-Ascorbic Acid (Vitamin C), Tocopherol Acetate(Vitamin E), Ferulic Acid, Copper Gluconate, Pseudoalteromonas Ferment Extract, Butyrospermum Parkii (Shea) Butter, Azulene, Pantothenic Acid, Polygonum Avicular Extract, L-Cartitine, Super Oxide Dismutase, Leontopodium Apinum Extract, L-Ergothionine Bambusa Vulgaris (Bamboo) Extract, Panthenol (Vitamin B5), and Ergocalciferol (Vitamin D), Tocopheryl Acetate, Linoleic Acid, Watermelon Extract, Cyanocobalamin (Vitami', size:'1.7oz/50ml', directions:'After cleansing, toning, and application of serums, apply a small amount to entire face, neck, and décolleté.\n\nProfessional Use\n\nUse at conclusion of facial service and follow up with sun protection.\n\nAirless Pumps\n\nThis product is in an Airless Pump......\n\nMany ClearChoice products come in AIRLESS PUMPS, so you may need to pump several times to release any excess air or air bubbles that may have occurred during the filling process by the manufacturer.  The product is then sucked up into the pum' },
-  28: { desc:'Target unwanted discoloration without the use of hydroquinone with Reconstructive Brightening Cream.  This moisturizer is ideal for daily maintenance to help promote healthy skin and unveil a flawless complexion.\n\nBenefits\n\nReverses premature signs of aging\nActive ingredients are plant-based\nProtects Collagen & Elastin fibers in the Papillary & Reticular Dermis\nImproves skin discoloration & age spots\nExcellent for Sensitive Skin and Rosacea\nInhibits melanin production\nNourishing antioxidant protection to help minimize inflammation', ingredients:'Aqua (Water), Aloe Vera Gel, Caprylic/Capric Triglyceride, Coco-Caprylate/Caprate, Glycerin, Olive Squalane, Butyrospermum Parkii (Shea) Butter, Rosa Canina, Sodium Hyaluronate, Rumex Occidentalis Extract, (Rose Hip) Fruit Oil, Phenyl t-Butylnitrone, rh-Oligopeptide, Caprooyl Tetrapeptide-3, Pelvetia Canaliculata Extract, Kojic Acid, Camellia Sinensis (Green Tea) Leaf Extract, Malva Sylvestris (Mallow) Extract, Mentha Piperita (Peppermint) Leaf Extract, Primula Veris Extract, L-Ergothioneine, Alchemilla Vulgaris Extract, Veronica Officinalis Extract, Melissa Officinalis Leaf Extract, Achillea ', size:'1.7oz/50ml', directions:'For optimal results, apply Reconstructive Brightening Cream morning and evening for the first 3 weeks.  After 3 week, use evening only.\n\nApply a small amount to face, neck, and décolleté, after cleaning toning, and application of serums\n\nProfessional Use\n\nUse at conclusion of facial service and follow up with sun protection.\n\nAirless Pumps\n\nThis product is in an Airless Pump......\n\nMany ClearChoice products come in AIRLESS PUMPS, so you may need to pump several times to release any excess air or' },
-  29: { desc:'PLEASE NOTE YOU MAY ONLY ORDER ONE SAMPLE PACK OF THIS PRODUCT PER ORDER\n\nThis incredible natural moisturizer helps protect moisture deprived skin by\nproviding a protective shield to the face. Intense Moisture will help retain one’s own natural moisture and allow other products to penetrate better. Perfect for those who experience extreme weather conditions.\n\nConditions/Recommendations:\n\nAll Skin Types\nPERFECT FOR DERMAPLANING\nWinterize Skin/ Extreme Weather Conditions\nMenopausal Types\nVaginal Hydration\nPost Peels\nPrevents moisture loss and restores the skin suppleness and flexibility\nNatural\nNon-comedogenic\nOxygen carrier\nHelps aid sunburn\nEliminates dry and dehydrated skin\nProvides a protective barrier to the epidermis\nA superior vehicle for other ingredients', ingredients:'100% Pure Olive Pit Squalane.', size:'1oz/30ml or 8oz/237ml (Back Bar - not for resale)* Samples based on availablity (one sample pack per order)', directions:'Apply to face and neck as a moisturizer or layer over a ClearChoice® moisturizer\n\nProfessional Use\n\nSame as home use. Superior for facial massage. Add 2/3 drops to existing foundation or any moisturizer.' },
-  30: { desc:'', ingredients:'', size:'2oz', directions:'Apply to areas of concern 24-72 hours after procedure.' },
-  31: { desc:'Specially tailored to hydrate and strengthen the delicate skin around the eye area. Formulated with physician recommended ingredients and the most viable botanicals to combat premature aging. Iso Eye Cream provides outstanding results for every concern.\n\nConditions/Recommendations:\n\nAll Skin Types\nSuper Dry Skin\nFragile Delicate Skin\nAllergy Prone Types\nMinimizes the appearance of fine lines\nHelps promote circulation\nSuperior for allergy patients\nReduces puffiness\nMinimizes dark circles\nHelps strengthen delicate skin', ingredients:'Purified Water (Aqua), Certified Organic Aloe Vera Gel, Caprylic/CapricTriglycerides, Sweet Almond Oil, Avocado Oil, Sesame Seed Oil, Glyceryl Stearate, USP Glycerin, Hyaluronic Acid, Sodium PCA, Dimethicone Copolyol, Rosehip Seed Oil, Evening Primrose, Borage Oil, Wheat Protein Amino Acid ( and ) Silk Protein Hydrolysate, Soy Isoflavonoids, Ginseng, Copper Gluconate (Malachite), Eyebright, Alpha Bisabolol (Chamomile), Ginkgo Biloba, Usnea Barbata, Japanese Green Tea, Grapeseed Extract, Centella Asiatica, Retinol Palmitate, Beta Glucan, Phenoxyethanol.', size:'1oz/30ml or 2oz (Back Bar - not for resale)', directions:'Gently pat a small amount around the eye area. AM/PM.\n\nProfessional Use\n\nApply around delicate eye area, add eye pads with Haloxyl™*. *Haloxyl™ is a registered trademark of Sederma.\n\nAirless Pumps\n\nThis product is in an Airless Pump......\n\nMany ClearChoice products come in AIRLESS PUMPS, so you may need to pump several times to release any excess air or air bubbles that may have occurred during the filling process by the manufacturer.  The product is then sucked up into the pump and dispensed.  ' },
-  32: { desc:'GLUTEN FREE\n\nA nurturing blend of Azulene, Echinacea, Calendula, and nature’s own natural anti-bacterial agent, Tea Tree Oil. This powerful lotion strengthens body’s natural defenses calms pain and encourages healing. This flavonoid- rich extract of calendula decrease capillary fragility and helps to maintain healthy small blood vessels in the skin.\n\nConditions/Recommendations:\n\nAll Skin Types\nPost-Epilation\nSevere Cracked Heels\nPeeling Dry Hands & Rough Cuticles\nPost hair removal\nPost tattoo removal\nPermanent Make-up (not recommend for eyeliner treatment)\nPost Laser & Professional Chemical Peels\nMinor skin irritations and rashes \nEczema, Psoriasis, Atopic Dermatitis', ingredients:'Echinacea, Calendula, Tea Tree Oil, Azulene, Certified Organic Aloe Vera Oil, Slippery Elm, Shea Butter, Essential Lavender Oil, Extracts of Comfrey, Plantain, Coconut Oil, Chamomile, Mandarin Orange Extracts.', size:'4oz/113.4g', directions:'Apply to areas of concern. For intense treatments apply gloves or socks.' },
-  33: { desc:'Agevity™ Heavy Serum is an advanced NeuroAdaptive™ morning serum formulated to help skin transition from chronic defense mode into a state of visible renewal and resilience. Inspired by regenerative signaling, it supports healthy cellular communication while delivering intensive hydration, biomimetic peptides, and barrier-strengthening ingredients that encourage smoother, healthier-looking skin. Daily exposure to environmental aggressors can leave skin focused on protection rather than repair.\n\nAgevity™ Heavy Serum helps restore balance by reinforcing the skin barrier, optimizing moisture retention, and supporting a calmer, more resilient complexion. Its intelligent formula works with the skin\'s natural communication pathways to visibly improve texture, comfort, and overall vitality without overwhelming sensitive skin. Ideal for daily use, Agevity™ Heavy Serum leaves skin feeling deeply hydrated, visibly stronger, and better prepared to adapt to everyday stress, creating the foundation for long-term skin health and youthful-looking radiance through NeuroAdaptive™ Technology.\n\nPerfect For:\n\nStressed, depleted, or fatigued-looking skin- Skin showing signs of environmental stress, lif', ingredients:'•Salmon Exosomes- Advanced regenerative-inspired messengers that help support skin communication and visible recovery processes. They encourage healthier looking, more resilient skin and help improve the appearance of overall skin vitality. Supports visible renewal and skin resilience. Sodium DNA (PDRN) - A recovery-focused ingredient that helps support the skin\'s natural repair processes while improving the appearance of stressed, damaged, or aging skin. Promotes visible recovery and rejuvenation. Zinc Oxide - Helps support the skin’s ability to defend against daily environmental stressors wh', size:'1oz/30ml', directions:'Cleanse with your preferred ClearChoice Cleanser. Prepare with toner or treatment mist, if desired. Apply 1 dropper full of Agevity™ Heavy Serum fingertips.. Gently press and smooth into the skin using upward motions.  Apply Moisturizer if needed..  Apply SPF' },
-  34: { desc:'Agevity™ Cushion Serum PM supports overnight recovery by helping replenish hydration, reinforce barrier resilience, and reduce visible signs of daily stress while skin undergoes its natural reset cycle.\n\nAn advanced overnight recovery treatment designed to work in harmony with the skin’s natural nighttime reset cycle. While the skin transitions into its restorative phase, this cushion-like formula helps replenish essential hydration, reinforce barrier resilience, and reduce the visible effects of daily environmental and lifestyle stressors.\n\nFormulated to support optimal recovery conditions, it helps improve the appearance of dryness, fatigue, and imbalance while promoting a calm, nourished, and refreshed looking complexion by morning. Its restorative action focuses on strengthening the skin’s ability to retain moisture and maintain comfort throughout the night, allowing the barrier to appear more resilient and supported over time. Agevity™ Cushion Serum is ideal for skin in need of replenishment, recovery, and rebalancing delivering a smoother, more hydrated, and visibly revitalized appearance upon waking.\n\nPerfect For:\n\nPost-treatment clients needing restorative hydration (as app', ingredients:'Salmon Exosomes - Advanced regenerative-inspired messengers that help support skin communication and visible recovery processes. They encourage healthier looking, more resilient skin and help improve the appearance of overall skin vitality. Supports visible renewal and skin resilience. Sodium DNA (PDRN)- A recovery-focused ingredient that helps support the skin\'s natural repair processes while improving the appearance of stressed, damaged, or aging skin. Promotes visible recovery and rejuvenation. Copper Tripeptide-1 (GHK-Cu)- A powerful peptide known for supporting the appearance of firmness,', size:'1oz/30ml', directions:'Directions: Recommended for PM use. Cleanse skin thoroughly, then prepare with toner or treatment mist, if desired. Apply 1 full dropper of Agevity™ Cushion Serum to face, neck, and décolleté. Gently press and smooth into the skin using upward motions.' },
-  35: { desc:'Powered by Dermal-Sensory™ Technology, this advanced formula uses a biomimetic drone delivery system to deliver stabilized retinal with precision to targeted areas of the skin while helping preserve potency and performance. Designed to intelligently communicate with the skin’s renewal pathways, it supports accelerated cellular turnover, collagen and elastin synthesis, and visible rejuvenation while helping minimize the irritation traditionally associated with high-performance retinoids.\n\nBy using technologies such as drones and micro-encapsulation, these barriers are reduced or eliminated, enabling products to operate more efficiently and deliver targeted results. Essentially, these innovations break down the obstacles that have held back skincare\'s potential until now. It\'s like unlocking a new level of effectiveness!\n\nBENEFITS\n\nImproves skin clarity\nReduces pore size\nImproves skin texture\nEvens out skin tone\nMinimizes the appearance of fine lines\nHelps promote circulation\nDramatically enhances the sun-damaged skin\nImproves acne and problematic skin types', ingredients:'Purified Oxygenated Water (Aqua), Certified Organic Aloe Vera Gel, Retinol (Vitamin A), USP Glycerin, Dimethylaminoethanol (DMAE), Thioctic Acid( Alpha Lipoic Acid), Palmitoyl Tripeptide-8, L-Carnosine, Tocopheryl Acetate (Vitamin E ), Lecithin, Retinyl Palmitate (Vitamin A), Sodium Hyaluronate, NaPCA, d-Pantothenate (Pro-Vitamin B5), Chamomile Extract, Sage Extract, Horsetail Extract, Centella Asiatica Extract, Eyebright, Tripeptide-29, Magnesium Ascorbyl Phosphate, Agastache Mexicana Flower/Leaf/Stem Extract, Palmitoyl Tetrapeptide-7, Olive Squalane, Dextran, Butylene Glycol, Propanediol, Gr', size:'1.7oz/50ml or', directions:'Apply Anti-Wrinkle Retinox over a clean face and neck every night.\nA slight tingling sensation is normal. It may be used under makeup and sunblock.\n\nFor pre-laser, it is suggested two weeks before the procedure. Post-laser, please consult a physician.' },
-  36: { desc:'GLUTEN FREE\n\nThis triple action formula contains corrective ingredients that promote new collagen, elasticity and strengthens fibroblasts. Nightly use will encourage clarity, improve texture and help normalize photo damaged skin.  Contains 10% encapsulated Retinol. \n\nConditions/Recommendations:\n\nAll Skin Types\nAging Conditions\nSun Damage\nDull Complexions\nLoss of Elasticity\nSoothes\nImproves skin clarity\nReduces pore size\nImproves skin texture and evens out skin tone\nMinimizes the appearance of fine lines\nHelps promote circulation\nDramatically improves the sun damaged skin\nImproves acne and problematic skin types', ingredients:'Purified Oxygenated Water (Aqua), Certified Organic Aloe Vera Gel, USP Glycerin, Dimethylaminoethanol (DMAE), Thioctic Acid (Alpha Lipoic Acid), Retinol (Vitamin A), L-Carnosine, Tocopheryl Acetate (Vitamin E), Lecithin, Retinyl Palmitate (Vitamin A), Sodium Hyaluronate, NaPCA, d-Pantothenate (Pro-Vitamin B5), Chamomile Extract, Sage Extract, Horsetail Extract, Centella Asiatica Extract, Eyebright, Magnesium Ascorbyl Phosphate, Olive Squalane and Grapeseed Extract. The pH and REDOX are balanced to facilitate results.', size:'1.7oz/50ml or', directions:'Apply over clean face and neck every night. A slight tingling sensation is normal. May be used under make-up and sunblock. For pre-laser, suggested two weeks prior to the procedure. Post laser, please consult a physician.' },
-  37: { desc:'This multitasking HQ FREE cream restores the natural skin tone by brightening unwanted sunspots and other irregular pigmentation concerns. This combined formula contains professional-strength ingredients and bio-active botanicals to treat the most sensitive of skin. \n\nConditions/Recommendations:\n\nAssists in lightening Age Spots, Pregnancy Masks, Freckles, Sun Spots, and Post Acne Marks\nHelps to even skin tone\nLightens skin\nEssential for pre-peel Tx to inhibit melanin production\nHQ FREE\n\nKey', ingredients:'Glutathione, Tranexamic Acid, Azelaic Acid, Niacinamide, Quercetin, Bacillus/Soybean Ferment ExtractPurified Glyceryl Water, Stearate, Aloe Barbadensis Persea Leaf Gratissima Juice, Seed (Avocado) Oil, Oil, Glutathione, Simmondsia USP Chinensis Glycerin, (Jojoba) Vitis Parkii Vinifera (Shea (Grape) Seed Butter), Oil, Butyrospermum Caprylic/Capric Oil, Triglyceride, Lecithin, Salvia Squalane Hispanica Europaea (Chia) (Olive) Seed Fruit Oil, Acid, Arbutin, Niacinamide Tranexamic Acid, (Vitamin B3), Linoleic Linolenic Acid, Ouercetin, Tocopheryl Potassium Acetate, Azeloyl Caprylic/Capric Diglycin', size:'1.7oz/50ml', directions:'Apply Even Tone every night or as directed by your physician. Sun Protectant is highly recommended while using this product.' },
-  38: { desc:'PLEASE NOTE YOU MAY ONLY ORDER ONE SAMPLE PACK OF THIS PRODUCT PER ORDER\n\nA unique formula that helps improve one’s tone, texture, and appearance. This lightweight lotion utilizes powerful antioxidants to improve firmness, all combined with Vitamins C (L-Ascorbic Acid) and B5. Continued use will stabilize melanin production leaving your skin bright and radiant.\n\nConditions/Recommendations:\n\nAll Skin Types\nSun Damage\nDull Complexions\nLoss of Elasticity\nSoothes Inflammation\nRosacea I & II\nSuperior for sun damaged skin types\nPerfect post peels & laser\nExcellent for Rosacea & Acne\nPatients with sagging, lifeless skin\nHelps even skin tone\nAn accelerator for lightening agents\nEncourages cellular renewal\nPromotes healing', ingredients:'Certified Organic Aloe Vera Gel, Camellia Sinensis (Japanese Green Tea) Leaf Extract, Sodium Hyaluronate, USP Glycerin, Tocopheryl Acetate (Vitamin E), d-Pantothenate (Pro-VitaminB5), L-Ascorbic Acid (Vitamin C), Evening Primrose, Slippery Elm, Borage Oil, Arctostaphylos Uva Ursi, Magnesium Ascorbyl Phosphate (MAP), L-Carnosine, Pycnogenol, Glycyrrhiza Glabra (Licorice) Rhizome/Root, Centella Asiatica, Xanthan Gum, Dimethylaminoethanol (DMAE),Thioctic Acid (Alpha Lipoic), Acerola Extract, Olive Squalane, Co-Enzyme Q-10, Quercetin, Retinyl Palmitate (Vitamin A), Marine Extracts, Neroli Extract.', size:'1.7oz/50ml OR', directions:'Apply A.M. on  a  clean face/neck. Follow with ClearChoice sun protection.\n\nProfessional Use\n\nUse as a treatment serum prior to masque application. Use with ultrasound therapy to facilitate penetration.\n\nReviews\nRated 5 out of 5 stars.\n5.0\nBased on 1 review\nLeave a Review\n5 stars\n1\n4 stars\n0\n3 stars\n0\n2 stars\n0\n1 star\n0\n1 review\nFilter by rating:\nAll stars\nSort by:\nMost Relevant\nMB\n•\nSep 10, 2025\nRated 5 out of 5 stars.\nOMG THE BEST COMPLEX!!!!!\n\nThis is the best facial cream I have used, I can\'' },
-  39: { desc:'An excellent therapy to help diminish Rosacea, dark circles, bruising and unsightly spider veins. This cosmetic secret helps to strengthen capillary walls by rehabilitating damaged skin and renewing underlying tissue.\n\nConditions/Recommendations:\n\nAll Skin Types\nPost-Laser\nPost-Operative Bruising\nRosacea Types I & II\nTelangiestasia/ Couporose\nPost Vein Therapy\nDark Circles\nFragile Hands\nQuick absorbing\nNonstick\nFor post vein garments\nSoothes traumatized skin\nEffective on rosacea patients\nPerfect for vein treatment\nPost-operative\nHelps strengthen capillary walls\nMinimizes bruising', ingredients:'USP Glycerin, Phytonadione (Vitamin K), Squalane.', size:'1oz/30ml', directions:'Apply a small amount to entire face or areas of concern prior to moisturizer' },
-  40: { desc:'A superior hydrating and plumping serum that transforms skin from the inside out. This clinical strength hyaluronic acid isknown for holding up 1000 times its weight in water. Component of skin tissue-HA helps to boost skin’s moisture content, reduce inflammation, triggers cell- communicating abilities, and reduces moisture loss.\n\nConditions/Recommendations:\n\nAll Skin Types\nWinterize Skin/ Extreme Weather Conditions\nMenopausal Types\nVaginal Hydration\nPost Peels\nPost Needling\nHydrating and Plumping\nHighly concentrated for Maximum Results\nFor Use with Professional Treatments: Peels, Micro Current, Micro Needling, MicroDermabrasion & Dermaplaning\nRosacea Types I', ingredients:'65% of Pure Sodium Hyaluronate.', size:'1oz/30ml or 8oz (Back Bar - not for resale)', directions:'Apply a thin layer to entire treatment area before and/or after professional procedure. Follow with ClearChoice® moisturizer or SPF. You may also apply as needed for excessively dry skin. For extra therapy mix 2-3 drops into your moisturizer or foundation to prevent dryness.' },
-  41: { desc:'GLUTEN FREE\n\nComposed of 10% Lactic Acid, 15% Vitamin C, and an amazing natural skin brightener. Together these 3 ingredients provide a unique function to repair, brighten, and stimulate new healthier looking skin. Lumi Lacti-C is recommended for daily to reduce discoloration and maintain and even facial\ncomplexion.\n\nConditions/Recommendations:\n\nAll Skin Types\nHyperpigmentation\nSensitive\nSun Damage\nBrightens skin\nHydrates\nRepairs\nImproves texture\nLightens unwanted dark patches\nStabilizes reoccurring pigmentation\nPerfect for sensitive skin\nHydroquinone Free', ingredients:'Acetyl Boldine, Lactic Acid, L-Ascorbic Acid, Malva Sylvestris Extract, Mentha Piperita Leaf Extract, Primula Veris Extract, Alchemilla Vulgaris Extract, Veronica Ocinalis Extract, Melissa Ocinalis Leaf Extract, Achillea Millefolium Extract, Arctostaphylos Uva Ursi Leaf Extract, Sodium Hyaluronate, d-Pantothenate (Pro Vitamin B5), Magnesium Ascorbyl Phosphate, USP Glycerin.', size:'1oz/30ml', directions:'Apply under moisturizer in the morning and evening for first 4-6 weeks. Apply once thereafter. May be used with Enlighten to treat resistant hyperpigmentation\n\nProfessional Use\n\nUse as a treatment serum prior to masque application. Use with ultra-sound therapy to facilitate penetration.\n\nReviews\nRated 5 out of 5 stars.\n5.0\nBased on 1 review\nLeave a Review\n5 stars\n1\n4 stars\n0\n3 stars\n0\n2 stars\n0\n1 star\n0\n1 review\nFilter by rating:\nAll stars\nSort by:\nMost Relevant\nMB\n•\nJan 07\nRated 5 out of 5 star' },
-  42: { desc:'Night Shield is designed to not only treat what’s visible now, but to prevent what’s coming tomorrow. By combining sebum‑regulation, anti‑inflammatory support, barrier repair and antioxidant protection, the formula addresses the multifactorial nature of breakouts, rosacea, and residual pigmentation — so you wake up to calmer, clearer, more even‑toned skin.\n\nDermal‑Sensory Correction™” Technology\nBuilt around our proprietary Dermal‑Sensory Correction™ delivery system, Night Shield brings together four powerhouse actives to restore optimal skin function and visibly improve complexion clarity by morning.\n\nA targeted overnight treatment formulated to work while you sleep—addressing active breakouts, rosacea flare‑ups, and post‑inflammatory pigmentation, all in a single advanced formula.\n\nPerfect For:\n\nPregnancy-induced melasma and hormonal hyperpigmentation\nRosacea-prone or reactive skin\nRedness, inflammation, and sensitivity\nBreakout-prone clients\nInflammation-driven concerns\n\nWhy Choose O Ceuticals Night Shield?\n\nLong-term corrective care: Early intervention prevents melasma from becoming deeper and more resistant to treatment postpartum, improving long-term outcomes.\nDermal-Sensory ', ingredients:'Water, Carbomer, CICA-Centella Asiatica Extract, Potassium Azeloyl Diglycinate (PAD), Diazolidinyl Urea, Iodopropynyl Butylcarbamate, Palmitoyl Tripeptide-8, Butylene Glycol, Dextran, Dl-Panthenol (Vitamin B5), USP Glycerin, Withania Somnifera (Ashwagandha) Extract, Propanediol.', size:'30ml, 1oz', directions:'' },
-  43: { desc:'Accelerates wound healing and minimizes bruises and other traumatic injuries such as sprains and swelling. Reducing inflammation and decreasing pain, this therapeutic post-procedure gel provides topical relief and hydration to irritated skin. Studies show Arnica Montana has properties that act as an immunostimulant and that it can stimulate the action of white blood cells, increasing resistance to bacterial infections.\n\nConditions & Recommendations:\n\nAlleviates redness\nCalms skin\nPerfect after professional treatments\nEases discomfort\nMinimizes trauma\nReduces inflammation\nPost surgical treatments\nActs as a conductive gel\nPost extractions\nHelps with bruising\nPost waxing\nPre/post massage\nInsect bites\nPost tattoo & removal\nPermanent makeup\nPost Microblading tx\nAfter-sun care', ingredients:'Mandarin Orange Blossom Water, Arnica Montana Flower Extract, Hyaluronic Acid, Certified Aloe Vera Leaf Gel, Cucumis Sativus (Cucumber) Fruit Extract, Symphytum Officinale Root (Comfrey) Extract, Polygonum Aviculare (Knotgrass) Extract, German Chamomile (Chamomilla Recutita Matricaria), Calendula Officinalis Flower (Calendula) Extract, Vitex Agnus Castus (Monk’s Pepper) Extract, Copper Gluconate, Radish Ferment.', size:'1oz/30ml (Individual or 12 Pack)', directions:'Apply a thin layer over treated area to quickly relieve discomfort and residual irritation.\n\nProfessional Use\n\nApply a thin layer over treated area to quickly relieve discomfort and residual irritation.' },
-  44: { desc:'Undercover Patch™ is a hydrocolloid dressing engineered for targeted management of inflammatory Blemish Prone lesions, including pustules and papules. Designed for discreet wear, this ultra-thin occlusive patch supports optimal healing conditions while protecting compromised skin from environmental contaminants and mechanical irritation.\n\nFormulated for all skin types, Undercover Patch™ delivers controlled moisture balance to promote rapid lesion resolution without over-drying the surrounding tissue.\n\nClinical Benefits\n\n✔ Targeted Lesion Management – Creates a protected microenvironment that facilitates absorption of exudate and impurities while minimizing visible inflammation.\n\n✔ Advanced Hydrocolloid Technology – Hydrophilic colloid matrix absorbs excess oil, cellular debris, and purulent material to support accelerated recovery.\n\n✔ Barrier Protection – Shields affected areas from bacteria, pollutants, and repetitive picking, reducing risk of secondary irritation and post-inflammatory discoloration.\n\n✔ Ultra-Thin, Transparent Design – Low-profile, flexible patch adheres seamlessly to the skin for discreet daytime or overnight use.\n\n✔ Moisture-Balancing Occlusion – Maintains optim', ingredients:'Hydrocolloid gel , polyisobutylene, tea tree oil, rosehip seed oil and calendula oil.', size:'1 Sheet (36 Patches = 24 x 8mm, 12 x 12mm)', directions:'Cleanse the affected area thoroughly and ensure skin is completely dry.\n\nRemove the patch from the protective film.\n\nApply directly over the lesion, ensuring full adhesion around the perimeter.\n\nLeave in place for 8–12 hours or until the patch becomes opaque from absorption.\n\nReplace with a new patch as needed. For optimal results, apply prior to sleep.' },
-  45: { desc:'GLUTEN FREE \n\nThis new improved liquid formula BP 8% is 30 times stronger than most Benzoyl Peroxide formulations. Benzoyl Peroxide is an anti-bacterial agent that is safe and is an effective way to combat the spreading of P. Acnes Bacteria.\n\nConditions/Recommendations:\n\nAll Skin Types experiencing acne conditions\nTargets lesions without damaging surrounding skin\nSuited for more Sensitive skin types\nEffectively treats all grades of acne\nAnti-bacterial\nAnti- inflammatory\nOxidizing agent, helps reduce comedones\nReduces the number of yeast cells\nPerfect for those who have experienced bacterial resistance from topical antibiotic therapy, Benzoyl Peroxide can actually reverse this process.\n\nActive Ingredient: 8% Benzoyl Peroxide\n\nInactive', ingredients:'Purified Water, Certified Organic Aloe Vera Gel, Japanese Green Tea Extract, Vegetable Glycerin, Cetearyl Alcohol (and) Ceteareth-20, Caprylic/CapricTriglycerides, Alpha Lipoic Acid, Cetyl Alcohol, Dexapanthenol (Vitamin B5), Vitamin E Acetate, Lecithin, Retinyl Palmitate (Vitamin A), Sodium Hyaluronate, NaPCA, Extracts of Corn Silk, Alpha Bisabolol (Chamomile), Comfrey Root and Centella Asiatica, Magnesium Ascorbyl Phosphate (Vitamin C), Grapeseed Extract.', size:'1.7oz/50ml', directions:'Apply to entire face or affected area. Dryness may occur. Start with one daily application and increase as needed or as directed by your skin care professional. Sunblock is recommended.\n\nProfessional Use\n\nUse as spot treatment on extracted areas' },
-  46: { desc:'GLUTEN FREE \n\nThis “on the spot” treatment is highly advanced to treat unwanted acne lesions. Clinical Spot helps to attack bacteria, improves texture, prevents follicular blockage, minimizes discoloration, aids in healing, and increases the skin’s immunity. Finally a blend of the most effective acne recommended ingredients in one powerful product!\n\nConditions/Recommendations:\n\nAcne Conditions\nEliminates Future Breakouts\nPrevents -PIH Post Inflammatory Hyperpigmentation\nCombats Bacteria\nPrevents future follicular blockage\nControls Sebum Levels\nAids in healing\nPrevents discoloration\nResurfaces the skin\n4% Benyzol Perozide', ingredients:'Vitamin A, Benzoyl Peroxide, Blend of Acids, Centella Asiatica, Pycnogenol, Rice Starch, Vitamin C, Lysine, Vitamin D, Ubiquinone, Green Tea, Certified Organic Aloe Vera Gel, KojicAcid, Palmitoyl Tetrapeptide-7, Slippery Elm, Echinacea, Alpha/Beta Glucan, Quercetin.', size:'0.5oz/15ml', directions:'Use AM / PM as directed by your professional skin care consultant or physician. Discontinue use 24-48 hours prior to professional peel and/or laser treatments. Sunscreen is recommended after using Clinical Spot.' },
-  47: { desc:'', ingredients:'', size:'', directions:'' },
-  48: { desc:'A soft cleanser for delicate skin types containing sage extracts to help reduce irritation and a Neurocosmetic peptide that targets barrier disruption, cosmetic modalities, and repetitive aggression. Our peptide technology, Dermal Sensory Correction™ restores reactive nerves by sending cellular messages to calm and soothe skin back to a normal threshold.\n\nThis nourishing gel cream removes dirt, oil, and makeup without stripping skin. Sulfate-free and clinically tested safe for sensitive skin, you can use this daily to relieve skin tightness and dryness.\n\nConditions/Recommendations:\n\nSensitive or Compromised Skin Types\nOncology clients', ingredients:'Purified Water (Aqua), Ahnfeldtia Concinna, Certified Organic Aloe Vera Gel, Undecylenoyl Oat Amino Acids, Cucumis Sativus (Cucumber) Fruit Extract, USP Glycerin, Glycol Stearate, Soapwort, Yucca, Alpha Bisabolol (Chamomile), Sodium Lactate, Azulene, Shea Butter (Butyrospermum Parkii), Camellia Sinensis (Japanese Green Tea) Leaf Extract, Phenoxyethanol, Sage Extract, Panthenol, Carbomer, Dextran, Palmitoyl Tripeptide-8, Grevillea Speciosa Flower Extract, Banksia Serrata Flower Extract, Anigozanthos Manglesii Flower Extract, Phosphatidylcholine, Haematococcus Pluvialis Extract.', size:'4oz/120ml', directions:'' },
-  49: { desc:'CopperTide Mist is a non-stripping, paraben and silicone-free formula that helps condition itchy, dry skin and stimulate connective tissue growth. Containing neurocosmetic peptides helps decrease immune reactions and mechanical stress, alleviating irritating symptoms.\n\nConditions/Recommendations\n\nSensitive, compromised skin types\nBarrier and Scalp Repair\nAnti-inflammatory, antioxidant, anti-aging \nAlleviates dry irritated skin\nPost Peels\nRepairs damaged skin and improves skin elasticity and smoothness', ingredients:'Deionized Water, Glycerin, Tamarindus Indica Seed Extract, Cucumis Sativus Fruit Extract, Sodium Hyaluronate, Palmitoyl Tripeptide-8, Copper Tripeptide 1( Copper GHK-Cu), Camellia Sinensis Leaf Extract, Chamomilla Recutita Flower Extract, Niacinamide (Vitamin B3), trifluoroacetyl Tripeptide-2, Acetyl Hexapeptide-49, Dextran, sh-Oligopeptide-1(EGF), Polysorbate 20, Phenoxyethanol.', size:'4oz/120ml', directions:'' },
-  50: { desc:'Greybiotics™ Mist/Scalp Spray targets oxidative stress and follicular aging to support melanin renewal and maintain the natural appearance of hair color. Greybiotics™ Mist/Scalp Spray is an Amplifier to CopperTide Mist.  Formulated with biomimetic peptides that activate the α-MSH pathway, catalase boosters, and protective phytoactives, it helps defend follicular cells from stress while promoting stronger, more vibrant hair from the root.\n\nYour scalp is basically a living city of bacteria, yeasts, and fungi. When that microbiome tips out of balance (hello stress, harsh shampoos, or hormones), it triggers inflammation, oxidative stress, and barrier breakdown, all major contributors to hair thinning and loss.\nProbiotics restore harmony by outcompeting the bad microbes and re-educating the skin’s immune response, leading to:\n\nReduced scalp irritation and itching\n\nStronger follicular anchoring\n\nFewer inflammatory cytokines that trigger shedding', ingredients:'Deionized Water, Glycerin, Tamarindus Indica Seed Extract, Cucumis Sativus Fruit Extract, Sodium Hyaluronate, Pisum Sativum (Pea) Sprout Extract, Saccharomyces/Zinc Ferment, Glycoproteins, Centella Asiatica (CICA) Extract, Collagen Amino Acids, Palmitoyl Tetrapeptide-20 Amide, Nicotinamide Adenine Dinucleotide (NAD+), Palmitoyl Tripeptide-8, Schinus Terebinthifolia Seed Extract, DL-Panthenol ( Vitamin B5), Lecithin, Tocopheryl Acetate, Caffeine, Biotin (Vitamin B7), Keratin Amino Acids, Inulin, sh-Oligopeptide-2, Biotinoyl Tripeptide-1, Withania Somnifera Root (Ashwagandha) Extract, Dextran, A', size:'4oz/120ml', directions:'' },
-  51: { desc:'This gentle, hydrating toner is the perfect addition to your skincare routine. Formulated with coconut water and lava water, it helps to restore your skin\'s lipid barrier while providing intense hydration throughout the day. It\'s perfect for sensitive and delicate skin and won\'t cause irritation. Enjoy the refreshing, lightweight feeling of a fully hydrated complexion.\n\nConditions/Recommendations\n\nSensitive, compromised skin types\nDelicately refreshes the skin & protects the hydrolipidic barrier', ingredients:'Coconut Water, Lava Water, Glycerin, Tamarindus Indica Seed Extract, Cucumis Sativus Fruit Extract, Sodium Hyaluronate, Camellia Sinensis Leaf Extract, Chamomilla Recutita Flower Extract, Niacinamide (Vitamin B3), Leontopodium Alpinum Flower/Leaf (Edelweiss) Extract, Astaxanthin, Acetyl Hexapeptide-49, Pisum Sativum Extract, Magnesium, Dextran, Palmitoyl Tripeptide-8, Copper, Iron, Salvia Officinalis (Sage) Leaf Extract, Garcinia Mangostana Peel Extract, Zinc, Cornus Controversa Extract, Polysorbate 20, Tetrahexyldecyl Ascorbate, Glycyrrhiza Glabra (Licorice) Root Extract, Boerhavia Diffusa Ro', size:'4oz/120ml', directions:'' },
-  52: { desc:'Face oils are versatile skincare products that can be used in various ways, including as a standalone moisturizer, mixed with other skincare products such as serums or moisturizers, or as part of a facial massage or treatment. Incorporating face oil into your skincare routine can help nourish, hydrate, protect, and rejuvenate the skin, resulting in a healthier, more radiant complexion. It\'s essential to choose a high-quality face oil suitable for your skin type and needs and to patch-test new products to ensure compatibility and minimize the risk of irritation. \n\nContrary to popular belief, using face oil can actually help regulate sebum (oil) production in the skin. By providing the skin with essential fatty acids and hydration, face oils can signal to the skin that it does not need to produce as much oil, thus balancing oil production and reducing excess sebum. During chemotherapy treatment, the scalp and skin can become dry and sensitive due to the harsh effects of chemotherapy drugs. In such cases, using gentle and moisturizing oils can help alleviate discomfort and maintain the health of the skin and scalp. \n\nChia Oil a versatile barrier repair: The omega-3 fatty acids found i', ingredients:'Salvia Hispanica (Chia) Oil, Silybum Marianum (Milk Thistle) Seed Oil, Vaccinium Angustifolium (Blueberry) Seed Oil, Olive Squalane, Salvia SclareAa (ClaryV) Oil.', size:'1oz/30ml', directions:'' },
-  53: { desc:'Oceuticals B5 Healing Complex is an advanced hydro-repair system formulated to support rapid barrier rehabilitation and skin recovery. Powered by Vitamin B5 (Panthenol), this treatment accelerates the restoration of stratum corneum integrity while significantly reducing transepidermal water loss—two critical factors in compromised or post-procedure skin.\n\nPanthenol acts as a vital cofactor in skin biology, supporting the rebuilding of lipids, proteins, and structural components essential for barrier resilience. In addition to strengthening the skin, it helps calm overstimulated neural pathways, reducing sensitivity and discomfort during the vulnerable healing phase.\n\nFragrance-free, dye-free, and treatment-safe, Oceuticals B5 Healing Complex is designed for professional use and home care alike, delivering controlled, effective recovery without irritation. The result is skin that feels soothed, supported, and resilient. ready to heal properly and perform at its best.\n\nPerfect For: \n\nClients with compromised or post-procedure skin who need fast, effective barrier repair and soothing support.\nIndividuals with sensitive or reactive skin who experience discomfort, redness, or overstimul', ingredients:'Distilled Water, Sodium Hyaluronate, Xylitolglucoside, Glycerin, DL-Panthenol (Vitamin B5), Palmitoyl Tripeptide-8, Dextran, Anhydroxylitol Hydrosoluble Xylitol, Ectoin/Ectoine, Watermelon Extract, Phenoxyethanol, Ethylhexylglycerin', size:'1oz/30ml', directions:'' },
-  54: { desc:'ClearChoice® O Ceuticals Flare is a targeted serum developed to combat inflammatory flare-ups triggered by hormonal changes, environmental irritants, and rosacea or acne prone conditions. This potent formula utilizes advanced Dermal-Sensory Correction™ technology to visibly reduce redness, calm irritation, and restore skin equilibrium.\n\nA blend of soothing actives and barrier-strengthening ingredients helps hydrate and re-balance sensitized skin while minimizing inflammatory triggers. Lightweight and fast-absorbing, it is ideal for daily use or as-needed care during flare-ups.\n\nPerfect for sensitive or reactive skin types, O Ceuticals Flare promotes a visibly smoother, calmer, and more radiant complexion. Whether used post-procedure or during skin stress, this serum strengthens skin resilience and helps prevent future flare-ups with continued use.\n\nPerfect For:\n\nHormonal or environmental flare-ups\nRosacea-prone or reactive skin\nCystic Acne prone skin\nRedness, inflammation, and sensitivity\nStrengthening and soothing the skin barrier\n\nWhy Choose O Ceuticals Flare?\n\nAdvanced Redness Relief: Targets multiple triggers of inflammation and irritation\nDermal-Sensory Correction™: Supports l', ingredients:'', size:'', directions:'' },
-  55: { desc:'Opti Cream is a revolutionary skincare product designed to repair and rehabilitate your skin. Provides long-lasting moisture to keep skin looking smooth, supple, and hydrated day after day. Opti Cream delivers a proven combination of key barrier lipids to help enhance the skin\'s natural resilience and support barrier recovery.\n\nConditions/Recommendations\n\nActively formulated with highly purified quercetin, strong free radical-scavenging bioflavonoids which provide high protection against oxidative injury (ROS protection) and inflammation.', ingredients:'Cocos Nucifera (Coconut Water) Endosperm, Cocos Nucifera Fruit Juice, Aloe Barbadensls Leaf Juice, Olea Europaea Squalane (Olive) Fruit Oil, Persea Gratissima (Avocado) Oil, Quercetin, Simmondsia Chinensis (Jojoba) Seed Oil, Vitis Vinifera (Grape) Seed Oil, Papaver Somnoferurn (Blue) seed, Citrullus Lanatus (Watermelon) Seed Oil, Morinda Citrifolia Fruit Extract, Glycerin, Magnolol, Butyrospermum Parkii (Shea Butter), Honokiol, Palmitoyl Tripeptide-8, Polyglyceryl-10 Dipalmitate, Sorbitan Oleate, Caprylic/Capric Triglyceride, Stearic Acid, Tocopherol (Vitamin E), Cetyl Alcohol, Phenoxyethanol.', size:'2oz/60ml', directions:'' },
-  56: { desc:'Instantly relieves dryness, tightness, and roughness while helping to restore the skin\'s natural barrier function.  Infused with the healing properties of copper, this gentle formula provides soothing relief and rejuvenation. Experience the comforting touch of CopperTide Masque as it nourishes and revitalizes delicate skin, fostering a renewed glow.\n\nConditions/Recommendations\n\nSensitive, compromised skin types\nHydration Booster\nAnti-inflammatory, antioxidant, anti-aging \nAlleviates dry and flaky irritated skin\nPost Peels\nRepairs damaged skin and improves skin elasticity and smoothness\nCopper combined with Hyaluronic Acid shields the barrier from moisture loss and visibly reduce redness', ingredients:'Certified Organic Aloe Vera, Sodium Hyaluronate, Lipid Ceramides, Squalane, Tocopheryl (Vitamin E) Acetate, Ascorbyl (Vitamin C) Palmitate Dimethylaminoethanol (DMAE), Thioctic (Alpha Lipoic) Acid, d- Pantothenate (Pro-Vitamin B5), L-Ascorbic Acid, Chamomile Extract, Palmitoyl Tripeptide-8, Copper Tripeptide 1(Copper GHK-Cu), Salvia Hispanica Seed Oil, Khaya Senegalensis Bark Extract, Maltodextrin, Azulene, Arbutin, Engelhardtia Chrysolepis Leaf Extract, Glutathione, Linoleic Acid, Linolenic Acid, Phenoxyethanol Zinc Oxide, Phenoxyethanol.', size:'2oz/60ml', directions:'' },
-  57: { desc:'Eyedeal Lid Lift is a gentle eye cream that lifts upper eyelids and reduces the severity of dark circles, eye bags, and tear troughs. Activates lymphatic function and reduces droopy lids, aiding in urban aggressors using cooling, soothing copper peptides to relieve exhausted eyes.\n\nConditions/Recommendations\n\nDark Circles\nSmooth\nTightening\nRepairs exhausted eyes\nLifts lids\nHydrates dry, creepy delicate skin', ingredients:'Deionized Water, Aloe Barbadensis Leaf Juice, Glyceryl Stearate, Salvia Hispanica Seed (Chia) Oil, Persea Gratissima (Avocado) Oil, Vitis Vinifera (Grape) Seed Oil, Glycerin, Copper Tripeptide-1 (Copper GHK-Cu), Simmondsia Chinensis (Jojoba) Seed Oil, Butyrospermum Parkii (Shea Butter), Palmitoyl Tripeptide-8, Caprylic/Capric Triglyceride, Squalane/Olea Europaea (Olive) Fruit Oil, Gentiana Lutea Root Extract, Acetyl Tetrapeptide-5, N-Hydroxysuccinimide, Chrysin, Palmitoyl Tetrapeptide-7, Trifluoroacetyl Tripeptide-2, Dextran, Stearic Acid, Triheptanoin, C13-16 Isoalkane, Khaya Senegalensis Bar', size:'.5oz/15ml', directions:'' },
-    };
-
-    // ── SHIPPING (Canada only) ──────────────────────────────────
-    // Weight-tiered flat rates, free over $120 CAD subtotal
-    const FREE_SHIP_THRESHOLD = 120.00;
-    const SHIP_TIERS = [
-      { max: 300,  price: 9.99,  label: 'Light parcel' },   // grams
-      { max: 700,  price: 14.99, label: 'Standard parcel' },
-      { max: Infinity, price: 19.99, label: 'Heavy parcel' }
-    ];
-
-    function calcShipping(subtotal, totalWeight) {
-      if (subtotal >= FREE_SHIP_THRESHOLD) return { price: 0, label: 'Free shipping' };
-      const tier = SHIP_TIERS.find(t => totalWeight <= t.max);
-      return { price: tier.price, label: tier.label };
-    }
 
     let cart = [];
 
-    function renderProducts(filter = 'all') {
+    function renderProducts(filter='all') {
       const grid = document.getElementById('product-grid');
       grid.innerHTML = '';
-
-      const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
-
-      filtered.forEach(product => {
+      const list = filter === 'all' ? products : products.filter(p => p.cat === filter);
+      list.forEach(p => {
         const card = document.createElement('div');
-        card.className = "bg-white rounded-xl border border-stone-200 overflow-hidden flex flex-col hover:shadow-lg transition-all duration-200 group";
+        card.className = 'product-card bg-white rounded-2xl overflow-hidden border border-stone-100 shadow-sm hover:shadow-xl flex flex-col';
         card.innerHTML = `
-          <div class="bg-white aspect-square flex items-center justify-center border-b border-stone-100 p-4 cursor-pointer" onclick="openDetails(${product.id})">
-            <img src="${product.img}" alt="${product.name}" loading="lazy" class="w-full h-full object-contain" onerror="this.style.display='none'">
+          <div class="img-wrap relative overflow-hidden h-52 flex items-center justify-center p-4">
+            <img src="${p.img}" alt="${p.name}" class="product-img h-full w-full object-contain mix-blend-multiply"
+              onerror="this.src='assets/products/${p.cat}-0.png'; this.onerror=null;">
+            <span class="badge absolute top-3 left-3 bg-[#00172D] text-white px-2.5 py-1 rounded-full">${p.badge}</span>
           </div>
-          <div class="p-6 flex flex-col justify-between flex-1">
-            <div>
-              <div class="flex items-center justify-between gap-2 mb-3">
-                <span class="text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 bg-stone-100 text-stone-700 rounded-full group-hover:bg-clinical-teal group-hover:text-white transition">
-                  ${product.badge}
-                </span>
-              </div>
-              <h3 class="font-serif text-base font-bold text-slate-900 group-hover:text-clinical-teal transition leading-snug mb-2 cursor-pointer hover:underline" onclick="openDetails(${product.id})">
-                ${product.name}
-              </h3>
-              <button onclick="openDetails(${product.id})" class="text-xs text-clinical-teal font-semibold hover:underline mb-2">
-                Description &amp; How to Use →
-              </button>
+          <div class="p-4 flex flex-col flex-1">
+            <div class="flex items-center justify-between text-[10px] text-stone-400 mb-1">
+              <span class="uppercase tracking-widest font-semibold text-[#33699D]">${p.cat.replace('anti-aging','Resist & Rewind').replace('cleansers','Cleansers').replace('polishers','Masques').replace('moisturizers','Moisturizers').replace('serums','Serums').replace('acne','Acne Control').replace('oceuticals','Oceuticals')}</span>
+              <span>${p.vol}</span>
             </div>
-            <div class="pt-4 border-t border-stone-100 flex items-center justify-between mt-auto">
+            <h3 class="font-display text-base font-semibold text-slate-900 leading-snug mb-1">${p.name}</h3>
+            <p class="text-[11px] text-stone-500 font-light leading-relaxed mb-4 line-clamp-2 flex-1">${p.desc}</p>
+            <div class="flex items-center justify-between mt-auto pt-3 border-t border-stone-100">
               <div>
-                <span class="text-xs text-stone-400 block font-light">Retail</span>
-                <span class="text-lg font-bold text-slate-900">$${product.price.toFixed(2)} <span class="text-xs font-normal text-stone-500">CAD</span></span>
+                <div class="text-[9px] text-stone-400 uppercase tracking-widest">MSRP</div>
+                <div class="text-base font-semibold text-slate-900">$${p.price.toFixed(2)} <span class="text-[10px] font-normal text-stone-400">CAD</span></div>
               </div>
-              <button onclick="addToCart(${product.id})" class="bg-stone-900 hover:bg-clinical-teal text-white text-xs font-semibold px-4 py-2.5 rounded-lg transition shadow-sm">
-                Add to Cart
+              <button onclick="addToCart(${p.id})" class="bg-[#00172D] hover:bg-[#33699D] text-white text-[11px] font-semibold px-4 py-2 rounded-lg transition">
+                + Cart
               </button>
             </div>
           </div>
@@ -442,124 +242,60 @@
       });
     }
 
-    // ── Product Details Modal ───────────────────────────────
-    function openDetails(productId) {
-      const product = products.find(p => p.id === productId);
-      const details = PRODUCT_DETAILS[productId] || {};
-      if (!product) return;
-
-      document.getElementById('detail-img').src = product.img;
-      document.getElementById('detail-img').alt = product.name;
-      document.getElementById('detail-badge').innerText = product.badge;
-      document.getElementById('detail-name').innerText = product.name;
-      document.getElementById('detail-price').innerText = `$${product.price.toFixed(2)} CAD`;
-      document.getElementById('detail-size').innerText = details.size ? `Size: ${details.size}` : '';
-      document.getElementById('detail-desc').innerText = details.desc || 'Description coming soon.';
-      document.getElementById('detail-directions').innerText = details.directions || 'See product packaging for directions, or ask our team.';
-      document.getElementById('detail-ingredients').innerText = details.ingredients || 'Full ingredient list available on request.';
-      document.getElementById('detail-addbtn').setAttribute('onclick', `addToCart(${productId}); closeDetails();`);
-
-      document.getElementById('detail-modal').classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeDetails() {
-      document.getElementById('detail-modal').classList.add('hidden');
-      document.body.style.overflow = '';
-    }
-
-    function filterCategory(cat) {
+    function filterCat(cat) {
       document.querySelectorAll('.category-btn').forEach(btn => {
-        if(btn.dataset.category === cat) {
-          btn.className = "category-btn active px-4 py-2 rounded-full text-xs font-semibold transition whitespace-nowrap bg-slate-900 text-white shadow-sm";
-        } else {
-          btn.className = "category-btn px-4 py-2 rounded-full text-xs font-semibold transition whitespace-nowrap bg-white text-slate-700 hover:bg-stone-200 border border-stone-200";
-        }
+        btn.className = btn.dataset.cat === cat
+          ? 'category-btn pill-active px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition'
+          : 'category-btn pill-inactive px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition';
       });
       renderProducts(cat);
     }
 
-    function addToCart(productId) {
-      const item = products.find(p => p.id === productId);
-      const existing = cart.find(c => c.id === productId);
-      if(existing) {
-        existing.qty += 1;
-      } else {
-        cart.push({ ...item, qty: 1 });
-      }
+    function addToCart(id) {
+      const item = products.find(p => p.id === id);
+      const ex = cart.find(c => c.id === id);
+      ex ? ex.qty++ : cart.push({...item, qty:1});
       updateCartUI();
       toggleCart(true);
     }
 
-    function removeFromCart(productId) {
-      cart = cart.filter(c => c.id !== productId);
+    function removeFromCart(id) {
+      cart = cart.filter(c => c.id !== id);
       updateCartUI();
     }
 
     function updateCartUI() {
-      const countEl = document.getElementById('cart-count');
-      const itemsEl = document.getElementById('cart-items');
-      const subtotalEl = document.getElementById('cart-subtotal');
-      const shippingEl = document.getElementById('cart-shipping');
-      const shipLabelEl = document.getElementById('ship-tier-label');
-      const totalEl = document.getElementById('cart-total');
-      const nudgeEl = document.getElementById('free-ship-nudge');
-
-      const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
-      const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-      const totalWeight = cart.reduce((sum, item) => sum + (item.weight * item.qty), 0);
-      const shipping = calcShipping(subtotal, totalWeight);
-      const total = subtotal + shipping.price;
-
-      countEl.innerText = totalItems;
-      subtotalEl.innerText = `$${subtotal.toFixed(2)} CAD`;
-      shippingEl.innerText = shipping.price === 0 ? 'FREE' : `$${shipping.price.toFixed(2)} CAD`;
-      shipLabelEl.innerText = subtotal > 0 ? `(${shipping.label})` : '';
-      totalEl.innerText = `$${total.toFixed(2)} CAD`;
-
-      if (subtotal > 0 && subtotal < FREE_SHIP_THRESHOLD) {
-        const remaining = (FREE_SHIP_THRESHOLD - subtotal).toFixed(2);
-        nudgeEl.innerText = `Add $${remaining} more for free shipping`;
-        nudgeEl.classList.remove('hidden');
-      } else {
-        nudgeEl.classList.add('hidden');
-      }
-
-      if(cart.length === 0) {
-        itemsEl.innerHTML = `<p class="text-sm text-stone-500 text-center py-8">Your cart is empty.</p>`;
-        return;
-      }
-
-      itemsEl.innerHTML = cart.map(item => `
-        <div class="flex items-center gap-3 border-b border-stone-100 pb-3">
-          <img src="${item.img}" alt="${item.name}" class="w-12 h-12 object-contain bg-stone-50 rounded border border-stone-100 flex-shrink-0">
-          <div class="flex-1">
-            <h5 class="text-sm font-bold text-slate-900">${item.name}</h5>
-            <span class="text-xs text-stone-500 font-mono">$${item.price.toFixed(2)} CAD &times; ${item.qty}</span>
-          </div>
-          <button onclick="removeFromCart(${item.id})" class="text-xs text-red-500 hover:underline flex-shrink-0">Remove</button>
-        </div>
-      `).join('');
+      const total = cart.reduce((s,i) => s + i.qty, 0);
+      const sub = cart.reduce((s,i) => s + i.price * i.qty, 0);
+      document.getElementById('cart-count').innerText = total;
+      document.getElementById('cart-subtotal').innerText = `$${sub.toFixed(2)} CAD`;
+      document.getElementById('cart-items').innerHTML = cart.length === 0
+        ? '<p class="text-sm text-stone-400 text-center py-12">Your cart is empty.</p>'
+        : cart.map(i => `
+          <div class="flex items-center gap-3 border-b border-stone-100 pb-4">
+            <img src="${i.img}" class="w-14 h-14 object-contain rounded-lg bg-stone-50 p-1" onerror="this.style.display='none'">
+            <div class="flex-1 min-w-0">
+              <div class="text-sm font-semibold text-slate-900 truncate">${i.name}</div>
+              <div class="text-xs text-stone-500">$${i.price.toFixed(2)} × ${i.qty}</div>
+            </div>
+            <button onclick="removeFromCart(${i.id})" class="text-xs text-red-400 hover:text-red-600 transition shrink-0">✕</button>
+          </div>`).join('');
     }
 
-    function toggleCart(forceOpen = false) {
+    function toggleCart(open) {
       const drawer = document.getElementById('cart-drawer');
-      if(forceOpen || drawer.classList.contains('translate-x-full')) {
-        drawer.classList.remove('translate-x-full');
-      } else {
-        drawer.classList.add('translate-x-full');
-      }
+      const overlay = document.getElementById('cart-overlay');
+      const isOpen = !drawer.classList.contains('translate-x-full');
+      const show = open === true ? true : open === false ? false : !isOpen;
+      drawer.classList.toggle('translate-x-full', !show);
+      overlay.classList.toggle('hidden', !show);
     }
 
     function checkoutSquare() {
-      if(cart.length === 0) {
-        alert("Your cart is empty.");
-        return;
-      }
-      // Redirects to Oxyderm's verified Square Online Checkout endpoint with UTM attribution
-      window.location.href = "https://book.squareup.com/appointments/book/merchant/SA5CTAH41JNY2/services?utm_source=oxyderm_shop&utm_medium=clearchoice_storefront&utm_campaign=keystone_retail";
+      if(!cart.length) { alert('Your cart is empty.'); return; }
+      window.open(SQUARE_URL, '_blank');
     }
 
-    // Initial render
     renderProducts();
   </script>
 </body>
