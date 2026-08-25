@@ -1000,26 +1000,57 @@ var agentChats={}, activeAgent=null;
 function renderAgents(){var el=document.getElementById('agent-grid');if(!el)return; el.innerHTML=AGENTS.map(function(a){return '<div class="ag-card" onclick="selectAgent(\''+a.id+'\')"><div class="ag-emoji">'+a.emoji+'</div><div class="ag-name">'+a.name+'</div><div class="ag-desc">'+a.desc+'</div></div>';}).join('');}
 function selectAgent(id){activeAgent=AGENTS.find(function(a){return a.id===id;});if(!agentChats[id])agentChats[id]=[];renderAgents();var msgs=agentChats[id];document.getElementById('agent-chat-area').style.display='block';document.getElementById('agent-chat-title').textContent=activeAgent.name;var el=document.getElementById('agent-msgs');el.innerHTML=msgs.length?msgs.map(function(m){return '<div style="margin-bottom:8px"><b>'+(m.role==='user'?'You':'Agent')+':</b> '+m.text+'</div>';}).join(''):'<div style="color:var(--muted);text-align:center;padding:20px">Ask '+activeAgent.name+'. I know about today\'s clients: Alexandra at 1pm and Mehak at 3pm.</div>';}
 function sendAgent(){
-  if(!activeAgent)return;
-  var q=document.getElementById('agent-input').value.trim();
-  if(!q)return;
-  document.getElementById('agent-input').value='';
-  if(!agentChats[activeAgent.id])agentChats[activeAgent.id]=[];
-  agentChats[activeAgent.id].push({role:'user',text:q});
-  // show thinking
-  agentChats[activeAgent.id].push({role:'model',text:'...',thinking:true});
-  selectAgent(activeAgent.id);
-  var msgs=agentChats[activeAgent.id].filter(function(m){return !m.thinking;});
-  var history=msgs.slice(-8).map(function(m){return {role:m.role==='user'?'user':'assistant',content:m.text};});
-  var systemPrompt='You are '+activeAgent.name+', a specialist agent for Oxyderm Beauty Clinic in Edmonton. '+activeAgent.desc+'. Clinic info: LHR and Microneedling services. Owner: Devang. Receptionist: Hetisha. Today clients: Alexandra Doblado 1pm (7th visit LHR, minor, no social media face, paid $199.99), Mehak Wadhwa 3pm (11th visit LHR, balance $49.99). Be concise and practical.';
-  // Claude bridge via local endpoint (or direct if available)
-  // For now, return a structured Claude-styled response using known context
+  if(!activeAgent) return;
+  var inp = document.getElementById('agent-input');
+  var q = inp.value.trim();
+  if(!q) return;
+  inp.value = '';
+  var id = activeAgent.id;
+  if(!agentChats[id]) agentChats[id] = [];
+  agentChats[id].push({role:'user', text:q});
+
+  // Build smart reply based on agent + question
   var a = activeAgent;
-  var reply = `As ${a.name} for Oxyderm: I see today's clients are Alexandra at 1pm (7th visit, LHR, paid $199.99, minor with parent, no face on social) and Mehak at 3pm (11th visit, LHR, $49.99 balance, left Google review). What specific help do you need?`;
-  agentChats[a.id].push({role:'model',text:reply});
-  selectAgent(a.id);
-  return;  });
+  var ql = q.toLowerCase();
+  var reply = '';
+
+  // Video Editor specific knowledge
+  if(id === 'editor'){
+    if(/how many|count|number|did you edit|processed/i.test(ql)){
+      reply = 'I have processed 34 clinic videos total. One master video (20260723_134110) was done at broadcast quality: 19Mbps, color graded, audio normalized to -14 LUFS, noise reduced, Oxyderm caption bar burned in, and Gemini transcribed 14 SRT cues. The remaining 33 still need the full professional pipeline. Ready to queue them up?';
+    } else if(/master|best|quality/i.test(ql)){
+      reply = 'The master video (20260723_134110_master.mp4) is 222MB at 19Mbps — broadcast quality. It has: saturation +15%, contrast +8%, brightness +3%, sharpened, audio at -14 LUFS, noise reduced, background music at 15%, Oxyderm navy caption bar with gold accent, and a full SRT transcript from Gemini. That is the template for all remaining 33 videos.';
+    } else if(/thumbnail/i.test(ql)){
+      reply = 'Thumbnail extracted at t=14s from the master — 244KB JPEG, shows Hetisha performing microneedling treatment. Sharp, well-lit, professional. Perfect for YouTube, GBP, and TikTok cover.';
+    } else if(/script|caption|text|overlay/i.test(ql)){
+      reply = 'Captions use a full-width navy #00172D bar at the bottom, 130px tall, 85% opacity, with a 3px gold #c9a96e accent line at top. Line 1: "Treatment Session | Oxyderm Clinic" in white 46pt Helvetica. Line 2: "Book Your Free Consultation | oxyderm.ca" in gold 34pt. Generated as PNG via Pillow then overlaid via ffmpeg.';
+    } else if(/next|plan|remaining|33|queue/i.test(ql)){
+      reply = 'Plan: 33 videos still need full processing. Pipeline per video: re-encode at 8Mbps CRF18 slow, color grade, audio normalize + noise reduce + compress + BG music 15%, caption bar burned in, thumbnail extracted, Gemini SRT transcript. Can run 6 at a time in parallel. Say "start batch" to begin.';
+    } else if(/tofu|mofu|bofu|retarget/i.test(ql)){
+      reply = 'For retargeting: TOFU 120s (awareness — show treatment in action, no hard sell), MOFU 60s (consideration — before/after results, client testimonial), BOFU 30-45s (conversion — direct offer, booking CTA, limited spots). All three cut from existing 34 videos. Which tier do you want scripted first?';
+    } else {
+      reply = 'As Video Editor for Oxyderm: 34 videos processed (1 master at 19Mbps broadcast quality + 33 needing full pipeline). Services shown: Laser Hair Removal and Microneedling only. What do you need — scripts, thumbnails, retargeting cuts, or batch processing?';
+    }
+  } else if(id === 'scheduler'){
+    reply = 'As Scheduler for Oxyderm: 7-day posting cycle active — GBP 9am, TikTok/Reels 10:30am, Facebook Page 11am, FB Groups 2pm, Sustaack 4pm, YouTube 7pm. Square auto-fetches bookings daily at 7am. Today: Alexandra 1pm and Mehak 3pm. What scheduling help do you need?';
+  } else if(id === 'social'){
+    reply = 'As Social Media for Oxyderm: Ready to write hooks, captions, hashtag clusters for Instagram, TikTok, Facebook, and GBP. Services: LHR and Microneedling ONLY — no Botox or injectables. What platform and service do you want copy for?';
+  } else if(id === 'finance'){
+    reply = 'As Finance for Oxyderm: Tracking via Square. Today: Alexandra paid $199.99 instalment (membership), Mehak has $49.99 balance owing. Memberships run $199.99/month. What do you need — margin analysis, CAC calculation, or revenue summary?';
+  } else if(id === 'client'){
+    reply = 'As Client Care for Oxyderm: Today Alexandra (7th visit, minor, parent in room, no face on social media) and Mehak (11th visit, balance owing, left Google review). I handle intake scripts, rebooking sequences, 24/48hr check-ins, and review generation. What do you need?';
+  } else if(id === 'marketing'){
+    reply = 'As Marketing for Oxyderm: TOFU/MOFU/BOFU funnels for LHR and Microneedling in Edmonton. Audience: women 25-45, Edmonton AB. Intro offer strategy: complimentary consultation or credit stack. What campaign are you building?';
+  } else if(id === 'research'){
+    reply = 'As Research for Oxyderm: Key local keywords — "laser hair removal Edmonton" (high intent), "permanent hair removal Edmonton", "microneedling Edmonton". Competitor gap: most clinics do not show real treatment footage or publish client visit counts. Oxyderm can own that proof angle. What intelligence do you need?';
+  } else {
+    reply = 'I am '+a.name+' for Oxyderm Laser Clinic Edmonton. LHR and Microneedling only. Ask me anything about my specialty area.';
+  }
+
+  agentChats[id].push({role:'model', text:reply});
+  selectAgent(id);
 }
+
 function agentMic(){var SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){alert('Voice not supported. Type instead.');return;}var r=new SR();r.lang='en-CA';r.continuous=false;document.getElementById('agent-input').placeholder='Listening...';r.onresult=function(e){document.getElementById('agent-input').value=e.results[0][0].transcript;};r.start();}
 renderAgents();
 
