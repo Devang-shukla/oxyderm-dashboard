@@ -184,6 +184,18 @@ textarea{min-height:65px;resize:vertical}
 .lb-bg img{max-width:90vw;max-height:85vh;border-radius:10px;display:block}
 
 .ftr{text-align:center;padding:16px;font-size:10px;color:var(--muted)}
+
+/* AGENTS */
+.ag-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:4px}
+.ag-card{background:var(--card);border:2px solid var(--border);border-radius:12px;padding:14px;cursor:pointer;text-align:center;transition:all .15s}
+.ag-card:hover{border-color:var(--gold);background:var(--card2)}
+.ag-card.ag-active{background:var(--card2)}
+.ag-emoji{font-size:28px;margin-bottom:6px}
+.ag-name{font-size:13px;font-weight:700;margin-bottom:4px}
+.ag-desc{font-size:10px;color:var(--muted);line-height:1.4}
+
+/* MIC PULSE */
+@keyframes micpulse{0%,100%{transform:scale(1);opacity:.7}50%{transform:scale(1.3);opacity:.3}}
 </style>
 </head>
 <body>
@@ -205,11 +217,14 @@ textarea{min-height:65px;resize:vertical}
 <!-- TABS -->
 <div class="tabs" id="tabs">
   <button class="tab on" onclick="goTab('schedule',this)">📅 Schedule</button>
+  <button class="tab" onclick="goTab('calendar',this)">📆 Calendar</button>
+  <button class="tab" onclick="goTab('voice',this)">🎤 Ask Sarah</button>
   <button class="tab" onclick="goTab('posts',this)">📣 Posts</button>
   <button class="tab" onclick="goTab('videos',this)">🎬 Videos</button>
   <button class="tab" onclick="goTab('images',this)">🖼 Images</button>
   <button class="tab" onclick="goTab('expenses',this)">💰 Expenses</button>
   <button class="tab" onclick="goTab('preauth',this)">🔒 Pre-Auth</button>
+  <button class="tab" onclick="goTab('agents',this)">🤖 Agents</button>
 </div>
 
 <!-- ═══ SCHEDULE ═══ -->
@@ -254,6 +269,85 @@ textarea{min-height:65px;resize:vertical}
 
   <div class="stl">Posting Schedule — tap row to open platform</div>
   <div id="sched-list"></div>
+</div>
+
+<!-- ═══ CALENDAR ═══ -->
+<div class="pnl" id="pnl-calendar">
+  <div class="stl">Booking Calendar</div>
+  <iframe src="calendar.html" style="width:100%;height:75vh;border:none;border-radius:12px;background:var(--card)" id="cal-frame"></iframe>
+  <div style="margin-top:10px;text-align:center">
+    <a href="calendar.html" target="_blank" class="btn btn-outline" style="display:inline-block;text-decoration:none;font-size:12px">Open Full Calendar</a>
+  </div>
+</div>
+
+<!-- ═══ VOICE / ASK SARAH ═══ -->
+<div class="pnl" id="pnl-voice">
+  <div class="stl">Ask Sarah — Clinic Assistant</div>
+
+  <!-- Mic button -->
+  <div style="display:flex;flex-direction:column;align-items:center;padding:20px 0 10px">
+    <div style="position:relative;width:90px;height:90px">
+      <div id="mic-ring" style="position:absolute;inset:0;border-radius:50%;border:3px solid var(--gold);opacity:0;transition:all .3s"></div>
+      <button id="mic-btn" onclick="toggleVoice()" style="position:absolute;inset:8px;background:linear-gradient(135deg,#001f3d,#002a50);border:2px solid var(--gold);border-radius:50%;font-size:28px;cursor:pointer;color:var(--fg);transition:all .2s">🎤</button>
+    </div>
+    <div id="mic-status" style="margin-top:12px;font-size:13px;color:var(--muted);text-align:center">Tap mic or type below — ask anything about today</div>
+  </div>
+
+  <!-- Text input -->
+  <div style="display:flex;gap:8px;margin-bottom:12px">
+    <input type="text" id="sarah-input" placeholder='Ask: "Who is at 3pm?" "What did Mehak pay?" "Any notes for today?"'
+      onkeydown="if(event.key==='Enter'){askSarah(this.value);this.value='';}">
+    <button class="btn btn-gold" onclick="var v=document.getElementById('sarah-input');askSarah(v.value);v.value=''">Ask</button>
+  </div>
+
+  <!-- Answer box -->
+  <div id="sarah-answer" style="display:none;background:var(--card);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:12px;padding:14px;margin-bottom:14px">
+    <div style="font-size:10px;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">Sarah</div>
+    <div id="sarah-text" style="font-size:14px;line-height:1.65"></div>
+    <div style="display:flex;gap:8px;margin-top:10px">
+      <button class="btn btn-outline btn-sm" onclick="speakLast()">🔊 Repeat</button>
+      <button class="btn btn-outline btn-sm" onclick="document.getElementById('sarah-answer').style.display='none'">Dismiss</button>
+    </div>
+  </div>
+
+  <!-- Today's appointments quick view -->
+  <div class="stl">Today's Clients</div>
+  <div class="card" style="padding:10px 14px">
+    <div class="appt">
+      <div class="appt-time">1:00 PM</div>
+      <div class="appt-body">
+        <div class="appt-name">Alexandra Doblado</div>
+        <div class="appt-svc">LHR — legs, toes, fingers, arms, underarms</div>
+        <div class="appt-tags">
+          <span class="tag t-blue">7th visit</span>
+          <span class="tag t-green">Paid $199.99</span>
+          <span class="tag t-red">⚠ Minor - parent in room</span>
+          <span class="tag t-red">⚠ No face on social media</span>
+        </div>
+        <div style="display:flex;gap:6px;margin-top:8px">
+          <button class="btn btn-outline btn-sm" onclick="askSarah('What are the notes for Alexandra?')">Notes</button>
+          <button class="btn btn-outline btn-sm" onclick="askSarah('What visit is Alexandra on?')">Visit</button>
+          <button class="btn btn-outline btn-sm" onclick="askSarah('What did Alexandra pay?')">Payment</button>
+        </div>
+      </div>
+    </div>
+    <div class="appt">
+      <div class="appt-time">3:00 PM</div>
+      <div class="appt-body">
+        <div class="appt-name">Mehak Wadhwa</div>
+        <div class="appt-svc">LHR — legs, fingers, arms, underarms, face, abdomen, back, Brazilian</div>
+        <div class="appt-tags">
+          <span class="tag t-blue">11th visit</span>
+          <span class="tag t-yellow">Balance $49.99 owing</span>
+        </div>
+        <div style="display:flex;gap:6px;margin-top:8px">
+          <button class="btn btn-outline btn-sm" onclick="askSarah('What are the notes for Mehak?')">Notes</button>
+          <button class="btn btn-outline btn-sm" onclick="askSarah('What visit is Mehak on?')">Visit</button>
+          <button class="btn btn-outline btn-sm" onclick="askSarah('What did Mehak pay?')">Payment</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- ═══ POSTS ═══ -->
@@ -402,6 +496,23 @@ textarea{min-height:65px;resize:vertical}
   <div class="ni"><div class="nt">FB Group Joined</div><div class="nb">Edmonton Chat (36K members) approved.</div><div class="nd">This week</div></div>
   <div class="ni"><div class="nt">Square Connected</div><div class="nb">2,749 customers synced. 2 appointments today.</div><div class="nd">Phase 1</div></div>
   <div class="ni"><div class="nt">Gemini API Active</div><div class="nb">AI features enabled. Speech-to-text ready.</div><div class="nd">Today</div></div>
+</div>
+
+<!-- ═══ AGENTS ═══ -->
+<div class="pnl" id="pnl-agents">
+  <div class="stl">AI Agents — tap one to start talking</div>
+  <div class="ag-grid" id="agent-grid"></div>
+
+  <div id="agent-chat-area" style="display:none;margin-top:16px">
+    <div class="stl" id="agent-chat-title">Agent</div>
+    <div id="agent-msgs" style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px;min-height:200px;max-height:50vh;overflow-y:auto;margin-bottom:10px"></div>
+    <div style="display:flex;gap:8px">
+      <input type="text" id="agent-input" placeholder="Ask the agent..." onkeydown="if(event.key==='Enter')sendAgent()">
+      <button class="btn btn-outline" id="agent-mic-btn" onclick="agentMic()" style="flex-shrink:0">🎤</button>
+      <button class="btn btn-gold" onclick="sendAgent()" style="flex-shrink:0">Send</button>
+    </div>
+    <button class="btn btn-outline btn-sm" style="margin-top:8px" onclick="if(activeAgent&&agentChats[activeAgent.id]){agentChats[activeAgent.id]=[];renderAgentChat();}">Clear Chat</button>
+  </div>
 </div>
 
 <div class="ftr">Built with Agency OS - AI Lead Builder</div>
@@ -779,6 +890,8 @@ function savePreauth() {
 function collectPA(i) { preauths[i].collected=true; preauths[i].collectedOn=new Date().toISOString(); localStorage.setItem('ox-pa',JSON.stringify(preauths)); renderPreauth(); }
 function delPA(i) { if(confirm('Delete pre-auth?')){ preauths.splice(i,1); localStorage.setItem('ox-pa',JSON.stringify(preauths)); renderPreauth(); } }
 renderPreauth();
+
+// ── SARAH VOICE ASSISTANT ──
 </script>
 </body>
 </html>
