@@ -15,9 +15,10 @@
   --green: #2ecc71; --yellow: #f39c12; --red: #e74c3c; --blue: #3498db;
 }
 * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
-body { background:var(--bg); color:var(--fg); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; min-height:100vh; padding-bottom:30px; }
+body { background:var(--bg); color:var(--fg); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; min-height:100vh; padding-bottom:40px; }
 
-.header { background:linear-gradient(135deg,#00172D,#001f3d); border-bottom:2px solid var(--gold); padding:14px 18px 12px; position:sticky; top:0; z-index:50; }
+/* HEADER */
+.header { background:linear-gradient(135deg,#00172D,#001f3d); border-bottom:2px solid var(--gold); padding:14px 18px 12px; position:sticky; top:0; z-index:100; }
 .header-row { display:flex; align-items:center; justify-content:space-between; }
 .logo { font-size:19px; font-weight:700; }
 .logo span { color:var(--gold); }
@@ -25,7 +26,16 @@ body { background:var(--bg); color:var(--fg); font-family:-apple-system,BlinkMac
 .wa-btn { display:flex; align-items:center; gap:6px; background:#25D366; color:#fff; text-decoration:none; padding:9px 14px; border-radius:24px; font-weight:600; font-size:12px; }
 .wa-btn svg { width:16px; height:16px; fill:#fff; }
 
-/* Voice area */
+/* TABS */
+.tabs { display:flex; background:#001020; border-bottom:1px solid var(--border); position:sticky; top:62px; z-index:99; }
+.tab { flex:1; padding:12px 4px; text-align:center; font-size:12px; font-weight:600; color:var(--muted); cursor:pointer; border-bottom:2px solid transparent; transition:all 0.2s; }
+.tab.active { color:var(--gold); border-bottom-color:var(--gold); }
+
+/* PANELS */
+.panel { display:none; }
+.panel.active { display:block; }
+
+/* VOICE */
 .voice-area { padding:16px 18px 0; }
 .mic-wrap { display:flex; flex-direction:column; align-items:center; gap:10px; }
 .mic-ring { position:relative; width:96px; height:96px; }
@@ -37,26 +47,35 @@ body { background:var(--bg); color:var(--fg); font-family:-apple-system,BlinkMac
 .mic-circle:active { transform:scale(0.93); }
 .mic-status { font-size:13px; color:var(--muted); text-align:center; }
 .mic-status.active { color:var(--gold); font-weight:600; }
-
-/* Text input */
 .text-row { display:flex; gap:8px; margin-top:12px; }
 .text-row input { flex:1; background:#001020; border:1px solid var(--border); color:var(--fg); padding:12px 14px; border-radius:12px; font-size:14px; outline:none; }
 .text-row input:focus { border-color:var(--gold); }
 .text-row button { background:var(--gold); color:#00172D; border:none; padding:12px 16px; border-radius:12px; font-weight:700; font-size:14px; cursor:pointer; }
-
-/* Answer */
 .answer-box { margin:12px 18px 0; background:var(--card); border:1px solid var(--border); border-left:3px solid var(--gold); border-radius:12px; padding:14px; display:none; }
 .answer-box.show { display:block; }
 .answer-lbl { font-size:10px; color:var(--gold); font-weight:700; text-transform:uppercase; letter-spacing:0.6px; margin-bottom:8px; }
 .answer-text { font-size:14px; line-height:1.65; }
 .answer-actions { display:flex; gap:8px; margin-top:10px; }
 .answer-actions button { background:#001020; border:1px solid var(--border); color:var(--muted); padding:7px 12px; border-radius:8px; font-size:12px; cursor:pointer; }
-.answer-actions button:active { border-color:var(--gold); color:var(--gold); }
 
-/* Schedule */
+/* SCHEDULE */
 .section { padding:16px 18px 0; }
-.section-title { font-size:12px; font-weight:700; color:var(--gold); text-transform:uppercase; letter-spacing:0.7px; margin-bottom:10px; }
+.section-title { font-size:12px; font-weight:700; color:var(--gold); text-transform:uppercase; letter-spacing:0.7px; margin-bottom:10px; display:flex; justify-content:space-between; align-items:center; }
+.refresh-btn { background:none; border:1px solid var(--border); color:var(--muted); padding:4px 10px; border-radius:8px; font-size:11px; cursor:pointer; }
+.refresh-btn:active { border-color:var(--gold); color:var(--gold); }
 
+/* Day tabs */
+.day-tabs { display:flex; gap:6px; padding:12px 18px 0; overflow-x:auto; scrollbar-width:none; }
+.day-tabs::-webkit-scrollbar { display:none; }
+.day-tab { flex-shrink:0; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:8px 12px; text-align:center; cursor:pointer; min-width:64px; }
+.day-tab.active { border-color:var(--gold); background:#001f3d; }
+.day-tab .dt-name { font-size:11px; color:var(--muted); font-weight:600; }
+.day-tab.active .dt-name { color:var(--gold); }
+.day-tab .dt-count { font-size:18px; font-weight:700; color:var(--fg); }
+.day-tab.active .dt-count { color:var(--gold); }
+.day-tab .dt-day { font-size:10px; color:var(--muted); margin-top:1px; }
+
+/* Appointment cards */
 .appt-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px; margin-bottom:10px; cursor:pointer; transition:border-color 0.2s; }
 .appt-card:active { border-color:var(--gold); }
 .appt-card.expanded { border-color:var(--gold); }
@@ -73,7 +92,6 @@ body { background:var(--bg); color:var(--fg); font-family:-apple-system,BlinkMac
 .tag-new { background:#3d2e00; color:var(--gold); }
 .tag-flag { background:#3d0010; color:#ff7a8a; }
 .tag-duration { background:#1a1a3d; color:#a9b4ff; }
-
 .appt-detail { display:none; margin-top:12px; padding-top:12px; border-top:1px solid var(--border); font-size:13px; color:var(--muted); line-height:1.7; }
 .appt-detail.show { display:block; }
 .appt-detail strong { color:var(--fg); }
@@ -87,6 +105,25 @@ body { background:var(--bg); color:var(--fg); font-family:-apple-system,BlinkMac
 .stat-mini .num { font-size:26px; font-weight:700; color:var(--gold); }
 .stat-mini .lbl { font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:0.5px; margin-top:3px; }
 
+/* BOOKING FORM */
+.book-form { padding:16px 18px; }
+.book-form h3 { font-size:16px; font-weight:700; color:var(--gold); margin-bottom:16px; }
+.form-group { margin-bottom:14px; }
+.form-group label { display:block; font-size:11px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:6px; }
+.form-group input, .form-group select { width:100%; background:#001020; border:1px solid var(--border); color:var(--fg); padding:12px 14px; border-radius:10px; font-size:14px; outline:none; appearance:none; }
+.form-group input:focus, .form-group select:focus { border-color:var(--gold); }
+.form-group select option { background:#001020; }
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.book-submit { width:100%; background:var(--gold); color:#00172D; border:none; padding:16px; border-radius:12px; font-size:16px; font-weight:700; cursor:pointer; margin-top:8px; }
+.book-submit:active { opacity:0.85; }
+.book-submit:disabled { opacity:0.5; cursor:not-allowed; }
+.book-result { margin-top:14px; padding:14px; border-radius:10px; font-size:14px; display:none; }
+.book-result.success { background:#1a4d2e; border:1px solid var(--green); color:var(--green); display:block; }
+.book-result.error { background:#3d0010; border:1px solid var(--red); color:#ff7a8a; display:block; }
+.or-divider { text-align:center; color:var(--muted); font-size:13px; margin:16px 0; }
+.square-link { display:block; background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; text-align:center; text-decoration:none; color:var(--fg); font-weight:600; font-size:14px; }
+.square-link:active { border-color:var(--gold); }
+
 /* Quick links */
 .quick-links { display:grid; grid-template-columns:1fr 1fr; gap:10px; padding:16px 18px 0; }
 .quick-btn { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:16px 12px; text-align:center; text-decoration:none; color:var(--fg); display:block; }
@@ -96,6 +133,7 @@ body { background:var(--bg); color:var(--fg); font-family:-apple-system,BlinkMac
 
 .loading { text-align:center; padding:30px; color:var(--muted); }
 .error-msg { margin:12px 18px; background:#3d0010; border:1px solid #600020; border-radius:10px; padding:12px; font-size:13px; color:#ff7a8a; }
+.empty-day { text-align:center; padding:30px; color:var(--muted); font-size:14px; }
 .footer { text-align:center; padding:24px 18px; font-size:11px; color:var(--muted); }
 </style>
 </head>
@@ -105,7 +143,7 @@ body { background:var(--bg); color:var(--fg); font-family:-apple-system,BlinkMac
   <div class="header-row">
     <div>
       <div class="logo">Oxyderm <span>Clinic</span></div>
-      <div class="sub" id="date-str">Loading schedule...</div>
+      <div class="sub" id="date-str">Loading...</div>
     </div>
     <a class="wa-btn" href="https://wa.me/17802219872" target="_blank">
       <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -114,114 +152,262 @@ body { background:var(--bg); color:var(--fg); font-family:-apple-system,BlinkMac
   </div>
 </div>
 
-<!-- Voice assistant -->
-<div class="voice-area">
-  <div class="mic-wrap">
-    <div class="mic-ring">
-      <div class="mic-ring-pulse" id="ring1"></div>
-      <div class="mic-ring-pulse" id="ring2" style="animation-delay:0.4s"></div>
-      <div class="mic-circle" id="mic-circle" onclick="toggleVoice()">🎤</div>
+<!-- TABS -->
+<div class="tabs">
+  <div class="tab active" onclick="switchTab('sarah')">🎤 Sarah</div>
+  <div class="tab" onclick="switchTab('schedule')">📅 Schedule</div>
+  <div class="tab" onclick="switchTab('book')">➕ Book</div>
+</div>
+
+<!-- SARAH PANEL -->
+<div class="panel active" id="panel-sarah">
+  <div class="voice-area">
+    <div class="mic-wrap">
+      <div class="mic-ring">
+        <div class="mic-ring-pulse" id="ring1"></div>
+        <div class="mic-ring-pulse" id="ring2" style="animation-delay:0.4s"></div>
+        <div class="mic-circle" id="mic-circle" onclick="toggleVoice()">🎤</div>
+      </div>
+      <div class="mic-status" id="mic-status">Tap mic or type — ask anything</div>
     </div>
-    <div class="mic-status" id="mic-status">Tap mic or type below — ask anything</div>
+    <div class="text-row" style="margin-top:14px;">
+      <input type="text" id="text-input" placeholder='Who is next? What did Mehak pay? Who is Thursday?'
+        onkeydown="if(event.key==='Enter'){askQuestion(this.value);this.value='';}">
+      <button onclick="var v=document.getElementById('text-input');askQuestion(v.value);v.value='';">Ask</button>
+    </div>
   </div>
-  <div class="text-row" style="margin-top:14px;">
-    <input type="text" id="text-input" placeholder='Ask anything: "Who is next?" "What did Mehak pay?" "Any notes for 3pm?"'
-      onkeydown="if(event.key==='Enter'){askQuestion(this.value);this.value='';}">
-    <button onclick="var v=document.getElementById('text-input');askQuestion(v.value);v.value='';">Ask</button>
+
+  <div class="answer-box" id="answer-box">
+    <div class="answer-lbl">Sarah</div>
+    <div class="answer-text" id="answer-text"></div>
+    <div class="answer-actions">
+      <button onclick="speakLast()">🔊 Repeat</button>
+      <button onclick="document.getElementById('answer-box').classList.remove('show')">Dismiss</button>
+    </div>
+  </div>
+
+  <div class="stats-row" id="stats-row">
+    <div class="stat-mini"><div class="num" id="stat-today">-</div><div class="lbl">Today</div></div>
+    <div class="stat-mini"><div class="num" id="stat-week">-</div><div class="lbl">This Week</div></div>
+    <div class="stat-mini"><div class="num" id="stat-new">-</div><div class="lbl">New</div></div>
+  </div>
+
+  <div class="quick-links">
+    <a class="quick-btn" href="https://squareup.com/dashboard/sales/transactions" target="_blank">
+      <div class="qicon">📋</div><div class="qlabel">Square</div>
+    </a>
+    <a class="quick-btn" href="https://business.google.com" target="_blank">
+      <div class="qicon">📍</div><div class="qlabel">Google Profile</div>
+    </a>
+    <a class="quick-btn" href="index.html">
+      <div class="qicon">🖥️</div><div class="qlabel">Full Dashboard</div>
+    </a>
+    <a class="quick-btn" onclick="switchTab('book');return false;" href="#">
+      <div class="qicon">➕</div><div class="qlabel">Book Appt</div>
+    </a>
   </div>
 </div>
 
-<div class="answer-box" id="answer-box">
-  <div class="answer-lbl">Sarah</div>
-  <div class="answer-text" id="answer-text"></div>
-  <div class="answer-actions">
-    <button onclick="speakLast()">🔊 Repeat</button>
-    <button onclick="document.getElementById('answer-box').classList.remove('show')">Dismiss</button>
+<!-- SCHEDULE PANEL -->
+<div class="panel" id="panel-schedule">
+  <div class="section">
+    <div class="section-title">
+      <span>Week Schedule</span>
+      <button class="refresh-btn" onclick="reloadSchedule()">↻ Refresh</button>
+    </div>
+  </div>
+  <div class="day-tabs" id="day-tabs"></div>
+  <div class="section" style="margin-top:12px;">
+    <div id="schedule-list"><div class="loading">Loading from Square...</div></div>
   </div>
 </div>
 
-<div class="section">
-  <div class="section-title" id="sched-title">Today's Appointments</div>
-  <div id="schedule-list"><div class="loading">Loading from Square...</div></div>
-</div>
+<!-- BOOK PANEL -->
+<div class="panel" id="panel-book">
+  <div class="book-form">
+    <h3>Book Appointment</h3>
 
-<div class="stats-row" id="stats-row" style="display:none">
-  <div class="stat-mini"><div class="num" id="stat-total">0</div><div class="lbl">Today</div></div>
-  <div class="stat-mini"><div class="num" id="stat-new">0</div><div class="lbl">New Clients</div></div>
-  <div class="stat-mini"><div class="num" id="stat-done">0</div><div class="lbl">Completed</div></div>
-</div>
+    <div class="form-group">
+      <label>Client Name</label>
+      <input type="text" id="book-name" placeholder="First Last">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Phone</label>
+        <input type="tel" id="book-phone" placeholder="+1 780 555 0000">
+      </div>
+      <div class="form-group">
+        <label>Email (optional)</label>
+        <input type="email" id="book-email" placeholder="email@example.com">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Service</label>
+      <select id="book-service">
+        <option value="">Select service...</option>
+        <optgroup label="Laser Hair Removal">
+          <option value="TKDYI5FR7QNOGEN6TUWZGNHX|30">Underarms LHR (30 min)</option>
+          <option value="K2PMVAFGBMBCSQOCAVR44OU6|45">Brazilian LHR (45 min)</option>
+          <option value="KAPYMK3SHHCSNLBQUVBQ3ILS|45">Bikini LHR (45 min)</option>
+          <option value="L7Z4ETEI2C3H7OMW3J4FX644|30">Half Face LHR (30 min)</option>
+          <option value="PYP4325ELLPAEVP6EW5Q42UM|30">Full Face LHR (30 min)</option>
+          <option value="XAUTTYYCGZIFSRRTKSCHZ6EI|30">Half Arms LHR (30 min)</option>
+          <option value="X2USXJQGPNEG5DCIPM6XIM2A|60">Full Arms LHR (60 min)</option>
+          <option value="Q4H7GQQMEO5SINMCQE7TTHK7|45">Lower Legs LHR (45 min)</option>
+          <option value="J45KE2PUOJDDVDWMEDTPPIX2|45">Upper Legs LHR (45 min)</option>
+          <option value="BDTNYUNIF75I5RXXQQIPTCB6|60">Full Legs LHR (60 min)</option>
+          <option value="PFIDCZJAETAM6HRJ2XWTTAEX|30">Upper Back LHR (30 min)</option>
+          <option value="ISRLO2GSHJTQHEAAD2M2JV2A|60">Full Back LHR (60 min)</option>
+          <option value="6HZJNRK7PHEUBHVBEN7JGM2T|30">Chest LHR (30 min)</option>
+          <option value="UHJVJC6KJ6CQDQQCNCS45AXE|60">Abdomen LHR (60 min)</option>
+          <option value="XD6X6NT4BAU72YR5BK2T2HDM|120">Full Body LHR (120 min)</option>
+          <option value="TDJ2DYACIT7UNNDWLSDU6S22|30">Neck LHR (30 min)</option>
+        </optgroup>
+        <optgroup label="Microneedling">
+          <option value="PGZXFTUPZAR75QAS6FVNMZQ7|30">Microdermabrasion (30 min)</option>
+        </optgroup>
+      </select>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Date</label>
+        <input type="date" id="book-date">
+      </div>
+      <div class="form-group">
+        <label>Time</label>
+        <input type="time" id="book-time" step="900">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Staff</label>
+      <select id="book-staff">
+        <option value="SA5CTAH41JNY2">Hetisha Shukla</option>
+        <option value="TM5KInX8hOW1BcSS">Jason Os</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Notes (optional)</label>
+      <input type="text" id="book-notes" placeholder="Treatment area, visit number, etc.">
+    </div>
 
-<div class="quick-links">
-  <a class="quick-btn" href="https://squareup.com/dashboard/sales/transactions" target="_blank">
-    <div class="qicon">📋</div><div class="qlabel">Square</div>
-  </a>
-  <a class="quick-btn" href="https://business.google.com" target="_blank">
-    <div class="qicon">📍</div><div class="qlabel">Google Profile</div>
-  </a>
-  <a class="quick-btn" href="index.html">
-    <div class="qicon">🖥️</div><div class="qlabel">Full Dashboard</div>
-  </a>
-  <a class="quick-btn" href="https://wa.me/17802219872" target="_blank">
-    <div class="qicon">💬</div><div class="qlabel">Message Dev</div>
-  </a>
+    <button class="book-submit" id="book-submit" onclick="submitBooking()">Book Appointment</button>
+    <div class="book-result" id="book-result"></div>
+
+    <div class="or-divider">— or book directly in Square —</div>
+    <a class="square-link" href="https://squareup.com/appointments/book" target="_blank">Open Square Appointments ↗</a>
+  </div>
 </div>
 
 <div class="footer">Built with Agency OS - AI Lead Builder</div>
 
 <script>
-var APPTS = [];
+// ─── DATA ───────────────────────────────────────────────
+var ALL_WEEK = [];
+var TODAY_KEY = '';
+var ACTIVE_DAY = '';
 var lastAnswer = '';
 
-// Load schedule from JSON
-fetch('schedule.json?t=' + Date.now())
-  .then(function(r){ return r.json(); })
-  .then(function(data){
-    APPTS = data.appointments || [];
-    document.getElementById('date-str').textContent = data.date + ' — Updated ' + (data.fetched_at || '');
-    document.getElementById('sched-title').textContent = 'Today (' + APPTS.length + ' appointments)';
-    renderSchedule();
-    var sr = document.getElementById('stats-row');
-    sr.style.display = 'grid';
-    document.getElementById('stat-total').textContent = APPTS.length;
-    var newCount = APPTS.filter(function(a){ return a.visit_num === 1; }).length;
-    document.getElementById('stat-new').textContent = newCount;
-    var now = new Date();
-    var done = APPTS.filter(function(a){
-      var t = parseTime(a.time);
-      return t && t < now;
-    }).length;
-    document.getElementById('stat-done').textContent = done;
-  })
-  .catch(function(){
-    document.getElementById('schedule-list').innerHTML =
-      '<div class="error-msg">Could not load schedule. Make sure fetch_schedule.py ran today.<br>Run: <code>python3 fetch_schedule.py</code></div>';
-    document.getElementById('date-str').textContent = new Date().toDateString();
-  });
+// Square credentials (read-only booking via proxy not possible from browser)
+// Booking calls go to our proxy endpoint or direct Square API via token embedded
+// NOTE: For booking, we call Square Bookings API directly.
+// The token is write-scoped — keep phone.html access restricted to clinic staff only.
+var SQ_TOKEN = 'EAAAl2ROkTm8CwkxlbXIg6-OPmnJz9YeMGJnJ2QOW_qhdmmbUjsxvboKTtRra82h';
+var SQ_LOCATION = 'SA5CTAH41JNY2';
 
-function parseTime(str) {
-  if (!str) return null;
-  var m = str.match(/(\d+):(\d+)\s*(AM|PM)/i);
-  if (!m) return null;
-  var h = parseInt(m[1]), min = parseInt(m[2]), ap = m[3].toUpperCase();
-  if (ap === 'PM' && h !== 12) h += 12;
-  if (ap === 'AM' && h === 12) h = 0;
-  var d = new Date(); d.setHours(h, min, 0, 0); return d;
+// ─── INIT ────────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded', function() {
+  // Set min date for booking form to today
+  var today = new Date();
+  var yyyy = today.getFullYear();
+  var mm = String(today.getMonth()+1).padStart(2,'0');
+  var dd = String(today.getDate()).padStart(2,'0');
+  document.getElementById('book-date').min = yyyy+'-'+mm+'-'+dd;
+  document.getElementById('book-date').value = yyyy+'-'+mm+'-'+dd;
+  document.getElementById('book-time').value = '10:00';
+  loadSchedule();
+});
+
+function reloadSchedule() { loadSchedule(); }
+
+function loadSchedule() {
+  fetch('schedule.json?t=' + Date.now())
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      TODAY_KEY = data.today || '';
+      ALL_WEEK = data.week || [];
+
+      // If week is empty but appointments exist (old format), wrap today
+      if (!ALL_WEEK.length && data.appointments && data.appointments.length) {
+        ALL_WEEK = [{ date: TODAY_KEY, label: 'Today', appointments: data.appointments }];
+      }
+
+      var fetchedAt = data.fetched_at || '';
+      document.getElementById('date-str').textContent = 'Updated ' + fetchedAt;
+
+      // Stats
+      var todayAppts = (ALL_WEEK.find(function(d){ return d.date === TODAY_KEY; }) || {appointments:[]}).appointments;
+      var weekTotal = ALL_WEEK.reduce(function(s,d){ return s + d.appointments.length; }, 0);
+      var newClients = ALL_WEEK.reduce(function(s,d){
+        return s + d.appointments.filter(function(a){ return a.visit_num === 1; }).length;
+      }, 0);
+      document.getElementById('stat-today').textContent = todayAppts.length;
+      document.getElementById('stat-week').textContent = weekTotal;
+      document.getElementById('stat-new').textContent = newClients;
+
+      renderDayTabs();
+    })
+    .catch(function(){
+      document.getElementById('schedule-list').innerHTML =
+        '<div class="error-msg">Could not load schedule. Run fetch_schedule.py on the Mac.</div>';
+      document.getElementById('date-str').textContent = new Date().toDateString();
+    });
 }
 
-function renderSchedule() {
+function renderDayTabs() {
+  var container = document.getElementById('day-tabs');
+  container.innerHTML = '';
+  ALL_WEEK.forEach(function(day, i) {
+    var d = new Date(day.date + 'T12:00:00');
+    var dayName = d.toLocaleDateString('en-CA',{weekday:'short'});
+    var dayNum  = d.getDate();
+    var isToday = day.date === TODAY_KEY;
+    var isActive = ACTIVE_DAY ? day.date === ACTIVE_DAY : isToday || i === 0;
+    if (isActive) ACTIVE_DAY = day.date;
+    var tab = document.createElement('div');
+    tab.className = 'day-tab' + (isActive ? ' active' : '');
+    tab.innerHTML = '<div class="dt-name">' + (isToday ? 'Today' : dayName) + '</div>' +
+                    '<div class="dt-count">' + day.appointments.length + '</div>' +
+                    '<div class="dt-day">' + dayNum + '</div>';
+    tab.addEventListener('click', function(){ selectDay(day.date); });
+    container.appendChild(tab);
+  });
+  renderDaySchedule(ACTIVE_DAY || TODAY_KEY);
+}
+
+function selectDay(dateKey) {
+  ACTIVE_DAY = dateKey;
+  document.querySelectorAll('.day-tab').forEach(function(t,i){
+    t.classList.toggle('active', ALL_WEEK[i] && ALL_WEEK[i].date === dateKey);
+  });
+  renderDaySchedule(dateKey);
+}
+
+function renderDaySchedule(dateKey) {
+  var dayData = ALL_WEEK.find(function(d){ return d.date === dateKey; });
+  var appts = dayData ? dayData.appointments : [];
   var list = document.getElementById('schedule-list');
-  if (!APPTS.length) {
-    list.innerHTML = '<div class="loading">No appointments found for today.</div>';
+  if (!appts.length) {
+    list.innerHTML = '<div class="empty-day">No appointments this day.</div>';
     return;
   }
-  list.innerHTML = APPTS.map(function(a, i){
+  list.innerHTML = appts.map(function(a, i){
     var visitClass = a.visit_num === 1 ? 'tag-new' : 'tag-visit';
     var flags = (a.flags || []).map(function(f){ return '<span class="tag tag-flag">⚠ ' + f + '</span>'; }).join('');
     var payTag = a.payment && a.payment.toLowerCase().includes('balance')
       ? '<span class="tag tag-balance">Balance owing</span>'
-      : (a.payment ? '<span class="tag tag-paid">Paid</span>' : '');
-
-    return '<div class="appt-card" id="card-'+i+'" onclick="toggleCard('+i+')">' +
+      : (a.payment && a.payment !== 'See Square' ? '<span class="tag tag-paid">Paid</span>' : '');
+    var uid = dateKey + '-' + i;
+    return '<div class="appt-card" id="card-'+uid+'" onclick="toggleCard(\''+uid+'\')">' +
       '<div class="appt-top">' +
         '<div class="appt-time">' + a.time + '</div>' +
         '<div class="appt-main">' +
@@ -234,12 +420,12 @@ function renderSchedule() {
           '</div>' +
         '</div>' +
       '</div>' +
-      '<div class="appt-detail" id="detail-'+i+'">' +
+      '<div class="appt-detail" id="detail-'+uid+'">' +
         (a.areas ? '<strong>Areas:</strong> ' + a.areas + '<br>' : '') +
         (a.payment ? '<strong>Payment:</strong> ' + a.payment + '<br>' : '') +
         (a.phone ? '<strong>Phone:</strong> <a href="tel:' + a.phone + '" style="color:var(--blue)">' + a.phone + '</a><br>' : '') +
         (a.flags && a.flags.length ? '<strong>Notes:</strong> ' + a.flags.join(', ') + '<br>' : '') +
-        '<div class="ask-this"><strong style="font-size:11px;color:var(--gold);">Ask about this client:</strong><br>' +
+        '<div class="ask-this"><strong style="font-size:11px;color:var(--gold);">Ask Sarah:</strong><br>' +
           '<button onclick="event.stopPropagation();askQuestion(\'What are the notes for ' + a.name + '?\')">Notes</button>' +
           '<button onclick="event.stopPropagation();askQuestion(\'What did ' + a.name + ' pay?\')">Payment</button>' +
           '<button onclick="event.stopPropagation();askQuestion(\'What visit is ' + a.name + ' on?\')">Visit #</button>' +
@@ -249,149 +435,338 @@ function renderSchedule() {
   }).join('');
 }
 
-function toggleCard(i) {
-  var detail = document.getElementById('detail-'+i);
-  var card = document.getElementById('card-'+i);
+function toggleCard(uid) {
+  var detail = document.getElementById('detail-'+uid);
+  var card = document.getElementById('card-'+uid);
   var isOpen = detail.classList.contains('show');
-  // Close all
   document.querySelectorAll('.appt-detail').forEach(function(d){ d.classList.remove('show'); });
   document.querySelectorAll('.appt-card').forEach(function(c){ c.classList.remove('expanded'); });
-  if (!isOpen) {
-    detail.classList.add('show');
-    card.classList.add('expanded');
-  }
+  if (!isOpen) { detail.classList.add('show'); card.classList.add('expanded'); }
 }
 
-// ---- Open-ended AI answering ----
+// ─── TABS ────────────────────────────────────────────────
+function switchTab(name) {
+  document.querySelectorAll('.tab').forEach(function(t,i){
+    var names = ['sarah','schedule','book'];
+    t.classList.toggle('active', names[i] === name);
+  });
+  document.querySelectorAll('.panel').forEach(function(p){
+    p.classList.remove('active');
+  });
+  document.getElementById('panel-' + name).classList.add('active');
+}
+
+// ─── BOOKING ─────────────────────────────────────────────
+function submitBooking() {
+  var name   = document.getElementById('book-name').value.trim();
+  var phone  = document.getElementById('book-phone').value.trim();
+  var email  = document.getElementById('book-email').value.trim();
+  var svc    = document.getElementById('book-service').value;
+  var date   = document.getElementById('book-date').value;
+  var time   = document.getElementById('book-time').value;
+  var staff  = document.getElementById('book-staff').value;
+  var notes  = document.getElementById('book-notes').value.trim();
+
+  var result = document.getElementById('book-result');
+  result.className = 'book-result';
+  result.style.display = 'none';
+
+  if (!name || !phone || !svc || !date || !time) {
+    result.className = 'book-result error';
+    result.textContent = 'Please fill in name, phone, service, date and time.';
+    result.style.display = 'block';
+    return;
+  }
+
+  var parts = svc.split('|');
+  var variationId = parts[0];
+  var durationMin = parseInt(parts[1] || 60);
+
+  // Build ISO start time in MDT (UTC-6)
+  var startLocal = new Date(date + 'T' + time + ':00');
+  var startUTC = new Date(startLocal.getTime() + 6 * 3600000); // MDT = UTC-6
+  var startZ = startUTC.toISOString().replace('.000','');
+
+  var btn = document.getElementById('book-submit');
+  btn.disabled = true;
+  btn.textContent = 'Booking...';
+
+  // Step 1: find or create customer
+  findOrCreateCustomer(name, phone, email, function(err, customerId) {
+    if (err) {
+      showBookResult('error', 'Customer error: ' + err);
+      btn.disabled = false; btn.textContent = 'Book Appointment';
+      return;
+    }
+
+    // Step 2: create booking
+    var idempotencyKey = 'book-' + Date.now() + '-' + Math.random().toString(36).slice(2);
+    var payload = JSON.stringify({
+      idempotency_key: idempotencyKey,
+      booking: {
+        start_at: startZ,
+        location_id: SQ_LOCATION,
+        customer_id: customerId,
+        customer_note: notes,
+        seller_note: notes,
+        appointment_segments: [{
+          duration_minutes: durationMin,
+          service_variation_id: variationId,
+          team_member_id: staff,
+          service_variation_version: 0
+        }]
+      }
+    });
+
+    fetch('https://connect.squareup.com/v2/bookings', {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer ' + SQ_TOKEN,
+        'Square-Version': '2024-01-17',
+        'Content-Type': 'application/json'
+      },
+      body: payload
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(data) {
+      btn.disabled = false; btn.textContent = 'Book Appointment';
+      if (data.booking) {
+        var serviceName = document.getElementById('book-service').selectedOptions[0].text;
+        showBookResult('success',
+          'Booked! ' + name + ' — ' + serviceName + ' on ' +
+          new Date(date).toLocaleDateString('en-CA',{weekday:'long',month:'long',day:'numeric'}) +
+          ' at ' + formatTime(time) + '. Check Square for confirmation.');
+        // Clear form
+        document.getElementById('book-name').value = '';
+        document.getElementById('book-phone').value = '';
+        document.getElementById('book-email').value = '';
+        document.getElementById('book-notes').value = '';
+        // Reload schedule after short delay
+        setTimeout(function(){ loadSchedule(); }, 2000);
+      } else {
+        var errMsg = (data.errors && data.errors[0]) ? data.errors[0].detail : JSON.stringify(data);
+        showBookResult('error', 'Square error: ' + errMsg);
+      }
+    })
+    .catch(function(e){
+      btn.disabled = false; btn.textContent = 'Book Appointment';
+      showBookResult('error', 'Network error. Check connection and try again.');
+    });
+  });
+}
+
+function findOrCreateCustomer(name, phone, email, cb) {
+  var nameParts = name.split(' ');
+  var given = nameParts[0];
+  var family = nameParts.slice(1).join(' ') || '.';
+
+  // Search first
+  var searchPayload = JSON.stringify({ query: { filter: { phone_number: { exact: phone } } } });
+  fetch('https://connect.squareup.com/v2/customers/search', {
+    method: 'POST',
+    headers: { 'Authorization': 'Bearer ' + SQ_TOKEN, 'Square-Version': '2024-01-17', 'Content-Type': 'application/json' },
+    body: searchPayload
+  })
+  .then(function(r){ return r.json(); })
+  .then(function(data) {
+    var customers = data.customers || [];
+    if (customers.length > 0) {
+      cb(null, customers[0].id);
+      return;
+    }
+    // Create new customer
+    var createPayload = JSON.stringify({
+      given_name: given,
+      family_name: family,
+      phone_number: phone,
+      email_address: email || undefined,
+      idempotency_key: 'cust-' + Date.now()
+    });
+    return fetch('https://connect.squareup.com/v2/customers', {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer ' + SQ_TOKEN, 'Square-Version': '2024-01-17', 'Content-Type': 'application/json' },
+      body: createPayload
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(d) {
+      if (d.customer) cb(null, d.customer.id);
+      else cb(JSON.stringify(d.errors));
+    });
+  })
+  .catch(function(e){ cb(e.toString()); });
+}
+
+function showBookResult(type, msg) {
+  var el = document.getElementById('book-result');
+  el.className = 'book-result ' + type;
+  el.textContent = msg;
+  el.style.display = 'block';
+  el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function formatTime(t) {
+  var parts = t.split(':');
+  var h = parseInt(parts[0]), m = parts[1];
+  var ap = h >= 12 ? 'PM' : 'AM';
+  h = h % 12 || 12;
+  return h + ':' + m + ' ' + ap;
+}
+
+// ─── SARAH AI ────────────────────────────────────────────
 function askQuestion(q) {
   if (!q || !q.trim()) return;
+  switchTab('sarah');
   var answer = buildAnswer(q.trim());
   lastAnswer = answer;
   showAnswer(answer);
   speakAnswer(answer);
 }
 
+function allAppts() {
+  var all = [];
+  ALL_WEEK.forEach(function(d){ all = all.concat(d.appointments); });
+  return all;
+}
+
+function todayAppts() {
+  var d = ALL_WEEK.find(function(d){ return d.date === TODAY_KEY; });
+  return d ? d.appointments : [];
+}
+
 function buildAnswer(q) {
   var ql = q.toLowerCase();
+  var appts = allAppts();
+  var today = todayAppts();
 
-  // --- Schedule / all appointments ---
-  if (/schedule|today|who.*coming|all appoint|how many/i.test(ql)) {
-    if (!APPTS.length) return "No appointments found for today.";
-    var list = APPTS.map(function(a){
-      return a.time + ': ' + a.name + ', ' + a.service + ', ' + a.visit + ', ' + a.payment + '.';
-    }).join(' ');
-    return 'Today you have ' + APPTS.length + ' appointments. ' + list;
+  // WEEK / FUTURE QUERIES
+  if (/week|all appoint|total|everything/i.test(ql) && !/today/i.test(ql)) {
+    if (!appts.length) return 'No appointments this week.';
+    var summary = ALL_WEEK.filter(function(d){ return d.appointments.length; }).map(function(d){
+      return d.label + ': ' + d.appointments.map(function(a){ return a.name + ' at ' + a.time; }).join(', ');
+    }).join('. ');
+    return 'This week: ' + appts.length + ' appointments. ' + summary;
   }
 
-  // --- Next appointment ---
+  // DAY OF WEEK
+  var days = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
+  for (var di = 0; di < days.length; di++) {
+    if (ql.includes(days[di])) {
+      var dayData = ALL_WEEK.find(function(d){
+        return new Date(d.date + 'T12:00:00').getDay() === di;
+      });
+      if (!dayData || !dayData.appointments.length) return 'Nothing booked on ' + days[di].charAt(0).toUpperCase() + days[di].slice(1) + '.';
+      return days[di].charAt(0).toUpperCase() + days[di].slice(1) + ': ' +
+        dayData.appointments.map(function(a){ return a.name + ' at ' + a.time; }).join(', ') + '.';
+    }
+  }
+
+  // TOMORROW
+  if (/tomorrow/i.test(ql)) {
+    var tomorrowKeys = ALL_WEEK.filter(function(d){ return d.date > TODAY_KEY; });
+    if (!tomorrowKeys.length) return 'Nothing booked tomorrow.';
+    var tom = tomorrowKeys[0];
+    if (!tom.appointments.length) return 'Nothing booked tomorrow.';
+    return 'Tomorrow (' + tom.label + '): ' + tom.appointments.map(function(a){ return a.name + ' at ' + a.time; }).join(', ') + '.';
+  }
+
+  // TODAY
+  if (/today|schedule|who.*coming|all appoint|how many/i.test(ql)) {
+    if (!today.length) return 'No appointments today.';
+    return 'Today: ' + today.length + ' appointments. ' +
+      today.map(function(a){ return a.time + ' ' + a.name + ', ' + a.visit + '.'; }).join(' ');
+  }
+
+  // NEXT
   if (/next|who is next|coming next/i.test(ql)) {
     var now = new Date();
-    for (var i = 0; i < APPTS.length; i++) {
-      var t = parseTime(APPTS[i].time);
+    for (var i = 0; i < today.length; i++) {
+      var t = parseTime(today[i].time);
       if (t && t > now) {
-        var a = APPTS[i];
-        return 'Next is ' + a.name + ' at ' + a.time + ' for ' + a.service + '. It is their ' + a.visit + '. ' + a.payment + '.';
+        var a = today[i];
+        return 'Next is ' + a.name + ' at ' + a.time + ' for ' + a.service + '. ' + a.visit + '. ' + a.payment + '.';
       }
     }
-    return 'No more appointments after this time today.';
+    return 'No more appointments today. Check tomorrow.';
   }
 
-  // --- Find by time ---
+  // BY TIME
   var timeM = ql.match(/(\d{1,2})[:\s]?(\d{0,2})\s*(am|pm)?/i);
   if (timeM) {
     var hr = parseInt(timeM[1]);
     var mn = timeM[2] ? parseInt(timeM[2]) : 0;
     var ap = timeM[3] ? timeM[3].toLowerCase() : null;
-    for (var i = 0; i < APPTS.length; i++) {
-      var a = APPTS[i];
+    for (var i = 0; i < appts.length; i++) {
+      var a = appts[i];
       var tp = a.time.match(/(\d+):(\d+)\s*(AM|PM)/i);
       if (!tp) continue;
       var ahr = parseInt(tp[1]), amin = parseInt(tp[2]), aap = tp[3].toLowerCase();
-      var match = (ahr === hr) && (mn === 0 || amin === mn) && (!ap || ap === aap);
-      if (match) {
-        var notes = a.flags && a.flags.length ? ' Notes: ' + a.flags.join(', ') + '.' : '';
-        return 'At ' + a.time + ' you have ' + a.name + '. ' + a.service + '. ' + a.visit + '. ' +
-               (a.areas ? 'Treatment areas: ' + a.areas + '. ' : '') +
-               a.payment + '.' + notes;
+      if ((ahr === hr) && (mn === 0 || amin === mn) && (!ap || ap === aap)) {
+        return 'At ' + a.time + ' on ' + a.date_label + ': ' + a.name + '. ' + a.service +
+               (a.areas ? ', areas: ' + a.areas : '') + '. ' + a.visit + '. ' + a.payment + '.' +
+               (a.flags && a.flags.length ? ' Notes: ' + a.flags.join(', ') + '.' : '');
       }
     }
-    // no exact match
-    return 'No appointment found at that time today.';
   }
 
-  // --- Find by name ---
-  for (var i = 0; i < APPTS.length; i++) {
-    var a = APPTS[i];
+  // BY NAME
+  for (var i = 0; i < appts.length; i++) {
+    var a = appts[i];
     var nameParts = a.name.toLowerCase().split(' ');
-    var nameFound = nameParts.some(function(p){ return ql.includes(p) && p.length > 2; });
-    if (nameFound) {
-      // What question about this person?
-      if (/pay|paid|balance|owe|money|cost/i.test(ql)) {
-        return a.name + ' — Payment: ' + (a.payment || 'No payment info on file. Check Square.');
-      }
-      if (/note|flag|special|important|warn/i.test(ql)) {
+    var found = nameParts.some(function(p){ return ql.includes(p) && p.length > 2; });
+    if (found) {
+      if (/pay|paid|balance|owe|money/i.test(ql)) return a.name + ' payment: ' + (a.payment || 'Check Square.');
+      if (/note|flag|special|warn/i.test(ql)) {
         var notes = a.flags && a.flags.length ? a.flags.join(', ') : 'No special notes.';
-        return a.name + ' notes: ' + notes + ' Seller note: ' + (a.raw_note ? a.raw_note.slice(0,200) : 'None.');
+        return a.name + ' notes: ' + notes + (a.raw_note ? ' — ' + a.raw_note.slice(0,150) : '');
       }
-      if (/visit|time|when|appoint/i.test(ql)) {
-        return a.name + ' is at ' + a.time + '. It is their ' + a.visit + '.';
-      }
-      if (/area|treat|service|what.*for|coming for/i.test(ql)) {
-        return a.name + ' is coming for ' + a.service + (a.areas ? ', areas: ' + a.areas : '') + '. ' + a.visit + '.';
-      }
-      if (/phone|call|number|contact/i.test(ql)) {
-        return a.name + ' phone: ' + (a.phone || 'Not on file') + '.';
-      }
-      // General - give full summary
-      var flags = a.flags && a.flags.length ? ' Special notes: ' + a.flags.join(', ') + '.' : '';
-      return a.name + ' is at ' + a.time + '. ' + a.service + ', ' +
-             (a.areas ? 'treatment areas: ' + a.areas + '. ' : '') +
-             a.visit + '. ' + a.payment + '.' + flags;
+      if (/visit|time|when/i.test(ql)) return a.name + ' is on ' + a.date_label + ' at ' + a.time + '. ' + a.visit + '.';
+      if (/area|treat|service|for/i.test(ql)) return a.name + ' — ' + a.service + (a.areas ? ', areas: ' + a.areas : '') + '. ' + a.visit + '.';
+      if (/phone|call|number/i.test(ql)) return a.name + ' phone: ' + (a.phone || 'Not on file') + '.';
+      return a.name + ' is on ' + a.date_label + ' at ' + a.time + '. ' + a.service +
+             (a.areas ? ', areas: ' + a.areas : '') + '. ' + a.visit + '. ' + a.payment + '.' +
+             (a.flags && a.flags.length ? ' Notes: ' + a.flags.join(', ') + '.' : '');
     }
   }
 
-  // --- Service type queries ---
+  // SERVICE FILTERS
   if (/laser|lhr/i.test(ql)) {
-    var matches = APPTS.filter(function(a){ return /laser|lhr/i.test(a.service + a.areas); });
-    if (matches.length) return 'Laser appointments today: ' + matches.map(function(a){ return a.name + ' at ' + a.time; }).join(', ') + '.';
-    return 'No laser appointments today.';
-  }
-  if (/microneedl|needle/i.test(ql)) {
-    var matches = APPTS.filter(function(a){ return /microneedl/i.test(a.service); });
-    if (matches.length) return 'Microneedling today: ' + matches.map(function(a){ return a.name + ' at ' + a.time; }).join(', ') + '.';
-    return 'No microneedling appointments today.';
+    var m = appts.filter(function(a){ return /laser|lhr/i.test(a.service + a.areas); });
+    return m.length ? 'Laser this week: ' + m.map(function(a){ return a.name + ' ' + a.date_label + ' ' + a.time; }).join(', ') + '.' : 'No laser appointments this week.';
   }
   if (/new client|first time|first visit/i.test(ql)) {
-    var nc = APPTS.filter(function(a){ return a.visit_num === 1; });
-    if (nc.length) return 'New clients today: ' + nc.map(function(a){ return a.name + ' at ' + a.time; }).join(', ') + '.';
-    return 'No new clients today. All returning.';
-  }
-  if (/revenue|total|money|how much|earning/i.test(ql)) {
-    return 'Check Square for today\'s revenue totals. I can see ' + APPTS.length + ' appointments booked today.';
-  }
-  if (/note|flag|warning|special/i.test(ql)) {
-    var flagged = APPTS.filter(function(a){ return a.flags && a.flags.length; });
-    if (flagged.length) return 'Clients with special notes today: ' + flagged.map(function(a){ return a.name + ' — ' + a.flags.join(', '); }).join('. ') + '.';
-    return 'No special notes or flags for today.';
+    var nc = appts.filter(function(a){ return a.visit_num === 1; });
+    return nc.length ? 'New clients this week: ' + nc.map(function(a){ return a.name + ' ' + a.date_label; }).join(', ') + '.' : 'No new clients this week.';
   }
   if (/balance|owing|owe/i.test(ql)) {
-    var bal = APPTS.filter(function(a){ return a.payment && a.payment.toLowerCase().includes('balance'); });
-    if (bal.length) return 'Clients with balances owing: ' + bal.map(function(a){ return a.name + ' — ' + a.payment; }).join('. ') + '.';
-    return 'No outstanding balances noted today.';
+    var bal = appts.filter(function(a){ return a.payment && a.payment.toLowerCase().includes('balance'); });
+    return bal.length ? 'Balances owing: ' + bal.map(function(a){ return a.name + ' — ' + a.payment; }).join('. ') + '.' : 'No outstanding balances.';
+  }
+  if (/flag|note|special/i.test(ql)) {
+    var fl = appts.filter(function(a){ return a.flags && a.flags.length; });
+    return fl.length ? 'Special notes: ' + fl.map(function(a){ return a.name + ' — ' + a.flags.join(', '); }).join('. ') + '.' : 'No special notes this week.';
+  }
+  if (/book|schedule.*appoint|add appoint/i.test(ql)) {
+    switchTab('book');
+    return 'Opening the booking form now.';
+  }
+  if (/help/i.test(ql)) {
+    return 'Ask me: Who is next? Who is Thursday? What did Mehak pay? Any new clients? Who has a balance? Any flags this week? Or say: book appointment.';
   }
 
-  // --- Help / fallback ---
-  if (/help|what can|how do/i.test(ql)) {
-    return 'I can answer questions like: Who is at 1pm? What is Mehak coming for? What did Alexandra pay? Who is next? Any new clients? Any special notes? Who has a balance owing? Just ask naturally.';
+  if (today.length) {
+    return 'Did not catch that. Today: ' + today.map(function(a){ return a.name + ' at ' + a.time; }).join(', ') + '. Ask me about a name, time, or day.';
   }
+  return 'Did not understand. Try: who is Thursday, or who is next, or what did [name] pay.';
+}
 
-  // Generic fallback with all names
-  if (APPTS.length) {
-    return 'I did not catch that. Today you have: ' +
-      APPTS.map(function(a){ return a.name + ' at ' + a.time; }).join(', ') +
-      '. Ask me about a specific client or time.';
-  }
-  return 'I did not understand. Try asking: who is at 1pm, or what is Alexandra coming for.';
+function parseTime(str) {
+  if (!str) return null;
+  var m = str.match(/(\d+):(\d+)\s*(AM|PM)/i);
+  if (!m) return null;
+  var h = parseInt(m[1]), min = parseInt(m[2]), ap = m[3].toUpperCase();
+  if (ap === 'PM' && h !== 12) h += 12;
+  if (ap === 'AM' && h === 12) h = 0;
+  var d = new Date(); d.setHours(h, min, 0, 0); return d;
 }
 
 function showAnswer(text) {
@@ -401,48 +776,34 @@ function showAnswer(text) {
   box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
-// ---- Voice synthesis (Canadian English, natural female voice) ----
+// ─── VOICE SYNTHESIS ─────────────────────────────────────
 var voices = [];
-function loadVoices() {
-  voices = window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
-}
-if (window.speechSynthesis) {
-  loadVoices();
-  window.speechSynthesis.onvoiceschanged = loadVoices;
-}
+function loadVoices() { voices = window.speechSynthesis ? window.speechSynthesis.getVoices() : []; }
+if (window.speechSynthesis) { loadVoices(); window.speechSynthesis.onvoiceschanged = loadVoices; }
 
 function getBestVoice() {
-  // Priority: Canadian English female > Samantha (US) > any English
-  var preferred = ['Samantha', 'Karen', 'Moira', 'Fiona', 'Victoria', 'Tessa'];
+  var preferred = ['Samantha','Karen','Moira','Fiona','Victoria','Tessa'];
   for (var i = 0; i < preferred.length; i++) {
     var v = voices.find(function(v){ return v.name.includes(preferred[i]); });
     if (v) return v;
   }
   var enCA = voices.find(function(v){ return v.lang === 'en-CA'; });
   if (enCA) return enCA;
-  var enFem = voices.find(function(v){ return v.lang.startsWith('en') && /female|woman/i.test(v.name); });
-  if (enFem) return enFem;
-  var en = voices.find(function(v){ return v.lang.startsWith('en'); });
-  return en || null;
+  return voices.find(function(v){ return v.lang.startsWith('en'); }) || null;
 }
 
 function speakAnswer(text) {
   if (!window.speechSynthesis) return;
   window.speechSynthesis.cancel();
   var utt = new SpeechSynthesisUtterance(text);
-  utt.rate = 0.92;
-  utt.pitch = 1.05;
-  utt.volume = 1.0;
+  utt.rate = 0.92; utt.pitch = 1.05; utt.volume = 1.0;
   var v = getBestVoice();
   if (v) utt.voice = v;
   window.speechSynthesis.speak(utt);
 }
+function speakLast() { if (lastAnswer) speakAnswer(lastAnswer); }
 
-function speakLast() {
-  if (lastAnswer) speakAnswer(lastAnswer);
-}
-
-// ---- Voice recognition ----
+// ─── VOICE RECOGNITION ───────────────────────────────────
 var recognition = null;
 var isListening = false;
 
@@ -450,26 +811,20 @@ function toggleVoice() {
   if (isListening) { stopVoice(); return; }
   var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
   if (!SR) {
-    showAnswer('Voice input not supported on this browser. Use Chrome or Safari. Type your question below instead.');
-    speakAnswer('Voice input is not available. Please type your question.');
+    showAnswer('Voice not supported on this browser. Use Chrome or Safari. Type below instead.');
     return;
   }
   recognition = new SR();
   recognition.lang = 'en-CA';
   recognition.continuous = false;
   recognition.interimResults = false;
-
   var mic = document.getElementById('mic-circle');
   var status = document.getElementById('mic-status');
-  var r1 = document.getElementById('ring1');
-  var r2 = document.getElementById('ring2');
-
   recognition.onstart = function() {
     isListening = true;
-    mic.classList.add('listening');
-    mic.textContent = '⏹';
-    r1.classList.add('active');
-    r2.classList.add('active');
+    mic.classList.add('listening'); mic.textContent = '⏹';
+    document.getElementById('ring1').classList.add('active');
+    document.getElementById('ring2').classList.add('active');
     status.textContent = 'Listening... speak now';
     status.classList.add('active');
   };
@@ -479,9 +834,7 @@ function toggleVoice() {
     askQuestion(q);
   };
   recognition.onerror = function(e) {
-    if (e.error !== 'no-speech') {
-      showAnswer('Could not hear clearly. Try speaking closer to the phone, or type below.');
-    }
+    if (e.error !== 'no-speech') showAnswer('Could not hear clearly. Try typing below.');
     stopVoice();
   };
   recognition.onend = function() { stopVoice(); };
@@ -492,13 +845,11 @@ function stopVoice() {
   isListening = false;
   if (recognition) { try { recognition.stop(); } catch(e){} recognition = null; }
   var mic = document.getElementById('mic-circle');
-  var status = document.getElementById('mic-status');
-  mic.classList.remove('listening');
-  mic.textContent = '🎤';
+  mic.classList.remove('listening'); mic.textContent = '🎤';
   document.getElementById('ring1').classList.remove('active');
   document.getElementById('ring2').classList.remove('active');
-  status.textContent = 'Tap mic or type below — ask anything';
-  status.classList.remove('active');
+  document.getElementById('mic-status').textContent = 'Tap mic or type — ask anything';
+  document.getElementById('mic-status').classList.remove('active');
 }
 </script>
 </body>

@@ -1,21 +1,20 @@
 #!/usr/bin/python3
 """
-Fetch today's real Square bookings and write schedule.json
-Run once every morning via cron.
+Fetch 7 days of Square bookings and write schedule.json
+Run once every morning via cron (7am).
 """
-import json, os, sys, urllib.request, urllib.error
+import json, os, sys, urllib.request, urllib.error, re
 from datetime import datetime, timezone, timedelta
 
 TOKEN = os.environ.get('SQUARE_ACCESS_TOKEN', '')
 if not TOKEN:
-    env = {}
     try:
         for line in open(os.path.expanduser('~/.oxyderm/secrets.env')):
             line = line.strip()
             if '=' in line and not line.startswith('#'):
                 k, v = line.split('=', 1)
-                env[k.strip()] = v.strip().strip('"')
-        TOKEN = env.get('SQUARE_ACCESS_TOKEN', '')
+                if k.strip() == 'SQUARE_ACCESS_TOKEN':
+                    TOKEN = v.strip().strip('"')
     except Exception:
         pass
 
@@ -29,7 +28,7 @@ HEADERS = {"Authorization": f"Bearer {TOKEN}", "Square-Version": "2024-01-17", "
 def sq_get(path):
     req = urllib.request.Request(BASE + path, headers=HEADERS)
     try:
-        with urllib.request.urlopen(req, timeout=10) as r:
+        with urllib.request.urlopen(req, timeout=15) as r:
             return json.loads(r.read())
     except Exception as e:
         print(f"  API error {path}: {e}")
@@ -38,15 +37,15 @@ def sq_get(path):
 # MDT = UTC-6
 MDT = timezone(timedelta(hours=-6))
 now_mdt = datetime.now(MDT)
-today_start = now_mdt.replace(hour=0, minute=0, second=0, microsecond=0)
-today_end   = today_start + timedelta(days=1)
+week_start = now_mdt.replace(hour=0, minute=0, second=0, microsecond=0)
+week_end   = week_start + timedelta(days=7)
 
-start_z = today_start.astimezone(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
-end_z   = today_end.astimezone(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
+start_z = week_start.astimezone(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
+end_z   = week_end.astimezone(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
 
-print(f"Fetching bookings for {today_start.strftime('%A %B %d, %Y')} (MDT)...")
+print(f"Fetching bookings {week_start.strftime('%b %d')} - {week_end.strftime('%b %d')} (MDT)...")
 
-data = sq_get(f"/bookings?start_at_min={start_z}&start_at_max={end_z}&limit=50")
+data = sq_get(f"/bookings?start_at_min={start_z}&start_at_max={end_z}&limit=100")
 bookings = data.get('bookings', [])
 print(f"  Found {len(bookings)} bookings")
 
@@ -64,23 +63,16 @@ for cid in customer_ids:
         "phone": c.get('phone_number', ''),
     }
 
-# Fetch payment history per customer (last 20 orders)
-def get_visit_count(customer_id):
-    try:
-        body = json.dumps({"location_ids": ["SA5CTAH41JNY2"], "customer_id": customer_id, "limit": 100}).encode()
-        req = urllib.request.Request(BASE + "/orders/search", data=body, headers=HEADERS, method='POST')
-        with urllib.request.urlopen(req, timeout=10) as r:
-            od = json.loads(r.read())
-        orders = od.get('orders', [])
-        return len([o for o in orders if o.get('state') in ('COMPLETED', 'OPEN')])
-    except Exception:
-        return None
+def ordinal(n):
+    if n is None: return "Unknown visit"
+    s = {1:'1st',2:'2nd',3:'3rd'}.get(n % 10 if n % 100 not in [11,12,13] else 0, f'{n}th')
+    return s + ' visit'
 
-# Build schedule
-schedule = []
+# Group by date
+by_date = {}
 for b in sorted(bookings, key=lambda x: x.get('start_at','')):
     status = b.get('status','')
-    if status == 'CANCELLED_BY_SELLER' or status == 'CANCELLED_BY_BUYER':
+    if status in ('CANCELLED_BY_SELLER', 'CANCELLED_BY_BUYER'):
         continue
 
     cid = b.get('customer_id','')
@@ -88,29 +80,20 @@ for b in sorted(bookings, key=lambda x: x.get('start_at','')):
 
     start_utc = datetime.strptime(b['start_at'], '%Y-%m-%dT%H:%M:%SZ').replace(tzinfo=timezone.utc)
     start_mdt = start_utc.astimezone(MDT)
-    time_str = start_mdt.strftime('%I:%M %p').lstrip('0')
+    date_key  = start_mdt.strftime('%Y-%m-%d')
+    date_label = start_mdt.strftime('%A, %B %d')
+    time_str  = start_mdt.strftime('%I:%M %p').lstrip('0')
 
     seg = b.get('appointment_segments', [{}])[0]
     duration = seg.get('duration_minutes', 60)
-
     note = b.get('seller_note', '')
 
-    # Parse visit number from note (Tx7, Tx11, etc.)
-    import re
     tx_match = re.search(r'Tx\s*(\d+)', note, re.IGNORECASE)
     visit_num = int(tx_match.group(1)) if tx_match else None
 
-    # Determine visit suffix
-    def ordinal(n):
-        if n is None: return "Unknown visit"
-        s = {1:'1st',2:'2nd',3:'3rd'}.get(n % 10 if n % 100 not in [11,12,13] else 0, f'{n}th')
-        return s + ' visit'
-
-    # Parse treatment areas
     area_match = re.search(r'Treatment area[:\s]+(.+?)(?:\n|$)', note, re.IGNORECASE)
     areas = area_match.group(1).strip() if area_match else ''
 
-    # Parse payment from note
     paid_match = re.search(r'Paid[^\n$]*\$[\d.]+[^\n]*', note, re.IGNORECASE)
     balance_match = re.search(r'[Bb]alance[^\n$]*\$[\d.]+[^\n]*', note, re.IGNORECASE)
     payment_note = ''
@@ -119,7 +102,6 @@ for b in sorted(bookings, key=lambda x: x.get('start_at','')):
     if balance_match:
         payment_note += (' | ' if payment_note else '') + balance_match.group(0).strip()[:100]
 
-    # Special flags
     flags = []
     if '17 yrs' in note or 'minor' in note.lower():
         flags.append('Minor - parent in room')
@@ -128,12 +110,14 @@ for b in sorted(bookings, key=lambda x: x.get('start_at','')):
     if 'google review' in note.lower():
         flags.append('Left Google review')
 
-    schedule.append({
+    entry = {
         "time": time_str,
+        "date": date_key,
+        "date_label": date_label,
         "name": cust["name"],
         "phone": cust["phone"],
         "email": cust["email"],
-        "service": "Laser Hair Removal" if 'lhr' in note.lower() or 'laser' in areas.lower() or areas else "Treatment",
+        "service": "Laser Hair Removal" if ('lhr' in note.lower() or 'laser' in areas.lower()) else "Treatment",
         "areas": areas,
         "duration_min": duration,
         "visit": ordinal(visit_num),
@@ -142,20 +126,31 @@ for b in sorted(bookings, key=lambda x: x.get('start_at','')):
         "flags": flags,
         "raw_note": note[:500],
         "status": status,
-    })
-    print(f"  {time_str}: {cust['name']} | {ordinal(visit_num)} | {areas[:60]}")
+        "booking_id": b.get('id',''),
+    }
+
+    if date_key not in by_date:
+        by_date[date_key] = {"date": date_key, "label": date_label, "appointments": []}
+    by_date[date_key]["appointments"].append(entry)
+    print(f"  {date_label} {time_str}: {cust['name']} | {ordinal(visit_num)}")
+
+# Also flatten today
+today_key = week_start.strftime('%Y-%m-%d')
+today_appts = by_date.get(today_key, {}).get('appointments', [])
 
 output = {
-    "date": today_start.strftime('%A, %B %d, %Y'),
     "fetched_at": datetime.now(MDT).strftime('%I:%M %p MDT'),
-    "appointments": schedule,
-    "total": len(schedule),
-    "revenue_today": sum(1 for a in schedule),  # placeholder
+    "today": today_key,
+    "week_start": week_start.strftime('%Y-%m-%d'),
+    "week_end": (week_end - timedelta(days=1)).strftime('%Y-%m-%d'),
+    "appointments": today_appts,   # today only (backward compat)
+    "week": list(by_date.values()), # full 7 days
+    "total_week": sum(len(v['appointments']) for v in by_date.values()),
 }
 
-out_path = os.path.join(os.path.dirname(__file__), 'schedule.json')
+out_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'schedule.json')
 with open(out_path, 'w') as f:
     json.dump(output, f, indent=2)
 
-print(f"\nSchedule saved to {out_path}")
-print(f"Total appointments: {len(schedule)}")
+print(f"\nSchedule saved: {out_path}")
+print(f"Today: {len(today_appts)} | Week total: {output['total_week']}")
