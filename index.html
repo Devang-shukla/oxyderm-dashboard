@@ -936,12 +936,51 @@ function toggleVoice(){
   voiceRec.start();
 }
 
+// OpenRouter free tier (no billing needed for :free models)
+window._orKey=(function(){
+  var k=localStorage.getItem('ox-or-key');
+  if(!k){k=prompt('Enter your OpenRouter API key (one-time setup):');if(k)localStorage.setItem('ox-or-key',k);}
+  return k||'';
+})();
+
 // AGENTS
 var AGENTS=[{id:'scheduler',name:'Scheduler',emoji:'📅',desc:'Scheduling, content calendars, posting'},{id:'editor',name:'Video Editor',emoji:'🎬',desc:'Captions, thumbnails, music'},{id:'social',name:'Social Media',emoji:'📣',desc:'Post copy, hashtags, captions'},{id:'finance',name:'Finance',emoji:'💰',desc:'Expenses, pre-auth, revenue'},{id:'client',name:'Client Care',emoji:'👥',desc:'Notes, visit history, follow-up'},{id:'marketing',name:'Marketing',emoji:'🚀',desc:'Ads, campaigns, offers'},{id:'research',name:'Research',emoji:'🔍',desc:'Market data, competitor info, trend research'}];
 var agentChats={}, activeAgent=null;
 function renderAgents(){var el=document.getElementById('agent-grid');if(!el)return; el.innerHTML=AGENTS.map(function(a){return '<div class="ag-card" onclick="selectAgent(\''+a.id+'\')"><div class="ag-emoji">'+a.emoji+'</div><div class="ag-name">'+a.name+'</div><div class="ag-desc">'+a.desc+'</div></div>';}).join('');}
 function selectAgent(id){activeAgent=AGENTS.find(function(a){return a.id===id;});if(!agentChats[id])agentChats[id]=[];renderAgents();var msgs=agentChats[id];document.getElementById('agent-chat-area').style.display='block';document.getElementById('agent-chat-title').textContent=activeAgent.name;var el=document.getElementById('agent-msgs');el.innerHTML=msgs.length?msgs.map(function(m){return '<div style="margin-bottom:8px"><b>'+(m.role==='user'?'You':'Agent')+':</b> '+m.text+'</div>';}).join(''):'<div style="color:var(--muted);text-align:center;padding:20px">Ask '+activeAgent.name+'. I know about today\'s clients: Alexandra at 1pm and Mehak at 3pm.</div>';}
-function sendAgent(){if(!activeAgent)return;var q=document.getElementById('agent-input').value.trim();if(!q)return;document.getElementById('agent-input').value='';if(!agentChats[activeAgent.id])agentChats[activeAgent.id]=[];agentChats[activeAgent.id].push({role:'user',text:q});var reply='As '+activeAgent.name+', I\'m ready to help. Today\'s clients: Alexandra (1pm, 7th visit, LHR) and Mehak (3pm, 11th visit, LHR). What do you need?';agentChats[activeAgent.id].push({role:'model',text:reply});selectAgent(activeAgent.id);}
+function sendAgent(){
+  if(!activeAgent)return;
+  var q=document.getElementById('agent-input').value.trim();
+  if(!q)return;
+  document.getElementById('agent-input').value='';
+  if(!agentChats[activeAgent.id])agentChats[activeAgent.id]=[];
+  agentChats[activeAgent.id].push({role:'user',text:q});
+  // show thinking
+  agentChats[activeAgent.id].push({role:'model',text:'...',thinking:true});
+  selectAgent(activeAgent.id);
+  var msgs=agentChats[activeAgent.id].filter(function(m){return !m.thinking;});
+  var history=msgs.slice(-8).map(function(m){return {role:m.role==='user'?'user':'assistant',content:m.text};});
+  var systemPrompt='You are '+activeAgent.name+', a specialist agent for Oxyderm Beauty Clinic in Edmonton. '+activeAgent.desc+'. Clinic info: LHR and Microneedling services. Owner: Devang. Receptionist: Hetisha. Today clients: Alexandra Doblado 1pm (7th visit LHR, minor, no social media face, paid $199.99), Mehak Wadhwa 3pm (11th visit LHR, balance $49.99). Be concise and practical.';
+  // Use OpenRouter free tier — no API key required for free models
+  fetch('https://openrouter.ai/api/v1/chat/completions',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Authorization':'Bearer '+window._orKey,'HTTP-Referer':'https://devang-shukla.github.io/oxyderm-dashboard/','X-Title':'Oxyderm OS'},
+    body:JSON.stringify({model:'meta-llama/llama-3.1-8b-instruct:free',messages:[{role:'system',content:systemPrompt}].concat(history),max_tokens:300})
+  })
+  .then(function(r){return r.json();})
+  .then(function(d){
+    var idx=agentChats[activeAgent.id].findIndex(function(m){return m.thinking;});
+    var reply=(d.choices&&d.choices[0]&&d.choices[0].message&&d.choices[0].message.content)||'Sorry, no response. Try again.';
+    if(idx>-1)agentChats[activeAgent.id][idx]={role:'model',text:reply};
+    else agentChats[activeAgent.id].push({role:'model',text:reply});
+    selectAgent(activeAgent.id);
+  })
+  .catch(function(e){
+    var idx=agentChats[activeAgent.id].findIndex(function(m){return m.thinking;});
+    if(idx>-1)agentChats[activeAgent.id][idx]={role:'model',text:'Network error. Check connection and try again.'};
+    selectAgent(activeAgent.id);
+  });
+}
 function agentMic(){var SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){alert('Voice not supported. Type instead.');return;}var r=new SR();r.lang='en-CA';r.continuous=false;document.getElementById('agent-input').placeholder='Listening...';r.onresult=function(e){document.getElementById('agent-input').value=e.results[0][0].transcript;};r.start();}
 renderAgents();
 
