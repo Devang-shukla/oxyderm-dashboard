@@ -43,14 +43,16 @@ h2.stitle:first-child { margin-top:0; }
 .pill.active { background:var(--gold); color:#00172D; border-color:var(--gold); }
 
 /* product grid */
-.pgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:16px; }
-.pcard { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px; }
-.pcard .badge { display:inline-block; background:#0a2a4d; color:var(--steel); font-size:10px; font-weight:700; text-transform:uppercase; padding:3px 9px; border-radius:8px; margin-bottom:10px; }
-.pcard h4 { font-size:15px; font-weight:700; margin-bottom:6px; }
-.pcard .desc { font-size:12px; color:var(--muted); line-height:1.5; margin-bottom:12px; min-height:52px; }
-.pcard .pricerow { display:flex; justify-content:space-between; align-items:center; padding-top:10px; border-top:1px solid var(--border); }
-.pcard .price { font-size:18px; font-weight:800; color:var(--gold); }
-.pcard .margin { font-size:11px; color:var(--green); }
+.pgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px; }
+.pcard { background:var(--card); border:1px solid var(--border); border-radius:12px; overflow:hidden; display:flex; flex-direction:column; }
+.pcard .imgwrap { background:#fff; aspect-ratio:1/1; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+.pcard .imgwrap img { width:100%; height:100%; object-fit:contain; padding:10px; }
+.pcard .pbody { padding:14px 16px 16px; flex:1; display:flex; flex-direction:column; }
+.pcard .badge { display:inline-block; background:#0a2a4d; color:var(--steel); font-size:9px; font-weight:700; text-transform:uppercase; padding:3px 8px; border-radius:8px; margin-bottom:8px; align-self:flex-start; }
+.pcard h4 { font-size:13px; font-weight:700; margin-bottom:8px; line-height:1.35; min-height:36px; }
+.pcard .pricerow { display:flex; justify-content:space-between; align-items:center; padding-top:10px; border-top:1px solid var(--border); margin-top:auto; }
+.pcard .price { font-size:17px; font-weight:800; color:var(--gold); }
+.pcard .margin { font-size:10px; color:var(--muted); text-align:right; }
 
 /* calendar */
 .cal-table { width:100%; border-collapse:collapse; font-size:12px; }
@@ -115,9 +117,9 @@ h2.stitle:first-child { margin-top:0; }
 <!-- OVERVIEW -->
 <div class="section active" id="tab-overview">
   <div class="stat-grid">
-    <div class="stat-card"><div class="num">21</div><div class="lbl">SKUs Live</div></div>
-    <div class="stat-card"><div class="num">7</div><div class="lbl">Collections</div></div>
-    <div class="stat-card"><div class="num">50%</div><div class="lbl">Gross Margin (all SKUs)</div></div>
+    <div class="stat-card"><div class="num">57</div><div class="lbl">Real SKUs (SkinFX)</div></div>
+    <div class="stat-card"><div class="num">6</div><div class="lbl">Collections</div></div>
+    <div class="stat-card"><div class="num">50%</div><div class="lbl">Gross Margin (2x Keystone)</div></div>
     <div class="stat-card"><div class="num">14</div><div class="lbl">Day Launch Campaign</div></div>
     <div class="stat-card"><div class="num">$120</div><div class="lbl">Free Ship AOV Floor</div></div>
     <div class="stat-card"><div class="num">42</div><div class="lbl">Posts Planned (Campaign)</div></div>
@@ -125,21 +127,13 @@ h2.stitle:first-child { margin-top:0; }
 
   <h2 class="stitle">Status</h2>
   <div class="fin-note">
-    Storefront is <strong style="color:var(--green)">live</strong> at the Shop link above — 21 products across 7 collections, Square checkout wired, 2x keystone pricing applied uniformly (50% margin every SKU).
-    The 14-day social launch campaign (42 posts across Instagram, Facebook, TikTok, GBP) is fully scripted and ready to schedule — everything below is <strong style="color:var(--yellow)">pending production</strong> (⬜), no assets shot yet.
+    Product data and photos scraped directly from <strong>skinfx.ca/shop-clearchoice</strong> (the real Edmonton wholesale distributor) — 57 real ClearChoice/Oceuticals/Prana SKUs with real product photography and real wholesale pricing. Retail price shown = 2x wholesale keystone (50% margin every SKU, consistent with the finance model).
+    The 14-day social launch campaign (42 posts across Instagram, Facebook, TikTok, GBP) is fully scripted and ready to schedule — campaign content is <strong style="color:var(--yellow)">pending production</strong> (⬜), no video/photo assets shot for social yet.
     Brand lock: Navy #00172D, Steel #33699D, Gold #c9a96e. Services referenced in all content: <strong>Laser Hair Removal &amp; Microneedling only</strong> — no Botox, injectables, or chemical peel mentions per brand policy.
   </div>
 
   <h2 class="stitle">Collections</h2>
-  <div class="pgrid">
-    <div class="pcard"><span class="badge">1 of 7</span><h4>Cleansers &amp; Balancers</h4><div class="desc">pH-calibrated cleansers + toners. Pre-laser skin prep hero.</div><div class="pricerow"><span class="price">3 SKUs</span><span class="margin">$78–$145</span></div></div>
-    <div class="pcard"><span class="badge">2 of 7</span><h4>Polishers &amp; Masques</h4><div class="desc">Mechanical + enzymatic resurfacing, post-treatment recovery masques.</div><div class="pricerow"><span class="price">3 SKUs</span><span class="margin">$98–$116</span></div></div>
-    <div class="pcard"><span class="badge">3 of 7</span><h4>Moisturizers &amp; SPF</h4><div class="desc">Mandatory post-laser photo-protection + barrier repair.</div><div class="pricerow"><span class="price">3 SKUs</span><span class="margin">$88–$132</span></div></div>
-    <div class="pcard"><span class="badge">4 of 7</span><h4>Corrective Serums</h4><div class="desc">Vitamin C, copper peptide, hyaluronic — microneedling companion actives.</div><div class="pricerow"><span class="price">3 SKUs</span><span class="margin">$128–$164</span></div></div>
-    <div class="pcard"><span class="badge">5 of 7</span><h4>Acne Control</h4><div class="desc">Salicylic + azelaic dual-pathway, no harsh peroxide burn.</div><div class="pricerow"><span class="price">3 SKUs</span><span class="margin">$62–$120</span></div></div>
-    <div class="pcard"><span class="badge">6 of 7</span><h4>Resist &amp; Rewind</h4><div class="desc">Peptide anti-aging matrix, pairs with microneedling protocols.</div><div class="pricerow"><span class="price">3 SKUs</span><span class="margin">$150–$178</span></div></div>
-    <div class="pcard"><span class="badge">7 of 7</span><h4>Oceuticals Marine</h4><div class="desc">Marine bio-actives for sensitive/compromised/oncology-safe skin.</div><div class="pricerow"><span class="price">3 SKUs</span><span class="margin">$81–$148</span></div></div>
-  </div>
+  <div class="pgrid" id="overview-collections"></div>
 </div>
 
 <!-- CATALOG -->
@@ -227,41 +221,79 @@ h2.stitle:first-child { margin-top:0; }
 
 <script>
 const PRODUCTS = [
-  { name:"Gentle Foaming Cleanser", cat:"cleansers", price:104.00, vol:"200ml", badge:"Pre-Laser Prep", desc:"Sulfate-free lipid balancing cleanser for sensitive and post-treatment skin." },
-  { name:"Mandelic Acid Cleanser", cat:"cleansers", price:145.00, vol:"200ml", badge:"AHA Exfoliation", desc:"Non-abrasive cellular turnover prep for acne-prone and pigment-reactive skin." },
-  { name:"Clearify Foam Cleanser", cat:"cleansers", price:78.40, vol:"150ml", badge:"Clarifying", desc:"Deep purifying foam that removes excess sebum without stripping the moisture barrier." },
-  { name:"Bamboo Micro-Polish", cat:"polishers", price:98.00, vol:"60ml", badge:"Gentle Micro-Polish", desc:"Ultra-fine bamboo spheres provide physical micro-resurfacing between clinical sessions." },
-  { name:"Enzymatic Botanical Masque", cat:"polishers", price:116.00, vol:"60ml", badge:"Enzyme Renewal", desc:"Papaya and pumpkin enzymes dissolve dead surface cells to restore radiant texture." },
-  { name:"Calming Thermal Recovery Masque", cat:"polishers", price:110.00, vol:"60ml", badge:"Post-Treatment", desc:"Instantly quenches heat sensations and reduces redness post-microneedling." },
-  { name:"Sport Shield Physical SPF 45", cat:"moisturizers", price:88.00, vol:"120ml", badge:"Mandatory Post-Care", desc:"Zinc oxide transparent mineral block. Essential daily defense against UV-induced PIH." },
-  { name:"Intense Moisture Squalane Shield", cat:"moisturizers", price:110.20, vol:"30ml", badge:"100% Olive Squalane", desc:"Pure lipid repair serum providing an occlusive moisture shield for dry skin." },
-  { name:"Moisture Clear 2% BHA Gel", cat:"moisturizers", price:132.00, vol:"60ml", badge:"Acne Hydration", desc:"Weightless oil-free hydrator with 2% salicylic acid to clear follicle congestion." },
-  { name:"Hyaluronic Moisture Drops", cat:"serums", price:128.00, vol:"30ml", badge:"Deep Hydration", desc:"Multi-molecular weight hyaluronic acid draws moisture deep into the epidermal layers." },
-  { name:"Copper Peptide Cellular Infusion", cat:"serums", price:164.00, vol:"30ml", badge:"Collagen Booster", desc:"Accelerates tissue healing, improves elasticity, and supports microneedling recovery." },
-  { name:"Vita-C Advanced Antioxidant Complex", cat:"serums", price:156.00, vol:"30ml", badge:"Brightening", desc:"Potent vitamin C shield to suppress pigment and defend against free-radical damage." },
-  { name:"BP Clarifying Active Wash 5%", cat:"acne", price:74.00, vol:"150ml", badge:"Anti-Bacterial", desc:"Purifies breakout-prone follicles and clears stubborn acne-causing bacteria." },
-  { name:"Spot Stop Targeted Treatment", cat:"acne", price:62.00, vol:"15ml", badge:"Emergency Relief", desc:"Fast-acting clinical spot therapy for sudden blemishes and inflamed breakouts." },
-  { name:"ClearBalance Exfoliating Pads", cat:"acne", price:120.00, vol:"60 pads", badge:"Pore Clearing", desc:"Salicylic and glycolic pads for daily follicular hygiene and texture refinement." },
-  { name:"Resist & Rewind Peptide Matrix", cat:"anti-aging", price:178.00, vol:"50ml", badge:"Cellular Longevity", desc:"Advanced peptide chain that supports skin firmness and reduces fine expression lines." },
-  { name:"Resist & Rewind Cleanser", cat:"anti-aging", price:150.80, vol:"200ml", badge:"Gentle Rejuvenation", desc:"Restorative cleansing milk designed for mature, thinning, or moisture-deprived skin." },
-  { name:"DNA Recovery Treatment Solution", cat:"anti-aging", price:156.60, vol:"60ml", badge:"Matrix Repair", desc:"Targeted solution to reverse photo-damage and support cellular integrity." },
-  { name:"Oceuticals Marine Barrier Cream", cat:"oceuticals", price:148.00, vol:"50ml", badge:"Ocean Bio-Actives", desc:"Rich sea kelp bio-actives soothe reactive skin and rebuild damaged lipid barriers." },
-  { name:"Oceuticals Gentle Cream Cleanser", cat:"oceuticals", price:98.60, vol:"150ml", badge:"Compromised Skin", desc:"Ultra-mild soothing wash formulated for oncology patients and highly sensitized skin." },
-  { name:"Oceuticals O-Toner Hydrating Mist", cat:"oceuticals", price:81.20, vol:"120ml", badge:"Mineral Infusion", desc:"Calming marine mineral toner mist for immediate hydration and redness relief." }
+  { name:'ClearChoice Clearify Foam Cleanser', cat:'cleansers', wholesale:19.6, retail:39.2, img:'assets/skinfx/00-clearchoice-clearify-foam-cleanser.png' },
+  { name:'ClearChoice Trauma Spray', cat:'cleansers', wholesale:22.75, retail:45.5, img:'assets/skinfx/01-clearchoice-trauma-spray.png' },
+  { name:'ClearChoice Micro-Dose Cleanser', cat:'cleansers', wholesale:42.05, retail:84.1, img:'assets/skinfx/02-clearchoice-micro-dose-cleanser.png' },
+  { name:'ClearChoice Sensi Cream Cleanser', cat:'cleansers', wholesale:36.25, retail:72.5, img:'assets/skinfx/03-clearchoice-sensi-cream-cleanser.png' },
+  { name:'ClearChoice Gentle Foaming Cleanser', cat:'cleansers', wholesale:26.1, retail:52.2, img:'assets/skinfx/04-clearchoice-gentle-foaming-cleanser.jpg' },
+  { name:'ClearChoice Hydrating Cleanser', cat:'cleansers', wholesale:31.9, retail:63.8, img:'assets/skinfx/05-clearchoice-hydrating-cleanser.png' },
+  { name:'ClearChoice Mandelic Cleanser', cat:'cleansers', wholesale:36.25, retail:72.5, img:'assets/skinfx/06-clearchoice-mandelic-cleanser.png' },
+  { name:'ClearChoice Resist/Rewind Cleanser', cat:'cleansers', wholesale:37.7, retail:75.4, img:'assets/skinfx/07-clearchoice-resist-rewind-cleanser.png' },
+  { name:'ClearChoice Hydrating Balance', cat:'cleansers', wholesale:24.65, retail:49.3, img:'assets/skinfx/08-clearchoice-hydrating-balance.png' },
+  { name:'ClearChoice LactiBiome Solution', cat:'cleansers', wholesale:31.9, retail:63.8, img:'assets/skinfx/09-clearchoice-lactibiome-solution.png' },
+  { name:'ClearChoice Hyperpigmentation TX Solution', cat:'cleansers', wholesale:39.15, retail:78.3, img:'assets/skinfx/10-clearchoice-hyperpigmentation-tx-solution.png' },
+  { name:'ClearChoice Resist/Rewind Tx Solution', cat:'cleansers', wholesale:39.15, retail:78.3, img:'assets/skinfx/11-clearchoice-resist-rewind-tx-solution.png' },
+  { name:'ClearChoice GlyBright Pads', cat:'cleansers', wholesale:29.0, retail:58.0, img:'assets/skinfx/12-clearchoice-glybright-pads.jpg' },
+  { name:'ClearChoice CopperICE Pads', cat:'cleansers', wholesale:29.0, retail:58.0, img:'assets/skinfx/13-clearchoice-copperice-pads.jpg' },
+  { name:'ClearChoice DN-A Pads', cat:'cleansers', wholesale:29.0, retail:58.0, img:'assets/skinfx/14-clearchoice-dn-a-pads.jpg' },
+  { name:'ClearChoice Sachet Sample Pack', cat:'cleansers', wholesale:5.95, retail:11.9, img:'assets/skinfx/15-clearchoice-sachet-sample-pack.png' },
+  { name:'ClearChoice Mini Facial', cat:'polishers', wholesale:43.5, retail:87.0, img:'assets/skinfx/16-clearchoice-mini-facial.png' },
+  { name:'ClearChoice Hydrating Masque + Night Therapy', cat:'polishers', wholesale:46.4, retail:92.8, img:'assets/skinfx/17-clearchoice-hydrating-masque-night-therapy.png' },
+  { name:'ClearChoice Lumi Enzyme Masque', cat:'polishers', wholesale:46.4, retail:92.8, img:'assets/skinfx/18-clearchoice-lumi-enzyme-masque.jpg' },
+  { name:'ClearChoice Post-Op Sheet Mask', cat:'polishers', wholesale:10.75, retail:21.5, img:'assets/skinfx/19-clearchoice-post-op-sheet-mask.png' },
+  { name:'ClearChoice Sport Shield SPF 45', cat:'moisturizers', wholesale:14.5, retail:29.0, img:'assets/skinfx/20-clearchoice-sport-shield-spf-45.png' },
+  { name:'ClearChoice Sun Shield Plus SPF 30', cat:'moisturizers', wholesale:26.1, retail:52.2, img:'assets/skinfx/21-clearchoice-sun-shield-plus-spf-30.jpg' },
+  { name:'ClearChoice Skin Rehab', cat:'moisturizers', wholesale:24.65, retail:49.3, img:'assets/skinfx/24-clearchoice-skin-rehab.png' },
+  { name:'ClearChoice Resist/Rewind Sun Shield Plus SPF30', cat:'moisturizers', wholesale:27.55, retail:55.1, img:'assets/skinfx/25-clearchoice-resist-rewind-sun-shield-plus-spf30.jpg' },
+  { name:'ClearChoice Resist/Rewind Night Cream', cat:'moisturizers', wholesale:33.35, retail:66.7, img:'assets/skinfx/26-clearchoice-resist-rewind-night-cream.png' },
+  { name:'ClearChoice ISO Moisture', cat:'moisturizers', wholesale:39.15, retail:78.3, img:'assets/skinfx/27-clearchoice-iso-moisture.png' },
+  { name:'ClearChoice CopperICE Cream', cat:'moisturizers', wholesale:52.2, retail:104.4, img:'assets/skinfx/28-clearchoice-copperice-cream.png' },
+  { name:'ClearChoice Reconstructive Brightening Creem', cat:'moisturizers', wholesale:50.75, retail:101.5, img:'assets/skinfx/29-clearchoice-reconstructive-brightening-creem.jpg' },
+  { name:'ClearChoice Intense Moisture', cat:'moisturizers', wholesale:27.55, retail:55.1, img:'assets/skinfx/31-clearchoice-intense-moisture.png' },
+  { name:'ClearChoice Post Care Protectant', cat:'moisturizers', wholesale:21.75, retail:43.5, img:'assets/skinfx/32-clearchoice-post-care-protectant.png' },
+  { name:'ClearChoice ISO Eye Cream', cat:'moisturizers', wholesale:36.25, retail:72.5, img:'assets/skinfx/33-clearchoice-iso-eye-cream.png' },
+  { name:'ClearChoice Soothing Healing Lotion', cat:'moisturizers', wholesale:33.35, retail:66.7, img:'assets/skinfx/35-clearchoice-soothing-healing-lotion.jpg' },
+  { name:'ClearChoice Agevity Heavy Serum AM', cat:'serums', wholesale:90.65, retail:181.3, img:'assets/skinfx/36-clearchoice-agevity-heavy-serum-am.png' },
+  { name:'ClearChoice Agevity Cushion Serum PM', cat:'serums', wholesale:90.65, retail:181.3, img:'assets/skinfx/37-clearchoice-agevity-cushion-serum-pm.png' },
+  { name:'ClearChoice Anti Wrinkle Retinox XR', cat:'serums', wholesale:63.0, retail:126.0, img:'assets/skinfx/38-clearchoice-anti-wrinkle-retinox-xr.png' },
+  { name:'ClearChoice Anti Wrinkle Retinox', cat:'serums', wholesale:43.5, retail:87.0, img:'assets/skinfx/39-clearchoice-anti-wrinkle-retinox.png' },
+  { name:'ClearChoice Even Tone', cat:'serums', wholesale:49.3, retail:98.6, img:'assets/skinfx/40-clearchoice-even-tone.png' },
+  { name:'ClearChoice Vita C-B5 Complex', cat:'serums', wholesale:69.6, retail:139.2, img:'assets/skinfx/41-clearchoice-vita-c-b5-complex.png' },
+  { name:'ClearChoice Advanced K', cat:'serums', wholesale:33.35, retail:66.7, img:'assets/skinfx/42-clearchoice-advanced-k.png' },
+  { name:'ClearChoice Sodium Hyaluronate', cat:'serums', wholesale:44.95, retail:89.9, img:'assets/skinfx/43-clearchoice-sodium-hyaluronate.png' },
+  { name:'ClearChoice Lumi Lacti-C', cat:'serums', wholesale:69.6, retail:139.2, img:'assets/skinfx/45-clearchoice-lumi-lacti-c.jpg' },
+  { name:'ClearChoice Oceuticals - Night Shield', cat:'serums', wholesale:46.4, retail:92.8, img:'assets/skinfx/46-clearchoice-oceuticals-night-shield.png' },
+  { name:'Prana SpaCeuticals Arnica Recovery Gel', cat:'serums', wholesale:4.25, retail:8.5, img:'assets/skinfx/48-prana-spaceuticals-arnica-recovery-gel.jpg' },
+  { name:'ClearChoice UnderCover Patch', cat:'acne', wholesale:7.0, retail:14.0, img:'assets/skinfx/49-clearchoice-undercover-patch.png' },
+  { name:'ClearChoice BP 8%', cat:'acne', wholesale:23.2, retail:46.4, img:'assets/skinfx/50-clearchoice-bp-8.png' },
+  { name:'ClearChoice Clinical Spot', cat:'acne', wholesale:26.1, retail:52.2, img:'assets/skinfx/51-clearchoice-clinical-spot.png' },
+  { name:'ClearChoice Resist/Rewind System', cat:'acne', wholesale:110.95, retail:221.9, img:'assets/skinfx/52-clearchoice-resist-rewind-system.jpg' },
+  { name:'ClearChoice Oceuticals - Cream Cleanser', cat:'oceuticals', wholesale:24.65, retail:49.3, img:'assets/skinfx/53-clearchoice-oceuticals-cream-cleanser.jpg' },
+  { name:'ClearChoice Oceuticals - Copper Tide Mist', cat:'oceuticals', wholesale:24.65, retail:49.3, img:'assets/skinfx/54-clearchoice-oceuticals-copper-tide-mist.jpg' },
+  { name:'ClearChoice Oceuticals - Greybiotics Mist/Scalp Spray', cat:'oceuticals', wholesale:40.6, retail:81.2, img:'assets/skinfx/55-clearchoice-oceuticals-greybiotics-mist-scalp-spra.png' },
+  { name:'ClearChoice Oceuticals - O-Toner', cat:'oceuticals', wholesale:20.3, retail:40.6, img:'assets/skinfx/56-clearchoice-oceuticals-o-toner.jpg' },
+  { name:'ClearChoice Oceuticals - Routine Oil', cat:'oceuticals', wholesale:34.8, retail:69.6, img:'assets/skinfx/57-clearchoice-oceuticals-routine-oil.png' },
+  { name:'ClearChoice Oceuticals - B5 Healing Complex', cat:'oceuticals', wholesale:46.2, retail:92.4, img:'assets/skinfx/58-clearchoice-oceuticals-b5-healing-complex.png' },
+  { name:'ClearChoice Oceuticals - Flare', cat:'oceuticals', wholesale:91.0, retail:182.0, img:'assets/skinfx/59-clearchoice-oceuticals-flare.png' },
+  { name:'ClearChoice Oceuticals - Opti-Cream', cat:'oceuticals', wholesale:34.8, retail:69.6, img:'assets/skinfx/60-clearchoice-oceuticals-opti-cream.jpg' },
+  { name:'ClearChoice Oceuticals - CopperTide Masque', cat:'oceuticals', wholesale:26.1, retail:52.2, img:'assets/skinfx/61-clearchoice-oceuticals-coppertide-masque.jpg' },
+  { name:'ClearChoice Oceuticals - Eyedeal Lid Lift', cat:'oceuticals', wholesale:33.35, retail:66.7, img:'assets/skinfx/62-clearchoice-oceuticals-eyedeal-lid-lift.jpg' },
 ];
-const CAT_LABELS = { cleansers:"Cleansers & Balancers", polishers:"Polishers & Masques", moisturizers:"Moisturizers & SPF", serums:"Corrective Serums", acne:"Acne Control", "anti-aging":"Resist & Rewind", oceuticals:"Oceuticals Marine" };
+const CAT_LABELS = { cleansers:"Cleansers & Balancers", polishers:"Polishers & Masques", moisturizers:"Moisturizers & SPF", serums:"Corrective Serums", acne:"Acne Control", oceuticals:"Oceuticals Marine" };
 
 function renderCatalog(filter='all') {
   const grid = document.getElementById('cat-grid');
   const items = filter==='all' ? PRODUCTS : PRODUCTS.filter(p=>p.cat===filter);
   grid.innerHTML = items.map(p => `
     <div class="pcard">
-      <span class="badge">${p.badge}</span>
-      <h4>${p.name}</h4>
-      <div class="desc">${p.desc}</div>
-      <div class="pricerow">
-        <span class="price">$${p.price.toFixed(2)}</span>
-        <span class="margin">${p.vol} · 50% margin</span>
+      <div class="imgwrap"><img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.parentElement.innerHTML='<div style=\'color:#888;font-size:11px;padding:10px;text-align:center\'>Image unavailable</div>'"></div>
+      <div class="pbody">
+        <span class="badge">${CAT_LABELS[p.cat]}</span>
+        <h4>${p.name}</h4>
+        <div class="pricerow">
+          <span class="price">$${p.retail.toFixed(2)}</span>
+          <span class="margin">wholesale $${p.wholesale.toFixed(2)}<br>50% margin</span>
+        </div>
       </div>
     </div>
   `).join('');
@@ -269,7 +301,7 @@ function renderCatalog(filter='all') {
 function renderPills() {
   const cats = ['all', ...new Set(PRODUCTS.map(p=>p.cat))];
   document.getElementById('cat-pills').innerHTML = cats.map(c => `
-    <button class="pill ${c==='all'?'active':''}" onclick="selectCat('${c}', this)">${c==='all'?'All 21 Products':CAT_LABELS[c]}</button>
+    <button class="pill ${c==='all'?'active':''}" onclick="selectCat('${c}', this)">${c==='all'?'All '+PRODUCTS.length+' Products':CAT_LABELS[c]}</button>
   `).join('');
 }
 function selectCat(cat, btn) {
@@ -278,6 +310,31 @@ function selectCat(cat, btn) {
   renderCatalog(cat);
 }
 renderPills(); renderCatalog();
+
+function renderOverviewCollections() {
+  const cats = [...new Set(PRODUCTS.map(p=>p.cat))];
+  const el = document.getElementById('overview-collections');
+  if (!el) return;
+  el.innerHTML = cats.map((c,i) => {
+    const items = PRODUCTS.filter(p=>p.cat===c);
+    const prices = items.map(p=>p.retail);
+    const cover = items[0];
+    return `
+    <div class="pcard">
+      <div class="imgwrap"><img src="${cover.img}" alt="${CAT_LABELS[c]}" loading="lazy"></div>
+      <div class="pbody">
+        <span class="badge">${i+1} of ${cats.length}</span>
+        <h4>${CAT_LABELS[c]}</h4>
+        <div class="pricerow">
+          <span class="price">${items.length} SKUs</span>
+          <span class="margin">$${Math.min(...prices).toFixed(0)}–$${Math.max(...prices).toFixed(0)}</span>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+renderOverviewCollections();
+
 
 const CALENDAR = [
   [1,"Mon Sep 1","Instagram","Cleansers & Balancers","Reel 60s","Your glow starts here. Meet the ClearChoice cleansers that prep your skin for everything."],
