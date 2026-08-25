@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClearChoice & Oceuticals Skincare Line — Oxyderm Dashboard</title>
+<style>
+:root {
+  --bg:#00172D; --card:#001f3d; --border:#1a3a5c; --fg:#f0f4f8; --muted:#8ba8c4;
+  --gold:#c9a96e; --steel:#33699D; --green:#2ecc71; --yellow:#f39c12; --red:#e74c3c;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--bg); color:var(--fg); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; }
+.header { background:linear-gradient(135deg,#00172D,#001f3d); border-bottom:2px solid var(--gold); padding:24px 32px; position:sticky; top:0; z-index:50; }
+.header-inner { max-width:1280px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+.logo { font-size:24px; font-weight:800; letter-spacing:0.5px; }
+.logo span { color:var(--gold); }
+.sub { font-size:12px; color:var(--muted); margin-top:4px; }
+.header-links { display:flex; gap:10px; flex-wrap:wrap; }
+.hlink { background:var(--card); border:1px solid var(--border); color:var(--fg); text-decoration:none; padding:9px 16px; border-radius:8px; font-size:13px; font-weight:600; }
+.hlink:hover { border-color:var(--gold); }
+.hlink.primary { background:var(--gold); color:#00172D; border:none; }
+
+nav.tabs { max-width:1280px; margin:0 auto; display:flex; gap:4px; padding:0 32px; overflow-x:auto; }
+.tabbtn { background:none; border:none; color:var(--muted); padding:14px 18px; font-size:13px; font-weight:700; cursor:pointer; border-bottom:3px solid transparent; white-space:nowrap; }
+.tabbtn.active { color:var(--gold); border-bottom-color:var(--gold); }
+
+.wrap { max-width:1280px; margin:0 auto; padding:32px; }
+.section { display:none; }
+.section.active { display:block; }
+
+.stat-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:16px; margin-bottom:32px; }
+.stat-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:20px; }
+.stat-card .num { font-size:32px; font-weight:800; color:var(--gold); }
+.stat-card .lbl { font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:0.5px; margin-top:4px; }
+
+h2.stitle { font-size:13px; font-weight:800; color:var(--gold); text-transform:uppercase; letter-spacing:0.8px; margin:32px 0 14px; padding-bottom:8px; border-bottom:1px solid var(--border); }
+h2.stitle:first-child { margin-top:0; }
+
+/* Category pills */
+.pillrow { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px; }
+.pill { background:var(--card); border:1px solid var(--border); border-radius:20px; padding:8px 16px; font-size:12px; font-weight:600; cursor:pointer; color:var(--muted); }
+.pill.active { background:var(--gold); color:#00172D; border-color:var(--gold); }
+
+/* product grid */
+.pgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:16px; }
+.pcard { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px; }
+.pcard .badge { display:inline-block; background:#0a2a4d; color:var(--steel); font-size:10px; font-weight:700; text-transform:uppercase; padding:3px 9px; border-radius:8px; margin-bottom:10px; }
+.pcard h4 { font-size:15px; font-weight:700; margin-bottom:6px; }
+.pcard .desc { font-size:12px; color:var(--muted); line-height:1.5; margin-bottom:12px; min-height:52px; }
+.pcard .pricerow { display:flex; justify-content:space-between; align-items:center; padding-top:10px; border-top:1px solid var(--border); }
+.pcard .price { font-size:18px; font-weight:800; color:var(--gold); }
+.pcard .margin { font-size:11px; color:var(--green); }
+
+/* calendar */
+.cal-table { width:100%; border-collapse:collapse; font-size:12px; }
+.cal-table th { text-align:left; color:var(--gold); font-size:10px; text-transform:uppercase; letter-spacing:0.5px; padding:10px 8px; border-bottom:2px solid var(--border); }
+.cal-table td { padding:10px 8px; border-bottom:1px solid var(--border); color:var(--fg); vertical-align:top; }
+.cal-table tr:hover { background:rgba(255,255,255,0.02); }
+.status-pill { display:inline-block; padding:2px 8px; border-radius:10px; font-size:10px; font-weight:700; }
+.status-pending { background:#3d2e00; color:var(--yellow); }
+.daybadge { display:inline-block; background:var(--gold); color:#00172D; font-weight:800; border-radius:6px; padding:2px 8px; font-size:11px; }
+.platform-badge { font-size:10px; font-weight:700; padding:2px 8px; border-radius:6px; }
+.pf-instagram { background:#3d1a4d; color:#e896ff; }
+.pf-facebook { background:#0a2a4d; color:#7ab8ff; }
+.pf-tiktok { background:#1a1a1a; color:#fff; }
+.pf-gbp { background:#1a4d2e; color:#7aff9e; }
+
+/* finance */
+.fin-table { width:100%; border-collapse:collapse; font-size:13px; margin-bottom:20px; }
+.fin-table th { text-align:left; color:var(--gold); font-size:11px; text-transform:uppercase; padding:10px; border-bottom:2px solid var(--border); }
+.fin-table td { padding:10px; border-bottom:1px solid var(--border); }
+.fin-note { background:var(--card); border-left:3px solid var(--gold); border-radius:8px; padding:16px; font-size:13px; color:var(--muted); line-height:1.6; margin-top:16px; }
+
+/* captions accordion */
+.capcard { background:var(--card); border:1px solid var(--border); border-radius:12px; margin-bottom:12px; overflow:hidden; }
+.capcard summary { padding:16px 18px; cursor:pointer; font-weight:700; font-size:14px; list-style:none; display:flex; justify-content:space-between; align-items:center; }
+.capcard summary::-webkit-details-marker { display:none; }
+.capcard summary .arrow { color:var(--gold); transition:transform 0.2s; }
+.capcard[open] summary .arrow { transform:rotate(90deg); }
+.capbody { padding:0 18px 18px; font-size:13px; color:var(--muted); line-height:1.7; }
+.capbody .hook { color:var(--gold); font-style:italic; margin-bottom:10px; }
+.capbody strong { color:var(--fg); }
+.tag { display:inline-block; background:#0a2a4d; color:var(--steel); font-size:10px; padding:2px 7px; border-radius:6px; margin:2px 3px 2px 0; }
+
+.footer { text-align:center; padding:32px; font-size:11px; color:var(--muted); border-top:1px solid var(--border); margin-top:40px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div>
+      <div class="logo">ClearChoice <span>&amp; Oceuticals</span></div>
+      <div class="sub">Skincare Line Management — Oxyderm Laser Clinic Edmonton</div>
+    </div>
+    <div class="header-links">
+      <a class="hlink" href="index.html">← Main Dashboard</a>
+      <a class="hlink" href="shop/index.html" target="_blank">View Live Storefront ↗</a>
+      <a class="hlink primary" href="https://book.squareup.com/appointments/book/merchant/SA5CTAH41JNY2/services" target="_blank">Square ↗</a>
+    </div>
+  </div>
+</div>
+
+<nav class="tabs">
+  <button class="tabbtn active" onclick="showTab('overview')">Overview</button>
+  <button class="tabbtn" onclick="showTab('catalog')">Product Catalog</button>
+  <button class="tabbtn" onclick="showTab('calendar')">14-Day Launch Calendar</button>
+  <button class="tabbtn" onclick="showTab('finance')">Finance &amp; Margins</button>
+  <button class="tabbtn" onclick="showTab('content')">Captions &amp; Content</button>
+</nav>
+
+<div class="wrap">
+
+<!-- OVERVIEW -->
+<div class="section active" id="tab-overview">
+  <div class="stat-grid">
+    <div class="stat-card"><div class="num">21</div><div class="lbl">SKUs Live</div></div>
+    <div class="stat-card"><div class="num">7</div><div class="lbl">Collections</div></div>
+    <div class="stat-card"><div class="num">50%</div><div class="lbl">Gross Margin (all SKUs)</div></div>
+    <div class="stat-card"><div class="num">14</div><div class="lbl">Day Launch Campaign</div></div>
+    <div class="stat-card"><div class="num">$120</div><div class="lbl">Free Ship AOV Floor</div></div>
+    <div class="stat-card"><div class="num">42</div><div class="lbl">Posts Planned (Campaign)</div></div>
+  </div>
+
+  <h2 class="stitle">Status</h2>
+  <div class="fin-note">
+    Storefront is <strong style="color:var(--green)">live</strong> at the Shop link above — 21 products across 7 collections, Square checkout wired, 2x keystone pricing applied uniformly (50% margin every SKU).
+    The 14-day social launch campaign (42 posts across Instagram, Facebook, TikTok, GBP) is fully scripted and ready to schedule — everything below is <strong style="color:var(--yellow)">pending production</strong> (⬜), no assets shot yet.
+    Brand lock: Navy #00172D, Steel #33699D, Gold #c9a96e. Services referenced in all content: <strong>Laser Hair Removal &amp; Microneedling only</strong> — no Botox, injectables, or chemical peel mentions per brand policy.
+  </div>
+
+  <h2 class="stitle">Collections</h2>
+  <div class="pgrid">
+    <div class="pcard"><span class="badge">1 of 7</span><h4>Cleansers &amp; Balancers</h4><div class="desc">pH-calibrated cleansers + toners. Pre-laser skin prep hero.</div><div class="pricerow"><span class="price">3 SKUs</span><span class="margin">$78–$145</span></div></div>
+    <div class="pcard"><span class="badge">2 of 7</span><h4>Polishers &amp; Masques</h4><div class="desc">Mechanical + enzymatic resurfacing, post-treatment recovery masques.</div><div class="pricerow"><span class="price">3 SKUs</span><span class="margin">$98–$116</span></div></div>
+    <div class="pcard"><span class="badge">3 of 7</span><h4>Moisturizers &amp; SPF</h4><div class="desc">Mandatory post-laser photo-protection + barrier repair.</div><div class="pricerow"><span class="price">3 SKUs</span><span class="margin">$88–$132</span></div></div>
+    <div class="pcard"><span class="badge">4 of 7</span><h4>Corrective Serums</h4><div class="desc">Vitamin C, copper peptide, hyaluronic — microneedling companion actives.</div><div class="pricerow"><span class="price">3 SKUs</span><span class="margin">$128–$164</span></div></div>
+    <div class="pcard"><span class="badge">5 of 7</span><h4>Acne Control</h4><div class="desc">Salicylic + azelaic dual-pathway, no harsh peroxide burn.</div><div class="pricerow"><span class="price">3 SKUs</span><span class="margin">$62–$120</span></div></div>
+    <div class="pcard"><span class="badge">6 of 7</span><h4>Resist &amp; Rewind</h4><div class="desc">Peptide anti-aging matrix, pairs with microneedling protocols.</div><div class="pricerow"><span class="price">3 SKUs</span><span class="margin">$150–$178</span></div></div>
+    <div class="pcard"><span class="badge">7 of 7</span><h4>Oceuticals Marine</h4><div class="desc">Marine bio-actives for sensitive/compromised/oncology-safe skin.</div><div class="pricerow"><span class="price">3 SKUs</span><span class="margin">$81–$148</span></div></div>
+  </div>
+</div>
+
+<!-- CATALOG -->
+<div class="section" id="tab-catalog">
+  <h2 class="stitle">Full Product Catalog (21 SKUs, 2x Keystone Retail)</h2>
+  <div class="pillrow" id="cat-pills"></div>
+  <div class="pgrid" id="cat-grid"></div>
+</div>
+
+<!-- CALENDAR -->
+<div class="section" id="tab-calendar">
+  <h2 class="stitle">14-Day Launch Calendar — Campaign Start Mon Sep 1, 2026</h2>
+  <div style="overflow-x:auto;">
+  <table class="cal-table" id="cal-table">
+    <thead><tr><th>Day</th><th>Date</th><th>Platform</th><th>Collection</th><th>Format</th><th>Core Message</th><th>Status</th></tr></thead>
+    <tbody id="cal-body"></tbody>
+  </table>
+  </div>
+  <h2 class="stitle">Optimal Posting Times</h2>
+  <table class="fin-table">
+    <thead><tr><th>Platform</th><th>Format</th><th>Best Time (MST)</th><th>Limit</th></tr></thead>
+    <tbody>
+      <tr><td>Instagram Feed/Reels</td><td>1080×1080 / 1080×1920</td><td>8–9am or 6–8pm</td><td>2,200 chars, 30 hashtags</td></tr>
+      <tr><td>Facebook</td><td>1200×630 / 1080×1080</td><td>9–11am or 1–3pm</td><td>63,206 chars</td></tr>
+      <tr><td>Google Business Profile</td><td>1200×900 min</td><td>9–11am Tue–Fri</td><td>1,500 chars, no links in body</td></tr>
+      <tr><td>TikTok</td><td>1080×1920</td><td>7–9am or 7–9pm</td><td>2,200 chars, 5–8 hashtags</td></tr>
+    </tbody>
+  </table>
+  <div class="fin-note">
+    <strong>Core hashtags (every post):</strong> #Oxyderm #OxyDermInEdmonton #ClearChoiceSkincare #Oceuticals #EdmontonSkincare<br><br>
+    <strong>Pre-production lead times:</strong> Static photo 5–7 days, Reel/TikTok 7–10 days, GBP photo 2–3 days, carousel graphics 3–5 days, captions 3 days before post date.
+  </div>
+</div>
+
+<!-- FINANCE -->
+<div class="section" id="tab-finance">
+  <h2 class="stitle">Unit Economics — 2x Keystone Model</h2>
+  <table class="fin-table">
+    <thead><tr><th>Product</th><th>Retail CAD</th><th>Cost (50%)</th><th>Gross Margin</th><th>Break-even Units/mo @ $200 ad spend</th></tr></thead>
+    <tbody>
+      <tr><td>Gentle Foaming Cleanser</td><td>$104.00</td><td>$52.00</td><td>$52.00 (50%)</td><td>4 units</td></tr>
+      <tr><td>Mandelic Acid Cleanser</td><td>$145.00</td><td>$72.50</td><td>$72.50 (50%)</td><td>3 units</td></tr>
+      <tr><td>Sport Shield SPF 45</td><td>$88.00</td><td>$44.00</td><td>$44.00 (50%)</td><td>5 units</td></tr>
+      <tr><td>Hyaluronic Moisture Drops</td><td>$128.00</td><td>$64.00</td><td>$64.00 (50%)</td><td>4 units</td></tr>
+      <tr><td>Copper Peptide Infusion</td><td>$164.00</td><td>$82.00</td><td>$82.00 (50%)</td><td>3 units</td></tr>
+      <tr><td>Vita-C Antioxidant Complex</td><td>$156.00</td><td>$78.00</td><td>$78.00 (50%)</td><td>3 units</td></tr>
+      <tr><td>Oceuticals Marine Barrier</td><td>$148.00</td><td>$74.00</td><td>$74.00 (50%)</td><td>3 units</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="stitle">Free Shipping Threshold Analysis</h2>
+  <div class="fin-note">
+    <strong>Formula:</strong> Net Margin % = (AOV × 0.50 − $12 shipping) ÷ AOV<br>
+    Solving for 40% net margin floor: <strong style="color:var(--gold)">AOV must be ≥ $120.00</strong> — this is threshold-agnostic (true whether the trigger is set at $75 or $100).
+  </div>
+  <table class="fin-table" style="margin-top:16px;">
+    <thead><tr><th>AOV</th><th>Gross Profit</th><th>Net After $12 Ship</th><th>Net Margin</th><th>Meets 40% Target?</th></tr></thead>
+    <tbody>
+      <tr><td>$75.00</td><td>$37.50</td><td>$25.50</td><td>34.0%</td><td style="color:var(--red)">No</td></tr>
+      <tr><td>$88.00 (SPF45)</td><td>$44.00</td><td>$32.00</td><td>36.4%</td><td style="color:var(--red)">No</td></tr>
+      <tr><td>$104.00 (Cleanser)</td><td>$52.00</td><td>$40.00</td><td>38.5%</td><td style="color:var(--red)">No</td></tr>
+      <tr><td style="color:var(--gold)">$120.00</td><td>$60.00</td><td>$48.00</td><td style="color:var(--gold)">40.0%</td><td style="color:var(--gold)">Break-even</td></tr>
+      <tr><td>$145.00 (Mandelic)</td><td>$72.50</td><td>$60.50</td><td>41.7%</td><td style="color:var(--green)">Yes</td></tr>
+      <tr><td>$164.00 (Peptide)</td><td>$82.00</td><td>$70.00</td><td>42.7%</td><td style="color:var(--green)">Yes</td></tr>
+      <tr><td>$200.00</td><td>$100.00</td><td>$88.00</td><td>44.0%</td><td style="color:var(--green)">Yes</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="stitle">Recommendation</h2>
+  <div class="fin-note">
+    <strong>Set free shipping at $120 CAD</strong> (or use $100 threshold + in-cart upsell nudge "Add $16 more for free shipping") to protect the 40% net margin floor.
+    Free shipping at $75 is margin-destructive for single-SKU orders on the 3 lowest-priced products (SPF45, Cleanser, Mandelic below bundle).
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="section" id="tab-content">
+  <h2 class="stitle">Instagram Caption Bundles — 7 Collections (Ready to Post)</h2>
+  <div id="captions-list"></div>
+</div>
+
+</div>
+
+<div class="footer">Built with Agency OS - AI Lead Builder</div>
+
+<script>
+const PRODUCTS = [
+  { name:"Gentle Foaming Cleanser", cat:"cleansers", price:104.00, vol:"200ml", badge:"Pre-Laser Prep", desc:"Sulfate-free lipid balancing cleanser for sensitive and post-treatment skin." },
+  { name:"Mandelic Acid Cleanser", cat:"cleansers", price:145.00, vol:"200ml", badge:"AHA Exfoliation", desc:"Non-abrasive cellular turnover prep for acne-prone and pigment-reactive skin." },
+  { name:"Clearify Foam Cleanser", cat:"cleansers", price:78.40, vol:"150ml", badge:"Clarifying", desc:"Deep purifying foam that removes excess sebum without stripping the moisture barrier." },
+  { name:"Bamboo Micro-Polish", cat:"polishers", price:98.00, vol:"60ml", badge:"Gentle Micro-Polish", desc:"Ultra-fine bamboo spheres provide physical micro-resurfacing between clinical sessions." },
+  { name:"Enzymatic Botanical Masque", cat:"polishers", price:116.00, vol:"60ml", badge:"Enzyme Renewal", desc:"Papaya and pumpkin enzymes dissolve dead surface cells to restore radiant texture." },
+  { name:"Calming Thermal Recovery Masque", cat:"polishers", price:110.00, vol:"60ml", badge:"Post-Treatment", desc:"Instantly quenches heat sensations and reduces redness post-microneedling." },
+  { name:"Sport Shield Physical SPF 45", cat:"moisturizers", price:88.00, vol:"120ml", badge:"Mandatory Post-Care", desc:"Zinc oxide transparent mineral block. Essential daily defense against UV-induced PIH." },
+  { name:"Intense Moisture Squalane Shield", cat:"moisturizers", price:110.20, vol:"30ml", badge:"100% Olive Squalane", desc:"Pure lipid repair serum providing an occlusive moisture shield for dry skin." },
+  { name:"Moisture Clear 2% BHA Gel", cat:"moisturizers", price:132.00, vol:"60ml", badge:"Acne Hydration", desc:"Weightless oil-free hydrator with 2% salicylic acid to clear follicle congestion." },
+  { name:"Hyaluronic Moisture Drops", cat:"serums", price:128.00, vol:"30ml", badge:"Deep Hydration", desc:"Multi-molecular weight hyaluronic acid draws moisture deep into the epidermal layers." },
+  { name:"Copper Peptide Cellular Infusion", cat:"serums", price:164.00, vol:"30ml", badge:"Collagen Booster", desc:"Accelerates tissue healing, improves elasticity, and supports microneedling recovery." },
+  { name:"Vita-C Advanced Antioxidant Complex", cat:"serums", price:156.00, vol:"30ml", badge:"Brightening", desc:"Potent vitamin C shield to suppress pigment and defend against free-radical damage." },
+  { name:"BP Clarifying Active Wash 5%", cat:"acne", price:74.00, vol:"150ml", badge:"Anti-Bacterial", desc:"Purifies breakout-prone follicles and clears stubborn acne-causing bacteria." },
+  { name:"Spot Stop Targeted Treatment", cat:"acne", price:62.00, vol:"15ml", badge:"Emergency Relief", desc:"Fast-acting clinical spot therapy for sudden blemishes and inflamed breakouts." },
+  { name:"ClearBalance Exfoliating Pads", cat:"acne", price:120.00, vol:"60 pads", badge:"Pore Clearing", desc:"Salicylic and glycolic pads for daily follicular hygiene and texture refinement." },
+  { name:"Resist & Rewind Peptide Matrix", cat:"anti-aging", price:178.00, vol:"50ml", badge:"Cellular Longevity", desc:"Advanced peptide chain that supports skin firmness and reduces fine expression lines." },
+  { name:"Resist & Rewind Cleanser", cat:"anti-aging", price:150.80, vol:"200ml", badge:"Gentle Rejuvenation", desc:"Restorative cleansing milk designed for mature, thinning, or moisture-deprived skin." },
+  { name:"DNA Recovery Treatment Solution", cat:"anti-aging", price:156.60, vol:"60ml", badge:"Matrix Repair", desc:"Targeted solution to reverse photo-damage and support cellular integrity." },
+  { name:"Oceuticals Marine Barrier Cream", cat:"oceuticals", price:148.00, vol:"50ml", badge:"Ocean Bio-Actives", desc:"Rich sea kelp bio-actives soothe reactive skin and rebuild damaged lipid barriers." },
+  { name:"Oceuticals Gentle Cream Cleanser", cat:"oceuticals", price:98.60, vol:"150ml", badge:"Compromised Skin", desc:"Ultra-mild soothing wash formulated for oncology patients and highly sensitized skin." },
+  { name:"Oceuticals O-Toner Hydrating Mist", cat:"oceuticals", price:81.20, vol:"120ml", badge:"Mineral Infusion", desc:"Calming marine mineral toner mist for immediate hydration and redness relief." }
+];
+const CAT_LABELS = { cleansers:"Cleansers & Balancers", polishers:"Polishers & Masques", moisturizers:"Moisturizers & SPF", serums:"Corrective Serums", acne:"Acne Control", "anti-aging":"Resist & Rewind", oceuticals:"Oceuticals Marine" };
+
+function renderCatalog(filter='all') {
+  const grid = document.getElementById('cat-grid');
+  const items = filter==='all' ? PRODUCTS : PRODUCTS.filter(p=>p.cat===filter);
+  grid.innerHTML = items.map(p => `
+    <div class="pcard">
+      <span class="badge">${p.badge}</span>
+      <h4>${p.name}</h4>
+      <div class="desc">${p.desc}</div>
+      <div class="pricerow">
+        <span class="price">$${p.price.toFixed(2)}</span>
+        <span class="margin">${p.vol} · 50% margin</span>
+      </div>
+    </div>
+  `).join('');
+}
+function renderPills() {
+  const cats = ['all', ...new Set(PRODUCTS.map(p=>p.cat))];
+  document.getElementById('cat-pills').innerHTML = cats.map(c => `
+    <button class="pill ${c==='all'?'active':''}" onclick="selectCat('${c}', this)">${c==='all'?'All 21 Products':CAT_LABELS[c]}</button>
+  `).join('');
+}
+function selectCat(cat, btn) {
+  document.querySelectorAll('.pill').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  renderCatalog(cat);
+}
+renderPills(); renderCatalog();
+
+const CALENDAR = [
+  [1,"Mon Sep 1","Instagram","Cleansers & Balancers","Reel 60s","Your glow starts here. Meet the ClearChoice cleansers that prep your skin for everything."],
+  [1,"Mon Sep 1","Facebook","Cleansers & Balancers","Link Post + Photo","Introducing the ClearChoice Skincare Shop — now open at Oxyderm Edmonton."],
+  [1,"Mon Sep 1","GBP","Cleansers & Balancers","Update Post","New! ClearChoice Professional Skincare now available at Oxyderm."],
+  [2,"Tue Sep 2","TikTok","Cleansers & Balancers","Tutorial/POV","POV: You finally found a cleanser that doesn't strip your skin."],
+  [2,"Wed Sep 2","Instagram","Cleansers & Balancers","Stories (3-frame)","Did you know your cleanser affects EVERYTHING that comes after?"],
+  [2,"Wed Sep 2","Facebook","Cleansers & Balancers","Educational Carousel","5 Signs You're Using the Wrong Cleanser."],
+  [3,"Thu Sep 3","Instagram","Polishers & Masques","Reel 45s","Smooth. Glow. Repeat. Our polishers work while you relax."],
+  [3,"Thu Sep 3","TikTok","Polishers & Masques","GRWM","GRWM: At-home spa night with ClearChoice Polishers."],
+  [3,"Thu Sep 3","GBP","Polishers & Masques","Update Post","Reveal your smoothest skin yet — Polishers & Masques now available."],
+  [4,"Fri Sep 4","Instagram","Polishers & Masques","Carousel How-To","How to build your weekly exfoliation routine in 3 steps."],
+  [4,"Fri Sep 4","Facebook","Polishers & Masques","Video Post","Weekend glow-up alert — see how our Polishers work."],
+  [4,"Fri Sep 4","TikTok","Polishers & Masques","Green Screen","Things your esthetician WANTS you to know about exfoliation."],
+  [5,"Sat Sep 6","Instagram","Moisturizers & SPF","Reel 60s","SPF is non-negotiable — Oxyderm clients swear by it year-round."],
+  [5,"Sat Sep 6","Facebook","Moisturizers & SPF","Infographic","UV damage doesn't stop when the sun goes in."],
+  [5,"Sat Sep 6","GBP","Moisturizers & SPF","Offer Post","Hydrated skin = healthy skin. Shop Moisturizers & SPF."],
+  [6,"Sun Sep 7","TikTok","Moisturizers & SPF","Routine Video","My morning skincare routine as a laser clinic client."],
+  [6,"Sun Sep 7","Instagram","Moisturizers & SPF","Stories Quiz","Quick quiz! SPF should be applied…"],
+  [6,"Sun Sep 7","Facebook","Moisturizers & SPF","Testimonial","Our clients know the difference ClearChoice SPF makes post-laser."],
+  [7,"Mon Sep 8","Instagram","Corrective Serums","Reel 60s","Vitamin C. Retinol. Peptides. Not all serums are equal."],
+  [7,"Mon Sep 8","TikTok","Corrective Serums","Ingredient Breakdown","Rating every active ingredient in our ClearChoice serums."],
+  [7,"Mon Sep 8","GBP","Corrective Serums","Update Post","Target hyperpigmentation, fine lines & uneven texture."],
+  [8,"Tue Sep 9","Instagram","Corrective Serums","Carousel Science","What does each serum actually DO?"],
+  [8,"Tue Sep 9","Facebook","Corrective Serums","Live Q&A Announce","LIVE Wednesday: Ask our esthetician ANYTHING about serums."],
+  [8,"Tue Sep 9","TikTok","Corrective Serums","Do This/Not That","You're using your serum WRONG."],
+  [9,"Wed Sep 10","Instagram","Acne Control","Reel 60s","Acne doesn't care how old you are."],
+  [9,"Wed Sep 10","TikTok","Acne Control","Myth-Busting","5 acne myths that are RUINING your skin."],
+  [9,"Wed Sep 10","GBP","Acne Control","Update Post","Struggling with adult acne? ClearChoice targets breakouts at the source."],
+  [10,"Thu Sep 11","Instagram","Acne Control","Carousel Routine","Build your acne-fighting routine in 4 steps."],
+  [10,"Thu Sep 11","Facebook","Acne Control","Community Poll","Which is your biggest skin concern right now?"],
+  [10,"Thu Sep 11","TikTok","Acne Control","Review Format","I tried the ClearChoice Acne Control line for 2 weeks."],
+  [11,"Fri Sep 12","Instagram","Resist & Rewind","Reel 60s","Age is a number. Skin loss is a choice."],
+  [11,"Fri Sep 12","TikTok","Resist & Rewind","Anti-Aging Secrets","Anti-aging tips from an Edmonton laser clinic."],
+  [11,"Fri Sep 12","GBP","Resist & Rewind","Update Post","Turn back the clock with Resist & Rewind."],
+  [12,"Sat Sep 13","Instagram","Resist & Rewind","Carousel Decades","What happens to skin in your 30s, 40s, 50s."],
+  [12,"Sat Sep 13","Facebook","Resist & Rewind","Testimonial","Clients combine Resist & Rewind with microneedling for lasting results."],
+  [12,"Sat Sep 13","TikTok","Resist & Rewind","Skincare After 35","What I wish I started in my 30s."],
+  [13,"Sun Sep 14","Instagram","Oceuticals Marine","Reel 60s","From the ocean to your skin."],
+  [13,"Sun Sep 14","TikTok","Oceuticals Marine","Brand Launch","We just added something INCREDIBLE to our lineup."],
+  [13,"Sun Sep 14","GBP","Oceuticals Marine","Update Post","Now introducing: Oceuticals Marine Collection."],
+  [14,"Mon Sep 15","Instagram","Oceuticals Marine","Campaign Closer","14 days. 7 collections. One shop."],
+  [14,"Mon Sep 15","Facebook","Oceuticals Marine","Campaign Recap","Over the last two weeks, we've introduced every collection."],
+  [14,"Mon Sep 15","TikTok","Oceuticals Marine","Full Routine Finale","We built the ULTIMATE skincare routine with every collection."]
+];
+const PF_CLASS = { Instagram:"pf-instagram", Facebook:"pf-facebook", TikTok:"pf-tiktok", GBP:"pf-gbp" };
+document.getElementById('cal-body').innerHTML = CALENDAR.map(r => `
+  <tr>
+    <td><span class="daybadge">D${r[0]}</span></td>
+    <td>${r[1]}</td>
+    <td><span class="platform-badge ${PF_CLASS[r[2]]}">${r[2]}</span></td>
+    <td>${r[3]}</td>
+    <td>${r[4]}</td>
+    <td>${r[5]}</td>
+    <td><span class="status-pill status-pending">Pending</span></td>
+  </tr>
+`).join('');
+
+const CAPTIONS = [
+  { title:"Cleansers & Balancers", hook:"Your cleanser might be the reason your skin won't clear.", body:"Most drugstore cleansers disrupt your skin's acid mantle, leaving it over-oily or chronically dehydrated. ClearChoice Cleansers & Balancers are pH-calibrated to work with your barrier — gentle surfactants lift debris without stripping lipids.", tags:["#EdmontonSkincare","#YEGBeauty","#ClearChoiceSkincare","#SkinBarrier","#SkincareRoutine"] },
+  { title:"Polishers & Masques", hook:"Dull skin isn't your fault — it's just dead cells blocking your glow.", body:"ClearChoice Polishers use controlled mechanical + enzymatic exfoliation to resurface without tearing. Masques then deliver concentrated actives directly into freshly cleared skin — up to 10x absorption vs non-exfoliated skin.", tags:["#EdmontonGlow","#SkinPolisher","#ExfoliatingMasque","#GlowSkin"] },
+  { title:"Moisturizers & SPF", hook:"SPF isn't optional. In Edmonton, it's not even seasonal.", body:"ClearChoice Moisturizers use humectant-occlusant layering — hyaluronic acid draws water in, peptides reinforce the barrier. Broad-spectrum mineral-chemical SPF hybrids: zero white cast, lightweight, safe under makeup.", tags:["#EdmontonSPF","#MineralSPF","#ClinicalMoisturizer","#SPFEveryday"] },
+  { title:"Corrective Serums", hook:"Serums do what moisturizers can't. Here's why yours might not be working.", body:"ClearChoice Corrective Serums are dosed at clinically relevant concentrations with encapsulated delivery — stabilised Vitamin C, time-release retinoids without the purge, growth-factor peptides that stimulate collagen synthesis.", tags:["#EdmontonSerums","#CorrectiveSerum","#VitaminCSerum","#SkincareScience"] },
+  { title:"Acne Control", hook:"Adult acne isn't a phase. But it is fixable.", body:"ClearChoice Acne Control works through dual-pathway action: Salicylic acid dissolves sebum plugs, anti-inflammatory actives (azelaic acid, zinc) calm the immune response. No harsh peroxides, no burn.", tags:["#EdmontonAcne","#AcneControl","#SalicylicAcid","#AdultAcne"] },
+  { title:"Resist & Rewind", hook:"Collagen doesn't just disappear. It gets outpaced. Here's how to catch up.", body:"Peptide complexes signal fibroblasts to upregulate collagen I and III synthesis. Antioxidants (resveratrol, CoQ10, Vitamin E) quench free radical damage. Pairs directly with microneedling protocols at Oxyderm.", tags:["#EdmontonAntiAging","#ResistAndRewind","#CollagenInduction","#AntiAging"] },
+  { title:"Oceuticals Marine", hook:"The ocean has been solving skin problems for 500 million years.", body:"Algae polysaccharides hold 1,000x their weight in water for sustained hydration. Marine collagen precursors structurally compatible with human dermal tissue. Trace minerals (magnesium, selenium, zinc) function as enzymatic cofactors.", tags:["#EdmontonLuxurySkincare","#MarineSkincare","#Oceuticals","#SensitiveSkinSkincare"] }
+];
+document.getElementById('captions-list').innerHTML = CAPTIONS.map((c,i) => `
+  <details class="capcard" ${i===0?'open':''}>
+    <summary>Bundle ${i+1} — ${c.title} <span class="arrow">▶</span></summary>
+    <div class="capbody">
+      <div class="hook">"${c.hook}"</div>
+      <p>${c.body}</p>
+      <p style="margin-top:10px;"><strong>CTA:</strong> Shop link → oxyderm shop page. Book link → Square appointments.</p>
+      <div style="margin-top:10px;">${c.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+    </div>
+  </details>
+`).join('');
+
+function showTab(name) {
+  document.querySelectorAll('.tabbtn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('tab-'+name).classList.add('active');
+}
+</script>
+</body>
+</html>
