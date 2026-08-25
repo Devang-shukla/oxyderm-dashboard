@@ -1,101 +1,101 @@
 {
-  "fetched_at": "11:57 PM MDT",
-  "today": "2026-08-24",
-  "week_start": "2026-08-24",
-  "week_end": "2026-08-30",
+  "fetched_at": "09:05 AM MDT",
+  "today": "2026-08-25",
+  "week_start": "2026-08-25",
+  "week_end": "2026-08-31",
   "appointments": [
     {
-      "time": "1:00 PM",
-      "date": "2026-08-24",
-      "date_label": "Monday, August 24",
-      "name": "Alexandra Doblado",
-      "phone": "(587) 974-5069",
-      "email": "asr.doblado@gmail.com",
+      "time": "10:00 AM",
+      "date": "2026-08-25",
+      "date_label": "Tuesday, August 25",
+      "name": "Gurleen Batth",
+      "phone": "+1 825-419-9549",
+      "email": "gurleenkbatth@icloud.com",
       "service": "Treatment",
-      "areas": "legs, toes, fingers, arms, underarms",
+      "areas": "",
       "duration_min": 120,
-      "visit": "7th visit",
-      "visit_num": 7,
-      "payment": "Paid 1st instalment $199.99 in Dec 2025",
-      "flags": [
-        "Minor - parent in room",
-        "No face on social media",
-        "Left Google review"
-      ],
-      "raw_note": "Tx7   membership\nTreatment area: legs, toes, fingers, arms, underarms\n\n*She is 17 yrs so mom is coming to the treatment room with her\nPaid 1st instalment $199.99 in Dec 2025\nPaid 12th instalment $199.99 in Jan 2026\nMembership started in Jan 2026 expires Dec 2026\nPaying $199.99 every time in clinic\n*given google review in Mar 2026 ($5 off for google review given)\n*her mom said she prefers no face of her daughter in social media\n5 treatments left to use from sep 2026 \nHetisha did treatment",
+      "visit": "Unknown visit",
+      "visit_num": null,
+      "payment": "See Square",
+      "flags": [],
+      "raw_note": "",
       "status": "ACCEPTED",
-      "booking_id": "yjb479j2e9a5ri"
+      "booking_id": "b8it2fkqpap3e6"
     },
     {
-      "time": "3:00 PM",
-      "date": "2026-08-24",
-      "date_label": "Monday, August 24",
-      "name": "Mehak Wadhwa",
-      "phone": "(780) 394-9700",
-      "email": "mehakwadhwa8085@gmail.com",
+      "time": "11:15 AM",
+      "date": "2026-08-25",
+      "date_label": "Tuesday, August 25",
+      "name": "Jaskaran Sandhu",
+      "phone": "+17806262626",
+      "email": "",
       "service": "Treatment",
-      "areas": "legs, fingers, arms, underarms, face, lower abdomen, chest, full back, Brazilian, bums",
+      "areas": "",
       "duration_min": 120,
-      "visit": "11th visit",
-      "visit_num": 11,
-      "payment": "paid in Jan 2025 $150 to hold the promo | Balance $49.99 will be payin in Feb",
-      "flags": [
-        "Left Google review"
-      ],
-      "raw_note": "Tx11 membership \nTreatment area: legs, fingers, arms, underarms, face, lower abdomen, chest, full back, Brazilian, bums\n\nAdvance paid in Jan 2025 $150 to hold the promo\nBalance $49.99 will be payin in Feb\nMembership for 6 months $199.99 each\nMembership started in Feb 2025 expires in July 2025\nPaid first and last instalment $199.99 each\nAuto payment on 15 every month\nIngrown kit, v drop serum paid 1st instalment $55.65 in Feb\n2nd instalment $55.65 in March\nPaid 3rd instalment $55.65 in April 2025",
+      "visit": "Unknown visit",
+      "visit_num": null,
+      "payment": "See Square",
+      "flags": [],
+      "raw_note": "part 2  legs ",
       "status": "ACCEPTED",
-      "booking_id": "d14itbfs12kzvn"
+      "booking_id": "bed1dj727fhvbe"
+    },
+    {
+      "time": "12:00 PM",
+      "date": "2026-08-25",
+      "date_label": "Tuesday, August 25",
+      "name": "Pushpa Bali",
+      "phone": "+17808869281",
+      "email": "pushpab@telus.net",
+      "service": "Treatment",
+      "areas": "",
+      "duration_min": 60,
+      "visit": "Unknown visit",
+      "visit_num": null,
+      "payment": "See Square",
+      "flags": [],
+      "raw_note": "",
+      "status": "ACCEPTED",
+      "booking_id": "0bmdm62tavo05u"
+    },
+    {
+      "time": "4:30 PM",
+      "date": "2026-08-25",
+      "date_label": "Tuesday, August 25",
+      "name": "Monika Sah",
+      "phone": "+18254194815",
+      "email": "monikasah358@gmail.com",
+      "service": "Treatment",
+      "areas": "",
+      "duration_min": 120,
+      "visit": "Unknown visit",
+      "visit_num": null,
+      "payment": "See Square",
+      "flags": [],
+      "raw_note": "",
+      "status": "ACCEPTED",
+      "booking_id": "uv6n0r6rsdghbu"
+    },
+    {
+      "time": "5:30 PM",
+      "date": "2026-08-25",
+      "date_label": "Tuesday, August 25",
+      "name": "Marko Tatrsky",
+      "phone": "+15879384868",
+      "email": "",
+      "service": "Treatment",
+      "areas": "",
+      "duration_min": 55,
+      "visit": "Unknown visit",
+      "visit_num": null,
+      "payment": "See Square",
+      "flags": [],
+      "raw_note": "",
+      "status": "ACCEPTED",
+      "booking_id": "c5eqg2n14pcshm"
     }
   ],
   "week": [
-    {
-      "date": "2026-08-24",
-      "label": "Monday, August 24",
-      "appointments": [
-        {
-          "time": "1:00 PM",
-          "date": "2026-08-24",
-          "date_label": "Monday, August 24",
-          "name": "Alexandra Doblado",
-          "phone": "(587) 974-5069",
-          "email": "asr.doblado@gmail.com",
-          "service": "Treatment",
-          "areas": "legs, toes, fingers, arms, underarms",
-          "duration_min": 120,
-          "visit": "7th visit",
-          "visit_num": 7,
-          "payment": "Paid 1st instalment $199.99 in Dec 2025",
-          "flags": [
-            "Minor - parent in room",
-            "No face on social media",
-            "Left Google review"
-          ],
-          "raw_note": "Tx7   membership\nTreatment area: legs, toes, fingers, arms, underarms\n\n*She is 17 yrs so mom is coming to the treatment room with her\nPaid 1st instalment $199.99 in Dec 2025\nPaid 12th instalment $199.99 in Jan 2026\nMembership started in Jan 2026 expires Dec 2026\nPaying $199.99 every time in clinic\n*given google review in Mar 2026 ($5 off for google review given)\n*her mom said she prefers no face of her daughter in social media\n5 treatments left to use from sep 2026 \nHetisha did treatment",
-          "status": "ACCEPTED",
-          "booking_id": "yjb479j2e9a5ri"
-        },
-        {
-          "time": "3:00 PM",
-          "date": "2026-08-24",
-          "date_label": "Monday, August 24",
-          "name": "Mehak Wadhwa",
-          "phone": "(780) 394-9700",
-          "email": "mehakwadhwa8085@gmail.com",
-          "service": "Treatment",
-          "areas": "legs, fingers, arms, underarms, face, lower abdomen, chest, full back, Brazilian, bums",
-          "duration_min": 120,
-          "visit": "11th visit",
-          "visit_num": 11,
-          "payment": "paid in Jan 2025 $150 to hold the promo | Balance $49.99 will be payin in Feb",
-          "flags": [
-            "Left Google review"
-          ],
-          "raw_note": "Tx11 membership \nTreatment area: legs, fingers, arms, underarms, face, lower abdomen, chest, full back, Brazilian, bums\n\nAdvance paid in Jan 2025 $150 to hold the promo\nBalance $49.99 will be payin in Feb\nMembership for 6 months $199.99 each\nMembership started in Feb 2025 expires in July 2025\nPaid first and last instalment $199.99 each\nAuto payment on 15 every month\nIngrown kit, v drop serum paid 1st instalment $55.65 in Feb\n2nd instalment $55.65 in March\nPaid 3rd instalment $55.65 in April 2025",
-          "status": "ACCEPTED",
-          "booking_id": "d14itbfs12kzvn"
-        }
-      ]
-    },
     {
       "date": "2026-08-25",
       "label": "Tuesday, August 25",
@@ -521,7 +521,31 @@
           "booking_id": "vkcs8vo5jojwpx"
         }
       ]
+    },
+    {
+      "date": "2026-08-31",
+      "label": "Monday, August 31",
+      "appointments": [
+        {
+          "time": "5:00 PM",
+          "date": "2026-08-31",
+          "date_label": "Monday, August 31",
+          "name": "Etondi Tambi",
+          "phone": "(438) 835-3968",
+          "email": "Etondi87@yahoo.com",
+          "service": "Treatment",
+          "areas": "",
+          "duration_min": 120,
+          "visit": "Unknown visit",
+          "visit_num": null,
+          "payment": "See Square",
+          "flags": [],
+          "raw_note": "",
+          "status": "ACCEPTED",
+          "booking_id": "ds7ogqfg0urzrw"
+        }
+      ]
     }
   ],
-  "total_week": 24
+  "total_week": 23
 }
