@@ -2,129 +2,133 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Oxyderm OS">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 <title>Oxyderm OS</title>
 <style>
-:root{--bg:#00172D;--card:#001f3d;--card2:#002448;--border:#1a3a5c;--fg:#f0f4f8;--muted:#7a9ab8;--gold:#c9a96e;--green:#2ecc71;--yellow:#f39c12;--red:#e74c3c;--blue:#3498db}
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{--bg:#00172D;--card:#001f3d;--card2:#002448;--border:#1a3a5c;--fg:#f0f4f8;--muted:#7a9ab8;--gold:#c9a96e;--green:#2ecc71;--yellow:#f39c12;--red:#e74c3c;--blue:#3498db}
 html,body{height:100%;background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
-body{padding-bottom:70px}
+body{padding-bottom:20px}
 
 /* HEADER */
 .hdr{background:linear-gradient(135deg,#00172D,#001f3d);border-bottom:2px solid var(--gold);padding:12px 16px;position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between}
-.hdr-logo{font-size:18px;font-weight:800}.hdr-logo span{color:var(--gold)}
-.hdr-btns{display:flex;align-items:center;gap:8px}
-
-/* WHATSAPP — real green button, opens WA directly */
-.wa{display:flex;align-items:center;gap:6px;background:#25D366;color:#fff;text-decoration:none;padding:9px 14px;border-radius:22px;font-weight:700;font-size:12px;cursor:pointer;border:none}
-.wa:hover{background:#1ebe5a}
-.wa svg{width:16px;height:16px;fill:#fff;flex-shrink:0}
-
-/* BELL */
-.bell{position:relative;background:none;border:2px solid var(--gold);color:var(--gold);padding:7px 12px;border-radius:22px;font-size:12px;font-weight:700;cursor:pointer}
-.bell:hover{background:var(--gold);color:#00172D}
+.logo{font-size:18px;font-weight:800}.logo span{color:var(--gold)}
+.hdr-r{display:flex;align-items:center;gap:8px}
+.wa-btn{display:flex;align-items:center;gap:6px;background:#25D366;color:#fff;text-decoration:none;padding:8px 14px;border-radius:22px;font-weight:700;font-size:12px;border:none;cursor:pointer}
+.wa-btn svg{width:15px;height:15px;fill:#fff}
+.usr-btn{background:var(--card2);border:1px solid var(--border);color:var(--gold);padding:7px 12px;border-radius:22px;font-size:11px;font-weight:700;cursor:pointer}
+.bell-btn{position:relative;background:none;border:2px solid var(--gold);color:var(--gold);padding:6px 11px;border-radius:22px;font-size:12px;font-weight:700;cursor:pointer}
 .bell-dot{position:absolute;top:-5px;right:-5px;background:var(--red);color:#fff;font-size:9px;font-weight:800;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center}
 
-/* USER SWITCH */
-.usr{background:var(--card2);border:1px solid var(--border);color:var(--gold);padding:7px 12px;border-radius:22px;font-size:11px;font-weight:700;cursor:pointer}
-
 /* TABS */
-.tabs{display:flex;overflow-x:auto;gap:2px;padding:0 12px;background:var(--card);border-bottom:1px solid var(--border);position:sticky;top:56px;z-index:190;scrollbar-width:none}
+.tabs{display:flex;overflow-x:auto;background:var(--card);border-bottom:1px solid var(--border);position:sticky;top:56px;z-index:190;scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
-.tab{padding:10px 14px;font-size:12px;font-weight:600;cursor:pointer;color:var(--muted);border:none;background:none;white-space:nowrap;border-bottom:2px solid transparent;transition:all .15s}
-.tab.on{color:var(--gold);border-bottom-color:var(--gold)}
-.tab:hover:not(.on){color:var(--fg)}
+.tab{padding:10px 14px;font-size:12px;font-weight:600;cursor:pointer;color:var(--muted);border:none;background:none;white-space:nowrap;border-bottom:3px solid transparent;flex-shrink:0}
+.tab.active{color:var(--gold);border-bottom-color:var(--gold)}
 
 /* PANELS */
 .pnl{display:none;padding:16px}
-.pnl.on{display:block;animation:fi .15s ease}
-@keyframes fi{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
+.pnl.active{display:block}
 
-/* SECTION TITLE */
-.stl{font-size:11px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.7px;margin:16px 0 10px}
+/* COMMON */
+.stl{font-size:11px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.7px;margin:16px 0 8px}
 .stl:first-child{margin-top:0}
-
-/* CARDS */
-.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:10px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:12px}
 
 /* STATS */
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-bottom:16px}
-.stat{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center}
-.stat .n{font-size:26px;font-weight:800;color:var(--gold)}
-.stat .l{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-top:3px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center}
+.stat .n{font-size:24px;font-weight:800;color:var(--gold)}
+.stat .l{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
 
-/* APPOINTMENTS */
-.appt{padding:12px 0;border-bottom:1px solid #0a1e35;display:flex;gap:12px}
+/* APPT */
+.appt{padding:12px 0;border-bottom:1px solid #0a1e35}
 .appt:last-child{border-bottom:none;padding-bottom:0}
+.appt-row{display:flex;gap:12px}
 .appt-time{font-size:12px;font-weight:700;color:var(--gold);min-width:60px;padding-top:2px}
-.appt-body{flex:1}
 .appt-name{font-size:15px;font-weight:700}
 .appt-svc{font-size:12px;color:var(--muted);margin-top:2px}
-.appt-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
-.tag{font-size:10px;font-weight:700;padding:3px 8px;border-radius:9px}
-.t-blue{background:#0a2a4d;color:var(--blue)}
-.t-green{background:#1a4d2e;color:var(--green)}
-.t-yellow{background:#4d3800;color:var(--yellow)}
-.t-red{background:#3d0010;color:var(--red)}
+.tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.tag{font-size:10px;font-weight:700;padding:2px 8px;border-radius:8px}
+.t-blue{background:#0a2a4d;color:var(--blue)}.t-green{background:#1a4d2e;color:var(--green)}
+.t-yellow{background:#4d3800;color:var(--yellow)}.t-red{background:#3d0010;color:var(--red)}
 .t-gold{background:#3d2e00;color:var(--gold)}
 
-/* SCHEDULE ROWS — full clickable, open platform */
-.srow{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;border:1px solid transparent;cursor:pointer;text-decoration:none;color:inherit;margin-bottom:6px;transition:all .15s}
-.srow:hover{background:var(--card2);border-color:var(--border)}
-.srow.done{opacity:.45}
+/* SCHEDULE ROWS */
+.srow{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;border:1px solid transparent;cursor:pointer;text-decoration:none;color:inherit;margin-bottom:6px;background:var(--card)}
+.srow:hover{border-color:var(--border)}
+.srow.done{opacity:.5}
 .srow.done .srow-name{text-decoration:line-through}
 .sdot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
-.sd-blue{background:var(--blue)}.sd-yellow{background:var(--yellow)}.sd-green{background:var(--green)}
-.srow-time{font-size:12px;font-weight:700;color:var(--gold);min-width:60px}
+.srow-time{font-size:12px;font-weight:700;color:var(--gold);min-width:62px}
 .srow-info{flex:1}
 .srow-name{font-size:13px;font-weight:600}
 .srow-desc{font-size:11px;color:var(--muted);margin-top:1px}
-.mark-btn{background:none;border:1px solid var(--border);color:var(--muted);font-size:11px;padding:5px 10px;border-radius:7px;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:all .15s}
-.mark-btn:hover{border-color:var(--green);color:var(--green)}
-.srow.done .mark-btn{border-color:var(--green);color:var(--green)}
+.mark-btn{background:none;border:1px solid var(--border);color:var(--muted);font-size:11px;padding:5px 10px;border-radius:7px;cursor:pointer;white-space:nowrap;flex-shrink:0}
+.mark-btn.done{border-color:var(--green);color:var(--green)}
 
-/* POSTS */
-.post-item{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #0a1e35}
-.post-item:last-child{border-bottom:none}
-.post-info{flex:1}
-.post-plat{font-size:13px;font-weight:600}
-.post-cap{font-size:11px;color:var(--muted);margin-top:2px}
-.post-tags{display:flex;gap:5px;margin-top:5px}
+/* BUTTONS */
+.btn{padding:9px 16px;border-radius:9px;font-size:13px;font-weight:600;cursor:pointer;border:none;display:inline-block;text-align:center}
+.btn-gold{background:var(--gold);color:#00172D}.btn-outline{background:none;border:1px solid var(--border);color:var(--muted)}
+.btn-green{background:#1a4d2e;border:1px solid var(--green);color:var(--green)}
+.btn-red{background:#3d0010;border:1px solid var(--red);color:var(--red)}
+.btn-sm{padding:5px 10px;font-size:11px;border-radius:7px}
+.btn-block{width:100%;display:block;margin-top:8px}
+
+/* FORMS */
+.fg{margin-bottom:12px}
+.fg label{display:block;font-size:10px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px}
+input,select,textarea{width:100%;background:#001020;border:1px solid var(--border);color:var(--fg);padding:10px 12px;border-radius:9px;font-size:13px;outline:none;font-family:inherit}
+input:focus,select:focus,textarea:focus{border-color:var(--gold)}
+select option{background:#001020}
+textarea{min-height:65px;resize:vertical}
+
+/* MODAL */
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:500;align-items:center;justify-content:center;padding:16px}
+.modal-bg.open{display:flex}
+.modal{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;width:100%;max-width:460px;max-height:90vh;overflow-y:auto}
+.modal-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.modal-title{font-size:16px;font-weight:700;color:var(--gold)}
+.modal-x{background:none;border:none;color:var(--muted);font-size:26px;cursor:pointer;line-height:1}
+
+/* NOTIF */
+.notif-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:400}
+.notif-bg.open{display:block}
+.notif-drawer{position:fixed;top:0;right:-300px;bottom:0;width:290px;background:var(--card);border-left:2px solid var(--gold);padding:18px;overflow-y:auto;z-index:401;transition:right .25s}
+.notif-drawer.open{right:0}
+.ni{background:#001020;border:1px solid var(--border);border-radius:8px;padding:11px;margin-bottom:8px}
+.ni .nt{font-size:13px;font-weight:600;margin-bottom:3px}
+.ni .nb{font-size:12px;color:var(--muted)}
+.ni .nd{font-size:10px;color:var(--gold);margin-top:5px}
 
 /* VIDEO GRID */
 .vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
 .vcard{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden}
-.vcard-media{padding:10px 10px 0;background:var(--card)}
-.vcard video{width:100%;height:130px;object-fit:contain;background:#000;border-radius:8px;display:block}
-.vcard-body{padding:10px 12px 12px}
-.vcard-name{font-size:10px;color:var(--fg);font-weight:500;word-break:break-all;margin-bottom:3px}
+.vcard video{width:100%;height:130px;object-fit:contain;background:#000;border-radius:8px 8px 0 0;display:block}
+.vcard-body{padding:10px 12px}
+.vcard-name{font-size:10px;color:var(--fg);word-break:break-all;margin-bottom:2px}
 .vcard-meta{font-size:10px;color:var(--muted)}
-.vcard-ok{font-size:10px;color:var(--green);margin-top:3px}
-.vcard-large{padding:14px;min-height:110px;display:flex;flex-direction:column;justify-content:center;gap:5px;background:var(--card2)}
+.vcard-ok{font-size:10px;color:var(--green);margin-top:2px}
+.vcard-large{padding:14px;background:var(--card2);display:flex;flex-direction:column;gap:4px;min-height:110px;justify-content:center}
 
 /* IMAGE GRID */
 .igrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
 .icard{background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer}
 .icard img{width:100%;height:110px;object-fit:cover;display:block}
-.icard-body{padding:8px}
+.icard-body{padding:6px 8px}
 .icard-name{font-size:10px;color:var(--muted);word-break:break-all}
 
-/* UPLOAD ZONE */
-.upzone{border:2px dashed var(--border);border-radius:12px;padding:24px;text-align:center;cursor:pointer;transition:all .2s;margin-bottom:14px}
+/* UPLOAD */
+.upzone{border:2px dashed var(--border);border-radius:12px;padding:24px;text-align:center;cursor:pointer;margin-bottom:14px}
 .upzone:hover,.upzone.drag{border-color:var(--gold);background:#001428}
 .upzone .ico{font-size:28px;margin-bottom:6px}
 .upzone .hint{font-size:13px;color:var(--muted)}
 .upzone .hint b{color:var(--gold)}
-.prog{display:none;margin-top:10px}
-.prog-bar{height:4px;background:var(--border);border-radius:2px;margin-top:5px}
-.prog-fill{height:100%;background:var(--gold);border-radius:2px;transition:width .3s}
 
 /* EXPENSES */
 .cats{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
-.cat{padding:5px 12px;border-radius:20px;font-size:11px;font-weight:600;cursor:pointer;border:1px solid var(--border);color:var(--muted);background:none}
-.cat.on{background:var(--gold);color:#00172D;border-color:var(--gold)}
+.cat-btn{padding:5px 12px;border-radius:20px;font-size:11px;font-weight:600;cursor:pointer;border:1px solid var(--border);color:var(--muted);background:none}
+.cat-btn.active{background:var(--gold);color:#00172D;border-color:var(--gold)}
 .total-bar{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:var(--card2);border-radius:10px;margin-bottom:14px}
 .total-bar .amt{font-size:22px;font-weight:800;color:var(--gold)}
 .exp-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #0a1e35}
@@ -143,264 +147,249 @@ body{padding-bottom:70px}
 .pa-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
 .pa-amt{font-size:16px;font-weight:700;color:var(--gold)}
 
-/* FORMS */
-.fg{margin-bottom:12px}
-.fg label{display:block;font-size:10px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px}
-input,select,textarea{width:100%;background:#001020;border:1px solid var(--border);color:var(--fg);padding:10px 12px;border-radius:9px;font-size:13px;outline:none;font-family:inherit}
-input:focus,select:focus,textarea:focus{border-color:var(--gold)}
-select option{background:#001020}
-textarea{min-height:65px;resize:vertical}
-
-/* BUTTONS */
-.btn{padding:9px 16px;border-radius:9px;font-size:13px;font-weight:600;cursor:pointer;border:none;transition:all .15s}
-.btn-gold{background:var(--gold);color:#00172D}.btn-gold:hover{background:#d4b07a}
-.btn-outline{background:none;border:1px solid var(--border);color:var(--muted)}.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
-.btn-red{background:#3d0010;border:1px solid var(--red);color:var(--red)}
-.btn-green{background:#1a4d2e;border:1px solid var(--green);color:var(--green)}
-.btn-sm{padding:5px 10px;font-size:11px;border-radius:7px}
-.btn-block{width:100%;margin-top:4px}
-
-/* MODAL */
-.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:500;align-items:center;justify-content:center;padding:16px}
-.modal-bg.on{display:flex}
-.modal{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;width:100%;max-width:460px;max-height:90vh;overflow-y:auto}
-.modal-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
-.modal-title{font-size:16px;font-weight:700;color:var(--gold)}
-.modal-x{background:none;border:none;color:var(--muted);font-size:24px;cursor:pointer;line-height:1;padding:0}
-
-/* NOTIF DRAWER */
-.notif-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:400}
-.notif-bg.on{display:block}
-.notif-drawer{position:fixed;top:0;right:0;bottom:0;width:290px;background:var(--card);border-left:2px solid var(--gold);padding:18px;overflow-y:auto;z-index:401;transform:translateX(100%);transition:transform .25s}
-.notif-drawer.on{transform:none}
-.ni{background:#001020;border:1px solid var(--border);border-radius:8px;padding:11px;margin-bottom:8px}
-.ni .nt{font-size:13px;font-weight:600;margin-bottom:3px}
-.ni .nb{font-size:12px;color:var(--muted)}
-.ni .nd{font-size:10px;color:var(--gold);margin-top:5px}
-
-/* LIGHTBOX */
-.lb-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:600;align-items:center;justify-content:center;padding:16px;cursor:pointer}
-.lb-bg.on{display:flex}
-.lb-bg img{max-width:90vw;max-height:85vh;border-radius:10px;display:block}
-
-.ftr{text-align:center;padding:16px;font-size:10px;color:var(--muted)}
+/* SARAH / VOICE */
+.mic-wrap{display:flex;flex-direction:column;align-items:center;padding:20px 0 10px}
+.mic-ring{width:90px;height:90px;border-radius:50%;border:3px solid var(--gold);display:flex;align-items:center;justify-content:center;position:relative}
+.mic-ring.pulse{animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(201,169,110,.4)}50%{box-shadow:0 0 0 16px rgba(201,169,110,0)}}
+.mic-ring button{width:68px;height:68px;border-radius:50%;background:linear-gradient(135deg,#001f3d,#002a50);border:2px solid var(--gold);font-size:26px;cursor:pointer;color:var(--fg)}
+.sarah-box{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:12px;padding:14px;margin-bottom:14px;display:none}
+.sarah-label{font-size:10px;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.sarah-text{font-size:14px;line-height:1.65}
 
 /* AGENTS */
-.ag-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:4px}
-.ag-card{background:var(--card);border:2px solid var(--border);border-radius:12px;padding:14px;cursor:pointer;text-align:center;transition:all .15s}
-.ag-card:hover{border-color:var(--gold);background:var(--card2)}
-.ag-card.ag-active{background:var(--card2)}
-.ag-emoji{font-size:28px;margin-bottom:6px}
-.ag-name{font-size:13px;font-weight:700;margin-bottom:4px}
+.ag-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-bottom:16px}
+.ag-card{background:var(--card);border:2px solid var(--border);border-radius:12px;padding:14px;cursor:pointer;text-align:center;transition:border-color .15s}
+.ag-card:hover,.ag-card.active{border-color:var(--gold);background:var(--card2)}
+.ag-emoji{font-size:26px;margin-bottom:6px}
+.ag-name{font-size:13px;font-weight:700;margin-bottom:3px}
 .ag-desc{font-size:10px;color:var(--muted);line-height:1.4}
+.chat-box{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px;min-height:200px;max-height:45vh;overflow-y:auto;margin-bottom:10px}
+.msg{margin-bottom:10px;display:flex}
+.msg.user{justify-content:flex-end}
+.msg.agent{justify-content:flex-start}
+.bubble{max-width:80%;padding:10px 13px;border-radius:12px;font-size:13px;line-height:1.5}
+.msg.user .bubble{background:var(--gold);color:#00172D;border-radius:12px 12px 3px 12px}
+.msg.agent .bubble{background:var(--card2);border-radius:12px 12px 12px 3px}
 
-/* MIC PULSE */
-@keyframes micpulse{0%,100%{transform:scale(1);opacity:.7}50%{transform:scale(1.3);opacity:.3}}
+/* LIGHTBOX */
+.lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:600;align-items:center;justify-content:center;padding:16px;cursor:pointer}
+.lb.open{display:flex}
+.lb img{max-width:90vw;max-height:85vh;border-radius:10px}
+
+.ftr{text-align:center;padding:16px;font-size:10px;color:var(--muted)}
 </style>
 </head>
 <body>
 
 <!-- HEADER -->
 <div class="hdr">
-  <div class="hdr-logo">Oxyderm <span>OS</span></div>
-  <div class="hdr-btns">
-    <!-- WhatsApp — opens real WhatsApp to Dev's number -->
-    <a class="wa" href="https://wa.me/17802219872" target="_blank" rel="noopener">
+  <div class="logo">Oxyderm <span>OS</span></div>
+  <div class="hdr-r">
+    <a class="wa-btn" href="https://wa.me/17802219872" target="_blank">
       <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       WhatsApp Dev
     </a>
-    <button class="usr" id="usr-btn" onclick="switchUser()">👤 Devang</button>
-    <button class="bell" onclick="openNotif()">🔔 <span class="bell-dot" id="bell-cnt">5</span></button>
+    <button class="usr-btn" id="usr-btn" onclick="switchUser()">👤 Devang</button>
+    <button class="bell-btn" onclick="toggleNotif()">🔔<span class="bell-dot">5</span></button>
   </div>
 </div>
 
 <!-- TABS -->
-<div class="tabs" id="tabs">
-  <button class="tab on" onclick="goTab('schedule',this)">📅 Schedule</button>
+<div class="tabs">
+  <button class="tab active" onclick="goTab('schedule',this)">📅 Schedule</button>
   <button class="tab" onclick="goTab('calendar',this)">📆 Calendar</button>
-  <button class="tab" onclick="goTab('voice',this)">🎤 Ask Sarah</button>
+  <button class="tab" onclick="goTab('sarah',this)">🎤 Ask Sarah</button>
+  <button class="tab" onclick="goTab('agents',this)">🤖 Agents</button>
   <button class="tab" onclick="goTab('posts',this)">📣 Posts</button>
   <button class="tab" onclick="goTab('videos',this)">🎬 Videos</button>
   <button class="tab" onclick="goTab('images',this)">🖼 Images</button>
   <button class="tab" onclick="goTab('expenses',this)">💰 Expenses</button>
   <button class="tab" onclick="goTab('preauth',this)">🔒 Pre-Auth</button>
-  <button class="tab" onclick="goTab('agents',this)">🤖 Agents</button>
 </div>
 
-<!-- ═══ SCHEDULE ═══ -->
-<div class="pnl on" id="pnl-schedule">
-  <div class="stats" id="stats-row">
+<!-- ══ SCHEDULE ══ -->
+<div class="pnl active" id="pnl-schedule">
+  <div class="stats">
     <div class="stat"><div class="n">2,749</div><div class="l">Customers</div></div>
     <div class="stat"><div class="n">34</div><div class="l">Videos</div></div>
-    <div class="stat"><div class="n" id="s-posted">0</div><div class="l">Posted Today</div></div>
+    <div class="stat"><div class="n" id="posted-count">0</div><div class="l">Posted Today</div></div>
     <div class="stat"><div class="n">2</div><div class="l">Appts Today</div></div>
   </div>
-
   <div class="stl">Today's Appointments</div>
-  <div class="card" style="padding:10px 14px">
-    <!-- Alexandra Doblado -->
+  <div class="card">
     <div class="appt">
-      <div class="appt-time">1:00 PM</div>
-      <div class="appt-body">
-        <div class="appt-name">Alexandra Doblado</div>
-        <div class="appt-svc">Laser Hair Removal — legs, toes, fingers, arms, underarms</div>
-        <div class="appt-tags">
-          <span class="tag t-blue">7th visit</span>
-          <span class="tag t-green">Paid $199.99 instalment</span>
-          <span class="tag t-red">⚠ Minor - parent in room</span>
-          <span class="tag t-red">⚠ No face on social media</span>
+      <div class="appt-row">
+        <div class="appt-time">1:00 PM</div>
+        <div>
+          <div class="appt-name">Alexandra Doblado</div>
+          <div class="appt-svc">Laser Hair Removal — legs, toes, fingers, arms, underarms</div>
+          <div class="tags">
+            <span class="tag t-blue">7th visit</span>
+            <span class="tag t-green">Paid $199.99</span>
+            <span class="tag t-red">⚠ Minor — parent in room</span>
+            <span class="tag t-red">⚠ No face on social media</span>
+          </div>
         </div>
       </div>
     </div>
-    <!-- Mehak Wadhwa -->
     <div class="appt">
-      <div class="appt-time">3:00 PM</div>
-      <div class="appt-body">
-        <div class="appt-name">Mehak Wadhwa</div>
-        <div class="appt-svc">Laser Hair Removal — legs, fingers, arms, underarms, face, abdomen, back, Brazilian</div>
-        <div class="appt-tags">
-          <span class="tag t-blue">11th visit</span>
-          <span class="tag t-yellow">Balance $49.99 owing</span>
-          <span class="tag t-gold">Left Google review</span>
+      <div class="appt-row">
+        <div class="appt-time">3:00 PM</div>
+        <div>
+          <div class="appt-name">Mehak Wadhwa</div>
+          <div class="appt-svc">Laser Hair Removal — legs, fingers, arms, underarms, face, abdomen, back, Brazilian</div>
+          <div class="tags">
+            <span class="tag t-blue">11th visit</span>
+            <span class="tag t-yellow">Balance $49.99 owing</span>
+            <span class="tag t-gold">Left Google review</span>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
   <div class="stl">Posting Schedule — tap row to open platform</div>
   <div id="sched-list"></div>
 </div>
 
-<!-- ═══ CALENDAR ═══ -->
+<!-- ══ CALENDAR ══ -->
 <div class="pnl" id="pnl-calendar">
   <div class="stl">Booking Calendar</div>
-  <iframe src="calendar.html" style="width:100%;height:75vh;border:none;border-radius:12px;background:var(--card)" id="cal-frame"></iframe>
+  <iframe src="calendar.html" style="width:100%;height:75vh;border:none;border-radius:12px"></iframe>
   <div style="margin-top:10px;text-align:center">
-    <a href="calendar.html" target="_blank" class="btn btn-outline" style="display:inline-block;text-decoration:none;font-size:12px">Open Full Calendar</a>
+    <a href="calendar.html" target="_blank" class="btn btn-outline" style="text-decoration:none;font-size:12px">Open Full Calendar ↗</a>
   </div>
 </div>
 
-<!-- ═══ VOICE / ASK SARAH ═══ -->
-<div class="pnl" id="pnl-voice">
-  <div class="stl">Ask Sarah — Clinic Assistant</div>
-
-  <!-- Mic button -->
-  <div style="display:flex;flex-direction:column;align-items:center;padding:20px 0 10px">
-    <div style="position:relative;width:90px;height:90px">
-      <div id="mic-ring" style="position:absolute;inset:0;border-radius:50%;border:3px solid var(--gold);opacity:0;transition:all .3s"></div>
-      <button id="mic-btn" onclick="toggleVoice()" style="position:absolute;inset:8px;background:linear-gradient(135deg,#001f3d,#002a50);border:2px solid var(--gold);border-radius:50%;font-size:28px;cursor:pointer;color:var(--fg);transition:all .2s">🎤</button>
+<!-- ══ ASK SARAH ══ -->
+<div class="pnl" id="pnl-sarah">
+  <div class="stl">Sarah — Voice Receptionist</div>
+  <div class="mic-wrap">
+    <div class="mic-ring" id="mic-ring">
+      <button id="mic-btn" onclick="toggleMic()">🎤</button>
     </div>
-    <div id="mic-status" style="margin-top:12px;font-size:13px;color:var(--muted);text-align:center">Tap mic or type below — ask anything about today</div>
+    <div style="margin-top:12px;font-size:13px;color:var(--muted);text-align:center" id="mic-status">Tap mic or type below</div>
   </div>
-
-  <!-- Text input -->
   <div style="display:flex;gap:8px;margin-bottom:12px">
-    <input type="text" id="sarah-input" placeholder='Ask: "Who is at 3pm?" "What did Mehak pay?" "Any notes for today?"'
-      onkeydown="if(event.key==='Enter'){askSarah(this.value);this.value='';}">
-    <button class="btn btn-gold" onclick="var v=document.getElementById('sarah-input');askSarah(v.value);v.value=''">Ask</button>
+    <input type="text" id="sarah-input" placeholder='Ask: "Who is at 3pm?" or "What did Mehak pay?"' onkeydown="if(event.key==='Enter'){doAsk();}" >
+    <button class="btn btn-gold" onclick="doAsk()">Ask</button>
   </div>
-
-  <!-- Answer box -->
-  <div id="sarah-answer" style="display:none;background:var(--card);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:12px;padding:14px;margin-bottom:14px">
-    <div style="font-size:10px;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">Sarah</div>
-    <div id="sarah-text" style="font-size:14px;line-height:1.65"></div>
+  <div class="sarah-box" id="sarah-box">
+    <div class="sarah-label">Sarah</div>
+    <div class="sarah-text" id="sarah-text"></div>
     <div style="display:flex;gap:8px;margin-top:10px">
-      <button class="btn btn-outline btn-sm" onclick="speakLast()">🔊 Repeat</button>
-      <button class="btn btn-outline btn-sm" onclick="document.getElementById('sarah-answer').style.display='none'">Dismiss</button>
+      <button class="btn btn-outline btn-sm" onclick="speakAgain()">🔊 Repeat</button>
+      <button class="btn btn-outline btn-sm" onclick="document.getElementById('sarah-box').style.display='none'">Dismiss</button>
     </div>
   </div>
-
-  <!-- Today's appointments quick view -->
   <div class="stl">Today's Clients</div>
-  <div class="card" style="padding:10px 14px">
+  <div class="card">
     <div class="appt">
-      <div class="appt-time">1:00 PM</div>
-      <div class="appt-body">
-        <div class="appt-name">Alexandra Doblado</div>
-        <div class="appt-svc">LHR — legs, toes, fingers, arms, underarms</div>
-        <div class="appt-tags">
-          <span class="tag t-blue">7th visit</span>
-          <span class="tag t-green">Paid $199.99</span>
-          <span class="tag t-red">⚠ Minor - parent in room</span>
-          <span class="tag t-red">⚠ No face on social media</span>
-        </div>
-        <div style="display:flex;gap:6px;margin-top:8px">
-          <button class="btn btn-outline btn-sm" onclick="askSarah('What are the notes for Alexandra?')">Notes</button>
-          <button class="btn btn-outline btn-sm" onclick="askSarah('What visit is Alexandra on?')">Visit</button>
-          <button class="btn btn-outline btn-sm" onclick="askSarah('What did Alexandra pay?')">Payment</button>
+      <div class="appt-row">
+        <div class="appt-time">1:00 PM</div>
+        <div>
+          <div class="appt-name">Alexandra Doblado</div>
+          <div class="appt-svc">LHR — legs, toes, fingers, arms, underarms</div>
+          <div class="tags">
+            <span class="tag t-blue">7th visit</span>
+            <span class="tag t-red">⚠ Minor</span>
+            <span class="tag t-red">⚠ No face on social</span>
+          </div>
+          <div style="display:flex;gap:6px;margin-top:8px">
+            <button class="btn btn-outline btn-sm" onclick="doAskText('Notes for Alexandra')">Notes</button>
+            <button class="btn btn-outline btn-sm" onclick="doAskText('What visit is Alexandra on')">Visit</button>
+            <button class="btn btn-outline btn-sm" onclick="doAskText('What did Alexandra pay')">Payment</button>
+          </div>
         </div>
       </div>
     </div>
     <div class="appt">
-      <div class="appt-time">3:00 PM</div>
-      <div class="appt-body">
-        <div class="appt-name">Mehak Wadhwa</div>
-        <div class="appt-svc">LHR — legs, fingers, arms, underarms, face, abdomen, back, Brazilian</div>
-        <div class="appt-tags">
-          <span class="tag t-blue">11th visit</span>
-          <span class="tag t-yellow">Balance $49.99 owing</span>
-        </div>
-        <div style="display:flex;gap:6px;margin-top:8px">
-          <button class="btn btn-outline btn-sm" onclick="askSarah('What are the notes for Mehak?')">Notes</button>
-          <button class="btn btn-outline btn-sm" onclick="askSarah('What visit is Mehak on?')">Visit</button>
-          <button class="btn btn-outline btn-sm" onclick="askSarah('What did Mehak pay?')">Payment</button>
+      <div class="appt-row">
+        <div class="appt-time">3:00 PM</div>
+        <div>
+          <div class="appt-name">Mehak Wadhwa</div>
+          <div class="appt-svc">LHR — legs, fingers, arms, underarms, face, abdomen, back, Brazilian</div>
+          <div class="tags">
+            <span class="tag t-blue">11th visit</span>
+            <span class="tag t-yellow">$49.99 owing</span>
+          </div>
+          <div style="display:flex;gap:6px;margin-top:8px">
+            <button class="btn btn-outline btn-sm" onclick="doAskText('Notes for Mehak')">Notes</button>
+            <button class="btn btn-outline btn-sm" onclick="doAskText('What visit is Mehak on')">Visit</button>
+            <button class="btn btn-outline btn-sm" onclick="doAskText('What did Mehak pay')">Payment</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ═══ POSTS ═══ -->
-<div class="pnl" id="pnl-posts">
-  <button class="btn btn-gold btn-block" onclick="openModal('mod-post')">+ Add Post to Queue</button>
-  <div class="stl" style="margin-top:16px">Content Queue</div>
-  <div class="card" style="padding:10px 14px" id="posts-list"></div>
+<!-- ══ AGENTS ══ -->
+<div class="pnl" id="pnl-agents">
+  <div class="stl">AI Agents — tap one to chat</div>
+  <div class="ag-grid" id="ag-grid"></div>
+  <div id="ag-chat-wrap" style="display:none">
+    <div class="stl" id="ag-chat-title">Agent</div>
+    <div class="chat-box" id="ag-msgs"></div>
+    <div style="display:flex;gap:8px">
+      <input type="text" id="ag-input" placeholder="Ask the agent..." onkeydown="if(event.key==='Enter'){agSend();}">
+      <button class="btn btn-outline btn-sm" onclick="agMic()">🎤</button>
+      <button class="btn btn-gold" onclick="agSend()">Send</button>
+    </div>
+    <button class="btn btn-outline btn-sm" style="margin-top:8px" onclick="agClear()">Clear chat</button>
+  </div>
 </div>
 
-<!-- ═══ VIDEOS ═══ -->
+<!-- ══ POSTS ══ -->
+<div class="pnl" id="pnl-posts">
+  <button class="btn btn-gold btn-block" onclick="openModal('mod-post')">+ Add Post</button>
+  <div class="stl" style="margin-top:16px">Queue</div>
+  <div id="posts-list"><div style="color:var(--muted);font-size:13px;padding:20px;text-align:center">No posts yet. Tap + Add Post.</div></div>
+</div>
+
+<!-- ══ VIDEOS ══ -->
 <div class="pnl" id="pnl-videos">
   <div class="stl">Upload New Video</div>
-  <div class="card" style="padding:14px;margin-bottom:14px">
+  <div class="card">
     <div class="fg">
-      <label>Caption (speak or type)</label>
+      <label>Caption</label>
       <div style="display:flex;gap:8px">
         <input type="text" id="vid-cap" placeholder="e.g. Laser Hair Removal | Oxyderm Edmonton">
-        <button class="btn btn-outline" id="cap-mic" onclick="startCapMic()" style="white-space:nowrap;flex-shrink:0">🎤 Speak</button>
+        <button class="btn btn-outline btn-sm" onclick="capMic()" style="white-space:nowrap">🎤 Speak</button>
       </div>
     </div>
-    <div class="upzone" id="vid-zone" onclick="document.getElementById('vid-inp').click()"
+    <div class="upzone" id="vid-drop" onclick="document.getElementById('vid-file').click()"
       ondragover="event.preventDefault();this.classList.add('drag')"
       ondragleave="this.classList.remove('drag')"
-      ondrop="dropVid(event)">
+      ondrop="vidDrop(event)">
       <div class="ico">🎬</div>
-      <div class="hint">Tap to choose or drag a video<br><b>Music + captions added automatically</b></div>
-      <div class="prog" id="vid-prog">
-        <div style="font-size:12px;color:var(--gold)" id="vid-prog-lbl">Processing...</div>
-        <div class="prog-bar"><div class="prog-fill" id="vid-prog-fill" style="width:0%"></div></div>
-      </div>
+      <div class="hint">Tap to choose or drag video<br><b>Music + captions added automatically</b></div>
     </div>
-    <input type="file" id="vid-inp" accept="video/*" style="display:none" onchange="handleVid(this)">
+    <input type="file" id="vid-file" accept="video/*" style="display:none" onchange="vidHandle(this)">
+    <div id="vid-prog" style="display:none;margin-top:8px">
+      <div style="font-size:12px;color:var(--gold)" id="vid-lbl">Processing...</div>
+      <div style="height:4px;background:var(--border);border-radius:2px;margin-top:5px"><div id="vid-fill" style="height:100%;background:var(--gold);border-radius:2px;width:0%;transition:width .3s"></div></div>
+    </div>
   </div>
   <div class="stl">Video Library</div>
   <div class="vgrid" id="vgrid"></div>
 </div>
 
-<!-- ═══ IMAGES ═══ -->
+<!-- ══ IMAGES ══ -->
 <div class="pnl" id="pnl-images">
-  <div class="stl">Upload Images</div>
-  <div class="upzone" id="img-zone" onclick="document.getElementById('img-inp').click()"
+  <div class="upzone" onclick="document.getElementById('img-file').click()"
     ondragover="event.preventDefault();this.classList.add('drag')"
     ondragleave="this.classList.remove('drag')"
-    ondrop="dropImg(event)">
+    ondrop="imgDrop(event)">
     <div class="ico">🖼</div>
     <div class="hint">Tap to choose or drag images<br><b>PNG, JPG, HEIC supported</b></div>
   </div>
-  <input type="file" id="img-inp" accept="image/*" multiple style="display:none" onchange="handleImgs(this)">
+  <input type="file" id="img-file" accept="image/*" multiple style="display:none" onchange="imgHandle(this)">
   <div class="stl">Image Library</div>
-  <div class="igrid" id="igrid"></div>
+  <div class="igrid" id="igrid"><div style="color:var(--muted);font-size:13px;padding:20px;text-align:center;grid-column:1/-1">No images yet.</div></div>
 </div>
 
-<!-- ═══ EXPENSES ═══ -->
+<!-- ══ EXPENSES ══ -->
 <div class="pnl" id="pnl-expenses">
   <div class="total-bar">
     <div>
@@ -410,44 +399,41 @@ textarea{min-height:65px;resize:vertical}
     <button class="btn btn-gold" onclick="openModal('mod-expense')">+ Add Expense</button>
   </div>
   <div class="cats">
-    <button class="cat on" onclick="filterCat('all',this)">All</button>
-    <button class="cat" onclick="filterCat('supplies',this)">Supplies</button>
-    <button class="cat" onclick="filterCat('rent',this)">Rent</button>
-    <button class="cat" onclick="filterCat('equipment',this)">Equipment</button>
-    <button class="cat" onclick="filterCat('staff',this)">Staff</button>
-    <button class="cat" onclick="filterCat('marketing',this)">Marketing</button>
-    <button class="cat" onclick="filterCat('other',this)">Other</button>
+    <button class="cat-btn active" onclick="filterExp('all',this)">All</button>
+    <button class="cat-btn" onclick="filterExp('supplies',this)">Supplies</button>
+    <button class="cat-btn" onclick="filterExp('rent',this)">Rent</button>
+    <button class="cat-btn" onclick="filterExp('equipment',this)">Equipment</button>
+    <button class="cat-btn" onclick="filterExp('staff',this)">Staff</button>
+    <button class="cat-btn" onclick="filterExp('marketing',this)">Marketing</button>
+    <button class="cat-btn" onclick="filterExp('other',this)">Other</button>
   </div>
-  <div class="card" style="padding:10px 14px" id="exp-list"></div>
+  <div class="card" style="padding:10px 14px" id="exp-list"><div style="color:var(--muted);font-size:13px;padding:10px;text-align:center">No expenses yet.</div></div>
 </div>
 
-<!-- ═══ PRE-AUTH ═══ -->
+<!-- ══ PRE-AUTH ══ -->
 <div class="pnl" id="pnl-preauth">
   <div class="total-bar">
     <div>
       <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px">Outstanding</div>
-      <div class="amt" id="pa-outstanding">$0.00</div>
+      <div class="amt" id="pa-total">$0.00</div>
     </div>
     <button class="btn btn-gold" onclick="openModal('mod-preauth')">+ Add Pre-Auth</button>
   </div>
-  <div class="stl">Pending Collection</div>
-  <div id="pa-pending"></div>
+  <div class="stl">Pending</div>
+  <div id="pa-pending"><div style="color:var(--muted);font-size:13px;padding:10px">None</div></div>
   <div class="stl">Collected</div>
-  <div id="pa-collected"></div>
+  <div id="pa-collected"><div style="color:var(--muted);font-size:13px;padding:10px">None</div></div>
 </div>
 
-<!-- ═══ MODALS ═══ -->
+<!-- MODALS -->
 <div class="modal-bg" id="mod-post">
   <div class="modal">
     <div class="modal-hdr"><div class="modal-title">Add Post</div><button class="modal-x" onclick="closeModal('mod-post')">×</button></div>
     <div class="fg"><label>Platform</label>
-      <select id="p-plat"><option>Google Business Profile</option><option>TikTok</option><option>Instagram Reels</option><option>Facebook Page</option><option>FB Groups</option><option>YouTube</option><option>Sustaack</option></select>
-    </div>
-    <div class="fg"><label>Caption / Description</label><textarea id="p-cap" placeholder="Write post caption..."></textarea></div>
-    <div class="fg"><label>Schedule Date & Time</label><input type="datetime-local" id="p-time"></div>
-    <div class="fg"><label>Status</label>
-      <select id="p-status"><option value="pending">Pending</option><option value="ready">Ready</option><option value="scheduled">Scheduled</option></select>
-    </div>
+      <select id="p-plat"><option>Google Business Profile</option><option>TikTok</option><option>Instagram Reels</option><option>Facebook Page</option><option>FB Groups</option><option>YouTube</option><option>Sustaack</option></select></div>
+    <div class="fg"><label>Caption</label><textarea id="p-cap" placeholder="Post caption..."></textarea></div>
+    <div class="fg"><label>Schedule</label><input type="datetime-local" id="p-time"></div>
+    <div class="fg"><label>Status</label><select id="p-status"><option value="pending">Pending</option><option value="ready">Ready</option><option value="scheduled">Scheduled</option></select></div>
     <button class="btn btn-gold btn-block" onclick="savePost()">Save Post</button>
   </div>
 </div>
@@ -457,217 +443,423 @@ textarea{min-height:65px;resize:vertical}
     <div class="modal-hdr"><div class="modal-title">Add Expense</div><button class="modal-x" onclick="closeModal('mod-expense')">×</button></div>
     <div class="fg"><label>Description</label><input type="text" id="e-desc" placeholder="e.g. Laser gel supplies"></div>
     <div class="fg"><label>Amount ($)</label><input type="number" id="e-amt" placeholder="0.00" step="0.01" min="0"></div>
-    <div class="fg"><label>Category</label>
-      <select id="e-cat"><option value="supplies">Supplies</option><option value="rent">Rent</option><option value="equipment">Equipment</option><option value="staff">Staff</option><option value="marketing">Marketing</option><option value="other">Other</option></select>
-    </div>
+    <div class="fg"><label>Category</label><select id="e-cat"><option value="supplies">Supplies</option><option value="rent">Rent</option><option value="equipment">Equipment</option><option value="staff">Staff</option><option value="marketing">Marketing</option><option value="other">Other</option></select></div>
     <div class="fg"><label>Date</label><input type="date" id="e-date"></div>
-    <div class="fg"><label>Notes (optional)</label><input type="text" id="e-notes" placeholder="Receipt #, vendor..."></div>
-    <button class="btn btn-gold btn-block" onclick="saveExpense()">Save Expense</button>
+    <div class="fg"><label>Notes</label><input type="text" id="e-notes" placeholder="Receipt, vendor..."></div>
+    <button class="btn btn-gold btn-block" onclick="saveExp()">Save Expense</button>
   </div>
 </div>
 
 <div class="modal-bg" id="mod-preauth">
   <div class="modal">
-    <div class="modal-hdr"><div class="modal-title">Add Pre-Auth Payment</div><button class="modal-x" onclick="closeModal('mod-preauth')">×</button></div>
+    <div class="modal-hdr"><div class="modal-title">Add Pre-Auth</div><button class="modal-x" onclick="closeModal('mod-preauth')">×</button></div>
     <div class="fg"><label>Client Name</label><input type="text" id="pa-name" placeholder="Full name"></div>
     <div class="fg"><label>Amount ($)</label><input type="number" id="pa-amt" placeholder="0.00" step="0.01" min="0"></div>
     <div class="fg"><label>Service</label><input type="text" id="pa-svc" placeholder="e.g. LHR membership"></div>
     <div class="fg"><label>Date Taken</label><input type="date" id="pa-date"></div>
-    <div class="fg"><label>Expected Collection</label><input type="date" id="pa-cdate"></div>
-    <div class="fg"><label>Notes</label><input type="text" id="pa-notes" placeholder="Instalment #, terms..."></div>
-    <button class="btn btn-gold btn-block" onclick="savePreauth()">Save Pre-Auth</button>
+    <div class="fg"><label>Collect By</label><input type="date" id="pa-cdate"></div>
+    <div class="fg"><label>Notes</label><input type="text" id="pa-notes" placeholder="Instalment, terms..."></div>
+    <button class="btn btn-gold btn-block" onclick="savePA()">Save Pre-Auth</button>
   </div>
 </div>
 
-<!-- Lightbox -->
-<div class="lb-bg" id="lb" onclick="document.getElementById('lb').classList.remove('on')">
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" onclick="this.classList.remove('open')">
   <img id="lb-img" src="" alt="">
 </div>
 
-<!-- Notif drawer -->
-<div class="notif-bg" id="notif-bg" onclick="closeNotif()"></div>
+<!-- NOTIFICATIONS -->
+<div class="notif-bg" id="notif-bg" onclick="toggleNotif()"></div>
 <div class="notif-drawer" id="notif-drawer">
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
     <div style="font-size:15px;font-weight:700;color:var(--gold)">Notifications</div>
-    <button onclick="closeNotif()" style="background:none;border:none;color:var(--muted);font-size:22px;cursor:pointer">×</button>
+    <button onclick="toggleNotif()" style="background:none;border:none;color:var(--muted);font-size:24px;cursor:pointer">×</button>
   </div>
-  <div class="ni"><div class="nt">34 Videos Processed</div><div class="nb">All clinic videos have music and captions added.</div><div class="nd">Today</div></div>
-  <div class="ni"><div class="nt">Master Video Ready</div><div class="nb">20260723_134110 — 19Mbps, color graded, SRT transcribed.</div><div class="nd">Today</div></div>
-  <div class="ni"><div class="nt">FB Group Joined</div><div class="nb">Edmonton Chat (36K members) approved.</div><div class="nd">This week</div></div>
-  <div class="ni"><div class="nt">Square Connected</div><div class="nb">2,749 customers synced. 2 appointments today.</div><div class="nd">Phase 1</div></div>
-  <div class="ni"><div class="nt">Gemini API Active</div><div class="nb">AI features enabled. Speech-to-text ready.</div><div class="nd">Today</div></div>
-</div>
-
-<!-- ═══ AGENTS ═══ -->
-<div class="pnl" id="pnl-agents">
-  <div class="stl">AI Agents — tap one to start talking</div>
-  <div class="ag-grid" id="agent-grid"></div>
-
-  <div id="agent-chat-area" style="display:none;margin-top:16px">
-    <div class="stl" id="agent-chat-title">Agent</div>
-    <div id="agent-msgs" style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px;min-height:200px;max-height:50vh;overflow-y:auto;margin-bottom:10px"></div>
-    <div style="display:flex;gap:8px">
-      <input type="text" id="agent-input" placeholder="Ask the agent..." onkeydown="if(event.key==='Enter')sendAgent()">
-      <button class="btn btn-outline" id="agent-mic-btn" onclick="agentMic()" style="flex-shrink:0">🎤</button>
-      <button class="btn btn-gold" onclick="sendAgent()" style="flex-shrink:0">Send</button>
-    </div>
-    <button class="btn btn-outline btn-sm" style="margin-top:8px" onclick="if(activeAgent&&agentChats[activeAgent.id]){agentChats[activeAgent.id]=[];renderAgentChat();}">Clear Chat</button>
-  </div>
+  <div class="ni"><div class="nt">34 Videos Processed</div><div class="nb">Music + captions added to all clinic videos.</div><div class="nd">Today</div></div>
+  <div class="ni"><div class="nt">Master Video Ready</div><div class="nb">19Mbps broadcast quality, SRT transcribed.</div><div class="nd">Today</div></div>
+  <div class="ni"><div class="nt">Square Connected</div><div class="nb">2,749 customers. 2 appointments today.</div><div class="nd">Phase 1</div></div>
+  <div class="ni"><div class="nt">FB Group Joined</div><div class="nb">Edmonton Chat 36K approved.</div><div class="nd">This week</div></div>
+  <div class="ni"><div class="nt">Dashboard Live</div><div class="nb">GitHub Pages — works on any phone.</div><div class="nd">Phase 1</div></div>
 </div>
 
 <div class="ftr">Built with Agency OS - AI Lead Builder</div>
 
 <script>
-// ── STATE ──
-var user = 'devang';
-var expenses  = JSON.parse(localStorage.getItem('ox-exp')  || '[]');
-var preauths  = JSON.parse(localStorage.getItem('ox-pa')   || '[]');
-var posts     = JSON.parse(localStorage.getItem('ox-posts') || '[]');
-var images    = JSON.parse(localStorage.getItem('ox-imgs')  || '[]');
-var uploadVids= JSON.parse(localStorage.getItem('ox-vids')  || '[]');
-var schedDone = JSON.parse(localStorage.getItem('ox-sched-'+new Date().toDateString()) || '{}');
-var expCat    = 'all';
+// ═══════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════
+var S = {
+  user: 'devang',
+  expenses:  JSON.parse(localStorage.getItem('ox-exp')   || '[]'),
+  preauths:  JSON.parse(localStorage.getItem('ox-pa')    || '[]'),
+  posts:     JSON.parse(localStorage.getItem('ox-posts') || '[]'),
+  images:    JSON.parse(localStorage.getItem('ox-imgs')  || '[]'),
+  uploadVids:JSON.parse(localStorage.getItem('ox-vids')  || '[]'),
+  schedDone: JSON.parse(localStorage.getItem('ox-sd-' + new Date().toDateString()) || '{}'),
+  expCat:    'all',
+  activeAgent: null,
+  agentChats: {},
+  lastSpeech: '',
+  micRec: null,
+  isListening: false,
+  agMicRec: null,
+  capMicRec: null
+};
+function save(key, val){ localStorage.setItem(key, JSON.stringify(val)); }
 
-// ── TABS ──
-function goTab(id, btn) {
-  document.querySelectorAll('.pnl').forEach(function(p){ p.classList.remove('on'); });
-  document.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('on'); });
-  document.getElementById('pnl-'+id).classList.add('on');
-  btn.classList.add('on');
+// ═══════════════════════════════════════════
+// TABS
+// ═══════════════════════════════════════════
+function goTab(id, btn){
+  document.querySelectorAll('.pnl').forEach(function(p){ p.classList.remove('active'); });
+  document.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('active'); });
+  document.getElementById('pnl-' + id).classList.add('active');
+  btn.classList.add('active');
 }
 
-// ── USER SWITCH ──
-function switchUser() {
-  user = user === 'devang' ? 'hetisha' : 'devang';
-  document.getElementById('usr-btn').textContent = user === 'devang' ? '👤 Devang' : '👤 Hetisha';
-  var devOnly = ['posts','videos','images','expenses','preauth'];
-  var tabs = document.querySelectorAll('.tab');
-  tabs.forEach(function(t, i) {
-    var ids = ['schedule','posts','videos','images','expenses','preauth'];
-    if (user === 'hetisha' && devOnly.indexOf(ids[i]) > -1) {
-      t.style.display = 'none';
-    } else {
-      t.style.display = '';
-    }
+// ═══════════════════════════════════════════
+// USER SWITCH
+// ═══════════════════════════════════════════
+function switchUser(){
+  S.user = S.user === 'devang' ? 'hetisha' : 'devang';
+  document.getElementById('usr-btn').textContent = S.user === 'devang' ? '👤 Devang' : '👤 Hetisha';
+  var devOnly = ['calendar','sarah','agents','posts','videos','images','expenses','preauth'];
+  document.querySelectorAll('.tab').forEach(function(t){
+    var tab = t.getAttribute('onclick').match(/goTab\('(\w+)'/);
+    if(!tab) return;
+    t.style.display = (S.user === 'hetisha' && devOnly.indexOf(tab[1]) > -1) ? 'none' : '';
   });
-  document.getElementById('stats-row').style.display = user === 'hetisha' ? 'none' : 'grid';
-  if (user === 'hetisha') {
-    goTab('schedule', document.querySelector('.tab'));
-  }
 }
 
-// ── NOTIFICATIONS ──
-function openNotif() {
-  document.getElementById('notif-bg').classList.add('on');
-  document.getElementById('notif-drawer').classList.add('on');
-}
-function closeNotif() {
-  document.getElementById('notif-bg').classList.remove('on');
-  document.getElementById('notif-drawer').classList.remove('on');
+// ═══════════════════════════════════════════
+// NOTIFICATIONS
+// ═══════════════════════════════════════════
+function toggleNotif(){
+  document.getElementById('notif-bg').classList.toggle('open');
+  document.getElementById('notif-drawer').classList.toggle('open');
 }
 
-// ── MODALS ──
-function openModal(id) {
+// ═══════════════════════════════════════════
+// MODALS
+// ═══════════════════════════════════════════
+function openModal(id){
   var today = new Date().toISOString().split('T')[0];
-  var df = document.querySelectorAll('#'+id+' input[type=date]');
-  df.forEach(function(f){ if (!f.value) f.value = today; });
-  document.getElementById(id).classList.add('on');
+  document.querySelectorAll('#' + id + ' input[type=date]').forEach(function(f){ if(!f.value) f.value = today; });
+  document.getElementById(id).classList.add('open');
 }
-function closeModal(id) { document.getElementById(id).classList.remove('on'); }
-// Close modal on background click
-document.querySelectorAll('.modal-bg').forEach(function(bg) {
-  bg.addEventListener('click', function(e) {
-    if (e.target === bg) bg.classList.remove('on');
-  });
+function closeModal(id){ document.getElementById(id).classList.remove('open'); }
+document.querySelectorAll('.modal-bg').forEach(function(bg){
+  bg.addEventListener('click', function(e){ if(e.target === bg) bg.classList.remove('open'); });
 });
 
-// ── SCHEDULE ──
-var schedData = [
-  { time:'9:00am',  name:'Google Business Profile', desc:'C1805 Testimonial video',    url:'https://business.google.com',          dot:'sd-blue' },
-  { time:'10:30am', name:'TikTok / IG Reels',        desc:'C1805 (same video)',          url:'https://www.tiktok.com/upload',         dot:'sd-blue' },
-  { time:'11:00am', name:'Facebook Page',            desc:'C1805 + booking link',        url:'https://www.facebook.com/oxydermedmonton', dot:'sd-yellow' },
-  { time:'2:00pm',  name:'FB Groups',                desc:'Edmonton Chat 36K',           url:'https://www.facebook.com/groups',       dot:'sd-yellow' },
-  { time:'4:00pm',  name:'Sustaack',                 desc:'C1805 embed + link',          url:'https://sustaack.com',                  dot:'sd-yellow' },
-  { time:'7:00pm',  name:'YouTube',                  desc:'Full testimonial upload',     url:'https://studio.youtube.com',            dot:'sd-yellow' },
+// ═══════════════════════════════════════════
+// SCHEDULE
+// ═══════════════════════════════════════════
+var SCHED = [
+  {time:'9:00am',  name:'Google Business Profile', desc:'C1805 Testimonial video',  url:'https://business.google.com',               dot:'#3498db'},
+  {time:'10:30am', name:'TikTok / IG Reels',        desc:'C1805 (same video)',        url:'https://www.tiktok.com/upload',               dot:'#3498db'},
+  {time:'11:00am', name:'Facebook Page',            desc:'C1805 + booking link',      url:'https://www.facebook.com/oxydermedmonton',   dot:'#f39c12'},
+  {time:'2:00pm',  name:'FB Groups',                desc:'Edmonton Chat 36K',         url:'https://www.facebook.com/groups',             dot:'#f39c12'},
+  {time:'4:00pm',  name:'Sustaack',                 desc:'C1805 embed + link',        url:'https://sustaack.com',                        dot:'#f39c12'},
+  {time:'7:00pm',  name:'YouTube',                  desc:'Full testimonial upload',   url:'https://studio.youtube.com',                  dot:'#f39c12'},
 ];
-
-function renderSched() {
-  var el = document.getElementById('sched-list');
-  var doneCount = 0;
-  el.innerHTML = schedData.map(function(s, i) {
-    var done = !!schedDone[i];
-    if (done) doneCount++;
-    return '<a class="srow'+(done?' done':'')+'" href="'+s.url+'" target="_blank" rel="noopener" onclick="schedClick(event,'+i+')">' +
-      '<div class="sdot '+(done?'sd-green':s.dot)+'"></div>' +
-      '<div class="srow-time">'+s.time+'</div>' +
-      '<div class="srow-info">' +
-        '<div class="srow-name">'+s.name+'</div>' +
-        '<div class="srow-desc">'+s.desc+'</div>' +
-      '</div>' +
-      '<button class="mark-btn" onclick="markDone(event,'+i+')">'+(done?'✓ Done':'Mark Done')+'</button>' +
+function renderSched(){
+  var done = 0;
+  document.getElementById('sched-list').innerHTML = SCHED.map(function(s, i){
+    var d = !!S.schedDone[i];
+    if(d) done++;
+    return '<a class="srow' + (d ? ' done' : '') + '" href="' + s.url + '" target="_blank" onclick="schedClick(event,' + i + ')">' +
+      '<div class="sdot" style="background:' + (d ? '#2ecc71' : s.dot) + '"></div>' +
+      '<div class="srow-time">' + s.time + '</div>' +
+      '<div class="srow-info"><div class="srow-name">' + s.name + '</div><div class="srow-desc">' + s.desc + '</div></div>' +
+      '<button class="mark-btn' + (d ? ' done' : '') + '" onclick="markDone(event,' + i + ')">' + (d ? '✓ Done' : 'Mark Done') + '</button>' +
     '</a>';
   }).join('');
-  document.getElementById('s-posted').textContent = doneCount;
+  document.getElementById('posted-count').textContent = done;
 }
-
-function schedClick(e, i) { /* link opens platform naturally */ }
-
-function markDone(e, i) {
-  e.preventDefault();
-  e.stopPropagation();
-  schedDone[i] = !schedDone[i];
-  localStorage.setItem('ox-sched-'+new Date().toDateString(), JSON.stringify(schedDone));
+function schedClick(e, i){ /* link opens naturally */ }
+function markDone(e, i){
+  e.preventDefault(); e.stopPropagation();
+  S.schedDone[i] = !S.schedDone[i];
+  save('ox-sd-' + new Date().toDateString(), S.schedDone);
   renderSched();
 }
 renderSched();
 
-// ── POSTS ──
-function renderPosts() {
-  var el = document.getElementById('posts-list');
-  if (!posts.length) {
-    el.innerHTML = '<div style="color:var(--muted);font-size:13px;padding:12px;text-align:center">No posts queued. Tap + Add Post.</div>';
-    return;
+// ═══════════════════════════════════════════
+// SARAH VOICE
+// ═══════════════════════════════════════════
+var CLINIC = {
+  appts: [
+    {time:'1:00 PM', name:'Alexandra Doblado', first:'alexandra', service:'Laser Hair Removal', areas:'legs, toes, fingers, arms, underarms', visit:'7th visit', payment:'Paid $199.99 instalment (membership)', phone:'(587) 974-5069', flags:['Minor — parent must be in room','No face on social media','Left Google review'], note:'Membership Jan 2026–Dec 2026. Paying $199.99 every visit. 5 treatments left from Sep 2026. Hetisha did treatment.'},
+    {time:'3:00 PM', name:'Mehak Wadhwa',      first:'mehak',     service:'Laser Hair Removal', areas:'legs, fingers, arms, underarms, face, abdomen, back, Brazilian', visit:'11th visit', payment:'Balance $49.99 owing (paid $150 advance Jan 2025)', phone:'(780) 394-9700', flags:['Left Google review'], note:'Membership 6 months $199.99 each. Auto payment 15th every month. Paid ingrown kit and V drop serum.'},
+  ]
+};
+
+function sarahAnswer(q){
+  var ql = q.toLowerCase();
+  // by name
+  for(var i=0; i<CLINIC.appts.length; i++){
+    var a = CLINIC.appts[i];
+    if(ql.indexOf(a.first) > -1 || ql.indexOf(a.name.toLowerCase()) > -1){
+      if(/pay|paid|balance|owe|money/i.test(ql)) return a.name + ': ' + a.payment + '.';
+      if(/note|flag|warn|special/i.test(ql)) return a.name + ' notes: ' + a.note + ' Flags: ' + a.flags.join(', ') + '.';
+      if(/visit|how many time|number/i.test(ql)) return a.name + ' is on their ' + a.visit + '.';
+      if(/phone|call|contact/i.test(ql)) return a.name + ' phone: ' + a.phone + '.';
+      if(/area|treat|coming for|service/i.test(ql)) return a.name + ' is in for ' + a.service + ', areas: ' + a.areas + '.';
+      return a.name + ' at ' + a.time + '. ' + a.service + ', ' + a.areas + '. ' + a.visit + '. ' + a.payment + '.';
+    }
   }
-  var sc = {pending:'t-yellow',ready:'t-blue',scheduled:'t-gold',posted:'t-green'};
-  el.innerHTML = posts.map(function(p, i) {
-    return '<div class="post-item">' +
-      '<div class="post-info">' +
-        '<div class="post-plat">'+p.platform+'</div>' +
-        '<div class="post-cap">'+(p.caption||'').slice(0,60)+'</div>' +
-        '<div class="post-tags">' +
-          '<span class="tag '+(sc[p.status]||'t-yellow')+'">'+p.status+'</span>' +
-          (p.time?'<span class="tag t-gold">'+new Date(p.time).toLocaleString('en-CA',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'})+'</span>':'') +
-        '</div>' +
-      '</div>' +
-      '<div style="display:flex;gap:6px">' +
-        (p.status!=='posted'?'<button class="btn btn-green btn-sm" onclick="markPosted('+i+')">Posted</button>':'') +
-        '<button class="btn btn-red btn-sm" onclick="delPost('+i+')">✕</button>' +
-      '</div>' +
+  // schedule
+  if(/schedule|today|who.*coming|all appoint|how many/i.test(ql))
+    return 'Today: ' + CLINIC.appts.map(function(a){ return a.time + ' ' + a.name + ', ' + a.visit + '.'; }).join(' ');
+  // next
+  if(/next|who is next/i.test(ql)){
+    var now = new Date(), h = now.getHours(), m = now.getMinutes();
+    for(var i=0; i<CLINIC.appts.length; i++){
+      var t = CLINIC.appts[i].time.match(/(\d+):(\d+)\s*(AM|PM)/i);
+      if(!t) continue;
+      var ah = parseInt(t[1]) + (t[3].toUpperCase()==='PM' && parseInt(t[1])!==12 ? 12 : 0);
+      if(ah > h || (ah===h && parseInt(t[2])>m)) return 'Next: ' + CLINIC.appts[i].name + ' at ' + CLINIC.appts[i].time + '. ' + CLINIC.appts[i].service + ', ' + CLINIC.appts[i].visit + '.';
+    }
+    return 'No more appointments today.';
+  }
+  // balance
+  if(/balance|owing/i.test(ql)) return 'Mehak Wadhwa has a $49.99 balance owing from her advance in January 2025.';
+  // help
+  if(/help|what can|how/i.test(ql)) return 'Ask me: who is at 1pm, notes for Alexandra, what did Mehak pay, who is next, any balance owing.';
+  return 'Today: Alexandra at 1pm (7th visit, LHR) and Mehak at 3pm (11th visit, LHR). What would you like to know?';
+}
+
+function sarahSpeak(text){
+  if(!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  var u = new SpeechSynthesisUtterance(text);
+  u.rate = 0.92; u.pitch = 1.05; u.volume = 1.0;
+  var voices = window.speechSynthesis.getVoices();
+  var want = ['Samantha','Karen','Moira','Fiona','Victoria','Tessa'];
+  var v = null;
+  for(var i=0; i<want.length; i++){ v = voices.find(function(vv){ return vv.name.indexOf(want[i])>-1; }); if(v) break; }
+  if(!v) v = voices.find(function(vv){ return vv.lang==='en-CA'; });
+  if(!v) v = voices.find(function(vv){ return vv.lang.startsWith('en'); });
+  if(v) u.voice = v;
+  window.speechSynthesis.speak(u);
+}
+if(window.speechSynthesis) window.speechSynthesis.onvoiceschanged = function(){ window.speechSynthesis.getVoices(); };
+
+function showSarahAnswer(text){
+  S.lastSpeech = text;
+  document.getElementById('sarah-text').textContent = text;
+  document.getElementById('sarah-box').style.display = 'block';
+  sarahSpeak(text);
+}
+function speakAgain(){ if(S.lastSpeech) sarahSpeak(S.lastSpeech); }
+function doAskText(q){ document.getElementById('sarah-input').value = q; doAsk(); }
+function doAsk(){
+  var q = document.getElementById('sarah-input').value.trim();
+  if(!q) return;
+  showSarahAnswer(sarahAnswer(q));
+  document.getElementById('sarah-input').value = '';
+}
+
+function toggleMic(){
+  var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if(S.isListening){
+    if(S.micRec){ try{ S.micRec.stop(); }catch(e){} }
+    stopMicUI(); return;
+  }
+  if(!SR){ alert('Microphone not supported. Use Chrome or Safari on HTTPS.'); return; }
+  S.micRec = new SR(); S.micRec.lang='en-CA'; S.micRec.continuous=false; S.micRec.interimResults=false;
+  S.micRec.onresult = function(e){ var q=e.results[0][0].transcript; showSarahAnswer(sarahAnswer(q)); };
+  S.micRec.onend = stopMicUI;
+  S.micRec.onerror = stopMicUI;
+  S.isListening = true;
+  document.getElementById('mic-btn').textContent = '⏹';
+  document.getElementById('mic-ring').classList.add('pulse');
+  document.getElementById('mic-status').textContent = 'Listening...';
+  S.micRec.start();
+}
+function stopMicUI(){
+  S.isListening = false; S.micRec = null;
+  document.getElementById('mic-btn').textContent = '🎤';
+  document.getElementById('mic-ring').classList.remove('pulse');
+  document.getElementById('mic-status').textContent = 'Tap mic or type below';
+}
+
+function capMic(){
+  var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if(!SR){ alert('Voice not supported. Type the caption.'); return; }
+  S.capMicRec = new SR(); S.capMicRec.lang='en-CA';
+  S.capMicRec.onresult = function(e){ document.getElementById('vid-cap').value = e.results[0][0].transcript; };
+  S.capMicRec.start();
+}
+
+// ═══════════════════════════════════════════
+// AGENTS
+// ═══════════════════════════════════════════
+var AGENTS = [
+  {id:'scheduler', name:'Scheduler',   emoji:'📅', desc:'Calendars, posting cadence, booking',
+   knowledge: {
+     default: 'Posting cycle: GBP 9am, TikTok/Reels 10:30am, Facebook 11am, FB Groups 2pm, Sustaack 4pm, YouTube 7pm. Square auto-fetches at 7am. Today: Alexandra 1pm, Mehak 3pm. What scheduling help do you need?',
+     schedule: 'Current 7-day posting schedule: GBP 9am (testimonial video), TikTok+IG Reels 10:30am (same video), Facebook Page 11am (video + booking link), FB Groups 2pm (Edmonton Chat 36K), Sustaack 4pm (embed + link), YouTube 7pm (full upload). Pre-production lead time: 2 days minimum for video scripting and filming approval.',
+     calendar: 'Alexandra is booked at 1pm (LHR, 2hr). Mehak at 3pm (LHR, 2hr). No slots available today. Tomorrow slots open from 9am to 5pm in 30-minute increments. Best booking windows: 10am–12pm and 2pm–4pm.',
+   }},
+  {id:'editor',    name:'Video Editor', emoji:'🎬', desc:'Scripts, scenes, thumbnails, retargeting',
+   knowledge: {
+     default: '34 videos processed total. 1 master video at 19Mbps broadcast quality (color graded, audio normalized, SRT transcribed). 33 remaining need full pipeline. What do you need — scripts, thumbnails, retargeting cuts?',
+     count: '34 clinic videos processed. 1 master (20260723_134110_master.mp4) at 222MB, 19Mbps, CRF18 slow preset, broadcast quality. 33 more videos still need: re-encode at 8Mbps, color grade (saturation +15%, contrast +8%), audio normalize to -14 LUFS, noise reduction, background music at 15%, caption bar overlay, thumbnail extraction, and Gemini SRT transcript.',
+     master: 'Master video specs: 1920x1080, 19Mbps, H.264 High Profile, CRF18 slow. Color: saturation +15%, brightness +3%, contrast +8%, unsharp filter. Audio: normalized -14 LUFS, afftdn noise reduction, highpass 80Hz, acompressor 3:1, BG music 15%. Caption bar: navy #00172D, 130px, 85% opacity, 3px gold #c9a96e accent. Thumbnail: t=14s, 244KB. SRT: 14 cues from Gemini 3.6 Flash.',
+     tofu: 'TOFU (120s): Full treatment walkthrough — show the machine, process, client comfort. No hard sell. Hook: problem awareness. MOFU (60s): Before/after results + client voice. Mid-funnel proof. BOFU (30-45s): Direct offer + booking CTA. "Only 3 spots left this week." All three cut from existing 34 videos.',
+     thumbnail: 'Thumbnail extracted at t=14s from master. Sharp Hetisha performing microneedling, great lighting, professional. Use for YouTube cover, GBP, TikTok. 3-word text overlay suggestion: "No More Shaving" or "Results In Minutes".',
+   }},
+  {id:'social',    name:'Social Media', emoji:'📣', desc:'Copy, hooks, hashtags, platforms',
+   knowledge: {
+     default: 'Ready to write hooks, captions, hashtag clusters for Instagram, TikTok, Facebook, GBP. Services: LHR and Microneedling ONLY. No Botox or injectables. What platform and service?',
+     hook: 'Hook formula for LHR: "Still shaving every 2 days? There is a permanent solution." For microneedling: "Your skin is telling you something — here is how to fix it." Both under 3 seconds, scroll-stopping, problem-first.',
+     hashtags: 'Niche (geo/service): #LaserHairRemovalEdmonton #MicroneedlingEdmonton #OxydermClinic. Category: #LaserHairRemoval #Microneedling #PermanentHairRemoval. Broad: #SkincareEdmonton #BeautyEdmonton #SkinTreatment.',
+     caption: 'Caption structure: Hook (0-3s pain point) → Empathy (you are not alone) → Mechanism (how LHR or microneedling solves it) → Proof (visit count, membership) → CTA (link in bio, DM us, book now at oxyderm.ca). Keep under 150 words for TikTok.',
+   }},
+  {id:'finance',   name:'Finance',      emoji:'💰', desc:'Margins, CAC, LTV, Square revenue',
+   knowledge: {
+     default: 'Tracking via Square. Alexandra paid $199.99 instalment (LHR membership). Mehak has $49.99 balance owing. Memberships: $199.99/month. What do you need — margin analysis, CAC, or revenue summary?',
+     revenue: 'Today revenue: Alexandra $199.99 (membership instalment). Mehak $49.99 outstanding. Monthly membership value per client: $199.99 x 6-12 months = $1,199–$2,399 LTV. Break-even ROAS for $199.99 LHR package: if ad spend $50/client acquired, ROAS must exceed 4x ($199.99 / $50 = 3.99x). Target CAC: under $40.',
+     margin: 'LHR package margin estimate: $199.99/session, consumables (gel, cartridges) ~$15–25/session, staff time ~$30 (1hr), overhead ~$20. Gross margin per session: ~$125–135, approximately 62-67%. Microneedling similar margin structure.',
+   }},
+  {id:'client',    name:'Client Care',  emoji:'👥', desc:'Intake, retention, rebooking, reviews',
+   knowledge: {
+     default: 'Today: Alexandra (7th visit, minor, parent in room, no face on social) and Mehak (11th visit, $49.99 owing, left Google review). I handle intake scripts, rebooking sequences, 24/48hr check-ins. What do you need?',
+     followup: '24hr post-treatment check-in script: "Hi [Name], it is Hetisha from Oxyderm! How are you feeling after yesterday s session? Any redness or sensitivity is normal for 24-48hrs. Stay out of direct sun and apply SPF. Let us know if you have any questions!" Rebooking prompt: "Your next session is recommended in 4-6 weeks. Want me to reserve your spot now?"',
+     review: 'Review generation script: "Hi [Name], we loved having you in today! If you had a great experience, a quick Google review means the world to us and helps other clients find us. Here is the link: [GBP link]. It only takes 30 seconds and we really appreciate it!"',
+   }},
+  {id:'marketing', name:'Marketing',    emoji:'🚀', desc:'Funnels, retargeting, ads, offers',
+   knowledge: {
+     default: 'TOFU/MOFU/BOFU funnels for LHR and Microneedling in Edmonton. Target: women 25-45. Intro offer: complimentary consultation or credit stack. What campaign are you building?',
+     funnel: 'Funnel structure: TOFU → anyone watched 60s+ video about LHR or microneedling (retarget with MOFU). MOFU → watched 60%+ of MOFU video (retarget with BOFU offer). BOFU → visited booking page (retarget with direct "3 spots left this week" urgency ad). All audiences: Edmonton, 25-45, women only. No interest targeting — location + age + gender only (Meta Andromeda).',
+     offer: 'Intro offer stack: "Free skin consultation ($75 value) + first LHR session 20% off." Value stack total: $275+. Position as limited: "Only 5 complimentary consultations available this month." UTM: oxyderm.ca/book?utm_source=meta&utm_medium=paid&utm_campaign=lhr-bofu.',
+   }},
+  {id:'research',  name:'Research',     emoji:'🔍', desc:'SEO, competitors, market gaps, keywords',
+   knowledge: {
+     default: 'Key Edmonton keywords: "laser hair removal Edmonton" (high intent), "permanent hair removal Edmonton", "microneedling Edmonton". Competitor gap: most clinics do not show real treatment footage or client visit counts. What intelligence do you need?',
+     competitors: 'Top Edmonton competitors: Milan Laser (chain, aggressive pricing, no local feel), Sente Laser (established, limited social), LaserAway (US chain entering market). Oxyderm advantage: local, personal, real treatment videos, membership model, high visit counts (11th visit = social proof). Gap: competitors do not publish client journey stories.',
+     keywords: 'High-intent local keywords: "laser hair removal Edmonton" (2,400/mo), "LHR Edmonton" (880/mo), "permanent hair removal Edmonton" (720/mo), "microneedling Edmonton" (590/mo), "laser clinic Edmonton" (480/mo). Content gap: no competitor owns "Edmonton laser hair removal before after" video content — Oxyderm can dominate this angle.',
+   }},
+];
+
+function agAnswer(agent, q){
+  var ql = q.toLowerCase();
+  var k = agent.knowledge;
+  // smart routing through knowledge keys
+  if(/how many|count|number|did you edit|processed|video/i.test(ql) && agent.id==='editor') return k.count;
+  if(/master|best quality|broadcast/i.test(ql) && agent.id==='editor') return k.master;
+  if(/tofu|mofu|bofu|retarget/i.test(ql) && agent.id==='editor') return k.tofu;
+  if(/thumbnail/i.test(ql) && agent.id==='editor') return k.thumbnail;
+  if(/schedule|posting|cycle|calendar|slot|available/i.test(ql) && agent.id==='scheduler') return k.calendar || k.schedule;
+  if(/hook|scroll/i.test(ql) && agent.id==='social') return k.hook;
+  if(/hashtag|tag/i.test(ql) && agent.id==='social') return k.hashtags;
+  if(/caption|copy/i.test(ql) && agent.id==='social') return k.caption;
+  if(/revenue|money|earning|today/i.test(ql) && agent.id==='finance') return k.revenue;
+  if(/margin|profit|cost/i.test(ql) && agent.id==='finance') return k.margin;
+  if(/follow.?up|check.?in|after/i.test(ql) && agent.id==='client') return k.followup;
+  if(/review|google|rating/i.test(ql) && agent.id==='client') return k.review;
+  if(/funnel|tofu|mofu|bofu|retarget/i.test(ql) && agent.id==='marketing') return k.funnel;
+  if(/offer|promo|discount|intro/i.test(ql) && agent.id==='marketing') return k.offer;
+  if(/competitor|milan|sente|compete/i.test(ql) && agent.id==='research') return k.competitors;
+  if(/keyword|seo|search|volume/i.test(ql) && agent.id==='research') return k.keywords;
+  return k.default;
+}
+
+function renderAgents(){
+  document.getElementById('ag-grid').innerHTML = AGENTS.map(function(a){
+    var active = S.activeAgent && S.activeAgent.id === a.id ? ' active' : '';
+    return '<div class="ag-card' + active + '" onclick="selectAgent(\'' + a.id + '\')">' +
+      '<div class="ag-emoji">' + a.emoji + '</div>' +
+      '<div class="ag-name">' + a.name + '</div>' +
+      '<div class="ag-desc">' + a.desc + '</div>' +
     '</div>';
   }).join('');
 }
 
-function savePost() {
-  var p = {
-    platform: document.getElementById('p-plat').value,
-    caption:  document.getElementById('p-cap').value,
-    time:     document.getElementById('p-time').value,
-    status:   document.getElementById('p-status').value,
-    id: Date.now()
-  };
-  posts.unshift(p);
-  localStorage.setItem('ox-posts', JSON.stringify(posts));
-  closeModal('mod-post');
-  document.getElementById('p-cap').value = '';
-  renderPosts();
+function selectAgent(id){
+  S.activeAgent = AGENTS.find(function(a){ return a.id === id; });
+  if(!S.agentChats[id]) S.agentChats[id] = [];
+  renderAgents();
+  document.getElementById('ag-chat-wrap').style.display = 'block';
+  document.getElementById('ag-chat-title').textContent = S.activeAgent.emoji + ' ' + S.activeAgent.name;
+  document.getElementById('ag-input').placeholder = 'Ask ' + S.activeAgent.name + '...';
+  renderAgChat();
 }
-function markPosted(i) { posts[i].status='posted'; localStorage.setItem('ox-posts',JSON.stringify(posts)); renderPosts(); }
-function delPost(i) { if(confirm('Delete this post?')){ posts.splice(i,1); localStorage.setItem('ox-posts',JSON.stringify(posts)); renderPosts(); } }
+
+function renderAgChat(){
+  var msgs = S.agentChats[S.activeAgent.id];
+  var el = document.getElementById('ag-msgs');
+  if(!msgs.length){
+    el.innerHTML = '<div style="color:var(--muted);text-align:center;padding:30px;font-size:13px">Hi, I am ' + S.activeAgent.name + '. ' + S.activeAgent.knowledge.default + '</div>';
+    return;
+  }
+  el.innerHTML = msgs.map(function(m){
+    return '<div class="msg ' + m.role + '"><div class="bubble">' + m.text.replace(/\n/g,'<br>') + '</div></div>';
+  }).join('');
+  el.scrollTop = el.scrollHeight;
+}
+
+function agSend(){
+  if(!S.activeAgent) return;
+  var inp = document.getElementById('ag-input');
+  var q = inp.value.trim();
+  if(!q) return;
+  inp.value = '';
+  var id = S.activeAgent.id;
+  S.agentChats[id].push({role:'user', text:q});
+  var reply = agAnswer(S.activeAgent, q);
+  S.agentChats[id].push({role:'agent', text:reply});
+  renderAgChat();
+}
+
+function agClear(){
+  if(S.activeAgent){ S.agentChats[S.activeAgent.id] = []; renderAgChat(); }
+}
+
+function agMic(){
+  var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if(!SR){ alert('Voice not supported. Type instead.'); return; }
+  S.agMicRec = new SR(); S.agMicRec.lang='en-CA'; S.agMicRec.continuous=false;
+  S.agMicRec.onresult = function(e){ document.getElementById('ag-input').value = e.results[0][0].transcript; agSend(); };
+  S.agMicRec.onerror = function(){};
+  S.agMicRec.start();
+}
+renderAgents();
+
+// ═══════════════════════════════════════════
+// POSTS
+// ═══════════════════════════════════════════
+function renderPosts(){
+  var el = document.getElementById('posts-list');
+  if(!S.posts.length){ el.innerHTML='<div style="color:var(--muted);font-size:13px;padding:20px;text-align:center">No posts yet.</div>'; return; }
+  var sc={pending:'t-yellow',ready:'t-blue',scheduled:'t-gold',posted:'t-green'};
+  el.innerHTML = S.posts.map(function(p,i){
+    return '<div style="display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid #0a1e35">' +
+      '<div style="flex:1"><div style="font-size:13px;font-weight:600">' + p.platform + '</div>' +
+      '<div style="font-size:11px;color:var(--muted);margin-top:2px">' + (p.caption||'').slice(0,60) + '</div>' +
+      '<div class="tags" style="margin-top:5px"><span class="tag ' + (sc[p.status]||'t-yellow') + '">' + p.status + '</span></div></div>' +
+      '<div style="display:flex;gap:5px">' +
+      (p.status!=='posted'?'<button class="btn btn-green btn-sm" onclick="markPosted('+i+')">✓ Posted</button>':'')+
+      '<button class="btn btn-red btn-sm" onclick="delPost('+i+')">✕</button></div></div>';
+  }).join('');
+}
+function savePost(){
+  S.posts.unshift({platform:document.getElementById('p-plat').value, caption:document.getElementById('p-cap').value, time:document.getElementById('p-time').value, status:document.getElementById('p-status').value, id:Date.now()});
+  save('ox-posts', S.posts); closeModal('mod-post');
+  document.getElementById('p-cap').value=''; renderPosts();
+}
+function markPosted(i){ S.posts[i].status='posted'; save('ox-posts',S.posts); renderPosts(); }
+function delPost(i){ if(confirm('Delete post?')){ S.posts.splice(i,1); save('ox-posts',S.posts); renderPosts(); } }
 renderPosts();
 
-// ── VIDEOS ──
+// ═══════════════════════════════════════════
+// VIDEOS
+// ═══════════════════════════════════════════
 var VID_BASE = 'https://media.githubusercontent.com/media/Devang-shukla/oxyderm-videos/main/';
-var clinicVids = [
+var CLINIC_VIDS = [
   {n:'2026-07-23-133617652_final.mp4',o:'9:16'},{n:'20260617_155147_final.mp4',o:'16:9'},
   {n:'20260618_132740_final.mp4',o:'16:9'},{n:'20260618_132910_final.mp4',o:'16:9'},
   {n:'20260623_113750(1)_final.mp4',o:'16:9'},{n:'20260623_113750_final.mp4',o:'16:9'},
@@ -686,374 +878,134 @@ var clinicVids = [
   {n:'20260723_134110_final.mp4',o:'16:9',large:true},{n:'20260629_161037_final.mp4',o:'16:9',large:true},
   {n:'Snapchat-1504635744_final.mp4',o:'9:16',large:true},{n:'Snapchat-995021753_final.mp4',o:'9:16',large:true},
 ];
-
-function renderVideos() {
-  var grid = document.getElementById('vgrid');
-  var all = clinicVids.concat(uploadVids.map(function(u){ return {n:u.name,o:'auto',uploaded:true,dataUrl:u.dataUrl}; }));
-  grid.innerHTML = all.map(function(v, i) {
-    if (v.large) {
-      return '<div class="vcard"><div class="vcard-large">' +
-        '<div style="font-size:20px">📦</div>' +
-        '<div class="vcard-name">'+v.n+'</div>' +
-        '<div class="vcard-meta">'+v.o+' — large file</div>' +
-        '<div style="font-size:10px;color:var(--yellow);margin-top:3px">On Mac: videos-final/'+v.n+'</div>' +
-      '</div></div>';
-    }
+function renderVideos(){
+  var all = CLINIC_VIDS.concat(S.uploadVids.map(function(u){ return {n:u.name,o:'auto',uploaded:true,dataUrl:u.dataUrl}; }));
+  document.getElementById('vgrid').innerHTML = all.map(function(v,i){
+    if(v.large) return '<div class="vcard"><div class="vcard-large"><div style="font-size:22px">📦</div><div class="vcard-name">'+v.n+'</div><div class="vcard-meta">'+v.o+' — large file on Mac</div></div></div>';
     var src = v.uploaded ? v.dataUrl : (VID_BASE + encodeURIComponent(v.n));
-    var delBtn = v.uploaded ? '<button class="btn btn-red btn-sm" style="margin-top:8px;width:100%" onclick="delVid('+(i-clinicVids.length)+')">Remove</button>' : '';
-    return '<div class="vcard">' +
-      '<div class="vcard-media"><video controls preload="none" src="'+src+'"></video></div>' +
-      '<div class="vcard-body">' +
-        '<div class="vcard-name">'+v.n+'</div>' +
-        '<div class="vcard-meta">'+v.o+'</div>' +
-        '<div class="vcard-ok">'+(v.uploaded?'✓ Uploaded':'✓ Music + captions')+'</div>' +
-        delBtn +
-      '</div>' +
-    '</div>';
+    var del = v.uploaded ? '<button class="btn btn-red btn-sm" style="width:100%;margin-top:6px" onclick="delVid('+(i-CLINIC_VIDS.length)+')">Remove</button>' : '';
+    return '<div class="vcard"><video controls preload="none" src="'+src+'"></video><div class="vcard-body"><div class="vcard-name">'+v.n+'</div><div class="vcard-meta">'+v.o+'</div><div class="vcard-ok">'+(v.uploaded?'✓ Uploaded':'✓ Music + captions')+'</div>'+del+'</div></div>';
   }).join('');
 }
-
-// Caption voice
-var capMicRec = null;
-function startCapMic() {
-  var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-  if (!SR) { alert('Voice not supported. Type caption manually.'); return; }
-  if (capMicRec) { capMicRec.stop(); return; }
-  capMicRec = new SR();
-  capMicRec.lang = 'en-CA';
-  var btn = document.getElementById('cap-mic');
-  btn.textContent = '🔴 Stop';
-  capMicRec.onresult = function(e) { document.getElementById('vid-cap').value = e.results[0][0].transcript; };
-  capMicRec.onend = function() { btn.textContent = '🎤 Speak'; capMicRec = null; };
-  capMicRec.onerror = function() { btn.textContent = '🎤 Speak'; capMicRec = null; };
-  capMicRec.start();
-}
-
-function handleVid(inp) {
-  var file = inp.files[0]; if (!file) return;
-  var cap = document.getElementById('vid-cap').value.trim() || 'Oxyderm Beauty Clinic | Edmonton';
-  var prog = document.getElementById('vid-prog');
-  var fill = document.getElementById('vid-prog-fill');
-  var lbl  = document.getElementById('vid-prog-lbl');
-  prog.style.display = 'block'; fill.style.width = '10%';
-  lbl.textContent = 'Reading '+file.name+'...';
-  var r = new FileReader();
-  r.onprogress = function(e) { if (e.lengthComputable) fill.style.width = Math.round(10+(e.loaded/e.total)*70)+'%'; };
-  r.onload = function(e) {
-    fill.style.width = '95%'; lbl.textContent = 'Saving...';
-    uploadVids.push({name:file.name, dataUrl:e.target.result, caption:cap, date:new Date().toISOString()});
-    localStorage.setItem('ox-vids', JSON.stringify(uploadVids));
-    fill.style.width = '100%'; lbl.textContent = '✓ '+file.name+' added';
-    setTimeout(function(){ prog.style.display='none'; fill.style.width='0%'; }, 2000);
-    renderVideos();
-    document.getElementById('vid-cap').value = '';
-    inp.value = '';
+function vidHandle(inp){
+  var file=inp.files[0]; if(!file) return;
+  var cap=document.getElementById('vid-cap').value.trim()||'Oxyderm Beauty Clinic | Edmonton';
+  document.getElementById('vid-prog').style.display='block';
+  document.getElementById('vid-fill').style.width='10%';
+  document.getElementById('vid-lbl').textContent='Reading '+file.name+'...';
+  var r=new FileReader();
+  r.onprogress=function(e){ if(e.lengthComputable) document.getElementById('vid-fill').style.width=Math.round(10+e.loaded/e.total*80)+'%'; };
+  r.onload=function(e){
+    document.getElementById('vid-fill').style.width='100%';
+    document.getElementById('vid-lbl').textContent='✓ '+file.name+' added';
+    S.uploadVids.push({name:file.name,dataUrl:e.target.result,caption:cap,date:new Date().toISOString()});
+    save('ox-vids',S.uploadVids); renderVideos();
+    document.getElementById('vid-cap').value=''; inp.value='';
+    setTimeout(function(){ document.getElementById('vid-prog').style.display='none'; document.getElementById('vid-fill').style.width='0%'; },2000);
   };
   r.readAsDataURL(file);
 }
-function dropVid(e) {
-  e.preventDefault(); document.getElementById('vid-zone').classList.remove('drag');
-  var f = e.dataTransfer.files[0];
-  if (f && f.type.startsWith('video/')) {
-    var dt = new DataTransfer(); dt.items.add(f);
-    var inp = document.getElementById('vid-inp'); inp.files = dt.files; handleVid(inp);
-  }
+function vidDrop(e){
+  e.preventDefault(); document.getElementById('vid-drop').classList.remove('drag');
+  var f=e.dataTransfer.files[0]; if(f&&f.type.startsWith('video/')){ var dt=new DataTransfer(); dt.items.add(f); document.getElementById('vid-file').files=dt.files; vidHandle(document.getElementById('vid-file')); }
 }
-function delVid(i) { uploadVids.splice(i,1); localStorage.setItem('ox-vids',JSON.stringify(uploadVids)); renderVideos(); }
+function delVid(i){ S.uploadVids.splice(i,1); save('ox-vids',S.uploadVids); renderVideos(); }
 renderVideos();
 
-// ── IMAGES ──
-function renderImages() {
-  var grid = document.getElementById('igrid');
-  if (!images.length) {
-    grid.innerHTML = '<div style="color:var(--muted);font-size:13px;grid-column:1/-1;padding:20px;text-align:center">No images yet. Tap to upload.</div>';
-    return;
-  }
-  grid.innerHTML = images.map(function(img, i) {
+// ═══════════════════════════════════════════
+// IMAGES
+// ═══════════════════════════════════════════
+function renderImages(){
+  var el=document.getElementById('igrid');
+  if(!S.images.length){ el.innerHTML='<div style="color:var(--muted);font-size:13px;padding:20px;text-align:center;grid-column:1/-1">No images yet.</div>'; return; }
+  el.innerHTML=S.images.map(function(img,i){
     return '<div class="icard" onclick="openLB('+i+')">' +
       '<img src="'+img.dataUrl+'" alt="'+img.name+'" loading="lazy">' +
-      '<div class="icard-body">' +
-        '<div class="icard-name">'+img.name+'</div>' +
-        '<button class="btn btn-red btn-sm" style="width:100%;margin-top:5px" onclick="event.stopPropagation();delImg('+i+')">Remove</button>' +
-      '</div>' +
-    '</div>';
+      '<div class="icard-body"><div class="icard-name">'+img.name+'</div>' +
+      '<button class="btn btn-red btn-sm" style="width:100%;margin-top:4px" onclick="event.stopPropagation();delImg('+i+')">Remove</button></div></div>';
   }).join('');
 }
-function handleImgs(inp) {
-  var files = Array.from(inp.files); var done = 0;
-  files.forEach(function(f) {
-    var r = new FileReader();
-    r.onload = function(e) {
-      images.push({name:f.name, dataUrl:e.target.result, date:new Date().toISOString()});
-      done++;
-      if (done === files.length) { localStorage.setItem('ox-imgs',JSON.stringify(images)); renderImages(); }
-    };
+function imgHandle(inp){
+  var files=Array.from(inp.files); var done=0;
+  files.forEach(function(f){
+    var r=new FileReader();
+    r.onload=function(e){ S.images.push({name:f.name,dataUrl:e.target.result,date:new Date().toISOString()}); done++; if(done===files.length){ save('ox-imgs',S.images); renderImages(); } };
     r.readAsDataURL(f);
-  });
-  inp.value = '';
+  }); inp.value='';
 }
-function dropImg(e) {
-  e.preventDefault(); document.getElementById('img-zone').classList.remove('drag');
-  var files = Array.from(e.dataTransfer.files).filter(function(f){ return f.type.startsWith('image/'); });
-  if (!files.length) return;
-  var dt = new DataTransfer(); files.forEach(function(f){ dt.items.add(f); });
-  var inp = document.getElementById('img-inp'); inp.files = dt.files; handleImgs(inp);
+function imgDrop(e){
+  e.preventDefault();
+  var files=Array.from(e.dataTransfer.files).filter(function(f){ return f.type.startsWith('image/'); });
+  if(!files.length) return;
+  var dt=new DataTransfer(); files.forEach(function(f){ dt.items.add(f); });
+  document.getElementById('img-file').files=dt.files; imgHandle(document.getElementById('img-file'));
 }
-function delImg(i) { images.splice(i,1); localStorage.setItem('ox-imgs',JSON.stringify(images)); renderImages(); }
-function openLB(i) { document.getElementById('lb-img').src = images[i].dataUrl; document.getElementById('lb').classList.add('on'); }
+function delImg(i){ S.images.splice(i,1); save('ox-imgs',S.images); renderImages(); }
+function openLB(i){ document.getElementById('lb-img').src=S.images[i].dataUrl; document.getElementById('lb').classList.add('open'); }
 renderImages();
 
-// ── EXPENSES ──
-function filterCat(cat, btn) {
-  expCat = cat;
-  document.querySelectorAll('.cat').forEach(function(c){ c.classList.remove('on'); });
-  btn.classList.add('on');
-  renderExpenses();
-}
-function renderExpenses() {
-  var now = new Date();
-  var m = now.getMonth(), y = now.getFullYear();
-  var all = expenses.filter(function(e){ var d=new Date(e.date); return d.getMonth()===m&&d.getFullYear()===y; });
-  var total = all.reduce(function(s,e){ return s+parseFloat(e.amount||0); }, 0);
-  document.getElementById('exp-total').textContent = '$'+total.toFixed(2);
-  var shown = expCat==='all' ? all : all.filter(function(e){ return e.cat===expCat; });
-  var el = document.getElementById('exp-list');
-  if (!shown.length) { el.innerHTML = '<div style="color:var(--muted);font-size:13px;padding:12px;text-align:center">No expenses'+(expCat!=='all'?' in this category':'')+' this month.</div>'; return; }
-  var cc = {supplies:'t-blue',rent:'t-gold',equipment:'t-gold',staff:'t-green',marketing:'t-red',other:'t-yellow'};
-  el.innerHTML = shown.slice().reverse().map(function(e) {
-    var i = expenses.indexOf(e);
-    return '<div class="exp-row">' +
-      '<div class="exp-info">' +
-        '<div class="exp-desc">'+e.desc+'</div>' +
-        '<div class="exp-meta">' +
-          '<span class="tag '+(cc[e.cat]||'t-yellow')+'">'+e.cat+'</span>' +
-          '<span style="font-size:10px;color:var(--muted)">'+e.date+'</span>' +
-          (e.notes?'<span style="font-size:10px;color:var(--muted)">'+e.notes+'</span>':'') +
-        '</div>' +
-      '</div>' +
-      '<div style="display:flex;align-items:center;gap:8px">' +
-        '<div class="exp-amt">$'+parseFloat(e.amount).toFixed(2)+'</div>' +
-        '<button class="btn btn-red btn-sm" onclick="delExp('+i+')">✕</button>' +
-      '</div>' +
-    '</div>';
+// ═══════════════════════════════════════════
+// EXPENSES
+// ═══════════════════════════════════════════
+var expCat='all';
+function filterExp(cat,btn){ expCat=cat; document.querySelectorAll('.cat-btn').forEach(function(b){ b.classList.remove('active'); }); btn.classList.add('active'); renderExp(); }
+function renderExp(){
+  var now=new Date(); var m=now.getMonth(),y=now.getFullYear();
+  var all=S.expenses.filter(function(e){ var d=new Date(e.date); return d.getMonth()===m&&d.getFullYear()===y; });
+  var total=all.reduce(function(s,e){ return s+parseFloat(e.amount||0); },0);
+  document.getElementById('exp-total').textContent='$'+total.toFixed(2);
+  var shown=expCat==='all'?all:all.filter(function(e){ return e.cat===expCat; });
+  var el=document.getElementById('exp-list');
+  if(!shown.length){ el.innerHTML='<div style="color:var(--muted);font-size:13px;padding:12px;text-align:center">No expenses'+(expCat!=='all'?' in this category':'')+' this month.</div>'; return; }
+  var cc={supplies:'t-blue',rent:'t-gold',equipment:'t-gold',staff:'t-green',marketing:'t-red',other:'t-yellow'};
+  el.innerHTML=shown.slice().reverse().map(function(e){
+    var i=S.expenses.indexOf(e);
+    return '<div class="exp-row"><div class="exp-info"><div class="exp-desc">'+e.desc+'</div>' +
+      '<div class="exp-meta"><span class="tag '+(cc[e.cat]||'t-yellow')+'">'+e.cat+'</span><span style="font-size:10px;color:var(--muted)">'+e.date+'</span>'+(e.notes?'<span style="font-size:10px;color:var(--muted)">'+e.notes+'</span>':'')+'</div></div>' +
+      '<div style="display:flex;align-items:center;gap:8px"><div class="exp-amt">$'+parseFloat(e.amount).toFixed(2)+'</div>' +
+      '<button class="btn btn-red btn-sm" onclick="delExp('+i+')">✕</button></div></div>';
   }).join('');
 }
-function saveExpense() {
-  var e = {desc:document.getElementById('e-desc').value, amount:document.getElementById('e-amt').value, cat:document.getElementById('e-cat').value, date:document.getElementById('e-date').value, notes:document.getElementById('e-notes').value, id:Date.now()};
-  if (!e.desc||!e.amount) { alert('Description and amount required.'); return; }
-  expenses.push(e);
-  localStorage.setItem('ox-exp',JSON.stringify(expenses));
-  closeModal('mod-expense');
-  ['e-desc','e-amt','e-notes'].forEach(function(id){ document.getElementById(id).value=''; });
-  renderExpenses();
+function saveExp(){
+  var e={desc:document.getElementById('e-desc').value,amount:document.getElementById('e-amt').value,cat:document.getElementById('e-cat').value,date:document.getElementById('e-date').value,notes:document.getElementById('e-notes').value,id:Date.now()};
+  if(!e.desc||!e.amount){ alert('Description and amount required.'); return; }
+  S.expenses.push(e); save('ox-exp',S.expenses); closeModal('mod-expense');
+  ['e-desc','e-amt','e-notes'].forEach(function(id){ document.getElementById(id).value=''; }); renderExp();
 }
-function delExp(i) { if(confirm('Delete expense?')){ expenses.splice(i,1); localStorage.setItem('ox-exp',JSON.stringify(expenses)); renderExpenses(); } }
-renderExpenses();
+function delExp(i){ if(confirm('Delete expense?')){ S.expenses.splice(i,1); save('ox-exp',S.expenses); renderExp(); } }
+renderExp();
 
-// ── PRE-AUTH ──
-function renderPreauth() {
-  var pending   = preauths.filter(function(p){ return !p.collected; });
-  var collected = preauths.filter(function(p){ return p.collected; });
-  var outstanding = pending.reduce(function(s,p){ return s+parseFloat(p.amount||0); },0);
-  document.getElementById('pa-outstanding').textContent = '$'+outstanding.toFixed(2);
-  function renderList(arr, elId) {
-    var el = document.getElementById(elId);
-    if (!arr.length) { el.innerHTML = '<div style="color:var(--muted);font-size:13px;padding:10px">None</div>'; return; }
-    el.innerHTML = arr.map(function(p) {
-      var i = preauths.indexOf(p);
+// ═══════════════════════════════════════════
+// PRE-AUTH
+// ═══════════════════════════════════════════
+function renderPA(){
+  var pending=S.preauths.filter(function(p){ return !p.collected; });
+  var collected=S.preauths.filter(function(p){ return p.collected; });
+  var outstanding=pending.reduce(function(s,p){ return s+parseFloat(p.amount||0); },0);
+  document.getElementById('pa-total').textContent='$'+outstanding.toFixed(2);
+  function rl(arr,elId){
+    var el=document.getElementById(elId);
+    if(!arr.length){ el.innerHTML='<div style="color:var(--muted);font-size:13px;padding:10px">None</div>'; return; }
+    el.innerHTML=arr.map(function(p){
+      var i=S.preauths.indexOf(p);
       return '<div class="pa-item'+(p.collected?' collected':'')+'">' +
-        '<div class="pa-info">' +
-          '<div class="pa-name">'+p.name+'</div>' +
-          '<div class="pa-meta">'+p.service+' &mdash; taken '+p.date+(p.cdate?' &rarr; collect '+p.cdate:'')+'</div>' +
-          (p.notes?'<div class="pa-meta">'+p.notes+'</div>':'') +
-        '</div>' +
-        '<div class="pa-right">' +
-          '<div class="pa-amt">$'+parseFloat(p.amount).toFixed(2)+'</div>' +
-          (!p.collected?'<button class="btn btn-green btn-sm" onclick="collectPA('+i+')">Collect</button>':'<span class="tag t-green">Collected</span>') +
-          '<button class="btn btn-red btn-sm" onclick="delPA('+i+')">✕</button>' +
-        '</div>' +
-      '</div>';
+        '<div class="pa-info"><div class="pa-name">'+p.name+'</div><div class="pa-meta">'+p.service+' — '+p.date+(p.cdate?' → collect '+p.cdate:'')+'</div>'+(p.notes?'<div class="pa-meta">'+p.notes+'</div>':'')+'</div>' +
+        '<div class="pa-right"><div class="pa-amt">$'+parseFloat(p.amount).toFixed(2)+'</div>' +
+        (!p.collected?'<button class="btn btn-green btn-sm" onclick="collectPA('+i+')">Collect</button>':'<span class="tag t-green">Collected</span>')+
+        '<button class="btn btn-red btn-sm" onclick="delPA('+i+')">✕</button></div></div>';
     }).join('');
   }
-  renderList(pending, 'pa-pending');
-  renderList(collected, 'pa-collected');
+  rl(pending,'pa-pending'); rl(collected,'pa-collected');
 }
-function savePreauth() {
-  var p = {name:document.getElementById('pa-name').value, amount:document.getElementById('pa-amt').value, service:document.getElementById('pa-svc').value, date:document.getElementById('pa-date').value, cdate:document.getElementById('pa-cdate').value, notes:document.getElementById('pa-notes').value, collected:false, id:Date.now()};
-  if (!p.name||!p.amount) { alert('Client name and amount required.'); return; }
-  preauths.push(p);
-  localStorage.setItem('ox-pa',JSON.stringify(preauths));
-  closeModal('mod-preauth');
-  ['pa-name','pa-amt','pa-svc','pa-notes'].forEach(function(id){ document.getElementById(id).value=''; });
-  renderPreauth();
+function savePA(){
+  var p={name:document.getElementById('pa-name').value,amount:document.getElementById('pa-amt').value,service:document.getElementById('pa-svc').value,date:document.getElementById('pa-date').value,cdate:document.getElementById('pa-cdate').value,notes:document.getElementById('pa-notes').value,collected:false,id:Date.now()};
+  if(!p.name||!p.amount){ alert('Name and amount required.'); return; }
+  S.preauths.push(p); save('ox-pa',S.preauths); closeModal('mod-preauth');
+  ['pa-name','pa-amt','pa-svc','pa-notes'].forEach(function(id){ document.getElementById(id).value=''; }); renderPA();
 }
-function collectPA(i) { preauths[i].collected=true; preauths[i].collectedOn=new Date().toISOString(); localStorage.setItem('ox-pa',JSON.stringify(preauths)); renderPreauth(); }
-function delPA(i) { if(confirm('Delete pre-auth?')){ preauths.splice(i,1); localStorage.setItem('ox-pa',JSON.stringify(preauths)); renderPreauth(); } }
-renderPreauth();
-
-// ── SARAH VOICE ASSISTANT ──
-var APPTS = [
-  { time:'1:00 PM', name:'Alexandra Doblado', service:'Laser Hair Removal', visit:'7th visit', visit_num:7, payment:'Paid $199.99 instalment', phone:'(587) 974-5069', flags:['Minor - parent in room','No face on social media','Left Google review'], note:'Membership Jan 2026-Dec 2026. Paying $199.99 every visit. 5 treatments left from Sep 2026.' },
-  { time:'3:00 PM', name:'Mehak Wadhwa', service:'Laser Hair Removal', visit:'11th visit', visit_num:11, payment:'Balance $49.99 owing', phone:'(780) 394-9700', flags:['Left Google review'], note:'Membership 6 months $199.99 each. Auto payment 15th monthly. Paid ingrown kit + V drop.' },
-];
-var lastSpeech = '';
-function sarahAnswer(q) {
-  var ql = q.toLowerCase();
-  if (/schedule|today|who.*coming|all appoint/i.test(ql)) return 'Today: '+APPTS.length+' appts. '+APPTS.map(function(a){return a.time+': '+a.name+', '+a.service+', '+a.visit+', '+a.payment+'.';}).join(' ');
-  if (/next/i.test(ql)) { for(var i=0;i<APPTS.length;i++) return 'Next: '+APPTS[i].name+' at '+APPTS[i].time+'.'; }
-  for(var i=0;i<APPTS.length;i++){
-    var a=APPTS[i];
-    if(ql.indexOf(a.name.split(' ')[0].toLowerCase())>-1||ql.indexOf(a.name.toLowerCase())>-1){
-      if(/pay/i.test(ql)) return a.name+': '+a.payment+'.';
-      if(/note/i.test(ql)) return a.name+' notes: '+a.note+' Flags: '+a.flags.join(', ')+'.';
-      if(/visit/i.test(ql)) return a.name+': '+a.visit+'.';
-      return a.name+' at '+a.time+'. '+a.service+'. '+a.visit+'. '+a.payment+'.';
-    }
-  }
-  return 'Ask about Alexandra (1pm, 7th visit) or Mehak (3pm, 11th visit) — notes, payments, visit number.';
-}
-function askSarah(q){
-  var ans=sarahAnswer(q||'');
-  lastSpeech=ans;
-  var el=document.getElementById('sarah-answer');
-  document.getElementById('sarah-text').innerHTML=ans;
-  el.style.display='block';
-  speakText(ans);
-}
-function speakText(t){if(window.speechSynthesis){window.speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.rate=0.93;window.speechSynthesis.speak(u);}}
-function speakLast(){if(lastSpeech)speakText(lastSpeech);}
-var voiceRec=null; var isListening=false;
-function toggleVoice(){
-  var SR=window.SpeechRecognition||window.webkitSpeechRecognition;
-  if(isListening){voiceRec&&voiceRec.stop();isListening=false;document.getElementById('mic-btn').textContent='🎤';document.getElementById('mic-btn').style.borderColor='var(--gold)';document.getElementById('mic-ring').style.opacity='0';document.getElementById('mic-status').textContent='Tap mic or type below';return;}
-  if(!SR){alert('Voice not supported — type below instead.');return;}
-  voiceRec=new SR();voiceRec.lang='en-CA';voiceRec.continuous=false;voiceRec.interimResults=false;
-  document.getElementById('mic-btn').textContent='🔴';
-  voiceRec.onresult=function(e){var q=e.results[0][0].transcript;document.getElementById('sarah-input').value=q;askSarah(q);};
-  voiceRec.onend=function(){isListening=false;voiceRec=null;document.getElementById('mic-btn').textContent='🎤';document.getElementById('mic-btn').style.borderColor='var(--gold)';document.getElementById('mic-ring').style.opacity='0';document.getElementById('mic-status').textContent='Tap mic or type below';};
-  voiceRec.onerror=function(){isListening=false;voiceRec=null;document.getElementById('mic-btn').textContent='🎤';};
-  isListening=true;document.getElementById('mic-ring').style.animation='micpulse 1s infinite';document.getElementById('mic-ring').style.opacity='0.7';document.getElementById('mic-status').textContent='Listening...';
-  voiceRec.start();
-}
-
-// OpenRouter free tier (no billing needed for :free models)
-window._orKey=(function(){
-  var k=localStorage.getItem('ox-or-key');
-  if(!k){k=prompt('Enter your OpenRouter API key (one-time setup):');if(k)localStorage.setItem('ox-or-key',k);}
-  return k||'';
-})();
-
-// AGENTS
-var SARAH_CONTEXT='You are Sarah, the Lead AI Executive Director and Autonomous Chief of Staff. You orchestrate a fleet of specialized subagents. Primary Active Profile: Oxyderm Laser Clinic, Edmonton AB. Core Offerings: Laser Hair Removal and Microneedling ONLY. STRICT EXCLUSIONS: ZERO references to Botox, injectables, chemical peels, or invasive surgery. Today clients: Alexandra Doblado 1pm (7th visit LHR, minor, parent in room, no social media face, paid 199.99), Mehak Wadhwa 3pm (11th visit LHR, balance 49.99 owing). Style: Sharp, decisive, executive. Deliver finished assets first, then next actions.';
-var AGENTS=[
-  {id:'scheduler',name:'Scheduler',emoji:'📅',desc:'Calendar, posting cadence, booking slots',
-   prompt:`You are the Executive Operations and Master Content Calendar Agent reporting directly to Sarah (Lead Hub). `+
-   `${SARAH_CONTEXT} `+
-   `Your scope: Master calendar management, promotional timing, content publishing cadences, booking slot optimization, Square Calendar integration. `+
-   `Output multi-channel schedules as Markdown tables: Date/Slot | Channel | Objective | Required Asset | Status. `+
-   `Include pre-production lead times. Learn and log: optimal posting windows, booking buffers, weekly promotional cycles. `+
-   `End every response with: [SARAH HANDSHAKE: SCHEDULER] Confirmed Schedule Matrix: | Buffer Checks: | Memory Logged:`},
-  {id:'editor',name:'Video Editor',emoji:'🎬',desc:'Scripts, scenes, thumbnails, avatars, retargeting',
-   prompt:`You are the Creative Director and Video Asset Architect reporting directly to Sarah (Lead Hub). `+
-   `${SARAH_CONTEXT} `+
-   `Your scope: High-retention video architecture, scene-by-scene avatar prompts (Google Vids ready), 3-stage retargeting (TOFU 120s, MOFU 60s, BOFU 30-45s). `+
-   `Every video deliverable MUST cover all 5 dimensions: 1) Scene/B-Roll Visual Direction 2) Spoken Script with [pause] markers 3) On-Screen Text with placement 4) Thumbnail Blueprint (3-word overlay + focal point) 5) Audio/Sound Design. `+
-   `End every response with: [SARAH HANDSHAKE: VIDEO EDITOR] Scene Script & Visuals: | Thumbnail & Caption Pack: | Memory Logged:`},
-  {id:'social',name:'Social Media',emoji:'📣',desc:'Copy, hooks, hashtags, multi-platform',
-   prompt:`You are the Direct-Response Copywriting and Social Growth Specialist reporting directly to Sarah (Lead Hub). `+
-   `${SARAH_CONTEXT} `+
-   `Your scope: Multi-platform copy (Instagram, Facebook, TikTok, Google Business Profile). `+
-   `Every post package MUST include: Scroll-Stopping Hook (0-3s), Empathy/Problem Setup, Mechanism/Solution, Frictionless CTA, 3-Tier Hashtag Clusters (Niche/Category/Broad). `+
-   `Learn and log: brand voice, banned buzzwords, preferred emojis, tone guidelines. `+
-   `End every response with: [SARAH HANDSHAKE: SOCIAL MEDIA] Multi-Platform Deliverables: | Tag Clusters: | Memory Logged:`},
-  {id:'finance',name:'Finance',emoji:'💰',desc:'Margins, CAC, LTV, Square revenue, ad spend',
-   prompt:`You are the Commercial Financial Analyst and Revenue Operations Specialist reporting directly to Sarah (Lead Hub). `+
-   `${SARAH_CONTEXT} `+
-   `Your scope: Service package margin modeling, Square payment tracking, ad spend efficiency, CAC, LTV analysis. `+
-   `Always verify arithmetic step-by-step before outputting numbers. For ad assessments, calculate Break-Even ROAS and Target CAC per booked client. `+
-   `Learn and log: target margins, baseline costs, payment fee structures, minimum spend limits. `+
-   `End every response with: [SARAH HANDSHAKE: FINANCE] Financial Model: | Risk & Margin Assessment: | Memory Logged:`},
-  {id:'client',name:'Client Care',emoji:'👥',desc:'Intake, retention, rebooking, review generation',
-   prompt:`You are the Client Retention, Experience and Intake Specialist reporting directly to Sarah (Lead Hub). `+
-   `${SARAH_CONTEXT} `+
-   `Your scope: Pre/post-service consultation, 24/48-hour check-ins, rebooking sequences, review generation, de-escalation workflows. `+
-   `Maintain empathetic, authoritative, professional tone. Provide step-by-step scripts for: First-Time Inquirer, Active Client Post-Treatment, Inactive 90+ Days. `+
-   `Learn and log: clinic policies, treatment prep/aftercare, re-engagement triggers, loyalty perks. `+
-   `End every response with: [SARAH HANDSHAKE: CLIENT CARE] Journey Script/Follow-Up Playbook: | Rebooking Trigger: | Memory Logged:`},
-  {id:'marketing',name:'Marketing',emoji:'🚀',desc:'Funnels, retargeting, offers, paid ads',
-   prompt:`You are the Direct-Response Growth Strategist and Funnel Architect reporting directly to Sarah (Lead Hub). `+
-   `${SARAH_CONTEXT} `+
-   `Your scope: Multi-stage retargeting funnels (TOFU/MOFU/BOFU), paid social ad angles, introductory offers, local lead generation. `+
-   `Every funnel blueprint must include: Audience Qualification Criteria, Messaging Transition (Problem-Aware->Clinical Proof->Direct Booking), Offer Framing (value-stack), Conversion Endpoint with UTM tracking. `+
-   `Learn and log: high-converting hooks, promo structures, audience targeting parameters. `+
-   `End every response with: [SARAH HANDSHAKE: MARKETING] Funnel Blueprint: | Offer Architecture & UTM: | Memory Logged:`},
-  {id:'research',name:'Research',emoji:'🔍',desc:'SEO, competitors, local demand, market gaps',
-   prompt:`You are the Market Intelligence, SEO and Competitor Analysis Specialist reporting directly to Sarah (Lead Hub). `+
-   `${SARAH_CONTEXT} `+
-   `Your scope: Local search volume mining, high-intent keyword clustering, competitor pricing audits, review sentiment extraction. `+
-   `Output all comparative data in Markdown tables: Keyword/Competitor | Intent | Local Demand | Competitor Weakness | Market Gap. `+
-   `Provide clear strategic takeaways on how marketing and content agents should exploit discovered gaps. `+
-   `Learn and log: competitor list, priority postal codes, search volume shifts. `+
-   `End every response with: [SARAH HANDSHAKE: RESEARCH] Intelligence Table: | Strategic Advantage: | Memory Logged:`}
-];
-var agentChats={}, activeAgent=null;
-function renderAgents(){var el=document.getElementById('agent-grid');if(!el)return; el.innerHTML=AGENTS.map(function(a){return '<div class="ag-card" onclick="selectAgent(\''+a.id+'\')"><div class="ag-emoji">'+a.emoji+'</div><div class="ag-name">'+a.name+'</div><div class="ag-desc">'+a.desc+'</div></div>';}).join('');}
-function selectAgent(id){activeAgent=AGENTS.find(function(a){return a.id===id;});if(!agentChats[id])agentChats[id]=[];renderAgents();var msgs=agentChats[id];document.getElementById('agent-chat-area').style.display='block';document.getElementById('agent-chat-title').textContent=activeAgent.name;var el=document.getElementById('agent-msgs');el.innerHTML=msgs.length?msgs.map(function(m){return '<div style="margin-bottom:8px"><b>'+(m.role==='user'?'You':'Agent')+':</b> '+m.text+'</div>';}).join(''):'<div style="color:var(--muted);text-align:center;padding:20px">Ask '+activeAgent.name+'. I know about today\'s clients: Alexandra at 1pm and Mehak at 3pm.</div>';}
-function sendAgent(){
-  if(!activeAgent) return;
-  var inp = document.getElementById('agent-input');
-  var q = inp.value.trim();
-  if(!q) return;
-  inp.value = '';
-  var id = activeAgent.id;
-  if(!agentChats[id]) agentChats[id] = [];
-  agentChats[id].push({role:'user', text:q});
-
-  // Build smart reply based on agent + question
-  var a = activeAgent;
-  var ql = q.toLowerCase();
-  var reply = '';
-
-  // Video Editor specific knowledge
-  if(id === 'editor'){
-    if(/how many|count|number|did you edit|processed/i.test(ql)){
-      reply = 'I have processed 34 clinic videos total. One master video (20260723_134110) was done at broadcast quality: 19Mbps, color graded, audio normalized to -14 LUFS, noise reduced, Oxyderm caption bar burned in, and Gemini transcribed 14 SRT cues. The remaining 33 still need the full professional pipeline. Ready to queue them up?';
-    } else if(/master|best|quality/i.test(ql)){
-      reply = 'The master video (20260723_134110_master.mp4) is 222MB at 19Mbps — broadcast quality. It has: saturation +15%, contrast +8%, brightness +3%, sharpened, audio at -14 LUFS, noise reduced, background music at 15%, Oxyderm navy caption bar with gold accent, and a full SRT transcript from Gemini. That is the template for all remaining 33 videos.';
-    } else if(/thumbnail/i.test(ql)){
-      reply = 'Thumbnail extracted at t=14s from the master — 244KB JPEG, shows Hetisha performing microneedling treatment. Sharp, well-lit, professional. Perfect for YouTube, GBP, and TikTok cover.';
-    } else if(/script|caption|text|overlay/i.test(ql)){
-      reply = 'Captions use a full-width navy #00172D bar at the bottom, 130px tall, 85% opacity, with a 3px gold #c9a96e accent line at top. Line 1: "Treatment Session | Oxyderm Clinic" in white 46pt Helvetica. Line 2: "Book Your Free Consultation | oxyderm.ca" in gold 34pt. Generated as PNG via Pillow then overlaid via ffmpeg.';
-    } else if(/next|plan|remaining|33|queue/i.test(ql)){
-      reply = 'Plan: 33 videos still need full processing. Pipeline per video: re-encode at 8Mbps CRF18 slow, color grade, audio normalize + noise reduce + compress + BG music 15%, caption bar burned in, thumbnail extracted, Gemini SRT transcript. Can run 6 at a time in parallel. Say "start batch" to begin.';
-    } else if(/tofu|mofu|bofu|retarget/i.test(ql)){
-      reply = 'For retargeting: TOFU 120s (awareness — show treatment in action, no hard sell), MOFU 60s (consideration — before/after results, client testimonial), BOFU 30-45s (conversion — direct offer, booking CTA, limited spots). All three cut from existing 34 videos. Which tier do you want scripted first?';
-    } else {
-      reply = 'As Video Editor for Oxyderm: 34 videos processed (1 master at 19Mbps broadcast quality + 33 needing full pipeline). Services shown: Laser Hair Removal and Microneedling only. What do you need — scripts, thumbnails, retargeting cuts, or batch processing?';
-    }
-  } else if(id === 'scheduler'){
-    reply = 'As Scheduler for Oxyderm: 7-day posting cycle active — GBP 9am, TikTok/Reels 10:30am, Facebook Page 11am, FB Groups 2pm, Sustaack 4pm, YouTube 7pm. Square auto-fetches bookings daily at 7am. Today: Alexandra 1pm and Mehak 3pm. What scheduling help do you need?';
-  } else if(id === 'social'){
-    reply = 'As Social Media for Oxyderm: Ready to write hooks, captions, hashtag clusters for Instagram, TikTok, Facebook, and GBP. Services: LHR and Microneedling ONLY — no Botox or injectables. What platform and service do you want copy for?';
-  } else if(id === 'finance'){
-    reply = 'As Finance for Oxyderm: Tracking via Square. Today: Alexandra paid $199.99 instalment (membership), Mehak has $49.99 balance owing. Memberships run $199.99/month. What do you need — margin analysis, CAC calculation, or revenue summary?';
-  } else if(id === 'client'){
-    reply = 'As Client Care for Oxyderm: Today Alexandra (7th visit, minor, parent in room, no face on social media) and Mehak (11th visit, balance owing, left Google review). I handle intake scripts, rebooking sequences, 24/48hr check-ins, and review generation. What do you need?';
-  } else if(id === 'marketing'){
-    reply = 'As Marketing for Oxyderm: TOFU/MOFU/BOFU funnels for LHR and Microneedling in Edmonton. Audience: women 25-45, Edmonton AB. Intro offer strategy: complimentary consultation or credit stack. What campaign are you building?';
-  } else if(id === 'research'){
-    reply = 'As Research for Oxyderm: Key local keywords — "laser hair removal Edmonton" (high intent), "permanent hair removal Edmonton", "microneedling Edmonton". Competitor gap: most clinics do not show real treatment footage or publish client visit counts. Oxyderm can own that proof angle. What intelligence do you need?';
-  } else {
-    reply = 'I am '+a.name+' for Oxyderm Laser Clinic Edmonton. LHR and Microneedling only. Ask me anything about my specialty area.';
-  }
-
-  agentChats[id].push({role:'model', text:reply});
-  selectAgent(id);
-}
-
-function agentMic(){var SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){alert('Voice not supported. Type instead.');return;}var r=new SR();r.lang='en-CA';r.continuous=false;document.getElementById('agent-input').placeholder='Listening...';r.onresult=function(e){document.getElementById('agent-input').value=e.results[0][0].transcript;};r.start();}
-renderAgents();
-
+function collectPA(i){ S.preauths[i].collected=true; S.preauths[i].collectedOn=new Date().toISOString(); save('ox-pa',S.preauths); renderPA(); }
+function delPA(i){ if(confirm('Delete?')){ S.preauths.splice(i,1); save('ox-pa',S.preauths); renderPA(); } }
+renderPA();
 </script>
 </body>
 </html>
