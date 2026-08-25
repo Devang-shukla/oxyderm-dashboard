@@ -3,9 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Authorized ClearChoice® & Oceuticals® Skincare | Oxyderm Laser Clinic Edmonton</title>
-  <meta name="description" content="Shop authentic ClearChoice® and Oceuticals® medical-grade skincare online at Oxyderm Laser Clinic Edmonton. Authorized distributor. Post-laser, microneedling recovery, barrier repair." />
-  <meta name="keywords" content="ClearChoice skincare Edmonton, buy ClearChoice online Canada, medical grade acne skincare, post laser healing skincare, Oceuticals skin barrier cream" />
+  <title>Buy ClearChoice® & Oceuticals® Medical-Grade Skincare Online | Oxyderm Laser Clinic Edmonton</title>
+  <meta name="description" content="Shop authentic ClearChoice® and Oceuticals® medical-grade skincare online, shipped across Canada. Authorized Oxyderm Laser Clinic distributor — cleansers, serums, SPF, and post-laser/microneedling recovery formulas." />
+  <meta name="keywords" content="ClearChoice skincare Edmonton, buy ClearChoice online Canada, medical grade skincare Canada, post laser healing skincare, Oceuticals skin barrier cream, Oxyderm skincare shop" />
+  <link rel="canonical" href="https://devang-shukla.github.io/oxyderm-dashboard/shop/" />
+
+  <!-- Open Graph / Facebook / Instagram -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Oxyderm Laser Clinic" />
+  <meta property="og:title" content="Buy ClearChoice® & Oceuticals® Medical-Grade Skincare Online | Oxyderm" />
+  <meta property="og:description" content="Authentic ClearChoice® and Oceuticals® medical-grade skincare, shipped across Canada. Authorized distributor — cleansers, serums, SPF, post-laser recovery." />
+  <meta property="og:url" content="https://devang-shukla.github.io/oxyderm-dashboard/shop/" />
+  <meta property="og:image" content="https://devang-shukla.github.io/oxyderm-dashboard/shop/assets/skinfx/36-clearchoice-agevity-heavy-serum-am.png" />
+  <meta property="og:locale" content="en_CA" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Buy ClearChoice® & Oceuticals® Medical-Grade Skincare Online | Oxyderm" />
+  <meta name="twitter:description" content="Authentic ClearChoice® and Oceuticals® medical-grade skincare, shipped across Canada. Authorized distributor." />
+  <meta name="twitter:image" content="https://devang-shukla.github.io/oxyderm-dashboard/shop/assets/skinfx/36-clearchoice-agevity-heavy-serum-am.png" />
 
   <!-- Schema Markup for AEO & Google Rich Snippets -->
   <script type="application/ld+json">
@@ -21,6 +37,7 @@
       "addressRegion": "AB",
       "addressCountry": "CA"
     },
+    "areaServed": { "@type": "Country", "name": "Canada" },
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "ClearChoice & Oceuticals Professional Medical Skincare",
@@ -28,9 +45,8 @@
         {"@type": "OfferCatalog", "name": "Cleansers & Balancers"},
         {"@type": "OfferCatalog", "name": "Polishers & Masques"},
         {"@type": "OfferCatalog", "name": "Moisturizers & Sun Protection"},
-        {"@type": "OfferCatalog", "name": "Targeted Corrective Serums"},
+        {"@type": "OfferCatalog", "name": "Corrective Serums"},
         {"@type": "OfferCatalog", "name": "Acne & Blemish Control"},
-        {"@type": "OfferCatalog", "name": "Resist & Rewind Anti-Aging"},
         {"@type": "OfferCatalog", "name": "Oceuticals Marine Bio-Actives"}
       ]
     }
@@ -70,7 +86,7 @@
 
   <!-- Top Announcement Bar -->
   <div class="bg-clinical-900 text-stone-200 text-xs font-medium py-2 text-center tracking-wide px-4">
-    Authorized Canadian Distributor | <span class="text-clinical-gold font-semibold">Free Canada-Wide Shipping on Orders Over $120</span> | Clinical Post-Care Formulations
+    Authorized Canadian Distributor | <span class="text-clinical-gold font-semibold">Free Shipping on Orders Over $120 CAD</span> | Shipping across Canada only — US coming soon
   </div>
 
   <!-- Header / Navigation -->
@@ -82,10 +98,11 @@
           <span class="text-[10px] tracking-widest text-clinical-gold font-bold uppercase border border-clinical-gold px-1.5 py-0.5 rounded">Aesthetics</span>
         </a>
       </div>
-      
+
       <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-700">
         <a href="#catalog" class="hover:text-clinical-teal transition">All Skincare</a>
         <a href="#post-care" class="hover:text-clinical-teal transition">Laser & Microneedling Aftercare</a>
+        <a href="terms.html" class="hover:text-clinical-teal transition">Terms &amp; Shipping</a>
         <a href="https://book.squareup.com/appointments/book/merchant/SA5CTAH41JNY2/services" target="_blank" class="text-clinical-gold hover:underline font-semibold">Book Clinical Treatment</a>
       </div>
 
@@ -109,23 +126,22 @@
         Medical-Grade Skincare For Active Clinical Recovery
       </h1>
       <p class="mt-6 text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto font-light">
-        High-potency cleansers, cellular repair serums, and broad-spectrum sun defense designed specifically to enhance and protect your Laser & Microneedling results.
+        High-potency cleansers, cellular repair serums, and broad-spectrum sun defense designed specifically to enhance and protect your Laser & Microneedling results. Shipping across Canada.
       </p>
     </div>
   </section>
 
   <!-- Filter & Catalog Main Container -->
   <main id="catalog" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-1 w-full">
-    
+
     <!-- Category Tabs -->
     <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-10 no-scrollbar" id="category-pills">
-      <button onclick="filterCategory('all')" class="category-btn active px-4 py-2 rounded-full text-xs font-semibold transition whitespace-nowrap bg-slate-900 text-white shadow-sm" data-category="all">All Formulations (21)</button>
+      <button onclick="filterCategory('all')" class="category-btn active px-4 py-2 rounded-full text-xs font-semibold transition whitespace-nowrap bg-slate-900 text-white shadow-sm" data-category="all">All Formulations (57)</button>
       <button onclick="filterCategory('cleansers')" class="category-btn px-4 py-2 rounded-full text-xs font-semibold transition whitespace-nowrap bg-white text-slate-700 hover:bg-stone-200 border border-stone-200" data-category="cleansers">Cleansers & Balancers</button>
       <button onclick="filterCategory('polishers')" class="category-btn px-4 py-2 rounded-full text-xs font-semibold transition whitespace-nowrap bg-white text-slate-700 hover:bg-stone-200 border border-stone-200" data-category="polishers">Polishers & Masques</button>
       <button onclick="filterCategory('moisturizers')" class="category-btn px-4 py-2 rounded-full text-xs font-semibold transition whitespace-nowrap bg-white text-slate-700 hover:bg-stone-200 border border-stone-200" data-category="moisturizers">Moisturizers & SPF</button>
       <button onclick="filterCategory('serums')" class="category-btn px-4 py-2 rounded-full text-xs font-semibold transition whitespace-nowrap bg-white text-slate-700 hover:bg-stone-200 border border-stone-200" data-category="serums">Corrective Serums</button>
       <button onclick="filterCategory('acne')" class="category-btn px-4 py-2 rounded-full text-xs font-semibold transition whitespace-nowrap bg-white text-slate-700 hover:bg-stone-200 border border-stone-200" data-category="acne">Acne Control</button>
-      <button onclick="filterCategory('anti-aging')" class="category-btn px-4 py-2 rounded-full text-xs font-semibold transition whitespace-nowrap bg-white text-slate-700 hover:bg-stone-200 border border-stone-200" data-category="anti-aging">Resist & Rewind</button>
       <button onclick="filterCategory('oceuticals')" class="category-btn px-4 py-2 rounded-full text-xs font-semibold transition whitespace-nowrap bg-white text-slate-700 hover:bg-stone-200 border border-stone-200" data-category="oceuticals">Oceuticals® Marine</button>
     </div>
 
@@ -153,6 +169,19 @@
     </div>
   </section>
 
+  <!-- Footer -->
+  <footer class="bg-white border-t border-stone-200 py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-500">
+      <div>&copy; 2026 Oxyderm Laser Clinic. Authorized ClearChoice® & Oceuticals® distributor. Edmonton, AB, Canada.</div>
+      <div class="flex gap-5">
+        <a href="terms.html" class="hover:text-clinical-teal">Terms &amp; Conditions</a>
+        <a href="terms.html#shipping" class="hover:text-clinical-teal">Shipping Policy</a>
+        <a href="terms.html#returns" class="hover:text-clinical-teal">Returns</a>
+        <a href="terms.html#privacy" class="hover:text-clinical-teal">Privacy</a>
+      </div>
+    </div>
+  </footer>
+
   <!-- Slide-Over Shopping Cart Drawer -->
   <div id="cart-drawer" class="fixed inset-y-0 right-0 max-w-full flex pl-10 z-50 transform translate-x-full transition-transform duration-300 ease-in-out">
     <div class="w-screen max-w-md bg-white shadow-2xl flex flex-col">
@@ -162,100 +191,150 @@
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
         </button>
       </div>
-      
+
       <!-- Cart Items Container -->
       <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
         <p class="text-sm text-stone-500 text-center py-8">Your cart is empty.</p>
       </div>
 
       <!-- Checkout Footer -->
-      <div class="p-6 border-t border-stone-200 bg-stone-50 space-y-4">
-        <div class="flex items-center justify-between text-base font-bold text-slate-900">
+      <div class="p-6 border-t border-stone-200 bg-stone-50 space-y-3">
+        <div class="flex items-center justify-between text-sm text-stone-600">
           <span>Subtotal</span>
           <span id="cart-subtotal">$0.00 CAD</span>
         </div>
-        <p class="text-[11px] text-stone-500">Taxes calculated at checkout. Free Canada-wide shipping on orders over $100.</p>
+        <div class="flex items-center justify-between text-sm text-stone-600">
+          <span>Shipping <span id="ship-tier-label" class="text-[10px] text-stone-400"></span></span>
+          <span id="cart-shipping">$0.00 CAD</span>
+        </div>
+        <div id="free-ship-nudge" class="text-[11px] text-clinical-teal font-medium hidden"></div>
+        <div class="flex items-center justify-between text-base font-bold text-slate-900 pt-2 border-t border-stone-200">
+          <span>Total</span>
+          <span id="cart-total">$0.00 CAD</span>
+        </div>
+        <p class="text-[11px] text-stone-500">Taxes calculated at checkout. Shipping within Canada only. Free shipping on orders $120 CAD and over.</p>
         <button onclick="checkoutSquare()" class="w-full bg-slate-900 hover:bg-clinical-teal text-white py-3.5 rounded-lg font-semibold text-sm transition tracking-wider uppercase shadow-md">
           Proceed to Square Checkout
         </button>
+        <p class="text-[10px] text-stone-400 text-center">By checking out you agree to our <a href="terms.html" class="underline hover:text-clinical-teal">Terms &amp; Conditions</a></p>
       </div>
     </div>
   </div>
 
-  <!-- JavaScript: Products Data with 2x Keystone Pricing & Cart Engine -->
+  <!-- JavaScript: Products Data with 2x Keystone Pricing, Weight-Tiered Shipping & Cart Engine -->
   <script>
-    // 2x Keystone MSRP Retail Pricing
+    // Real ClearChoice/Oceuticals products scraped from SkinFX (authorized Edmonton distributor)
+    // Retail price = 2x wholesale keystone. Weight in grams (est. incl. packaging) used for shipping tiers.
     const products = [
-      // Cleansers & Balancers
-      { id: 1, name: "Gentle Foaming Cleanser", category: "cleansers", price: 104.00, volume: "200ml", badge: "Pre-Laser Prep", desc: "Sulfate-free lipid balancing cleanser for sensitive and post-treatment skin." },
-      { id: 2, name: "Mandelic Acid Cleanser", category: "cleansers", price: 145.00, volume: "200ml", badge: "AHA Exfoliation", desc: "Non-abrasive cellular turnover prep for acne-prone and pigment-reactive skin." },
-      { id: 3, name: "Clearify Foam Cleanser", category: "cleansers", price: 78.40, volume: "150ml", badge: "Clarifying", desc: "Deep purifying foam that removes excess sebum without stripping the protective moisture barrier." },
-
-      // Polishers & Masques
-      { id: 4, name: "Bamboo Micro-Polish", category: "polishers", price: 98.00, volume: "60ml", badge: "Gentle Micro-Polish", desc: "Ultra-fine bamboo spheres provide physical micro-resurfacing between clinical sessions." },
-      { id: 5, name: "Enzymatic Botanical Masque", category: "polishers", price: 116.00, volume: "60ml", badge: "Enzyme Renewal", desc: "Papaya and pumpkin enzymes dissolve dead surface cells to restore radiant texture." },
-      { id: 6, name: "Calming Thermal Recovery Masque", category: "polishers", price: 110.00, volume: "60ml", badge: "Post-Treatment", desc: "Instantly quenches heat sensations and reduces redness post-microneedling." },
-
-      // Moisturizers & Sun Protection
-      { id: 7, name: "Sport Shield Physical SPF 45", category: "moisturizers", price: 88.00, volume: "120ml", badge: "Mandatory Post-Care", desc: "Zinc oxide transparent mineral block. Essential daily defense against UV-induced PIH." },
-      { id: 8, name: "Intense Moisture Squalane Shield", category: "moisturizers", price: 110.20, volume: "30ml", badge: "100% Olive Squalane", desc: "Pure lipid repair serum providing an occlusive moisture shield for dry skin." },
-      { id: 9, name: "Moisture Clear 2% BHA Gel", category: "moisturizers", price: 132.00, volume: "60ml", badge: "Acne Hydration", desc: "Weightless oil-free hydrator with 2% salicylic acid to clear follicle congestion." },
-
-      // Targeted Serums
-      { id: 10, name: "Hyaluronic Moisture Drops", category: "serums", price: 128.00, volume: "30ml", badge: "Deep Hydration", desc: "Multi-molecular weight hyaluronic acid draws moisture deep into the epidermal layers." },
-      { id: 11, name: "Copper Peptide Cellular Infusion", category: "serums", price: 164.00, volume: "30ml", badge: "Collagen Booster", desc: "Accelerates tissue healing, improves elasticity, and supports microneedling recovery." },
-      { id: 12, name: "Vita-C Advanced Antioxidant Complex", category: "serums", price: 156.00, volume: "30ml", badge: "Brightening", desc: "Potent vitamin C shield to suppress pigment and defend against free-radical damage." },
-
-      // Acne Control
-      { id: 13, name: "BP Clarifying Active Wash 5%", category: "acne", price: 74.00, volume: "150ml", badge: "Anti-Bacterial", desc: "Purifies breakout-prone follicles and clears stubborn acne-causing bacteria." },
-      { id: 14, name: "Spot Stop Targeted Treatment", category: "acne", price: 62.00, volume: "15ml", badge: "Emergency Relief", desc: "Fast-acting clinical spot therapy for sudden blemishes and inflamed breakouts." },
-      { id: 15, name: "ClearBalance Exfoliating Pads", category: "acne", price: 120.00, volume: "60 pads", badge: "Pore Clearing", desc: "Salicylic and glycolic pads for daily follicular hygiene and texture refinement." },
-
-      // Resist & Rewind
-      { id: 16, name: "Resist & Rewind Peptide Matrix", category: "anti-aging", price: 178.00, volume: "50ml", badge: "Cellular Longevity", desc: "Advanced peptide chain that supports skin firmness and reduces fine expression lines." },
-      { id: 17, name: "Resist & Rewind Cleanser", category: "anti-aging", price: 150.80, volume: "200ml", badge: "Gentle Rejuvenation", desc: "Restorative cleansing milk designed for mature, thinning, or moisture-deprived skin." },
-      { id: 18, name: "DNA Recovery Treatment Solution", category: "anti-aging", price: 156.60, volume: "60ml", badge: "Matrix Repair", desc: "Targeted solution to reverse photo-damage and support cellular integrity." },
-
-      // Oceuticals Marine Collection
-      { id: 19, name: "Oceuticals Marine Barrier Cream", category: "oceuticals", price: 148.00, volume: "50ml", badge: "Ocean Bio-Actives", desc: "Rich sea kelp bio-actives soothe reactive skin and rebuild damaged lipid barriers." },
-      { id: 20, name: "Oceuticals Gentle Cream Cleanser", category: "oceuticals", price: 98.60, volume: "150ml", badge: "Compromised Skin", desc: "Ultra-mild soothing wash formulated for oncology patients and highly sensitized skin." },
-      { id: 21, name: "Oceuticals O-Toner Hydrating Mist", category: "oceuticals", price: 81.20, volume: "120ml", badge: "Mineral Infusion", desc: "Calming marine mineral toner mist for immediate hydration and redness relief." }
+      { id:1, name:'ClearChoice Clearify Foam Cleanser', category:'cleansers', price:39.2, weight:280, badge:'Cleansers & Balancers', img:'assets/skinfx/00-clearchoice-clearify-foam-cleanser.png' },
+      { id:2, name:'ClearChoice Trauma Spray', category:'cleansers', price:45.5, weight:220, badge:'Cleansers & Balancers', img:'assets/skinfx/01-clearchoice-trauma-spray.png' },
+      { id:3, name:'ClearChoice Micro-Dose Cleanser', category:'cleansers', price:84.1, weight:280, badge:'Cleansers & Balancers', img:'assets/skinfx/02-clearchoice-micro-dose-cleanser.png' },
+      { id:4, name:'ClearChoice Sensi Cream Cleanser', category:'cleansers', price:72.5, weight:220, badge:'Cleansers & Balancers', img:'assets/skinfx/03-clearchoice-sensi-cream-cleanser.png' },
+      { id:5, name:'ClearChoice Gentle Foaming Cleanser', category:'cleansers', price:52.2, weight:280, badge:'Cleansers & Balancers', img:'assets/skinfx/04-clearchoice-gentle-foaming-cleanser.jpg' },
+      { id:6, name:'ClearChoice Hydrating Cleanser', category:'cleansers', price:63.8, weight:280, badge:'Cleansers & Balancers', img:'assets/skinfx/05-clearchoice-hydrating-cleanser.png' },
+      { id:7, name:'ClearChoice Mandelic Cleanser', category:'cleansers', price:72.5, weight:280, badge:'Cleansers & Balancers', img:'assets/skinfx/06-clearchoice-mandelic-cleanser.png' },
+      { id:8, name:'ClearChoice Resist/Rewind Cleanser', category:'cleansers', price:75.4, weight:280, badge:'Cleansers & Balancers', img:'assets/skinfx/07-clearchoice-resist-rewind-cleanser.png' },
+      { id:9, name:'ClearChoice Hydrating Balance', category:'cleansers', price:49.3, weight:200, badge:'Cleansers & Balancers', img:'assets/skinfx/08-clearchoice-hydrating-balance.png' },
+      { id:10, name:'ClearChoice LactiBiome Solution', category:'cleansers', price:63.8, weight:280, badge:'Cleansers & Balancers', img:'assets/skinfx/09-clearchoice-lactibiome-solution.png' },
+      { id:11, name:'ClearChoice Hyperpigmentation TX Solution', category:'cleansers', price:78.3, weight:280, badge:'Cleansers & Balancers', img:'assets/skinfx/10-clearchoice-hyperpigmentation-tx-solution.png' },
+      { id:12, name:'ClearChoice Resist/Rewind Tx Solution', category:'cleansers', price:78.3, weight:280, badge:'Cleansers & Balancers', img:'assets/skinfx/11-clearchoice-resist-rewind-tx-solution.png' },
+      { id:13, name:'ClearChoice GlyBright Pads', category:'cleansers', price:58.0, weight:80, badge:'Cleansers & Balancers', img:'assets/skinfx/12-clearchoice-glybright-pads.jpg' },
+      { id:14, name:'ClearChoice CopperICE Pads', category:'cleansers', price:58.0, weight:80, badge:'Cleansers & Balancers', img:'assets/skinfx/13-clearchoice-copperice-pads.jpg' },
+      { id:15, name:'ClearChoice DN-A Pads', category:'cleansers', price:58.0, weight:80, badge:'Cleansers & Balancers', img:'assets/skinfx/14-clearchoice-dn-a-pads.jpg' },
+      { id:16, name:'ClearChoice Sachet Sample Pack', category:'cleansers', price:11.9, weight:80, badge:'Cleansers & Balancers', img:'assets/skinfx/15-clearchoice-sachet-sample-pack.png' },
+      { id:17, name:'ClearChoice Mini Facial', category:'polishers', price:87.0, weight:60, badge:'Polishers & Masques', img:'assets/skinfx/16-clearchoice-mini-facial.png' },
+      { id:18, name:'ClearChoice Hydrating Masque + Night Therapy', category:'polishers', price:92.8, weight:220, badge:'Polishers & Masques', img:'assets/skinfx/17-clearchoice-hydrating-masque-night-therapy.png' },
+      { id:19, name:'ClearChoice Lumi Enzyme Masque', category:'polishers', price:92.8, weight:220, badge:'Polishers & Masques', img:'assets/skinfx/18-clearchoice-lumi-enzyme-masque.jpg' },
+      { id:20, name:'ClearChoice Post-Op Sheet Mask', category:'polishers', price:21.5, weight:60, badge:'Polishers & Masques', img:'assets/skinfx/19-clearchoice-post-op-sheet-mask.png' },
+      { id:21, name:'ClearChoice Sport Shield SPF 45', category:'moisturizers', price:29.0, weight:280, badge:'Moisturizers & SPF', img:'assets/skinfx/20-clearchoice-sport-shield-spf-45.png' },
+      { id:22, name:'ClearChoice Sun Shield Plus SPF 30', category:'moisturizers', price:52.2, weight:280, badge:'Moisturizers & SPF', img:'assets/skinfx/21-clearchoice-sun-shield-plus-spf-30.jpg' },
+      { id:23, name:'ClearChoice Skin Rehab', category:'moisturizers', price:49.3, weight:200, badge:'Moisturizers & SPF', img:'assets/skinfx/24-clearchoice-skin-rehab.png' },
+      { id:24, name:'ClearChoice Resist/Rewind Sun Shield Plus SPF30', category:'moisturizers', price:55.1, weight:280, badge:'Moisturizers & SPF', img:'assets/skinfx/25-clearchoice-resist-rewind-sun-shield-plus-spf30.jpg' },
+      { id:25, name:'ClearChoice Resist/Rewind Night Cream', category:'moisturizers', price:66.7, weight:220, badge:'Moisturizers & SPF', img:'assets/skinfx/26-clearchoice-resist-rewind-night-cream.png' },
+      { id:26, name:'ClearChoice ISO Moisture', category:'moisturizers', price:78.3, weight:220, badge:'Moisturizers & SPF', img:'assets/skinfx/27-clearchoice-iso-moisture.png' },
+      { id:27, name:'ClearChoice CopperICE Cream', category:'moisturizers', price:104.4, weight:220, badge:'Moisturizers & SPF', img:'assets/skinfx/28-clearchoice-copperice-cream.png' },
+      { id:28, name:'ClearChoice Reconstructive Brightening Creem', category:'moisturizers', price:101.5, weight:200, badge:'Moisturizers & SPF', img:'assets/skinfx/29-clearchoice-reconstructive-brightening-creem.jpg' },
+      { id:29, name:'ClearChoice Intense Moisture', category:'moisturizers', price:55.1, weight:220, badge:'Moisturizers & SPF', img:'assets/skinfx/31-clearchoice-intense-moisture.png' },
+      { id:30, name:'ClearChoice Post Care Protectant', category:'moisturizers', price:43.5, weight:200, badge:'Moisturizers & SPF', img:'assets/skinfx/32-clearchoice-post-care-protectant.png' },
+      { id:31, name:'ClearChoice ISO Eye Cream', category:'moisturizers', price:72.5, weight:220, badge:'Moisturizers & SPF', img:'assets/skinfx/33-clearchoice-iso-eye-cream.png' },
+      { id:32, name:'ClearChoice Soothing Healing Lotion', category:'moisturizers', price:66.7, weight:220, badge:'Moisturizers & SPF', img:'assets/skinfx/35-clearchoice-soothing-healing-lotion.jpg' },
+      { id:33, name:'ClearChoice Agevity Heavy Serum AM', category:'serums', price:181.3, weight:150, badge:'Corrective Serums', img:'assets/skinfx/36-clearchoice-agevity-heavy-serum-am.png' },
+      { id:34, name:'ClearChoice Agevity Cushion Serum PM', category:'serums', price:181.3, weight:150, badge:'Corrective Serums', img:'assets/skinfx/37-clearchoice-agevity-cushion-serum-pm.png' },
+      { id:35, name:'ClearChoice Anti Wrinkle Retinox XR', category:'serums', price:126.0, weight:200, badge:'Corrective Serums', img:'assets/skinfx/38-clearchoice-anti-wrinkle-retinox-xr.png' },
+      { id:36, name:'ClearChoice Anti Wrinkle Retinox', category:'serums', price:87.0, weight:200, badge:'Corrective Serums', img:'assets/skinfx/39-clearchoice-anti-wrinkle-retinox.png' },
+      { id:37, name:'ClearChoice Even Tone', category:'serums', price:98.6, weight:200, badge:'Corrective Serums', img:'assets/skinfx/40-clearchoice-even-tone.png' },
+      { id:38, name:'ClearChoice Vita C-B5 Complex', category:'serums', price:139.2, weight:150, badge:'Corrective Serums', img:'assets/skinfx/41-clearchoice-vita-c-b5-complex.png' },
+      { id:39, name:'ClearChoice Advanced K', category:'serums', price:66.7, weight:200, badge:'Corrective Serums', img:'assets/skinfx/42-clearchoice-advanced-k.png' },
+      { id:40, name:'ClearChoice Sodium Hyaluronate', category:'serums', price:89.9, weight:200, badge:'Corrective Serums', img:'assets/skinfx/43-clearchoice-sodium-hyaluronate.png' },
+      { id:41, name:'ClearChoice Lumi Lacti-C', category:'serums', price:139.2, weight:200, badge:'Corrective Serums', img:'assets/skinfx/45-clearchoice-lumi-lacti-c.jpg' },
+      { id:42, name:'ClearChoice Oceuticals - Night Shield', category:'serums', price:92.8, weight:280, badge:'Corrective Serums', img:'assets/skinfx/46-clearchoice-oceuticals-night-shield.png' },
+      { id:43, name:'Prana SpaCeuticals Arnica Recovery Gel', category:'serums', price:8.5, weight:150, badge:'Corrective Serums', img:'assets/skinfx/48-prana-spaceuticals-arnica-recovery-gel.jpg' },
+      { id:44, name:'ClearChoice UnderCover Patch', category:'acne', price:14.0, weight:80, badge:'Acne Control', img:'assets/skinfx/49-clearchoice-undercover-patch.png' },
+      { id:45, name:'ClearChoice BP 8%', category:'acne', price:46.4, weight:200, badge:'Acne Control', img:'assets/skinfx/50-clearchoice-bp-8.png' },
+      { id:46, name:'ClearChoice Clinical Spot', category:'acne', price:52.2, weight:200, badge:'Acne Control', img:'assets/skinfx/51-clearchoice-clinical-spot.png' },
+      { id:47, name:'ClearChoice Resist/Rewind System', category:'acne', price:221.9, weight:280, badge:'Acne Control', img:'assets/skinfx/52-clearchoice-resist-rewind-system.jpg' },
+      { id:48, name:'ClearChoice Oceuticals - Cream Cleanser', category:'oceuticals', price:49.3, weight:220, badge:'Oceuticals Marine', img:'assets/skinfx/53-clearchoice-oceuticals-cream-cleanser.jpg' },
+      { id:49, name:'ClearChoice Oceuticals - Copper Tide Mist', category:'oceuticals', price:49.3, weight:150, badge:'Oceuticals Marine', img:'assets/skinfx/54-clearchoice-oceuticals-copper-tide-mist.jpg' },
+      { id:50, name:'ClearChoice Oceuticals - Greybiotics Mist/Scalp Spray', category:'oceuticals', price:81.2, weight:150, badge:'Oceuticals Marine', img:'assets/skinfx/55-clearchoice-oceuticals-greybiotics-mist-scalp-spra.png' },
+      { id:51, name:'ClearChoice Oceuticals - O-Toner', category:'oceuticals', price:40.6, weight:150, badge:'Oceuticals Marine', img:'assets/skinfx/56-clearchoice-oceuticals-o-toner.jpg' },
+      { id:52, name:'ClearChoice Oceuticals - Routine Oil', category:'oceuticals', price:69.6, weight:150, badge:'Oceuticals Marine', img:'assets/skinfx/57-clearchoice-oceuticals-routine-oil.png' },
+      { id:53, name:'ClearChoice Oceuticals - B5 Healing Complex', category:'oceuticals', price:92.4, weight:150, badge:'Oceuticals Marine', img:'assets/skinfx/58-clearchoice-oceuticals-b5-healing-complex.png' },
+      { id:54, name:'ClearChoice Oceuticals - Flare', category:'oceuticals', price:182.0, weight:200, badge:'Oceuticals Marine', img:'assets/skinfx/59-clearchoice-oceuticals-flare.png' },
+      { id:55, name:'ClearChoice Oceuticals - Opti-Cream', category:'oceuticals', price:69.6, weight:220, badge:'Oceuticals Marine', img:'assets/skinfx/60-clearchoice-oceuticals-opti-cream.jpg' },
+      { id:56, name:'ClearChoice Oceuticals - CopperTide Masque', category:'oceuticals', price:52.2, weight:220, badge:'Oceuticals Marine', img:'assets/skinfx/61-clearchoice-oceuticals-coppertide-masque.jpg' },
+      { id:57, name:'ClearChoice Oceuticals - Eyedeal Lid Lift', category:'oceuticals', price:66.7, weight:150, badge:'Oceuticals Marine', img:'assets/skinfx/62-clearchoice-oceuticals-eyedeal-lid-lift.jpg' },
     ];
+
+    // ── SHIPPING (Canada only) ──────────────────────────────────
+    // Weight-tiered flat rates, free over $120 CAD subtotal
+    const FREE_SHIP_THRESHOLD = 120.00;
+    const SHIP_TIERS = [
+      { max: 300,  price: 9.99,  label: 'Light parcel' },   // grams
+      { max: 700,  price: 14.99, label: 'Standard parcel' },
+      { max: Infinity, price: 19.99, label: 'Heavy parcel' }
+    ];
+
+    function calcShipping(subtotal, totalWeight) {
+      if (subtotal >= FREE_SHIP_THRESHOLD) return { price: 0, label: 'Free shipping' };
+      const tier = SHIP_TIERS.find(t => totalWeight <= t.max);
+      return { price: tier.price, label: tier.label };
+    }
 
     let cart = [];
 
     function renderProducts(filter = 'all') {
       const grid = document.getElementById('product-grid');
       grid.innerHTML = '';
-      
+
       const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
 
       filtered.forEach(product => {
         const card = document.createElement('div');
-        card.className = "bg-white rounded-xl border border-stone-200 p-6 flex flex-col justify-between hover:shadow-lg transition-all duration-200 group";
+        card.className = "bg-white rounded-xl border border-stone-200 overflow-hidden flex flex-col hover:shadow-lg transition-all duration-200 group";
         card.innerHTML = `
-          <div>
-            <div class="flex items-center justify-between gap-2 mb-3">
-              <span class="text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 bg-stone-100 text-stone-700 rounded-full group-hover:bg-clinical-teal group-hover:text-white transition">
-                ${product.badge}
-              </span>
-              <span class="text-xs text-stone-400 font-mono">${product.volume}</span>
-            </div>
-            <h3 class="font-serif text-lg font-bold text-slate-900 group-hover:text-clinical-teal transition leading-snug mb-2">
-              ${product.name}
-            </h3>
-            <p class="text-xs text-stone-500 line-clamp-3 mb-6 font-light leading-relaxed">
-              ${product.desc}
-            </p>
+          <div class="bg-white aspect-square flex items-center justify-center border-b border-stone-100 p-4">
+            <img src="${product.img}" alt="${product.name}" loading="lazy" class="w-full h-full object-contain" onerror="this.style.display='none'">
           </div>
-          <div class="pt-4 border-t border-stone-100 flex items-center justify-between mt-auto">
+          <div class="p-6 flex flex-col justify-between flex-1">
             <div>
-              <span class="text-xs text-stone-400 block font-light">MSRP</span>
-              <span class="text-lg font-bold text-slate-900">$${product.price.toFixed(2)} <span class="text-xs font-normal text-stone-500">CAD</span></span>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 bg-stone-100 text-stone-700 rounded-full group-hover:bg-clinical-teal group-hover:text-white transition">
+                  ${product.badge}
+                </span>
+              </div>
+              <h3 class="font-serif text-base font-bold text-slate-900 group-hover:text-clinical-teal transition leading-snug mb-2">
+                ${product.name}
+              </h3>
             </div>
-            <button onclick="addToCart(${product.id})" class="bg-stone-900 hover:bg-clinical-teal text-white text-xs font-semibold px-4 py-2.5 rounded-lg transition shadow-sm">
-              Add to Cart
-            </button>
+            <div class="pt-4 border-t border-stone-100 flex items-center justify-between mt-auto">
+              <div>
+                <span class="text-xs text-stone-400 block font-light">Retail</span>
+                <span class="text-lg font-bold text-slate-900">$${product.price.toFixed(2)} <span class="text-xs font-normal text-stone-500">CAD</span></span>
+              </div>
+              <button onclick="addToCart(${product.id})" class="bg-stone-900 hover:bg-clinical-teal text-white text-xs font-semibold px-4 py-2.5 rounded-lg transition shadow-sm">
+                Add to Cart
+              </button>
+            </div>
           </div>
         `;
         grid.appendChild(card);
@@ -294,12 +373,30 @@
       const countEl = document.getElementById('cart-count');
       const itemsEl = document.getElementById('cart-items');
       const subtotalEl = document.getElementById('cart-subtotal');
+      const shippingEl = document.getElementById('cart-shipping');
+      const shipLabelEl = document.getElementById('ship-tier-label');
+      const totalEl = document.getElementById('cart-total');
+      const nudgeEl = document.getElementById('free-ship-nudge');
 
       const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
       const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+      const totalWeight = cart.reduce((sum, item) => sum + (item.weight * item.qty), 0);
+      const shipping = calcShipping(subtotal, totalWeight);
+      const total = subtotal + shipping.price;
 
       countEl.innerText = totalItems;
       subtotalEl.innerText = `$${subtotal.toFixed(2)} CAD`;
+      shippingEl.innerText = shipping.price === 0 ? 'FREE' : `$${shipping.price.toFixed(2)} CAD`;
+      shipLabelEl.innerText = subtotal > 0 ? `(${shipping.label})` : '';
+      totalEl.innerText = `$${total.toFixed(2)} CAD`;
+
+      if (subtotal > 0 && subtotal < FREE_SHIP_THRESHOLD) {
+        const remaining = (FREE_SHIP_THRESHOLD - subtotal).toFixed(2);
+        nudgeEl.innerText = `Add $${remaining} more for free shipping`;
+        nudgeEl.classList.remove('hidden');
+      } else {
+        nudgeEl.classList.add('hidden');
+      }
 
       if(cart.length === 0) {
         itemsEl.innerHTML = `<p class="text-sm text-stone-500 text-center py-8">Your cart is empty.</p>`;
@@ -307,12 +404,13 @@
       }
 
       itemsEl.innerHTML = cart.map(item => `
-        <div class="flex items-center justify-between border-b border-stone-100 pb-3">
-          <div>
+        <div class="flex items-center gap-3 border-b border-stone-100 pb-3">
+          <img src="${item.img}" alt="${item.name}" class="w-12 h-12 object-contain bg-stone-50 rounded border border-stone-100 flex-shrink-0">
+          <div class="flex-1">
             <h5 class="text-sm font-bold text-slate-900">${item.name}</h5>
             <span class="text-xs text-stone-500 font-mono">$${item.price.toFixed(2)} CAD &times; ${item.qty}</span>
           </div>
-          <button onclick="removeFromCart(${item.id})" class="text-xs text-red-500 hover:underline">Remove</button>
+          <button onclick="removeFromCart(${item.id})" class="text-xs text-red-500 hover:underline flex-shrink-0">Remove</button>
         </div>
       `).join('');
     }
