@@ -913,10 +913,12 @@ function sarahAnswer(q) {
   return 'Ask about Alexandra (1pm, 7th visit) or Mehak (3pm, 11th visit) — notes, payments, visit number.';
 }
 function askSarah(q){
+  var ans=sarahAnswer(q||'');
+  lastSpeech=ans;
   var el=document.getElementById('sarah-answer');
-  document.getElementById('sarah-text').innerHTML=sarahAnswer(q||'');
+  document.getElementById('sarah-text').innerHTML=ans;
   el.style.display='block';
-  if(lastSpeech)speakText(lastSpeech);
+  speakText(ans);
 }
 function speakText(t){if(window.speechSynthesis){window.speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.rate=0.93;window.speechSynthesis.speak(u);}}
 function speakLast(){if(lastSpeech)speakText(lastSpeech);}

@@ -892,6 +892,59 @@ function delPA(i) { if(confirm('Delete pre-auth?')){ preauths.splice(i,1); local
 renderPreauth();
 
 // ── SARAH VOICE ASSISTANT ──
+var APPTS = [
+  { time:'1:00 PM', name:'Alexandra Doblado', service:'Laser Hair Removal', visit:'7th visit', visit_num:7, payment:'Paid $199.99 instalment', phone:'(587) 974-5069', flags:['Minor - parent in room','No face on social media','Left Google review'], note:'Membership Jan 2026-Dec 2026. Paying $199.99 every visit. 5 treatments left from Sep 2026.' },
+  { time:'3:00 PM', name:'Mehak Wadhwa', service:'Laser Hair Removal', visit:'11th visit', visit_num:11, payment:'Balance $49.99 owing', phone:'(780) 394-9700', flags:['Left Google review'], note:'Membership 6 months $199.99 each. Auto payment 15th monthly. Paid ingrown kit + V drop.' },
+];
+var lastSpeech = '';
+function sarahAnswer(q) {
+  var ql = q.toLowerCase();
+  if (/schedule|today|who.*coming|all appoint/i.test(ql)) return 'Today: '+APPTS.length+' appts. '+APPTS.map(function(a){return a.time+': '+a.name+', '+a.service+', '+a.visit+', '+a.payment+'.';}).join(' ');
+  if (/next/i.test(ql)) { for(var i=0;i<APPTS.length;i++) return 'Next: '+APPTS[i].name+' at '+APPTS[i].time+'.'; }
+  for(var i=0;i<APPTS.length;i++){
+    var a=APPTS[i];
+    if(ql.indexOf(a.name.split(' ')[0].toLowerCase())>-1||ql.indexOf(a.name.toLowerCase())>-1){
+      if(/pay/i.test(ql)) return a.name+': '+a.payment+'.';
+      if(/note/i.test(ql)) return a.name+' notes: '+a.note+' Flags: '+a.flags.join(', ')+'.';
+      if(/visit/i.test(ql)) return a.name+': '+a.visit+'.';
+      return a.name+' at '+a.time+'. '+a.service+'. '+a.visit+'. '+a.payment+'.';
+    }
+  }
+  return 'Ask about Alexandra (1pm, 7th visit) or Mehak (3pm, 11th visit) — notes, payments, visit number.';
+}
+function askSarah(q){
+  var ans=sarahAnswer(q||'');
+  lastSpeech=ans;
+  var el=document.getElementById('sarah-answer');
+  document.getElementById('sarah-text').innerHTML=ans;
+  el.style.display='block';
+  speakText(ans);
+}
+function speakText(t){if(window.speechSynthesis){window.speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.rate=0.93;window.speechSynthesis.speak(u);}}
+function speakLast(){if(lastSpeech)speakText(lastSpeech);}
+var voiceRec=null; var isListening=false;
+function toggleVoice(){
+  var SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(isListening){voiceRec&&voiceRec.stop();isListening=false;document.getElementById('mic-btn').textContent='🎤';document.getElementById('mic-btn').style.borderColor='var(--gold)';document.getElementById('mic-ring').style.opacity='0';document.getElementById('mic-status').textContent='Tap mic or type below';return;}
+  if(!SR){alert('Voice not supported — type below instead.');return;}
+  voiceRec=new SR();voiceRec.lang='en-CA';voiceRec.continuous=false;voiceRec.interimResults=false;
+  document.getElementById('mic-btn').textContent='🔴';
+  voiceRec.onresult=function(e){var q=e.results[0][0].transcript;document.getElementById('sarah-input').value=q;askSarah(q);};
+  voiceRec.onend=function(){isListening=false;voiceRec=null;document.getElementById('mic-btn').textContent='🎤';document.getElementById('mic-btn').style.borderColor='var(--gold)';document.getElementById('mic-ring').style.opacity='0';document.getElementById('mic-status').textContent='Tap mic or type below';};
+  voiceRec.onerror=function(){isListening=false;voiceRec=null;document.getElementById('mic-btn').textContent='🎤';};
+  isListening=true;document.getElementById('mic-ring').style.animation='micpulse 1s infinite';document.getElementById('mic-ring').style.opacity='0.7';document.getElementById('mic-status').textContent='Listening...';
+  voiceRec.start();
+}
+
+// AGENTS
+var AGENTS=[{id:'scheduler',name:'Scheduler',emoji:'📅',desc:'Scheduling, content calendars, posting'},{id:'editor',name:'Video Editor',emoji:'🎬',desc:'Captions, thumbnails, music'},{id:'social',name:'Social Media',emoji:'📣',desc:'Post copy, hashtags, captions'},{id:'finance',name:'Finance',emoji:'💰',desc:'Expenses, pre-auth, revenue'},{id:'client',name:'Client Care',emoji:'👥',desc:'Notes, visit history, follow-up'},{id:'marketing',name:'Marketing',emoji:'🚀',desc:'Ads, campaigns, offers'}];
+var agentChats={}, activeAgent=null;
+function renderAgents(){var el=document.getElementById('agent-grid');if(!el)return; el.innerHTML=AGENTS.map(function(a){return '<div class="ag-card" onclick="selectAgent(\''+a.id+'\')"><div class="ag-emoji">'+a.emoji+'</div><div class="ag-name">'+a.name+'</div><div class="ag-desc">'+a.desc+'</div></div>';}).join('');}
+function selectAgent(id){activeAgent=AGENTS.find(function(a){return a.id===id;});if(!agentChats[id])agentChats[id]=[];renderAgents();var msgs=agentChats[id];document.getElementById('agent-chat-area').style.display='block';document.getElementById('agent-chat-title').textContent=activeAgent.name;var el=document.getElementById('agent-msgs');el.innerHTML=msgs.length?msgs.map(function(m){return '<div style="margin-bottom:8px"><b>'+(m.role==='user'?'You':'Agent')+':</b> '+m.text+'</div>';}).join(''):'<div style="color:var(--muted);text-align:center;padding:20px">Ask '+activeAgent.name+'. I know about today\'s clients: Alexandra at 1pm and Mehak at 3pm.</div>';}
+function sendAgent(){if(!activeAgent)return;var q=document.getElementById('agent-input').value.trim();if(!q)return;document.getElementById('agent-input').value='';if(!agentChats[activeAgent.id])agentChats[activeAgent.id]=[];agentChats[activeAgent.id].push({role:'user',text:q});var reply='As '+activeAgent.name+', I\'m ready to help. Today\'s clients: Alexandra (1pm, 7th visit, LHR) and Mehak (3pm, 11th visit, LHR). What do you need?';agentChats[activeAgent.id].push({role:'model',text:reply});selectAgent(activeAgent.id);}
+function agentMic(){var SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){alert('Voice not supported. Type instead.');return;}var r=new SR();r.lang='en-CA';r.continuous=false;document.getElementById('agent-input').placeholder='Listening...';r.onresult=function(e){document.getElementById('agent-input').value=e.results[0][0].transcript;};r.start();}
+renderAgents();
+
 </script>
 </body>
 </html>
