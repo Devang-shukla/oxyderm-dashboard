@@ -286,37 +286,39 @@ textarea{min-height:65px;resize:vertical}
   <div class="card">
     <div class="appt">
       <div class="appt-row">
-        <div class="appt-time">1:00 PM</div>
+        <div class="appt-time">11:30 AM</div>
         <div>
-          <div class="appt-name">Alexandra Doblado</div>
-          <div class="appt-svc">LHR — legs, toes, fingers, arms, underarms</div>
-          <div class="tags">
-            <span class="tag t-blue">7th visit</span>
-            <span class="tag t-red">⚠ Minor</span>
-            <span class="tag t-red">⚠ No face on social</span>
-          </div>
+          <div class="appt-name">Harpreet Saini</div>
+          <div class="appt-svc">Treatment — 30 min</div>
           <div style="display:flex;gap:6px;margin-top:8px">
-            <button class="btn btn-outline btn-sm" onclick="doAskText('Notes for Alexandra')">Notes</button>
-            <button class="btn btn-outline btn-sm" onclick="doAskText('What visit is Alexandra on')">Visit</button>
-            <button class="btn btn-outline btn-sm" onclick="doAskText('What did Alexandra pay')">Payment</button>
+            <button class="btn btn-outline btn-sm" onclick="doAskText('Notes for Harpreet')">Notes</button>
+            <button class="btn btn-outline btn-sm" onclick="doAskText('What time is Harpreet')">Time</button>
           </div>
         </div>
       </div>
     </div>
     <div class="appt">
       <div class="appt-row">
-        <div class="appt-time">3:00 PM</div>
+        <div class="appt-time">12:00 PM</div>
         <div>
-          <div class="appt-name">Mehak Wadhwa</div>
-          <div class="appt-svc">LHR — legs, fingers, arms, underarms, face, abdomen, back, Brazilian</div>
-          <div class="tags">
-            <span class="tag t-blue">11th visit</span>
-            <span class="tag t-yellow">$49.99 owing</span>
-          </div>
+          <div class="appt-name">Morgan Bodnaruk</div>
+          <div class="appt-svc">Treatment — 60 min</div>
           <div style="display:flex;gap:6px;margin-top:8px">
-            <button class="btn btn-outline btn-sm" onclick="doAskText('Notes for Mehak')">Notes</button>
-            <button class="btn btn-outline btn-sm" onclick="doAskText('What visit is Mehak on')">Visit</button>
-            <button class="btn btn-outline btn-sm" onclick="doAskText('What did Mehak pay')">Payment</button>
+            <button class="btn btn-outline btn-sm" onclick="doAskText('Notes for Morgan')">Notes</button>
+            <button class="btn btn-outline btn-sm" onclick="doAskText('What time is Morgan')">Time</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="appt">
+      <div class="appt-row">
+        <div class="appt-time">1:00 PM</div>
+        <div>
+          <div class="appt-name">Karuna Arora</div>
+          <div class="appt-svc">Treatment — 120 min</div>
+          <div style="display:flex;gap:6px;margin-top:8px">
+            <button class="btn btn-outline btn-sm" onclick="doAskText('Notes for Karuna')">Notes</button>
+            <button class="btn btn-outline btn-sm" onclick="doAskText('What time is Karuna')">Time</button>
           </div>
         </div>
       </div>
@@ -591,8 +593,9 @@ renderSched();
 // ═══════════════════════════════════════════
 var CLINIC = {
   appts: [
-    {time:'1:00 PM', name:'Alexandra Doblado', first:'alexandra', service:'Laser Hair Removal', areas:'legs, toes, fingers, arms, underarms', visit:'7th visit', payment:'Paid $199.99 instalment (membership)', phone:'(587) 974-5069', flags:['Minor — parent must be in room','No face on social media','Left Google review'], note:'Membership Jan 2026–Dec 2026. Paying $199.99 every visit. 5 treatments left from Sep 2026. Hetisha did treatment.'},
-    {time:'3:00 PM', name:'Mehak Wadhwa',      first:'mehak',     service:'Laser Hair Removal', areas:'legs, fingers, arms, underarms, face, abdomen, back, Brazilian', visit:'11th visit', payment:'Balance $49.99 owing (paid $150 advance Jan 2025)', phone:'(780) 394-9700', flags:['Left Google review'], note:'Membership 6 months $199.99 each. Auto payment 15th every month. Paid ingrown kit and V drop serum.'},
+    {time:'11:30 AM', name:'Harpreet Saini',   first:'harpreet',  service:'Treatment', areas:'', visit:'', payment:'See Square', phone:'+140****1902', flags:[], note:'30 min session.'},
+    {time:'12:00 PM', name:'Morgan Bodnaruk',  first:'morgan',    service:'Treatment', areas:'', visit:'', payment:'See Square', phone:'(587) 343-4443', flags:[], note:'60 min session.'},
+    {time:'1:00 PM',  name:'Karuna Arora',     first:'karuna',    service:'Treatment', areas:'', visit:'', payment:'See Square', phone:'+178****8682', flags:[], note:'120 min session.'},
   ]
 };
 
@@ -632,20 +635,25 @@ function sarahAnswer(q){
 }
 
 function sarahSpeak(text){
-  if(!window.speechSynthesis) return;
+  if(!window.speechSynthesis){ console.warn('Sarah: no speechSynthesis'); return; }
   window.speechSynthesis.cancel();
-  var u = new SpeechSynthesisUtterance(text);
-  u.rate = 0.92; u.pitch = 1.05; u.volume = 1.0;
+  function doSpeak(){
+    var u = new SpeechSynthesisUtterance(text);
+    u.rate = 0.92; u.pitch = 1.05; u.volume = 1.0;
+    var voices = window.speechSynthesis.getVoices();
+    var want = ['Samantha','Karen','Moira','Fiona','Victoria','Tessa','Google UK English Female','Microsoft Zira'];
+    var v = null;
+    for(var i=0; i<want.length; i++){ v = voices.find(function(vv){ return vv.name.indexOf(want[i])>-1; }); if(v) break; }
+    if(!v) v = voices.find(function(vv){ return vv.lang==='en-CA'; });
+    if(!v) v = voices.find(function(vv){ return vv.lang.startsWith('en') && !vv.lang.startsWith('en-IN'); });
+    if(!v && voices.length) v = voices[0];
+    if(v) u.voice = v;
+    u.onerror = function(e){ console.warn('Sarah speak error:', e.error); };
+    window.speechSynthesis.speak(u);
+  }
   var voices = window.speechSynthesis.getVoices();
-  var want = ['Samantha','Karen','Moira','Fiona','Victoria','Tessa'];
-  var v = null;
-  for(var i=0; i<want.length; i++){ v = voices.find(function(vv){ return vv.name.indexOf(want[i])>-1; }); if(v) break; }
-  if(!v) v = voices.find(function(vv){ return vv.lang==='en-CA'; });
-  if(!v) v = voices.find(function(vv){ return vv.lang.startsWith('en'); });
-  if(v) u.voice = v;
-  window.speechSynthesis.speak(u);
+  if(voices.length){ doSpeak(); } else { window.speechSynthesis.onvoiceschanged = function(){ doSpeak(); }; }
 }
-if(window.speechSynthesis) window.speechSynthesis.onvoiceschanged = function(){ window.speechSynthesis.getVoices(); };
 
 function showSarahAnswer(text){
   S.lastSpeech = text;
