@@ -599,23 +599,25 @@ var CLINIC = {
   ]
 };
 
-function sarahAnswer(q){
+function sarahAnswer(q, cb){
   var ql = q.toLowerCase();
+  cb = cb || function(r){ return r; }; // Ensure callback exists
+  
   // by name
   for(var i=0; i<CLINIC.appts.length; i++){
     var a = CLINIC.appts[i];
     if(ql.indexOf(a.first) > -1 || ql.indexOf(a.name.toLowerCase()) > -1){
-      if(/pay|paid|balance|owe|money/i.test(ql)) return a.name + ': ' + a.payment + '.';
-      if(/note|flag|warn|special/i.test(ql)) return a.name + ' notes: ' + a.note + ' Flags: ' + a.flags.join(', ') + '.';
-      if(/visit|how many time|number/i.test(ql)) return a.name + ' is on their ' + a.visit + '.';
-      if(/phone|call|contact/i.test(ql)) return a.name + ' phone: ' + a.phone + '.';
-      if(/area|treat|coming for|service/i.test(ql)) return a.name + ' is in for ' + a.service + ', areas: ' + a.areas + '.';
-      return a.name + ' at ' + a.time + '. ' + a.service + ', ' + a.areas + '. ' + a.visit + '. ' + a.payment + '.';
+      if(/pay|paid|balance|owe|money/i.test(ql)) return cb(a.name + ': ' + a.payment + '.');
+      if(/note|flag|warn|special/i.test(ql)) return cb(a.name + ' notes: ' + a.note + ' Flags: ' + a.flags.join(', ') + '.');
+      if(/visit|how many time|number/i.test(ql)) return cb(a.name + ' is on their ' + a.visit + '.');
+      if(/phone|call|contact/i.test(ql)) return cb(a.name + ' phone: ' + a.phone + '.');
+      if(/area|treat|coming for|service/i.test(ql)) return cb(a.name + ' is in for ' + a.service + ', areas: ' + a.areas + '.');
+      return cb(a.name + ' at ' + a.time + '. ' + a.service + ', ' + a.areas + '. ' + a.visit + '. ' + a.payment + '.');
     }
   }
   // schedule
   if(/schedule|today|who.*coming|all appoint|how many/i.test(ql))
-    return 'Today: ' + CLINIC.appts.map(function(a){ return a.time + ' ' + a.name + ', ' + a.visit + '.'; }).join(' ');
+    return cb('Today: ' + CLINIC.appts.map(function(a){ return a.time + ' ' + a.name + ', ' + a.visit + '.'; }).join(' '));
   // next
   if(/next|who is next/i.test(ql)){
     var now = new Date(), h = now.getHours(), m = now.getMinutes();
@@ -623,15 +625,20 @@ function sarahAnswer(q){
       var t = CLINIC.appts[i].time.match(/(\d+):(\d+)\s*(AM|PM)/i);
       if(!t) continue;
       var ah = parseInt(t[1]) + (t[3].toUpperCase()==='PM' && parseInt(t[1])!==12 ? 12 : 0);
-      if(ah > h || (ah===h && parseInt(t[2])>m)) return 'Next: ' + CLINIC.appts[i].name + ' at ' + CLINIC.appts[i].time + '. ' + CLINIC.appts[i].service + ', ' + CLINIC.appts[i].visit + '.';
+      if(ah > h || (ah===h && parseInt(t[2])>m)) return cb('Next: ' + CLINIC.appts[i].name + ' at ' + CLINIC.appts[i].time + '. ' + CLINIC.appts[i].service + ', ' + CLINIC.appts[i].visit + '.');
     }
-    return 'No more appointments today.';
+    return cb('No more appointments today.');
   }
   // balance
-  if(/balance|owing/i.test(ql)) return 'Mehak Wadhwa has a $49.99 balance owing from her advance in January 2025.';
+  if(/balance|owing/i.test(ql)) return cb('Mehak Wadhwa has a $49.99 balance owing from her advance in January 2025.');
   // help
-  if(/help|what can|how/i.test(ql)) return 'Ask me: who is at 1pm, notes for Alexandra, what did Mehak pay, who is next, any balance owing.';
-  return 'Today: Alexandra at 1pm (7th visit, LHR) and Mehak at 3pm (11th visit, LHR). What would you like to know?';
+  if(/help|what can|how/i.test(ql)) return cb('Ask me: who is at 1pm, notes for Alexandra, what did Mehak pay, who is next, any balance owing.');
+  
+  // Unknown - try web search (no built-in answer found)
+  webSearch(ql, function(result){
+    if(result) return cb(result);
+    return cb('I don't have that information. Try asking about appointments, clients, services, or something else.');
+  });
 }
 
 function sarahSpeak(text){
@@ -666,8 +673,22 @@ function doAskText(q){ document.getElementById('sarah-input').value = q; doAsk()
 function doAsk(){
   var q = document.getElementById('sarah-input').value.trim();
   if(!q) return;
-  showSarahAnswer(sarahAnswer(q));
   document.getElementById('sarah-input').value = '';
+  
+  // Show "thinking..." while processing
+  document.getElementById('sarah-text').textContent = 'Thinking...';
+  document.getElementById('sarah-box').style.display = 'block';
+  
+  // Call sarahAnswer with callback for async web search
+  sarahAnswer(q, function(answer){
+    showSarahAnswer(answer);
+    // Save conversation to DB
+    apiCall('conversation_save', {
+      user_input: q,
+      sarah_response: answer,
+      session: S.sessionId || 'default'
+    }, function(){});
+  });
 }
 
 function toggleMic(){
@@ -678,7 +699,7 @@ function toggleMic(){
   }
   if(!SR){ alert('Microphone not supported. Use Chrome or Safari on HTTPS.'); return; }
   S.micRec = new SR(); S.micRec.lang='en-CA'; S.micRec.continuous=false; S.micRec.interimResults=false;
-  S.micRec.onresult = function(e){ var q=e.results[0][0].transcript; showSarahAnswer(sarahAnswer(q)); };
+  S.micRec.onresult = function(e){ var q=e.results[0][0].transcript; sarahAnswer(q, function(answer){ showSarahAnswer(answer); apiCall('conversation_save', { user_input: q, sarah_response: answer, session: S.sessionId || 'default' }, function(){}); }); };
   S.micRec.onend = stopMicUI;
   S.micRec.onerror = stopMicUI;
   S.isListening = true;
@@ -740,16 +761,36 @@ function appendAgentMemory(agentId, category, content){
 }
 
 // Web search via DuckDuckGo instant answers (no API key needed)
+// Searches for: query + "Edmonton laser clinic" context
 function webSearch(query, cb){
-  var url = 'https://api.duckduckgo.com/?q=' + encodeURIComponent(query + ' Edmonton') + '&format=json&no_html=1&skip_disambig=1';
-  fetch(url).then(function(r){ return r.json(); }).then(function(d){
-    var result = '';
-    if(d.AbstractText) result += d.AbstractText + ' ';
-    if(d.RelatedTopics && d.RelatedTopics.length){
-      d.RelatedTopics.slice(0,3).forEach(function(t){ if(t.Text) result += t.Text + ' '; });
-    }
-    cb(result || null);
-  }).catch(function(){ cb(null); });
+  // Try service-specific search first
+  var contextQuery = query;
+  if(/laser|microneedle|skin|hair|remove|treatment/i.test(query)){
+    contextQuery = query + ' Edmonton clinic laser hair removal';
+  }
+  
+  var url = 'https://api.duckduckgo.com/?q=' + encodeURIComponent(contextQuery) + '&format=json&no_html=1&skip_disambig=1';
+  
+  fetch(url, { signal: AbortSignal.timeout(3000) })
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      var result = '';
+      if(d.AbstractText) result = d.AbstractText.trim();
+      if(!result && d.RelatedTopics && d.RelatedTopics.length){
+        d.RelatedTopics.forEach(function(t){
+          if(t.Text && t.Text.length > 30) { result = t.Text.trim(); return; }
+        });
+      }
+      if(result && result.length > 15){
+        cb(result.substring(0, 500)); // Cap at 500 chars
+      } else {
+        cb(null);
+      }
+    })
+    .catch(function(e){ 
+      console.warn('WebSearch error:', e);
+      cb(null);
+    });
 }
 
 // ═══════════════════════════════════════════
