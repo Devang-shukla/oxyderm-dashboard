@@ -703,6 +703,56 @@ function capMic(){
 }
 
 // ═══════════════════════════════════════════
+// AGENT MEMORY API
+// ═══════════════════════════════════════════
+var API_BASE = 'https://oxydermshop.com/api.php';
+var API_KEY  = 'oxyderm_ai_2026_secret_key';
+var agentMemoryCache = {};
+
+function apiCall(action, data, cb){
+  var url = API_BASE + '?key=' + API_KEY;
+  fetch(url, {
+    method: 'POST',
+    headers: {'Content-Type':'application/json','X-API-Key': API_KEY},
+    body: JSON.stringify(Object.assign({action: action}, data))
+  }).then(function(r){ return r.json(); }).then(cb).catch(function(){ cb(null); });
+}
+
+function loadAgentMemory(agentId, cb){
+  if(agentMemoryCache[agentId]){ cb(agentMemoryCache[agentId]); return; }
+  apiCall('memory_get', {agent: agentId}, function(res){
+    var mem = {};
+    if(res && res.data) res.data.forEach(function(r){ mem[r.category] = r.content; });
+    agentMemoryCache[agentId] = mem;
+    cb(mem);
+  });
+}
+
+function saveAgentMemory(agentId, category, content){
+  agentMemoryCache[agentId] = agentMemoryCache[agentId] || {};
+  agentMemoryCache[agentId][category] = content;
+  apiCall('memory_set', {agent: agentId, category: category, content: content, source: 'user'}, function(){});
+}
+
+function appendAgentMemory(agentId, category, content){
+  apiCall('memory_append', {agent: agentId, category: category, content: content, source: 'conversation'}, function(){});
+  if(agentMemoryCache[agentId]) agentMemoryCache[agentId][category] = (agentMemoryCache[agentId][category]||'') + '\n' + content;
+}
+
+// Web search via DuckDuckGo instant answers (no API key needed)
+function webSearch(query, cb){
+  var url = 'https://api.duckduckgo.com/?q=' + encodeURIComponent(query + ' Edmonton') + '&format=json&no_html=1&skip_disambig=1';
+  fetch(url).then(function(r){ return r.json(); }).then(function(d){
+    var result = '';
+    if(d.AbstractText) result += d.AbstractText + ' ';
+    if(d.RelatedTopics && d.RelatedTopics.length){
+      d.RelatedTopics.slice(0,3).forEach(function(t){ if(t.Text) result += t.Text + ' '; });
+    }
+    cb(result || null);
+  }).catch(function(){ cb(null); });
+}
+
+// ═══════════════════════════════════════════
 // AGENTS
 // ═══════════════════════════════════════════
 var AGENTS = [
@@ -753,27 +803,36 @@ var AGENTS = [
    }},
 ];
 
-function agAnswer(agent, q){
+function agAnswer(agent, q, mem){
   var ql = q.toLowerCase();
   var k = agent.knowledge;
-  // smart routing through knowledge keys
-  if(/how many|count|number|did you edit|processed|video/i.test(ql) && agent.id==='editor') return k.count;
-  if(/master|best quality|broadcast/i.test(ql) && agent.id==='editor') return k.master;
-  if(/tofu|mofu|bofu|retarget/i.test(ql) && agent.id==='editor') return k.tofu;
-  if(/thumbnail/i.test(ql) && agent.id==='editor') return k.thumbnail;
-  if(/schedule|posting|cycle|calendar|slot|available/i.test(ql) && agent.id==='scheduler') return k.calendar || k.schedule;
-  if(/hook|scroll/i.test(ql) && agent.id==='social') return k.hook;
-  if(/hashtag|tag/i.test(ql) && agent.id==='social') return k.hashtags;
-  if(/caption|copy/i.test(ql) && agent.id==='social') return k.caption;
-  if(/revenue|money|earning|today/i.test(ql) && agent.id==='finance') return k.revenue;
-  if(/margin|profit|cost/i.test(ql) && agent.id==='finance') return k.margin;
-  if(/follow.?up|check.?in|after/i.test(ql) && agent.id==='client') return k.followup;
-  if(/review|google|rating/i.test(ql) && agent.id==='client') return k.review;
-  if(/funnel|tofu|mofu|bofu|retarget/i.test(ql) && agent.id==='marketing') return k.funnel;
-  if(/offer|promo|discount|intro/i.test(ql) && agent.id==='marketing') return k.offer;
-  if(/competitor|milan|sente|compete/i.test(ql) && agent.id==='research') return k.competitors;
-  if(/keyword|seo|search|volume/i.test(ql) && agent.id==='research') return k.keywords;
-  return k.default;
+  // Check learned memory first
+  if(mem){
+    var memKeys = Object.keys(mem);
+    for(var i=0; i<memKeys.length; i++){
+      var mk = memKeys[i].toLowerCase();
+      if(ql.indexOf(mk) > -1 && mem[memKeys[i]]) return '[Learned] ' + mem[memKeys[i]];
+    }
+    if(mem.default) k = Object.assign({}, k, mem);
+  }
+  // Built-in routing
+  if(/how many|count|number|did you edit|processed|video/i.test(ql) && agent.id==='editor') return k.count||k.default;
+  if(/master|best quality|broadcast/i.test(ql) && agent.id==='editor') return k.master||k.default;
+  if(/tofu|mofu|bofu|retarget/i.test(ql) && (agent.id==='editor'||agent.id==='marketing')) return k.tofu||k.funnel||k.default;
+  if(/thumbnail/i.test(ql) && agent.id==='editor') return k.thumbnail||k.default;
+  if(/schedule|posting|cycle|calendar|slot|available/i.test(ql) && agent.id==='scheduler') return k.calendar||k.schedule||k.default;
+  if(/hook|scroll/i.test(ql) && agent.id==='social') return k.hook||k.default;
+  if(/hashtag|tag/i.test(ql) && agent.id==='social') return k.hashtags||k.default;
+  if(/caption|copy/i.test(ql) && agent.id==='social') return k.caption||k.default;
+  if(/revenue|money|earning|today/i.test(ql) && agent.id==='finance') return k.revenue||k.default;
+  if(/margin|profit|cost/i.test(ql) && agent.id==='finance') return k.margin||k.default;
+  if(/follow.?up|check.?in|after/i.test(ql) && agent.id==='client') return k.followup||k.default;
+  if(/review|google|rating/i.test(ql) && agent.id==='client') return k.review||k.default;
+  if(/funnel|tofu|mofu|bofu|retarget/i.test(ql) && agent.id==='marketing') return k.funnel||k.default;
+  if(/offer|promo|discount|intro/i.test(ql) && agent.id==='marketing') return k.offer||k.default;
+  if(/competitor|milan|sente|laser.?away|compete/i.test(ql) && agent.id==='research') return k.competitors||k.default;
+  if(/keyword|seo|search|volume/i.test(ql) && agent.id==='research') return k.keywords||k.default;
+  return null; // null = unknown, trigger web search
 }
 
 function renderAgents(){
@@ -794,6 +853,11 @@ function selectAgent(id){
   document.getElementById('ag-chat-wrap').style.display = 'block';
   document.getElementById('ag-chat-title').textContent = S.activeAgent.emoji + ' ' + S.activeAgent.name;
   document.getElementById('ag-input').placeholder = 'Ask ' + S.activeAgent.name + '...';
+  // Load memory from API
+  loadAgentMemory(id, function(mem){
+    S.activeAgent._mem = mem;
+    renderAgChat();
+  });
   renderAgChat();
 }
 
@@ -801,7 +865,9 @@ function renderAgChat(){
   var msgs = S.agentChats[S.activeAgent.id];
   var el = document.getElementById('ag-msgs');
   if(!msgs.length){
-    el.innerHTML = '<div style="color:var(--muted);text-align:center;padding:30px;font-size:13px">Hi, I am ' + S.activeAgent.name + '. ' + S.activeAgent.knowledge.default + '</div>';
+    var intro = S.activeAgent.knowledge.default;
+    var memStatus = agentMemoryCache[S.activeAgent.id] ? ' [Memory loaded]' : ' [Loading memory...]';
+    el.innerHTML = '<div style="color:var(--muted);text-align:center;padding:30px;font-size:13px">' + intro + '<br><span style="font-size:10px;color:var(--gold)">' + memStatus + '</span></div>';
     return;
   }
   el.innerHTML = msgs.map(function(m){
@@ -818,9 +884,44 @@ function agSend(){
   inp.value = '';
   var id = S.activeAgent.id;
   S.agentChats[id].push({role:'user', text:q});
-  var reply = agAnswer(S.activeAgent, q);
-  S.agentChats[id].push({role:'agent', text:reply});
   renderAgChat();
+
+  // Save conversation to memory
+  appendAgentMemory(id, 'conversation_' + Date.now(), 'User asked: ' + q);
+
+  // Try built-in answer with loaded memory
+  var mem = S.activeAgent._mem || agentMemoryCache[id] || {};
+  var reply = agAnswer(S.activeAgent, q, mem);
+
+  if(reply){
+    // Got a built-in or learned answer
+    S.agentChats[id].push({role:'agent', text: reply});
+    // Save useful answers back to memory
+    if(reply.length > 30 && !reply.startsWith('[Learned]')){
+      var key = q.toLowerCase().replace(/[^a-z0-9 ]/g,'').substring(0,30).trim();
+      saveAgentMemory(id, key, reply);
+    }
+    renderAgChat();
+  } else {
+    // Unknown — search the web
+    S.agentChats[id].push({role:'agent', text:'Searching...'});
+    renderAgChat();
+    var searchQuery = S.activeAgent.name + ' ' + q + ' laser clinic';
+    webSearch(searchQuery, function(webResult){
+      S.agentChats[id].pop(); // remove "Searching..."
+      var finalReply;
+      if(webResult && webResult.length > 20){
+        finalReply = '[Web] ' + webResult.substring(0, 400);
+        // Learn from web result
+        var key = q.toLowerCase().replace(/[^a-z0-9 ]/g,'').substring(0,30).trim();
+        saveAgentMemory(id, key, finalReply);
+      } else {
+        finalReply = S.activeAgent.knowledge.default;
+      }
+      S.agentChats[id].push({role:'agent', text: finalReply});
+      renderAgChat();
+    });
+  }
 }
 
 function agClear(){
