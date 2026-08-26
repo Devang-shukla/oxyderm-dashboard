@@ -936,46 +936,107 @@ function agSend(){
   S.agentChats[id].push({role:'user', text:q});
   renderAgChat();
 
-  // Show thinking state
-  S.agentChats[id].push({role:'agent', text:'Thinking...', pending:true});
-  renderAgChat();
-
-  // POST to Oxyderm Brain API
   var API_URL = 'http://api.oxydermlaserclinic.ca/api.php';
   var API_KEY = 'oxyderm_brain_2026_xK9mP3qL';
 
+  // ── TIER 1: Built-in JS knowledge (instant) ──────────────────────────────
+  var mem = S.activeAgent._mem || agentMemoryCache[id] || {};
+  var builtIn = agAnswer(S.activeAgent, q, mem);
+  if(builtIn){
+    S.agentChats[id].push({role:'agent', text: builtIn + ' [local]'});
+    renderAgChat();
+    // Still save to memory and log — but don't hit API
+    saveAgentMemory(id, q.toLowerCase().substring(0,30), builtIn);
+    return;
+  }
+
+  // ── TIER 2: HostGator memory DB (fast, no polling) ────────────────────────
+  S.agentChats[id].push({role:'agent', text:'...', pending:true});
+  renderAgChat();
+
   fetch(API_URL, {
-    method: 'POST',
-    headers: {'Content-Type':'application/json','X-API-Key': API_KEY},
-    body: JSON.stringify({action:'ask', agent:id, question:q, context:{user: S.user, timestamp: new Date().toISOString()}})
+    method:'POST',
+    headers:{'Content-Type':'application/json','X-API-Key':API_KEY},
+    body:JSON.stringify({action:'memory_get', agent:id})
   })
   .then(function(r){ return r.json(); })
-  .then(function(data){
-    if(!data.ok){ throw new Error(data.error || 'API error'); }
-    var qid = data.question_id;
-    // Poll for answer every 3 seconds, up to 60s
-    var polls = 0;
-    var poller = setInterval(function(){
-      polls++;
-      if(polls > 20){ clearInterval(poller); replaceLastAgent(id, '[Brain timeout] No answer in 60s. Mac may be asleep.'); return; }
-      fetch(API_URL, {
-        method:'POST',
-        headers:{'Content-Type':'application/json','X-API-Key':API_KEY},
-        body:JSON.stringify({action:'get_answer',question_id:qid})
-      })
-      .then(function(r){ return r.json(); })
-      .then(function(ans){
-        if(ans.status === 'answered'){
-          clearInterval(poller);
-          var label = ans.decision_type === 'action_required' ? ' [ACTION NEEDED]' :
-                      ans.decision_type === 'escalate_to_dev' ? ' [NEEDS DEV]' : '';
-          replaceLastAgent(id, ans.answer + label);
-          saveAgentMemory(id, q.toLowerCase().substring(0,30), ans.answer);
+  .then(function(memData){
+    if(memData.ok && memData.data && memData.data.length > 0){
+      // Search memory for a relevant match
+      var ql = q.toLowerCase();
+      var match = null;
+      memData.data.forEach(function(row){
+        if(row.category && ql.indexOf(row.category.toLowerCase()) > -1 && row.content){
+          match = row.content;
         }
-        // else still pending/processing — keep polling
-      })
-      .catch(function(){ /* keep polling */ });
-    }, 3000);
+      });
+      if(match){
+        replaceLastAgent(id, match + ' [memory]');
+        return;
+      }
+    }
+    // ── TIER 3: Hermes Brain API (full AI, async polling) ──────────────────
+    replaceLastAgent(id, 'Thinking...');
+    fetch(API_URL, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json','X-API-Key': API_KEY},
+      body: JSON.stringify({action:'ask', agent:id, question:q, context:{user:S.user, timestamp:new Date().toISOString()}})
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      if(!data.ok){ throw new Error(data.error || 'API error'); }
+      var qid = data.question_id;
+      var polls = 0;
+      var poller = setInterval(function(){
+        polls++;
+        if(polls > 20){ clearInterval(poller); replaceLastAgent(id, '[Brain timeout] No answer in 60s. Mac may be asleep.'); return; }
+        fetch(API_URL, {
+          method:'POST',
+          headers:{'Content-Type':'application/json','X-API-Key':API_KEY},
+          body:JSON.stringify({action:'get_answer',question_id:qid})
+        })
+        .then(function(r){ return r.json(); })
+        .then(function(ans){
+          if(ans.status === 'answered'){
+            clearInterval(poller);
+            var label = ans.decision_type === 'action_required' ? ' [ACTION NEEDED]' :
+                        ans.decision_type === 'escalate_to_dev' ? ' [NEEDS DEV]' : '';
+            replaceLastAgent(id, ans.answer + label);
+            // Save to memory so next time it's instant
+            saveAgentMemory(id, q.toLowerCase().substring(0,30), ans.answer);
+          }
+        })
+        .catch(function(){ /* keep polling */ });
+      }, 3000);
+    })
+    .catch(function(err){
+      replaceLastAgent(id, '[Brain offline] ' + err.message + '. Using local knowledge only.');
+    });
+  })
+  .catch(function(){
+    // Memory DB unreachable — go straight to Brain API
+    replaceLastAgent(id, 'Thinking...');
+    fetch(API_URL, {
+      method:'POST',
+      headers:{'Content-Type':'application/json','X-API-Key':API_KEY},
+      body:JSON.stringify({action:'ask', agent:id, question:q, context:{user:S.user, timestamp:new Date().toISOString()}})
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      if(!data.ok) throw new Error(data.error || 'API error');
+      var qid = data.question_id;
+      var polls = 0;
+      var poller = setInterval(function(){
+        polls++;
+        if(polls > 20){ clearInterval(poller); replaceLastAgent(id,'[Brain timeout] No answer in 60s.'); return; }
+        fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json','X-API-Key':API_KEY},body:JSON.stringify({action:'get_answer',question_id:qid})})
+        .then(function(r){return r.json();}).then(function(ans){
+          if(ans.status==='answered'){ clearInterval(poller); replaceLastAgent(id,ans.answer); saveAgentMemory(id,q.toLowerCase().substring(0,30),ans.answer); }
+        }).catch(function(){});
+      },3000);
+    })
+    .catch(function(err){ replaceLastAgent(id,'[Offline] '+err.message); });
+  });
   })
   .catch(function(err){
     // Fallback to built-in JS knowledge if API unreachable
