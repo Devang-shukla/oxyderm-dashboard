@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Oxyderm — Week 1 Social Content</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0a;color:#e8e4df;line-height:1.6}
+header{background:#141414;border-bottom:1px solid #2a2a2a;padding:16px 28px;display:flex;align-items:center;justify-content:space-between}
+header h1{font-size:18px;font-weight:700;color:#c9a96e}
+header a{color:#555;text-decoration:none;font-size:13px}
+header a:hover{color:#c9a96e}
+.retarget-overview{background:#0f1a0f;border:1px solid #2a5c3f;border-radius:10px;margin:24px 28px;padding:20px 24px}
+.retarget-overview h2{font-size:14px;color:#3fb950;margin-bottom:12px;text-transform:uppercase;letter-spacing:1px}
+.retarget-cols{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.retarget-col h3{font-size:12px;color:#7dde9a;margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
+.retarget-col ul{padding-left:16px;color:#aaa;font-size:13px}
+.retarget-col li{margin-bottom:5px}
+.content-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:0 28px 40px}
+.day-card{background:#141414;border:1px solid #2a2a2a;border-radius:12px;overflow:hidden}
+.card-header{padding:16px 20px 12px;background:#1a1a1a;border-bottom:1px solid #222}
+.card-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.day-badge{font-size:12px;font-weight:700;color:#f0ede8}
+.platform-badge{font-size:12px;font-weight:600;padding:3px 10px;border-radius:20px}
+.time-badge{font-size:12px;color:#555}
+.card-format{font-size:12px;color:#666;font-style:italic}
+.hook-line{padding:14px 20px;background:#1a1400;border-bottom:1px solid #2a2200;display:flex;align-items:flex-start;gap:10px}
+.hook-label{font-size:10px;font-weight:700;color:#c9a96e;text-transform:uppercase;letter-spacing:1px;white-space:nowrap;margin-top:2px}
+.hook-text{font-size:14px;color:#f0ede8;font-weight:600;line-height:1.4}
+.slides-row{display:flex;gap:6px;padding:14px 20px;overflow-x:auto;background:#111;border-bottom:1px solid #1e1e1e}
+.slide{min-width:120px;max-width:140px;min-height:90px;border-radius:8px;padding:10px;flex-shrink:0;position:relative;display:flex;flex-direction:column;justify-content:center}
+.slide-text{font-size:11px;font-weight:700;line-height:1.3;margin-bottom:4px}
+.slide-sub{font-size:10px;color:#999;line-height:1.3}
+.poll-opt{font-size:10px;background:#ffffff11;border-radius:4px;padding:3px 6px;margin-top:3px;color:#ccc}
+.cta-badge{position:absolute;top:6px;right:6px;font-size:9px;font-weight:700;background:#c9a96e;color:#0f0f0f;padding:2px 5px;border-radius:3px}
+.script-block{padding:14px 20px;background:#111;border-bottom:1px solid #1e1e1e;max-height:200px;overflow-y:auto}
+.script-time{font-size:11px;color:#c9a96e;font-weight:600;margin-top:8px;margin-bottom:2px}
+.script-line{font-size:12px;color:#bbb;line-height:1.5;margin-bottom:3px}
+.section-label{font-size:10px;font-weight:700;color:#666;text-transform:uppercase;letter-spacing:1px;padding:10px 20px 4px}
+.caption-text{font-size:13px;color:#bbb;padding:0 20px 10px;line-height:1.5}
+.hashtags{padding:0 20px 10px;display:flex;flex-wrap:wrap;gap:4px}
+.tag{font-size:11px;color:#818cf8;background:#1e1e35;padding:2px 7px;border-radius:10px}
+.strategy-text{font-size:12px;color:#aaa;padding:0 20px 10px;line-height:1.5;border-bottom:1px solid #1e1e1e}
+.retarget-box{padding:12px 20px;background:#0f1a0f;display:flex;align-items:flex-start;gap:10px}
+.retarget-label{font-size:11px;font-weight:700;color:#3fb950;white-space:nowrap}
+.retarget-text{font-size:12px;color:#7dde9a;line-height:1.4}
+.page-title{padding:24px 28px 0;}
+.page-title h1{font-size:22px;font-weight:700;color:#c9a96e;margin-bottom:4px}
+.page-title p{font-size:14px;color:#555;margin-bottom:20px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Oxyderm — Week 1 Social Content</h1>
+  <a href="/">← Dashboard</a>
+</header>
+
+<div class="page-title">
+  <h1>Week 1: Laser Hair Removal — Education + Trust</h1>
+  <p>8 posts across 7 days. IG Stories, FB Stories, TikTok (Hetisha avatar). Retargeting wired.</p>
+</div>
+
+<div class="retarget-overview">
+  <h2>Retargeting + Data Collection Strategy</h2>
+  <div class="retarget-cols">
+    <div class="retarget-col">
+      <h3>Pixel Events to Track</h3>
+      <ul><li>Story view >3s → Warm Audience</li><li>Swipe up / link click → Hot Audience</li><li>Comment or DM → Sales Ready</li><li>Post save → High Intent</li><li>TikTok watch >50% → Retarget with testimonial</li></ul>
+    </div>
+    <div class="retarget-col">
+      <h3>Custom Audiences Built</h3>
+      <ul><li>Story viewers (3s+) → Show microneedling offer</li><li>Link clickers → Show free consultation ad</li><li>Commenters/DMs → Show $50 deposit booking ad</li><li>Savers → Show before/after carousel + booking link</li></ul>
+    </div>
+  </div>
+</div>
+
+<div class="content-grid">
+
+<div class="day-card" id="day1-0">
+  <div class="card-header" style="border-left:4px solid #833ab4;">
+    <div class="card-meta">
+      <span class="day-badge">Day 1 — Monday</span>
+      <span class="platform-badge" style="background:#833ab422;color:#833ab4;border:1px solid #833ab444;">📸 Instagram Story</span>
+      <span class="time-badge">⏰ 8:00am MDT</span>
+    </div>
+    <div class="card-format">Image + Text Overlay (5 slides)</div>
+  </div>
+  
+  <div class="hook-line">
+    <span class="hook-label">HOOK</span>
+    <span class="hook-text">"Still shaving every 3 days? Here's what you're missing."</span>
+  </div>
+  
+  <div class="slides-row"><div class="slide" style="background:#1a0a0a;border:1px solid #c9a96e33;"><div class="slide-text" style="color:#c9a96e;">Still shaving every 3 days?</div><div class="slide-sub">There's a permanent fix.</div></div><div class="slide" style="background:#0f0f1a;border:1px solid #a0c4ff33;"><div class="slide-text" style="color:#a0c4ff;">Most people need 6-8 sessions</div><div class="slide-sub">to get 70-90% permanent reduction</div></div><div class="slide" style="background:#0a1a0a;border:1px solid #7dde9a33;"><div class="slide-text" style="color:#7dde9a;">Each session = $0 waxing bill</div><div class="slide-sub">For the rest of your life</div></div><div class="slide" style="background:#1a0f00;border:1px solid #c9a96e33;"><div class="slide-text" style="color:#c9a96e;">Edmonton's top laser clinic</div><div class="slide-sub">Oxyderm — oxydermlaserclinic.ca</div></div><div class="slide" style="background:#c9a96e;border:1px solid #0f0f0f33;"><div class="slide-text" style="color:#0f0f0f;">Free consultation</div><div class="slide-sub">Call 780-863-7561 today</div><div class="cta-badge">CTA</div></div></div>
+  
+  
+  <div class="section-label">Caption</div>
+  <div class="caption-text">Tired of the shaving routine? Laser hair removal at Oxyderm gives you 70-90% permanent reduction in 6-8 sessions. Edmonton's trusted laser clinic. Free consultation available. Link in bio.</div>
+  
+  <div class="section-label">Hashtags</div>
+  <div class="hashtags"><span class="tag">#LaserHairRemoval</span> <span class="tag">#EdmontonBeauty</span> <span class="tag">#OxyderEdmonton</span> <span class="tag">#HairFree</span> <span class="tag">#EdmontonSpa</span> <span class="tag">#LaserClinic</span> <span class="tag">#SmoothSkin</span> <span class="tag">#BeautyEdmonton</span> <span class="tag">#LaserTreatment</span> <span class="tag">#Edmonton</span></div>
+  
+  <div class="section-label">Wide Reach Strategy</div>
+  <div class="strategy-text">Post Monday 8am. Add 'Add Yours' sticker: 'How long have you been shaving this area?' Captures engagement + shows post to followers of participants.</div>
+  
+  <div class="retarget-box">
+    <span class="retarget-label">🎯 Retarget</span>
+    <span class="retarget-text">Anyone who taps 'Add Yours' → custom audience → retarget with before/after carousel</span>
+  </div>
+</div>
+<div class="day-card" id="day1-1">
+  <div class="card-header" style="border-left:4px solid #010101;">
+    <div class="card-meta">
+      <span class="day-badge">Day 1 — Monday</span>
+      <span class="platform-badge" style="background:#01010122;color:#010101;border:1px solid #01010144;">🎵 TikTok</span>
+      <span class="time-badge">⏰ 6:00pm MDT</span>
+    </div>
+    <div class="card-format">Hetisha Avatar — Talking Head 60sec</div>
+  </div>
+  
+  <div class="hook-line">
+    <span class="hook-label">HOOK</span>
+    <span class="hook-text">"POV: You're still waxing when laser exists"</span>
+  </div>
+  
+  
+  <div class="script-block"><div class="script-time">0-3s: POV text on screen: 'You're still waxing in 2026'</div><div class="script-line">3-8s: Hetisha: 'Okay so I need to talk about something because I see this all the time at our Edmonton clinic.'</div><div class="script-line">8-20s: 'Most people think laser hair removal takes forever. It doesn't. The average person needs 6 to 8 sessions. That's it. After that? You're done. No more waxing, no more razors, no more ingrown hairs.'</div><div class="script-line">20-35s: 'And I know what you're thinking — does it hurt? Honestly? Most clients say it feels like a rubber band snap. Quick. Done. You're out in 30 minutes.'</div><div class="script-line">35-50s: 'We've done this for thousands of Edmonton clients. The number one thing they say after? I wish I had done this years ago.'</div><div class="script-line">50-60s: 'Free consultation at Oxyderm. Link in bio. Come see us.'</div><div class="script-line">Text overlay throughout: oxydermlaserclinic.ca | 780-863-7561</div></div>
+  
+  <div class="section-label">Caption</div>
+  <div class="caption-text">POV: you're still waxing when laser exists. 6-8 sessions = permanent results. Free consultation at Oxyderm Edmonton. #LaserHairRemoval #Edmonton #OxyderEdmonton #BeautyTok #LaserTreatment #SkincareTok #EdmontonBeauty #HairFree #LaserClinic #BeforeAndAfter</div>
+  
+  <div class="section-label">Hashtags</div>
+  <div class="hashtags"><span class="tag">#LaserHairRemoval</span> <span class="tag">#Edmonton</span> <span class="tag">#BeautyTok</span> <span class="tag">#SkincareTok</span> <span class="tag">#EdmontonBeauty</span> <span class="tag">#HairFree</span> <span class="tag">#LaserClinic</span> <span class="tag">#BeforeAndAfter</span> <span class="tag">#POV</span> <span class="tag">#LHR</span></div>
+  
+  <div class="section-label">Wide Reach Strategy</div>
+  <div class="strategy-text">Post 6pm. Use trending audio. Pin top comment: 'Comment your area and I'll tell you how many sessions you need.' Reply every comment for 1hr.</div>
+  
+  <div class="retarget-box">
+    <span class="retarget-label">🎯 Retarget</span>
+    <span class="retarget-text">TikTok >50% watch time → custom audience → retarget with consultation offer ad</span>
+  </div>
+</div>
+<div class="day-card" id="day2-2">
+  <div class="card-header" style="border-left:4px solid #1877f2;">
+    <div class="card-meta">
+      <span class="day-badge">Day 2 — Tuesday</span>
+      <span class="platform-badge" style="background:#1877f222;color:#1877f2;border:1px solid #1877f244;">👥 Facebook Story</span>
+      <span class="time-badge">⏰ 11:00am MDT</span>
+    </div>
+    <div class="card-format">Image + Text Overlay (4 slides)</div>
+  </div>
+  
+  <div class="hook-line">
+    <span class="hook-label">HOOK</span>
+    <span class="hook-text">"What nobody tells you before your first laser session"</span>
+  </div>
+  
+  <div class="slides-row"><div class="slide" style="background:#0f0f1a;border:1px solid #c9a96e33;"><div class="slide-text" style="color:#c9a96e;">Before your first laser session...</div><div class="slide-sub">Read this first</div></div><div class="slide" style="background:#1a1a0a;border:1px solid #f0e68c33;"><div class="slide-text" style="color:#f0e68c;">Shave 24hrs before</div><div class="slide-sub">Never wax. The laser needs the follicle.</div></div><div class="slide" style="background:#0a1a1a;border:1px solid #7dde9a33;"><div class="slide-text" style="color:#7dde9a;">Day 1-3: mild redness. Week 2: hair sheds. Week 6: smooth.</div><div class="slide-sub">The real timeline.</div></div><div class="slide" style="background:#c9a96e;border:1px solid #0f0f0f33;"><div class="slide-text" style="color:#0f0f0f;">Free assessment at Oxyderm</div><div class="slide-sub">oxydermlaserclinic.ca</div><div class="cta-badge">CTA</div></div></div>
+  
+  
+  <div class="section-label">Caption</div>
+  <div class="caption-text">First laser session coming up? Here's what to do and NOT do to get the best results. Oxyderm Laser Clinic Edmonton — call 780-863-7561 for your free consultation.</div>
+  
+  <div class="section-label">Hashtags</div>
+  <div class="hashtags"><span class="tag">#LaserHairRemoval</span> <span class="tag">#EdmontonBeauty</span> <span class="tag">#BeforeAndAfter</span> <span class="tag">#SkincareTips</span> <span class="tag">#LaserClinicEdmonton</span></div>
+  
+  <div class="section-label">Wide Reach Strategy</div>
+  <div class="strategy-text">Post Tuesday 11am. Share to Facebook Groups: Edmonton Beauty, Edmonton Women, YEG Deals. Boost with $5/day to Edmonton women 22-45.</div>
+  
+  <div class="retarget-box">
+    <span class="retarget-label">🎯 Retarget</span>
+    <span class="retarget-text">FB story viewers → Website Custom Audience → retarget with booking offer</span>
+  </div>
+</div>
+<div class="day-card" id="day3-3">
+  <div class="card-header" style="border-left:4px solid #833ab4;">
+    <div class="card-meta">
+      <span class="day-badge">Day 3 — Wednesday</span>
+      <span class="platform-badge" style="background:#833ab422;color:#833ab4;border:1px solid #833ab444;">📸 Instagram Story</span>
+      <span class="time-badge">⏰ 12:00pm MDT</span>
+    </div>
+    <div class="card-format">Poll Story — Engagement Capture</div>
+  </div>
+  
+  <div class="hook-line">
+    <span class="hook-label">HOOK</span>
+    <span class="hook-text">"Quick question for you..."</span>
+  </div>
+  
+  <div class="slides-row"><div class="slide" style="background:#1a0a0a;border:1px solid #c9a96e33;"><div class="slide-text" style="color:#c9a96e;">How long have you been dealing with unwanted hair?</div><div class="poll-opt">Less than 1 year</div><div class="poll-opt">1-5 years</div><div class="poll-opt">5-10 years</div><div class="poll-opt">My whole life</div></div><div class="slide" style="background:#0f0f1a;border:1px solid #a0c4ff33;"><div class="slide-text" style="color:#a0c4ff;">Which area bothers you most?</div><div class="poll-opt">Legs</div><div class="poll-opt">Underarms</div><div class="poll-opt">Bikini/Brazilian</div><div class="poll-opt">Face/Upper lip</div></div><div class="slide" style="background:#0a1a0a;border:1px solid #7dde9a33;"><div class="slide-text" style="color:#7dde9a;">Have you tried laser before?</div><div class="poll-opt">Never</div><div class="poll-opt">Yes — loved it</div><div class="poll-opt">Yes — meh results</div><div class="poll-opt">Scared to try</div></div><div class="slide" style="background:#c9a96e;border:1px solid #0f0f0f33;"><div class="slide-text" style="color:#0f0f0f;">Based on your answers... you probably need 6-8 sessions. DM us for a free estimate.</div><div class="cta-badge">CTA</div></div></div>
+  
+  
+  <div class="section-label">Caption</div>
+  <div class="caption-text">We read every poll response. DM us your area and hair type and we will estimate your session count for free.</div>
+  
+  <div class="section-label">Hashtags</div>
+  <div class="hashtags"><span class="tag">#LaserHairRemoval</span> <span class="tag">#EdmontonBeauty</span> <span class="tag">#SkincareTok</span></div>
+  
+  <div class="section-label">Wide Reach Strategy</div>
+  <div class="strategy-text">Polls get 3-4x more reach than regular stories on Instagram. Every poll response = engagement signal. Reply to every DM within 1 hour.</div>
+  
+  <div class="retarget-box">
+    <span class="retarget-label">🎯 Retarget</span>
+    <span class="retarget-text">Poll responders → HIGHEST INTENT audience → DM free consultation offer same day</span>
+  </div>
+</div>
+<div class="day-card" id="day4-4">
+  <div class="card-header" style="border-left:4px solid #010101;">
+    <div class="card-meta">
+      <span class="day-badge">Day 4 — Thursday</span>
+      <span class="platform-badge" style="background:#01010122;color:#010101;border:1px solid #01010144;">🎵 TikTok</span>
+      <span class="time-badge">⏰ 7:00pm MDT</span>
+    </div>
+    <div class="card-format">Hetisha Avatar — Results Timeline 45sec</div>
+  </div>
+  
+  <div class="hook-line">
+    <span class="hook-label">HOOK</span>
+    <span class="hook-text">"Week by week: what laser hair removal actually does to your skin"</span>
+  </div>
+  
+  
+  <div class="script-block"><div class="script-time">0-3s: Hook text: 'Week by week: what laser actually does'</div><div class="script-line">3-10s: Hetisha: 'A lot of people think laser hair removal works immediately. Here's the real timeline.'</div><div class="script-line">10-20s: 'Week one: the hair doesn't fall out right away. It sheds over 10-14 days. You might think it's growing back. It's not. It's pushing out.'</div><div class="script-line">20-30s: 'After session three: you'll see about 50 to 60 percent reduction. This is where most people get excited.'</div><div class="script-line">30-42s: 'After your full course — 6 to 8 sessions — most Edmonton clients see 80 to 90 percent permanent reduction. That's it. Maintenance once a year if needed.'</div><div class="script-line">42-45s: 'Free consult at Oxyderm Edmonton. Link in bio.'</div></div>
+  
+  <div class="section-label">Caption</div>
+  <div class="caption-text">The honest week-by-week timeline of laser hair removal results. No fluff. This is what our Edmonton clients actually experience. Free consultation at Oxyderm. #LaserHairRemoval #BeforeAndAfter #SkincareTok #Edmonton #LHR #HairFree #BeautyTok #Results</div>
+  
+  <div class="section-label">Hashtags</div>
+  <div class="hashtags"><span class="tag">#LaserHairRemoval</span> <span class="tag">#BeforeAndAfter</span> <span class="tag">#SkincareTok</span> <span class="tag">#Edmonton</span> <span class="tag">#LHR</span> <span class="tag">#HairFree</span> <span class="tag">#BeautyTok</span> <span class="tag">#Results</span> <span class="tag">#EdmontonBeauty</span> <span class="tag">#LaserResults</span></div>
+  
+  <div class="section-label">Wide Reach Strategy</div>
+  <div class="strategy-text">Post Thursday 7pm. Use 'Results' and 'Timeline' in first 3 words of caption for search. Pin comment: 'Drop your area — I'll tell you your personal timeline.' Respond to all comments for 2hrs.</div>
+  
+  <div class="retarget-box">
+    <span class="retarget-label">🎯 Retarget</span>
+    <span class="retarget-text">TikTok commenters → export to Custom Audience → run booking ad within 48hrs</span>
+  </div>
+</div>
+<div class="day-card" id="day5-5">
+  <div class="card-header" style="border-left:4px solid #833ab4;">
+    <div class="card-meta">
+      <span class="day-badge">Day 5 — Friday</span>
+      <span class="platform-badge" style="background:#833ab422;color:#833ab4;border:1px solid #833ab444;">📸 Instagram Story</span>
+      <span class="time-badge">⏰ 8:00am MDT</span>
+    </div>
+    <div class="card-format">Progress Reveal — 5 slides</div>
+  </div>
+  
+  <div class="hook-line">
+    <span class="hook-label">HOOK</span>
+    <span class="hook-text">"This is what 8 sessions looks like"</span>
+  </div>
+  
+  <div class="slides-row"><div class="slide" style="background:#1a0a0a;border:1px solid #c9a96e33;"><div class="slide-text" style="color:#c9a96e;">8 sessions later...</div><div class="slide-sub">This is what laser does</div></div><div class="slide" style="background:#141414;border:1px solid #88833;"><div class="slide-text" style="color:#888;">Session 1: 15% reduction</div><div class="slide-sub">Already less regrowth</div></div><div class="slide" style="background:#0f1a0f;border:1px solid #7dde9a33;"><div class="slide-text" style="color:#7dde9a;">Session 4: 60% reduction</div><div class="slide-sub">Noticeable smoothness</div></div><div class="slide" style="background:#0a1a0a;border:1px solid #3fb95033;"><div class="slide-text" style="color:#3fb950;">Session 8: 85-90% reduction</div><div class="slide-sub">Permanent. Done.</div></div><div class="slide" style="background:#c9a96e;border:1px solid #0f0f0f33;"><div class="slide-text" style="color:#0f0f0f;">Ready to start?</div><div class="slide-sub">Free consult — oxydermlaserclinic.ca</div><div class="cta-badge">CTA</div></div></div>
+  
+  
+  <div class="section-label">Caption</div>
+  <div class="caption-text">The results speak for themselves. 8 sessions, 85-90% permanent hair reduction. Edmonton's Oxyderm Laser Clinic. Free consultation — link in bio or call 780-863-7561.</div>
+  
+  <div class="section-label">Hashtags</div>
+  <div class="hashtags"><span class="tag">#LaserHairRemoval</span> <span class="tag">#BeforeAndAfter</span> <span class="tag">#EdmontonBeauty</span> <span class="tag">#HairFree</span> <span class="tag">#LaserResults</span> <span class="tag">#SmoothSkin</span> <span class="tag">#OxyderEdmonton</span> <span class="tag">#LHR</span> <span class="tag">#SkincareTips</span> <span class="tag">#Edmonton</span></div>
+  
+  <div class="section-label">Wide Reach Strategy</div>
+  <div class="strategy-text">Post Friday 8am. Last slide: 'Share this with someone who needs to see it.' Tag prompt: 'Tag a friend considering laser.' Friday morning = high story open rate.</div>
+  
+  <div class="retarget-box">
+    <span class="retarget-label">🎯 Retarget</span>
+    <span class="retarget-text">Story viewers who share → highest-value audience → Run referral offer ad ($25 off for referring a friend)</span>
+  </div>
+</div>
+<div class="day-card" id="day6-6">
+  <div class="card-header" style="border-left:4px solid #833ab4;">
+    <div class="card-meta">
+      <span class="day-badge">Day 6 — Saturday</span>
+      <span class="platform-badge" style="background:#833ab422;color:#833ab4;border:1px solid #833ab444;">📱 Facebook Story + Instagram Story</span>
+      <span class="time-badge">⏰ 10:00am MDT</span>
+    </div>
+    <div class="card-format">FAQ Carousel — 6 slides</div>
+  </div>
+  
+  <div class="hook-line">
+    <span class="hook-label">HOOK</span>
+    <span class="hook-text">"You asked. We answered. (Laser FAQ)"</span>
+  </div>
+  
+  <div class="slides-row"><div class="slide" style="background:#1a0a0a;border:1px solid #c9a96e33;"><div class="slide-text" style="color:#c9a96e;">Your laser questions — answered</div><div class="slide-sub">Swipe through</div></div><div class="slide" style="background:#141414;border:1px solid #f0ede833;"><div class="slide-text" style="color:#f0ede8;">Q: Does it hurt?</div><div class="slide-sub">A: Rubber band snap. Most say less than waxing.</div></div><div class="slide" style="background:#0f0f1a;border:1px solid #a0c4ff33;"><div class="slide-text" style="color:#a0c4ff;">Q: How many sessions?</div><div class="slide-sub">A: 6-8 for most people. Area-dependent.</div></div><div class="slide" style="background:#0a1a0a;border:1px solid #7dde9a33;"><div class="slide-text" style="color:#7dde9a;">Q: How long does it last?</div><div class="slide-sub">A: Permanent reduction. Maintenance once/year max.</div></div><div class="slide" style="background:#1a1a0a;border:1px solid #f0e68c33;"><div class="slide-text" style="color:#f0e68c;">Q: What's the cost?</div><div class="slide-sub">A: Less than 2 years of waxing. Free consult for exact quote.</div></div><div class="slide" style="background:#c9a96e;border:1px solid #0f0f0f33;"><div class="slide-text" style="color:#0f0f0f;">Still have questions?</div><div class="slide-sub">DM us or call 780-863-7561</div><div class="cta-badge">CTA</div></div></div>
+  
+  
+  <div class="section-label">Caption</div>
+  <div class="caption-text">Got questions about laser hair removal? We answer the top 4 questions our Edmonton clients ask every week. DM us yours — we reply to every one.</div>
+  
+  <div class="section-label">Hashtags</div>
+  <div class="hashtags"><span class="tag">#LaserHairRemoval</span> <span class="tag">#FAQ</span> <span class="tag">#EdmontonBeauty</span> <span class="tag">#SkincareTips</span> <span class="tag">#LaserClinic</span> <span class="tag">#HairFree</span> <span class="tag">#Edmonton</span> <span class="tag">#BeautyAnswers</span> <span class="tag">#LHR</span> <span class="tag">#OxyderEdmonton</span></div>
+  
+  <div class="section-label">Wide Reach Strategy</div>
+  <div class="strategy-text">Saturday 10am — weekend browse peak. End with 'DM us your question' to trigger DM conversations. Share to Edmonton FB community groups. Every DM = captured lead.</div>
+  
+  <div class="retarget-box">
+    <span class="retarget-label">🎯 Retarget</span>
+    <span class="retarget-text">DM senders → manual qualifier → book consultation → enter into GHL pipeline</span>
+  </div>
+</div>
+<div class="day-card" id="day7-7">
+  <div class="card-header" style="border-left:4px solid #010101;">
+    <div class="card-meta">
+      <span class="day-badge">Day 7 — Sunday</span>
+      <span class="platform-badge" style="background:#01010122;color:#010101;border:1px solid #01010144;">🎵 TikTok</span>
+      <span class="time-badge">⏰ 5:00pm MDT</span>
+    </div>
+    <div class="card-format">Hetisha Avatar — Weekly Wrap 30sec</div>
+  </div>
+  
+  <div class="hook-line">
+    <span class="hook-label">HOOK</span>
+    <span class="hook-text">"Week 1 recap: everything we covered about laser this week"</span>
+  </div>
+  
+  
+  <div class="script-block"><div class="script-time">0-3s: 'Quick recap of everything laser this week'</div><div class="script-line">3-12s: Hetisha: 'We covered how many sessions you actually need — 6 to 8 for most people. We broke down the real timeline week by week. And we answered the top questions we get every day.'</div><div class="script-line">12-22s: 'If you've been thinking about laser hair removal in Edmonton, this is your sign. Free consultation at Oxyderm. We'll tell you exactly what to expect for your specific hair type and area.'</div><div class="script-line">22-28s: 'No pressure. No sales pitch. Just answers.'</div><div class="script-line">28-30s: 'Link in bio. See you this week.'</div></div>
+  
+  <div class="section-label">Caption</div>
+  <div class="caption-text">Week 1 recap — everything you need to know about laser hair removal in Edmonton. Free consultation at Oxyderm. No pressure, just answers. #LaserHairRemoval #Edmonton #WeeklyRecap #SkincareTok #BeautyTok #LHR #OxyderEdmonton #HairFree</div>
+  
+  <div class="section-label">Hashtags</div>
+  <div class="hashtags"><span class="tag">#LaserHairRemoval</span> <span class="tag">#Edmonton</span> <span class="tag">#WeeklyRecap</span> <span class="tag">#SkincareTok</span> <span class="tag">#BeautyTok</span> <span class="tag">#LHR</span> <span class="tag">#OxyderEdmonton</span> <span class="tag">#HairFree</span> <span class="tag">#EdmontonBeauty</span> <span class="tag">#LaserClinic</span></div>
+  
+  <div class="section-label">Wide Reach Strategy</div>
+  <div class="strategy-text">Sunday 5pm — highest TikTok open rate of the week. Stitch prompt: 'Stitch this with your laser results.' Boosts organic reach significantly.</div>
+  
+  <div class="retarget-box">
+    <span class="retarget-label">🎯 Retarget</span>
+    <span class="retarget-text">Week 1 all engagements → Combined warm audience → Monday retarget ad with $50 deposit offer</span>
+  </div>
+</div>
+</div>
+</body>
+</html>

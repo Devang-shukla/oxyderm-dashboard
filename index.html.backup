@@ -206,7 +206,6 @@ textarea{min-height:65px;resize:vertical}
   <button class="tab" onclick="goTab('images',this)">🖼 Images</button>
   <button class="tab" onclick="goTab('expenses',this)">💰 Expenses</button>
   <button class="tab" onclick="goTab('preauth',this)">🔒 Pre-Auth</button>
-  <button class="tab" onclick="goTab('skills',this)">⚡ Skills</button>
 </div>
 
 <!-- ══ SCHEDULE ══ -->
@@ -600,25 +599,23 @@ var CLINIC = {
   ]
 };
 
-function sarahAnswer(q, cb){
+function sarahAnswer(q){
   var ql = q.toLowerCase();
-  cb = cb || function(r){ return r; }; // Ensure callback exists
-  
   // by name
   for(var i=0; i<CLINIC.appts.length; i++){
     var a = CLINIC.appts[i];
     if(ql.indexOf(a.first) > -1 || ql.indexOf(a.name.toLowerCase()) > -1){
-      if(/pay|paid|balance|owe|money/i.test(ql)) return cb(a.name + ': ' + a.payment + '.');
-      if(/note|flag|warn|special/i.test(ql)) return cb(a.name + ' notes: ' + a.note + ' Flags: ' + a.flags.join(', ') + '.');
-      if(/visit|how many time|number/i.test(ql)) return cb(a.name + ' is on their ' + a.visit + '.');
-      if(/phone|call|contact/i.test(ql)) return cb(a.name + ' phone: ' + a.phone + '.');
-      if(/area|treat|coming for|service/i.test(ql)) return cb(a.name + ' is in for ' + a.service + ', areas: ' + a.areas + '.');
-      return cb(a.name + ' at ' + a.time + '. ' + a.service + ', ' + a.areas + '. ' + a.visit + '. ' + a.payment + '.');
+      if(/pay|paid|balance|owe|money/i.test(ql)) return a.name + ': ' + a.payment + '.';
+      if(/note|flag|warn|special/i.test(ql)) return a.name + ' notes: ' + a.note + ' Flags: ' + a.flags.join(', ') + '.';
+      if(/visit|how many time|number/i.test(ql)) return a.name + ' is on their ' + a.visit + '.';
+      if(/phone|call|contact/i.test(ql)) return a.name + ' phone: ' + a.phone + '.';
+      if(/area|treat|coming for|service/i.test(ql)) return a.name + ' is in for ' + a.service + ', areas: ' + a.areas + '.';
+      return a.name + ' at ' + a.time + '. ' + a.service + ', ' + a.areas + '. ' + a.visit + '. ' + a.payment + '.';
     }
   }
   // schedule
   if(/schedule|today|who.*coming|all appoint|how many/i.test(ql))
-    return cb('Today: ' + CLINIC.appts.map(function(a){ return a.time + ' ' + a.name + ', ' + a.visit + '.'; }).join(' '));
+    return 'Today: ' + CLINIC.appts.map(function(a){ return a.time + ' ' + a.name + ', ' + a.visit + '.'; }).join(' ');
   // next
   if(/next|who is next/i.test(ql)){
     var now = new Date(), h = now.getHours(), m = now.getMinutes();
@@ -626,20 +623,15 @@ function sarahAnswer(q, cb){
       var t = CLINIC.appts[i].time.match(/(\d+):(\d+)\s*(AM|PM)/i);
       if(!t) continue;
       var ah = parseInt(t[1]) + (t[3].toUpperCase()==='PM' && parseInt(t[1])!==12 ? 12 : 0);
-      if(ah > h || (ah===h && parseInt(t[2])>m)) return cb('Next: ' + CLINIC.appts[i].name + ' at ' + CLINIC.appts[i].time + '. ' + CLINIC.appts[i].service + ', ' + CLINIC.appts[i].visit + '.');
+      if(ah > h || (ah===h && parseInt(t[2])>m)) return 'Next: ' + CLINIC.appts[i].name + ' at ' + CLINIC.appts[i].time + '. ' + CLINIC.appts[i].service + ', ' + CLINIC.appts[i].visit + '.';
     }
-    return cb('No more appointments today.');
+    return 'No more appointments today.';
   }
   // balance
-  if(/balance|owing/i.test(ql)) return cb('Mehak Wadhwa has a $49.99 balance owing from her advance in January 2025.');
+  if(/balance|owing/i.test(ql)) return 'Mehak Wadhwa has a $49.99 balance owing from her advance in January 2025.';
   // help
-  if(/help|what can|how/i.test(ql)) return cb('Ask me: who is at 1pm, notes for Alexandra, what did Mehak pay, who is next, any balance owing.');
-  
-  // Unknown - try web search (no built-in answer found)
-  webSearch(ql, function(result){
-    if(result) return cb(result);
-    return cb('I don't have that information. Try asking about appointments, clients, services, or something else.');
-  });
+  if(/help|what can|how/i.test(ql)) return 'Ask me: who is at 1pm, notes for Alexandra, what did Mehak pay, who is next, any balance owing.';
+  return 'Today: Alexandra at 1pm (7th visit, LHR) and Mehak at 3pm (11th visit, LHR). What would you like to know?';
 }
 
 function sarahSpeak(text){
@@ -674,22 +666,8 @@ function doAskText(q){ document.getElementById('sarah-input').value = q; doAsk()
 function doAsk(){
   var q = document.getElementById('sarah-input').value.trim();
   if(!q) return;
+  showSarahAnswer(sarahAnswer(q));
   document.getElementById('sarah-input').value = '';
-  
-  // Show "thinking..." while processing
-  document.getElementById('sarah-text').textContent = 'Thinking...';
-  document.getElementById('sarah-box').style.display = 'block';
-  
-  // Call sarahAnswer with callback for async web search
-  sarahAnswer(q, function(answer){
-    showSarahAnswer(answer);
-    // Save conversation to DB
-    apiCall('conversation_save', {
-      user_input: q,
-      sarah_response: answer,
-      session: S.sessionId || 'default'
-    }, function(){});
-  });
 }
 
 function toggleMic(){
@@ -700,7 +678,7 @@ function toggleMic(){
   }
   if(!SR){ alert('Microphone not supported. Use Chrome or Safari on HTTPS.'); return; }
   S.micRec = new SR(); S.micRec.lang='en-CA'; S.micRec.continuous=false; S.micRec.interimResults=false;
-  S.micRec.onresult = function(e){ var q=e.results[0][0].transcript; sarahAnswer(q, function(answer){ showSarahAnswer(answer); apiCall('conversation_save', { user_input: q, sarah_response: answer, session: S.sessionId || 'default' }, function(){}); }); };
+  S.micRec.onresult = function(e){ var q=e.results[0][0].transcript; showSarahAnswer(sarahAnswer(q)); };
   S.micRec.onend = stopMicUI;
   S.micRec.onerror = stopMicUI;
   S.isListening = true;
@@ -762,36 +740,16 @@ function appendAgentMemory(agentId, category, content){
 }
 
 // Web search via DuckDuckGo instant answers (no API key needed)
-// Searches for: query + "Edmonton laser clinic" context
 function webSearch(query, cb){
-  // Try service-specific search first
-  var contextQuery = query;
-  if(/laser|microneedle|skin|hair|remove|treatment/i.test(query)){
-    contextQuery = query + ' Edmonton clinic laser hair removal';
-  }
-  
-  var url = 'https://api.duckduckgo.com/?q=' + encodeURIComponent(contextQuery) + '&format=json&no_html=1&skip_disambig=1';
-  
-  fetch(url, { signal: AbortSignal.timeout(3000) })
-    .then(function(r){ return r.json(); })
-    .then(function(d){
-      var result = '';
-      if(d.AbstractText) result = d.AbstractText.trim();
-      if(!result && d.RelatedTopics && d.RelatedTopics.length){
-        d.RelatedTopics.forEach(function(t){
-          if(t.Text && t.Text.length > 30) { result = t.Text.trim(); return; }
-        });
-      }
-      if(result && result.length > 15){
-        cb(result.substring(0, 500)); // Cap at 500 chars
-      } else {
-        cb(null);
-      }
-    })
-    .catch(function(e){ 
-      console.warn('WebSearch error:', e);
-      cb(null);
-    });
+  var url = 'https://api.duckduckgo.com/?q=' + encodeURIComponent(query + ' Edmonton') + '&format=json&no_html=1&skip_disambig=1';
+  fetch(url).then(function(r){ return r.json(); }).then(function(d){
+    var result = '';
+    if(d.AbstractText) result += d.AbstractText + ' ';
+    if(d.RelatedTopics && d.RelatedTopics.length){
+      d.RelatedTopics.slice(0,3).forEach(function(t){ if(t.Text) result += t.Text + ' '; });
+    }
+    cb(result || null);
+  }).catch(function(){ cb(null); });
 }
 
 // ═══════════════════════════════════════════
@@ -903,14 +861,6 @@ function selectAgent(id){
   renderAgChat();
 }
 
-function replaceLastAgent(agentId, text){
-  var chats = S.agentChats[agentId];
-  for(var i = chats.length-1; i>=0; i--){
-    if(chats[i].role === 'agent'){ chats[i].text = text; chats[i].pending = false; break; }
-  }
-  renderAgChat();
-}
-
 function renderAgChat(){
   var msgs = S.agentChats[S.activeAgent.id];
   var el = document.getElementById('ag-msgs');
@@ -936,54 +886,25 @@ function agSend(){
   S.agentChats[id].push({role:'user', text:q});
   renderAgChat();
 
-  // Show thinking state
-  S.agentChats[id].push({role:'agent', text:'Thinking...', pending:true});
-  renderAgChat();
+  // Save conversation to memory
+  appendAgentMemory(id, 'conversation_' + Date.now(), 'User asked: ' + q);
 
-  // POST to Oxyderm Brain API
-  var API_URL = 'http://api.oxydermlaserclinic.ca/api.php';
-  var API_KEY = 'oxyderm_brain_2026_xK9mP3qL';
+  // Try built-in answer with loaded memory
+  var mem = S.activeAgent._mem || agentMemoryCache[id] || {};
+  var reply = agAnswer(S.activeAgent, q, mem);
 
-  fetch(API_URL, {
-    method: 'POST',
-    headers: {'Content-Type':'application/json','X-API-Key': API_KEY},
-    body: JSON.stringify({action:'ask', agent:id, question:q, context:{user: S.user, timestamp: new Date().toISOString()}})
-  })
-  .then(function(r){ return r.json(); })
-  .then(function(data){
-    if(!data.ok){ throw new Error(data.error || 'API error'); }
-    var qid = data.question_id;
-    // Poll for answer every 3 seconds, up to 60s
-    var polls = 0;
-    var poller = setInterval(function(){
-      polls++;
-      if(polls > 20){ clearInterval(poller); replaceLastAgent(id, '[Brain timeout] No answer in 60s. Mac may be asleep.'); return; }
-      fetch(API_URL, {
-        method:'POST',
-        headers:{'Content-Type':'application/json','X-API-Key':API_KEY},
-        body:JSON.stringify({action:'get_answer',question_id:qid})
-      })
-      .then(function(r){ return r.json(); })
-      .then(function(ans){
-        if(ans.status === 'answered'){
-          clearInterval(poller);
-          var label = ans.decision_type === 'action_required' ? ' [ACTION NEEDED]' :
-                      ans.decision_type === 'escalate_to_dev' ? ' [NEEDS DEV]' : '';
-          replaceLastAgent(id, ans.answer + label);
-          saveAgentMemory(id, q.toLowerCase().substring(0,30), ans.answer);
-        }
-        // else still pending/processing — keep polling
-      })
-      .catch(function(){ /* keep polling */ });
-    }, 3000);
-  })
-  .catch(function(err){
-    // Fallback to built-in JS knowledge if API unreachable
-    var mem = S.activeAgent._mem || agentMemoryCache[id] || {};
-    var reply = agAnswer(S.activeAgent, q, mem);
-    replaceLastAgent(id, reply || '[Brain offline] ' + err.message + '. Using local knowledge.');
-  });
-
+  if(reply){
+    // Got a built-in or learned answer
+    S.agentChats[id].push({role:'agent', text: reply});
+    // Save useful answers back to memory
+    if(reply.length > 30 && !reply.startsWith('[Learned]')){
+      var key = q.toLowerCase().replace(/[^a-z0-9 ]/g,'').substring(0,30).trim();
+      saveAgentMemory(id, key, reply);
+    }
+    renderAgChat();
+  } else {
+    // Unknown — search the web
+    S.agentChats[id].push({role:'agent', text:'Searching...'});
     renderAgChat();
     var searchQuery = S.activeAgent.name + ' ' + q + ' laser clinic';
     webSearch(searchQuery, function(webResult){
@@ -1206,162 +1127,5 @@ function collectPA(i){ S.preauths[i].collected=true; S.preauths[i].collectedOn=n
 function delPA(i){ if(confirm('Delete?')){ S.preauths.splice(i,1); save('ox-pa',S.preauths); renderPA(); } }
 renderPA();
 </script>
-<!-- ══ SKILLS ══ -->
-<div class="pnl" id="pnl-skills">
-  <div class="stl">Oxyderm Skill Library</div>
-  <div class="card" style="margin-bottom:8px;padding:10px 14px;background:#001228;border-color:#1a3a5c">
-    <div style="font-size:11px;color:var(--muted)">10 skills active &bull; Model: claude-sonnet-4-6 &bull; Last updated: Aug 26 2026</div>
-  </div>
-
-  <div class="stl">Content & Video</div>
-
-  <div class="card">
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <div>
-        <div style="font-size:14px;font-weight:700">Video Script & Avatar Generator</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:3px">Hetisha TikTok/YouTube scripts + AI avatar rendering</div>
-      </div>
-      <span style="background:#0a3d1a;color:#2ecc71;font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px">ACTIVE</span>
-    </div>
-    <div style="margin-top:8px;font-size:11px;color:var(--muted)">Load: <code style="background:#0a1e35;padding:2px 6px;border-radius:4px;color:var(--gold)">skill_view oxyderm-video-script-avatar</code></div>
-    <div style="margin-top:4px;font-size:11px;color:var(--muted)">Use: "Generate a 45-second TikTok script for Hetisha about [topic]"</div>
-  </div>
-
-  <div class="card">
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <div>
-        <div style="font-size:14px;font-weight:700">Video Script Generator (Standalone)</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:3px">Fast scripts for any Oxyderm video content</div>
-      </div>
-      <span style="background:#0a3d1a;color:#2ecc71;font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px">ACTIVE</span>
-    </div>
-    <div style="margin-top:8px;font-size:11px;color:var(--muted)">Load: <code style="background:#0a1e35;padding:2px 6px;border-radius:4px;color:var(--gold)">skill_view oxyderm-video-script-generator</code></div>
-  </div>
-
-  <div class="card">
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <div>
-        <div style="font-size:14px;font-weight:700">Product Asset Generator</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:3px">Shop images, before/afters, carousel prompts</div>
-      </div>
-      <span style="background:#0a3d1a;color:#2ecc71;font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px">ACTIVE</span>
-    </div>
-    <div style="margin-top:8px;font-size:11px;color:var(--muted)">Load: <code style="background:#0a1e35;padding:2px 6px;border-radius:4px;color:var(--gold)">skill_view oxyderm-product-asset-generator</code></div>
-    <div style="margin-top:4px;font-size:11px;color:var(--muted)">Also integrates with: <a href="https://labs.google.com/pomelli" target="_blank" style="color:var(--gold)">Google Pomelli</a></div>
-  </div>
-
-  <div class="stl">Local SEO & Reviews</div>
-
-  <div class="card">
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <div>
-        <div style="font-size:14px;font-weight:700">Google Business Profile Optimizer</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:3px">Local SEO, GBP posts, review management</div>
-      </div>
-      <span style="background:#0a3d1a;color:#2ecc71;font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px">ACTIVE</span>
-    </div>
-    <div style="margin-top:8px;font-size:11px;color:var(--muted)">Load: <code style="background:#0a1e35;padding:2px 6px;border-radius:4px;color:var(--gold)">skill_view oxyderm-google-business-optimizer</code></div>
-  </div>
-
-  <div class="card">
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <div>
-        <div style="font-size:14px;font-weight:700">Review & Reputation Monitor</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:3px">Track Google, Trustpilot, Facebook reviews</div>
-      </div>
-      <span style="background:#0a3d1a;color:#2ecc71;font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px">ACTIVE</span>
-    </div>
-    <div style="margin-top:8px;font-size:11px;color:var(--muted)">Load: <code style="background:#0a1e35;padding:2px 6px;border-radius:4px;color:var(--gold)">skill_view oxyderm-review-monitor</code></div>
-  </div>
-
-  <div class="card">
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <div>
-        <div style="font-size:14px;font-weight:700">Local SEO Blog Writer</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:3px">Geo + medical keyword blog posts for Edmonton</div>
-      </div>
-      <span style="background:#0a3d1a;color:#2ecc71;font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px">ACTIVE</span>
-    </div>
-    <div style="margin-top:8px;font-size:11px;color:var(--muted)">Load: <code style="background:#0a1e35;padding:2px 6px;border-radius:4px;color:var(--gold)">skill_view oxyderm-local-seo-blogger</code></div>
-  </div>
-
-  <div class="stl">Client Retention & Sales</div>
-
-  <div class="card">
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <div>
-        <div style="font-size:14px;font-weight:700">Before/After Showcase</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:3px">Gallery structure, trust copy, proof collection</div>
-      </div>
-      <span style="background:#0a3d1a;color:#2ecc71;font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px">ACTIVE</span>
-    </div>
-    <div style="margin-top:8px;font-size:11px;color:var(--muted)">Load: <code style="background:#0a1e35;padding:2px 6px;border-radius:4px;color:var(--gold)">skill_view oxyderm-before-after-showcase</code></div>
-  </div>
-
-  <div class="card">
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <div>
-        <div style="font-size:14px;font-weight:700">SMS/Email Retention Sequences</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:3px">Post-treatment follow-ups, re-booking automation</div>
-      </div>
-      <span style="background:#0a3d1a;color:#2ecc71;font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px">ACTIVE</span>
-    </div>
-    <div style="margin-top:8px;font-size:11px;color:var(--muted)">Load: <code style="background:#0a1e35;padding:2px 6px;border-radius:4px;color:var(--gold)">skill_view oxyderm-retention-sequences</code></div>
-  </div>
-
-  <div class="card">
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <div>
-        <div style="font-size:14px;font-weight:700">Referral Program Builder</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:3px">Word-of-mouth referral + affiliate program</div>
-      </div>
-      <span style="background:#0a3d1a;color:#2ecc71;font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px">ACTIVE</span>
-    </div>
-    <div style="margin-top:8px;font-size:11px;color:var(--muted)">Load: <code style="background:#0a1e35;padding:2px 6px;border-radius:4px;color:var(--gold)">skill_view oxyderm-referral-program</code></div>
-  </div>
-
-  <div class="stl">Advertising</div>
-
-  <div class="card">
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <div>
-        <div style="font-size:14px;font-weight:700">Local Ad Campaign Builder</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:3px">Edmonton geo-targeted Meta ads, copy & targeting</div>
-      </div>
-      <span style="background:#0a3d1a;color:#2ecc71;font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px">ACTIVE</span>
-    </div>
-    <div style="margin-top:8px;font-size:11px;color:var(--muted)">Load: <code style="background:#0a1e35;padding:2px 6px;border-radius:4px;color:var(--gold)">skill_view oxyderm-local-ad-builder</code></div>
-  </div>
-
-  <div class="stl" style="margin-top:20px">Tools Integration</div>
-  <div class="card" style="background:#001228">
-    <div style="font-size:12px;font-weight:700;margin-bottom:8px;color:var(--gold)">Recommended for Product Design & Content</div>
-    <a href="https://labs.google.com/pomelli" target="_blank" style="display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--fg);padding:8px 0;border-bottom:1px solid #0a1e35">
-      <span style="font-size:18px">🎨</span>
-      <div>
-        <div style="font-size:13px;font-weight:700">Google Pomelli</div>
-        <div style="font-size:11px;color:var(--muted)">On-brand content generation for your business</div>
-      </div>
-      <span style="margin-left:auto;color:var(--gold);font-size:12px">→</span>
-    </a>
-    <a href="https://app.make.com" target="_blank" style="display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--fg);padding:8px 0;border-bottom:1px solid #0a1e35">
-      <span style="font-size:18px">⚙️</span>
-      <div>
-        <div style="font-size:13px;font-weight:700">Make.com</div>
-        <div style="font-size:11px;color:var(--muted)">Social post scheduling & automation</div>
-      </div>
-      <span style="margin-left:auto;color:var(--gold);font-size:12px">→</span>
-    </a>
-    <a href="https://oxydermlaserclinic.ca" target="_blank" style="display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--fg);padding:8px 0">
-      <span style="font-size:18px">🌐</span>
-      <div>
-        <div style="font-size:13px;font-weight:700">Oxyderm Shop</div>
-        <div style="font-size:11px;color:var(--muted)">shop.oxydermlaserclinic.ca (pending HostGator setup)</div>
-      </div>
-      <span style="margin-left:auto;color:var(--gold);font-size:12px">→</span>
-    </a>
-  </div>
-</div>
-
 </body>
 </html>

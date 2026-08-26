@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oxyderm — Booking Calendar</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f0f0f; color: #f0ede8; }
+  header { background: #1a1a1a; border-bottom: 1px solid #2a2a2a; padding: 16px 24px; display: flex; align-items: center; gap: 16px; }
+  header h1 { font-size: 18px; font-weight: 600; color: #c9a96e; }
+  header a { color: #888; text-decoration: none; font-size: 14px; }
+  header a:hover { color: #c9a96e; }
+  .top-bar { padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-btn { background: #1e1e1e; border: 1px solid #333; color: #f0ede8; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 14px; }
+  .nav-btn:hover { background: #2a2a2a; }
+  .month-label { font-size: 18px; font-weight: 600; min-width: 200px; text-align: center; }
+  .legend { padding: 0 24px 12px; display: flex; gap: 20px; font-size: 13px; color: #888; }
+  .legend span { display: flex; align-items: center; gap: 6px; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+  .dot-booked { background: #c9a96e; }
+  .dot-blocked { background: #444; }
+  .dot-available { background: #2a5c3f; }
+  .stats-bar { padding: 0 24px 16px; display: flex; gap: 16px; }
+  .stat-card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 8px; padding: 12px 20px; flex: 1; }
+  .stat-card .label { font-size: 12px; color: #666; margin-bottom: 4px; }
+  .stat-card .value { font-size: 24px; font-weight: 700; color: #c9a96e; }
+  .stat-card .sub { font-size: 12px; color: #555; margin-top: 2px; }
+  .calendar { padding: 0 24px 24px; }
+  .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; background: #2a2a2a; border-radius: 10px; overflow: hidden; }
+  .cal-header { background: #1a1a1a; padding: 10px 0; text-align: center; font-size: 12px; font-weight: 600; color: #888; text-transform: uppercase; letter-spacing: 0.5px; }
+  .cal-day { background: #141414; min-height: 110px; padding: 8px; cursor: pointer; transition: background 0.15s; }
+  .cal-day:hover { background: #1c1c1c; }
+  .cal-day.other-month { opacity: 0.3; }
+  .cal-day.today { background: #1a1a28; }
+  .cal-day.today .day-num { color: #8888ff; font-weight: 700; }
+  .day-num { font-size: 13px; color: #666; margin-bottom: 4px; }
+  .day-num.has-events { color: #f0ede8; font-weight: 600; }
+  .event-pill { font-size: 11px; padding: 2px 6px; border-radius: 4px; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .event-pill.booked { background: #3d2e0f; color: #c9a96e; border-left: 2px solid #c9a96e; }
+  .event-pill.blocked { background: #222; color: #444; border-left: 2px solid #333; font-style: italic; }
+  .more-badge { font-size: 10px; color: #888; margin-top: 2px; }
+  .day-view { display: none; padding: 0 24px 24px; }
+  .day-view.active { display: block; }
+  .day-view-header { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
+  .day-view-header h3 { font-size: 18px; font-weight: 600; }
+  .back-btn { background: none; border: 1px solid #333; color: #888; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 13px; }
+  .back-btn:hover { color: #f0ede8; border-color: #555; }
+  .hours-grid { display: grid; grid-template-columns: 70px 1fr; border: 1px solid #222; border-radius: 8px; overflow: hidden; }
+  .hour-label { background: #141414; border-bottom: 1px solid #1e1e1e; padding: 10px 8px; font-size: 12px; color: #555; text-align: right; min-height: 52px; display: flex; align-items: flex-start; justify-content: flex-end; }
+  .hour-slot { background: #111; border-bottom: 1px solid #1e1e1e; min-height: 52px; padding: 4px 8px; position: relative; }
+  .hour-slot.blocked-slot { background: repeating-linear-gradient(45deg,#1a1212,#1a1212 4px,#141010 4px,#141010 8px); }
+  .hour-slot.available { background: #0d150f; }
+  .slot-event { font-size: 12px; padding: 5px 10px; border-radius: 5px; margin-bottom: 3px; }
+  .slot-event.booked { background: #3d2e0f; color: #c9a96e; border-left: 3px solid #c9a96e; }
+  .blocked-label { font-size: 11px; color: #444; padding: 4px 8px; font-style: italic; }
+  .book-btn { background: #c9a96e; color: #0f0f0f; border: none; padding: 10px 20px; border-radius: 6px; font-weight: 600; font-size: 14px; cursor: pointer; text-decoration: none; display: inline-block; }
+  .book-btn:hover { background: #d4b87a; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Oxyderm Agency OS</h1>
+  <a href="/">← Dashboard</a>
+</header>
+
+<div class="top-bar">
+  <div style="display:flex;align-items:center;gap:12px;">
+    <button class="nav-btn" onclick="prevMonth()">‹</button>
+    <div class="month-label" id="monthLabel"></div>
+    <button class="nav-btn" onclick="nextMonth()">›</button>
+  </div>
+  <div style="display:flex;gap:12px;align-items:center;">
+    <button class="nav-btn" onclick="goToday()">Today</button>
+    <a href="https://app.squareup.com/dashboard/appointments/calendar" target="_blank" class="book-btn">+ Book in Square</a>
+  </div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat-card"><div class="label">Bookings This Month</div><div class="value" id="statMonth">-</div><div class="sub">from Square</div></div>
+  <div class="stat-card"><div class="label">Next 7 Days</div><div class="value" id="statWeek">-</div><div class="sub">upcoming appointments</div></div>
+  <div class="stat-card"><div class="label">Business Hours</div><div class="value">10am–6pm</div><div class="sub">Blocked: 1:30–3:00pm daily</div></div>
+  <div class="stat-card"><div class="label">Total Customers</div><div class="value">2,749</div><div class="sub">in Square directory</div></div>
+</div>
+
+<div class="legend">
+  <span><span class="dot dot-booked"></span> Booked</span>
+  <span><span class="dot dot-blocked"></span> Blocked 1:30–3pm</span>
+  <span><span class="dot dot-available"></span> Available</span>
+</div>
+
+<div class="calendar" id="calendarView">
+  <div class="cal-grid" id="calGrid"></div>
+</div>
+
+<div class="day-view" id="dayView">
+  <div class="day-view-header">
+    <button class="back-btn" onclick="showMonth()">← Month</button>
+    <h3 id="dayViewTitle"></h3>
+  </div>
+  <div class="hours-grid" id="hoursGrid"></div>
+</div>
+
+<script>
+const EVENTS = [{"id": "yjb479j2e9a5ri", "title": "Multiple Area Laser Hair Removal (Only For Package)", "start": "2026-08-24T13:00:00", "duration": 120, "status": "ACCEPTED"}, {"id": "d14itbfs12kzvn", "title": "Full body Laser Hair Removal", "start": "2026-08-24T15:00:00", "duration": 120, "status": "ACCEPTED"}, {"id": "b8it2fkqpap3e6", "title": "Multiple Area Laser Hair Removal (Only For Package)", "start": "2026-08-25T10:00:00", "duration": 120, "status": "ACCEPTED"}, {"id": "bed1dj727fhvbe", "title": "Multiple Area Laser Hair Removal (Only For Package)", "start": "2026-08-25T11:15:00", "duration": 120, "status": "ACCEPTED"}, {"id": "0bmdm62tavo05u", "title": "Chemical Peel Level 2", "start": "2026-08-25T12:00:00", "duration": 60, "status": "ACCEPTED"}, {"id": "uv6n0r6rsdghbu", "title": "Multiple Area Laser Hair Removal (Only For Package)", "start": "2026-08-25T16:30:00", "duration": 120, "status": "ACCEPTED"}, {"id": "2cs5q0md1mybh3", "title": "Chin With Upperlip Laser Hair Removal", "start": "2026-08-26T11:30:00", "duration": 30, "status": "ACCEPTED"}, {"id": "qvhzglwfm3o3ws", "title": "Multiple Area Laser Hair Removal (Only For Package)", "start": "2026-08-26T12:00:00", "duration": 60, "status": "ACCEPTED"}, {"id": "a9xjc7lglya0zk", "title": "Multiple Area Laser Hair Removal ( Only For Package)", "start": "2026-08-26T13:00:00", "duration": 120, "status": "ACCEPTED"}, {"id": "ea7gawc5pmac8z", "title": "Microneedling", "start": "2026-08-26T14:30:00", "duration": 105, "status": "ACCEPTED"}, {"id": "3ww5qumu2y5xdz", "title": "Multiple Area Laser Hair Removal (Only For Package)", "start": "2026-08-27T12:30:00", "duration": 120, "status": "ACCEPTED"}, {"id": "x2166seq06fku7", "title": "Check/Nose VP/PIGMENT", "start": "2026-08-27T16:30:00", "duration": 30, "status": "ACCEPTED"}, {"id": "fgsae4b8b4rybw", "title": "Multiple Area Laser Hair Removal (Only For Package)", "start": "2026-08-27T16:45:00", "duration": 75, "status": "ACCEPTED"}, {"id": "5jtzgekvyrnvgg", "title": "Multiple Area Laser Hair Removal (Only For Package)", "start": "2026-08-28T10:00:00", "duration": 120, "status": "ACCEPTED"}, {"id": "s2gxzec7d8c8cy", "title": "Brazilian Laser Hair Removal", "start": "2026-08-28T11:00:00", "duration": 45, "status": "ACCEPTED"}, {"id": "ufndp04pa98b11", "title": "Chin With Upperlip Laser Hair Removal", "start": "2026-08-28T15:30:00", "duration": 30, "status": "ACCEPTED"}, {"id": "3hd935t6j1rhv7", "title": "Multiple Area Laser Hair Removal (Only For Package)", "start": "2026-08-28T16:00:00", "duration": 120, "status": "ACCEPTED"}, {"id": "0noui86e6j54ny", "title": "Multiple Area Laser Hair Removal (Only For Package)", "start": "2026-08-29T10:00:00", "duration": 120, "status": "ACCEPTED"}, {"id": "isyweu4uw7hc9h", "title": "Consultation Laser Hair Removal", "start": "2026-08-29T11:00:00", "duration": 30, "status": "ACCEPTED"}, {"id": "bisaqm2g5nj9zt", "title": "Chin With Upperlip Laser Hair Removal", "start": "2026-08-29T11:30:00", "duration": 30, "status": "ACCEPTED"}, {"id": "7a5er0ytriwqf4", "title": "Brazilian Laser Hair Removal", "start": "2026-08-29T14:00:00", "duration": 45, "status": "ACCEPTED"}, {"id": "avgwq0p5i5ouis", "title": "Multiple Area Laser Hair Removal (Only For Package)", "start": "2026-08-29T14:30:00", "duration": 120, "status": "ACCEPTED"}, {"id": "ds7ogqfg0urzrw", "title": "Multiple Area Laser Hair Removal (Only For Package)", "start": "2026-08-31T17:00:00", "duration": 120, "status": "ACCEPTED"}, {"id": "nr51vc4o9eq8vt", "title": "Microneedling", "start": "2026-09-01T14:00:00", "duration": 105, "status": "ACCEPTED"}, {"id": "1pwg06thoj3ak8", "title": "Microneedling", "start": "2026-09-01T15:15:00", "duration": 105, "status": "ACCEPTED"}, {"id": "8b7zbs4h1t24zm", "title": "Multiple Area Laser Hair Removal (Only For Package)", "start": "2026-09-02T11:30:00", "duration": 120, "status": "ACCEPTED"}, {"id": "i2kazmbes7d6b9", "title": "Check/Nose VP/PIGMENT", "start": "2026-09-02T12:30:00", "duration": 30, "status": "ACCEPTED"}, {"id": "0xujqjp7nkkeu3", "title": "Multiple Area Laser Hair Removal (Only For Package)", "start": "2026-09-02T13:00:00", "duration": 75, "status": "ACCEPTED"}, {"id": "stfzgon7j2lijz", "title": "Multiple Area Laser Hair Removal (Only For Package)", "start": "2026-09-03T10:00:00", "duration": 120, "status": "ACCEPTED"}, {"id": "1cdkixw3nw14mm", "title": "Microneedling", "start": "2026-09-03T14:30:00", "duration": 105, "status": "ACCEPTED"}, {"id": "5y2t3h3jlxzwef", "title": "Microdermabrasion", "start": "2026-09-03T17:30:00", "duration": 30, "status": "ACCEPTED"}, {"id": "wblgq98qjyx9pj", "title": "Multiple Area Laser Hair Removal (Only For Package)", "start": "2026-09-04T15:00:00", "duration": 120, "status": "ACCEPTED"}, {"id": "snasql50rwlaft", "title": "Microneedling", "start": "2026-09-04T16:00:00", "duration": 105, "status": "ACCEPTED"}, {"id": "qeh6nhp078s6rr", "title": "Multiple Area Laser Hair Removal (Only For Package)", "start": "2026-09-05T10:00:00", "duration": 60, "status": "ACCEPTED"}, {"id": "5e6yxfs97xxmt4", "title": "Multiple Area Laser Hair Removal (Only For Package)", "start": "2026-09-05T11:00:00", "duration": 120, "status": "ACCEPTED"}, {"id": "xdc20pvx09yemf", "title": "Multiple Area Laser Hair Removal ( Only For Package)", "start": "2026-09-05T12:30:00", "duration": 30, "status": "ACCEPTED"}, {"id": "yf6b9ttk8quegz", "title": "Multiple Area Laser Hair Removal (Only For Package)", "start": "2026-09-05T13:00:00", "duration": 75, "status": "ACCEPTED"}, {"id": "osdj5cc4fxbz8c", "title": "Microdermabrasion + B/W head Removal + LED Mask ( For Package)", "start": "2026-09-07T16:30:00", "duration": 60, "status": "ACCEPTED"}, {"id": "vk58321ndvvzex", "title": "Brazilian Laser Hair Removal", "start": "2026-09-08T10:00:00", "duration": 45, "status": "ACCEPTED"}, {"id": "hgkll1yl9r9fjz", "title": "Underarms Laser Hair Removal", "start": "2026-09-08T10:30:00", "duration": 30, "status": "ACCEPTED"}, {"id": "crqweoi0gs91r4", "title": "Lower Legs Laser Hair Removal", "start": "2026-09-08T12:00:00", "duration": 45, "status": "ACCEPTED"}, {"id": "b517f3w86mjsuv", "title": "Brazilian With underarms Package (Package)", "start": "2026-09-09T16:00:00", "duration": 30, "status": "ACCEPTED"}, {"id": "sxpnh2usaxumjf", "title": "Full face Laser Hair Removal", "start": "2026-09-10T12:00:00", "duration": 30, "status": "ACCEPTED"}, {"id": "kvqntqs7uljg51", "title": "Microdermabrasion + B/W head Removal + LED Mask ( For Package)", "start": "2026-09-10T16:00:00", "duration": 60, "status": "ACCEPTED"}, {"id": "mw9yj3slhn61az", "title": "Multiple Area Laser Hair Removal ( Only For Package)", "start": "2026-09-11T14:00:00", "duration": 120, "status": "ACCEPTED"}, {"id": "mvzluk0sc08j1d", "title": "Multiple Area Laser Hair Removal (Only For Package)", "start": "2026-09-11T16:00:00", "duration": 120, "status": "ACCEPTED"}, {"id": "bafkwfkwe13kaq", "title": "Underarms Laser Hair Removal", "start": "2026-09-11T17:30:00", "duration": 30, "status": "ACCEPTED"}, {"id": "lsz1v8vnrombrj", "title": "Multiple Area Laser Hair Removal (Only For Package)", "start": "2026-09-12T10:30:00", "duration": 120, "status": "ACCEPTED"}, {"id": "xn8nmfx58t8w2a", "title": "Multiple Area Laser Hair Removal ( Only For Package)", "start": "2026-09-12T11:30:00", "duration": 120, "status": "ACCEPTED"}, {"id": "ge1apewh9jd68u", "title": "Multiple Area Laser Hair Removal (Only For Package)", "start": "2026-09-12T12:30:00", "duration": 120, "status": "ACCEPTED"}, {"id": "sn0jidii8on0dj", "title": "Beard Line Laser Hair Removal for 3 session", "start": "2026-09-12T13:30:00", "duration": 30, "status": "ACCEPTED"}, {"id": "9tgrsd03v61yqg", "title": "Multiple Area Laser Hair Removal (Only For Package)", "start": "2026-09-14T10:30:00", "duration": 120, "status": "ACCEPTED"}, {"id": "md4gcb4l2s00cl", "title": "Full face Laser Hair Removal", "start": "2026-09-14T16:30:00", "duration": 30, "status": "ACCEPTED"}, {"id": "o7k4pxlb7c6506", "title": "Brazilian With underarms Package (Package)", "start": "2026-09-15T12:00:00", "duration": 30, "status": "ACCEPTED"}, {"id": "kw9ym5ps80apd7", "title": "Multiple Area Laser Hair Removal (Only For Package)", "start": "2026-09-15T15:00:00", "duration": 120, "status": "ACCEPTED"}, {"id": "jvqca1dg4rsjxb", "title": "Multiple Area Laser Hair Removal (Only For Package)", "start": "2026-09-16T12:30:00", "duration": 120, "status": "ACCEPTED"}, {"id": "85lckiq676a084", "title": "Multiple Area Laser Hair Removal (Only For Package)", "start": "2026-09-17T11:00:00", "duration": 75, "status": "ACCEPTED"}, {"id": "uaf5oh6zbx2s7z", "title": "Brazilian With underarms Package (Package)", "start": "2026-09-17T12:00:00", "duration": 30, "status": "ACCEPTED"}, {"id": "mgs0hug1q3du54", "title": "Full face Laser Hair Removal", "start": "2026-09-18T10:00:00", "duration": 30, "status": "ACCEPTED"}, {"id": "qtb7bzy269yddr", "title": "Multiple Area Laser Hair Removal (Only For Package)", "start": "2026-09-18T13:00:00", "duration": 120, "status": "ACCEPTED"}, {"id": "rnxjjwboa2lvp7", "title": "Multiple Area Laser Hair Removal (Only For Package)", "start": "2026-09-19T11:30:00", "duration": 120, "status": "ACCEPTED"}, {"id": "kfosuuxd0cupf4", "title": "Multiple Area Laser Hair Removal (Only For Package)", "start": "2026-09-19T13:00:00", "duration": 120, "status": "ACCEPTED"}, {"id": "kiqwh1phzkcorn", "title": "Full face Laser Hair Removal", "start": "2026-09-19T14:00:00", "duration": 30, "status": "ACCEPTED"}, {"id": "qcxxfhmty0rzpl", "title": "Multiple Area Laser Hair Removal (Only For Package)", "start": "2026-09-19T14:30:00", "duration": 120, "status": "ACCEPTED"}, {"id": "up4c0xw6wv4b1d", "title": "Check/Nose VP/PIGMENT", "start": "2026-09-21T15:00:00", "duration": 30, "status": "ACCEPTED"}, {"id": "zafpq89cs4pdbj", "title": "Brazilian Laser Hair Removal", "start": "2026-09-22T10:00:00", "duration": 45, "status": "ACCEPTED"}];
+
+const eventMap = {};
+EVENTS.forEach(e => {
+  const dk = e.start.substring(0,10);
+  if (!eventMap[dk]) eventMap[dk] = [];
+  eventMap[dk].push(e);
+});
+
+let currentYear, currentMonth;
+
+function init() {
+  const t = new Date();
+  currentYear = t.getFullYear(); currentMonth = t.getMonth();
+  renderMonth(); updateStats();
+}
+
+function updateStats() {
+  const today = new Date();
+  const mk = today.toISOString().substring(0,7);
+  let mc = 0, wc = 0;
+  const we = new Date(today.getTime() + 7*86400000);
+  EVENTS.forEach(e => {
+    const d = new Date(e.start);
+    if (e.start.startsWith(mk)) mc++;
+    if (d >= today && d <= we) wc++;
+  });
+  document.getElementById('statMonth').textContent = mc;
+  document.getElementById('statWeek').textContent = wc;
+}
+
+function renderMonth() {
+  const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('monthLabel').textContent = MONTHS[currentMonth] + ' ' + currentYear;
+  const grid = document.getElementById('calGrid');
+  const DAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  let html = DAYS.map(d=>`<div class="cal-header">${d}</div>`).join('');
+  const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+  const daysInMonth = new Date(currentYear, currentMonth+1, 0).getDate();
+  const prevDays = new Date(currentYear, currentMonth, 0).getDate();
+  const today = new Date();
+  for (let i=firstDay-1; i>=0; i--) html += `<div class="cal-day other-month"><div class="day-num">${prevDays-i}</div></div>`;
+  for (let d=1; d<=daysInMonth; d++) {
+    const ds = `${currentYear}-${String(currentMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const isToday = today.getFullYear()===currentYear && today.getMonth()===currentMonth && today.getDate()===d;
+    const evts = eventMap[ds] || [];
+    const shown = evts.slice(0,2);
+    let ep = shown.map(e => `<div class="event-pill booked" title="${e.title}">${e.start.substring(11,16)} ${e.title}</div>`).join('');
+    ep += `<div class="event-pill blocked">1:30 Blocked</div>`;
+    if (evts.length>2) ep += `<div class="more-badge">+${evts.length-2} more</div>`;
+    html += `<div class="cal-day${isToday?' today':''}${evts.length?' has-events':''}" onclick="showDay('${ds}',${d})">
+      <div class="day-num${evts.length?' has-events':''}">${d}</div>${ep}</div>`;
+  }
+  const total = firstDay + daysInMonth;
+  const rem = total%7===0 ? 0 : 7-(total%7);
+  for (let i=1; i<=rem; i++) html += `<div class="cal-day other-month"><div class="day-num">${i}</div></div>`;
+  grid.innerHTML = html;
+}
+
+function showDay(ds, dn) {
+  const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('dayViewTitle').textContent = MONTHS[currentMonth] + ' ' + dn + ', ' + currentYear;
+  const evts = eventMap[ds] || [];
+  const byTime = {};
+  evts.forEach(e => {
+    const key = e.start.substring(11,16);
+    if (!byTime[key]) byTime[key] = [];
+    byTime[key].push(e);
+  });
+  let html = '';
+  for (let h=10; h<18; h++) {
+    for (let m of [0,30]) {
+      const tk = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;
+      const label = h>12 ? `${h-12}:${String(m).padStart(2,'0')}pm` : h===12 ? `12:${String(m).padStart(2,'0')}pm` : `${h}:${String(m).padStart(2,'0')}am`;
+      const mins = h*60+m;
+      const isBlocked = mins>=810 && mins<900;
+      const slotEvts = byTime[tk] || [];
+      let content = '';
+      if (isBlocked) content = '<div class="blocked-label">⛔ Blocked</div>';
+      else slotEvts.forEach(e => { content += `<div class="slot-event booked">📅 ${e.title} (${e.duration}min)</div>`; });
+      html += `<div class="hour-label">${label}</div><div class="hour-slot${isBlocked?' blocked-slot':slotEvts.length?' ':' available'}">${content}</div>`;
+    }
+  }
+  document.getElementById('hoursGrid').innerHTML = html;
+  document.getElementById('calendarView').style.display='none';
+  document.getElementById('dayView').style.display='block';
+  document.getElementById('dayView').classList.add('active');
+}
+
+function showMonth() {
+  document.getElementById('calendarView').style.display='block';
+  document.getElementById('dayView').style.display='none';
+}
+function prevMonth() { currentMonth--; if(currentMonth<0){currentMonth=11;currentYear--;} renderMonth(); }
+function nextMonth() { currentMonth++; if(currentMonth>11){currentMonth=0;currentYear++;} renderMonth(); }
+function goToday() { const t=new Date(); currentYear=t.getFullYear(); currentMonth=t.getMonth(); showMonth(); renderMonth(); }
+init();
+</script>
+</body>
+</html>
