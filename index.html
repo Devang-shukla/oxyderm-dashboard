@@ -1687,6 +1687,20 @@ if(S.automations.length === 0){
 }
 
 function fireAutomationEvent(eventType, payload){
+  // Best-effort: also notify the local automation engine (engine/automationEngine.js),
+  // a persistent background process (launchd: com.oxyderm.automation-engine) that keeps
+  // running even when this browser tab is closed — e.g. for the 7am Square cron.
+  // Fire-and-forget: if the engine isn't running, the dashboard's own in-browser logic
+  // below still runs exactly as before. This call never blocks or throws.
+  try {
+    fetch('http://localhost:4790/event', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({type: eventType, payload: payload}),
+      signal: AbortSignal.timeout(1500)
+    }).catch(function(){ /* engine offline — silently ignored, browser-side automation still runs */ });
+  } catch(e) { /* fetch/AbortSignal unsupported or engine unreachable — no-op */ }
+
   // Check all ON automations matching this trigger
   S.automations.forEach(function(auto){
     if(!auto.enabled || auto.trigger !== eventType) return;

@@ -1,0 +1,59 @@
+{
+  "_comment": "Engine-side workflow definitions read by engine/automationEngine.js. Separate from the browser's localStorage 'ox-automations' (dashboard UI) but mirrors the same 4 workflows plus 2 new engine-only ones for funnel leads and post queueing, so both sides agree on behavior.",
+  "workflows": [
+    {
+      "id": "new-lead-auto-tag",
+      "name": "New Lead Auto-Tag",
+      "trigger": "new-lead",
+      "condition": null,
+      "action": "tag-contact",
+      "params": { "tag": "new-lead", "notify": true },
+      "enabled": true
+    },
+    {
+      "id": "booking-confirmed",
+      "name": "Booking Confirmed",
+      "trigger": "appointment-booked",
+      "condition": null,
+      "action": "move-pipeline-stage",
+      "params": { "stage": "Booked" },
+      "enabled": true
+    },
+    {
+      "id": "no-show-flag",
+      "name": "No-Show Flag",
+      "trigger": "no-show",
+      "condition": null,
+      "action": "tag-contact",
+      "params": { "tag": "no-show-followup", "notify": true },
+      "enabled": true
+    },
+    {
+      "id": "stage-change-sequence",
+      "name": "Stage Change Sequence",
+      "trigger": "pipeline-stage-change",
+      "condition": null,
+      "action": "start-sequence",
+      "params": { "sequenceId": null },
+      "enabled": true
+    },
+    {
+      "id": "funnel-lead-intake",
+      "name": "Funnel Lead Intake",
+      "trigger": "funnel-submission",
+      "condition": null,
+      "action": "create-crm-contact",
+      "params": { "stage": "Lead", "sourcePrefix": "form:" },
+      "enabled": true
+    },
+    {
+      "id": "post-queue-throttle",
+      "name": "Post Queue Throttle",
+      "trigger": "post-push-requested",
+      "condition": null,
+      "action": "enqueue-postiz",
+      "params": { "rateLimitPerHour": 30 },
+      "enabled": true
+    }
+  ]
+}

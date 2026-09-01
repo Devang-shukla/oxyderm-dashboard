@@ -1,2 +1,7 @@
 
 config.js
+data/engine-stdout.log
+data/engine-stderr.log
+data/engine-state.json
+data/postiz-queue.json
+data/engine.log
