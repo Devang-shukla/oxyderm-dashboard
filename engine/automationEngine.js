@@ -18,9 +18,12 @@
  * at 7am). If unreachable, the dashboard's own in-browser event bus (in index.html)
  * keeps working exactly as before — nothing regresses.
  *
- * Zero external SaaS dependencies: no npm install required, no cloud calls
- * except the explicitly-stubbed Postiz queue (which never actually calls out
- * while Postiz is not connected — see postizQueue below).
+ * Zero external SaaS dependencies for CRM/automation logic: no npm install
+ * required. Social publishing dispatches to a LOCAL n8n instance (separate
+ * process, not managed here) — see N8N_WEBHOOK_URL below. n8n itself must
+ * have an active workflow listening on that webhook path, or dispatch calls
+ * fail over to a local pending queue (never silently dropped, never faked
+ * as sent).
  */
 
 const http = require('http');
@@ -66,6 +69,85 @@ function saveState(state) {
   writeJSON(STATE_FILE, state);
 }
 
+// ---------- n8n social dispatcher ----------
+// Sends structured publish payloads to a local n8n webhook workflow. n8n runs
+// as a separate local process (not managed by this engine) — reachable via
+// N8N_WEBHOOK_URL. This REPLACES the old Postiz-only path: Postiz was never
+// deployed successfully, whereas n8n is confirmed running locally, so this is
+// the live dispatch path going forward. Postiz code below is kept only as a
+// legacy fallback/reference — n8n is primary.
+const N8N_WEBHOOK_URL = process.env.N8N_WEBHOOK_URL || 'http://localhost:5678/webhook/hermes-publish';
+const SOCIAL_PLATFORMS = ['meta', 'tiktok', 'youtube', 'gbp', 'linkedin', 'x', 'reddit', 'substack'];
+const SOCIAL_MEDIA_TYPES = ['REELS', 'STORIES', 'FEED'];
+
+function buildPublishPayload(item) {
+  // Normalizes an arbitrary post/item into the exact contract n8n expects.
+  return {
+    title: item.title || item.hook || '',
+    caption: item.caption || '',
+    media_url: item.media_url || item.mediaUrl || '',
+    media_type: SOCIAL_MEDIA_TYPES.indexOf(item.media_type) > -1 ? item.media_type : 'FEED',
+    subreddit: item.subreddit || null,
+    booking_url: item.booking_url || item.checkoutUrl || null,
+    platforms: Array.isArray(item.platforms) && item.platforms.length
+      ? item.platforms.filter(p => SOCIAL_PLATFORMS.indexOf(p) > -1)
+      : (item.platform ? mapLegacyPlatform(item.platform) : [])
+  };
+}
+
+// Maps the dashboard's existing free-text platform names (e.g. "Instagram Reels",
+// "TikTok", "Facebook Ads") onto the fixed platforms list n8n expects.
+function mapLegacyPlatform(name) {
+  const n = String(name).toLowerCase();
+  if (n.includes('instagram') || n.includes('facebook')) return ['meta'];
+  if (n.includes('tiktok')) return ['tiktok'];
+  if (n.includes('youtube')) return ['youtube'];
+  if (n.includes('google business')) return ['gbp'];
+  if (n.includes('linkedin')) return ['linkedin'];
+  if (n.includes(' x') || n === 'x' || n.includes('twitter')) return ['x'];
+  if (n.includes('reddit')) return ['reddit'];
+  if (n.includes('substack')) return ['substack'];
+  return [];
+}
+
+function dispatchToN8n(item) {
+  return new Promise((resolve) => {
+    const payload = buildPublishPayload(item);
+    const body = JSON.stringify(payload);
+    const urlObj = new URL(N8N_WEBHOOK_URL);
+    const httpMod = urlObj.protocol === 'https:' ? require('https') : require('http');
+    const req = httpMod.request({
+      hostname: urlObj.hostname,
+      port: urlObj.port,
+      path: urlObj.pathname + urlObj.search,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Content-Length': Buffer.byteLength(body) },
+      timeout: 5000
+    }, (res) => {
+      let data = '';
+      res.on('data', c => { data += c; });
+      res.on('end', () => {
+        const ok = res.statusCode >= 200 && res.statusCode < 300;
+        log(`n8n dispatch -> HTTP ${res.statusCode} for platforms=[${payload.platforms.join(',')}]${ok ? '' : ' — ' + data.slice(0, 300)}`);
+        resolve({ ok, statusCode: res.statusCode, body: data, payload });
+      });
+    });
+    req.on('timeout', () => { req.destroy(); resolve({ ok: false, error: 'timeout', payload }); });
+    req.on('error', (e) => {
+      log(`n8n dispatch FAILED (${e.code || e.message}) — is n8n running and is the "${urlObj.pathname}" workflow active? Falling back to local queue.`);
+      resolve({ ok: false, error: e.message, payload });
+    });
+    req.write(body);
+    req.end();
+  });
+}
+
+function enqueueLocalFallback(payload, reason) {
+  const q = loadPostizQueue(); // reused as a generic local pending-publish queue
+  q.pending.push({ ...payload, queuedAt: new Date().toISOString(), id: crypto.randomUUID(), fallbackReason: reason });
+  savePostizQueue(q);
+}
+
 // ---------- Postiz shared rate limiter (30 req/hr) ----------
 // Reads POSTIZ_URL / POSTIZ_API_KEY from process.env — never hardcoded.
 // Since Postiz is not currently deployed (paused per team decision), this
@@ -97,6 +179,13 @@ function canMakePostizCall() {
   const oneHourAgo = Date.now() - 3600 * 1000;
   const recent = q.calls.filter(t => t > oneHourAgo);
   return recent.length < 30;
+}
+function recordPostizCall() {
+  const q = loadPostizQueue();
+  const oneHourAgo = Date.now() - 3600 * 1000;
+  q.calls = q.calls.filter(t => t > oneHourAgo);
+  q.calls.push(Date.now());
+  savePostizQueue(q);
 }
 function enqueuePostiz(item) {
   const q = loadPostizQueue();
@@ -161,11 +250,9 @@ function runAction(workflow, payload, state) {
       return { ok: true, detail: `created CRM contact "${contact.name}" at stage "${contact.stage}"`, contact };
     }
     case 'enqueue-postiz': {
-      if (!canMakePostizCall()) {
-        return { ok: false, detail: 'Postiz rate limit reached (30/hr) — post held in local queue' };
-      }
-      const result = enqueuePostiz(payload);
-      return { ok: true, detail: result.message };
+      // Legacy action name kept for backward compatibility with existing
+      // automations.json workflows — now routes through n8n instead of Postiz.
+      return { ok: true, detail: 'queued for n8n dispatch', async: true, payload };
     }
     default:
       return { ok: false, detail: `unknown action "${action}"` };
@@ -280,6 +367,45 @@ const server = http.createServer((req, res) => {
       }
     });
     return;
+  }
+
+  if (req.method === 'POST' && url.pathname === '/publish') {
+    let body = '';
+    req.on('data', chunk => { body += chunk; });
+    req.on('end', async () => {
+      try {
+        const item = JSON.parse(body || '{}');
+        if (!canMakePostizCall()) { // shared 30/hr limiter, reused across all dispatch paths
+          const payload = buildPublishPayload(item);
+          enqueueLocalFallback(payload, 'rate-limit (30/hr) reached');
+          return send(res, 429, { ok: false, queued: true, reason: 'rate-limit', message: 'Shared publish rate limit (30/hr) reached — queued locally, will retry.' });
+        }
+        recordPostizCall();
+        const result = await dispatchToN8n(item);
+        if (!result.ok) {
+          enqueueLocalFallback(result.payload, result.error || `HTTP ${result.statusCode}`);
+          appendLearning('social', `n8n dispatch failed (${result.error || result.statusCode}) for platforms=[${(result.payload.platforms||[]).join(',')}] — queued locally.`);
+          return send(res, 502, { ok: false, queued: true, reason: result.error || 'n8n_error', message: 'n8n unreachable or workflow not active — queued locally, will retry.', detail: result.body });
+        }
+        appendLearning('social', `Published via n8n to platforms=[${(result.payload.platforms||[]).join(',')}]: "${(result.payload.title||result.payload.caption||'').slice(0,60)}"`);
+        return send(res, 200, { ok: true, dispatched: true, n8n_status: result.statusCode });
+      } catch (e) {
+        return send(res, 400, { ok: false, error: e.message });
+      }
+    });
+    return;
+  }
+
+  if (req.method === 'GET' && url.pathname === '/publish/status') {
+    const q = loadPostizQueue();
+    const oneHourAgo = Date.now() - 3600 * 1000;
+    return send(res, 200, {
+      n8nWebhookUrl: N8N_WEBHOOK_URL,
+      requestsThisHour: q.calls.filter(t => t > oneHourAgo).length,
+      limit: 30,
+      pendingFallbackQueue: q.pending.length,
+      platforms: SOCIAL_PLATFORMS
+    });
   }
 
   if (req.method === 'GET' && url.pathname === '/') {

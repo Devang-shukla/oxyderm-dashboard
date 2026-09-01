@@ -334,6 +334,10 @@ textarea{min-height:65px;resize:vertical}
 
 <!-- ══ POSTS ══ -->
 <div class="pnl" id="pnl-posts">
+  <div class="card" style="background:#001228;border-color:#1a3a5c">
+    <div style="font-size:12px;font-weight:700;color:var(--gold);margin-bottom:6px">📤 Manual Posting Workflow (zero-cost, no API keys)</div>
+    <div style="font-size:11px;color:var(--muted);line-height:1.6">Tap <b>📋 Copy & Open</b> on any post below — it copies the caption to your clipboard and opens the platform's native scheduler (Meta Business Suite, TikTok Studio, or YouTube Studio) in a new tab. Paste the caption, upload the media, pick a date, and hit Schedule. Batch through the week's posts in ~10 minutes.</div>
+  </div>
   <button class="btn btn-gold btn-block" onclick="openModal('mod-post')">+ Add Post</button>
   <div class="stl" style="margin-top:16px">Queue</div>
   <div id="posts-list"><div style="color:var(--muted);font-size:13px;padding:20px;text-align:center">No posts yet. Tap + Add Post.</div></div>
@@ -1320,7 +1324,88 @@ renderAgents();
 // ═══════════════════════════════════════════
 // POSTS
 // ═══════════════════════════════════════════
-var WEEK1_POSTS = [{"platform":"Instagram Story","caption":"Tired of the shaving routine? Laser hair removal at Oxyderm gives you 70-90% permanent reduction in 6-8 sessions. Edmonton's trusted laser clinic. Free consultation available. Link in bio.\\n\\n#LaserHairRemoval #EdmontonBeauty #OxyderEdmonton #HairFree #EdmontonSpa #LaserClinic #SmoothSkin #BeautyEdmonton #LaserTreatment #Edmonton","hook":"Still shaving every 3 days? Here's what you're missing.","time":"2026-08-31T08:00","status":"scheduled","id":1788156008},{"platform":"TikTok","caption":"POV: you're still waxing when laser exists. 6-8 sessions = permanent results. Free consultation at Oxyderm Edmonton.\\n\\n#LaserHairRemoval #Edmonton #OxyderEdmonton #BeautyTok #LaserTreatment #SkincareTok #EdmontonBeauty #HairFree #LaserClinic #BeforeAndAfter","hook":"POV: You're still waxing when laser exists","time":"2026-08-31T18:00","status":"scheduled","id":1788156018}];
+
+// Native scheduling tools — Option 1 workflow (zero-cost, no API keys, no
+// dev app approval). Each platform maps to the official desktop tool where
+// posts/reels are uploaded and scheduled manually. This is the primary
+// posting path while Postiz remains disconnected.
+var NATIVE_SCHEDULE_LINKS = {
+  'Instagram Story': { url: 'https://business.facebook.com', tool: 'Meta Business Suite', steps: 'Create Post/Reel → upload media → paste caption → Schedule' },
+  'Instagram Reels':  { url: 'https://business.facebook.com', tool: 'Meta Business Suite', steps: 'Create Reel → upload video → paste caption → Schedule' },
+  'Facebook Page':    { url: 'https://business.facebook.com', tool: 'Meta Business Suite', steps: 'Create Post → upload media → paste caption → Schedule' },
+  'Facebook Story':   { url: 'https://business.facebook.com', tool: 'Meta Business Suite', steps: 'Create Story → upload media → paste caption → Schedule' },
+  'Facebook Ads':      { url: 'https://business.facebook.com', tool: 'Meta Business Suite', steps: 'Ads Manager → new ad → paste caption' },
+  'FB Groups':          { url: 'https://www.facebook.com/groups', tool: 'Facebook Groups', steps: 'Open group → paste caption + link → Post' },
+  'TikTok':              { url: 'https://www.tiktok.com/tiktokstudio', tool: 'TikTok Studio', steps: 'Upload → drop video → paste hook & caption → Schedule video' },
+  'YouTube':             { url: 'https://studio.youtube.com', tool: 'YouTube Studio', steps: 'Create/Upload Videos → set Visibility to Schedule' },
+  'Google Business Profile': { url: 'https://business.google.com', tool: 'Google Business Profile', steps: 'Posts → Add update → paste caption → Publish' },
+  'Sustaack':            { url: 'https://sustaack.com', tool: 'Sustaack', steps: 'New post → embed + link → Publish' },
+};
+function nativeLinkFor(platform){
+  return NATIVE_SCHEDULE_LINKS[platform] || { url: '#', tool: platform, steps: 'Paste caption into ' + platform + ' composer' };
+}
+function copyAndOpenNative(i){
+  var post = S.posts[i];
+  var text = (post.hook ? post.hook + '\n\n' : '') + (post.caption || '');
+  var link = nativeLinkFor(post.platform);
+  var doOpen = function(){
+    window.open(link.url, '_blank');
+    S.posts[i].status = 'ready';
+    save('ox-posts', S.posts);
+    renderPosts();
+  };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(function(){
+      alert('✓ Caption copied to clipboard.\n\nOpening ' + link.tool + ' — ' + link.steps);
+      doOpen();
+    }).catch(function(){
+      prompt('Copy this caption manually (clipboard blocked):', text);
+      doOpen();
+    });
+  } else {
+    prompt('Copy this caption manually:', text);
+    doOpen();
+  }
+}
+
+// Import the 3-video CAPTION_BUNDLES.md suite (video_scripts/CAPTION_BUNDLES.md)
+// as ready-to-post entries across all 4 platforms it covers, so the real
+// generated captions are usable from the Posts queue instead of sitting
+// unused in a markdown file.
+var CAPTION_BUNDLE_POSTS = [
+  {video:'Video 1: The Aftercare Mistake (30s)', platform:'TikTok', caption:"Post-laser? Don't use drugstore lotion. ClearChoice barrier repair + Sport Shield SPF 45. Authorized Oxyderm Edmonton. Link in bio ->", utm:'utm_source=tiktok&utm_medium=video&utm_campaign=oxyclearchoice_v1'},
+  {video:'Video 1: The Aftercare Mistake (30s)', platform:'Instagram Reels', caption:"Microneedling recovery isn't complete without clinical-grade barrier repair. ClearChoice Gentle Foam + Copper Peptide + SPF 45. Order from authorized distributor Oxyderm.", utm:'utm_source=instagram&utm_medium=video&utm_campaign=oxyclearchoice_v1'},
+  {video:'Video 1: The Aftercare Mistake (30s)', platform:'Facebook Ads', caption:"Medical-grade post-treatment skincare delivered Canada-wide (free shipping $100+). Shop ClearChoice at Oxyderm Laser Clinic Edmonton.", utm:'utm_source=facebook&utm_medium=video&utm_campaign=oxyclearchoice_v1'},
+  {video:'Video 1: The Aftercare Mistake (30s)', platform:'Google Business Profile', caption:"ClearChoice authorized distributor — Edmonton. Post-laser & microneedling recovery kits with SPF 45 sun defense. Shop online with Square checkout.", utm:'utm_source=google_gbp&utm_medium=video&utm_campaign=oxyclearchoice_v1'},
+  {video:'Video 2: 3-Step Recovery Protocol (45s)', platform:'TikTok', caption:"3-step clinical protocol from Oxyderm: Foam cleanser > Copper Peptide > Squalane + SPF 45. All products available via Square checkout — link below.", utm:'utm_source=tiktok&utm_medium=video&utm_campaign=oxyclearchoice_v2'},
+  {video:'Video 2: 3-Step Recovery Protocol (45s)', platform:'Instagram Reels', caption:"The exact protocol we use at Oxyderm Laser Clinic. Gentle Foam Cleanser, Copper Peptide Infusion, Intense Moisture Squalane Shield, Sport Shield SPF 45.", utm:'utm_source=instagram&utm_medium=video&utm_campaign=oxyclearchoice_v2'},
+  {video:'Video 2: 3-Step Recovery Protocol (45s)', platform:'Facebook Ads', caption:"Oxyderm ClearChoice & Oceuticals — 3-step post-treatment recovery kit. Medical-grade. Canada-wide delivery via Square. $100+ free shipping.", utm:'utm_source=facebook&utm_medium=video&utm_campaign=oxyclearchoice_v2'},
+  {video:'Video 2: 3-Step Recovery Protocol (45s)', platform:'Google Business Profile', caption:"Recovery protocol: Cleanse, Repair (Copper Peptide), Protect (SPF 45). Authorized ClearChoice distributor — Oxyderm Edmonton.", utm:'utm_source=google_gbp&utm_medium=video&utm_campaign=oxyclearchoice_v2'},
+  {video:'Video 3: Store Launch Direct Offer (25s)', platform:'TikTok', caption:"ClearChoice & Oceuticals — now live online at Oxyderm Edmonton! 21 clinical formulations. Free Canada-wide shipping over $100 via Square checkout. Tap to shop.", utm:'utm_source=tiktok&utm_medium=video&utm_campaign=oxyclearchoice_v3'},
+  {video:'Video 3: Store Launch Direct Offer (25s)', platform:'Instagram Reels', caption:"Shop the full ClearChoice formulary online. From acne boosters to anti-aging peptide matrix. Square Checkout — secure & instant. Free shipping $100+.", utm:'utm_source=instagram&utm_medium=video&utm_campaign=oxyclearchoice_v3'},
+  {video:'Video 3: Store Launch Direct Offer (25s)', platform:'Facebook Ads', caption:"Oxygen clinic-grade skincare delivered. 21 formulations across 7 categories. 2x Keystone pricing. Authorized distributor — Square checkout.", utm:'utm_source=facebook&utm_medium=video&utm_campaign=oxyclearchoice_v3'},
+  {video:'Video 3: Store Launch Direct Offer (25s)', platform:'Google Business Profile', caption:"ClearChoice Professional Medical Skincare — 21 products, 7 categories. Authorized Canadian distributor: Oxyderm Laser Clinic Edmonton.", utm:'utm_source=google_gbp&utm_medium=video&utm_campaign=oxyclearchoice_v3'},
+];
+var SQUARE_CHECKOUT_BASE = 'https://book.squareup.com/appointments/book/merchant/SA5CTAH41JNY2/services';
+if(!localStorage.getItem('ox-posts-bundles-loaded')){
+  var existingCaps = S.posts.map(function(p){ return p.caption; });
+  CAPTION_BUNDLE_POSTS.forEach(function(b){
+    if(existingCaps.indexOf(b.caption) === -1){
+      S.posts.push({
+        platform: b.platform,
+        caption: b.caption,
+        hook: b.video,
+        checkoutUrl: SQUARE_CHECKOUT_BASE + '?' + b.utm,
+        status: 'pending',
+        id: Date.now() + Math.floor(Math.random()*10000)
+      });
+    }
+  });
+  save('ox-posts', S.posts);
+  localStorage.setItem('ox-posts-bundles-loaded', '1');
+}
+
+var WEEK1_POSTS = [{"platform":"Instagram Story","caption":"Tired of the shaving routine? Laser hair removal at Oxyderm gives you 70-90% permanent reduction in 6-8 sessions. Edmonton's trusted laser clinic. Free consultation available. Link in bio.\n\n#LaserHairRemoval #EdmontonBeauty #OxyderEdmonton #HairFree #EdmontonSpa #LaserClinic #SmoothSkin #BeautyEdmonton #LaserTreatment #Edmonton","hook":"Still shaving every 3 days? Here's what you're missing.","time":"2026-08-31T08:00","status":"scheduled","id":1788156008},{"platform":"TikTok","caption":"POV: you're still waxing when laser exists. 6-8 sessions = permanent results. Free consultation at Oxyderm Edmonton.\n\n#LaserHairRemoval #Edmonton #OxyderEdmonton #BeautyTok #LaserTreatment #SkincareTok #EdmontonBeauty #HairFree #LaserClinic #BeforeAndAfter","hook":"POV: You're still waxing when laser exists","time":"2026-08-31T18:00","status":"scheduled","id":1788156018}];
 
 if(!localStorage.getItem('ox-posts-w1-loaded')){
   var existing_ids = S.posts.map(function(p){ return p.id; });
@@ -1333,12 +1418,15 @@ function renderPosts(){
   var el = document.getElementById('posts-list');
   if(!S.posts.length){ el.innerHTML='<div style="color:var(--muted);font-size:13px;padding:20px;text-align:center">No posts yet. Tap + Add Post.</div>'; return; }
   el.innerHTML = S.posts.map(function(p,i){
+    var link = nativeLinkFor(p.platform);
     return '<div style="display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid #0a1e35"><div style="flex:1"><div style="font-size:13px;font-weight:600">' + p.platform + '</div>' +
       (p.hook ? '<div style="font-size:12px;color:var(--gold);margin-top:2px;font-style:italic">"' + p.hook + '"</div>' : '') +
       '<div style="font-size:11px;color:var(--muted);margin-top:2px">' + (p.caption||'').slice(0,80) + '...</div>' +
       (p.time ? '<div style="font-size:10px;color:var(--blue);margin-top:3px">📅 ' + new Date(p.time).toLocaleDateString('en-CA',{weekday:'short',month:'short',day:'numeric'}) + ' at ' + new Date(p.time).toLocaleTimeString('en-CA',{hour:'2-digit',minute:'2-digit'}) + '</div>' : '') +
+      '<div style="font-size:10px;color:var(--muted);margin-top:3px">📍 ' + link.tool + '</div>' +
       '<div class="tags" style="margin-top:5px"><span class="tag ' + ({'pending':'t-yellow','ready':'t-blue','scheduled':'t-gold','posted':'t-green'}[p.status]||'t-yellow') + '">' + p.status + '</span></div></div>' +
       '<div style="display:flex;gap:5px;flex-direction:column">' +
+      '<button class="btn btn-gold btn-sm" onclick="copyAndOpenNative('+i+')">📋 Copy & Open</button>' +
       (p.status!=='posted'?'<button class="btn btn-green btn-sm" onclick="markPosted('+i+')">✓ Posted</button>':'')+
       '<button class="btn btn-outline btn-sm" onclick="pushToPostiz('+i+')">📤 Postiz</button>' +
       '<button class="btn btn-red btn-sm" onclick="delPost('+i+')">✕</button></div></div>';
