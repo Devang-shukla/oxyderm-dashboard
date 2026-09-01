@@ -1,16 +1,34 @@
 {
-  "fetched_at": "10:03 PM MDT",
-  "today": "2026-08-31",
-  "week_start": "2026-08-31",
-  "week_end": "2026-09-06",
+  "fetched_at": "07:00 AM MDT",
+  "today": "2026-09-01",
+  "week_start": "2026-09-01",
+  "week_end": "2026-09-07",
   "appointments": [
     {
-      "time": "10:00 AM",
-      "date": "2026-08-31",
-      "date_label": "Monday, August 31",
-      "name": "Amany  Sunner",
-      "phone": "(780) 232-2278",
-      "email": "amanysunner@gmail.com",
+      "time": "2:00 PM",
+      "date": "2026-09-01",
+      "date_label": "Tuesday, September 01",
+      "name": "Loveleen  Wadhwa",
+      "phone": "+14036178777",
+      "email": "",
+      "service": "Treatment",
+      "areas": "",
+      "duration_min": 105,
+      "visit": "Unknown visit",
+      "visit_num": null,
+      "payment": "See Square",
+      "flags": [],
+      "raw_note": "",
+      "status": "ACCEPTED",
+      "booking_id": "nr51vc4o9eq8vt"
+    },
+    {
+      "time": "3:15 PM",
+      "date": "2026-09-01",
+      "date_label": "Tuesday, September 01",
+      "name": "Alexis Hornung",
+      "phone": "+17809918844",
+      "email": "alexis.hornung@gmail.com",
       "service": "Treatment",
       "areas": "",
       "duration_min": 120,
@@ -20,146 +38,10 @@
       "flags": [],
       "raw_note": "",
       "status": "ACCEPTED",
-      "booking_id": "2kdmt85nm0unop"
-    },
-    {
-      "time": "11:00 AM",
-      "date": "2026-08-31",
-      "date_label": "Monday, August 31",
-      "name": "Mannatpreet Kaur",
-      "phone": "+17806001295",
-      "email": "mannatpreetk786@gmail.com",
-      "service": "Treatment",
-      "areas": "lower face , no nose, forehead",
-      "duration_min": 30,
-      "visit": "1st visit",
-      "visit_num": 1,
-      "payment": "paid 1st instalment in august $220",
-      "flags": [],
-      "raw_note": "Tx1 type 4 \nTreatment area : lower face , no nose, forehead \n6 treatment package $110 each \npaying in 3 instalment $220 each \npaid 1st instalment in august $220 \npaying 2nd instalment in sep $220 \npaying 3rdinstalment in oct $220\nbaught alo gel, mini spf in august 2026 \nHetisha did treatment ",
-      "status": "ACCEPTED",
-      "booking_id": "660p95hclwuzrb"
-    },
-    {
-      "time": "2:00 PM",
-      "date": "2026-08-31",
-      "date_label": "Monday, August 31",
-      "name": "Oleksandr Zamlilyi",
-      "phone": "(780) 340-1010",
-      "email": "alexzam10@gmail.com",
-      "service": "Treatment",
-      "areas": "chest ,abdomen ,right arm",
-      "duration_min": 120,
-      "visit": "11th visit",
-      "visit_num": 11,
-      "payment": "Paid promo $220 each , paid in 3 instalment",
-      "flags": [
-        "Left Google review"
-      ],
-      "raw_note": "\nTx11 part 1 \nTreatment Area: chest ,abdomen ,right arm \n\nHe will book treatment in part1 front , part 2 back \n\nSingle treatment session $240\nPaid promo $220 each , paid in 3 instalment\nPaid 1st instalment $440 in June 2025\nPaid 2nd instalment $440 in July 2025\nPaid 3rd instalment $440 in Aug 2025\nBought aloe gel $24.99 in July 2025\n*google review, he was asked three times, and he always forgets about it. Do not ask anymore because looks unprofessional \nAll paid - all used in Jan 2026\nPaid $80 f",
-      "status": "ACCEPTED",
-      "booking_id": "2mx90axfb7il9f"
-    },
-    {
-      "time": "6:00 PM",
-      "date": "2026-08-31",
-      "date_label": "Monday, August 31",
-      "name": "Etondi Tambi",
-      "phone": "(438) 835-3968",
-      "email": "Etondi87@yahoo.com",
-      "service": "Treatment",
-      "areas": "",
-      "duration_min": 60,
-      "visit": "2nd visit",
-      "visit_num": 2,
-      "payment": "paid 1st and 6 th instalment $250 each in july 2026",
-      "flags": [],
-      "raw_note": "Tx2 type 6 membership \nTreatment area- brazillian, underarms \n( part 2 lower legs)  she didnt book in julyso she have 1 treatment pending for legs \n6 treatment package \npaid 1st and 6 th instalment $250 each in july 2026 \n4 left to use underarms, brazilian , 5 left to use loweerr legs \nmembership started in july 2026 expires in Dec2026 \nbaught alo gel in july 2026 \nHetisha did treatment \n\ncheck belly piersing ",
-      "status": "ACCEPTED",
-      "booking_id": "ds7ogqfg0urzrw"
+      "booking_id": "3q0lx41k7sgv51"
     }
   ],
   "week": [
-    {
-      "date": "2026-08-31",
-      "label": "Monday, August 31",
-      "appointments": [
-        {
-          "time": "10:00 AM",
-          "date": "2026-08-31",
-          "date_label": "Monday, August 31",
-          "name": "Amany  Sunner",
-          "phone": "(780) 232-2278",
-          "email": "amanysunner@gmail.com",
-          "service": "Treatment",
-          "areas": "",
-          "duration_min": 120,
-          "visit": "Unknown visit",
-          "visit_num": null,
-          "payment": "See Square",
-          "flags": [],
-          "raw_note": "",
-          "status": "ACCEPTED",
-          "booking_id": "2kdmt85nm0unop"
-        },
-        {
-          "time": "11:00 AM",
-          "date": "2026-08-31",
-          "date_label": "Monday, August 31",
-          "name": "Mannatpreet Kaur",
-          "phone": "+17806001295",
-          "email": "mannatpreetk786@gmail.com",
-          "service": "Treatment",
-          "areas": "lower face , no nose, forehead",
-          "duration_min": 30,
-          "visit": "1st visit",
-          "visit_num": 1,
-          "payment": "paid 1st instalment in august $220",
-          "flags": [],
-          "raw_note": "Tx1 type 4 \nTreatment area : lower face , no nose, forehead \n6 treatment package $110 each \npaying in 3 instalment $220 each \npaid 1st instalment in august $220 \npaying 2nd instalment in sep $220 \npaying 3rdinstalment in oct $220\nbaught alo gel, mini spf in august 2026 \nHetisha did treatment ",
-          "status": "ACCEPTED",
-          "booking_id": "660p95hclwuzrb"
-        },
-        {
-          "time": "2:00 PM",
-          "date": "2026-08-31",
-          "date_label": "Monday, August 31",
-          "name": "Oleksandr Zamlilyi",
-          "phone": "(780) 340-1010",
-          "email": "alexzam10@gmail.com",
-          "service": "Treatment",
-          "areas": "chest ,abdomen ,right arm",
-          "duration_min": 120,
-          "visit": "11th visit",
-          "visit_num": 11,
-          "payment": "Paid promo $220 each , paid in 3 instalment",
-          "flags": [
-            "Left Google review"
-          ],
-          "raw_note": "\nTx11 part 1 \nTreatment Area: chest ,abdomen ,right arm \n\nHe will book treatment in part1 front , part 2 back \n\nSingle treatment session $240\nPaid promo $220 each , paid in 3 instalment\nPaid 1st instalment $440 in June 2025\nPaid 2nd instalment $440 in July 2025\nPaid 3rd instalment $440 in Aug 2025\nBought aloe gel $24.99 in July 2025\n*google review, he was asked three times, and he always forgets about it. Do not ask anymore because looks unprofessional \nAll paid - all used in Jan 2026\nPaid $80 f",
-          "status": "ACCEPTED",
-          "booking_id": "2mx90axfb7il9f"
-        },
-        {
-          "time": "6:00 PM",
-          "date": "2026-08-31",
-          "date_label": "Monday, August 31",
-          "name": "Etondi Tambi",
-          "phone": "(438) 835-3968",
-          "email": "Etondi87@yahoo.com",
-          "service": "Treatment",
-          "areas": "",
-          "duration_min": 60,
-          "visit": "2nd visit",
-          "visit_num": 2,
-          "payment": "paid 1st and 6 th instalment $250 each in july 2026",
-          "flags": [],
-          "raw_note": "Tx2 type 6 membership \nTreatment area- brazillian, underarms \n( part 2 lower legs)  she didnt book in julyso she have 1 treatment pending for legs \n6 treatment package \npaid 1st and 6 th instalment $250 each in july 2026 \n4 left to use underarms, brazilian , 5 left to use loweerr legs \nmembership started in july 2026 expires in Dec2026 \nbaught alo gel in july 2026 \nHetisha did treatment \n\ncheck belly piersing ",
-          "status": "ACCEPTED",
-          "booking_id": "ds7ogqfg0urzrw"
-        }
-      ]
-    },
     {
       "date": "2026-09-01",
       "label": "Tuesday, September 01",
@@ -477,7 +359,49 @@
           "booking_id": "5tvmg6vfus1m5w"
         }
       ]
+    },
+    {
+      "date": "2026-09-07",
+      "label": "Monday, September 07",
+      "appointments": [
+        {
+          "time": "10:00 AM",
+          "date": "2026-09-07",
+          "date_label": "Monday, September 07",
+          "name": "Hetisha Shukla",
+          "phone": "+1 780-863-7561",
+          "email": "oxyderm@outlook.com",
+          "service": "Treatment",
+          "areas": "",
+          "duration_min": 480,
+          "visit": "Unknown visit",
+          "visit_num": null,
+          "payment": "See Square",
+          "flags": [],
+          "raw_note": "",
+          "status": "ACCEPTED",
+          "booking_id": "wvaiy6vfvbjrs4"
+        },
+        {
+          "time": "4:30 PM",
+          "date": "2026-09-07",
+          "date_label": "Monday, September 07",
+          "name": "Kirandeep Kaur",
+          "phone": "(289) 623-6172",
+          "email": "kiran654deepkaur@gmail.com",
+          "service": "Treatment",
+          "areas": "",
+          "duration_min": 60,
+          "visit": "Unknown visit",
+          "visit_num": null,
+          "payment": "See Square",
+          "flags": [],
+          "raw_note": "",
+          "status": "ACCEPTED",
+          "booking_id": "osdj5cc4fxbz8c"
+        }
+      ]
     }
   ],
-  "total_week": 20
+  "total_week": 18
 }
