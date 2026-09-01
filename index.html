@@ -177,6 +177,16 @@ textarea{min-height:65px;resize:vertical}
 .lb.open{display:flex}
 .lb img{max-width:90vw;max-height:85vh;border-radius:10px}
 
+/* CRM GRID */
+.crm-stage-col{flex:1;min-width:280px;background:var(--card2);border-radius:12px;padding:14px;border:1px solid var(--border)}
+.crm-stage-title{font-size:13px;font-weight:700;color:var(--gold);margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
+.crm-contact-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:10px}
+.crm-name{font-size:13px;font-weight:700;margin-bottom:4px}
+.crm-field{font-size:11px;color:var(--muted);margin-bottom:2px}
+
+/* KANBAN BOARD */
+.kanban{display:flex;gap:14px;overflow-x:auto;padding-bottom:12px}
+
 .ftr{text-align:center;padding:16px;font-size:10px;color:var(--muted)}
 </style>
 </head>
@@ -206,6 +216,10 @@ textarea{min-height:65px;resize:vertical}
   <button class="tab" onclick="goTab('images',this)">🖼 Images</button>
   <button class="tab" onclick="goTab('expenses',this)">💰 Expenses</button>
   <button class="tab" onclick="goTab('preauth',this)">🔒 Pre-Auth</button>
+  <button class="tab" onclick="goTab('crm',this)">👥 CRM</button>
+  <button class="tab" onclick="goTab('automations',this)">⚙️ Automations</button>
+  <button class="tab" onclick="goTab('sequences',this)">📧 Sequences</button>
+  <button class="tab" onclick="goTab('funnels',this)">🎯 Funnels</button>
   <button class="tab" onclick="goTab('skills',this)">⚡ Skills</button>
 </div>
 
@@ -215,39 +229,14 @@ textarea{min-height:65px;resize:vertical}
     <div class="stat"><div class="n">2,749</div><div class="l">Customers</div></div>
     <div class="stat"><div class="n">34</div><div class="l">Videos</div></div>
     <div class="stat"><div class="n" id="posted-count">0</div><div class="l">Posted Today</div></div>
-    <div class="stat"><div class="n">2</div><div class="l">Appts Today</div></div>
+    <div class="stat"><div class="n">4</div><div class="l">Appts Today</div></div>
   </div>
-  <div class="stl">Today's Appointments</div>
-  <div class="card">
-    <div class="appt">
-      <div class="appt-row">
-        <div class="appt-time">1:00 PM</div>
-        <div>
-          <div class="appt-name">Alexandra Doblado</div>
-          <div class="appt-svc">Laser Hair Removal — legs, toes, fingers, arms, underarms</div>
-          <div class="tags">
-            <span class="tag t-blue">7th visit</span>
-            <span class="tag t-green">Paid $199.99</span>
-            <span class="tag t-red">⚠ Minor — parent in room</span>
-            <span class="tag t-red">⚠ No face on social media</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="appt">
-      <div class="appt-row">
-        <div class="appt-time">3:00 PM</div>
-        <div>
-          <div class="appt-name">Mehak Wadhwa</div>
-          <div class="appt-svc">Laser Hair Removal — legs, fingers, arms, underarms, face, abdomen, back, Brazilian</div>
-          <div class="tags">
-            <span class="tag t-blue">11th visit</span>
-            <span class="tag t-yellow">Balance $49.99 owing</span>
-            <span class="tag t-gold">Left Google review</span>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="stl">Today's Appointments — <span id="appt-date">Monday, August 31</span></div>
+  <div class="card" id="appt-card">
+    <div class="appt"><div class="appt-row"><div class="appt-time">10:00 AM</div><div><div class="appt-name">Amany  Sunner</div><div class="appt-svc">Treatment</div><div class="tags"></div></div></div></div>
+    <div class="appt"><div class="appt-row"><div class="appt-time">11:00 AM</div><div><div class="appt-name">Mannatpreet Kaur</div><div class="appt-svc">Treatment — Tx1 type 4 </div><div class="tags"><span class="tag t-blue">1st visit</span></div></div></div></div>
+    <div class="appt"><div class="appt-row"><div class="appt-time">2:00 PM</div><div><div class="appt-name">Oleksandr Zamlilyi</div><div class="appt-svc">Treatment</div><div class="tags"><span class="tag t-blue">11th visit</span><span class="tag t-red">⚠ Left Google review</span></div></div></div></div>
+    <div class="appt"><div class="appt-row"><div class="appt-time">6:00 PM</div><div><div class="appt-name">Etondi Tambi</div><div class="appt-svc">Treatment — Tx2 type 6 membership </div><div class="tags"><span class="tag t-blue">2nd visit</span></div></div></div></div>
   </div>
   <div class="stl">Posting Schedule — tap row to open platform</div>
   <div id="sched-list"></div>
@@ -272,7 +261,7 @@ textarea{min-height:65px;resize:vertical}
     <div style="margin-top:12px;font-size:13px;color:var(--muted);text-align:center" id="mic-status">Tap mic or type below</div>
   </div>
   <div style="display:flex;gap:8px;margin-bottom:12px">
-    <input type="text" id="sarah-input" placeholder='Ask: "Who is at 3pm?" or "What did Mehak pay?"' onkeydown="if(event.key==='Enter'){doAsk();}" >
+    <input type="text" id="sarah-input" placeholder='Ask: "Who is at 3pm?" or "What did Mehak pay?"' onkeydown="if(event.key==='Enter'){doAsk();}">
     <button class="btn btn-gold" onclick="doAsk()">Ask</button>
   </div>
   <div class="sarah-box" id="sarah-box">
@@ -428,6 +417,61 @@ textarea{min-height:65px;resize:vertical}
   <div id="pa-collected"><div style="color:var(--muted);font-size:13px;padding:10px">None</div></div>
 </div>
 
+<!-- ══ CRM ══ -->
+<div class="pnl" id="pnl-crm">
+  <button class="btn btn-gold btn-block" onclick="openModal('mod-add-contact')">+ Add Contact</button>
+  <div class="stl" style="margin-top:16px">Pipeline Board</div>
+  <div class="kanban" id="crm-kanban"></div>
+  <div class="stl">Manage Stages</div>
+  <div class="card">
+    <div style="display:flex;gap:8px;margin-bottom:8px" id="crm-stages-list"></div>
+    <input type="text" id="crm-new-stage" placeholder="New stage name" style="margin-bottom:8px">
+    <button class="btn btn-outline btn-sm" onclick="addCRMStage()">Add Stage</button>
+  </div>
+</div>
+
+<!-- ══ AUTOMATIONS ══ -->
+<div class="pnl" id="pnl-automations">
+  <button class="btn btn-gold btn-block" onclick="openModal('mod-automation')">+ Add Automation</button>
+  <div class="stl" style="margin-top:16px">Active Workflows</div>
+  <div id="automations-list"></div>
+</div>
+
+<!-- ══ SEQUENCES ══ -->
+<div class="pnl" id="pnl-sequences">
+  <button class="btn btn-gold btn-block" onclick="openModal('mod-sequence')">+ Create Sequence</button>
+  <div class="stl" style="margin-top:16px">Sequences</div>
+  <div id="sequences-list"></div>
+</div>
+
+<!-- ══ FUNNELS ══ -->
+<div class="pnl" id="pnl-funnels">
+  <button class="btn btn-gold btn-block" onclick="openModal('mod-funnel')">+ Create Funnel</button>
+  <div class="stl" style="margin-top:16px">Forms & Landing Pages</div>
+  <div id="funnels-list"></div>
+</div>
+
+<!-- ══ SKILLS ══ -->
+<div class="pnl" id="pnl-skills">
+  <div class="stl">Postiz Integration Status</div>
+  <div class="card" style="display:flex;align-items:center;justify-content:space-between">
+    <div>
+      <div style="font-size:13px;font-weight:700">Postiz Social Publisher</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:2px">Multi-platform scheduling</div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <span class="tag t-red">⚠ Not connected</span>
+      <span class="tag t-blue">0/30 this hour</span>
+    </div>
+  </div>
+
+  <div class="stl">AI Agent Manager</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-bottom:16px" id="agent-grid"></div>
+  
+  <div class="stl">Skill Library Reference</div>
+  <div id="skills-reference" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px"></div>
+</div>
+
 <!-- MODALS -->
 <div class="modal-bg" id="mod-post">
   <div class="modal">
@@ -466,6 +510,71 @@ textarea{min-height:65px;resize:vertical}
   </div>
 </div>
 
+<!-- CRM MODALS -->
+<div class="modal-bg" id="mod-add-contact">
+  <div class="modal">
+    <div class="modal-hdr"><div class="modal-title">Add Contact</div><button class="modal-x" onclick="closeModal('mod-add-contact')">×</button></div>
+    <div class="fg"><label>Name</label><input type="text" id="crm-c-name" placeholder="Full name"></div>
+    <div class="fg"><label>Phone</label><input type="tel" id="crm-c-phone" placeholder="(780) XXX-XXXX"></div>
+    <div class="fg"><label>Email</label><input type="email" id="crm-c-email" placeholder="name@email.com"></div>
+    <div class="fg"><label>Source</label><select id="crm-c-source"><option value="form">Form</option><option value="square">Square Appointment</option><option value="sarah-chat">Sarah Chat</option><option value="other">Other</option></select></div>
+    <div class="fg"><label>Notes</label><textarea id="crm-c-notes" placeholder="Add notes..."></textarea></div>
+    <button class="btn btn-gold btn-block" onclick="saveCRMContact()">Add Contact</button>
+  </div>
+</div>
+
+<!-- AUTOMATION MODAL -->
+<div class="modal-bg" id="mod-automation">
+  <div class="modal">
+    <div class="modal-hdr"><div class="modal-title">Add Automation</div><button class="modal-x" onclick="closeModal('mod-automation')">×</button></div>
+    <div class="fg"><label>Name</label><input type="text" id="auto-name" placeholder="e.g. New Lead Auto-Tag"></div>
+    <div class="fg"><label>Trigger</label><select id="auto-trigger"><option value="new-lead">New Lead</option><option value="appointment-booked">Appointment Booked</option><option value="no-show">No-Show</option><option value="stage-change">Pipeline Stage Change</option></select></div>
+    <div class="fg"><label>Condition (optional)</label><input type="text" id="auto-condition" placeholder="Leave blank for all"></div>
+    <div class="fg"><label>Action</label><select id="auto-action"><option value="tag">Tag Contact</option><option value="notify">Send Notification</option><option value="move-stage">Move Pipeline Stage</option><option value="enroll-sequence">Enroll in Sequence</option></select></div>
+    <button class="btn btn-gold btn-block" onclick="saveAutomation()">Create Automation</button>
+  </div>
+</div>
+
+<!-- SEQUENCE MODAL -->
+<div class="modal-bg" id="mod-sequence">
+  <div class="modal">
+    <div class="modal-hdr"><div class="modal-title">Create Sequence</div><button class="modal-x" onclick="closeModal('mod-sequence')">×</button></div>
+    <div class="fg"><label>Sequence Name</label><input type="text" id="seq-name" placeholder="e.g. Post-Treatment Follow-up"></div>
+    <div class="fg"><label>Channel</label><select id="seq-channel"><option value="email">Email</option><option value="sms">SMS</option></select></div>
+    <div id="seq-steps" style="border:1px solid var(--border);border-radius:9px;padding:10px;background:#001020;margin-bottom:12px"></div>
+    <button class="btn btn-outline btn-sm btn-block" onclick="addSequenceStep()">+ Add Step</button>
+    <button class="btn btn-gold btn-block" style="margin-top:8px" onclick="saveSequence()">Create Sequence</button>
+  </div>
+</div>
+
+<!-- FUNNEL MODAL -->
+<div class="modal-bg" id="mod-funnel">
+  <div class="modal">
+    <div class="modal-hdr"><div class="modal-title">Create Form/Funnel</div><button class="modal-x" onclick="closeModal('mod-funnel')">×</button></div>
+    <div class="fg"><label>Funnel Name</label><input type="text" id="funnel-name" placeholder="e.g. Free Consultation Signup"></div>
+    <div class="fg"><label>Type</label><select id="funnel-type"><option value="form">Contact Form</option><option value="landing-page">Landing Page</option></select></div>
+    <div id="funnel-fields" style="border:1px solid var(--border);border-radius:9px;padding:10px;background:#001020;margin-bottom:12px"></div>
+    <button class="btn btn-outline btn-sm btn-block" onclick="addFunnelField()">+ Add Field</button>
+    <button class="btn btn-gold btn-block" style="margin-top:8px" onclick="saveFunnel()">Create Funnel</button>
+  </div>
+</div>
+
+<!-- AGENT EDIT MODAL -->
+<div class="modal-bg" id="mod-agent-edit">
+  <div class="modal">
+    <div class="modal-hdr"><div class="modal-title" id="agent-edit-title">Edit Agent</div><button class="modal-x" onclick="closeModal('mod-agent-edit')">×</button></div>
+    <div class="fg"><label>Instructions</label><textarea id="agent-edit-text" placeholder="Core system prompt..."></textarea></div>
+    <div class="fg">
+      <label style="display:flex;align-items:center;gap:8px">
+        <input type="checkbox" id="agent-self-learning" checked style="width:14px;height:14px">
+        <span>Self-Learning Enabled</span>
+      </label>
+    </div>
+    <button class="btn btn-gold btn-block" onclick="saveAgentEdit()">Save Instructions</button>
+    <button class="btn btn-outline btn-block" style="margin-top:8px" onclick="downloadAgentLearnings()">Export Learnings</button>
+  </div>
+</div>
+
 <!-- LIGHTBOX -->
 <div class="lb" id="lb" onclick="this.classList.remove('open')">
   <img id="lb-img" src="" alt="">
@@ -489,8 +598,12 @@ textarea{min-height:65px;resize:vertical}
 
 <script>
 // ═══════════════════════════════════════════
-// STATE
+// STATE & LEARNINGS MANAGEMENT
 // ═══════════════════════════════════════════
+// Note: Learnings are stored in localStorage during runtime as ox-learnings-<agentId>.
+// The real files at dashboard/agents/<agentId>/learnings.md are seeded with headers and updated manually via export.
+// This browser-safe pattern works for static HTML dashboards without backend server write access.
+
 var S = {
   user: 'devang',
   expenses:  JSON.parse(localStorage.getItem('ox-exp')   || '[]'),
@@ -499,6 +612,13 @@ var S = {
   images:    JSON.parse(localStorage.getItem('ox-imgs')  || '[]'),
   uploadVids:JSON.parse(localStorage.getItem('ox-vids')  || '[]'),
   schedDone: JSON.parse(localStorage.getItem('ox-sd-' + new Date().toDateString()) || '{}'),
+  crmContacts: JSON.parse(localStorage.getItem('ox-crm-contacts') || '[]'),
+  crmStages: (function(){ var s = JSON.parse(localStorage.getItem('ox-crm-stages') || '[]'); return s.length ? s : ['Lead', 'Booked', 'Completed', 'Repeat']; })(),
+  automations: JSON.parse(localStorage.getItem('ox-automations') || '[]'),
+  sequences: JSON.parse(localStorage.getItem('ox-sequences') || '[]'),
+  funnels: JSON.parse(localStorage.getItem('ox-funnels') || '[]'),
+  agentSettings: JSON.parse(localStorage.getItem('ox-agent-settings') || '{}'),
+  postizPending: JSON.parse(localStorage.getItem('ox-postiz-pending-queue') || '[]'),
   expCat:    'all',
   activeAgent: null,
   agentChats: {},
@@ -506,9 +626,20 @@ var S = {
   micRec: null,
   isListening: false,
   agMicRec: null,
-  capMicRec: null
+  capMicRec: null,
+  editingAgentId: null
 };
 function save(key, val){ localStorage.setItem(key, JSON.stringify(val)); }
+
+// Append learning to agent's localStorage learnings log
+function appendLearning(agentId, text){
+  var key = 'ox-learnings-' + agentId;
+  var existing = localStorage.getItem(key) || '';
+  var timestamp = new Date().toISOString().split('T')[0];
+  var entry = '- ' + timestamp + ': ' + text;
+  var updated = existing ? (existing + '\n' + entry) : entry;
+  localStorage.setItem(key, updated);
+}
 
 // ═══════════════════════════════════════════
 // TABS
@@ -526,7 +657,7 @@ function goTab(id, btn){
 function switchUser(){
   S.user = S.user === 'devang' ? 'hetisha' : 'devang';
   document.getElementById('usr-btn').textContent = S.user === 'devang' ? '👤 Devang' : '👤 Hetisha';
-  var devOnly = ['calendar','sarah','agents','posts','videos','images','expenses','preauth'];
+  var devOnly = ['calendar','sarah','agents','posts','videos','images','expenses','preauth','crm','automations','sequences','funnels'];
   document.querySelectorAll('.tab').forEach(function(t){
     var tab = t.getAttribute('onclick').match(/goTab\('(\w+)'/);
     if(!tab) return;
@@ -571,16 +702,11 @@ function renderSched(){
   document.getElementById('sched-list').innerHTML = SCHED.map(function(s, i){
     var d = !!S.schedDone[i];
     if(d) done++;
-    return '<a class="srow' + (d ? ' done' : '') + '" href="' + s.url + '" target="_blank" onclick="schedClick(event,' + i + ')">' +
-      '<div class="sdot" style="background:' + (d ? '#2ecc71' : s.dot) + '"></div>' +
-      '<div class="srow-time">' + s.time + '</div>' +
-      '<div class="srow-info"><div class="srow-name">' + s.name + '</div><div class="srow-desc">' + s.desc + '</div></div>' +
-      '<button class="mark-btn' + (d ? ' done' : '') + '" onclick="markDone(event,' + i + ')">' + (d ? '✓ Done' : 'Mark Done') + '</button>' +
-    '</a>';
+    return '<a class="srow' + (d ? ' done' : '') + '" href="' + s.url + '" target="_blank" onclick="schedClick(event,' + i + ')"><div class="sdot" style="background:' + (d ? '#2ecc71' : s.dot) + '"></div><div class="srow-time">' + s.time + '</div><div class="srow-info"><div class="srow-name">' + s.name + '</div><div class="srow-desc">' + s.desc + '</div></div><button class="mark-btn' + (d ? ' done' : '') + '" onclick="markDone(event,' + i + ');">' + (d ? '✓ Done' : 'Mark Done') + '</button></a>';
   }).join('');
   document.getElementById('posted-count').textContent = done;
 }
-function schedClick(e, i){ /* link opens naturally */ }
+function schedClick(e, i){ }
 function markDone(e, i){
   e.preventDefault(); e.stopPropagation();
   S.schedDone[i] = !S.schedDone[i];
@@ -592,17 +718,135 @@ renderSched();
 // ═══════════════════════════════════════════
 // SARAH VOICE
 // ═══════════════════════════════════════════
-var CLINIC = {
-  appts: [
-    {time:'11:30 AM', name:'Harpreet Saini',   first:'harpreet',  service:'Treatment', areas:'', visit:'', payment:'See Square', phone:'+140****1902', flags:[], note:'30 min session.'},
-    {time:'12:00 PM', name:'Morgan Bodnaruk',  first:'morgan',    service:'Treatment', areas:'', visit:'', payment:'See Square', phone:'(587) 343-4443', flags:[], note:'60 min session.'},
-    {time:'1:00 PM',  name:'Karuna Arora',     first:'karuna',    service:'Treatment', areas:'', visit:'', payment:'See Square', phone:'+178****8682', flags:[], note:'120 min session.'},
-  ]
-};
+var CLINIC = { appts: [
+  {
+    "time": "10:00 AM",
+    "name": "Amany  Sunner",
+    "first": "amany",
+    "service": "Treatment",
+    "areas": "",
+    "visit": "Unknown visit",
+    "payment": "See Square",
+    "phone": "(780) 232-2278",
+    "flags": [],
+    "note": ""
+  },
+  {
+    "time": "11:00 AM",
+    "name": "Mannatpreet Kaur",
+    "first": "mannatpreet",
+    "service": "Treatment",
+    "areas": "lower face , no nose, forehead",
+    "visit": "1st visit",
+    "payment": "paid 1st instalment in august $220",
+    "phone": "+178****1295",
+    "flags": [],
+    "note": "Tx1 type 4 "
+  },
+  {
+    "time": "2:00 PM",
+    "name": "Oleksandr Zamlilyi",
+    "first": "oleksandr",
+    "service": "Treatment",
+    "areas": "chest ,abdomen ,right arm",
+    "visit": "11th visit",
+    "payment": "Paid promo $220 each , paid in 3 instalment",
+    "phone": "(780) 340-1010",
+    "flags": [
+      "Left Google review"
+    ],
+    "note": ""
+  },
+  {
+    "time": "6:00 PM",
+    "name": "Etondi Tambi",
+    "first": "etondi",
+    "service": "Treatment",
+    "areas": "",
+    "visit": "2nd visit",
+    "payment": "paid 1st and 6 th instalment $250 each in july 2026",
+    "phone": "(438) 835-3968",
+    "flags": [],
+    "note": "Tx2 type 6 membership "
+  }
+] };
+
+// Set today's date in header
+(function(){
+  var d = new Date();
+  var el = document.getElementById('appt-date');
+  if(el) el.textContent = d.toLocaleDateString('en-CA', {weekday:'long', month:'long', day:'numeric', year:'numeric'});
+})();
+
+// Load today's appointments from Square via schedule.json
+// ★ TASK 1 FIX: Removed stray } that was after the filter block at line 650
+function loadAppointments(){
+  var card = document.getElementById('appt-card');
+  
+  // Try to load from schedule.json (Square data)
+  fetch('schedule.json')
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      var today = new Date().toISOString().split('T')[0];
+      var todayAppts = [];
+      
+      // Handle both formats: {appointments:[]} and flat array
+      var all = Array.isArray(data) ? data : (data.appointments || data.bookings || []);
+      
+      // Filter by today — supports both 'date' field and 'start_at' field
+      todayAppts = all.filter(function(a){
+        var d = a.date || (a.start_at ? a.start_at.split('T')[0] : '');
+        return d === today;
+      });
+      
+      CLINIC.appts = todayAppts.map(function(a){
+        var name = a.name || a.buyer_name || a.customer_note || 'Client';
+        var timeStr = a.time || (a.start_at ? new Date(a.start_at).toLocaleTimeString('en-CA',{hour:'numeric',minute:'2-digit',hour12:true}) : '');
+        return {
+          time: timeStr,
+          name: name,
+          first: name.split(' ')[0].toLowerCase(),
+          service: a.service || a.service_name || 'Treatment',
+          areas: a.areas || '',
+          visit: a.visit || '',
+          payment: a.payment || 'See Square',
+          phone: a.phone || '',
+          flags: a.flags || [],
+          note: a.raw_note ? a.raw_note.split('\n')[0] : (a.seller_note || '')
+        };
+      });
+      
+      // Fire automation event for each new appointment
+      if(todayAppts.length > 0){
+        fireAutomationEvent('appointment-booked', {count: todayAppts.length});
+      }
+      
+      renderAppointments(card);
+    })
+    .catch(function(){
+      // No Square data — show empty state
+      if(card) card.innerHTML = '<div style="text-align:center;padding:24px;color:#888;"><div style="font-size:2rem;margin-bottom:8px;">📅</div><div>No appointments found for today.</div><div style="font-size:0.8rem;margin-top:8px;">Connect Square to see live bookings</div></div>';
+    });
+}
+
+function renderAppointments(card){
+  if(!card) return;
+  if(CLINIC.appts.length === 0){
+    card.innerHTML = '<div style="text-align:center;padding:24px;color:#888;"><div style="font-size:2rem;margin-bottom:8px;">🎉</div><div>No appointments today.</div></div>';
+    return;
+  }
+  var html = CLINIC.appts.map(function(a){
+    return '<div class="appt"><div class="appt-row"><div class="appt-time">' + a.time + '</div><div><div class="appt-name">' + a.name + '</div><div class="appt-svc">' + a.service + (a.note ? ' — ' + a.note : '') + '</div></div></div></div>';
+  }).join('');
+  card.innerHTML = html;
+}
+
+// Load on startup
+setTimeout(loadAppointments, 300);
 
 function sarahAnswer(q, cb){
   var ql = q.toLowerCase();
-  cb = cb || function(r){ return r; }; // Ensure callback exists
+  cb = cb || function(r){ return r; };
   
   // by name
   for(var i=0; i<CLINIC.appts.length; i++){
@@ -623,7 +867,7 @@ function sarahAnswer(q, cb){
   if(/next|who is next/i.test(ql)){
     var now = new Date(), h = now.getHours(), m = now.getMinutes();
     for(var i=0; i<CLINIC.appts.length; i++){
-      var t = CLINIC.appts[i].time.match(/(\d+):(\d+)\s*(AM|PM)/i);
+      var t = CLINIC.appts[i].time.match(/(\\d+):(\\d+)\\s*(AM|PM)/i);
       if(!t) continue;
       var ah = parseInt(t[1]) + (t[3].toUpperCase()==='PM' && parseInt(t[1])!==12 ? 12 : 0);
       if(ah > h || (ah===h && parseInt(t[2])>m)) return cb('Next: ' + CLINIC.appts[i].name + ' at ' + CLINIC.appts[i].time + '. ' + CLINIC.appts[i].service + ', ' + CLINIC.appts[i].visit + '.');
@@ -635,10 +879,10 @@ function sarahAnswer(q, cb){
   // help
   if(/help|what can|how/i.test(ql)) return cb('Ask me: who is at 1pm, notes for Alexandra, what did Mehak pay, who is next, any balance owing.');
   
-  // Unknown - try web search (no built-in answer found)
+  // Unknown - try web search
   webSearch(ql, function(result){
     if(result) return cb(result);
-    return cb('I don't have that information. Try asking about appointments, clients, services, or something else.');
+    return cb('I don\'t have that information. Try asking about appointments, clients, services, or something else.');
   });
 }
 
@@ -676,14 +920,11 @@ function doAsk(){
   if(!q) return;
   document.getElementById('sarah-input').value = '';
   
-  // Show "thinking..." while processing
   document.getElementById('sarah-text').textContent = 'Thinking...';
   document.getElementById('sarah-box').style.display = 'block';
   
-  // Call sarahAnswer with callback for async web search
   sarahAnswer(q, function(answer){
     showSarahAnswer(answer);
-    // Save conversation to DB
     apiCall('conversation_save', {
       user_input: q,
       sarah_response: answer,
@@ -761,10 +1002,8 @@ function appendAgentMemory(agentId, category, content){
   if(agentMemoryCache[agentId]) agentMemoryCache[agentId][category] = (agentMemoryCache[agentId][category]||'') + '\n' + content;
 }
 
-// Web search via DuckDuckGo instant answers (no API key needed)
-// Searches for: query + "Edmonton laser clinic" context
+// Web search via DuckDuckGo
 function webSearch(query, cb){
-  // Try service-specific search first
   var contextQuery = query;
   if(/laser|microneedle|skin|hair|remove|treatment/i.test(query)){
     contextQuery = query + ' Edmonton clinic laser hair removal';
@@ -783,7 +1022,7 @@ function webSearch(query, cb){
         });
       }
       if(result && result.length > 15){
-        cb(result.substring(0, 500)); // Cap at 500 chars
+        cb(result.substring(0, 500));
       } else {
         cb(null);
       }
@@ -795,7 +1034,7 @@ function webSearch(query, cb){
 }
 
 // ═══════════════════════════════════════════
-// AGENTS
+// AGENTS — Extended with 21 total agents
 // ═══════════════════════════════════════════
 var AGENTS = [
   {id:'scheduler', name:'Scheduler',   emoji:'📅', desc:'Calendars, posting cadence, booking',
@@ -843,6 +1082,34 @@ var AGENTS = [
      competitors: 'Top Edmonton competitors: Milan Laser (chain, aggressive pricing, no local feel), Sente Laser (established, limited social), LaserAway (US chain entering market). Oxyderm advantage: local, personal, real treatment videos, membership model, high visit counts (11th visit = social proof). Gap: competitors do not publish client journey stories.',
      keywords: 'High-intent local keywords: "laser hair removal Edmonton" (2,400/mo), "LHR Edmonton" (880/mo), "permanent hair removal Edmonton" (720/mo), "microneedling Edmonton" (590/mo), "laser clinic Edmonton" (480/mo). Content gap: no competitor owns "Edmonton laser hair removal before after" video content — Oxyderm can dominate this angle.',
    }},
+  {id:'competitor', name:'Competitor', emoji:'🎯', desc:'Competitor analysis and market intelligence',
+   knowledge: {default: 'Track competitor moves: pricing changes, new services, marketing campaigns. Report weekly shifts in positioning, offers, content strategy. What competitor should we monitor?'}},
+  {id:'youtube', name:'YouTube Strategist', emoji:'▶️', desc:'YouTube channel growth and video strategy',
+   knowledge: {default: 'YouTube optimization: titles, descriptions, tags, playlists, thumbnails, CTAs. Track analytics: watch time, audience retention, click-through rate. Help maximize reach for clinic videos.'}},
+  {id:'trending', name:'Trending Topics', emoji:'🔥', desc:'Monitor trending topics and viral moments',
+   knowledge: {default: 'Track trending hashtags, audio, challenges on TikTok, Instagram, YouTube. Identify opportunities for clinic to participate with relevant, timely content hooks.'}},
+  {id:'planning', name:'Planning Assistant', emoji:'📋', desc:'Campaign planning and timeline management',
+   knowledge: {default: 'Help plan multi-week campaigns: content calendar, milestones, deliverables. Track dependencies and deadlines for clinic projects.'}},
+  {id:'keyword-research', name:'Keyword Research', emoji:'🔎', desc:'SEO keyword research and targeting',
+   knowledge: {default: 'Research high-intent keywords for laser clinic, microneedling. Identify search volume, competition, commercial intent. Recommend long-tail keywords for blog strategy.'}},
+  {id:'content-calendar', name:'Content Calendar', emoji:'📅', desc:'Social media content scheduling',
+   knowledge: {default: 'Maintain 30-day content calendar across platforms. Plan themes, post frequency, batching strategy. Coordinate with video and design teams.'}},
+  {id:'video-script', name:'Video Script Writer', emoji:'📝', desc:'Write engaging video scripts',
+   knowledge: {default: 'Write scripts for TikTok, Reels, YouTube shorts. Include hooks, story arcs, CTAs. Optimize for platform-specific viewing patterns and audience behavior.'}},
+  {id:'image', name:'Image Generator', emoji:'🖼️', desc:'AI image generation and prompt engineering',
+   knowledge: {default: 'Create image prompts for before/after, treatment process, testimonial graphics. Iterate on visual style to match brand. Test variations for ad performance.'}},
+  {id:'expense', name:'Expense Tracker', emoji:'💸', desc:'Track and categorize business expenses',
+   knowledge: {default: 'Log expenses by category (supplies, rent, staff, marketing). Generate monthly expense reports. Identify cost-saving opportunities.'}},
+  {id:'preauth', name:'Pre-Auth Manager', emoji:'🔐', desc:'Manage pre-authorization payments',
+   knowledge: {default: 'Track pre-auth agreements, payment terms, collection dates. Send reminders and follow-ups. Reconcile with Square deposits.'}},
+  {id:'crm-pipeline', name:'CRM Pipeline', emoji:'📊', desc:'Manage CRM pipeline and contact lifecycle',
+   knowledge: {default: 'Move contacts through pipeline stages (Lead → Booked → Completed → Repeat). Track conversion rates. Identify bottlenecks in sales process.'}},
+  {id:'automation', name:'Automation Builder', emoji:'⚙️', desc:'Design and test workflows and automations',
+   knowledge: {default: 'Build workflows: new lead tagging, appointment confirmations, no-show follow-ups. Test triggers and actions for reliability.'}},
+  {id:'email-sms', name:'Email/SMS Manager', emoji:'📧', desc:'Manage email and SMS campaigns',
+   knowledge: {default: 'Design email/SMS sequences for booking, retention, review requests. Track open rates and click rates. A/B test subject lines and copy.'}},
+  {id:'forms-funnel', name:'Forms & Funnels', emoji:'🎯', desc:'Build and optimize lead capture forms',
+   knowledge: {default: 'Create lead forms for consultation signups, before/after gallery access. Test fields, copy, and CTAs. Track submissions and conversion rates.'}}
 ];
 
 function agAnswer(agent, q, mem){
@@ -874,7 +1141,7 @@ function agAnswer(agent, q, mem){
   if(/offer|promo|discount|intro/i.test(ql) && agent.id==='marketing') return k.offer||k.default;
   if(/competitor|milan|sente|laser.?away|compete/i.test(ql) && agent.id==='research') return k.competitors||k.default;
   if(/keyword|seo|search|volume/i.test(ql) && agent.id==='research') return k.keywords||k.default;
-  return null; // null = unknown, trigger web search
+  return null;
 }
 
 function renderAgents(){
@@ -895,7 +1162,6 @@ function selectAgent(id){
   document.getElementById('ag-chat-wrap').style.display = 'block';
   document.getElementById('ag-chat-title').textContent = S.activeAgent.emoji + ' ' + S.activeAgent.name;
   document.getElementById('ag-input').placeholder = 'Ask ' + S.activeAgent.name + '...';
-  // Load memory from API
   loadAgentMemory(id, function(mem){
     S.activeAgent._mem = mem;
     renderAgChat();
@@ -945,7 +1211,7 @@ function agSend(){
   if(builtIn){
     S.agentChats[id].push({role:'agent', text: builtIn + ' [local]'});
     renderAgChat();
-    // Still save to memory and log — but don't hit API
+    appendLearning(id, 'Q: ' + q.substring(0,30) + ' — responded with local knowledge');
     saveAgentMemory(id, q.toLowerCase().substring(0,30), builtIn);
     return;
   }
@@ -962,7 +1228,6 @@ function agSend(){
   .then(function(r){ return r.json(); })
   .then(function(memData){
     if(memData.ok && memData.data && memData.data.length > 0){
-      // Search memory for a relevant match
       var ql = q.toLowerCase();
       var match = null;
       memData.data.forEach(function(row){
@@ -1002,11 +1267,11 @@ function agSend(){
             var label = ans.decision_type === 'action_required' ? ' [ACTION NEEDED]' :
                         ans.decision_type === 'escalate_to_dev' ? ' [NEEDS DEV]' : '';
             replaceLastAgent(id, ans.answer + label);
-            // Save to memory so next time it's instant
+            appendLearning(id, 'Q: ' + q.substring(0,30) + ' — Brain API answered');
             saveAgentMemory(id, q.toLowerCase().substring(0,30), ans.answer);
           }
         })
-        .catch(function(){ /* keep polling */ });
+        .catch(function(){ });
       }, 3000);
     })
     .catch(function(err){
@@ -1014,7 +1279,6 @@ function agSend(){
     });
   })
   .catch(function(){
-    // Memory DB unreachable — go straight to Brain API
     replaceLastAgent(id, 'Thinking...');
     fetch(API_URL, {
       method:'POST',
@@ -1031,37 +1295,12 @@ function agSend(){
         if(polls > 20){ clearInterval(poller); replaceLastAgent(id,'[Brain timeout] No answer in 60s.'); return; }
         fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json','X-API-Key':API_KEY},body:JSON.stringify({action:'get_answer',question_id:qid})})
         .then(function(r){return r.json();}).then(function(ans){
-          if(ans.status==='answered'){ clearInterval(poller); replaceLastAgent(id,ans.answer); saveAgentMemory(id,q.toLowerCase().substring(0,30),ans.answer); }
+          if(ans.status==='answered'){ clearInterval(poller); replaceLastAgent(id,ans.answer); appendLearning(id, 'Q: ' + q.substring(0,30) + ' — fallback Brain API'); saveAgentMemory(id,q.toLowerCase().substring(0,30),ans.answer); }
         }).catch(function(){});
       },3000);
     })
     .catch(function(err){ replaceLastAgent(id,'[Offline] '+err.message); });
   });
-  })
-  .catch(function(err){
-    // Fallback to built-in JS knowledge if API unreachable
-    var mem = S.activeAgent._mem || agentMemoryCache[id] || {};
-    var reply = agAnswer(S.activeAgent, q, mem);
-    replaceLastAgent(id, reply || '[Brain offline] ' + err.message + '. Using local knowledge.');
-  });
-
-    renderAgChat();
-    var searchQuery = S.activeAgent.name + ' ' + q + ' laser clinic';
-    webSearch(searchQuery, function(webResult){
-      S.agentChats[id].pop(); // remove "Searching..."
-      var finalReply;
-      if(webResult && webResult.length > 20){
-        finalReply = '[Web] ' + webResult.substring(0, 400);
-        // Learn from web result
-        var key = q.toLowerCase().replace(/[^a-z0-9 ]/g,'').substring(0,30).trim();
-        saveAgentMemory(id, key, finalReply);
-      } else {
-        finalReply = S.activeAgent.knowledge.default;
-      }
-      S.agentChats[id].push({role:'agent', text: finalReply});
-      renderAgChat();
-    });
-  }
 }
 
 function agClear(){
@@ -1081,9 +1320,8 @@ renderAgents();
 // ═══════════════════════════════════════════
 // POSTS
 // ═══════════════════════════════════════════
-var WEEK1_POSTS = [{"platform":"Instagram Story","caption":"Tired of the shaving routine? Laser hair removal at Oxyderm gives you 70-90% permanent reduction in 6-8 sessions. Edmonton's trusted laser clinic. Free consultation available. Link in bio.\n\n#LaserHairRemoval #EdmontonBeauty #OxyderEdmonton #HairFree #EdmontonSpa #LaserClinic #SmoothSkin #BeautyEdmonton #LaserTreatment #Edmonton","hook":"Still shaving every 3 days? Here's what you're missing.","time":"2026-08-31T08:00","status":"scheduled","id":1788156008},{"platform":"TikTok","caption":"POV: you're still waxing when laser exists. 6-8 sessions = permanent results. Free consultation at Oxyderm Edmonton.\n\n#LaserHairRemoval #Edmonton #OxyderEdmonton #BeautyTok #LaserTreatment #SkincareTok #EdmontonBeauty #HairFree #LaserClinic #BeforeAndAfter","hook":"POV: You're still waxing when laser exists","time":"2026-08-31T18:00","status":"scheduled","id":1788156018},{"platform":"Facebook Story","caption":"First laser session coming up? Here's what to do and NOT do to get the best results. Oxyderm Laser Clinic Edmonton — call 780-863-7561 for your free consultation.\n\n#LaserHairRemoval #EdmontonBeauty #BeforeAndAfter #SkincareTips #LaserClinicEdmonton","hook":"What nobody tells you before your first laser session","time":"2026-09-01T11:00","status":"scheduled","id":1788242511},{"platform":"Instagram Story","caption":"We read every poll response. DM us your area and hair type and we will estimate your session count for free.\n\n#LaserHairRemoval #EdmontonBeauty #SkincareTok","hook":"Quick question for you...","time":"2026-09-02T12:00","status":"scheduled","id":1788329012},{"platform":"TikTok","caption":"The honest week-by-week timeline of laser hair removal results. No fluff. This is what our Edmonton clients actually experience. Free consultation at Oxyderm.\n\n#LaserHairRemoval #BeforeAndAfter #SkincareTok #Edmonton #LHR #HairFree #BeautyTok #Results #EdmontonBeauty #LaserResults","hook":"Week by week: what laser hair removal actually does to your skin","time":"2026-09-03T19:00","status":"scheduled","id":1788415519},{"platform":"Instagram Story","caption":"The results speak for themselves. 8 sessions, 85-90% permanent hair reduction. Edmonton's Oxyderm Laser Clinic. Free consultation — link in bio or call 780-863-7561.\n\n#LaserHairRemoval #BeforeAndAfter #EdmontonBeauty #HairFree #LaserResults #SmoothSkin #OxyderEdmonton #LHR #SkincareTips #Edmonton","hook":"This is what 8 sessions looks like","time":"2026-09-04T08:00","status":"scheduled","id":1788502008},{"platform":"Facebook + Instagram Story","caption":"Got questions about laser hair removal? We answer the top 4 questions our Edmonton clients ask every week. DM us yours — we reply to every one.\n\n#LaserHairRemoval #FAQ #EdmontonBeauty #SkincareTips #LaserClinic #HairFree #Edmonton #BeautyAnswers #LHR #OxyderEdmonton","hook":"You asked. We answered. (Laser FAQ)","time":"2026-09-05T10:00","status":"scheduled","id":1788588510},{"platform":"TikTok","caption":"Week 1 recap — everything you need to know about laser hair removal in Edmonton. Free consultation at Oxyderm. No pressure, just answers.\n\n#LaserHairRemoval #Edmonton #WeeklyRecap #SkincareTok #BeautyTok #LHR #OxyderEdmonton #HairFree #EdmontonBeauty #LaserClinic","hook":"Week 1 recap: everything we covered about laser this week","time":"2026-09-06T17:00","status":"scheduled","id":1788675017}];
+var WEEK1_POSTS = [{"platform":"Instagram Story","caption":"Tired of the shaving routine? Laser hair removal at Oxyderm gives you 70-90% permanent reduction in 6-8 sessions. Edmonton's trusted laser clinic. Free consultation available. Link in bio.\\n\\n#LaserHairRemoval #EdmontonBeauty #OxyderEdmonton #HairFree #EdmontonSpa #LaserClinic #SmoothSkin #BeautyEdmonton #LaserTreatment #Edmonton","hook":"Still shaving every 3 days? Here's what you're missing.","time":"2026-08-31T08:00","status":"scheduled","id":1788156008},{"platform":"TikTok","caption":"POV: you're still waxing when laser exists. 6-8 sessions = permanent results. Free consultation at Oxyderm Edmonton.\\n\\n#LaserHairRemoval #Edmonton #OxyderEdmonton #BeautyTok #LaserTreatment #SkincareTok #EdmontonBeauty #HairFree #LaserClinic #BeforeAndAfter","hook":"POV: You're still waxing when laser exists","time":"2026-08-31T18:00","status":"scheduled","id":1788156018}];
 
-// Merge week1 posts into S.posts if not already loaded
 if(!localStorage.getItem('ox-posts-w1-loaded')){
   var existing_ids = S.posts.map(function(p){ return p.id; });
   WEEK1_POSTS.forEach(function(p){ if(existing_ids.indexOf(p.id)===-1) S.posts.push(p); });
@@ -1095,21 +1333,45 @@ function renderPosts(){
   var el = document.getElementById('posts-list');
   if(!S.posts.length){ el.innerHTML='<div style="color:var(--muted);font-size:13px;padding:20px;text-align:center">No posts yet. Tap + Add Post.</div>'; return; }
   el.innerHTML = S.posts.map(function(p,i){
-    return '<div style="display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid #0a1e35">' +
-      '<div style="flex:1"><div style="font-size:13px;font-weight:600">' + p.platform + '</div>' +
+    return '<div style="display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid #0a1e35"><div style="flex:1"><div style="font-size:13px;font-weight:600">' + p.platform + '</div>' +
       (p.hook ? '<div style="font-size:12px;color:var(--gold);margin-top:2px;font-style:italic">"' + p.hook + '"</div>' : '') +
       '<div style="font-size:11px;color:var(--muted);margin-top:2px">' + (p.caption||'').slice(0,80) + '...</div>' +
       (p.time ? '<div style="font-size:10px;color:var(--blue);margin-top:3px">📅 ' + new Date(p.time).toLocaleDateString('en-CA',{weekday:'short',month:'short',day:'numeric'}) + ' at ' + new Date(p.time).toLocaleTimeString('en-CA',{hour:'2-digit',minute:'2-digit'}) + '</div>' : '') +
       '<div class="tags" style="margin-top:5px"><span class="tag ' + ({'pending':'t-yellow','ready':'t-blue','scheduled':'t-gold','posted':'t-green'}[p.status]||'t-yellow') + '">' + p.status + '</span></div></div>' +
-      '<div style="display:flex;gap:5px">' +
+      '<div style="display:flex;gap:5px;flex-direction:column">' +
       (p.status!=='posted'?'<button class="btn btn-green btn-sm" onclick="markPosted('+i+')">✓ Posted</button>':'')+
+      '<button class="btn btn-outline btn-sm" onclick="pushToPostiz('+i+')">📤 Postiz</button>' +
       '<button class="btn btn-red btn-sm" onclick="delPost('+i+')">✕</button></div></div>';
   }).join('');
 }
+
+function pushToPostiz(i){
+  var post = S.posts[i];
+  var now = new Date();
+  var postizQueue = S.postizPending;
+  
+  // Check rate limit: 30 calls per hour
+  var oneHourAgo = new Date(now.getTime() - 60*60*1000);
+  var recentCalls = postizQueue.filter(function(t){ return new Date(t) > oneHourAgo; }).length;
+  
+  if(recentCalls >= 30){
+    alert('Postiz rate limit (30/hour) reached. Queued for later.');
+  } else {
+    postizQueue.push(now.toISOString());
+  }
+  
+  S.postizPending = postizQueue;
+  save('ox-postiz-pending-queue', postizQueue);
+  
+  alert('⏳ Postiz not connected — queued locally, will send once deployment completes');
+  appendLearning('social', 'Post queued for Postiz (not deployed yet): ' + (post.platform||'social'));
+}
+
 function savePost(){
   S.posts.unshift({platform:document.getElementById('p-plat').value, caption:document.getElementById('p-cap').value, time:document.getElementById('p-time').value, status:document.getElementById('p-status').value, id:Date.now()});
   save('ox-posts', S.posts); closeModal('mod-post');
   document.getElementById('p-cap').value=''; renderPosts();
+  fireAutomationEvent('post-created', {platform: document.getElementById('p-plat').value});
 }
 function markPosted(i){ S.posts[i].status='posted'; save('ox-posts',S.posts); renderPosts(); }
 function delPost(i){ if(confirm('Delete post?')){ S.posts.splice(i,1); save('ox-posts',S.posts); renderPosts(); } }
@@ -1179,10 +1441,7 @@ function renderImages(){
   var el=document.getElementById('igrid');
   if(!S.images.length){ el.innerHTML='<div style="color:var(--muted);font-size:13px;padding:20px;text-align:center;grid-column:1/-1">No images yet.</div>'; return; }
   el.innerHTML=S.images.map(function(img,i){
-    return '<div class="icard" onclick="openLB('+i+')">' +
-      '<img src="'+img.dataUrl+'" alt="'+img.name+'" loading="lazy">' +
-      '<div class="icard-body"><div class="icard-name">'+img.name+'</div>' +
-      '<button class="btn btn-red btn-sm" style="width:100%;margin-top:4px" onclick="event.stopPropagation();delImg('+i+')">Remove</button></div></div>';
+    return '<div class="icard" onclick="openLB('+i+')"><img src="'+img.dataUrl+'" alt="'+img.name+'" loading="lazy"><div class="icard-body"><div class="icard-name">'+img.name+'</div><button class="btn btn-red btn-sm" style="width:100%;margin-top:4px" onclick="event.stopPropagation();delImg('+i+')">Remove</button></div></div>';
   }).join('');
 }
 function imgHandle(inp){
@@ -1266,163 +1525,645 @@ function savePA(){
 function collectPA(i){ S.preauths[i].collected=true; S.preauths[i].collectedOn=new Date().toISOString(); save('ox-pa',S.preauths); renderPA(); }
 function delPA(i){ if(confirm('Delete?')){ S.preauths.splice(i,1); save('ox-pa',S.preauths); renderPA(); } }
 renderPA();
+
+// ═══════════════════════════════════════════
+// CRM: CONTACTS & PIPELINE
+// ═══════════════════════════════════════════
+function renderCRM(){
+  // Render kanban board
+  var kanban = document.getElementById('crm-kanban');
+  kanban.innerHTML = S.crmStages.map(function(stage){
+    var contacts = S.crmContacts.filter(function(c){ return c.stage === stage; });
+    return '<div class="crm-stage-col">' +
+      '<div class="crm-stage-title">' + stage + ' (' + contacts.length + ')</div>' +
+      (contacts.length ? contacts.map(function(c,idx){
+        return '<div class="crm-contact-card">' +
+          '<div class="crm-name">' + c.name + '</div>' +
+          '<div class="crm-field">📱 ' + c.phone + '</div>' +
+          '<div class="crm-field">✉️ ' + c.email + '</div>' +
+          '<div class="crm-field">🏷 ' + c.source + '</div>' +
+          (c.notes ? '<div class="crm-field">📝 ' + c.notes.substring(0, 30) + '...</div>' : '') +
+          '<div style="display:flex;gap:4px;margin-top:8px">' +
+          '<button class="btn btn-green btn-sm" onclick="moveCRMContact(' + S.crmContacts.indexOf(c) + ', \'next\')">→</button>' +
+          '<button class="btn btn-outline btn-sm" onclick="editCRMContact(' + S.crmContacts.indexOf(c) + ')">Edit</button>' +
+          '<button class="btn btn-red btn-sm" onclick="delCRMContact(' + S.crmContacts.indexOf(c) + ')">✕</button>' +
+          '</div>' +
+        '</div>';
+      }).join('') : '<div style="color:var(--muted);font-size:11px;padding:8px;text-align:center">No contacts</div>') +
+      '</div>';
+  }).join('');
+  
+  // Render stages list
+  document.getElementById('crm-stages-list').innerHTML = S.crmStages.map(function(s){
+    return '<span class="tag t-gold">' + s + '</span>';
+  }).join('');
+}
+
+function saveCRMContact(){
+  var name = document.getElementById('crm-c-name').value.trim();
+  var phone = document.getElementById('crm-c-phone').value.trim();
+  var email = document.getElementById('crm-c-email').value.trim();
+  var source = document.getElementById('crm-c-source').value;
+  var notes = document.getElementById('crm-c-notes').value.trim();
+  
+  if(!name || !phone){ alert('Name and phone required.'); return; }
+  
+  S.crmContacts.push({
+    name: name,
+    phone: phone,
+    email: email,
+    source: source,
+    notes: notes,
+    stage: 'Lead',
+    created: new Date().toISOString(),
+    id: Date.now()
+  });
+  
+  save('ox-crm-contacts', S.crmContacts);
+  closeModal('mod-add-contact');
+  ['crm-c-name','crm-c-phone','crm-c-email','crm-c-notes'].forEach(function(id){ document.getElementById(id).value=''; });
+  renderCRM();
+  fireAutomationEvent('new-lead', {contactName: name});
+}
+
+function moveCRMContact(idx, direction){
+  var contact = S.crmContacts[idx];
+  var stageIdx = S.crmStages.indexOf(contact.stage);
+  if(direction === 'next' && stageIdx < S.crmStages.length - 1){
+    contact.stage = S.crmStages[stageIdx + 1];
+    save('ox-crm-contacts', S.crmContacts);
+    renderCRM();
+    fireAutomationEvent('stage-change', {contactName: contact.name, toStage: contact.stage});
+  }
+}
+
+function editCRMContact(idx){
+  var c = S.crmContacts[idx];
+  document.getElementById('crm-c-name').value = c.name;
+  document.getElementById('crm-c-phone').value = c.phone;
+  document.getElementById('crm-c-email').value = c.email;
+  document.getElementById('crm-c-source').value = c.source;
+  document.getElementById('crm-c-notes').value = c.notes;
+  openModal('mod-add-contact');
+}
+
+function delCRMContact(idx){
+  if(confirm('Delete contact?')){
+    S.crmContacts.splice(idx, 1);
+    save('ox-crm-contacts', S.crmContacts);
+    renderCRM();
+  }
+}
+
+function addCRMStage(){
+  var name = document.getElementById('crm-new-stage').value.trim();
+  if(!name){ alert('Enter stage name'); return; }
+  if(S.crmStages.indexOf(name) > -1){ alert('Stage already exists'); return; }
+  S.crmStages.push(name);
+  save('ox-crm-stages', S.crmStages);
+  document.getElementById('crm-new-stage').value = '';
+  renderCRM();
+}
+
+renderCRM();
+
+// ═══════════════════════════════════════════
+// AUTOMATIONS
+// ═══════════════════════════════════════════
+
+// Pre-seed default automations
+if(S.automations.length === 0){
+  S.automations = [
+    {
+      id: Date.now(),
+      name: 'New Lead Auto-Tag',
+      trigger: 'new-lead',
+      condition: '',
+      action: 'tag',
+      actionTarget: 'new-lead',
+      enabled: true,
+      schedule: 'manual',
+      lastRun: null,
+      runHistory: []
+    },
+    {
+      id: Date.now() + 1,
+      name: 'Booking Confirmed',
+      trigger: 'appointment-booked',
+      condition: '',
+      action: 'move-stage',
+      actionTarget: 'Booked',
+      enabled: true,
+      schedule: 'manual',
+      lastRun: null,
+      runHistory: []
+    },
+    {
+      id: Date.now() + 2,
+      name: 'No-Show Flag',
+      trigger: 'no-show',
+      condition: '',
+      action: 'tag',
+      actionTarget: 'no-show-followup',
+      enabled: true,
+      schedule: 'manual',
+      lastRun: null,
+      runHistory: []
+    },
+    {
+      id: Date.now() + 3,
+      name: 'Stage Change Sequence',
+      trigger: 'stage-change',
+      condition: '',
+      action: 'enroll-sequence',
+      actionTarget: '',
+      enabled: true,
+      schedule: 'manual',
+      lastRun: null,
+      runHistory: []
+    }
+  ];
+  save('ox-automations', S.automations);
+}
+
+function fireAutomationEvent(eventType, payload){
+  // Check all ON automations matching this trigger
+  S.automations.forEach(function(auto){
+    if(!auto.enabled || auto.trigger !== eventType) return;
+    
+    // Execute action
+    var runEntry = new Date().toISOString();
+    
+    if(auto.action === 'tag' && payload.contactName){
+      // Tag the contact
+      var contact = S.crmContacts.find(function(c){ return c.name === payload.contactName; });
+      if(contact){
+        contact.tags = contact.tags || [];
+        if(contact.tags.indexOf(auto.actionTarget) === -1){
+          contact.tags.push(auto.actionTarget);
+          save('ox-crm-contacts', S.crmContacts);
+        }
+      }
+    } else if(auto.action === 'move-stage' && payload.contactName){
+      var contact = S.crmContacts.find(function(c){ return c.name === payload.contactName; });
+      if(contact){
+        contact.stage = auto.actionTarget;
+        save('ox-crm-contacts', S.crmContacts);
+      }
+    } else if(auto.action === 'enroll-sequence'){
+      // Would enroll contact in sequence (stub)
+    }
+    
+    // Log run
+    auto.lastRun = runEntry;
+    auto.runHistory = auto.runHistory || [];
+    auto.runHistory.push({timestamp: runEntry, event: eventType, payload: payload});
+    if(auto.runHistory.length > 5) auto.runHistory.shift();
+  });
+  
+  save('ox-automations', S.automations);
+  renderAutomations();
+}
+
+function renderAutomations(){
+  var el = document.getElementById('automations-list');
+  if(!S.automations.length){ el.innerHTML = '<div style="color:var(--muted);padding:20px;text-align:center">No automations yet.</div>'; return; }
+  
+  el.innerHTML = S.automations.map(function(auto, idx){
+    return '<div class="card">' +
+      '<div style="display:flex;justify-content:space-between;align-items:flex-start">' +
+      '<div>' +
+        '<div style="font-size:13px;font-weight:700">' + auto.name + '</div>' +
+        '<div style="font-size:11px;color:var(--muted);margin-top:4px">Trigger: <strong>' + auto.trigger + '</strong></div>' +
+        '<div style="font-size:11px;color:var(--muted)">Action: <strong>' + auto.action + '</strong>' + (auto.actionTarget ? ' → ' + auto.actionTarget : '') + '</div>' +
+        (auto.lastRun ? '<div style="font-size:10px;color:var(--gold);margin-top:4px">Last run: ' + new Date(auto.lastRun).toLocaleString('en-CA') + '</div>' : '') +
+        (auto.runHistory && auto.runHistory.length ? '<div style="font-size:10px;color:var(--muted);margin-top:6px">Recent runs: ' + auto.runHistory.length + '</div>' : '') +
+      '</div>' +
+      '<div style="display:flex;flex-direction:column;gap:6px">' +
+        '<label style="display:flex;align-items:center;gap:6px;font-size:12px">' +
+          '<input type="checkbox" ' + (auto.enabled ? 'checked' : '') + ' onchange="toggleAutomation(' + idx + ')" style="width:14px;height:14px">' +
+          (auto.enabled ? '<span class="tag t-green">ON</span>' : '<span class="tag t-red">OFF</span>') +
+        '</label>' +
+        '<button class="btn btn-red btn-sm" onclick="delAutomation(' + idx + ')">Delete</button>' +
+      '</div>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+}
+
+function toggleAutomation(idx){
+  S.automations[idx].enabled = !S.automations[idx].enabled;
+  save('ox-automations', S.automations);
+  renderAutomations();
+}
+
+function delAutomation(idx){
+  if(confirm('Delete automation?')){
+    S.automations.splice(idx, 1);
+    save('ox-automations', S.automations);
+    renderAutomations();
+  }
+}
+
+function saveAutomation(){
+  var name = document.getElementById('auto-name').value.trim();
+  var trigger = document.getElementById('auto-trigger').value;
+  var condition = document.getElementById('auto-condition').value.trim();
+  var action = document.getElementById('auto-action').value;
+  
+  if(!name){ alert('Automation name required'); return; }
+  
+  S.automations.push({
+    id: Date.now(),
+    name: name,
+    trigger: trigger,
+    condition: condition,
+    action: action,
+    actionTarget: '',
+    enabled: true,
+    schedule: 'manual',
+    lastRun: null,
+    runHistory: []
+  });
+  
+  save('ox-automations', S.automations);
+  closeModal('mod-automation');
+  ['auto-name','auto-condition'].forEach(function(id){ document.getElementById(id).value = ''; });
+  renderAutomations();
+}
+
+renderAutomations();
+
+// ═══════════════════════════════════════════
+// SEQUENCES
+// ═══════════════════════════════════════════
+function renderSequences(){
+  var el = document.getElementById('sequences-list');
+  if(!S.sequences.length){ el.innerHTML = '<div style="color:var(--muted);padding:20px;text-align:center">No sequences yet. ⏳ Pending provider connection — no email/SMS provider configured yet</div>'; return; }
+  
+  el.innerHTML = S.sequences.map(function(seq, idx){
+    return '<div class="card">' +
+      '<div style="display:flex;justify-content:space-between">' +
+      '<div>' +
+        '<div style="font-size:13px;font-weight:700">' + seq.name + '</div>' +
+        '<div style="font-size:11px;color:var(--muted);margin-top:4px">Channel: <strong>' + seq.channel + '</strong></div>' +
+        '<div style="font-size:11px;color:var(--muted)">Steps: ' + (seq.steps ? seq.steps.length : 0) + '</div>' +
+        '<div style="font-size:11px;color:var(--muted)">Enrolled: ' + (seq.enrolled || 0) + ' contacts</div>' +
+        '<div style="margin-top:8px"><span class="tag t-yellow">⏳ Pending provider</span></div>' +
+      '</div>' +
+      '<div style="display:flex;flex-direction:column;gap:6px">' +
+        '<button class="btn btn-outline btn-sm" onclick="editSequence(' + idx + ')">Edit</button>' +
+        '<button class="btn btn-red btn-sm" onclick="delSequence(' + idx + ')">Delete</button>' +
+      '</div>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+}
+
+var sequenceStepCounter = 0;
+
+function addSequenceStep(){
+  sequenceStepCounter++;
+  var container = document.getElementById('seq-steps');
+  var html = container.innerHTML + '<div style="margin-bottom:8px;padding:8px;background:#001f3d;border-radius:6px;border:1px solid var(--border)">' +
+    '<div class="fg" style="margin-bottom:6px">' +
+      '<label style="font-size:10px">Delay (hours or days, e.g. "2 days" or "24 hours")</label>' +
+      '<input type="text" id="seq-step-delay-' + sequenceStepCounter + '" placeholder="e.g. 2 days" style="font-size:12px">' +
+    '</div>' +
+    '<div class="fg" style="margin-bottom:6px">' +
+      '<label style="font-size:10px">Message Template</label>' +
+      '<textarea id="seq-step-msg-' + sequenceStepCounter + '" placeholder="Use {{name}}, {{email}} as placeholders" style="font-size:12px;min-height:50px"></textarea>' +
+    '</div>' +
+  '</div>';
+  container.innerHTML = html;
+}
+
+function saveSequence(){
+  var name = document.getElementById('seq-name').value.trim();
+  var channel = document.getElementById('seq-channel').value;
+  
+  if(!name){ alert('Sequence name required'); return; }
+  
+  var steps = [];
+  var container = document.getElementById('seq-steps');
+  container.querySelectorAll('[id^="seq-step-delay-"]').forEach(function(el){
+    var stepNum = el.id.split('-')[3];
+    var delay = el.value.trim();
+    var msg = document.getElementById('seq-step-msg-' + stepNum).value.trim();
+    if(delay && msg){
+      steps.push({delay: delay, message: msg});
+    }
+  });
+  
+  if(steps.length === 0){ alert('Add at least one step'); return; }
+  
+  S.sequences.push({
+    id: Date.now(),
+    name: name,
+    channel: channel,
+    steps: steps,
+    enrolled: 0,
+    status: 'draft'
+  });
+  
+  save('ox-sequences', S.sequences);
+  closeModal('mod-sequence');
+  document.getElementById('seq-name').value = '';
+  document.getElementById('seq-steps').innerHTML = '';
+  sequenceStepCounter = 0;
+  renderSequences();
+}
+
+function editSequence(idx){
+  alert('Edit mode: implement sequence editor modal if needed');
+}
+
+function delSequence(idx){
+  if(confirm('Delete sequence?')){
+    S.sequences.splice(idx, 1);
+    save('ox-sequences', S.sequences);
+    renderSequences();
+  }
+}
+
+renderSequences();
+
+// ═══════════════════════════════════════════
+// FUNNELS / FORMS
+// ═══════════════════════════════════════════
+function renderFunnels(){
+  var el = document.getElementById('funnels-list');
+  if(!S.funnels.length){ el.innerHTML = '<div style="color:var(--muted);padding:20px;text-align:center">No funnels yet. 📍 Hosted locally in-app — external domain/hosting pending</div>'; return; }
+  
+  el.innerHTML = S.funnels.map(function(funnel, idx){
+    return '<div class="card">' +
+      '<div style="display:flex;justify-content:space-between">' +
+      '<div>' +
+        '<div style="font-size:13px;font-weight:700">' + funnel.name + '</div>' +
+        '<div style="font-size:11px;color:var(--muted);margin-top:4px">Type: <strong>' + funnel.type + '</strong></div>' +
+        '<div style="font-size:11px;color:var(--muted)">Fields: ' + (funnel.fields ? funnel.fields.length : 0) + '</div>' +
+        '<div style="font-size:11px;color:var(--muted)">Submissions: ' + (funnel.submissions || 0) + '</div>' +
+        '<div style="margin-top:8px"><span class="tag t-yellow">📍 Hosted locally</span></div>' +
+      '</div>' +
+      '<div style="display:flex;flex-direction:column;gap:6px">' +
+        '<button class="btn btn-green btn-sm" onclick="previewFunnel(' + idx + ')">Preview</button>' +
+        '<button class="btn btn-red btn-sm" onclick="delFunnel(' + idx + ')">Delete</button>' +
+      '</div>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+}
+
+var funnelFieldCounter = 0;
+
+function addFunnelField(){
+  funnelFieldCounter++;
+  var container = document.getElementById('funnel-fields');
+  var html = container.innerHTML + '<div style="margin-bottom:8px;padding:8px;background:#001f3d;border-radius:6px;border:1px solid var(--border)">' +
+    '<div style="display:flex;gap:6px">' +
+      '<input type="text" id="funnel-field-label-' + funnelFieldCounter + '" placeholder="Field label (e.g. Name)" style="flex:1;font-size:12px">' +
+      '<select id="funnel-field-type-' + funnelFieldCounter + '" style="flex:1;font-size:12px">' +
+        '<option value="text">Text</option>' +
+        '<option value="email">Email</option>' +
+        '<option value="phone">Phone</option>' +
+        '<option value="textarea">Textarea</option>' +
+        '<option value="select">Select</option>' +
+      '</select>' +
+    '</div>' +
+  '</div>';
+  container.innerHTML = html;
+}
+
+function saveFunnel(){
+  var name = document.getElementById('funnel-name').value.trim();
+  var type = document.getElementById('funnel-type').value;
+  
+  if(!name){ alert('Funnel name required'); return; }
+  
+  var fields = [];
+  var container = document.getElementById('funnel-fields');
+  container.querySelectorAll('[id^="funnel-field-label-"]').forEach(function(el){
+    var fieldNum = el.id.split('-')[3];
+    var label = el.value.trim();
+    var fieldType = document.getElementById('funnel-field-type-' + fieldNum).value;
+    if(label){
+      fields.push({label: label, type: fieldType});
+    }
+  });
+  
+  S.funnels.push({
+    id: Date.now(),
+    name: name,
+    type: type,
+    fields: fields,
+    submissions: 0,
+    conversionRate: 0,
+    status: 'draft'
+  });
+  
+  save('ox-funnels', S.funnels);
+  closeModal('mod-funnel');
+  document.getElementById('funnel-name').value = '';
+  document.getElementById('funnel-fields').innerHTML = '';
+  funnelFieldCounter = 0;
+  renderFunnels();
+}
+
+function previewFunnel(idx){
+  var funnel = S.funnels[idx];
+  var formHtml = '<form onsubmit="submitFunnelForm(event, ' + idx + ')" style="display:flex;flex-direction:column;gap:10px">';
+  
+  funnel.fields.forEach(function(field, fidx){
+    if(field.type === 'text'){
+      formHtml += '<input type="text" name="' + field.label + '" placeholder="' + field.label + '" required style="padding:8px;border:1px solid var(--border);border-radius:6px;background:#001020;color:var(--fg)">';
+    } else if(field.type === 'email'){
+      formHtml += '<input type="email" name="' + field.label + '" placeholder="' + field.label + '" required style="padding:8px;border:1px solid var(--border);border-radius:6px;background:#001020;color:var(--fg)">';
+    } else if(field.type === 'phone'){
+      formHtml += '<input type="tel" name="' + field.label + '" placeholder="' + field.label + '" style="padding:8px;border:1px solid var(--border);border-radius:6px;background:#001020;color:var(--fg)">';
+    } else if(field.type === 'textarea'){
+      formHtml += '<textarea name="' + field.label + '" placeholder="' + field.label + '" style="padding:8px;border:1px solid var(--border);border-radius:6px;background:#001020;color:var(--fg);min-height:80px"></textarea>';
+    }
+  });
+  
+  formHtml += '<button type="submit" class="btn btn-gold" style="width:100%">Submit</button></form>';
+  
+  alert('Form Preview for: ' + funnel.name + '\n\nForm rendering would display here in a proper modal. Fields: ' + funnel.fields.map(function(f){ return f.label + ' (' + f.type + ')'; }).join(', '));
+}
+
+function submitFunnelForm(event, funnelIdx){
+  event.preventDefault();
+  var funnel = S.funnels[funnelIdx];
+  var formData = new FormData(event.target);
+  var submission = {id: Date.now(), timestamp: new Date().toISOString(), data: {}};
+  
+  formData.forEach(function(value, key){
+    submission.data[key] = value;
+  });
+  
+  // Auto-create/update CRM contact
+  var name = submission.data[funnel.fields[0] ? funnel.fields[0].label : ''] || 'Unknown';
+  var email = submission.data['Email'] || '';
+  var phone = submission.data['Phone'] || '';
+  
+  pushToCRM({
+    name: name,
+    email: email,
+    phone: phone,
+    source: 'form:' + funnel.name,
+    notes: 'Auto-imported from ' + funnel.name
+  });
+  
+  // Store submission
+  var submissions = JSON.parse(localStorage.getItem('ox-funnel-submissions') || '[]');
+  submissions.push({funnelId: funnel.id, funnelName: funnel.name, submission: submission});
+  localStorage.setItem('ox-funnel-submissions', JSON.stringify(submissions));
+  
+  funnel.submissions = (funnel.submissions || 0) + 1;
+  save('ox-funnels', S.funnels);
+  
+  alert('✓ Form submitted! Contact created in CRM.');
+}
+
+function pushToCRM(data){
+  // Auto-create CRM contact from funnel submission
+  var existing = S.crmContacts.find(function(c){ return c.email === data.email && data.email; });
+  if(existing) return; // Already exists
+  
+  S.crmContacts.push({
+    name: data.name,
+    phone: data.phone || '',
+    email: data.email || '',
+    source: data.source,
+    notes: data.notes,
+    stage: 'Lead',
+    created: new Date().toISOString(),
+    id: Date.now()
+  });
+  
+  save('ox-crm-contacts', S.crmContacts);
+  renderCRM();
+  fireAutomationEvent('new-lead', {contactName: data.name});
+}
+
+function delFunnel(idx){
+  if(confirm('Delete funnel?')){
+    S.funnels.splice(idx, 1);
+    save('ox-funnels', S.funnels);
+    renderFunnels();
+  }
+}
+
+renderFunnels();
+
+// ═══════════════════════════════════════════
+// SKILLS / AGENTS MANAGER
+// ═══════════════════════════════════════════
+function renderAgentManager(){
+  var grid = document.getElementById('agent-grid');
+  grid.innerHTML = AGENTS.map(function(agent){
+    var settings = S.agentSettings[agent.id] || {enabled: true, schedule: 'manual', selfLearning: true};
+    return '<div class="card" style="padding:12px">' +
+      '<div style="font-size:11px;font-weight:700;margin-bottom:6px">' + agent.emoji + ' ' + agent.name + '</div>' +
+      '<div style="font-size:10px;color:var(--muted);margin-bottom:8px">' + agent.desc + '</div>' +
+      '<div style="display:flex;gap:6px;margin-bottom:6px">' +
+        '<label style="display:flex;align-items:center;gap:4px;font-size:10px">' +
+          '<input type="checkbox" ' + (settings.enabled ? 'checked' : '') + ' onchange="toggleAgent(\'' + agent.id + '\')" style="width:12px;height:12px">' +
+          (settings.enabled ? '<span class="tag t-green">ON</span>' : '<span class="tag t-red">OFF</span>') +
+        '</label>' +
+      '</div>' +
+      '<select style="width:100%;font-size:10px;margin-bottom:6px" onchange="setAgentSchedule(\'' + agent.id + '\', this.value)">' +
+        '<option value="manual" ' + (settings.schedule === 'manual' ? 'selected' : '') + '>Manual</option>' +
+        '<option value="hourly" ' + (settings.schedule === 'hourly' ? 'selected' : '') + '>Hourly</option>' +
+        '<option value="daily" ' + (settings.schedule === 'daily' ? 'selected' : '') + '>Daily</option>' +
+      '</select>' +
+      '<button class="btn btn-outline btn-sm" style="width:100%;font-size:10px" onclick="openAgentEditModal(\'' + agent.id + '\')">Edit Instructions</button>' +
+    '</div>';
+  }).join('');
+}
+
+function toggleAgent(agentId){
+  S.agentSettings[agentId] = S.agentSettings[agentId] || {};
+  S.agentSettings[agentId].enabled = !S.agentSettings[agentId].enabled;
+  save('ox-agent-settings', S.agentSettings);
+  renderAgentManager();
+}
+
+function setAgentSchedule(agentId, schedule){
+  S.agentSettings[agentId] = S.agentSettings[agentId] || {};
+  S.agentSettings[agentId].schedule = schedule;
+  save('ox-agent-settings', S.agentSettings);
+}
+
+function openAgentEditModal(agentId){
+  S.editingAgentId = agentId;
+  var agent = AGENTS.find(function(a){ return a.id === agentId; });
+  document.getElementById('agent-edit-title').textContent = 'Edit ' + agent.name + ' Instructions';
+  document.getElementById('agent-edit-text').value = agent.knowledge.default || '';
+  var settings = S.agentSettings[agentId] || {};
+  document.getElementById('agent-self-learning').checked = settings.selfLearning !== false;
+  openModal('mod-agent-edit');
+}
+
+function saveAgentEdit(){
+  var agentId = S.editingAgentId;
+  var agent = AGENTS.find(function(a){ return a.id === agentId; });
+  var newInstructions = document.getElementById('agent-edit-text').value;
+  var selfLearning = document.getElementById('agent-self-learning').checked;
+  
+  agent.knowledge.default = newInstructions;
+  S.agentSettings[agentId] = S.agentSettings[agentId] || {};
+  S.agentSettings[agentId].selfLearning = selfLearning;
+  
+  save('ox-agent-settings', S.agentSettings);
+  appendLearning(agentId, 'Instructions updated by user');
+  closeModal('mod-agent-edit');
+}
+
+function downloadAgentLearnings(){
+  var agentId = S.editingAgentId;
+  var agent = AGENTS.find(function(a){ return a.id === agentId; });
+  var learnings = localStorage.getItem('ox-learnings-' + agentId) || '';
+  
+  var markdown = '# ' + agent.name + ' — Learnings (Exported)\n\n' +
+    'Generated: ' + new Date().toLocaleString('en-CA') + '\n\n' +
+    (learnings || '(No learnings yet)');
+  
+  var blob = new Blob([markdown], {type: 'text/markdown'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url;
+  a.download = 'learnings-' + agentId + '.md';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// Render skills reference
+function renderSkillsReference(){
+  var skills = [
+    {emoji: '🎬', name: 'Video Script & Avatar Generator', desc: 'Hetisha TikTok/YouTube scripts + AI avatar'},
+    {emoji: '📝', name: 'Video Script Generator', desc: 'Fast scripts for any Oxyderm video'},
+    {emoji: '🛍️', name: 'Product Asset Generator', desc: 'Shop images, before/afters, carousel prompts'},
+    {emoji: '🌐', name: 'Google Business Profile Optimizer', desc: 'Local SEO, GBP posts, review management'},
+    {emoji: '⭐', name: 'Review & Reputation Monitor', desc: 'Track Google, Trustpilot, Facebook reviews'},
+    {emoji: '📰', name: 'Local SEO Blog Writer', desc: 'Geo + medical keyword blog posts for Edmonton'},
+    {emoji: '🖼️', name: 'Before/After Showcase', desc: 'Gallery structure, trust copy, proof collection'},
+    {emoji: '📧', name: 'SMS/Email Retention Sequences', desc: 'Post-treatment follow-ups, re-booking automation'},
+    {emoji: '👥', name: 'Referral Program Builder', desc: 'Word-of-mouth referral + affiliate program'},
+    {emoji: '🎯', name: 'Local Ad Campaign Builder', desc: 'Edmonton geo-targeted Meta ads, copy & targeting'}
+  ];
+  
+  var ref = document.getElementById('skills-reference');
+  ref.innerHTML = skills.map(function(s){
+    return '<div class="card" style="padding:10px">' +
+      '<div style="font-size:16px;margin-bottom:4px">' + s.emoji + '</div>' +
+      '<div style="font-size:11px;font-weight:700;margin-bottom:2px">' + s.name + '</div>' +
+      '<div style="font-size:10px;color:var(--muted)">' + s.desc + '</div>' +
+    '</div>';
+  }).join('');
+}
+
+renderAgentManager();
+renderSkillsReference();
 </script>
-<!-- ══ SKILLS ══ -->
-<div class="pnl" id="pnl-skills">
-  <div class="stl">Oxyderm Skill Library</div>
-  <div class="card" style="margin-bottom:8px;padding:10px 14px;background:#001228;border-color:#1a3a5c">
-    <div style="font-size:11px;color:var(--muted)">10 skills active &bull; Model: claude-sonnet-4-6 &bull; Last updated: Aug 26 2026</div>
-  </div>
-
-  <div class="stl">Content & Video</div>
-
-  <div class="card">
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <div>
-        <div style="font-size:14px;font-weight:700">Video Script & Avatar Generator</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:3px">Hetisha TikTok/YouTube scripts + AI avatar rendering</div>
-      </div>
-      <span style="background:#0a3d1a;color:#2ecc71;font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px">ACTIVE</span>
-    </div>
-    <div style="margin-top:8px;font-size:11px;color:var(--muted)">Load: <code style="background:#0a1e35;padding:2px 6px;border-radius:4px;color:var(--gold)">skill_view oxyderm-video-script-avatar</code></div>
-    <div style="margin-top:4px;font-size:11px;color:var(--muted)">Use: "Generate a 45-second TikTok script for Hetisha about [topic]"</div>
-  </div>
-
-  <div class="card">
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <div>
-        <div style="font-size:14px;font-weight:700">Video Script Generator (Standalone)</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:3px">Fast scripts for any Oxyderm video content</div>
-      </div>
-      <span style="background:#0a3d1a;color:#2ecc71;font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px">ACTIVE</span>
-    </div>
-    <div style="margin-top:8px;font-size:11px;color:var(--muted)">Load: <code style="background:#0a1e35;padding:2px 6px;border-radius:4px;color:var(--gold)">skill_view oxyderm-video-script-generator</code></div>
-  </div>
-
-  <div class="card">
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <div>
-        <div style="font-size:14px;font-weight:700">Product Asset Generator</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:3px">Shop images, before/afters, carousel prompts</div>
-      </div>
-      <span style="background:#0a3d1a;color:#2ecc71;font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px">ACTIVE</span>
-    </div>
-    <div style="margin-top:8px;font-size:11px;color:var(--muted)">Load: <code style="background:#0a1e35;padding:2px 6px;border-radius:4px;color:var(--gold)">skill_view oxyderm-product-asset-generator</code></div>
-    <div style="margin-top:4px;font-size:11px;color:var(--muted)">Also integrates with: <a href="https://labs.google.com/pomelli" target="_blank" style="color:var(--gold)">Google Pomelli</a></div>
-  </div>
-
-  <div class="stl">Local SEO & Reviews</div>
-
-  <div class="card">
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <div>
-        <div style="font-size:14px;font-weight:700">Google Business Profile Optimizer</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:3px">Local SEO, GBP posts, review management</div>
-      </div>
-      <span style="background:#0a3d1a;color:#2ecc71;font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px">ACTIVE</span>
-    </div>
-    <div style="margin-top:8px;font-size:11px;color:var(--muted)">Load: <code style="background:#0a1e35;padding:2px 6px;border-radius:4px;color:var(--gold)">skill_view oxyderm-google-business-optimizer</code></div>
-  </div>
-
-  <div class="card">
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <div>
-        <div style="font-size:14px;font-weight:700">Review & Reputation Monitor</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:3px">Track Google, Trustpilot, Facebook reviews</div>
-      </div>
-      <span style="background:#0a3d1a;color:#2ecc71;font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px">ACTIVE</span>
-    </div>
-    <div style="margin-top:8px;font-size:11px;color:var(--muted)">Load: <code style="background:#0a1e35;padding:2px 6px;border-radius:4px;color:var(--gold)">skill_view oxyderm-review-monitor</code></div>
-  </div>
-
-  <div class="card">
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <div>
-        <div style="font-size:14px;font-weight:700">Local SEO Blog Writer</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:3px">Geo + medical keyword blog posts for Edmonton</div>
-      </div>
-      <span style="background:#0a3d1a;color:#2ecc71;font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px">ACTIVE</span>
-    </div>
-    <div style="margin-top:8px;font-size:11px;color:var(--muted)">Load: <code style="background:#0a1e35;padding:2px 6px;border-radius:4px;color:var(--gold)">skill_view oxyderm-local-seo-blogger</code></div>
-  </div>
-
-  <div class="stl">Client Retention & Sales</div>
-
-  <div class="card">
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <div>
-        <div style="font-size:14px;font-weight:700">Before/After Showcase</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:3px">Gallery structure, trust copy, proof collection</div>
-      </div>
-      <span style="background:#0a3d1a;color:#2ecc71;font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px">ACTIVE</span>
-    </div>
-    <div style="margin-top:8px;font-size:11px;color:var(--muted)">Load: <code style="background:#0a1e35;padding:2px 6px;border-radius:4px;color:var(--gold)">skill_view oxyderm-before-after-showcase</code></div>
-  </div>
-
-  <div class="card">
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <div>
-        <div style="font-size:14px;font-weight:700">SMS/Email Retention Sequences</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:3px">Post-treatment follow-ups, re-booking automation</div>
-      </div>
-      <span style="background:#0a3d1a;color:#2ecc71;font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px">ACTIVE</span>
-    </div>
-    <div style="margin-top:8px;font-size:11px;color:var(--muted)">Load: <code style="background:#0a1e35;padding:2px 6px;border-radius:4px;color:var(--gold)">skill_view oxyderm-retention-sequences</code></div>
-  </div>
-
-  <div class="card">
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <div>
-        <div style="font-size:14px;font-weight:700">Referral Program Builder</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:3px">Word-of-mouth referral + affiliate program</div>
-      </div>
-      <span style="background:#0a3d1a;color:#2ecc71;font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px">ACTIVE</span>
-    </div>
-    <div style="margin-top:8px;font-size:11px;color:var(--muted)">Load: <code style="background:#0a1e35;padding:2px 6px;border-radius:4px;color:var(--gold)">skill_view oxyderm-referral-program</code></div>
-  </div>
-
-  <div class="stl">Advertising</div>
-
-  <div class="card">
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <div>
-        <div style="font-size:14px;font-weight:700">Local Ad Campaign Builder</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:3px">Edmonton geo-targeted Meta ads, copy & targeting</div>
-      </div>
-      <span style="background:#0a3d1a;color:#2ecc71;font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px">ACTIVE</span>
-    </div>
-    <div style="margin-top:8px;font-size:11px;color:var(--muted)">Load: <code style="background:#0a1e35;padding:2px 6px;border-radius:4px;color:var(--gold)">skill_view oxyderm-local-ad-builder</code></div>
-  </div>
-
-  <div class="stl" style="margin-top:20px">Tools Integration</div>
-  <div class="card" style="background:#001228">
-    <div style="font-size:12px;font-weight:700;margin-bottom:8px;color:var(--gold)">Recommended for Product Design & Content</div>
-    <a href="https://labs.google.com/pomelli" target="_blank" style="display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--fg);padding:8px 0;border-bottom:1px solid #0a1e35">
-      <span style="font-size:18px">🎨</span>
-      <div>
-        <div style="font-size:13px;font-weight:700">Google Pomelli</div>
-        <div style="font-size:11px;color:var(--muted)">On-brand content generation for your business</div>
-      </div>
-      <span style="margin-left:auto;color:var(--gold);font-size:12px">→</span>
-    </a>
-    <a href="https://app.make.com" target="_blank" style="display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--fg);padding:8px 0;border-bottom:1px solid #0a1e35">
-      <span style="font-size:18px">⚙️</span>
-      <div>
-        <div style="font-size:13px;font-weight:700">Make.com</div>
-        <div style="font-size:11px;color:var(--muted)">Social post scheduling & automation</div>
-      </div>
-      <span style="margin-left:auto;color:var(--gold);font-size:12px">→</span>
-    </a>
-    <a href="https://oxydermlaserclinic.ca" target="_blank" style="display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--fg);padding:8px 0">
-      <span style="font-size:18px">🌐</span>
-      <div>
-        <div style="font-size:13px;font-weight:700">Oxyderm Shop</div>
-        <div style="font-size:11px;color:var(--muted)">shop.oxydermlaserclinic.ca (pending HostGator setup)</div>
-      </div>
-      <span style="margin-left:auto;color:var(--gold);font-size:12px">→</span>
-    </a>
-  </div>
-</div>
-
 </body>
 </html>
