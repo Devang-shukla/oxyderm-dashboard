@@ -192,6 +192,35 @@ textarea{min-height:65px;resize:vertical}
 </head>
 <body>
 
+<!-- PASSWORD GATE -->
+<div id="pw-gate" style="position:fixed;inset:0;z-index:99999;background:#00172D;display:flex;align-items:center;justify-content:center;padding:20px">
+  <div style="width:100%;max-width:320px;text-align:center">
+    <div style="font-size:22px;font-weight:800;margin-bottom:4px;color:#f0f4f8">Oxyderm <span style="color:#c9a96e">OS</span></div>
+    <div style="font-size:12px;color:#7a9ab8;margin-bottom:24px">Enter password to continue</div>
+    <input type="password" id="pw-input" placeholder="Password" style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #1a3a5c;background:#001f3d;color:#f0f4f8;font-size:15px;margin-bottom:12px" onkeydown="if(event.key==='Enter'){checkPwGate();}">
+    <button onclick="checkPwGate()" style="width:100%;padding:12px;border-radius:10px;border:none;background:#c9a96e;color:#00172D;font-weight:800;font-size:14px;cursor:pointer">Unlock</button>
+    <div id="pw-err" style="color:#e74c3c;font-size:12px;margin-top:10px;display:none">Incorrect password. Try again.</div>
+  </div>
+</div>
+<script>
+(function(){
+  var GATE_KEY = 'oxyderm_gate_ok';
+  var PASSWORD = 'hetisha';
+  if (sessionStorage.getItem(GATE_KEY) === '1') {
+    document.getElementById('pw-gate') && (document.getElementById('pw-gate').style.display = 'none');
+  }
+  window.checkPwGate = function(){
+    var val = document.getElementById('pw-input').value;
+    if (val === PASSWORD) {
+      sessionStorage.setItem(GATE_KEY, '1');
+      document.getElementById('pw-gate').style.display = 'none';
+    } else {
+      document.getElementById('pw-err').style.display = 'block';
+    }
+  };
+})();
+</script>
+
 <!-- HEADER -->
 <div class="hdr">
   <div class="logo">Oxyderm <span>OS</span></div>
