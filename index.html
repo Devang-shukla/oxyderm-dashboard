@@ -290,7 +290,7 @@ textarea{min-height:65px;resize:vertical}
     <div style="margin-top:12px;font-size:13px;color:var(--muted);text-align:center" id="mic-status">Tap mic or type below</div>
   </div>
   <div style="display:flex;gap:8px;margin-bottom:12px">
-    <input type="text" id="sarah-input" placeholder='Ask: "Who is at 3pm?" or "What did Mehak pay?"' onkeydown="if(event.key==='Enter'){doAsk();}">
+    <input type="text" id="sarah-input" placeholder='Ask: "Who is at 3pm?" or "Book Jane, 780-555-1234, LHR Underarms, Sept 15 2pm"' onkeydown="if(event.key==='Enter'){doAsk();}">
     <button class="btn btn-gold" onclick="doAsk()">Ask</button>
   </div>
   <div class="sarah-box" id="sarah-box">
@@ -637,6 +637,11 @@ textarea{min-height:65px;resize:vertical}
 // The real files at dashboard/agents/<agentId>/learnings.md are seeded with headers and updated manually via export.
 // This browser-safe pattern works for static HTML dashboards without backend server write access.
 
+// Base URL for the local automation engine (engine/automationEngine.js, launchd-managed).
+// Powers Sarah's virtual-assistant actions (booking/cancel/reschedule/agent handoff) and
+// event notifications. Requires the engine running on this Mac at localhost:4790.
+var ENGINE_BASE = 'http://localhost:4790';
+
 var S = {
   user: 'devang',
   expenses:  JSON.parse(localStorage.getItem('ox-exp')   || '[]'),
@@ -880,7 +885,70 @@ setTimeout(loadAppointments, 300);
 function sarahAnswer(q, cb){
   var ql = q.toLowerCase();
   cb = cb || function(r){ return r; };
-  
+
+  // ── VIRTUAL ASSISTANT: booking intent (real Square write — requires Square plan with Bookings API write access) ──
+  if(/book (me|an appointment|a session)|schedule (me|an appointment)|i want to book/i.test(ql)){
+    return cb('To book you in, I need: your name, phone number, which treatment, and your preferred date/time. Reply with those details, e.g. "Book Jane Smith, 780-555-1234, Underarms Laser Hair Removal, Sept 15 at 2pm."');
+  }
+  var bookMatch = q.match(/book\s+([a-zA-Z\s]+?),\s*([\d\-\+\(\) ]{7,}),\s*(.+?),\s*(.+)$/i);
+  if(bookMatch){
+    var bName = bookMatch[1].trim(), bPhone = bookMatch[2].trim(), bService = bookMatch[3].trim(), bWhen = bookMatch[4].trim();
+    var bISO = naturalDateToISO(bWhen);
+    if(!bISO){
+      return cb('I could not understand the date/time "' + bWhen + '". Try a format like "Sept 15 2026, 2pm" or an exact ISO time.');
+    }
+    cb('One moment, booking ' + bName + ' for ' + bService + '...');
+    fetch(ENGINE_BASE + '/sarah/book', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ name:bName, phone:bPhone, serviceName:bService, startAtISO: bISO })
+    }).then(function(r){ return r.json(); }).then(function(res){
+      if(res.ok) showSarahAnswer('Booked ' + bName + ' for ' + res.service + '. Confirmation sent.');
+      else showSarahAnswer('Could not complete that booking: ' + (res.error && (res.error.detail || JSON.stringify(res.error)) || 'unknown error') + '. If this says the merchant plan does not support write operations, Square\'s Bookings API write access needs to be enabled on the account (contact Square support to upgrade), and Devang should be notified.');
+    }).catch(function(){ showSarahAnswer('Booking engine unreachable. Is the automation engine running on this Mac?'); });
+    return;
+  }
+
+  // ── VIRTUAL ASSISTANT: cancel intent ──
+  if(/cancel my appointment|cancel booking/i.test(ql)){
+    return cb('To cancel, tell me the phone number on the booking, e.g. "Cancel appointment for 780-555-1234."');
+  }
+  var cancelMatch = q.match(/cancel appointment for\s+([\d\-\+\(\) ]{7,})/i);
+  if(cancelMatch){
+    var cPhone = cancelMatch[1].trim();
+    cb('Looking up bookings for that number...');
+    fetch(ENGINE_BASE + '/sarah/find-bookings', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({phone:cPhone}) })
+      .then(function(r){ return r.json(); }).then(function(res){
+        if(!res.ok || !res.bookings || !res.bookings.length) return showSarahAnswer('No upcoming bookings found for that number.');
+        var b = res.bookings[0];
+        fetch(ENGINE_BASE + '/sarah/cancel', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({bookingId:b.id, reason:'cancelled via Sarah'}) })
+          .then(function(r2){ return r2.json(); }).then(function(res2){
+            if(res2.ok) showSarahAnswer('Cancelled the booking on ' + b.start_at + '.');
+            else showSarahAnswer('Could not cancel: ' + JSON.stringify(res2.error));
+          });
+      }).catch(function(){ showSarahAnswer('Booking engine unreachable.'); });
+    return;
+  }
+
+  // ── VIRTUAL ASSISTANT: hand off to a named agent (scheduler, finance, client, marketing, research, social, editor) ──
+  var agentMatch = q.match(/ask (the )?(scheduler|finance|client|marketing|research|social|editor|general) (agent\s*)?(.+)/i);
+  if(agentMatch){
+    var targetAgent = agentMatch[2].toLowerCase(), agentQ = agentMatch[4];
+    cb('Routing your question to the ' + targetAgent + ' agent, this can take up to a minute...');
+    fetch(ENGINE_BASE + '/sarah/ask-agent', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({agent:targetAgent, question:agentQ}) })
+      .then(function(r){ return r.json(); }).then(function(res){
+        if(!res.ok) return showSarahAnswer('Could not reach the agent brain: ' + (res.error||'unknown error'));
+        var qid = res.question_id, tries = 0;
+        var poll = setInterval(function(){
+          tries++;
+          if(tries > 20){ clearInterval(poll); showSarahAnswer('The ' + targetAgent + ' agent did not answer in time. Try again shortly.'); return; }
+          fetch(ENGINE_BASE + '/sarah/agent-answer?question_id=' + qid).then(function(r){ return r.json(); }).then(function(ans){
+            if(ans.status === 'answered'){ clearInterval(poll); showSarahAnswer(ans.answer); }
+          }).catch(function(){});
+        }, 3000);
+      }).catch(function(){ showSarahAnswer('Booking engine unreachable.'); });
+    return;
+  }
+
   // by name
   for(var i=0; i<CLINIC.appts.length; i++){
     var a = CLINIC.appts[i];
@@ -910,13 +978,45 @@ function sarahAnswer(q, cb){
   // balance
   if(/balance|owing/i.test(ql)) return cb('Mehak Wadhwa has a $49.99 balance owing from her advance in January 2025.');
   // help
-  if(/help|what can|how/i.test(ql)) return cb('Ask me: who is at 1pm, notes for Alexandra, what did Mehak pay, who is next, any balance owing.');
-  
+  if(/help|what can|how/i.test(ql)) return cb('Ask me: who is at 1pm, notes for Alexandra, what did Mehak pay, who is next, any balance owing, book [name], [phone], [service], [date/time], cancel appointment for [phone], or ask the [scheduler/finance/client/marketing/research/social/editor] agent [question].');
+
   // Unknown - try web search
   webSearch(ql, function(result){
     if(result) return cb(result);
-    return cb('I don\'t have that information. Try asking about appointments, clients, services, or something else.');
+    return cb('I don\'t have that information. Try asking about appointments, clients, services, bookings, or ask a specific agent.');
   });
+}
+
+// Small natural-language date parser for booking requests. Accepts ISO
+// strings directly, or normalizes common spoken/typed phrasings ("Sept 15 at
+// 2pm", "Sept 15, 2pm") into a format the browser's Date parser accepts
+// reliably, then returns a UTC ISO string. Returns null if unparseable —
+// callers MUST check for null and ask the client to re-state the date/time
+// rather than silently booking a wrong or invalid slot.
+function naturalDateToISO(text){
+  var iso = text.match(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/);
+  if(iso) return new Date(text).toISOString();
+
+  var cleaned = text.trim()
+    .replace(/\bat\b/gi, '')                       // "Sept 15 at 2pm" -> "Sept 15  2pm"
+    .replace(/(\d)\s*(am|pm)\b/gi, '$1:00 $2')      // "3pm" / "3 pm" -> "3:00 pm" (Date() needs a colon to parse reliably)
+    .replace(/,/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  // If no year present, assume the current year (or next year if the date would be in the past today)
+  if(!/\d{4}/.test(cleaned)){
+    var thisYear = new Date().getFullYear();
+    var withYear = cleaned + ' ' + thisYear;
+    var d1 = new Date(withYear);
+    if(!isNaN(d1.getTime())){
+      if(d1.getTime() < Date.now()) d1 = new Date(cleaned + ' ' + (thisYear + 1));
+      return isNaN(d1.getTime()) ? null : d1.toISOString();
+    }
+  }
+
+  var d = new Date(cleaned);
+  return isNaN(d.getTime()) ? null : d.toISOString();
 }
 
 function sarahSpeak(text){
@@ -958,10 +1058,10 @@ function doAsk(){
   
   sarahAnswer(q, function(answer){
     showSarahAnswer(answer);
-    apiCall('conversation_save', {
-      user_input: q,
-      sarah_response: answer,
-      session: S.sessionId || 'default'
+    apiCall('memory_set', {
+      agent: 'sarah',
+      category: 'conversation-' + Date.now(),
+      content: 'Q: ' + q + ' | A: ' + answer
     }, function(){});
   });
 }
@@ -974,7 +1074,7 @@ function toggleMic(){
   }
   if(!SR){ alert('Microphone not supported. Use Chrome or Safari on HTTPS.'); return; }
   S.micRec = new SR(); S.micRec.lang='en-CA'; S.micRec.continuous=false; S.micRec.interimResults=false;
-  S.micRec.onresult = function(e){ var q=e.results[0][0].transcript; sarahAnswer(q, function(answer){ showSarahAnswer(answer); apiCall('conversation_save', { user_input: q, sarah_response: answer, session: S.sessionId || 'default' }, function(){}); }); };
+  S.micRec.onresult = function(e){ var q=e.results[0][0].transcript; sarahAnswer(q, function(answer){ showSarahAnswer(answer); apiCall('memory_set', { agent:'sarah', category:'conversation-' + Date.now(), content: 'Q: ' + q + ' | A: ' + answer }, function(){}); }); };
   S.micRec.onend = stopMicUI;
   S.micRec.onerror = stopMicUI;
   S.isListening = true;
@@ -1001,8 +1101,8 @@ function capMic(){
 // ═══════════════════════════════════════════
 // AGENT MEMORY API
 // ═══════════════════════════════════════════
-var API_BASE = 'https://oxydermshop.com/api.php';
-var API_KEY  = 'oxyderm_ai_2026_secret_key';
+var API_BASE = 'http://api.oxydermlaserclinic.ca/api.php'; // fixed 2026-09-02: was pointing at the dead oxydermshop.com domain, silently discarding every Sarah conversation
+var API_KEY  = 'oxyderm_brain_2026_xK9mP3qL'; // shared with the Agents tab backend — confirmed live
 var agentMemoryCache = {};
 
 function apiCall(action, data, cb){

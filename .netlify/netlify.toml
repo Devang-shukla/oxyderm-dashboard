@@ -1,5 +1,5 @@
+headersOrigin = "config"
 plugins = []
-headers = []
 redirects = []
 
 [functions]
@@ -8,7 +8,7 @@ redirects = []
 
 [build]
 publish = "/Users/genesis/Desktop/Oxyderm-Build/dashboard"
-publishOrigin = "default"
+publishOrigin = "config"
 
 [build.environment]
 
@@ -23,3 +23,9 @@ publishOrigin = "default"
 [build.processing.js]
 
 [build.services]
+
+[[headers]]
+for = "/*"
+
+[headers.values]
+X-Frame-Options = "SAMEORIGIN"

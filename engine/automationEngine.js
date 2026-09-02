@@ -27,9 +27,11 @@
  */
 
 const http = require('http');
+const https = require('https');
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
+const squareBooking = require('./squareBooking');
 
 const PORT = process.env.OXYDERM_ENGINE_PORT || 4790;
 const DATA_DIR = path.join(__dirname, '..', 'data');
@@ -408,10 +410,143 @@ const server = http.createServer((req, res) => {
     });
   }
 
+  // ---------- Sarah virtual-assistant endpoints (real Square Bookings API) ----------
+  function readBody(req) {
+    return new Promise((resolve, reject) => {
+      let body = '';
+      req.on('data', c => { body += c; });
+      req.on('end', () => {
+        try { resolve(JSON.parse(body || '{}')); } catch (e) { reject(e); }
+      });
+    });
+  }
+
+  if (req.method === 'POST' && url.pathname === '/sarah/book') {
+    readBody(req).then(async (item) => {
+      try {
+        if (!item.name || !item.serviceName || !item.startAtISO) {
+          return send(res, 400, { ok: false, error: 'Required: name, serviceName, startAtISO (e.g. "2026-09-10T17:00:00Z")' });
+        }
+        const result = await squareBooking.createBooking(item);
+        if (result.ok) {
+          appendLearning('scheduler', `Sarah booked "${result.service}" for ${item.name} at ${item.startAtISO} (booking id ${result.booking.id}).`);
+          fireEvent('appointment-booked', { name: item.name, phone: item.phone, source: 'sarah-chat' });
+        } else {
+          appendLearning('scheduler', `Sarah booking FAILED for ${item.name} (${item.serviceName}): ${JSON.stringify(result.error).slice(0,200)}`);
+        }
+        send(res, result.ok ? 200 : 400, result);
+      } catch (e) {
+        appendLearning('scheduler', `Sarah booking ERROR: ${e.message}`);
+        send(res, 500, { ok: false, error: e.message });
+      }
+    }).catch(e => send(res, 400, { ok: false, error: 'invalid JSON body' }));
+    return;
+  }
+
+  if (req.method === 'POST' && url.pathname === '/sarah/cancel') {
+    readBody(req).then(async (item) => {
+      try {
+        if (!item.bookingId) return send(res, 400, { ok: false, error: 'Required: bookingId' });
+        const result = await squareBooking.cancelBooking(item);
+        if (result.ok) appendLearning('scheduler', `Sarah cancelled booking ${item.bookingId}: ${item.reason || 'no reason given'}.`);
+        send(res, result.ok ? 200 : 400, result);
+      } catch (e) {
+        send(res, 500, { ok: false, error: e.message });
+      }
+    }).catch(e => send(res, 400, { ok: false, error: 'invalid JSON body' }));
+    return;
+  }
+
+  if (req.method === 'POST' && url.pathname === '/sarah/reschedule') {
+    readBody(req).then(async (item) => {
+      try {
+        if (!item.bookingId || !item.newStartAtISO) return send(res, 400, { ok: false, error: 'Required: bookingId, newStartAtISO' });
+        const result = await squareBooking.rescheduleBooking(item);
+        if (result.ok) appendLearning('scheduler', `Sarah rescheduled booking ${item.bookingId} to ${item.newStartAtISO}.`);
+        send(res, result.ok ? 200 : 400, result);
+      } catch (e) {
+        send(res, 500, { ok: false, error: e.message });
+      }
+    }).catch(e => send(res, 400, { ok: false, error: 'invalid JSON body' }));
+    return;
+  }
+
+  if (req.method === 'POST' && url.pathname === '/sarah/find-bookings') {
+    readBody(req).then(async (item) => {
+      try {
+        if (!item.phone) return send(res, 400, { ok: false, error: 'Required: phone' });
+        const result = await squareBooking.findBookingsByCustomerPhone(item.phone);
+        send(res, result.ok ? 200 : 400, result);
+      } catch (e) {
+        send(res, 500, { ok: false, error: e.message });
+      }
+    }).catch(e => send(res, 400, { ok: false, error: 'invalid JSON body' }));
+    return;
+  }
+
+  // ---------- Sarah agent handoff: proxy to the real HostGator Brain API ----------
+  // This lets Sarah route a question to one of the 21 named agents (scheduler,
+  // finance, client, marketing, research, social, editor, general) and get a
+  // real Hermes-generated answer back, using the SAME backend the Agents tab
+  // uses (fixed 2026-09-02: User-Agent 406 + wrong CLI flag bugs).
+  const BRAIN_API_URL = 'http://api.oxydermlaserclinic.ca/api.php';
+  const BRAIN_API_KEY = 'oxyderm_brain_2026_xK9mP3qL';
+
+  function brainRequest(payload) {
+    return new Promise((resolve, reject) => {
+      const data = JSON.stringify(payload);
+      const req2 = http.request('http://api.oxydermlaserclinic.ca/api.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-API-Key': BRAIN_API_KEY, 'User-Agent': 'curl/8.0', 'Content-Length': Buffer.byteLength(data) },
+        timeout: 15000
+      }, (r) => {
+        let body = '';
+        r.on('data', c => { body += c; });
+        r.on('end', () => { try { resolve(JSON.parse(body)); } catch (e) { resolve({ ok: false, raw: body }); } });
+      });
+      req2.on('timeout', () => { req2.destroy(); reject(new Error('Brain API timeout')); });
+      req2.on('error', reject);
+      req2.write(data);
+      req2.end();
+    });
+  }
+
+  if (req.method === 'POST' && url.pathname === '/sarah/ask-agent') {
+    readBody(req).then(async (item) => {
+      try {
+        if (!item.agent || !item.question) return send(res, 400, { ok: false, error: 'Required: agent, question' });
+        const queued = await brainRequest({ action: 'ask', agent: item.agent, question: item.question, context: item.context || {} });
+        if (!queued.ok) return send(res, 502, { ok: false, error: 'Brain API did not accept question', detail: queued });
+        appendLearning(item.agent, `Sarah routed a question to this agent: "${item.question.slice(0,80)}" (question_id ${queued.question_id}). Run the Oxyderm Brain Poller cron to get the answer, then call /sarah/agent-answer?question_id=${queued.question_id}.`);
+        send(res, 200, { ok: true, question_id: queued.question_id, status: 'pending', note: 'Poll GET /sarah/agent-answer?question_id=... in ~60s once the Oxyderm Brain Poller cron picks this up.' });
+      } catch (e) {
+        send(res, 500, { ok: false, error: e.message });
+      }
+    }).catch(e => send(res, 400, { ok: false, error: 'invalid JSON body' }));
+    return;
+  }
+
+  if (req.method === 'GET' && url.pathname === '/sarah/agent-answer') {
+    const qid = url.searchParams.get('question_id');
+    if (!qid) return send(res, 400, { ok: false, error: 'Required query param: question_id' });
+    brainRequest({ action: 'get_answer', question_id: qid })
+      .then(result => send(res, 200, result))
+      .catch(e => send(res, 500, { ok: false, error: e.message }));
+    return;
+  }
+
   if (req.method === 'GET' && url.pathname === '/') {
     return send(res, 200, {
       service: 'Oxyderm Automation Engine',
-      endpoints: ['GET /status', 'GET /state', 'GET /postiz/status', 'POST /event {type, payload}'],
+      endpoints: [
+        'GET /status', 'GET /state', 'GET /postiz/status', 'POST /event {type, payload}',
+        'POST /sarah/book {name, phone?, email?, serviceName, startAtISO, sellerNote?}',
+        'POST /sarah/cancel {bookingId, reason?}',
+        'POST /sarah/reschedule {bookingId, newStartAtISO}',
+        'POST /sarah/find-bookings {phone}',
+        'POST /sarah/ask-agent {agent, question, context?}',
+        'GET /sarah/agent-answer?question_id=...'
+      ],
       port: PORT
     });
   }
