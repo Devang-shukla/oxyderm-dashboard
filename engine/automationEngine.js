@@ -599,6 +599,30 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  // Email: unread/important inbox summary via the himalaya CLI (info@oxydermlaserclinic.ca
+  // Gmail, connected via App Password in macOS Keychain). Uses hermes CLI to summarize
+  // because raw envelope JSON isn't useful to a human as-is.
+  if (req.method === 'GET' && url.pathname === '/sarah/email-check') {
+    const { exec } = require('child_process');
+    const execOpts = { timeout: 20000, maxBuffer: 5 * 1024 * 1024, env: Object.assign({}, process.env, { PATH: '/Users/genesis/.hermes/hermes-agent/venv/bin:/opt/homebrew/bin:/usr/local/bin:' + (process.env.PATH || '') }) };
+    const cmd = "himalaya --json envelope search 'not flag seen' order by date desc";
+    exec(cmd, execOpts, (err, stdout, stderr) => {
+      if (err) return send(res, 502, { ok: false, error: 'himalaya failed: ' + (stderr || err.message) });
+      let parsed;
+      try { parsed = JSON.parse(stdout); } catch (e) { return send(res, 502, { ok: false, error: 'could not parse himalaya output' }); }
+      const envelopes = parsed.envelopes || [];
+      if (envelopes.length === 0) return send(res, 200, { ok: true, unread_count: 0, summary: 'No unread emails.' });
+      const brief = envelopes.slice(0, 15).map(e => `From: ${(e.from && e.from[0] && (e.from[0].name || e.from[0].email)) || 'unknown'} | Subject: ${e.subject} | Date: ${e.date}`).join('\n');
+      const prompt = `You are summarizing unread emails for the Oxyderm Laser Clinic owner. Here are ${envelopes.length} unread email headers (subject/sender/date only, no body):\n\n${brief}\n\nGroup into: urgent/needs action today, client-related, routine/low-priority, spam/ignore. Be brief and specific. No em-dashes, no emojis, no fluff.`;
+      const escaped = prompt.replace(/'/g, "'\\''");
+      exec(`hermes -z '${escaped}'`, Object.assign({}, execOpts, { timeout: 60000 }), (err2, stdout2) => {
+        if (err2) return send(res, 200, { ok: true, unread_count: envelopes.length, summary: 'Found ' + envelopes.length + ' unread emails but could not summarize (Hermes CLI error). Raw subjects: ' + envelopes.slice(0,10).map(e=>e.subject).join('; ') });
+        send(res, 200, { ok: true, unread_count: envelopes.length, summary: stdout2.trim() });
+      });
+    });
+    return;
+  }
+
   if (req.method === 'GET' && url.pathname === '/') {
     return send(res, 200, {
       service: 'Oxyderm Automation Engine',
@@ -614,7 +638,8 @@ const server = http.createServer((req, res) => {
         'GET /sarah/task-result?task_id=...',
         'POST /sarah/customer-memory {phone, name?, email?, tags?, treatments?, retarget_notes?, consent_marketing?}',
         'GET /sarah/customer-lookup?phone=...',
-        'GET /sarah/customer-lapsed?days=60'
+        'GET /sarah/customer-lapsed?days=60',
+        'GET /sarah/email-check'
       ],
       port: PORT
     });

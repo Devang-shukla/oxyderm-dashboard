@@ -1011,6 +1011,17 @@ function sarahAnswer(q, cb){
     return;
   }
 
+  // ── VIRTUAL ASSISTANT: check important/unread email (real Gmail via himalaya) ──
+  if(/check (my |important |the )?email|unread email|check inbox|check gmail/i.test(ql)){
+    cb('Checking your inbox for unread emails, this can take up to a minute to summarize...');
+    fetch(ENGINE_BASE + '/sarah/email-check')
+      .then(function(r){ return r.json(); }).then(function(res){
+        if(!res.ok) return showSarahAnswer('Could not check email: ' + (res.error || 'unknown error'));
+        showSarahAnswer(res.summary);
+      }).catch(function(){ showSarahAnswer('Email engine unreachable.'); });
+    return;
+  }
+
 
   for(var i=0; i<CLINIC.appts.length; i++){
     var a = CLINIC.appts[i];
