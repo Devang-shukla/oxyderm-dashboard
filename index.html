@@ -949,7 +949,69 @@ function sarahAnswer(q, cb){
     return;
   }
 
-  // by name
+  // ── VIRTUAL ASSISTANT: open-ended research task (real web search, can take a few minutes) ──
+  var researchMatch = q.match(/^research\s+(.+)/i);
+  if(researchMatch){
+    var researchQ = researchMatch[1];
+    cb('Researching "' + researchQ + '"... this uses real web search and can take a few minutes. I will post the result here when done.');
+    fetch(ENGINE_BASE + '/sarah/research-agent', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({instructions:researchQ}) })
+      .then(function(r){ return r.json(); }).then(function(res){
+        if(!res.ok) return showSarahAnswer('Could not queue the research task: ' + (res.error||'unknown error'));
+        var tid = res.task_id, tries = 0;
+        var poll = setInterval(function(){
+          tries++;
+          if(tries > 60){ clearInterval(poll); showSarahAnswer('Research task is taking longer than expected (task_id ' + tid + '). Ask again in a few minutes, or check /sarah/task-result?task_id=' + tid + ' directly.'); return; }
+          fetch(ENGINE_BASE + '/sarah/task-result?task_id=' + tid).then(function(r){ return r.json(); }).then(function(t){
+            if(t.status === 'done') { clearInterval(poll); showSarahAnswer(t.result); }
+            else if(t.status === 'failed') { clearInterval(poll); showSarahAnswer('Research task failed: ' + (t.result || 'unknown error')); }
+          }).catch(function(){});
+        }, 5000);
+      }).catch(function(){ showSarahAnswer('Research engine unreachable.'); });
+    return;
+  }
+
+  // ── VIRTUAL ASSISTANT: customer memory (retargeting profile store) ──
+  // "remember client Jane Doe, 780-555-1234, tags: vip lapsed, notes: loves underarm LHR"
+  var rememberMatch = q.match(/remember\s+(client\s+)?([a-zA-Z\s]+?),\s*([\d\-\+\(\) ]{7,})(?:,\s*tags?:\s*([^,]+))?(?:,\s*notes?:\s*(.+))?$/i);
+  if(rememberMatch){
+    var rName = rememberMatch[2].trim(), rPhone = rememberMatch[3].trim(), rTags = (rememberMatch[4]||'').trim(), rNotes = (rememberMatch[5]||'').trim();
+    cb('Saving ' + rName + ' to customer memory...');
+    fetch(ENGINE_BASE + '/sarah/customer-memory', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({phone:rPhone, name:rName, tags:rTags, retarget_notes:rNotes, consent_marketing:1}) })
+      .then(function(r){ return r.json(); }).then(function(res){
+        if(res.ok) showSarahAnswer('Saved ' + rName + ' to customer memory' + (rTags ? ' with tags: ' + rTags : '') + '.');
+        else showSarahAnswer('Could not save that customer: ' + (res.error || JSON.stringify(res)));
+      }).catch(function(){ showSarahAnswer('Customer memory engine unreachable.'); });
+    return;
+  }
+
+  // "look up 780-555-1234" or "who is 7805551234"
+  var lookupMatch = q.match(/(?:look ?up|who is)\s+([\d\-\+\(\) ]{7,})/i);
+  if(lookupMatch){
+    var lPhone = lookupMatch[1].trim();
+    cb('Looking up that number in customer memory...');
+    fetch(ENGINE_BASE + '/sarah/customer-lookup?phone=' + encodeURIComponent(lPhone))
+      .then(function(r){ return r.json(); }).then(function(res){
+        if(!res.ok || !res.customer) return showSarahAnswer('No customer memory record found for that number.');
+        var c = res.customer;
+        showSarahAnswer(c.name + '. Visits: ' + c.total_visits + '. Tags: ' + (c.tags || 'none') + '. Notes: ' + (c.retarget_notes || 'none') + '. Last visit: ' + (c.last_visit_date || 'unknown') + '.');
+      }).catch(function(){ showSarahAnswer('Customer memory engine unreachable.'); });
+    return;
+  }
+
+  // "who is lapsed" / "lapsed clients" / "who hasn't been in"
+  if(/lapsed|hasn.t been in|inactive client|win.?back/i.test(ql)){
+    cb('Checking for lapsed clients (60+ days, marketing-consented only)...');
+    fetch(ENGINE_BASE + '/sarah/customer-lapsed?days=60')
+      .then(function(r){ return r.json(); }).then(function(res){
+        if(!res.ok) return showSarahAnswer('Could not check lapsed clients: ' + (res.error || 'unknown error'));
+        var list = res.lapsed_customers || [];
+        if(!list.length) return showSarahAnswer('No lapsed clients found (60+ days since last visit, with marketing consent on file).');
+        showSarahAnswer(list.length + ' lapsed client(s): ' + list.map(function(c){ return c.name + ' (last visit ' + c.last_visit_date + ')'; }).join(', ') + '.');
+      }).catch(function(){ showSarahAnswer('Customer memory engine unreachable.'); });
+    return;
+  }
+
+
   for(var i=0; i<CLINIC.appts.length; i++){
     var a = CLINIC.appts[i];
     if(ql.indexOf(a.first) > -1 || ql.indexOf(a.name.toLowerCase()) > -1){

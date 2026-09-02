@@ -24,3 +24,9 @@
 - 2026-09-02: Workflow "Booking Confirmed" fired on appointment-booked: moved contact to stage "Booked"
 - 2026-09-02: Workflow "Booking Confirmed" fired on appointment-booked: moved contact to stage "Booked"
 - 2026-09-02: Sarah booking FAILED for Test Client (Underarms Laser Hair Removal): [{"category":"AUTHENTICATION_ERROR","code":"FORBIDDEN","detail":"Merchant subscription does not support write operations."}]
+- 2026-09-02: Workflow "Booking Confirmed" fired on appointment-booked: moved contact to stage "Booked"
+- 2026-09-02: Workflow "Booking Confirmed" fired on appointment-booked: moved contact to stage "Booked"
+- 2026-09-02: Workflow "Booking Confirmed" fired on appointment-booked: moved contact to stage "Booked"
+- 2026-09-02: Workflow "Booking Confirmed" fired on appointment-booked: moved contact to stage "Booked"
+- 2026-09-02: Workflow "Booking Confirmed" fired on appointment-booked: moved contact to stage "Booked"
+- 2026-09-02: Workflow "Booking Confirmed" fired on appointment-booked: moved contact to stage "Booked"

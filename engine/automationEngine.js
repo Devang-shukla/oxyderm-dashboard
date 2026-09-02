@@ -527,9 +527,73 @@ const server = http.createServer((req, res) => {
   }
 
   if (req.method === 'GET' && url.pathname === '/sarah/agent-answer') {
-    const qid = url.searchParams.get('question_id');
+    var qid = url.searchParams.get('question_id');
     if (!qid) return send(res, 400, { ok: false, error: 'Required query param: question_id' });
     brainRequest({ action: 'get_answer', question_id: qid })
+      .then(result => send(res, 200, result))
+      .catch(e => send(res, 500, { ok: false, error: e.message }));
+    return;
+  }
+
+  // Open-ended research/task execution (e.g. "research Bella Vita Laser pricing").
+  // Distinct from ask-agent: this has real web search access and can take
+  // several minutes, so it's polled via task_id instead of a fast Q&A loop.
+  if (req.method === 'POST' && url.pathname === '/sarah/research-agent') {
+    readBody(req).then(async (item) => {
+      try {
+        if (!item.instructions) return send(res, 400, { ok: false, error: 'Required: instructions' });
+        const queued = await brainRequest({ action: 'task_create', task_type: item.task_type || 'research', instructions: item.instructions, requested_by: 'sarah' });
+        if (!queued.ok) return send(res, 502, { ok: false, error: 'Brain API did not accept task', detail: queued });
+        appendLearning('research', `Sarah queued a research task: "${item.instructions.slice(0,80)}" (task_id ${queued.task_id}). Runs via the Oxyderm Task Executor cron (every 3 min, real web search) — can take up to 5 min.`);
+        send(res, 200, { ok: true, task_id: queued.task_id, status: 'pending', note: 'Poll GET /sarah/task-result?task_id=... — the Task Executor cron runs every 3 min and tasks can take up to 5 min with real web search.' });
+      } catch (e) {
+        send(res, 500, { ok: false, error: e.message });
+      }
+    }).catch(e => send(res, 400, { ok: false, error: 'invalid JSON body' }));
+    return;
+  }
+
+  if (req.method === 'GET' && url.pathname === '/sarah/task-result') {
+    var tid = url.searchParams.get('task_id');
+    if (!tid) return send(res, 400, { ok: false, error: 'Required query param: task_id' });
+    brainRequest({ action: 'task_get', task_id: tid })
+      .then(result => send(res, 200, result))
+      .catch(e => send(res, 500, { ok: false, error: e.message }));
+    return;
+  }
+
+  // Customer memory (retargeting profile store) — upsert/lookup a known client
+  // by phone number. Phone must be digits-only (no '+' prefix): HostGator's
+  // WAF masks '+1XXXXXXXXXX'-formatted numbers in JSON responses, silently
+  // corrupting lookups. Always strip non-digits before calling this.
+  if (req.method === 'POST' && url.pathname === '/sarah/customer-memory') {
+    readBody(req).then(async (item) => {
+      try {
+        if (!item.phone) return send(res, 400, { ok: false, error: 'Required: phone' });
+        var digitsOnly = String(item.phone).replace(/\D/g, '');
+        var payload = Object.assign({}, item, { action: 'customer_upsert', phone: digitsOnly });
+        delete payload.phone_raw;
+        const result = await brainRequest(payload);
+        send(res, 200, result);
+      } catch (e) {
+        send(res, 500, { ok: false, error: e.message });
+      }
+    }).catch(e => send(res, 400, { ok: false, error: 'invalid JSON body' }));
+    return;
+  }
+
+  if (req.method === 'GET' && url.pathname === '/sarah/customer-lookup') {
+    var lookupPhone = (url.searchParams.get('phone') || '').replace(/\D/g, '');
+    if (!lookupPhone) return send(res, 400, { ok: false, error: 'Required query param: phone' });
+    brainRequest({ action: 'customer_get', phone: lookupPhone })
+      .then(result => send(res, 200, result))
+      .catch(e => send(res, 500, { ok: false, error: e.message }));
+    return;
+  }
+
+  if (req.method === 'GET' && url.pathname === '/sarah/customer-lapsed') {
+    var days = url.searchParams.get('days') || '60';
+    brainRequest({ action: 'customer_lapsed', days: days })
       .then(result => send(res, 200, result))
       .catch(e => send(res, 500, { ok: false, error: e.message }));
     return;
@@ -545,7 +609,12 @@ const server = http.createServer((req, res) => {
         'POST /sarah/reschedule {bookingId, newStartAtISO}',
         'POST /sarah/find-bookings {phone}',
         'POST /sarah/ask-agent {agent, question, context?}',
-        'GET /sarah/agent-answer?question_id=...'
+        'GET /sarah/agent-answer?question_id=...',
+        'POST /sarah/research-agent {instructions, task_type?}',
+        'GET /sarah/task-result?task_id=...',
+        'POST /sarah/customer-memory {phone, name?, email?, tags?, treatments?, retarget_notes?, consent_marketing?}',
+        'GET /sarah/customer-lookup?phone=...',
+        'GET /sarah/customer-lapsed?days=60'
       ],
       port: PORT
     });
