@@ -1022,6 +1022,27 @@ function sarahAnswer(q, cb){
     return;
   }
 
+  // ── VIRTUAL ASSISTANT: link library (booking, review, promo, socials) ──
+  // "send booking link" / "send review link" / "send promo link FALL20" / "send website link"
+  var linkMatch = q.match(/(?:send|get|give me)\s+(?:a |the )?(booking|review|promo|website|instagram|facebook)\s*link(?:\s+(?:for\s+)?(\S+))?/i);
+  if(linkMatch){
+    var lkType = linkMatch[1].toLowerCase(), lkExtra = linkMatch[2];
+    var params = new URLSearchParams({ link_type: lkType });
+    if(lkType === 'promo'){
+      if(!lkExtra) return cb('Which promo code? e.g. "send promo link FALL20"');
+      params.set('promo_code', lkExtra);
+    } else if(lkType === 'booking' && lkExtra){
+      params.set('service', /micro/i.test(lkExtra) ? 'microneedling' : 'laser-hair-removal');
+    }
+    cb('Generating your ' + lkType + ' link...');
+    fetch(ENGINE_BASE + '/sarah/link?' + params.toString())
+      .then(function(r){ return r.json(); }).then(function(res){
+        if(!res.ok) return showSarahAnswer('Could not generate that link: ' + (res.error || JSON.stringify(res)));
+        showSarahAnswer(lkType.charAt(0).toUpperCase() + lkType.slice(1) + ' link: ' + res.url);
+      }).catch(function(){ showSarahAnswer('Link engine unreachable.'); });
+    return;
+  }
+
 
   for(var i=0; i<CLINIC.appts.length; i++){
     var a = CLINIC.appts[i];

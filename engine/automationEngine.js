@@ -599,6 +599,25 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  // Link library: verified real URLs (booking, review, promo, website, socials).
+  // link_type is required; booking/promo accept optional service/stage/source/promo_code.
+  if (req.method === 'GET' && url.pathname === '/sarah/link') {
+    var linkType = url.searchParams.get('link_type');
+    if (!linkType) return send(res, 400, { ok: false, error: 'Required query param: link_type (booking, review, website, instagram, facebook, promo)' });
+    var linkPayload = {
+      action: 'link_get',
+      link_type: linkType,
+      service: url.searchParams.get('service') || undefined,
+      stage: url.searchParams.get('stage') || undefined,
+      source: url.searchParams.get('source') || undefined,
+      promo_code: url.searchParams.get('promo_code') || undefined
+    };
+    brainRequest(linkPayload)
+      .then(result => send(res, 200, result))
+      .catch(e => send(res, 500, { ok: false, error: e.message }));
+    return;
+  }
+
   // Email: unread/important inbox summary via the himalaya CLI (info@oxydermlaserclinic.ca
   // Gmail, connected via App Password in macOS Keychain). Uses hermes CLI to summarize
   // because raw envelope JSON isn't useful to a human as-is.
@@ -639,7 +658,8 @@ const server = http.createServer((req, res) => {
         'POST /sarah/customer-memory {phone, name?, email?, tags?, treatments?, retarget_notes?, consent_marketing?}',
         'GET /sarah/customer-lookup?phone=...',
         'GET /sarah/customer-lapsed?days=60',
-        'GET /sarah/email-check'
+        'GET /sarah/email-check',
+        'GET /sarah/link?link_type=booking|review|website|instagram|facebook|promo&service?&stage?&source?&promo_code?'
       ],
       port: PORT
     });
