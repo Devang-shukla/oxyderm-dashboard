@@ -1029,6 +1029,68 @@ function sarahAnswer(q, cb){
     return;
   }
 
+  // ── VIRTUAL ASSISTANT: report / planning (real numbers, grounded, can take a few minutes) ──
+  if(/(run|generate|create) (a |the )?(weekly |this week.?s? )?report/i.test(ql) || /(run|generate|create) (a |the )?(weekly |next week.?s? )?(content |marketing )?plan/i.test(ql)){
+    var isPlan = /plan/i.test(ql);
+    cb('Generating your ' + (isPlan ? 'plan' : 'report') + ' from real operational data, this can take a few minutes...');
+    fetch(ENGINE_BASE + '/sarah/report-agent', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({task_type: isPlan ? 'plan' : 'report'}) })
+      .then(function(r){ return r.json(); }).then(function(res){
+        if(!res.ok) return showSarahAnswer('Could not queue the ' + (isPlan?'plan':'report') + ': ' + (res.error||'unknown error'));
+        var tid = res.task_id, tries = 0;
+        var poll = setInterval(function(){
+          tries++;
+          if(tries > 60){ clearInterval(poll); showSarahAnswer((isPlan?'Plan':'Report') + ' is taking longer than expected (task_id ' + tid + '). Check back shortly.'); return; }
+          fetch(ENGINE_BASE + '/sarah/task-result?task_id=' + tid).then(function(r){ return r.json(); }).then(function(t){
+            if(t.status === 'done') { clearInterval(poll); showSarahAnswer(t.result); }
+            else if(t.status === 'failed') { clearInterval(poll); showSarahAnswer((isPlan?'Plan':'Report') + ' generation failed: ' + (t.result || 'unknown error')); }
+          }).catch(function(){});
+        }, 5000);
+      }).catch(function(){ showSarahAnswer('Report engine unreachable.'); });
+    return;
+  }
+
+  // ── VIRTUAL ASSISTANT: video request (queued, human-supervised — NOT auto-generated) ──
+  // "make a video about X" / "create a video for X" / "video request: X"
+  var videoMatch = q.match(/(?:make|create|request|queue)\s+(?:a |an )?video(?:\s+(?:about|for|on))?\s+(.+)/i);
+  if(videoMatch){
+    var vTopic = videoMatch[1].trim();
+    cb('Queuing your video request...');
+    fetch(ENGINE_BASE + '/sarah/video-request', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({topic:vTopic}) })
+      .then(function(r){ return r.json(); }).then(function(res){
+        if(res.ok) showSarahAnswer('Video request queued (ID ' + res.video_request_id + '): "' + vTopic + '". ' + res.note);
+        else showSarahAnswer('Could not queue that video request: ' + (res.error || JSON.stringify(res)));
+      }).catch(function(){ showSarahAnswer('Video request engine unreachable.'); });
+    return;
+  }
+
+  // ── VIRTUAL ASSISTANT: compose/send a new email ──
+  // "send email to jane@x.com, subject: Hello, body: Thanks for booking"
+  var emailSendMatch = q.match(/send\s+(?:an? )?email\s+to\s+(\S+@\S+?),\s*subject:\s*(.+?),\s*body:\s*(.+)$/i);
+  if(emailSendMatch){
+    var esTo = emailSendMatch[1].trim(), esSubj = emailSendMatch[2].trim(), esBody = emailSendMatch[3].trim();
+    cb('Sending email to ' + esTo + '...');
+    fetch(ENGINE_BASE + '/sarah/email-send', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({to:esTo, subject:esSubj, body:esBody}) })
+      .then(function(r){ return r.json(); }).then(function(res){
+        if(res.ok) showSarahAnswer('Email sent to ' + esTo + ' with subject "' + esSubj + '".');
+        else showSarahAnswer('Could not send that email: ' + (res.error || JSON.stringify(res)));
+      }).catch(function(){ showSarahAnswer('Email engine unreachable.'); });
+    return;
+  }
+
+  // ── VIRTUAL ASSISTANT: reply to an email by message ID (get IDs from "check important emails") ──
+  // "reply to email 18716, body: Thanks, confirmed"
+  var emailReplyMatch = q.match(/reply\s+to\s+email\s+(\S+),\s*body:\s*(.+)$/i);
+  if(emailReplyMatch){
+    var erId = emailReplyMatch[1].trim(), erBody = emailReplyMatch[2].trim();
+    cb('Replying to email ' + erId + '...');
+    fetch(ENGINE_BASE + '/sarah/email-reply', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({message_id:erId, body:erBody}) })
+      .then(function(r){ return r.json(); }).then(function(res){
+        if(res.ok) showSarahAnswer('Reply sent for email ' + erId + '.');
+        else showSarahAnswer('Could not send that reply: ' + (res.error || JSON.stringify(res)));
+      }).catch(function(){ showSarahAnswer('Email engine unreachable.'); });
+    return;
+  }
+
   // ── VIRTUAL ASSISTANT: link library (booking, review, promo, socials) ──
   // "send booking link" / "send review link" / "send promo link FALL20" / "send website link"
   var linkMatch = q.match(/(?:send|get|give me)\s+(?:a |the )?(booking|review|promo|website|instagram|facebook)\s*link(?:\s+(?:for\s+)?(\S+))?/i);

@@ -599,6 +599,48 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  // Report / planning task creation — reuses the task_create pipeline but tagged
+  // as 'report' or 'plan' so the executor pulls real operational numbers first.
+  if (req.method === 'POST' && url.pathname === '/sarah/report-agent') {
+    readBody(req).then(async (item) => {
+      try {
+        const taskType = item.task_type === 'plan' ? 'plan' : 'report';
+        const instructions = item.instructions || (taskType === 'plan' ? 'Generate next week\'s content/marketing plan.' : 'Generate this week\'s operational summary report.');
+        const queued = await brainRequest({ action: 'task_create', task_type: taskType, instructions, requested_by: 'sarah' });
+        if (!queued.ok) return send(res, 502, { ok: false, error: 'Brain API did not accept task', detail: queued });
+        send(res, 200, { ok: true, task_id: queued.task_id, status: 'pending', note: 'Poll GET /sarah/task-result?task_id=... — runs via the Task Executor cron (every 3 min), grounded in real database numbers.' });
+      } catch (e) {
+        send(res, 500, { ok: false, error: e.message });
+      }
+    }).catch(e => send(res, 400, { ok: false, error: 'invalid JSON body' }));
+    return;
+  }
+
+  // Video request queue — Sarah queues a topic, a human-supervised process (not
+  // an unattended cron) picks it up later and drives the AI avatar video pipeline.
+  if (req.method === 'POST' && url.pathname === '/sarah/video-request') {
+    readBody(req).then(async (item) => {
+      try {
+        if (!item.topic) return send(res, 400, { ok: false, error: 'Required: topic' });
+        const queued = await brainRequest({ action: 'video_request_create', topic: item.topic, video_type: item.video_type || 'avatar_reel', requested_by: 'sarah' });
+        if (!queued.ok) return send(res, 502, { ok: false, error: 'Brain API did not accept video request', detail: queued });
+        appendLearning('editor', `Sarah queued a video request: "${item.topic.slice(0,80)}" (video_request_id ${queued.video_request_id}). This needs a human-supervised session to actually produce (Google Vids avatar pipeline) — it will NOT auto-generate. Check with Devang to pick this up.`);
+        send(res, 200, { ok: true, video_request_id: queued.video_request_id, status: 'pending', note: 'Video generation is human-supervised (multi-minute browser automation with quality checks), not automatic. This request is queued for Devang/the video agent to pick up.' });
+      } catch (e) {
+        send(res, 500, { ok: false, error: e.message });
+      }
+    }).catch(e => send(res, 400, { ok: false, error: 'invalid JSON body' }));
+    return;
+  }
+
+  if (req.method === 'GET' && url.pathname === '/sarah/video-request-list') {
+    const statusFilter = url.searchParams.get('status') || '';
+    brainRequest({ action: 'video_request_list', status: statusFilter })
+      .then(result => send(res, 200, result))
+      .catch(e => send(res, 500, { ok: false, error: e.message }));
+    return;
+  }
+
   // Link library: verified real URLs (booking, review, promo, website, socials).
   // link_type is required; booking/promo accept optional service/stage/source/promo_code.
   if (req.method === 'GET' && url.pathname === '/sarah/link') {
@@ -615,6 +657,47 @@ const server = http.createServer((req, res) => {
     brainRequest(linkPayload)
       .then(result => send(res, 200, result))
       .catch(e => send(res, 500, { ok: false, error: e.message }));
+    return;
+  }
+
+  // Email: compose and send a NEW email to a recipient via himalaya (real Gmail send).
+  if (req.method === 'POST' && url.pathname === '/sarah/email-send') {
+    readBody(req).then(async (item) => {
+      try {
+        if (!item.to || !item.subject || !item.body) return send(res, 400, { ok: false, error: 'Required: to, subject, body' });
+        const { exec } = require('child_process');
+        const execOpts = { timeout: 20000, maxBuffer: 5 * 1024 * 1024, env: Object.assign({}, process.env, { PATH: '/opt/homebrew/bin:/usr/local/bin:' + (process.env.PATH || '') }) };
+        // Escape single quotes for shell safety in each arg
+        const esc = (s) => String(s).replace(/'/g, "'\\''");
+        const cmd = `himalaya message compose --to '${esc(item.to)}' --subject '${esc(item.subject)}' --body '${esc(item.body)}' --send`;
+        exec(cmd, execOpts, (err, stdout, stderr) => {
+          if (err) return send(res, 502, { ok: false, error: 'himalaya send failed: ' + (stderr || err.message) });
+          send(res, 200, { ok: true, sent_to: item.to, subject: item.subject });
+        });
+      } catch (e) {
+        send(res, 500, { ok: false, error: e.message });
+      }
+    }).catch(e => send(res, 400, { ok: false, error: 'invalid JSON body' }));
+    return;
+  }
+
+  // Email: reply to a specific message by ID (himalaya envelope id from email-check).
+  if (req.method === 'POST' && url.pathname === '/sarah/email-reply') {
+    readBody(req).then(async (item) => {
+      try {
+        if (!item.message_id || !item.body) return send(res, 400, { ok: false, error: 'Required: message_id, body' });
+        const { exec } = require('child_process');
+        const execOpts = { timeout: 20000, maxBuffer: 5 * 1024 * 1024, env: Object.assign({}, process.env, { PATH: '/opt/homebrew/bin:/usr/local/bin:' + (process.env.PATH || '') }) };
+        const esc = (s) => String(s).replace(/'/g, "'\\''");
+        const cmd = `himalaya message reply '${esc(item.message_id)}' --body '${esc(item.body)}' --send`;
+        exec(cmd, execOpts, (err, stdout, stderr) => {
+          if (err) return send(res, 502, { ok: false, error: 'himalaya reply failed: ' + (stderr || err.message) });
+          send(res, 200, { ok: true, replied_to: item.message_id });
+        });
+      } catch (e) {
+        send(res, 500, { ok: false, error: e.message });
+      }
+    }).catch(e => send(res, 400, { ok: false, error: 'invalid JSON body' }));
     return;
   }
 
@@ -659,7 +742,12 @@ const server = http.createServer((req, res) => {
         'GET /sarah/customer-lookup?phone=...',
         'GET /sarah/customer-lapsed?days=60',
         'GET /sarah/email-check',
-        'GET /sarah/link?link_type=booking|review|website|instagram|facebook|promo&service?&stage?&source?&promo_code?'
+        'GET /sarah/link?link_type=booking|review|website|instagram|facebook|promo&service?&stage?&source?&promo_code?',
+        'POST /sarah/report-agent {task_type: report|plan, instructions?}',
+        'POST /sarah/video-request {topic, video_type?}',
+        'GET /sarah/video-request-list?status=',
+        'POST /sarah/email-send {to, subject, body}',
+        'POST /sarah/email-reply {message_id, body}'
       ],
       port: PORT
     });
