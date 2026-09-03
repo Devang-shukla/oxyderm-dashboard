@@ -330,7 +330,13 @@ window.addEventListener('DOMContentLoaded', function() {
 function reloadSchedule() { loadSchedule(); }
 
 function loadSchedule() {
-  fetch('schedule.json?t=' + Date.now())
+  // Fixed 2026-09-03: schedule.json is now blocked as a public static file
+  // (was leaking real patient PII, indexed by Google) -- authenticated fetch instead.
+  fetch('https://api.oxydermlaserclinic.ca/api.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-API-Key': 'oxyderm_brain_2026_xK9mP3qL' },
+      body: JSON.stringify({ action: 'schedule_get' })
+    })
     .then(function(r){ return r.json(); })
     .then(function(data){
       TODAY_KEY = data.today || '';
