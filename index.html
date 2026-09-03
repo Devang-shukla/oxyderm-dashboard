@@ -250,6 +250,7 @@ textarea{min-height:65px;resize:vertical}
   <button class="tab" onclick="goTab('sequences',this)">📧 Sequences</button>
   <button class="tab" onclick="goTab('funnels',this)">🎯 Funnels</button>
   <button class="tab" onclick="goTab('skills',this)">⚡ Skills</button>
+  <button class="tab" onclick="goTab('tools',this)">🧩 Tools</button>
 </div>
 
 <!-- ══ SCHEDULE ══ -->
@@ -505,6 +506,12 @@ textarea{min-height:65px;resize:vertical}
   <div id="skills-reference" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px"></div>
 </div>
 
+<!-- ══ TOOLS / INTEGRATIONS STACK ══ -->
+<div class="pnl" id="pnl-tools">
+  <div style="font-size:11px;color:var(--muted);line-height:1.6;margin-bottom:12px">Every third-party service this dashboard depends on, in one place — for handoff, billing review, or onboarding a new client onto the same stack.</div>
+  <div id="tools-list"></div>
+</div>
+
 <!-- MODALS -->
 <div class="modal-bg" id="mod-post">
   <div class="modal">
@@ -707,12 +714,26 @@ function save(key, val){ localStorage.setItem(key, JSON.stringify(val)); }
 
 // Append learning to agent's localStorage learnings log
 function appendLearning(agentId, text){
+  // Instant local cache (survives a refresh on THIS browser only) ...
   var key = 'ox-learnings-' + agentId;
   var existing = localStorage.getItem(key) || '';
   var timestamp = new Date().toISOString().split('T')[0];
   var entry = '- ' + timestamp + ': ' + text;
   var updated = existing ? (existing + '\n' + entry) : entry;
   localStorage.setItem(key, updated);
+  // ... plus the real durable write (fixed 2026-09-03: this used to be
+  // localStorage-only, so "self-learning" never actually reached
+  // agents/<id>/learnings.md unless a server-side code path wrote it).
+  // Fire-and-forget: if the engine is offline, the local cache above still
+  // works and nothing here throws or blocks the UI.
+  try {
+    fetch(ENGINE_BASE + '/learn', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({agentId: agentId, text: text}),
+      signal: AbortSignal.timeout(3000)
+    }).catch(function(){});
+  } catch(e) {}
 }
 
 // ═══════════════════════════════════════════
@@ -1752,13 +1773,72 @@ function renderPosts(){
       '<div style="font-size:11px;color:var(--muted);margin-top:2px">' + (p.caption||'').slice(0,80) + '...</div>' +
       (p.time ? '<div style="font-size:10px;color:var(--blue);margin-top:3px">📅 ' + new Date(p.time).toLocaleDateString('en-CA',{weekday:'short',month:'short',day:'numeric'}) + ' at ' + new Date(p.time).toLocaleTimeString('en-CA',{hour:'2-digit',minute:'2-digit'}) + '</div>' : '') +
       '<div style="font-size:10px;color:var(--muted);margin-top:3px">📍 ' + link.tool + '</div>' +
-      '<div class="tags" style="margin-top:5px"><span class="tag ' + ({'pending':'t-yellow','ready':'t-blue','scheduled':'t-gold','posted':'t-green'}[p.status]||'t-yellow') + '">' + p.status + '</span></div></div>' +
+      '<div class="tags" style="margin-top:5px"><span class="tag ' + ({'pending':'t-yellow','ready':'t-blue','scheduled':'t-gold','posted':'t-green','awaiting-hetisha':'t-gold','sending':'t-blue'}[p.status]||'t-yellow') + '">' + p.status + '</span></div></div>' +
       '<div style="display:flex;gap:5px;flex-direction:column">' +
+      (p.status==='awaiting-hetisha'
+        ? '<button class="btn btn-green btn-sm" onclick="hetishaConfirmPublish('+i+')">🔒 Hetisha: Confirm &amp; Post</button><button class="btn btn-outline btn-sm" onclick="unqueuePost('+i+')">↩ Recall</button>'
+        : (p.status!=='posted' ? '<button class="btn btn-green btn-sm" onclick="queueForHetishaApproval('+i+')">✅ Send for Approval</button>' : '')) +
       '<button class="btn btn-gold btn-sm" onclick="copyAndOpenNative('+i+')">📋 Copy & Open</button>' +
-      (p.status!=='posted'?'<button class="btn btn-green btn-sm" onclick="markPosted('+i+')">✓ Posted</button>':'')+
-      '<button class="btn btn-outline btn-sm" onclick="pushToPostiz('+i+')">📤 Postiz</button>' +
+      (p.status!=='posted'?'<button class="btn btn-outline btn-sm" onclick="markPosted('+i+')">✓ Mark Posted</button>':'')+
       '<button class="btn btn-red btn-sm" onclick="delPost('+i+')">✕</button></div></div>';
   }).join('');
+}
+
+// Two-step publish gate, per Devang's requirement (2026-09-03): nobody's
+// dashboard click should fire a real social post by itself. Step 1 only
+// queues the post for Hetisha's review (no network call, no n8n dispatch).
+// Step 2 — a SEPARATE, explicitly-labeled action that only Hetisha should
+// click — is the one that actually calls the engine's real /publish, which
+// dispatches to n8n and posts to the live platform (Meta/TikTok/Substack are
+// the configured nodes as of 2026-09-02; other platforms fall back to the
+// local pending queue until their n8n nodes have credentials). "Copy & Open"
+// remains available throughout as the manual fallback.
+function queueForHetishaApproval(i){
+  S.posts[i].status = 'awaiting-hetisha';
+  save('ox-posts', S.posts); renderPosts();
+  appendLearning('social', 'Post queued for Hetisha approval: ' + S.posts[i].platform);
+}
+function unqueuePost(i){
+  S.posts[i].status = 'pending';
+  save('ox-posts', S.posts); renderPosts();
+}
+function hetishaConfirmPublish(i){
+  var post = S.posts[i];
+  if(!confirm('Confirm as Hetisha: publish this ' + post.platform + ' post live right now?\n\n"' + (post.caption||'').slice(0,140) + '"')) return;
+  post.status = 'sending';
+  save('ox-posts', S.posts); renderPosts();
+  fetch(ENGINE_BASE + '/publish', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({
+      title: post.hook || '',
+      caption: post.caption || '',
+      media_url: post.mediaUrl || post.media_url || '',
+      platform: post.platform,
+      booking_url: post.checkoutUrl || null
+    }),
+    signal: AbortSignal.timeout(8000)
+  })
+    .then(function(r){ return r.json().then(function(data){ return {httpStatus:r.status, data:data}; }); })
+    .then(function(res){
+      var d = res.data || {};
+      if(d.ok && d.dispatched){
+        post.status = 'posted';
+        appendLearning('social', 'Hetisha-approved post published via n8n: ' + post.platform);
+      } else if(d.queued){
+        post.status = 'awaiting-hetisha';
+        alert('⏳ Approved, but not live yet — ' + (d.message || 'queued locally, will retry automatically.') + '\n\nThis usually means n8n (the publishing engine) is not running, or has no active workflow node for "' + post.platform + '".');
+      } else {
+        post.status = 'awaiting-hetisha';
+        alert('❌ Publish failed: ' + (d.message || d.error || ('HTTP ' + res.httpStatus)));
+      }
+      save('ox-posts', S.posts); renderPosts();
+    })
+    .catch(function(e){
+      post.status = 'awaiting-hetisha';
+      save('ox-posts', S.posts); renderPosts();
+      alert('❌ Could not reach the automation engine at ' + ENGINE_BASE + ' (' + e.message + '). Is it running?');
+    });
 }
 
 function pushToPostiz(i){
@@ -2594,6 +2674,52 @@ function renderSkillsReference(){
 
 renderAgentManager();
 renderSkillsReference();
+
+// ═══════════════════════════════════════════
+// TOOLS / INTEGRATIONS STACK — the blueprint list. Kept as one array so
+// onboarding a future client onto the same stack is "edit this array",
+// not "hunt through the codebase." Status here is what's actually true for
+// Oxyderm as of 2026-09-03 — update per client.
+// ═══════════════════════════════════════════
+var TOOLS = [
+  {emoji:'☁️', name:'Netlify', role:'Hosts this dashboard (static site + custom domain + SSL)', status:'live', note:'oxyderm-clinic project, custom domain dashboard.oxydermlaserclinic.ca'},
+  {emoji:'🖥️', name:'HostGator (cPanel)', role:'DNS zone, email (Google MX), and the always-on Brain API backend', status:'live', note:'api.oxydermlaserclinic.ca — also hosts main site + email'},
+  {emoji:'🟧', name:'Cloudflare Tunnel', role:'Exposes this Mac\'s local automation engine to the internet securely, without opening router ports', status:'check', note:'cloudflared, supervised by launchd — URL changes on restart, auto-registered with the backend'},
+  {emoji:'🔀', name:'n8n', role:'Executes real social-media publishing once Hetisha approves a post ("Hermes Omnichannel Dispatcher" workflow)', status:'check', note:'Meta/TikTok/Substack nodes configured; others queue locally until credentials are added'},
+  {emoji:'⬛', name:'Square', role:'Bookings, customers, payments — source of truth for the calendar', status:'partial', note:'Read access works (schedule, customers). Write access (create/cancel bookings) is blocked by current plan tier — Sarah falls back to a booking link. Revisit after plan upgrade.'},
+  {emoji:'🧠', name:'Hermes (local agent)', role:'Runs the daily research/content/planning cron agents on this Mac', status:'live', note:'~/.oxyderm/agents — competitor, trending, YouTube, planning'},
+  {emoji:'🧩', name:'Composio', role:'Not yet integrated — placeholder for future third-party action/tool routing (e.g. simplifying multi-platform auth for new clients)', status:'planned', note:'Add here once wired in'},
+];
+function toolStatusBadge(s){
+  if(s==='live') return '<span class="tag t-green">● Live</span>';
+  if(s==='partial') return '<span class="tag t-yellow">◐ Partial</span>';
+  if(s==='planned') return '<span class="tag t-blue">○ Planned</span>';
+  return '<span class="tag t-blue" id="tool-check-badge">… checking</span>';
+}
+function renderTools(){
+  var el = document.getElementById('tools-list');
+  el.innerHTML = TOOLS.map(function(t,i){
+    return '<div class="card" style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px">' +
+      '<div style="display:flex;gap:10px;align-items:flex-start"><div style="font-size:20px">' + t.emoji + '</div><div>' +
+      '<div style="font-size:13px;font-weight:700">' + t.name + '</div>' +
+      '<div style="font-size:11px;color:var(--muted);margin-top:2px">' + t.role + '</div>' +
+      '<div style="font-size:10px;color:var(--muted);margin-top:3px;font-style:italic">' + t.note + '</div>' +
+      '</div></div><div id="tool-status-' + i + '">' + toolStatusBadge(t.status) + '</div></div>';
+  }).join('');
+  // Live-check the two local-infra rows against the actual running engine.
+  fetch(ENGINE_BASE + '/status', {signal: AbortSignal.timeout(4000)}).then(function(r){return r.json();}).then(function(){
+    var i = TOOLS.findIndex(function(t){return t.name==='Cloudflare Tunnel';});
+    if(i>-1) document.getElementById('tool-status-'+i).innerHTML = '<span class="tag t-green">● Live</span>';
+  }).catch(function(){
+    var i = TOOLS.findIndex(function(t){return t.name==='Cloudflare Tunnel';});
+    if(i>-1) document.getElementById('tool-status-'+i).innerHTML = '<span class="tag t-red">⚠ Unreachable</span>';
+  });
+  fetch(ENGINE_BASE + '/publish/status', {signal: AbortSignal.timeout(4000)}).then(function(r){return r.json();}).then(function(d){
+    var i = TOOLS.findIndex(function(t){return t.name==='n8n';});
+    if(i>-1) document.getElementById('tool-status-'+i).innerHTML = d && d.n8nWebhookUrl ? '<span class="tag t-green">● Configured</span>' : '<span class="tag t-yellow">◐ Partial</span>';
+  }).catch(function(){});
+}
+renderTools();
 </script>
 </body>
 </html>

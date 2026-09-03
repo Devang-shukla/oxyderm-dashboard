@@ -11,3 +11,4 @@
 - 2026-09-02: Published via n8n to platforms=[youtube]: "Retest YouTube after API enable"
 - 2026-09-02: Published via n8n to platforms=[linkedin]: "LinkedIn Test"
 - 2026-09-02: Published via n8n to platforms=[x]: "X Test"
+- 2026-09-03: n8n dispatch failed (undefined) for platforms=[] — queued locally.

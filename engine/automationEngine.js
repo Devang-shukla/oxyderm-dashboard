@@ -336,6 +336,28 @@ const server = http.createServer((req, res) => {
 
   const url = new URL(req.url, `http://localhost:${PORT}`);
 
+  // Durable self-learning write, callable from the browser. Fixes the gap
+  // where the dashboard's own appendLearning() only wrote to localStorage
+  // (per-browser, never reached disk) — this route calls the SAME real
+  // appendLearning() every server-side path already uses, so every agent's
+  // learnings.md is the one true durable record regardless of where the
+  // learning originated (browser click or server-side event).
+  if (req.method === 'POST' && url.pathname === '/learn') {
+    let body = '';
+    req.on('data', chunk => { body += chunk; });
+    req.on('end', () => {
+      try {
+        const item = JSON.parse(body || '{}');
+        if (!item.agentId || !item.text) return send(res, 400, { ok: false, error: 'Required: agentId, text' });
+        appendLearning(String(item.agentId).slice(0, 64), String(item.text).slice(0, 2000));
+        send(res, 200, { ok: true });
+      } catch (e) {
+        send(res, 400, { ok: false, error: e.message });
+      }
+    });
+    return;
+  }
+
   if (req.method === 'GET' && url.pathname === '/status') {
     const state = loadState();
     return send(res, 200, {
