@@ -639,8 +639,44 @@ textarea{min-height:65px;resize:vertical}
 
 // Base URL for the local automation engine (engine/automationEngine.js, launchd-managed).
 // Powers Sarah's virtual-assistant actions (booking/cancel/reschedule/agent handoff) and
-// event notifications. Requires the engine running on this Mac at localhost:4790.
-var ENGINE_BASE = 'http://localhost:4790';
+// event notifications. The engine only runs on the developer's Mac, so it's exposed
+// publicly via a Cloudflare Tunnel whose URL changes on restart — the dashboard looks
+// that URL up from the always-on backend (api.oxydermlaserclinic.ca) on load instead of
+// hardcoding it, so Sarah's live features work from ANY computer, not just this one.
+var ENGINE_BASE = 'http://localhost:4790'; // fast-path default while resolving; overwritten below
+var ENGINE_BASE_READY = false;
+var ENGINE_BASE_STALE = false;
+
+function resolveEngineBase(cb) {
+  fetch('https://api.oxydermlaserclinic.ca/api.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'X-API-Key': 'oxyderm_brain_2026_xK9mP3qL' },
+    body: JSON.stringify({ action: 'engine_url_get' })
+  })
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      if (data && data.ok && data.url) {
+        ENGINE_BASE = data.url;
+        ENGINE_BASE_STALE = !!data.stale;
+      } else {
+        ENGINE_BASE_STALE = true;
+      }
+      ENGINE_BASE_READY = true;
+      if (cb) cb();
+    })
+    .catch(function(){
+      // Backend unreachable too — keep the localhost fallback (works if this
+      // IS the developer's own Mac) and flag stale so Sarah UI can warn.
+      ENGINE_BASE_STALE = true;
+      ENGINE_BASE_READY = true;
+      if (cb) cb();
+    });
+}
+// Kick off resolution immediately; features that call ENGINE_BASE before it
+// resolves will briefly use the localhost fallback, which is correct on the
+// dev Mac and will fail fast (existing error handling) everywhere else until
+// resolveEngineBase's callback lands, typically well under a second.
+resolveEngineBase();
 
 var S = {
   user: 'devang',
@@ -1264,7 +1300,7 @@ function capMic(){
 // ═══════════════════════════════════════════
 // AGENT MEMORY API
 // ═══════════════════════════════════════════
-var API_BASE = 'http://api.oxydermlaserclinic.ca/api.php'; // fixed 2026-09-02: was pointing at the dead oxydermshop.com domain, silently discarding every Sarah conversation
+var API_BASE = 'https://api.oxydermlaserclinic.ca/api.php'; // fixed 2026-09-02: HTTPS (was HTTP, blocked as mixed content on this HTTPS-served dashboard)
 var API_KEY  = 'oxyderm_brain_2026_xK9mP3qL'; // shared with the Agents tab backend — confirmed live
 var agentMemoryCache = {};
 
@@ -1498,7 +1534,7 @@ function agSend(){
   S.agentChats[id].push({role:'user', text:q});
   renderAgChat();
 
-  var API_URL = 'http://api.oxydermlaserclinic.ca/api.php';
+  var API_URL = 'https://api.oxydermlaserclinic.ca/api.php'; // HTTPS (fixed 2026-09-02: was HTTP, blocked as mixed content)
   var API_KEY = 'oxyderm_brain_2026_xK9mP3qL';
 
   // ── TIER 1: Built-in JS knowledge (instant) ──────────────────────────────
@@ -2073,7 +2109,7 @@ function fireAutomationEvent(eventType, payload){
   // Fire-and-forget: if the engine isn't running, the dashboard's own in-browser logic
   // below still runs exactly as before. This call never blocks or throws.
   try {
-    fetch('http://localhost:4790/event', {
+    fetch(ENGINE_BASE + '/event', {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify({type: eventType, payload: payload}),
