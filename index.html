@@ -2682,8 +2682,7 @@ renderSkillsReference();
 // Oxyderm as of 2026-09-03 — update per client.
 // ═══════════════════════════════════════════
 var TOOLS = [
-  {emoji:'☁️', name:'Netlify', role:'Hosts this dashboard (static site + custom domain + SSL)', status:'live', note:'oxyderm-clinic project, custom domain dashboard.oxydermlaserclinic.ca'},
-  {emoji:'🖥️', name:'HostGator (cPanel)', role:'DNS zone, email (Google MX), and the always-on Brain API backend', status:'live', note:'api.oxydermlaserclinic.ca — also hosts main site + email'},
+  {emoji:'🖥️', name:'HostGator (cPanel)', role:'DNS zone, email (Google MX), the always-on Brain API backend, AND this dashboard itself', status:'live', note:'dashboard.oxydermlaserclinic.ca — moved off Netlify 2026-09-03 to stop paying for two hosts; also api.oxydermlaserclinic.ca + main site + email'},
   {emoji:'🟧', name:'Cloudflare Tunnel', role:'Exposes this Mac\'s local automation engine to the internet securely, without opening router ports', status:'check', note:'cloudflared, supervised by launchd — URL changes on restart, auto-registered with the backend'},
   {emoji:'🔀', name:'n8n', role:'Executes real social-media publishing once Hetisha approves a post ("Hermes Omnichannel Dispatcher" workflow)', status:'check', note:'Meta/TikTok/Substack nodes configured; others queue locally until credentials are added'},
   {emoji:'⬛', name:'Square', role:'Bookings, customers, payments — source of truth for the calendar', status:'partial', note:'Read access works (schedule, customers). Write access (create/cancel bookings) is blocked by current plan tier — Sarah falls back to a booking link. Revisit after plan upgrade.'},
