@@ -1,0 +1,1145 @@
+🚀 Starting Autonomous Blog Post Generator
+============================================================
+📝 Generating 7 blog posts...
+
+[1/7] Generating: Laser Hair Removal Cost in Edmonton: What Affects Your Price...
+❌ Error generating post: usage: hermes [-h] [--version] [-z PROMPT] [--usage-file PATH] [-m MODEL]
+              [--provider PROVIDER] [--reasoning LEVEL] [-t TOOLSETS]
+              [--resume SESSION] [--no-restore-cwd] [--in DIR]
+              [--continue [SESSION_NAME]] [--worktree] [--accept-hooks]
+              [--skills SKILLS] [--yolo] [--pass-session-id]
+              [--ignore-user-config] [--ignore-rules] [--safe-mode] [--tui]
+              [--cli] [--dev]
+              {chat,model,moa,fallback,worktree,secrets,egress,migrate,gateway,proxy,lsp,setup,whatsapp,whatsapp-cloud,slack,send,login,logout,auth,status,pause,resume,cron,sync,webhook,peer,portal,kanban,project,hooks,doctor,verify,security,approvals,dump,debug,backup,checkpoints,import,import-agent,config,skin,console,pairing,skills,bundles,plugins,curator,pets,journey,learning,memory-graph,memory,tools,computer-use,mcp,sessions,insights,monitoring,claw,update,uninstall,acp,profile,completion,dashboard,serve,desktop,gui,logs,prompt-size}
+              ...
+hermes: error: unrecognized arguments: -z You are a medical aesthetics content writer for Oxyderm Laser Clinic in Edmonton.
+
+CLIENT CONTEXT:
+{
+  "client": "Oxyderm Laser Hair Removal Clinic Edmonton",
+  "website": "https://oxydermlaserclinic.ca",
+  "phone": "780-863-7561",
+  "address": "6958 76 Ave NW #211, Edmonton, AB",
+  "leadshaw_location_id": "HqgsSqRDPOBWBpAmJTBr",
+  "services": {
+    "laser_hair_removal": [
+      "Laser Hair Removal",
+      "Unwanted Hair"
+    ],
+    "acne": [
+      "Acne Laser Treatment",
+      "Acne Facials",
+      "Acne and Scars"
+    ],
+    "facials": [
+      "Anti-Aging Facials",
+      "Skin Brightening Facials",
+      "Hollywood Carbon Facial",
+      "Glowtox Facial"
+    ],
+    "microneedling": [
+      "Microneedling",
+      "Microneedling with PRP",
+      "Platelet-Rich Plasma (PRP) Therapy"
+    ],
+    "ipl": [
+      "IPL - PhotoFacial"
+    ],
+    "advanced": [
+      "Scar Relaxation",
+      "Skin Lightening",
+      "Microdermabrasion",
+      "Chemical Peel",
+      "Spider Veins",
+      "Vascular Lesion Treatment",
+      "Pigmented Lesion Treatment"
+    ],
+    "injectables": [
+      "Botox Injections",
+      "Juvederm & Restylane Fillers",
+      "Belkyra (Kybella)",
+      "PDO Thread Lift"
+    ],
+    "body": [
+      "Radio Frequency Skin Tightening"
+    ]
+  },
+  "skin_concerns": [
+    "Unwanted Hair",
+    "Acne and Scars",
+    "Wrinkles and Fine Lines",
+    "Pigmentation and Dark Spots",
+    "Dull and Dehydrated Skin",
+    "Uneven Skin Texture",
+    "Sagging Skin",
+    "Scars",
+    "Visible Veins",
+    "Sun Damage",
+    "Sensitive Skin",
+    "Lack of Radiance"
+  ],
+  "lead_gen_tools": [
+    "skin-analysis prototype (Fitzpatrick quiz + photo capture)",
+    "treatment-simulation prototype (phase-by-phase demos)",
+    "interactive consultation prototype"
+  ],
+  "icp": {
+    "primary": "Women 25-45, Edmonton metro, middle-to-upper income, interested in hair removal / skin aesthetics, active on Instagram/TikTok",
+    "secondary": "Men 25-40 seeking laser hair removal (back/chest), brides/pre-wedding prep, professionals wanting polished appearance",
+    "pain_points": [
+      "shaving/ingrown hairs frustration",
+      "acne scars confidence",
+      "anti-aging prevention",
+      "event prep (weddings)",
+      "time savings vs waxing/shaving"
+    ]
+  },
+  "goals": {
+    "leads_per_month_min": 30,
+    "blog_posts_per_week": 2,
+    "youtube_videos_per_week": 3,
+    "reels_per_week": 3
+  }
+}
+
+BLOG BRIEF:
+Title: Laser Hair Removal Cost in Edmonton: What Affects Your Price in 2026
+Target Keyword: laser hair removal cost edmonton
+Secondary Keywords: edmonton laser hair removal prices, how much is laser hair removal edmonton, laser hair removal pricing
+Word Count Target: 1500 words
+Meta Title: Laser Hair Removal Cost Edmonton: 2026 Pricing Guide | Oxyderm
+Meta Description: What does laser hair removal cost in Edmonton? See 2026 pricing by area, what affects your quote, and how to save. Free consultation at Oxyderm: 780-863-7561
+
+OUTLINE:
+H2: Average Laser Hair Removal Costs in Edmonton (2026 Pricing)
+  - Table: Underarms ($130-180/session), Brazilian ($200-300), Full legs ($350-500), etc.
+  - Package discounts (6-session bundles)
+H2: What Affects the Cost?
+  - Treatment area size
+  - Hair density + coarseness
+  - Skin tone (darker skin = specialized tech = sometimes higher cost)
+  - Clinic location + overhead
+H2: Technology Matters: Why Cheap Isn't Always Better
+  - IPL vs. true laser (Nd:YAG, Alexandrite, Diode)
+  - Health Canada approved equipment
+  - Oxyderm uses [specific laser model - check with client]
+H2: Hidden Costs to Watch For
+  - Consultation fees (Oxyderm: free)
+  - "Per session" vs. "per package" pricing
+  - Cancellation policies
+H2: Is Laser Hair Removal Worth the Cost?
+  - Cost comparison: Laser vs. lifetime of waxing/shaving
+  - ROI calculator (5 years of waxing = $X vs. laser package $Y)
+H2: Payment Plans + Financing Options in Edmonton
+  - Oxyderm payment options
+  - Seasonal promotions
+H2: FAQ
+  - Why is Brazilian more expensive than underarms?
+  - Do men pay more?
+  - Can I negotiate pricing?
+
+CTA: Get a personalized quote for your treatment area. Book a free consultation: 780-863-7561
+Internal Links: service pricing page, financing options, consultation booking
+
+WRITING INSTRUCTIONS:
+1. Write in a professional but approachable tone (medical authority + warmth)
+2. Use "we" (Oxyderm team), "you" (reader), avoid "I"
+3. Include Edmonton-specific context (weather, local references, competition awareness)
+4. SEO: Primary keyword in H1, first 100 words, 2-3x in body. Secondary keywords naturally throughout.
+5. Add real-world examples, case studies (anonymized), and specific numbers
+6. Include FAQ section at end (3-5 questions)
+7. End with strong CTA + contact info (780-863-7561, oxydermlaserclinic.ca, address)
+8. Medical disclaimer footer
+9. Use markdown formatting: ## for H2, ### for H3, **bold** for emphasis
+10. NO fluff, NO cliches ("embark on a journey"), NO sycophancy
+
+EXAMPLE OPENING PARAGRAPH (tone reference):
+"If you're researching [topic] in Edmonton, you've probably [common pain point]. The answer isn't as simple as [oversimplification]—your [solution] depends on [factors]. At Oxyderm Laser Clinic in Edmonton, we've helped thousands of clients [outcome]. Based on our experience, [key insight]."
+
+Now write the COMPLETE blog post following the outline above. Output ONLY the markdown-formatted blog post, no preamble.
+
+    ❌ Failed
+
+[2/7] Generating: Botox Cost in Edmonton: 2026 Pricing Breakdown by Treatment ...
+❌ Error generating post: usage: hermes [-h] [--version] [-z PROMPT] [--usage-file PATH] [-m MODEL]
+              [--provider PROVIDER] [--reasoning LEVEL] [-t TOOLSETS]
+              [--resume SESSION] [--no-restore-cwd] [--in DIR]
+              [--continue [SESSION_NAME]] [--worktree] [--accept-hooks]
+              [--skills SKILLS] [--yolo] [--pass-session-id]
+              [--ignore-user-config] [--ignore-rules] [--safe-mode] [--tui]
+              [--cli] [--dev]
+              {chat,model,moa,fallback,worktree,secrets,egress,migrate,gateway,proxy,lsp,setup,whatsapp,whatsapp-cloud,slack,send,login,logout,auth,status,pause,resume,cron,sync,webhook,peer,portal,kanban,project,hooks,doctor,verify,security,approvals,dump,debug,backup,checkpoints,import,import-agent,config,skin,console,pairing,skills,bundles,plugins,curator,pets,journey,learning,memory-graph,memory,tools,computer-use,mcp,sessions,insights,monitoring,claw,update,uninstall,acp,profile,completion,dashboard,serve,desktop,gui,logs,prompt-size}
+              ...
+hermes: error: unrecognized arguments: -z You are a medical aesthetics content writer for Oxyderm Laser Clinic in Edmonton.
+
+CLIENT CONTEXT:
+{
+  "client": "Oxyderm Laser Hair Removal Clinic Edmonton",
+  "website": "https://oxydermlaserclinic.ca",
+  "phone": "780-863-7561",
+  "address": "6958 76 Ave NW #211, Edmonton, AB",
+  "leadshaw_location_id": "HqgsSqRDPOBWBpAmJTBr",
+  "services": {
+    "laser_hair_removal": [
+      "Laser Hair Removal",
+      "Unwanted Hair"
+    ],
+    "acne": [
+      "Acne Laser Treatment",
+      "Acne Facials",
+      "Acne and Scars"
+    ],
+    "facials": [
+      "Anti-Aging Facials",
+      "Skin Brightening Facials",
+      "Hollywood Carbon Facial",
+      "Glowtox Facial"
+    ],
+    "microneedling": [
+      "Microneedling",
+      "Microneedling with PRP",
+      "Platelet-Rich Plasma (PRP) Therapy"
+    ],
+    "ipl": [
+      "IPL - PhotoFacial"
+    ],
+    "advanced": [
+      "Scar Relaxation",
+      "Skin Lightening",
+      "Microdermabrasion",
+      "Chemical Peel",
+      "Spider Veins",
+      "Vascular Lesion Treatment",
+      "Pigmented Lesion Treatment"
+    ],
+    "injectables": [
+      "Botox Injections",
+      "Juvederm & Restylane Fillers",
+      "Belkyra (Kybella)",
+      "PDO Thread Lift"
+    ],
+    "body": [
+      "Radio Frequency Skin Tightening"
+    ]
+  },
+  "skin_concerns": [
+    "Unwanted Hair",
+    "Acne and Scars",
+    "Wrinkles and Fine Lines",
+    "Pigmentation and Dark Spots",
+    "Dull and Dehydrated Skin",
+    "Uneven Skin Texture",
+    "Sagging Skin",
+    "Scars",
+    "Visible Veins",
+    "Sun Damage",
+    "Sensitive Skin",
+    "Lack of Radiance"
+  ],
+  "lead_gen_tools": [
+    "skin-analysis prototype (Fitzpatrick quiz + photo capture)",
+    "treatment-simulation prototype (phase-by-phase demos)",
+    "interactive consultation prototype"
+  ],
+  "icp": {
+    "primary": "Women 25-45, Edmonton metro, middle-to-upper income, interested in hair removal / skin aesthetics, active on Instagram/TikTok",
+    "secondary": "Men 25-40 seeking laser hair removal (back/chest), brides/pre-wedding prep, professionals wanting polished appearance",
+    "pain_points": [
+      "shaving/ingrown hairs frustration",
+      "acne scars confidence",
+      "anti-aging prevention",
+      "event prep (weddings)",
+      "time savings vs waxing/shaving"
+    ]
+  },
+  "goals": {
+    "leads_per_month_min": 30,
+    "blog_posts_per_week": 2,
+    "youtube_videos_per_week": 3,
+    "reels_per_week": 3
+  }
+}
+
+BLOG BRIEF:
+Title: Botox Cost in Edmonton: 2026 Pricing Breakdown by Treatment Area
+Target Keyword: botox cost edmonton
+Secondary Keywords: how much is botox edmonton, botox prices edmonton 2026, botox per unit edmonton
+Word Count Target: 1600 words
+Meta Title: Botox Cost Edmonton: 2026 Pricing by Area | Oxyderm Clinic
+Meta Description: What does Botox cost in Edmonton? See 2026 per-unit pricing, average units by area, and what affects your quote. Book consultation: 780-863-7561
+
+OUTLINE:
+H2: How Botox Pricing Works: Per-Unit vs. Per-Area
+  - Per-unit model explained (C$10-15/unit standard)
+  - Why per-unit is more transparent
+H2: Average Unit Requirements by Area
+  - Forehead lines: 10-20 units ($100-300)
+  - Frown lines (11s): 20-30 units ($200-450)
+  - Crow's feet: 12-24 units ($120-360)
+  - Lip flip: 2-4 units ($20-60)
+  - Jaw slimming (masseters): 40-60 units ($400-900)
+H2: What Affects How Many Units You Need?
+  - Muscle strength (men often need 25-40% more)
+  - Age + depth of wrinkles
+  - Preventative vs. corrective dosing
+H2: Botox vs. Dysport vs. Xeomin: Price Differences
+  - Botox (Allergan): gold standard
+  - Dysport (Galderma): faster onset, different unit ratio
+  - Xeomin (Merz): "naked" formula
+H2: Red Flags: When a Price is TOO Low
+  - Under $9/unit = potential risks
+  - Dilution concerns
+  - Inexperienced injectors
+H2: What's Included in Oxyderm's Botox Service
+  - Consultation + facial mapping
+  - 14-day follow-up
+  - Authentic Allergan product guarantee
+H2: FAQ
+  - How long does Botox last in Edmonton's dry climate?
+  - Can I split treatment across multiple visits?
+  - Do you offer discounts for multiple areas?
+
+CTA: Book a Botox consultation at Oxyderm Edmonton. Call 780-863-7561 or book online.
+Internal Links: botox service page, injectables overview, consultation page
+
+WRITING INSTRUCTIONS:
+1. Write in a professional but approachable tone (medical authority + warmth)
+2. Use "we" (Oxyderm team), "you" (reader), avoid "I"
+3. Include Edmonton-specific context (weather, local references, competition awareness)
+4. SEO: Primary keyword in H1, first 100 words, 2-3x in body. Secondary keywords naturally throughout.
+5. Add real-world examples, case studies (anonymized), and specific numbers
+6. Include FAQ section at end (3-5 questions)
+7. End with strong CTA + contact info (780-863-7561, oxydermlaserclinic.ca, address)
+8. Medical disclaimer footer
+9. Use markdown formatting: ## for H2, ### for H3, **bold** for emphasis
+10. NO fluff, NO cliches ("embark on a journey"), NO sycophancy
+
+EXAMPLE OPENING PARAGRAPH (tone reference):
+"If you're researching [topic] in Edmonton, you've probably [common pain point]. The answer isn't as simple as [oversimplification]—your [solution] depends on [factors]. At Oxyderm Laser Clinic in Edmonton, we've helped thousands of clients [outcome]. Based on our experience, [key insight]."
+
+Now write the COMPLETE blog post following the outline above. Output ONLY the markdown-formatted blog post, no preamble.
+
+    ❌ Failed
+
+[3/7] Generating: Microneedling for Acne Scars: Real Before-After Results from...
+❌ Error generating post: usage: hermes [-h] [--version] [-z PROMPT] [--usage-file PATH] [-m MODEL]
+              [--provider PROVIDER] [--reasoning LEVEL] [-t TOOLSETS]
+              [--resume SESSION] [--no-restore-cwd] [--in DIR]
+              [--continue [SESSION_NAME]] [--worktree] [--accept-hooks]
+              [--skills SKILLS] [--yolo] [--pass-session-id]
+              [--ignore-user-config] [--ignore-rules] [--safe-mode] [--tui]
+              [--cli] [--dev]
+              {chat,model,moa,fallback,worktree,secrets,egress,migrate,gateway,proxy,lsp,setup,whatsapp,whatsapp-cloud,slack,send,login,logout,auth,status,pause,resume,cron,sync,webhook,peer,portal,kanban,project,hooks,doctor,verify,security,approvals,dump,debug,backup,checkpoints,import,import-agent,config,skin,console,pairing,skills,bundles,plugins,curator,pets,journey,learning,memory-graph,memory,tools,computer-use,mcp,sessions,insights,monitoring,claw,update,uninstall,acp,profile,completion,dashboard,serve,desktop,gui,logs,prompt-size}
+              ...
+hermes: error: unrecognized arguments: -z You are a medical aesthetics content writer for Oxyderm Laser Clinic in Edmonton.
+
+CLIENT CONTEXT:
+{
+  "client": "Oxyderm Laser Hair Removal Clinic Edmonton",
+  "website": "https://oxydermlaserclinic.ca",
+  "phone": "780-863-7561",
+  "address": "6958 76 Ave NW #211, Edmonton, AB",
+  "leadshaw_location_id": "HqgsSqRDPOBWBpAmJTBr",
+  "services": {
+    "laser_hair_removal": [
+      "Laser Hair Removal",
+      "Unwanted Hair"
+    ],
+    "acne": [
+      "Acne Laser Treatment",
+      "Acne Facials",
+      "Acne and Scars"
+    ],
+    "facials": [
+      "Anti-Aging Facials",
+      "Skin Brightening Facials",
+      "Hollywood Carbon Facial",
+      "Glowtox Facial"
+    ],
+    "microneedling": [
+      "Microneedling",
+      "Microneedling with PRP",
+      "Platelet-Rich Plasma (PRP) Therapy"
+    ],
+    "ipl": [
+      "IPL - PhotoFacial"
+    ],
+    "advanced": [
+      "Scar Relaxation",
+      "Skin Lightening",
+      "Microdermabrasion",
+      "Chemical Peel",
+      "Spider Veins",
+      "Vascular Lesion Treatment",
+      "Pigmented Lesion Treatment"
+    ],
+    "injectables": [
+      "Botox Injections",
+      "Juvederm & Restylane Fillers",
+      "Belkyra (Kybella)",
+      "PDO Thread Lift"
+    ],
+    "body": [
+      "Radio Frequency Skin Tightening"
+    ]
+  },
+  "skin_concerns": [
+    "Unwanted Hair",
+    "Acne and Scars",
+    "Wrinkles and Fine Lines",
+    "Pigmentation and Dark Spots",
+    "Dull and Dehydrated Skin",
+    "Uneven Skin Texture",
+    "Sagging Skin",
+    "Scars",
+    "Visible Veins",
+    "Sun Damage",
+    "Sensitive Skin",
+    "Lack of Radiance"
+  ],
+  "lead_gen_tools": [
+    "skin-analysis prototype (Fitzpatrick quiz + photo capture)",
+    "treatment-simulation prototype (phase-by-phase demos)",
+    "interactive consultation prototype"
+  ],
+  "icp": {
+    "primary": "Women 25-45, Edmonton metro, middle-to-upper income, interested in hair removal / skin aesthetics, active on Instagram/TikTok",
+    "secondary": "Men 25-40 seeking laser hair removal (back/chest), brides/pre-wedding prep, professionals wanting polished appearance",
+    "pain_points": [
+      "shaving/ingrown hairs frustration",
+      "acne scars confidence",
+      "anti-aging prevention",
+      "event prep (weddings)",
+      "time savings vs waxing/shaving"
+    ]
+  },
+  "goals": {
+    "leads_per_month_min": 30,
+    "blog_posts_per_week": 2,
+    "youtube_videos_per_week": 3,
+    "reels_per_week": 3
+  }
+}
+
+BLOG BRIEF:
+Title: Microneedling for Acne Scars: Real Before-After Results from Edmonton Clients
+Target Keyword: microneedling for acne scars edmonton
+Secondary Keywords: microneedling before after edmonton, acne scar treatment edmonton, microneedling results
+Word Count Target: 1300 words
+Meta Title: Microneedling for Acne Scars: Edmonton Before-After Results | Oxyderm
+Meta Description: See real microneedling before-after results for acne scars from Oxyderm Edmonton clients. Learn how it works, timeline, and cost. Book consultation: 780-863-7561
+
+OUTLINE:
+H2: Why Microneedling Works for Acne Scars
+  - Collagen induction explained
+  - Scar remodeling process
+  - Best for: atrophic (pitted) scars
+H2: What to Expect: Realistic Timeline
+  - Session 1-2: Texture smoothing begins
+  - Session 3-4: Noticeable depth reduction
+  - Session 5-6: 50-70% improvement
+H2: Real Oxyderm Client Results
+  - Case Study 1: 28-year-old with boxcar scars (6 sessions)
+  - Case Study 2: 35-year-old with ice-pick scars (8 sessions + PRP)
+  - Before-after photo descriptions
+H2: Microneedling vs. Laser for Acne Scars
+  - When microneedling is better
+  - When laser resurfacing is better
+  - Combination approach
+H2: Does It Hurt? What Edmonton Clients Say
+  - Numbing cream process
+  - Pain level (3-5/10)
+  - Downtime: 2-3 days of redness
+H2: Cost + Commitment
+  - Average: $250-400/session in Edmonton
+  - Most clients need 4-6 sessions
+  - Spacing: 4-6 weeks apart
+H2: FAQ
+  - Can microneedling remove scars completely?
+  - What about hyperpigmentation (dark spots)?
+  - How long do results last?
+
+CTA: See if microneedling is right for your acne scars. Book a consultation: 780-863-7561
+Internal Links: microneedling service page, before-after gallery, acne treatment page
+
+WRITING INSTRUCTIONS:
+1. Write in a professional but approachable tone (medical authority + warmth)
+2. Use "we" (Oxyderm team), "you" (reader), avoid "I"
+3. Include Edmonton-specific context (weather, local references, competition awareness)
+4. SEO: Primary keyword in H1, first 100 words, 2-3x in body. Secondary keywords naturally throughout.
+5. Add real-world examples, case studies (anonymized), and specific numbers
+6. Include FAQ section at end (3-5 questions)
+7. End with strong CTA + contact info (780-863-7561, oxydermlaserclinic.ca, address)
+8. Medical disclaimer footer
+9. Use markdown formatting: ## for H2, ### for H3, **bold** for emphasis
+10. NO fluff, NO cliches ("embark on a journey"), NO sycophancy
+
+EXAMPLE OPENING PARAGRAPH (tone reference):
+"If you're researching [topic] in Edmonton, you've probably [common pain point]. The answer isn't as simple as [oversimplification]—your [solution] depends on [factors]. At Oxyderm Laser Clinic in Edmonton, we've helped thousands of clients [outcome]. Based on our experience, [key insight]."
+
+Now write the COMPLETE blog post following the outline above. Output ONLY the markdown-formatted blog post, no preamble.
+
+    ❌ Failed
+
+[4/7] Generating: Does Laser Hair Removal Work on All Skin Types? (Edmonton Cl...
+❌ Error generating post: usage: hermes [-h] [--version] [-z PROMPT] [--usage-file PATH] [-m MODEL]
+              [--provider PROVIDER] [--reasoning LEVEL] [-t TOOLSETS]
+              [--resume SESSION] [--no-restore-cwd] [--in DIR]
+              [--continue [SESSION_NAME]] [--worktree] [--accept-hooks]
+              [--skills SKILLS] [--yolo] [--pass-session-id]
+              [--ignore-user-config] [--ignore-rules] [--safe-mode] [--tui]
+              [--cli] [--dev]
+              {chat,model,moa,fallback,worktree,secrets,egress,migrate,gateway,proxy,lsp,setup,whatsapp,whatsapp-cloud,slack,send,login,logout,auth,status,pause,resume,cron,sync,webhook,peer,portal,kanban,project,hooks,doctor,verify,security,approvals,dump,debug,backup,checkpoints,import,import-agent,config,skin,console,pairing,skills,bundles,plugins,curator,pets,journey,learning,memory-graph,memory,tools,computer-use,mcp,sessions,insights,monitoring,claw,update,uninstall,acp,profile,completion,dashboard,serve,desktop,gui,logs,prompt-size}
+              ...
+hermes: error: unrecognized arguments: -z You are a medical aesthetics content writer for Oxyderm Laser Clinic in Edmonton.
+
+CLIENT CONTEXT:
+{
+  "client": "Oxyderm Laser Hair Removal Clinic Edmonton",
+  "website": "https://oxydermlaserclinic.ca",
+  "phone": "780-863-7561",
+  "address": "6958 76 Ave NW #211, Edmonton, AB",
+  "leadshaw_location_id": "HqgsSqRDPOBWBpAmJTBr",
+  "services": {
+    "laser_hair_removal": [
+      "Laser Hair Removal",
+      "Unwanted Hair"
+    ],
+    "acne": [
+      "Acne Laser Treatment",
+      "Acne Facials",
+      "Acne and Scars"
+    ],
+    "facials": [
+      "Anti-Aging Facials",
+      "Skin Brightening Facials",
+      "Hollywood Carbon Facial",
+      "Glowtox Facial"
+    ],
+    "microneedling": [
+      "Microneedling",
+      "Microneedling with PRP",
+      "Platelet-Rich Plasma (PRP) Therapy"
+    ],
+    "ipl": [
+      "IPL - PhotoFacial"
+    ],
+    "advanced": [
+      "Scar Relaxation",
+      "Skin Lightening",
+      "Microdermabrasion",
+      "Chemical Peel",
+      "Spider Veins",
+      "Vascular Lesion Treatment",
+      "Pigmented Lesion Treatment"
+    ],
+    "injectables": [
+      "Botox Injections",
+      "Juvederm & Restylane Fillers",
+      "Belkyra (Kybella)",
+      "PDO Thread Lift"
+    ],
+    "body": [
+      "Radio Frequency Skin Tightening"
+    ]
+  },
+  "skin_concerns": [
+    "Unwanted Hair",
+    "Acne and Scars",
+    "Wrinkles and Fine Lines",
+    "Pigmentation and Dark Spots",
+    "Dull and Dehydrated Skin",
+    "Uneven Skin Texture",
+    "Sagging Skin",
+    "Scars",
+    "Visible Veins",
+    "Sun Damage",
+    "Sensitive Skin",
+    "Lack of Radiance"
+  ],
+  "lead_gen_tools": [
+    "skin-analysis prototype (Fitzpatrick quiz + photo capture)",
+    "treatment-simulation prototype (phase-by-phase demos)",
+    "interactive consultation prototype"
+  ],
+  "icp": {
+    "primary": "Women 25-45, Edmonton metro, middle-to-upper income, interested in hair removal / skin aesthetics, active on Instagram/TikTok",
+    "secondary": "Men 25-40 seeking laser hair removal (back/chest), brides/pre-wedding prep, professionals wanting polished appearance",
+    "pain_points": [
+      "shaving/ingrown hairs frustration",
+      "acne scars confidence",
+      "anti-aging prevention",
+      "event prep (weddings)",
+      "time savings vs waxing/shaving"
+    ]
+  },
+  "goals": {
+    "leads_per_month_min": 30,
+    "blog_posts_per_week": 2,
+    "youtube_videos_per_week": 3,
+    "reels_per_week": 3
+  }
+}
+
+BLOG BRIEF:
+Title: Does Laser Hair Removal Work on All Skin Types? (Edmonton Clinic Answers)
+Target Keyword: laser hair removal dark skin edmonton
+Secondary Keywords: laser hair removal skin types, laser hair removal darker skin, nd yag laser edmonton
+Word Count Target: 1350 words
+Meta Title: Laser Hair Removal for All Skin Tones: Edmonton Clinic Guide | Oxyderm
+Meta Description: Does laser hair removal work on dark skin? Learn which lasers are safe for all skin tones, real Edmonton client results, and book a consultation: 780-863-7561
+
+OUTLINE:
+H2: The Science: Why Skin Tone Matters
+  - Melanin + laser absorption
+  - Fitzpatrick scale (I-VI)
+  - Old tech vs. modern solutions
+H2: The Right Laser for Your Skin Tone
+  - Alexandrite (best for light skin)
+  - Diode (versatile, medium tones)
+  - Nd:YAG (gold standard for dark skin)
+  - What Oxyderm uses
+H2: Darker Skin: What You Need to Know
+  - Risk of hyperpigmentation (old lasers)
+  - How Nd:YAG prevents burns
+  - Real results: Edmonton client with Fitzpatrick V skin
+H2: Lighter Skin + Blonde/Red Hair: The Challenge
+  - Why it's harder (less melanin contrast)
+  - Realistic expectations
+H2: Asian, South Asian, Middle Eastern Skin
+  - Common concerns
+  - Success rates with right tech
+H2: Tanned Skin: Can You Get Laser in Summer?
+  - Why clinics recommend winter
+  - Edmonton advantage (less intense summer sun)
+H2: FAQ
+  - Can I get laser if I'm Black?
+  - What if I have vitiligo or melasma?
+  - Do I need a patch test?
+
+CTA: Get a free skin assessment at Oxyderm. All skin tones welcome. Call 780-863-7561
+Internal Links: laser technology page, consultation page, skin concerns page
+
+WRITING INSTRUCTIONS:
+1. Write in a professional but approachable tone (medical authority + warmth)
+2. Use "we" (Oxyderm team), "you" (reader), avoid "I"
+3. Include Edmonton-specific context (weather, local references, competition awareness)
+4. SEO: Primary keyword in H1, first 100 words, 2-3x in body. Secondary keywords naturally throughout.
+5. Add real-world examples, case studies (anonymized), and specific numbers
+6. Include FAQ section at end (3-5 questions)
+7. End with strong CTA + contact info (780-863-7561, oxydermlaserclinic.ca, address)
+8. Medical disclaimer footer
+9. Use markdown formatting: ## for H2, ### for H3, **bold** for emphasis
+10. NO fluff, NO cliches ("embark on a journey"), NO sycophancy
+
+EXAMPLE OPENING PARAGRAPH (tone reference):
+"If you're researching [topic] in Edmonton, you've probably [common pain point]. The answer isn't as simple as [oversimplification]—your [solution] depends on [factors]. At Oxyderm Laser Clinic in Edmonton, we've helped thousands of clients [outcome]. Based on our experience, [key insight]."
+
+Now write the COMPLETE blog post following the outline above. Output ONLY the markdown-formatted blog post, no preamble.
+
+    ❌ Failed
+
+[5/7] Generating: IPL Photofacial vs. Laser Treatment: Which is Better for YOU...
+❌ Error generating post: usage: hermes [-h] [--version] [-z PROMPT] [--usage-file PATH] [-m MODEL]
+              [--provider PROVIDER] [--reasoning LEVEL] [-t TOOLSETS]
+              [--resume SESSION] [--no-restore-cwd] [--in DIR]
+              [--continue [SESSION_NAME]] [--worktree] [--accept-hooks]
+              [--skills SKILLS] [--yolo] [--pass-session-id]
+              [--ignore-user-config] [--ignore-rules] [--safe-mode] [--tui]
+              [--cli] [--dev]
+              {chat,model,moa,fallback,worktree,secrets,egress,migrate,gateway,proxy,lsp,setup,whatsapp,whatsapp-cloud,slack,send,login,logout,auth,status,pause,resume,cron,sync,webhook,peer,portal,kanban,project,hooks,doctor,verify,security,approvals,dump,debug,backup,checkpoints,import,import-agent,config,skin,console,pairing,skills,bundles,plugins,curator,pets,journey,learning,memory-graph,memory,tools,computer-use,mcp,sessions,insights,monitoring,claw,update,uninstall,acp,profile,completion,dashboard,serve,desktop,gui,logs,prompt-size}
+              ...
+hermes: error: unrecognized arguments: -z You are a medical aesthetics content writer for Oxyderm Laser Clinic in Edmonton.
+
+CLIENT CONTEXT:
+{
+  "client": "Oxyderm Laser Hair Removal Clinic Edmonton",
+  "website": "https://oxydermlaserclinic.ca",
+  "phone": "780-863-7561",
+  "address": "6958 76 Ave NW #211, Edmonton, AB",
+  "leadshaw_location_id": "HqgsSqRDPOBWBpAmJTBr",
+  "services": {
+    "laser_hair_removal": [
+      "Laser Hair Removal",
+      "Unwanted Hair"
+    ],
+    "acne": [
+      "Acne Laser Treatment",
+      "Acne Facials",
+      "Acne and Scars"
+    ],
+    "facials": [
+      "Anti-Aging Facials",
+      "Skin Brightening Facials",
+      "Hollywood Carbon Facial",
+      "Glowtox Facial"
+    ],
+    "microneedling": [
+      "Microneedling",
+      "Microneedling with PRP",
+      "Platelet-Rich Plasma (PRP) Therapy"
+    ],
+    "ipl": [
+      "IPL - PhotoFacial"
+    ],
+    "advanced": [
+      "Scar Relaxation",
+      "Skin Lightening",
+      "Microdermabrasion",
+      "Chemical Peel",
+      "Spider Veins",
+      "Vascular Lesion Treatment",
+      "Pigmented Lesion Treatment"
+    ],
+    "injectables": [
+      "Botox Injections",
+      "Juvederm & Restylane Fillers",
+      "Belkyra (Kybella)",
+      "PDO Thread Lift"
+    ],
+    "body": [
+      "Radio Frequency Skin Tightening"
+    ]
+  },
+  "skin_concerns": [
+    "Unwanted Hair",
+    "Acne and Scars",
+    "Wrinkles and Fine Lines",
+    "Pigmentation and Dark Spots",
+    "Dull and Dehydrated Skin",
+    "Uneven Skin Texture",
+    "Sagging Skin",
+    "Scars",
+    "Visible Veins",
+    "Sun Damage",
+    "Sensitive Skin",
+    "Lack of Radiance"
+  ],
+  "lead_gen_tools": [
+    "skin-analysis prototype (Fitzpatrick quiz + photo capture)",
+    "treatment-simulation prototype (phase-by-phase demos)",
+    "interactive consultation prototype"
+  ],
+  "icp": {
+    "primary": "Women 25-45, Edmonton metro, middle-to-upper income, interested in hair removal / skin aesthetics, active on Instagram/TikTok",
+    "secondary": "Men 25-40 seeking laser hair removal (back/chest), brides/pre-wedding prep, professionals wanting polished appearance",
+    "pain_points": [
+      "shaving/ingrown hairs frustration",
+      "acne scars confidence",
+      "anti-aging prevention",
+      "event prep (weddings)",
+      "time savings vs waxing/shaving"
+    ]
+  },
+  "goals": {
+    "leads_per_month_min": 30,
+    "blog_posts_per_week": 2,
+    "youtube_videos_per_week": 3,
+    "reels_per_week": 3
+  }
+}
+
+BLOG BRIEF:
+Title: IPL Photofacial vs. Laser Treatment: Which is Better for YOUR Skin?
+Target Keyword: ipl photofacial edmonton
+Secondary Keywords: ipl vs laser edmonton, photofacial edmonton, ipl treatment edmonton
+Word Count Target: 1400 words
+Meta Title: IPL Photofacial vs. Laser: Edmonton Clinic Compares | Oxyderm
+Meta Description: IPL or laser treatment? Edmonton clinic compares both for sun damage, redness, and pigmentation. Learn which is right for you. Book consultation: 780-863-7561
+
+OUTLINE:
+H2: What is an IPL Photofacial?
+  - Intense Pulsed Light explained
+  - What it treats: sun damage, redness, pigmentation
+  - How it works (broad spectrum light)
+H2: IPL vs. Laser: Key Differences
+  - IPL = broad spectrum, laser = single wavelength
+  - IPL = surface-level, laser = deeper penetration
+  - Table comparison
+H2: When IPL is the Better Choice
+  - Rosacea + facial redness
+  - Freckles + age spots
+  - General sun damage
+  - Gentler for sensitive skin
+H2: When Laser is the Better Choice
+  - Deep pigmentation
+  - Melasma (sometimes)
+  - Vascular lesions (spider veins)
+  - Precision targeting
+H2: What to Expect: IPL Treatment at Oxyderm
+  - Session duration (20-30 min)
+  - Downtime (2-3 days of darkening spots)
+  - Results timeline (1-2 weeks)
+  - Number of sessions (3-5 typically)
+H2: Cost Comparison: IPL vs. Laser in Edmonton
+  - IPL: $200-350/session
+  - Laser: $300-600/session
+H2: FAQ
+  - Can IPL remove wrinkles?
+  - Is IPL safe for darker skin?
+  - Can I combine IPL with Botox?
+
+CTA: Not sure which treatment is right for you? Book a skin consultation at Oxyderm: 780-863-7561
+Internal Links: ipl service page, laser treatments, consultation
+
+WRITING INSTRUCTIONS:
+1. Write in a professional but approachable tone (medical authority + warmth)
+2. Use "we" (Oxyderm team), "you" (reader), avoid "I"
+3. Include Edmonton-specific context (weather, local references, competition awareness)
+4. SEO: Primary keyword in H1, first 100 words, 2-3x in body. Secondary keywords naturally throughout.
+5. Add real-world examples, case studies (anonymized), and specific numbers
+6. Include FAQ section at end (3-5 questions)
+7. End with strong CTA + contact info (780-863-7561, oxydermlaserclinic.ca, address)
+8. Medical disclaimer footer
+9. Use markdown formatting: ## for H2, ### for H3, **bold** for emphasis
+10. NO fluff, NO cliches ("embark on a journey"), NO sycophancy
+
+EXAMPLE OPENING PARAGRAPH (tone reference):
+"If you're researching [topic] in Edmonton, you've probably [common pain point]. The answer isn't as simple as [oversimplification]—your [solution] depends on [factors]. At Oxyderm Laser Clinic in Edmonton, we've helped thousands of clients [outcome]. Based on our experience, [key insight]."
+
+Now write the COMPLETE blog post following the outline above. Output ONLY the markdown-formatted blog post, no preamble.
+
+    ❌ Failed
+
+[6/7] Generating: Anti-Aging Facials in Edmonton: Which Treatment is Right for...
+❌ Error generating post: usage: hermes [-h] [--version] [-z PROMPT] [--usage-file PATH] [-m MODEL]
+              [--provider PROVIDER] [--reasoning LEVEL] [-t TOOLSETS]
+              [--resume SESSION] [--no-restore-cwd] [--in DIR]
+              [--continue [SESSION_NAME]] [--worktree] [--accept-hooks]
+              [--skills SKILLS] [--yolo] [--pass-session-id]
+              [--ignore-user-config] [--ignore-rules] [--safe-mode] [--tui]
+              [--cli] [--dev]
+              {chat,model,moa,fallback,worktree,secrets,egress,migrate,gateway,proxy,lsp,setup,whatsapp,whatsapp-cloud,slack,send,login,logout,auth,status,pause,resume,cron,sync,webhook,peer,portal,kanban,project,hooks,doctor,verify,security,approvals,dump,debug,backup,checkpoints,import,import-agent,config,skin,console,pairing,skills,bundles,plugins,curator,pets,journey,learning,memory-graph,memory,tools,computer-use,mcp,sessions,insights,monitoring,claw,update,uninstall,acp,profile,completion,dashboard,serve,desktop,gui,logs,prompt-size}
+              ...
+hermes: error: unrecognized arguments: -z You are a medical aesthetics content writer for Oxyderm Laser Clinic in Edmonton.
+
+CLIENT CONTEXT:
+{
+  "client": "Oxyderm Laser Hair Removal Clinic Edmonton",
+  "website": "https://oxydermlaserclinic.ca",
+  "phone": "780-863-7561",
+  "address": "6958 76 Ave NW #211, Edmonton, AB",
+  "leadshaw_location_id": "HqgsSqRDPOBWBpAmJTBr",
+  "services": {
+    "laser_hair_removal": [
+      "Laser Hair Removal",
+      "Unwanted Hair"
+    ],
+    "acne": [
+      "Acne Laser Treatment",
+      "Acne Facials",
+      "Acne and Scars"
+    ],
+    "facials": [
+      "Anti-Aging Facials",
+      "Skin Brightening Facials",
+      "Hollywood Carbon Facial",
+      "Glowtox Facial"
+    ],
+    "microneedling": [
+      "Microneedling",
+      "Microneedling with PRP",
+      "Platelet-Rich Plasma (PRP) Therapy"
+    ],
+    "ipl": [
+      "IPL - PhotoFacial"
+    ],
+    "advanced": [
+      "Scar Relaxation",
+      "Skin Lightening",
+      "Microdermabrasion",
+      "Chemical Peel",
+      "Spider Veins",
+      "Vascular Lesion Treatment",
+      "Pigmented Lesion Treatment"
+    ],
+    "injectables": [
+      "Botox Injections",
+      "Juvederm & Restylane Fillers",
+      "Belkyra (Kybella)",
+      "PDO Thread Lift"
+    ],
+    "body": [
+      "Radio Frequency Skin Tightening"
+    ]
+  },
+  "skin_concerns": [
+    "Unwanted Hair",
+    "Acne and Scars",
+    "Wrinkles and Fine Lines",
+    "Pigmentation and Dark Spots",
+    "Dull and Dehydrated Skin",
+    "Uneven Skin Texture",
+    "Sagging Skin",
+    "Scars",
+    "Visible Veins",
+    "Sun Damage",
+    "Sensitive Skin",
+    "Lack of Radiance"
+  ],
+  "lead_gen_tools": [
+    "skin-analysis prototype (Fitzpatrick quiz + photo capture)",
+    "treatment-simulation prototype (phase-by-phase demos)",
+    "interactive consultation prototype"
+  ],
+  "icp": {
+    "primary": "Women 25-45, Edmonton metro, middle-to-upper income, interested in hair removal / skin aesthetics, active on Instagram/TikTok",
+    "secondary": "Men 25-40 seeking laser hair removal (back/chest), brides/pre-wedding prep, professionals wanting polished appearance",
+    "pain_points": [
+      "shaving/ingrown hairs frustration",
+      "acne scars confidence",
+      "anti-aging prevention",
+      "event prep (weddings)",
+      "time savings vs waxing/shaving"
+    ]
+  },
+  "goals": {
+    "leads_per_month_min": 30,
+    "blog_posts_per_week": 2,
+    "youtube_videos_per_week": 3,
+    "reels_per_week": 3
+  }
+}
+
+BLOG BRIEF:
+Title: Anti-Aging Facials in Edmonton: Which Treatment is Right for Your Age?
+Target Keyword: anti aging facial edmonton
+Secondary Keywords: best facial for wrinkles edmonton, anti aging treatment edmonton, facials for mature skin
+Word Count Target: 1450 words
+Meta Title: Anti-Aging Facials Edmonton: Best Treatment for Your Age | Oxyderm
+Meta Description: Which anti-aging facial is right for you? Edmonton clinic breaks down best treatments by age (20s-50s+). Book consultation: 780-863-7561
+
+OUTLINE:
+H2: Age-Specific Facial Needs
+  - 20s: Prevention + hydration
+  - 30s: Early correction + collagen support
+  - 40s: Firming + deeper correction
+  - 50s+: Intensive rejuvenation
+H2: Best Facials for Each Decade
+  - 20s: Hydrafacial, Brightening Facial
+  - 30s: Microneedling, PRP Facial
+  - 40s: Glowtox Facial, Hollywood Carbon
+  - 50s+: Microneedling + PRP, IPL
+H2: What is a Glowtox Facial?
+  - Micro-Botox explained
+  - Skin texture + pore refinement
+  - Who it's for
+H2: Hollywood Carbon Facial (Korean Glass Skin)
+  - How it works
+  - Instant glow effect
+  - Best for: large pores, oily skin
+H2: Microneedling + PRP: The Anti-Aging Powerhouse
+  - Vampire facial explained
+  - Collagen production
+  - Downtime
+H2: Combining Treatments: The Oxyderm Protocol
+  - Monthly facial + quarterly microneedling
+  - Botox + facials: safe spacing
+H2: FAQ
+  - Can facials replace Botox?
+  - How often should I get anti-aging facials?
+  - What's the best pre-event facial?
+
+CTA: Find your perfect anti-aging facial at Oxyderm Edmonton. Book consultation: 780-863-7561
+Internal Links: facials overview, microneedling + prp, glowtox facial page
+
+WRITING INSTRUCTIONS:
+1. Write in a professional but approachable tone (medical authority + warmth)
+2. Use "we" (Oxyderm team), "you" (reader), avoid "I"
+3. Include Edmonton-specific context (weather, local references, competition awareness)
+4. SEO: Primary keyword in H1, first 100 words, 2-3x in body. Secondary keywords naturally throughout.
+5. Add real-world examples, case studies (anonymized), and specific numbers
+6. Include FAQ section at end (3-5 questions)
+7. End with strong CTA + contact info (780-863-7561, oxydermlaserclinic.ca, address)
+8. Medical disclaimer footer
+9. Use markdown formatting: ## for H2, ### for H3, **bold** for emphasis
+10. NO fluff, NO cliches ("embark on a journey"), NO sycophancy
+
+EXAMPLE OPENING PARAGRAPH (tone reference):
+"If you're researching [topic] in Edmonton, you've probably [common pain point]. The answer isn't as simple as [oversimplification]—your [solution] depends on [factors]. At Oxyderm Laser Clinic in Edmonton, we've helped thousands of clients [outcome]. Based on our experience, [key insight]."
+
+Now write the COMPLETE blog post following the outline above. Output ONLY the markdown-formatted blog post, no preamble.
+
+    ❌ Failed
+
+[7/7] Generating: Laser Hair Removal for Men: What Edmonton Guys Need to Know...
+❌ Error generating post: usage: hermes [-h] [--version] [-z PROMPT] [--usage-file PATH] [-m MODEL]
+              [--provider PROVIDER] [--reasoning LEVEL] [-t TOOLSETS]
+              [--resume SESSION] [--no-restore-cwd] [--in DIR]
+              [--continue [SESSION_NAME]] [--worktree] [--accept-hooks]
+              [--skills SKILLS] [--yolo] [--pass-session-id]
+              [--ignore-user-config] [--ignore-rules] [--safe-mode] [--tui]
+              [--cli] [--dev]
+              {chat,model,moa,fallback,worktree,secrets,egress,migrate,gateway,proxy,lsp,setup,whatsapp,whatsapp-cloud,slack,send,login,logout,auth,status,pause,resume,cron,sync,webhook,peer,portal,kanban,project,hooks,doctor,verify,security,approvals,dump,debug,backup,checkpoints,import,import-agent,config,skin,console,pairing,skills,bundles,plugins,curator,pets,journey,learning,memory-graph,memory,tools,computer-use,mcp,sessions,insights,monitoring,claw,update,uninstall,acp,profile,completion,dashboard,serve,desktop,gui,logs,prompt-size}
+              ...
+hermes: error: unrecognized arguments: -z You are a medical aesthetics content writer for Oxyderm Laser Clinic in Edmonton.
+
+CLIENT CONTEXT:
+{
+  "client": "Oxyderm Laser Hair Removal Clinic Edmonton",
+  "website": "https://oxydermlaserclinic.ca",
+  "phone": "780-863-7561",
+  "address": "6958 76 Ave NW #211, Edmonton, AB",
+  "leadshaw_location_id": "HqgsSqRDPOBWBpAmJTBr",
+  "services": {
+    "laser_hair_removal": [
+      "Laser Hair Removal",
+      "Unwanted Hair"
+    ],
+    "acne": [
+      "Acne Laser Treatment",
+      "Acne Facials",
+      "Acne and Scars"
+    ],
+    "facials": [
+      "Anti-Aging Facials",
+      "Skin Brightening Facials",
+      "Hollywood Carbon Facial",
+      "Glowtox Facial"
+    ],
+    "microneedling": [
+      "Microneedling",
+      "Microneedling with PRP",
+      "Platelet-Rich Plasma (PRP) Therapy"
+    ],
+    "ipl": [
+      "IPL - PhotoFacial"
+    ],
+    "advanced": [
+      "Scar Relaxation",
+      "Skin Lightening",
+      "Microdermabrasion",
+      "Chemical Peel",
+      "Spider Veins",
+      "Vascular Lesion Treatment",
+      "Pigmented Lesion Treatment"
+    ],
+    "injectables": [
+      "Botox Injections",
+      "Juvederm & Restylane Fillers",
+      "Belkyra (Kybella)",
+      "PDO Thread Lift"
+    ],
+    "body": [
+      "Radio Frequency Skin Tightening"
+    ]
+  },
+  "skin_concerns": [
+    "Unwanted Hair",
+    "Acne and Scars",
+    "Wrinkles and Fine Lines",
+    "Pigmentation and Dark Spots",
+    "Dull and Dehydrated Skin",
+    "Uneven Skin Texture",
+    "Sagging Skin",
+    "Scars",
+    "Visible Veins",
+    "Sun Damage",
+    "Sensitive Skin",
+    "Lack of Radiance"
+  ],
+  "lead_gen_tools": [
+    "skin-analysis prototype (Fitzpatrick quiz + photo capture)",
+    "treatment-simulation prototype (phase-by-phase demos)",
+    "interactive consultation prototype"
+  ],
+  "icp": {
+    "primary": "Women 25-45, Edmonton metro, middle-to-upper income, interested in hair removal / skin aesthetics, active on Instagram/TikTok",
+    "secondary": "Men 25-40 seeking laser hair removal (back/chest), brides/pre-wedding prep, professionals wanting polished appearance",
+    "pain_points": [
+      "shaving/ingrown hairs frustration",
+      "acne scars confidence",
+      "anti-aging prevention",
+      "event prep (weddings)",
+      "time savings vs waxing/shaving"
+    ]
+  },
+  "goals": {
+    "leads_per_month_min": 30,
+    "blog_posts_per_week": 2,
+    "youtube_videos_per_week": 3,
+    "reels_per_week": 3
+  }
+}
+
+BLOG BRIEF:
+Title: Laser Hair Removal for Men: What Edmonton Guys Need to Know
+Target Keyword: laser hair removal for men edmonton
+Secondary Keywords: mens laser hair removal edmonton, back laser hair removal edmonton, chest laser hair removal
+Word Count Target: 1350 words
+Meta Title: Laser Hair Removal for Men Edmonton: Cost, Results & FAQs | Oxyderm
+Meta Description: Laser hair removal for men in Edmonton: back, chest, neck, and more. Learn cost, how many sessions, and real results. Book consultation: 780-863-7561
+
+OUTLINE:
+H2: Why More Edmonton Men Are Choosing Laser
+  - Grooming trends 2026
+  - Athletic performance (swimmers, cyclists)
+  - Professional appearance
+  - Partner preference
+H2: Most Popular Areas for Men
+  - Back + shoulders (most common)
+  - Chest
+  - Stomach
+  - Neck (razor bump prevention)
+  - Brazilian (yes, really)
+H2: Does It Hurt More for Men?
+  - Pain levels by area
+  - Coarse hair = more sensation
+  - Numbing options
+H2: How Many Sessions Do Men Need?
+  - Men: 7-9 sessions (vs. women 6-8)
+  - Testosterone + hair regrowth
+  - Realistic expectations
+H2: Cost Breakdown: Men's Laser Hair Removal in Edmonton
+  - Back + shoulders: $400-600/session
+  - Chest: $250-400/session
+  - Brazilian: $200-300/session
+  - Package savings
+H2: What Oxyderm's Male Clients Say
+  - Testimonial: Back laser (7 sessions, 85% reduction)
+  - Testimonial: Neck laser (no more ingrowns)
+H2: FAQ
+  - Is laser hair removal permanent for men?
+  - Can I still work out after treatment?
+  - Will it look weird if I only do part of my back?
+
+CTA: Book a discreet consultation for men's laser hair removal. Oxyderm Edmonton: 780-863-7561
+Internal Links: laser hair removal overview, mens services, pricing
+
+WRITING INSTRUCTIONS:
+1. Write in a professional but approachable tone (medical authority + warmth)
+2. Use "we" (Oxyderm team), "you" (reader), avoid "I"
+3. Include Edmonton-specific context (weather, local references, competition awareness)
+4. SEO: Primary keyword in H1, first 100 words, 2-3x in body. Secondary keywords naturally throughout.
+5. Add real-world examples, case studies (anonymized), and specific numbers
+6. Include FAQ section at end (3-5 questions)
+7. End with strong CTA + contact info (780-863-7561, oxydermlaserclinic.ca, address)
+8. Medical disclaimer footer
+9. Use markdown formatting: ## for H2, ### for H3, **bold** for emphasis
+10. NO fluff, NO cliches ("embark on a journey"), NO sycophancy
+
+EXAMPLE OPENING PARAGRAPH (tone reference):
+"If you're researching [topic] in Edmonton, you've probably [common pain point]. The answer isn't as simple as [oversimplification]—your [solution] depends on [factors]. At Oxyderm Laser Clinic in Edmonton, we've helped thousands of clients [outcome]. Based on our experience, [key insight]."
+
+Now write the COMPLETE blog post following the outline above. Output ONLY the markdown-formatted blog post, no preamble.
+
+    ❌ Failed
+
+============================================================
+📊 GENERATION SUMMARY
+============================================================
+✅ Successful: 0
+❌ Failed: 7
+📁 Total blog posts: 1 (including manual post #1)
+
+
+⚠️  Failed posts (review manually):
+  - Laser Hair Removal Cost in Edmonton: What Affects Your Price in 2026
+  - Botox Cost in Edmonton: 2026 Pricing Breakdown by Treatment Area
+  - Microneedling for Acne Scars: Real Before-After Results from Edmonton Clients
+  - Does Laser Hair Removal Work on All Skin Types? (Edmonton Clinic Answers)
+  - IPL Photofacial vs. Laser Treatment: Which is Better for YOUR Skin?
+  - Anti-Aging Facials in Edmonton: Which Treatment is Right for Your Age?
+  - Laser Hair Removal for Men: What Edmonton Guys Need to Know
+
+✅ Blog generation complete!

@@ -1,0 +1,29 @@
+{
+  "client": "Oxyderm Laser Hair Removal Clinic Edmonton",
+  "website": "https://oxydermlaserclinic.ca",
+  "phone": "780-863-7561",
+  "address": "6958 76 Ave NW #211, Edmonton, AB",
+  "leadshaw_location_id": "HqgsSqRDPOBWBpAmJTBr",
+  "services": {
+    "laser_hair_removal": ["Laser Hair Removal", "Unwanted Hair"],
+    "acne": ["Acne Laser Treatment", "Acne Facials", "Acne and Scars"],
+    "facials": ["Anti-Aging Facials", "Skin Brightening Facials", "Hollywood Carbon Facial", "Glowtox Facial"],
+    "microneedling": ["Microneedling", "Microneedling with PRP", "Platelet-Rich Plasma (PRP) Therapy"],
+    "ipl": ["IPL - PhotoFacial"],
+    "advanced": ["Scar Relaxation", "Skin Lightening", "Microdermabrasion", "Chemical Peel", "Spider Veins", "Vascular Lesion Treatment", "Pigmented Lesion Treatment"],
+    "injectables": ["Botox Injections", "Juvederm & Restylane Fillers", "Belkyra (Kybella)", "PDO Thread Lift"],
+    "body": ["Radio Frequency Skin Tightening"]
+  },
+  "skin_concerns": ["Unwanted Hair", "Acne and Scars", "Wrinkles and Fine Lines", "Pigmentation and Dark Spots", "Dull and Dehydrated Skin", "Uneven Skin Texture", "Sagging Skin", "Scars", "Visible Veins", "Sun Damage", "Sensitive Skin", "Lack of Radiance"],
+  "lead_gen_tools": [
+    "skin-analysis prototype (Fitzpatrick quiz + photo capture)",
+    "treatment-simulation prototype (phase-by-phase demos)",
+    "interactive consultation prototype"
+  ],
+  "icp": {
+    "primary": "Women 25-45, Edmonton metro, middle-to-upper income, interested in hair removal / skin aesthetics, active on Instagram/TikTok",
+    "secondary": "Men 25-40 seeking laser hair removal (back/chest), brides/pre-wedding prep, professionals wanting polished appearance",
+    "pain_points": ["shaving/ingrown hairs frustration", "acne scars confidence", "anti-aging prevention", "event prep (weddings)", "time savings vs waxing/shaving"]
+  },
+  "goals": {"leads_per_month_min": 30, "blog_posts_per_week": 2, "youtube_videos_per_week": 3, "reels_per_week": 3}
+}

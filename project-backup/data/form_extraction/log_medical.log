@@ -1,0 +1,23 @@
+Connecting to Gmail IMAP as info@oxydermlaserclinic.ca...
+Searching for subject: Medical History Form
+Found 869 messages for 'Medical History Form'.
+  ...50/869 processed (50 extracted, 0 errors, 0 reconnects)
+  ...100/869 processed (100 extracted, 0 errors, 0 reconnects)
+  ...150/869 processed (150 extracted, 0 errors, 0 reconnects)
+  ...200/869 processed (200 extracted, 0 errors, 0 reconnects)
+  ...250/869 processed (250 extracted, 0 errors, 0 reconnects)
+  ...300/869 processed (300 extracted, 0 errors, 0 reconnects)
+  ...350/869 processed (350 extracted, 0 errors, 0 reconnects)
+  ...400/869 processed (400 extracted, 0 errors, 0 reconnects)
+  ...450/869 processed (450 extracted, 0 errors, 0 reconnects)
+  ...500/869 processed (500 extracted, 0 errors, 0 reconnects)
+  ...550/869 processed (550 extracted, 0 errors, 0 reconnects)
+  ...600/869 processed (600 extracted, 0 errors, 0 reconnects)
+  ...650/869 processed (650 extracted, 0 errors, 0 reconnects)
+  ...700/869 processed (700 extracted, 0 errors, 0 reconnects)
+  ...750/869 processed (750 extracted, 0 errors, 0 reconnects)
+  ...800/869 processed (800 extracted, 0 errors, 0 reconnects)
+  ...850/869 processed (850 extracted, 0 errors, 0 reconnects)
+
+Done. form_type=medical total_found=869 processed=869 extracted=869 errors=0 reconnects=0
+Appended to: /Users/genesis/Desktop/Oxyderm-Build/data/form_extraction/raw_medical.jsonl

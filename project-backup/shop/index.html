@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ClearChoice® & Oceuticals® Medical Skincare | Oxyderm Laser Clinic Edmonton</title>
+  <meta name="description" content="Authorized ClearChoice® & Oceuticals® medical-grade skincare. Post-laser and microneedling recovery formulations. Oxyderm Laser Clinic Edmonton." />
+  <link rel="canonical" href="https://shop.oxydermlaserclinic.ca/" />
+  <meta property="og:url" content="https://shop.oxydermlaserclinic.ca/" />
+  <meta property="og:title" content="ClearChoice® & Oceuticals® Medical Skincare | Oxyderm Laser Clinic Edmonton" />
+  <meta property="og:description" content="Authorized ClearChoice® & Oceuticals® medical-grade skincare. Post-laser and microneedling recovery formulations." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://www.oxydermlaserclinic.ca/wp-content/uploads/2026/03/Oxyderm-Laser-Clinic-Laser-Clinic-Edmonton-Logo.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .font-display { font-family: 'Cormorant Garamond', serif; }
+    .product-card { transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
+    .product-card:hover { transform: translateY(-4px); }
+    .product-card:hover .product-img { transform: scale(1.06); }
+    .product-img { transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); }
+    .cart-drawer { transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); }
+    .gold { color: #c9a96e; }
+    .bg-gold { background: #c9a96e; }
+    .border-gold { border-color: #c9a96e; }
+    .navy { color: #00172D; }
+    .bg-navy { background: #00172D; }
+    .pill-active { background: #00172D; color: white; }
+    .pill-inactive { background: white; color: #334155; border: 1px solid #e2e8f0; }
+    .badge { font-size: 9px; letter-spacing: .08em; font-weight: 700; text-transform: uppercase; }
+    no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .img-wrap { background: linear-gradient(135deg, #f8f5f0 0%, #f0ece6 100%); }
+  </style>
+</head>
+<body class="bg-stone-50 text-slate-800 antialiased min-h-screen flex flex-col">
+
+  <!-- Promo Bar -->
+  <div class="bg-[#00172D] text-stone-300 text-[11px] font-medium py-2.5 text-center tracking-widest px-4 uppercase">
+    Authorized Canadian Distributor &nbsp;·&nbsp; <span class="text-[#c9a96e] font-semibold">Free Shipping $120+</span> &nbsp;·&nbsp; Clinical Recovery Formulations
+  </div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-stone-100 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 py-4 flex items-center justify-between gap-4">
+      <a href="https://oxydermlaserclinic.ca" class="flex items-center gap-3 shrink-0">
+        <img src="https://www.oxydermlaserclinic.ca/wp-content/uploads/2026/03/Oxyderm-Laser-Clinic-Laser-Clinic-Edmonton-Logo.png" alt="Oxyderm" class="h-10 w-auto" onerror="this.style.display='none'; document.getElementById('logo-text').style.display='flex'">
+        <div id="logo-text" style="display:none" class="items-center gap-2">
+          <span class="font-display text-2xl font-bold tracking-wider text-slate-900">OXYDERM</span>
+          <span class="text-[9px] tracking-widest text-[#c9a96e] font-bold uppercase border border-[#c9a96e] px-1.5 py-0.5 rounded">Store</span>
+        </div>
+      </a>
+
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+        <a href="#catalog" class="hover:text-[#c9a96e] transition">All Products</a>
+        <a href="#aftercare" class="hover:text-[#c9a96e] transition">Post-Treatment</a>
+        <a href="https://book.squareup.com/appointments/book/merchant/SA5CTAH41JNY2/services" target="_blank" class="text-[#c9a96e] font-semibold hover:underline">Book Treatment →</a>
+      </div>
+
+      <button onclick="toggleCart()" class="relative p-2.5 rounded-full bg-stone-100 hover:bg-stone-200 transition shrink-0">
+        <svg class="w-5 h-5 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+        <span id="cart-count" class="absolute -top-1 -right-1 bg-[#00172D] text-white text-[10px] font-bold h-5 w-5 rounded-full flex items-center justify-center">0</span>
+      </button>
+    </div>
+  </header>\n\n  <!-- WhatsApp Chat Widget (Floating Bubble) -->\n  <script async src=\"https://cdn.jsdelivr.net/gh/JustinBeckwith/whatsapp-web.js@latest/client.js\"></script>\n  <div id=\"whatsapp-widget\" class=\"fixed bottom-6 right-6 z-50\">\n    <a href=\"https://wa.me/17802219872?text=Hi%20Oxyderm%20Shop%20Team%2C%20I%20have%20a%20question%20about%20your%20products\" target=\"_blank\" rel=\"noopener\" class=\"flex items-center gap-2 bg-[#25d366] hover:bg-[#20ba58] text-white rounded-full shadow-lg px-4 py-3 transition transform hover:scale-105 font-semibold text-sm\">\n      <svg class=\"w-5 h-5\" fill=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M17.6915026,13.4744748 C17.4788954,13.2474799 17.1272231,13.0329847 16.5796257,13.0329847 C16.0274086,13.0329847 15.6694483,13.2529066 15.4484788,13.4744748 C15.244328,13.6915734 14.0151496,15.1384621 14.0151496,15.1384621 L14.0104085,15.1431639 C13.8921877,15.2819562 13.3219454,15.9314661 13.3219454,16.6563168 C13.3219454,17.5211555 13.9379847,18.1056362 14.6968434,18.1056362 C15.0921327,18.1056362 15.4253216,17.9215302 15.7005425,17.6558695 L17.9949434,15.4717466 L18.0019617,15.4650155 C18.2801071,15.1962526 18.6157844,14.6717539 18.6157844,14.0798883 C18.6157844,13.465566 18.2801071,12.9408998 17.6915026,13.4744748 Z M23.8340529,10.6494199 C23.8340529,10.6494199 23.5909148,8.17165281 22.5151496,7.10624267 C21.2919896,5.89474101 19.8946751,5.86899181 19.2927336,5.84323261 C19.2927336,5.84323261 17.2927336,5.625 12.0154497,5.625 C6.73816584,5.625 4.73816584,5.84323261 4.73816584,5.84323261 C4.13622425,5.86899181 2.7389097,5.89474101 1.51575002,7.10624267 C0.440011624,8.17165281 0.196873454,10.6494199 0.196873454,10.6494199 C0.196873454,10.6494199 0,13.4627452 0,16.2760705 L0,18.9938902 C0,21.8069418 0.196873454,24.6202671 0.196873454,24.6202671 C0.196873454,24.6202671 0.440011624,27.0980338 1.51575002,28.163444 C2.7389097,29.3749457 4.13622425,29.4006949 4.73816584,29.4262551 C4.73816584,29.4262551 6.73816584,29.6448305 12.0154497,29.6448305 C17.2927336,29.6448305 19.2927336,29.4262551 19.2927336,29.4262551 C19.8946751,29.4006949 21.2919896,29.3749457 22.5151496,28.163444 C23.5909148,27.0980338 23.8340529,24.6202671 23.8340529,24.6202671 C23.8340529,24.6202671 24.0318771,21.8069418 24.0318771,18.9938902 L24.0318771,16.2760705 C24.0318771,13.4627452 23.8340529,10.6494199 23.8340529,10.6494199 Z\"/></svg>\n      Chat via WhatsApp\n    </a>\n  </div>\n\n  <!-- Hero -->
+  <section class="relative bg-[#00172D] text-white overflow-hidden">
+    <div class="absolute inset-0 opacity-20" style="background: radial-gradient(ellipse at 70% 50%, #33699D 0%, transparent 70%);"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <div class="inline-flex items-center gap-2 border border-[#c9a96e]/40 text-[#c9a96e] text-[10px] font-semibold uppercase tracking-widest px-3 py-1.5 rounded-full mb-6">
+          ✦ Verified Clinic Distributor · Edmonton AB
+        </div>
+        <h1 class="font-display text-5xl lg:text-6xl font-bold leading-tight mb-4">
+          ClearChoice®<br><span class="text-[#c9a96e]">&amp; Oceuticals®</span>
+        </h1>
+        <p class="text-stone-300 text-base font-light max-w-md leading-relaxed mb-8">
+          Medical-grade formulations engineered for post-laser cellular repair, microneedling recovery, and clinical barrier maintenance.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="#catalog" class="bg-[#c9a96e] hover:bg-[#b8945a] text-[#00172D] font-semibold text-sm px-6 py-3 rounded-lg transition">
+            Shop All Products
+          </a>
+          <a href="https://book.squareup.com/appointments/book/merchant/SA5CTAH41JNY2/services" target="_blank" class="border border-white/30 hover:border-[#c9a96e] text-white text-sm px-6 py-3 rounded-lg transition">
+            Book a Treatment
+          </a>
+        </div>
+      </div>
+      <div class="hidden lg:grid grid-cols-3 gap-3">
+        <img src="assets/skinfx/04-clearchoice-gentle-foaming-cleanser.jpg" class="rounded-xl object-contain bg-white/10 p-3 h-40 w-full" alt="Gentle Foaming Cleanser">
+        <img src="assets/skinfx/20-clearchoice-sport-shield-spf-45.png" class="rounded-xl object-contain bg-white/10 p-3 h-40 w-full mt-6" alt="Sport Shield SPF 45">
+        <img src="assets/skinfx/28-clearchoice-copperice-cream.png" class="rounded-xl object-contain bg-white/10 p-3 h-40 w-full" alt="CopperIce Cream">
+        <img src="assets/skinfx/06-clearchoice-mandelic-cleanser.png" class="rounded-xl object-contain bg-white/10 p-3 h-40 w-full mt-6" alt="Mandelic Cleanser">
+        <img src="assets/skinfx/60-clearchoice-oceuticals-opti-cream.jpg" class="rounded-xl object-contain bg-white/10 p-3 h-40 w-full" alt="Oceuticals Opti Cream">
+        <img src="assets/skinfx/41-clearchoice-vita-c-b5-complex.png" class="rounded-xl object-contain bg-white/10 p-3 h-40 w-full mt-6" alt="Vita C B5 Complex">
+      </div>
+    </div>
+  </section>
+
+  <!-- Category Pills + Grid -->
+  <main id="catalog" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-1 w-full">
+
+    <!-- Filter Pills -->
+    <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-10 no-scrollbar">
+      <button onclick="filterCat('all')" class="category-btn pill-active px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition" data-cat="all">All (21)</button>
+      <button onclick="filterCat('cleansers')" class="category-btn pill-inactive px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition" data-cat="cleansers">Cleansers & Balancers</button>
+      <button onclick="filterCat('polishers')" class="category-btn pill-inactive px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition" data-cat="polishers">Polishers & Masques</button>
+      <button onclick="filterCat('moisturizers')" class="category-btn pill-inactive px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition" data-cat="moisturizers">Moisturizers & SPF</button>
+      <button onclick="filterCat('serums')" class="category-btn pill-inactive px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition" data-cat="serums">Targeted Serums</button>
+      <button onclick="filterCat('acne')" class="category-btn pill-inactive px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition" data-cat="acne">Acne Control</button>
+      <button onclick="filterCat('anti-aging')" class="category-btn pill-inactive px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition" data-cat="anti-aging">Resist & Rewind</button>
+      <button onclick="filterCat('oceuticals')" class="category-btn pill-inactive px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition" data-cat="oceuticals">Oceuticals® Marine</button>
+    </div>
+
+    <!-- Product Grid -->
+    <div id="product-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5"></div>
+  </main>
+
+  <!-- Post-Treatment Section -->
+  <section id="aftercare" class="bg-[#00172D] text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="font-display text-3xl font-bold text-center mb-2">Clinical Recovery Protocol</h2>
+      <p class="text-stone-400 text-center text-sm mb-10">Paired with every Oxyderm treatment</p>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="border-t-2 border-[#c9a96e] pt-6">
+          <div class="text-[#c9a96e] text-xs font-bold uppercase tracking-widest mb-3">Step 1 · Pre-Treatment</div>
+          <h3 class="font-display text-xl font-semibold mb-2">Cleanse & Balance</h3>
+          <p class="text-stone-400 text-sm font-light leading-relaxed">pH-normalize your skin barrier with Gentle Foaming Cleanser or Mandelic Acid Cleanser 3 days before your laser or microneedling session.</p>
+        </div>
+        <div class="border-t-2 border-[#33699D] pt-6">
+          <div class="text-[#33699D] text-xs font-bold uppercase tracking-widest mb-3">Step 2 · Active Healing</div>
+          <h3 class="font-display text-xl font-semibold mb-2">Repair & Recover</h3>
+          <p class="text-stone-400 text-sm font-light leading-relaxed">Copper Peptide Infusion, Hyaluronic Moisture Drops, and Oceuticals Marine Barrier Cream rebuild your skin at a cellular level post-treatment.</p>
+        </div>
+        <div class="border-t-2 border-[#c9a96e] pt-6">
+          <div class="text-[#c9a96e] text-xs font-bold uppercase tracking-widest mb-3">Step 3 · Ongoing Defense</div>
+          <h3 class="font-display text-xl font-semibold mb-2">Protect Daily</h3>
+          <p class="text-stone-400 text-sm font-light leading-relaxed">Sport Shield SPF 45 physical zinc oxide block is non-negotiable after laser. Prevents PIH and protects your investment every single day.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cart Drawer -->
+  <div id="cart-overlay" onclick="toggleCart()" class="fixed inset-0 bg-black/40 z-40 hidden"></div>
+  <div id="cart-drawer" class="cart-drawer fixed inset-y-0 right-0 w-full max-w-md bg-white z-50 flex flex-col shadow-2xl translate-x-full">
+    <div class="p-6 border-b border-stone-100 flex items-center justify-between">
+      <h3 class="font-display text-2xl font-bold text-slate-900">Your Cart</h3>
+      <button onclick="toggleCart()" class="text-stone-400 hover:text-slate-700 transition">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
+      <p class="text-sm text-stone-400 text-center py-12">Your cart is empty.</p>
+    </div>
+    <div class="p-6 border-t border-stone-100 bg-stone-50 space-y-4">
+      <div class="flex justify-between font-semibold text-slate-900">
+        <span>Subtotal</span>
+        <span id="cart-subtotal">$0.00 CAD</span>
+      </div>
+      <p class="text-[11px] text-stone-400">Free Canada-wide shipping on orders over $120. Taxes calculated at checkout.</p>
+      <button onclick="openCheckoutForm()" class="w-full bg-[#00172D] hover:bg-[#33699D] text-white py-3.5 rounded-lg font-semibold text-sm transition tracking-wider uppercase">
+        Proceed to Checkout
+      </button>
+    </div>
+  </div>
+
+  <!-- Checkout Form Modal -->
+  <div id="checkout-overlay" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
+      <!-- Modal Header -->
+      <div class="bg-[#00172D] text-white px-6 py-5 rounded-t-2xl flex items-center justify-between">
+        <div>
+          <h2 class="font-display text-2xl font-bold">Secure Checkout</h2>
+          <p class="text-stone-400 text-xs mt-0.5">Step 1 of 2 — Your Details</p>
+        </div>
+        <button onclick="closeCheckoutForm()" class="text-stone-400 hover:text-white transition">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <form id="checkout-form" onsubmit="submitCheckout(event)" class="p-6 space-y-5">
+
+        <!-- Order Summary -->
+        <div class="bg-stone-50 rounded-xl p-4 border border-stone-100">
+          <div class="text-[10px] font-bold uppercase tracking-widest text-stone-400 mb-2">Order Summary</div>
+          <div id="form-order-summary" class="space-y-1.5 text-sm"></div>
+          <div class="border-t border-stone-200 mt-3 pt-3 flex justify-between font-semibold text-slate-900">
+            <span>Total</span>
+            <span id="form-total">$0.00 CAD</span>
+          </div>
+        </div>
+
+        <!-- Personal Details -->
+        <div>
+          <div class="text-[10px] font-bold uppercase tracking-widest text-[#33699D] mb-3">Personal Information</div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">First Name *</label>
+              <input type="text" name="first_name" required placeholder="Jane"
+                class="w-full border border-stone-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#33699D] focus:ring-1 focus:ring-[#33699D] transition">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Last Name *</label>
+              <input type="text" name="last_name" required placeholder="Smith"
+                class="w-full border border-stone-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#33699D] focus:ring-1 focus:ring-[#33699D] transition">
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Email Address *</label>
+          <input type="email" name="email" required placeholder="jane@email.com"
+            class="w-full border border-stone-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#33699D] focus:ring-1 focus:ring-[#33699D] transition">
+          <p class="text-[10px] text-stone-400 mt-1">Your order confirmation and aftercare guide will be sent here.</p>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Phone Number *</label>
+          <input type="tel" name="phone" required placeholder="+1 (780) 000-0000"
+            class="w-full border border-stone-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#33699D] focus:ring-1 focus:ring-[#33699D] transition">
+          <p class="text-[10px] text-stone-400 mt-1">For shipping updates and aftercare SMS reminders.</p>
+        </div>
+
+        <!-- Shipping Address -->
+        <div>
+          <div class="text-[10px] font-bold uppercase tracking-widest text-[#33699D] mb-3">Shipping Address</div>
+          <div class="space-y-3">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Street Address *</label>
+              <input type="text" name="address" required placeholder="123 Main Street"
+                class="w-full border border-stone-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#33699D] focus:ring-1 focus:ring-[#33699D] transition">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Apt / Suite / Unit</label>
+              <input type="text" name="address2" placeholder="Apt 4B (optional)"
+                class="w-full border border-stone-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#33699D] focus:ring-1 focus:ring-[#33699D] transition">
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">City *</label>
+                <input type="text" name="city" required placeholder="Edmonton"
+                  class="w-full border border-stone-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#33699D] focus:ring-1 focus:ring-[#33699D] transition">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Province *</label>
+                <select name="province" required class="w-full border border-stone-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#33699D] focus:ring-1 focus:ring-[#33699D] transition bg-white">
+                  <option value="">Select</option>
+                  <option value="AB" selected>Alberta</option>
+                  <option value="BC">British Columbia</option>
+                  <option value="MB">Manitoba</option>
+                  <option value="NB">New Brunswick</option>
+                  <option value="NL">Newfoundland</option>
+                  <option value="NS">Nova Scotia</option>
+                  <option value="ON">Ontario</option>
+                  <option value="PE">PEI</option>
+                  <option value="QC">Quebec</option>
+                  <option value="SK">Saskatchewan</option>
+                  <option value="NT">Northwest Territories</option>
+                  <option value="NU">Nunavut</option>
+                  <option value="YT">Yukon</option>
+                </select>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Postal Code *</label>
+                <input type="text" name="postal" required placeholder="T5A 0A1" maxlength="7"
+                  class="w-full border border-stone-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#33699D] focus:ring-1 focus:ring-[#33699D] transition"
+                  oninput="this.value=this.value.toUpperCase()">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Country</label>
+                <input type="text" value="Canada" readonly
+                  class="w-full border border-stone-100 bg-stone-50 rounded-lg px-3 py-2.5 text-sm text-stone-400 cursor-not-allowed">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Notes -->
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Order Notes <span class="text-stone-400 font-normal">(optional)</span></label>
+          <textarea name="notes" rows="2" placeholder="Skin concerns, treatment history, delivery instructions..."
+            class="w-full border border-stone-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#33699D] focus:ring-1 focus:ring-[#33699D] transition resize-none"></textarea>
+        </div>
+
+        <!-- Consent -->
+        <div class="flex items-start gap-3">
+          <input type="checkbox" id="consent" name="consent" required class="mt-0.5 accent-[#00172D] h-4 w-4 shrink-0">
+          <label for="consent" class="text-xs text-stone-500 leading-relaxed">
+            I consent to Oxyderm Laser Clinic collecting my information for order fulfillment and post-treatment aftercare follow-up. <a href="https://oxydermlaserclinic.ca" class="text-[#33699D] underline">Privacy Policy</a>
+          </label>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="w-full bg-[#c9a96e] hover:bg-[#b8945a] text-[#00172D] font-bold py-4 rounded-xl text-sm tracking-wider uppercase transition shadow-md">
+          Continue to Payment via Square →
+        </button>
+
+        <p class="text-[10px] text-stone-400 text-center flex items-center justify-center gap-1.5">
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg>
+          Secured by Square · SSL Encrypted · Never stored on our servers
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <footer class="bg-[#00172D] text-stone-500 text-xs text-center py-6">
+    © 2026 Oxyderm Laser Clinic Edmonton · Authorized ClearChoice® & Oceuticals® Distributor · Built with Agency OS - AI Lead Builder
+  </footer>
+
+  <script>
+    const SQUARE_URL = 'https://book.squareup.com/appointments/book/merchant/SA5CTAH41JNY2/services?utm_source=shop.oxydermlaserclinic.ca&utm_medium=clearchoice&utm_campaign=skincare_retail';
+
+    const products = [
+      // CLEANSERS & BALANCERS
+      { id:1, name:"Clearify Foam Cleanser", cat:"cleansers", price:78.40, vol:"150ml", badge:"Clarifying", img:"assets/skinfx/00-clearchoice-clearify-foam-cleanser.png", desc:"Deep purifying foam. Removes sebum without stripping the barrier." },
+      { id:2, name:"Gentle Foaming Cleanser", cat:"cleansers", price:104.00, vol:"200ml", badge:"Pre-Laser Prep", img:"assets/skinfx/04-clearchoice-gentle-foaming-cleanser.jpg", desc:"Sulfate-free lipid-balancing cleanser for sensitive post-treatment skin." },
+      { id:3, name:"Hydrating Cleanser", cat:"cleansers", price:96.00, vol:"200ml", badge:"Barrier Safe", img:"assets/skinfx/05-clearchoice-hydrating-cleanser.png", desc:"Moisture-preserving formula for dry and compromised skin types." },
+      { id:4, name:"Mandelic Acid Cleanser", cat:"cleansers", price:145.00, vol:"200ml", badge:"AHA Exfoliation", img:"assets/skinfx/06-clearchoice-mandelic-cleanser.png", desc:"Non-abrasive cellular turnover prep for acne-prone and pigment-reactive skin." },
+
+      // POLISHERS & MASQUES
+      { id:5, name:"Lumi Enzyme Masque", cat:"polishers", price:116.00, vol:"60ml", badge:"Enzyme Renewal", img:"assets/skinfx/18-clearchoice-lumi-enzyme-masque.jpg", desc:"Papaya and pumpkin enzymes dissolve dead surface cells to restore radiant texture." },
+      { id:6, name:"Post-Op Sheet Mask", cat:"polishers", price:48.00, vol:"5 masks", badge:"Post-Treatment", img:"assets/skinfx/19-clearchoice-post-op-sheet-mask.png", desc:"Clinical soothing mask for immediate post-procedure skin calming." },
+      { id:7, name:"Hydrating Masque Night Therapy", cat:"polishers", price:110.00, vol:"60ml", badge:"Overnight Repair", img:"assets/skinfx/17-clearchoice-hydrating-masque-night-therapy.png", desc:"Overnight hydration surge that rebuilds moisture reserves while you sleep." },
+
+      // MOISTURIZERS & SPF
+      { id:8, name:"Sport Shield SPF 45", cat:"moisturizers", price:88.00, vol:"120ml", badge:"Mandatory Post-Care", img:"assets/skinfx/20-clearchoice-sport-shield-spf-45.png", desc:"Zinc oxide mineral block. Essential defense against post-laser PIH." },
+      { id:9, name:"Sun Shield Plus SPF 30", cat:"moisturizers", price:76.00, vol:"120ml", badge:"Daily Defense", img:"assets/skinfx/21-clearchoice-sun-shield-plus-spf-30.jpg", desc:"Lightweight broad-spectrum SPF 30 for daily clinical sun protection." },
+      { id:10, name:"Iso Moisture", cat:"moisturizers", price:110.20, vol:"50ml", badge:"Deep Moisture", img:"assets/skinfx/27-clearchoice-iso-moisture.png", desc:"Intense barrier-repairing cream for compromised or reactive skin." },
+      { id:11, name:"Post Care Protectant", cat:"moisturizers", price:88.00, vol:"60ml", badge:"After Laser", img:"assets/skinfx/32-clearchoice-post-care-protectant.png", desc:"Soothes heat erythema and locks in moisture after laser treatments." },
+
+      // TARGETED SERUMS
+      { id:12, name:"CopperIce Cream", cat:"serums", price:164.00, vol:"50ml", badge:"Collagen Booster", img:"assets/skinfx/28-clearchoice-copperice-cream.png", desc:"Copper peptide formula accelerates healing and supports microneedling recovery." },
+      { id:13, name:"Vita-C B5 Complex", cat:"serums", price:156.00, vol:"30ml", badge:"Brightening", img:"assets/skinfx/41-clearchoice-vita-c-b5-complex.png", desc:"Potent vitamin C + B5 shield to suppress pigment and defend against free radicals." },
+      { id:14, name:"Sodium Hyaluronate", cat:"serums", price:128.00, vol:"30ml", badge:"Deep Hydration", img:"assets/skinfx/43-clearchoice-sodium-hyaluronate.png", desc:"Multi-molecular weight HA draws moisture deep into epidermal layers." },
+      { id:15, name:"Lumi Lacti-C", cat:"serums", price:142.00, vol:"30ml", badge:"Radiance", img:"assets/skinfx/45-clearchoice-lumi-lacti-c.jpg", desc:"Lactic acid and vitamin C combined for brightening and cellular renewal." },
+
+      // ACNE CONTROL
+      { id:16, name:"BP 8% Clarifying Wash", cat:"acne", price:74.00, vol:"150ml", badge:"Anti-Bacterial", img:"assets/skinfx/50-clearchoice-bp-8.png", desc:"Purifies breakout-prone follicles and eliminates stubborn acne bacteria." },
+      { id:17, name:"Clinical Spot Treatment", cat:"acne", price:62.00, vol:"15ml", badge:"Emergency Relief", img:"assets/skinfx/51-clearchoice-clinical-spot.png", desc:"Fast-acting targeted therapy for inflamed blemishes and active breakouts." },
+      { id:18, name:"GlyBright Exfoliating Pads", cat:"acne", price:120.00, vol:"60 pads", badge:"Pore Clearing", img:"assets/skinfx/12-clearchoice-glybright-pads.jpg", desc:"Glycolic and brightening pads for daily follicular hygiene and texture refinement." },
+
+      // RESIST & REWIND
+      { id:19, name:"Resist & Rewind Cleanser", cat:"anti-aging", price:150.80, vol:"200ml", badge:"Age Defying", img:"assets/skinfx/07-clearchoice-resist-rewind-cleanser.png", desc:"Restorative cleansing milk designed for mature or moisture-deprived skin." },
+      { id:20, name:"Resist & Rewind Night Cream", cat:"anti-aging", price:178.00, vol:"50ml", badge:"Overnight Repair", img:"assets/skinfx/26-clearchoice-resist-rewind-night-cream.png", desc:"Advanced peptide and retinol complex for overnight cellular regeneration." },
+
+      // OCEUTICALS MARINE
+      { id:21, name:"Oceuticals Opti-Cream", cat:"oceuticals", price:148.00, vol:"50ml", badge:"Marine Bio-Actives", img:"assets/skinfx/60-clearchoice-oceuticals-opti-cream.jpg", desc:"Rich sea kelp bio-actives soothe reactive skin and rebuild lipid barriers." },
+    ];
+
+    let cart = [];
+
+    function renderProducts(filter='all') {
+      const grid = document.getElementById('product-grid');
+      grid.innerHTML = '';
+      const list = filter === 'all' ? products : products.filter(p => p.cat === filter);
+      list.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'product-card bg-white rounded-2xl overflow-hidden border border-stone-100 shadow-sm hover:shadow-xl flex flex-col';
+        card.innerHTML = `
+          <div class="img-wrap relative overflow-hidden h-52 flex items-center justify-center p-4">
+            <img src="${p.img}" alt="${p.name}" class="product-img h-full w-full object-contain mix-blend-multiply"
+              onerror="this.src='assets/products/${p.cat}-0.png'; this.onerror=null;">
+            <span class="badge absolute top-3 left-3 bg-[#00172D] text-white px-2.5 py-1 rounded-full">${p.badge}</span>
+          </div>
+          <div class="p-4 flex flex-col flex-1">
+            <div class="flex items-center justify-between text-[10px] text-stone-400 mb-1">
+              <span class="uppercase tracking-widest font-semibold text-[#33699D]">${p.cat.replace('anti-aging','Resist & Rewind').replace('cleansers','Cleansers').replace('polishers','Masques').replace('moisturizers','Moisturizers').replace('serums','Serums').replace('acne','Acne Control').replace('oceuticals','Oceuticals')}</span>
+              <span>${p.vol}</span>
+            </div>
+            <h3 class="font-display text-base font-semibold text-slate-900 leading-snug mb-1">${p.name}</h3>
+            <p class="text-[11px] text-stone-500 font-light leading-relaxed mb-4 line-clamp-2 flex-1">${p.desc}</p>
+            <div class="flex items-center justify-between mt-auto pt-3 border-t border-stone-100">
+              <div>
+                <div class="text-[9px] text-stone-400 uppercase tracking-widest">MSRP</div>
+                <div class="text-base font-semibold text-slate-900">$${p.price.toFixed(2)} <span class="text-[10px] font-normal text-stone-400">CAD</span></div>
+              </div>
+              <button onclick="addToCart(${p.id})" class="bg-[#00172D] hover:bg-[#33699D] text-white text-[11px] font-semibold px-4 py-2 rounded-lg transition">
+                + Cart
+              </button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function filterCat(cat) {
+      document.querySelectorAll('.category-btn').forEach(btn => {
+        btn.className = btn.dataset.cat === cat
+          ? 'category-btn pill-active px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition'
+          : 'category-btn pill-inactive px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition';
+      });
+      renderProducts(cat);
+    }
+
+    function addToCart(id) {
+      const item = products.find(p => p.id === id);
+      const ex = cart.find(c => c.id === id);
+      ex ? ex.qty++ : cart.push({...item, qty:1});
+      updateCartUI();
+      toggleCart(true);
+    }
+
+    function removeFromCart(id) {
+      cart = cart.filter(c => c.id !== id);
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const total = cart.reduce((s,i) => s + i.qty, 0);
+      const sub = cart.reduce((s,i) => s + i.price * i.qty, 0);
+      document.getElementById('cart-count').innerText = total;
+      document.getElementById('cart-subtotal').innerText = `$${sub.toFixed(2)} CAD`;
+      document.getElementById('cart-items').innerHTML = cart.length === 0
+        ? '<p class="text-sm text-stone-400 text-center py-12">Your cart is empty.</p>'
+        : cart.map(i => `
+          <div class="flex items-center gap-3 border-b border-stone-100 pb-4">
+            <img src="${i.img}" class="w-14 h-14 object-contain rounded-lg bg-stone-50 p-1" onerror="this.style.display='none'">
+            <div class="flex-1 min-w-0">
+              <div class="text-sm font-semibold text-slate-900 truncate">${i.name}</div>
+              <div class="text-xs text-stone-500">$${i.price.toFixed(2)} × ${i.qty}</div>
+            </div>
+            <button onclick="removeFromCart(${i.id})" class="text-xs text-red-400 hover:text-red-600 transition shrink-0">✕</button>
+          </div>`).join('');
+    }
+
+    function toggleCart(open) {
+      const drawer = document.getElementById('cart-drawer');
+      const overlay = document.getElementById('cart-overlay');
+      const isOpen = !drawer.classList.contains('translate-x-full');
+      const show = open === true ? true : open === false ? false : !isOpen;
+      drawer.classList.toggle('translate-x-full', !show);
+      overlay.classList.toggle('hidden', !show);
+    }
+
+    function checkoutSquare() {
+      if(!cart.length) { alert('Your cart is empty.'); return; }
+      window.open(SQUARE_URL, '_blank');
+    }
+
+    function openCheckoutForm() {
+      if(!cart.length) { alert('Your cart is empty.'); return; }
+      // Populate order summary in form
+      const summary = document.getElementById('form-order-summary');
+      const formTotal = document.getElementById('form-total');
+      const sub = cart.reduce((s,i) => s + i.price * i.qty, 0);
+      summary.innerHTML = cart.map(i =>
+        `<div class="flex justify-between text-slate-700">
+          <span class="truncate pr-2">${i.name} <span class="text-stone-400">×${i.qty}</span></span>
+          <span class="shrink-0 font-medium">$${(i.price*i.qty).toFixed(2)}</span>
+        </div>`
+      ).join('');
+      const shipping = sub >= 120 ? 0 : 12;
+      if(shipping > 0) {
+        summary.innerHTML += `<div class="flex justify-between text-stone-500"><span>Shipping</span><span>$${shipping.toFixed(2)}</span></div>`;
+      } else {
+        summary.innerHTML += `<div class="flex justify-between text-green-600"><span>Shipping</span><span>FREE</span></div>`;
+      }
+      formTotal.innerText = `$${(sub + shipping).toFixed(2)} CAD`;
+      // Show modal
+      toggleCart(false);
+      document.getElementById('checkout-overlay').classList.remove('hidden');
+      document.getElementById('checkout-overlay').classList.add('flex');
+    }
+
+    function closeCheckoutForm() {
+      document.getElementById('checkout-overlay').classList.add('hidden');
+      document.getElementById('checkout-overlay').classList.remove('flex');
+    }
+
+    function submitCheckout(e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = {
+        first_name: form.first_name.value.trim(),
+        last_name:  form.last_name.value.trim(),
+        email:      form.email.value.trim(),
+        phone:      form.phone.value.trim(),
+        address:    form.address.value.trim(),
+        address2:   form.address2.value.trim(),
+        city:       form.city.value.trim(),
+        province:   form.province.value,
+        postal:     form.postal.value.trim(),
+        notes:      form.notes.value.trim(),
+        cart:       cart.map(i => ({ id: i.id, name: i.name, qty: i.qty, price: i.price })),
+        total:      cart.reduce((s,i) => s + i.price * i.qty, 0).toFixed(2),
+        timestamp:  new Date().toISOString()
+      };
+      // Save locally for clinic follow-up
+      const orders = JSON.parse(localStorage.getItem('oxyderm_orders') || '[]');
+      orders.push(data);
+      localStorage.setItem('oxyderm_orders', JSON.stringify(orders));
+
+      // Build Square URL with customer info as UTM/notes
+      const squareUrl = SQUARE_URL
+        + `&customer_name=${encodeURIComponent(data.first_name+' '+data.last_name)}`
+        + `&customer_email=${encodeURIComponent(data.email)}`
+        + `&customer_phone=${encodeURIComponent(data.phone)}`;
+
+      closeCheckoutForm();
+      // Show confirmation before redirect
+      const confirmed = confirm(
+        `✓ Details saved!\n\nName: ${data.first_name} ${data.last_name}\nEmail: ${data.email}\nPhone: ${data.phone}\nShip to: ${data.address}, ${data.city}, ${data.province} ${data.postal}\n\nContinue to Square to complete payment?`
+      );
+      if(confirmed) window.open(squareUrl, '_blank');
+    }
+
+    renderProducts();
+  </script>
+</body>
+</html>

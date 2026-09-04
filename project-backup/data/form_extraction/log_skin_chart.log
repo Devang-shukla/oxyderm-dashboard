@@ -1,0 +1,21 @@
+Connecting to Gmail IMAP as info@oxydermlaserclinic.ca...
+Searching for subject: Skin Chart Form
+Found 799 messages for 'Skin Chart Form'.
+  ...50/799 processed (50 extracted, 0 errors, 0 reconnects)
+  ...100/799 processed (100 extracted, 0 errors, 0 reconnects)
+  ...150/799 processed (150 extracted, 0 errors, 0 reconnects)
+  ...200/799 processed (200 extracted, 0 errors, 0 reconnects)
+  ...250/799 processed (250 extracted, 0 errors, 0 reconnects)
+  ...300/799 processed (300 extracted, 0 errors, 0 reconnects)
+  ...350/799 processed (350 extracted, 0 errors, 0 reconnects)
+  ...400/799 processed (400 extracted, 0 errors, 0 reconnects)
+  ...450/799 processed (450 extracted, 0 errors, 0 reconnects)
+  ...500/799 processed (500 extracted, 0 errors, 0 reconnects)
+  ...550/799 processed (550 extracted, 0 errors, 0 reconnects)
+  ...600/799 processed (600 extracted, 0 errors, 0 reconnects)
+  ...650/799 processed (650 extracted, 0 errors, 0 reconnects)
+  ...700/799 processed (700 extracted, 0 errors, 0 reconnects)
+  ...750/799 processed (750 extracted, 0 errors, 0 reconnects)
+
+Done. form_type=skin_chart total_found=799 processed=799 extracted=799 errors=0 reconnects=0
+Appended to: /Users/genesis/Desktop/Oxyderm-Build/data/form_extraction/raw_skin_chart.jsonl

@@ -1,0 +1,2 @@
+/bin/bash: /Users/genesis/Desktop/Oxyderm-Build/scripts/run_scheduled.sh: Operation not permitted
+/Users/genesis/.oxyderm/run_scheduled.sh: line 9: /Users/genesis/.oxyderm/logs/lead_responder.log: No such file or directory

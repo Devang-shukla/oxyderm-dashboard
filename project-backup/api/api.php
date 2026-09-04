@@ -1,0 +1,554 @@
+<?php
+/**
+ * Oxyderm AI Decision Brain — PHP Relay API
+ * Deployed to: api.oxydermlaserclinic.ca/api.php
+ * 
+ * Hermes (on Mac) polls this every 60s.
+ * Dashboard POSTs questions here.
+ * Hermes reads, decides, writes answers back.
+ */
+
+header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type, X-API-Key');
+
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') { http_response_code(200); exit; }
+
+// ── Auth ──────────────────────────────────────────────────────────────────────
+define('API_KEY', 'REDACTED_SET_VIA_SECRETS_ENV');
+
+$key = $_SERVER['HTTP_X_API_KEY'] ?? $_GET['key'] ?? '';
+if ($key !== API_KEY) {
+    http_response_code(401);
+    echo json_encode(['error' => 'Unauthorized']);
+    exit;
+}
+
+// ── DB ────────────────────────────────────────────────────────────────────────
+try {
+    $pdo = new PDO(
+        'mysql:host=localhost;dbname=oxydenic_brain;charset=utf8mb4',
+        'oxydenic_brain',
+        'Ox_Brain_2026!xK9m',
+        [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
+    );
+} catch (Exception $e) {
+    http_response_code(500);
+    echo json_encode(['error' => 'DB connection failed: ' . $e->getMessage()]);
+    exit;
+}
+
+// ── Bootstrap tables if missing ───────────────────────────────────────────────
+$pdo->exec("CREATE TABLE IF NOT EXISTS ox_questions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    agent VARCHAR(64) NOT NULL,
+    question TEXT NOT NULL,
+    context JSON,
+    status ENUM('pending','processing','answered') DEFAULT 'pending',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    answered_at DATETIME,
+    INDEX idx_status (status),
+    INDEX idx_created (created_at)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
+
+$pdo->exec("CREATE TABLE IF NOT EXISTS ox_answers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    question_id INT NOT NULL,
+    agent VARCHAR(64) NOT NULL,
+    answer LONGTEXT NOT NULL,
+    decision_type VARCHAR(64),
+    actions JSON,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (question_id) REFERENCES ox_questions(id),
+    INDEX idx_qid (question_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
+
+$pdo->exec("CREATE TABLE IF NOT EXISTS ox_decisions_log (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    agent VARCHAR(64),
+    question TEXT,
+    answer LONGTEXT,
+    decision_type VARCHAR(64),
+    reported TINYINT(1) DEFAULT 0,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    INDEX idx_reported (reported),
+    INDEX idx_created (created_at)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
+
+$pdo->exec("CREATE TABLE IF NOT EXISTS ox_agent_memory (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    agent VARCHAR(64) NOT NULL,
+    category VARCHAR(128) NOT NULL,
+    content LONGTEXT,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    UNIQUE KEY idx_agent_cat (agent, category)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
+
+// ── Customer memory / retargeting profile store ────────────────────────────
+// One row per known client. Built up over time from Square bookings, Sarah
+// conversations, and manual entry. This is the source data for retargeting
+// campaigns (Facebook/Instagram custom audiences, direct offers) — NEVER
+// auto-publish this data anywhere; it is for the dashboard/CRM operator's use.
+$pdo->exec("CREATE TABLE IF NOT EXISTS ox_customer_profiles (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(200),
+    phone VARCHAR(50) UNIQUE,
+    email VARCHAR(200),
+    square_customer_id VARCHAR(100),
+    treatments TEXT,
+    total_visits INT DEFAULT 0,
+    total_spend_cents INT DEFAULT 0,
+    last_visit_date DATE,
+    tags TEXT,
+    retarget_notes TEXT,
+    consent_marketing TINYINT(1) DEFAULT 0,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    INDEX idx_phone (phone),
+    INDEX idx_email (email)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
+
+// ── Task execution queue (agent handoff for open-ended work, e.g. "research
+// competitor X and produce a report") — same pending/answered pattern as
+// ox_questions, but for longer-running, tool-using tasks rather than a
+// single Q&A turn.
+$pdo->exec("CREATE TABLE IF NOT EXISTS ox_tasks (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    requested_by VARCHAR(64) DEFAULT 'sarah',
+    task_type VARCHAR(64) NOT NULL,
+    instructions TEXT NOT NULL,
+    status ENUM('pending','processing','done','failed') DEFAULT 'pending',
+    result LONGTEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    completed_at DATETIME,
+    INDEX idx_status (status)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
+
+// Link library log — every trackable link Sarah generates (booking, review,
+// promo, etc.) gets logged here for attribution. Not a link "store" — links
+// are generated on demand from verified real URLs, this just tracks usage.
+$pdo->exec("CREATE TABLE IF NOT EXISTS ox_link_log (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    link_type VARCHAR(32) NOT NULL,
+    service VARCHAR(64),
+    stage VARCHAR(32),
+    source VARCHAR(32),
+    promo_code VARCHAR(64),
+    url TEXT NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    INDEX idx_type (link_type),
+    INDEX idx_created (created_at)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
+
+// Video requests — Sarah queues these, a separate (slower, human-supervised)
+// process picks them up and drives the AI avatar video pipeline (Google Vids,
+// browser automation, multi-minute). NOT auto-processed by the fast cron —
+// video generation needs a human glance before publishing, so this is a
+// request/status queue, not a fire-and-forget task.
+$pdo->exec("CREATE TABLE IF NOT EXISTS ox_video_requests (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    requested_by VARCHAR(64) DEFAULT 'sarah',
+    topic TEXT NOT NULL,
+    video_type VARCHAR(64) DEFAULT 'avatar_reel',
+    status ENUM('pending','in_progress','ready_for_review','published','rejected') DEFAULT 'pending',
+    script LONGTEXT,
+    video_path VARCHAR(500),
+    notes TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    INDEX idx_status (status)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
+
+// ── Router ────────────────────────────────────────────────────────────────────
+$body   = json_decode(file_get_contents('php://input'), true) ?? [];
+$action = $body['action'] ?? $_GET['action'] ?? '';
+
+switch ($action) {
+
+    // Dashboard → asks a question
+    case 'ask':
+        $agent    = trim($body['agent'] ?? 'general');
+        $question = trim($body['question'] ?? '');
+        $context  = $body['context'] ?? null;
+
+        if (!$question) { echo json_encode(['error' => 'No question']); exit; }
+
+        $stmt = $pdo->prepare("INSERT INTO ox_questions (agent, question, context, status) VALUES (?, ?, ?, 'pending')");
+        $stmt->execute([$agent, $question, $context ? json_encode($context) : null]);
+        $qid = $pdo->lastInsertId();
+
+        echo json_encode(['ok' => true, 'question_id' => $qid, 'status' => 'pending']);
+        break;
+
+    // Dashboard → polls for answer to a question
+    case 'get_answer':
+        $qid = intval($body['question_id'] ?? $_GET['question_id'] ?? 0);
+        if (!$qid) { echo json_encode(['error' => 'No question_id']); exit; }
+
+        $stmt = $pdo->prepare("SELECT a.answer, a.agent, a.decision_type, a.actions, q.status
+            FROM ox_questions q
+            LEFT JOIN ox_answers a ON a.question_id = q.id
+            WHERE q.id = ?");
+        $stmt->execute([$qid]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$row) { echo json_encode(['status' => 'not_found']); exit; }
+
+        if ($row['status'] === 'answered') {
+            echo json_encode([
+                'status'        => 'answered',
+                'answer'        => $row['answer'],
+                'agent'         => $row['agent'],
+                'decision_type' => $row['decision_type'],
+                'actions'       => json_decode($row['actions'] ?? 'null')
+            ]);
+        } else {
+            echo json_encode(['status' => $row['status']]);
+        }
+        break;
+
+    // Hermes → fetches pending questions to answer
+    case 'get_pending':
+        $stmt = $pdo->query("SELECT id, agent, question, context, created_at
+            FROM ox_questions WHERE status = 'pending'
+            ORDER BY created_at ASC LIMIT 10");
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($rows as &$r) {
+            $r['context'] = json_decode($r['context'] ?? 'null');
+            // Mark as processing
+            $pdo->prepare("UPDATE ox_questions SET status='processing' WHERE id=?")->execute([$r['id']]);
+        }
+        echo json_encode(['ok' => true, 'questions' => $rows, 'count' => count($rows)]);
+        break;
+
+    // Hermes → writes answer back
+    case 'post_answer':
+        $qid     = intval($body['question_id'] ?? 0);
+        $agent   = trim($body['agent'] ?? 'general');
+        $answer  = trim($body['answer'] ?? '');
+        $dtype   = trim($body['decision_type'] ?? 'answer');
+        $actions = $body['actions'] ?? null;
+
+        if (!$qid || !$answer) { echo json_encode(['error' => 'Missing fields']); exit; }
+
+        // Write answer
+        $stmt = $pdo->prepare("INSERT INTO ox_answers (question_id, agent, answer, decision_type, actions) VALUES (?, ?, ?, ?, ?)");
+        $stmt->execute([$qid, $agent, $answer, $dtype, $actions ? json_encode($actions) : null]);
+
+        // Mark question answered
+        $pdo->prepare("UPDATE ox_questions SET status='answered', answered_at=NOW() WHERE id=?")->execute([$qid]);
+
+        // Log for daily report
+        $q = $pdo->prepare("SELECT question FROM ox_questions WHERE id=?")->execute([$qid]);
+        $qrow = $pdo->prepare("SELECT question FROM ox_questions WHERE id=?");
+        $qrow->execute([$qid]);
+        $question_text = $qrow->fetchColumn();
+
+        $pdo->prepare("INSERT INTO ox_decisions_log (agent, question, answer, decision_type, reported) VALUES (?, ?, ?, ?, 0)")
+            ->execute([$agent, $question_text, $answer, $dtype]);
+
+        echo json_encode(['ok' => true]);
+        break;
+
+    // Hermes → gets unreported decisions for daily report
+    case 'get_report':
+        $since = $body['since'] ?? date('Y-m-d 00:00:00');
+        $stmt  = $pdo->prepare("SELECT agent, question, answer, decision_type, created_at
+            FROM ox_decisions_log WHERE created_at >= ? ORDER BY created_at ASC");
+        $stmt->execute([$since]);
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Mark all as reported
+        $pdo->prepare("UPDATE ox_decisions_log SET reported=1 WHERE created_at >= ? AND reported=0")->execute([$since]);
+
+        echo json_encode(['ok' => true, 'decisions' => $rows, 'count' => count($rows)]);
+        break;
+
+    // Agent memory read/write
+    case 'memory_get':
+        $agent = trim($body['agent'] ?? $_GET['agent'] ?? '');
+        $stmt  = $pdo->prepare("SELECT category, content, updated_at FROM ox_agent_memory WHERE agent=?");
+        $stmt->execute([$agent]);
+        echo json_encode(['ok' => true, 'data' => $stmt->fetchAll(PDO::FETCH_ASSOC)]);
+        break;
+
+    case 'memory_set':
+        $agent    = trim($body['agent'] ?? '');
+        $category = trim($body['category'] ?? '');
+        $content  = trim($body['content'] ?? '');
+        $stmt = $pdo->prepare("INSERT INTO ox_agent_memory (agent, category, content) VALUES (?,?,?)
+            ON DUPLICATE KEY UPDATE content=VALUES(content), updated_at=NOW()");
+        $stmt->execute([$agent, $category, $content]);
+        echo json_encode(['ok' => true]);
+        break;
+
+    // Health check
+    case 'ping':
+        echo json_encode(['ok' => true, 'service' => 'Oxyderm AI Brain', 'time' => date('c')]);
+        break;
+
+    // ── CUSTOMER PROFILES (retargeting memory) ─────────────────────────────
+    case 'customer_upsert':
+        $phone = trim($body['phone'] ?? '');
+        if (!$phone) { echo json_encode(['error' => 'phone required']); exit; }
+        $stmt = $pdo->prepare("SELECT id FROM ox_customer_profiles WHERE phone=?");
+        $stmt->execute([$phone]);
+        $existing = $stmt->fetch(PDO::FETCH_ASSOC);
+        $fields = [
+            'name' => $body['name'] ?? null,
+            'email' => $body['email'] ?? null,
+            'square_customer_id' => $body['square_customer_id'] ?? null,
+            'treatments' => $body['treatments'] ?? null,
+            'total_visits' => $body['total_visits'] ?? null,
+            'total_spend_cents' => $body['total_spend_cents'] ?? null,
+            'last_visit_date' => $body['last_visit_date'] ?? null,
+            'tags' => $body['tags'] ?? null,
+            'retarget_notes' => $body['retarget_notes'] ?? null,
+            'consent_marketing' => isset($body['consent_marketing']) ? (int)$body['consent_marketing'] : null,
+        ];
+        if ($existing) {
+            $sets = []; $params = [];
+            foreach ($fields as $k => $v) { if ($v !== null) { $sets[] = "$k=?"; $params[] = $v; } }
+            if ($sets) {
+                $params[] = $existing['id'];
+                $pdo->prepare("UPDATE ox_customer_profiles SET " . implode(',', $sets) . " WHERE id=?")->execute($params);
+            }
+            echo json_encode(['ok' => true, 'action' => 'updated', 'id' => $existing['id']]);
+        } else {
+            $pdo->prepare("INSERT INTO ox_customer_profiles (name,phone,email,square_customer_id,treatments,total_visits,total_spend_cents,last_visit_date,tags,retarget_notes,consent_marketing)
+                VALUES (?,?,?,?,?,?,?,?,?,?,?)")
+                ->execute([
+                    $fields['name'], $phone, $fields['email'], $fields['square_customer_id'],
+                    $fields['treatments'], $fields['total_visits'] ?? 0, $fields['total_spend_cents'] ?? 0,
+                    $fields['last_visit_date'], $fields['tags'], $fields['retarget_notes'], $fields['consent_marketing'] ?? 0
+                ]);
+            echo json_encode(['ok' => true, 'action' => 'inserted', 'id' => $pdo->lastInsertId()]);
+        }
+        break;
+
+    case 'customer_get':
+        $phone = trim($body['phone'] ?? $_GET['phone'] ?? '');
+        if (!$phone) { echo json_encode(['error' => 'phone required']); exit; }
+        $stmt = $pdo->prepare("SELECT * FROM ox_customer_profiles WHERE phone=?");
+        $stmt->execute([$phone]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        echo json_encode(['ok' => true, 'customer' => $row ?: null]);
+        break;
+
+    case 'customer_search':
+        // Filter by tag (e.g. "high-value", "lapsed", "lhr-underarms") for retargeting audience building.
+        $tag = trim($body['tag'] ?? $_GET['tag'] ?? '');
+        $sql = "SELECT * FROM ox_customer_profiles";
+        $params = [];
+        if ($tag) { $sql .= " WHERE tags LIKE ?"; $params[] = "%$tag%"; }
+        $sql .= " ORDER BY last_visit_date DESC LIMIT 500";
+        $stmt = $pdo->prepare($sql); $stmt->execute($params);
+        echo json_encode(['ok' => true, 'customers' => $stmt->fetchAll(PDO::FETCH_ASSOC)]);
+        break;
+
+    case 'customer_lapsed':
+        // Clients with no visit in N days (default 60) — retargeting candidates.
+        $days = intval($body['days'] ?? $_GET['days'] ?? 60);
+        $stmt = $pdo->prepare("SELECT * FROM ox_customer_profiles WHERE last_visit_date IS NOT NULL AND last_visit_date < DATE_SUB(CURDATE(), INTERVAL ? DAY) AND consent_marketing=1 ORDER BY last_visit_date ASC LIMIT 500");
+        $stmt->execute([$days]);
+        echo json_encode(['ok' => true, 'lapsed_customers' => $stmt->fetchAll(PDO::FETCH_ASSOC), 'threshold_days' => $days]);
+        break;
+
+    // ── TASK EXECUTION (open-ended agent tasks, e.g. competitor research) ──
+    case 'task_create':
+        $type = trim($body['task_type'] ?? 'research');
+        $instructions = trim($body['instructions'] ?? '');
+        if (!$instructions) { echo json_encode(['error' => 'instructions required']); exit; }
+        $stmt = $pdo->prepare("INSERT INTO ox_tasks (requested_by, task_type, instructions, status) VALUES (?, ?, ?, 'pending')");
+        $stmt->execute([$body['requested_by'] ?? 'sarah', $type, $instructions]);
+        echo json_encode(['ok' => true, 'task_id' => $pdo->lastInsertId(), 'status' => 'pending']);
+        break;
+
+    case 'task_get':
+        $tid = intval($body['task_id'] ?? $_GET['task_id'] ?? 0);
+        if (!$tid) { echo json_encode(['error' => 'task_id required']); exit; }
+        $stmt = $pdo->prepare("SELECT * FROM ox_tasks WHERE id=?");
+        $stmt->execute([$tid]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        echo json_encode($row ?: ['status' => 'not_found']);
+        break;
+
+    case 'task_get_pending':
+        $stmt = $pdo->query("SELECT * FROM ox_tasks WHERE status='pending' ORDER BY created_at ASC LIMIT 5");
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($rows as $r) { $pdo->prepare("UPDATE ox_tasks SET status='processing' WHERE id=?")->execute([$r['id']]); }
+        echo json_encode(['ok' => true, 'tasks' => $rows]);
+        break;
+
+    case 'task_complete':
+        $tid = intval($body['task_id'] ?? 0);
+        $result = $body['result'] ?? '';
+        $status = $body['status'] ?? 'done';
+        if (!$tid) { echo json_encode(['error' => 'task_id required']); exit; }
+        $pdo->prepare("UPDATE ox_tasks SET status=?, result=?, completed_at=NOW() WHERE id=?")->execute([$status, $result, $tid]);
+        echo json_encode(['ok' => true]);
+        break;
+
+    // ── LINK LIBRARY (booking / review / promo / general business links) ──
+    // Verified real URLs only — never fabricate a placeholder. Square location ID
+    // and Google Place ID below are confirmed live (see square-booking skill and
+    // the Google Business Profile listing for Oxyderm Laser Hair Removal Clinic
+    // Edmonton, 6958 76 Ave NW #211). Logs every generated link for attribution.
+    case 'link_get':
+        $type = trim($body['link_type'] ?? '');
+        $service = trim($body['service'] ?? 'laser-hair-removal'); // laser-hair-removal | microneedling
+        $stage = trim($body['stage'] ?? 'bofu'); // tofu | mofu | bofu | retargeting
+        $source = trim($body['source'] ?? 'whatsapp'); // meta | tiktok | google | telegram | whatsapp
+        $promoCode = trim($body['promo_code'] ?? '');
+
+        $SQUARE_BASE = 'https://book.squareup.com/appointments/book/merchant/SA5CTAH41JNY2/services';
+        $GBP_PLACE_ID = 'ChIJx6Ly5kkhoFMRp6Rjd5bC4qE';
+
+        $url = null;
+        switch ($type) {
+            case 'booking':
+                $url = $SQUARE_BASE . '?utm_source=' . urlencode($source) . '&utm_medium=direct_message&utm_campaign=' . urlencode($service . '_' . $stage) . '&utm_content=consultation_offer';
+                break;
+            case 'review':
+                $url = 'https://search.google.com/local/writereview?placeid=' . $GBP_PLACE_ID;
+                break;
+            case 'website':
+                $url = 'https://www.oxydermlaserclinic.ca/?utm_source=' . urlencode($source) . '&utm_medium=direct_message';
+                break;
+            case 'instagram':
+                $url = 'https://www.instagram.com/oxyderm/';
+                break;
+            case 'facebook':
+                $url = 'https://www.facebook.com/Oxydermlaserclinic/';
+                break;
+            case 'promo':
+                if (!$promoCode) { echo json_encode(['error' => 'promo_code required for promo link']); exit; }
+                $url = $SQUARE_BASE . '?utm_source=' . urlencode($source) . '&utm_medium=direct_message&utm_campaign=promo_' . urlencode($promoCode) . '&utm_content=' . urlencode($promoCode);
+                break;
+            default:
+                echo json_encode(['error' => 'Unknown link_type', 'available' => ['booking','review','website','instagram','facebook','promo']]);
+                exit;
+        }
+
+        $pdo->prepare("INSERT INTO ox_link_log (link_type, service, stage, source, promo_code, url) VALUES (?,?,?,?,?,?)")
+            ->execute([$type, $service, $stage, $source, $promoCode ?: null, $url]);
+
+        echo json_encode(['ok' => true, 'link_type' => $type, 'url' => $url]);
+        break;
+
+    // ── REPORT DATA (real numbers for reporting/planning tasks — never fabricated) ──
+    // Aggregates from tables we actually own: customer profiles, link log, decisions log,
+    // task log. Does NOT include Square revenue (that requires a separate Square API call
+    // the task executor makes directly with its own token, not via this backend).
+    case 'report_data':
+        $days = intval($body['days'] ?? 7);
+        $since = date('Y-m-d H:i:s', strtotime("-$days days"));
+
+        $newCustomers = $pdo->prepare("SELECT COUNT(*) FROM ox_customer_profiles WHERE created_at >= ?");
+        $newCustomers->execute([$since]);
+
+        $linksSent = $pdo->prepare("SELECT link_type, COUNT(*) as n FROM ox_link_log WHERE created_at >= ? GROUP BY link_type");
+        $linksSent->execute([$since]);
+
+        $lapsedCount = $pdo->query("SELECT COUNT(*) FROM ox_customer_profiles WHERE last_visit_date IS NOT NULL AND last_visit_date < DATE_SUB(CURDATE(), INTERVAL 60 DAY) AND consent_marketing=1")->fetchColumn();
+
+        $decisionsCount = $pdo->prepare("SELECT decision_type, COUNT(*) as n FROM ox_decisions_log WHERE created_at >= ? GROUP BY decision_type");
+        $decisionsCount->execute([$since]);
+
+        $tasksCount = $pdo->prepare("SELECT task_type, status, COUNT(*) as n FROM ox_tasks WHERE created_at >= ? GROUP BY task_type, status");
+        $tasksCount->execute([$since]);
+
+        echo json_encode([
+            'ok' => true,
+            'period_days' => $days,
+            'new_customer_profiles_saved' => (int)$newCustomers->fetchColumn(),
+            'links_sent_by_type' => $linksSent->fetchAll(PDO::FETCH_ASSOC),
+            'lapsed_clients_60day' => (int)$lapsedCount,
+            'agent_decisions_by_type' => $decisionsCount->fetchAll(PDO::FETCH_ASSOC),
+            'tasks_by_type_status' => $tasksCount->fetchAll(PDO::FETCH_ASSOC),
+        ]);
+        break;
+
+    // ── VIDEO REQUESTS (Sarah queues, human-supervised process fulfills) ──
+    case 'video_request_create':
+        $topic = trim($body['topic'] ?? '');
+        if (!$topic) { echo json_encode(['error' => 'topic required']); exit; }
+        $vtype = trim($body['video_type'] ?? 'avatar_reel');
+        $stmt = $pdo->prepare("INSERT INTO ox_video_requests (requested_by, topic, video_type, status) VALUES (?,?,?,'pending')");
+        $stmt->execute([$body['requested_by'] ?? 'sarah', $topic, $vtype]);
+        echo json_encode(['ok' => true, 'video_request_id' => $pdo->lastInsertId(), 'status' => 'pending']);
+        break;
+
+    case 'video_request_get':
+        $vid = intval($body['video_request_id'] ?? $_GET['video_request_id'] ?? 0);
+        if (!$vid) { echo json_encode(['error' => 'video_request_id required']); exit; }
+        $stmt = $pdo->prepare("SELECT * FROM ox_video_requests WHERE id=?");
+        $stmt->execute([$vid]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        echo json_encode($row ?: ['status' => 'not_found']);
+        break;
+
+    case 'video_request_list':
+        $statusFilter = trim($body['status'] ?? $_GET['status'] ?? '');
+        $sql = "SELECT * FROM ox_video_requests";
+        $params = [];
+        if ($statusFilter) { $sql .= " WHERE status=?"; $params[] = $statusFilter; }
+        $sql .= " ORDER BY created_at DESC LIMIT 50";
+        $stmt = $pdo->prepare($sql); $stmt->execute($params);
+        echo json_encode(['ok' => true, 'video_requests' => $stmt->fetchAll(PDO::FETCH_ASSOC)]);
+        break;
+
+    case 'video_request_update':
+        $vid = intval($body['video_request_id'] ?? 0);
+        if (!$vid) { echo json_encode(['error' => 'video_request_id required']); exit; }
+        $fields = ['status' => $body['status'] ?? null, 'script' => $body['script'] ?? null, 'video_path' => $body['video_path'] ?? null, 'notes' => $body['notes'] ?? null];
+        $sets = []; $params = [];
+        foreach ($fields as $k => $v) { if ($v !== null) { $sets[] = "$k=?"; $params[] = $v; } }
+        if (!$sets) { echo json_encode(['error' => 'no fields to update']); exit; }
+        $params[] = $vid;
+        $pdo->prepare("UPDATE ox_video_requests SET " . implode(',', $sets) . " WHERE id=?")->execute($params);
+        echo json_encode(['ok' => true]);
+        break;
+
+    // ── ENGINE URL DISCOVERY (Sarah's local engine is tunneled via cloudflared;
+    // the public URL changes on tunnel restart, so the dashboard looks it up
+    // here instead of hardcoding it. Written by the tunnel watcher on the dev
+    // Mac; read by any browser anywhere.) ──
+    case 'engine_url_set':
+        $url = trim($body['url'] ?? '');
+        if (!$url || !preg_match('#^https://#', $url)) {
+            echo json_encode(['error' => 'A valid https:// url is required']);
+            exit;
+        }
+        $pdo->exec("CREATE TABLE IF NOT EXISTS ox_engine_url (
+            id INT PRIMARY KEY DEFAULT 1,
+            url VARCHAR(255) NOT NULL,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+        )");
+        $pdo->prepare("INSERT INTO ox_engine_url (id, url) VALUES (1, ?) ON DUPLICATE KEY UPDATE url = VALUES(url)")
+            ->execute([$url]);
+        echo json_encode(['ok' => true, 'url' => $url]);
+        break;
+
+    case 'engine_url_get':
+        $pdo->exec("CREATE TABLE IF NOT EXISTS ox_engine_url (
+            id INT PRIMARY KEY DEFAULT 1,
+            url VARCHAR(255) NOT NULL,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+        )");
+        $row = $pdo->query("SELECT url, updated_at FROM ox_engine_url WHERE id = 1")->fetch(PDO::FETCH_ASSOC);
+        if (!$row) {
+            echo json_encode(['ok' => true, 'url' => null, 'stale' => true]);
+            break;
+        }
+        // Consider the URL stale if not refreshed in the last 10 minutes —
+        // the watcher pings every ~2 min, so a 10-min gap means the tunnel
+        // (or the dev Mac) is down and Sarah's live features are unavailable.
+        $ageSeconds = time() - strtotime($row['updated_at']);
+        echo json_encode(['ok' => true, 'url' => $row['url'], 'stale' => $ageSeconds > 600, 'age_seconds' => $ageSeconds]);
+        break;
+
+    default:
+        echo json_encode(['error' => 'Unknown action', 'available' => ['ask','get_answer','get_pending','post_answer','get_report','memory_get','memory_set','ping','customer_upsert','customer_get','customer_search','customer_lapsed','task_create','task_get','task_get_pending','task_complete','link_get','report_data','video_request_create','video_request_get','video_request_list','video_request_update','engine_url_get','engine_url_set']]);
+}

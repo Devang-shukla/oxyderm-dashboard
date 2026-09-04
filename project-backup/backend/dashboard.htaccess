@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Oxyderm OS — Staff Only"
+AuthUserFile /home2/oxydenic/public_html/oxydermshop.com/dashboard/.htpasswd
+Require valid-user
