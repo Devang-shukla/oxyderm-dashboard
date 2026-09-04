@@ -1207,10 +1207,32 @@ function sarahAnswer(q, cb){
   // help
   if(/help|what can|how/i.test(ql)) return cb('Ask me: who is at 1pm, notes for Alexandra, what did Mehak pay, who is next, any balance owing, book [name], [phone], [service], [date/time], cancel appointment for [phone], or ask the [scheduler/finance/client/marketing/research/social/editor] agent [question].');
 
-  // Unknown - try web search
+  // Unknown - full fallback chain: instant web search first (fast, works
+  // for maybe 5% of questions), then automatically escalate to the real
+  // Hermes Brain (same path as typing "ask the general agent ...", just
+  // without requiring anyone to know that syntax). Fixed 2026-09-03: this
+  // used to dead-end at the DuckDuckGo call alone, so any normal question
+  // that wasn't an exact hardcoded match got the same canned apology every
+  // time, regardless of what was actually asked.
   webSearch(ql, function(result){
     if(result) return cb(result);
-    return cb('I don\'t have that information. Try asking about appointments, clients, services, bookings, or ask a specific agent.');
+    cb('Let me check with the Brain, one moment...');
+    fetch(ENGINE_BASE + '/sarah/ask-agent', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({agent:'general', question:q})
+    }).then(function(r){ return r.json(); }).then(function(res){
+      if(!res.ok) return showSarahAnswer('I don\'t have that information, and could not reach the Brain to look it up (' + (res.error||'unknown error') + '). Try asking about appointments, clients, services, bookings, or ask a specific agent directly.');
+      var qid = res.question_id, tries = 0;
+      var poll = setInterval(function(){
+        tries++;
+        if(tries > 20){ clearInterval(poll); showSarahAnswer('The Brain did not answer in time (60s). Try asking again in a moment.'); return; }
+        fetch(ENGINE_BASE + '/sarah/agent-answer?question_id=' + qid).then(function(r){ return r.json(); }).then(function(ans){
+          if(ans.status === 'answered'){ clearInterval(poll); showSarahAnswer(ans.answer); }
+        }).catch(function(){});
+      }, 3000);
+    }).catch(function(){
+      showSarahAnswer('I don\'t have that information, and the Brain is unreachable right now. Try asking about appointments, clients, services, bookings, or ask a specific agent directly.');
+    });
   });
 }
 
