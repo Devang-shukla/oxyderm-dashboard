@@ -1,52 +1,16 @@
 {
-  "fetched_at": "10:33 AM MDT",
-  "today": "2026-09-08",
-  "week_start": "2026-09-08",
-  "week_end": "2026-09-14",
+  "fetched_at": "01:15 PM MDT",
+  "today": "2026-09-09",
+  "week_start": "2026-09-09",
+  "week_end": "2026-09-15",
   "appointments": [
     {
-      "time": "10:00 AM",
-      "date": "2026-09-08",
-      "date_label": "Tuesday, September 08",
-      "name": "Kaylee Bottaro",
-      "phone": "+17807144522",
-      "email": "",
-      "service": "Treatment",
-      "areas": "brazilian",
-      "duration_min": 45,
-      "visit": "2nd visit",
-      "visit_num": 2,
-      "payment": "paid 1st and 3rd instalment $120 each  in August 2026",
-      "flags": [],
-      "raw_note": "Tx2  type 4 \nTreatment area : brazilian \nbuying 3 treatments $120 each \npaid 1st and 3rd instalment $120 each  in August 2026 \n2nd instalnent paid  in 2nd treatment $120 sep 2026 \nshe has treatment before from another clinic \nHetisha did treatment \n",
-      "status": "ACCEPTED",
-      "booking_id": "vk58321ndvvzex"
-    },
-    {
-      "time": "3:30 PM",
-      "date": "2026-09-08",
-      "date_label": "Tuesday, September 08",
-      "name": "Deeksha Gill",
-      "phone": "+17806601902",
-      "email": "deekshagill8@gmail.com",
-      "service": "Treatment",
-      "areas": "",
-      "duration_min": 105,
-      "visit": "Unknown visit",
-      "visit_num": null,
-      "payment": "See Square",
-      "flags": [],
-      "raw_note": "",
-      "status": "ACCEPTED",
-      "booking_id": "504jitnt0sjpbe"
-    },
-    {
       "time": "4:30 PM",
-      "date": "2026-09-08",
-      "date_label": "Tuesday, September 08",
-      "name": "Morgan Bodnaruk",
-      "phone": "(587) 343-4443",
-      "email": "morgandawn442@gmail.com",
+      "date": "2026-09-09",
+      "date_label": "Wednesday, September 09",
+      "name": "Oleksandr Zamlilyi",
+      "phone": "(780) 340-1010",
+      "email": "alexzam10@gmail.com",
       "service": "Treatment",
       "areas": "",
       "duration_min": 120,
@@ -56,106 +20,10 @@
       "flags": [],
       "raw_note": "",
       "status": "ACCEPTED",
-      "booking_id": "z468097eewuwym"
-    },
-    {
-      "time": "5:15 PM",
-      "date": "2026-09-08",
-      "date_label": "Tuesday, September 08",
-      "name": "Nathalie Duguay",
-      "phone": "+15063400686",
-      "email": "",
-      "service": "Treatment",
-      "areas": "",
-      "duration_min": 45,
-      "visit": "Unknown visit",
-      "visit_num": null,
-      "payment": "See Square",
-      "flags": [],
-      "raw_note": "",
-      "status": "ACCEPTED",
-      "booking_id": "crqweoi0gs91r4"
+      "booking_id": "d6fvroblo4d0yw"
     }
   ],
   "week": [
-    {
-      "date": "2026-09-08",
-      "label": "Tuesday, September 08",
-      "appointments": [
-        {
-          "time": "10:00 AM",
-          "date": "2026-09-08",
-          "date_label": "Tuesday, September 08",
-          "name": "Kaylee Bottaro",
-          "phone": "+17807144522",
-          "email": "",
-          "service": "Treatment",
-          "areas": "brazilian",
-          "duration_min": 45,
-          "visit": "2nd visit",
-          "visit_num": 2,
-          "payment": "paid 1st and 3rd instalment $120 each  in August 2026",
-          "flags": [],
-          "raw_note": "Tx2  type 4 \nTreatment area : brazilian \nbuying 3 treatments $120 each \npaid 1st and 3rd instalment $120 each  in August 2026 \n2nd instalnent paid  in 2nd treatment $120 sep 2026 \nshe has treatment before from another clinic \nHetisha did treatment \n",
-          "status": "ACCEPTED",
-          "booking_id": "vk58321ndvvzex"
-        },
-        {
-          "time": "3:30 PM",
-          "date": "2026-09-08",
-          "date_label": "Tuesday, September 08",
-          "name": "Deeksha Gill",
-          "phone": "+17806601902",
-          "email": "deekshagill8@gmail.com",
-          "service": "Treatment",
-          "areas": "",
-          "duration_min": 105,
-          "visit": "Unknown visit",
-          "visit_num": null,
-          "payment": "See Square",
-          "flags": [],
-          "raw_note": "",
-          "status": "ACCEPTED",
-          "booking_id": "504jitnt0sjpbe"
-        },
-        {
-          "time": "4:30 PM",
-          "date": "2026-09-08",
-          "date_label": "Tuesday, September 08",
-          "name": "Morgan Bodnaruk",
-          "phone": "(587) 343-4443",
-          "email": "morgandawn442@gmail.com",
-          "service": "Treatment",
-          "areas": "",
-          "duration_min": 120,
-          "visit": "Unknown visit",
-          "visit_num": null,
-          "payment": "See Square",
-          "flags": [],
-          "raw_note": "",
-          "status": "ACCEPTED",
-          "booking_id": "z468097eewuwym"
-        },
-        {
-          "time": "5:15 PM",
-          "date": "2026-09-08",
-          "date_label": "Tuesday, September 08",
-          "name": "Nathalie Duguay",
-          "phone": "+15063400686",
-          "email": "",
-          "service": "Treatment",
-          "areas": "",
-          "duration_min": 45,
-          "visit": "Unknown visit",
-          "visit_num": null,
-          "payment": "See Square",
-          "flags": [],
-          "raw_note": "",
-          "status": "ACCEPTED",
-          "booking_id": "crqweoi0gs91r4"
-        }
-      ]
-    },
     {
       "date": "2026-09-09",
       "label": "Wednesday, September 09",
@@ -473,6 +341,24 @@
           "booking_id": "9tgrsd03v61yqg"
         },
         {
+          "time": "2:30 PM",
+          "date": "2026-09-14",
+          "date_label": "Monday, September 14",
+          "name": "Paige Hornung",
+          "phone": "(780) 719-9145",
+          "email": "paige.hornung@hotmail.com",
+          "service": "Treatment",
+          "areas": "",
+          "duration_min": 120,
+          "visit": "Unknown visit",
+          "visit_num": null,
+          "payment": "See Square",
+          "flags": [],
+          "raw_note": "",
+          "status": "ACCEPTED",
+          "booking_id": "gv11c5of77ecjm"
+        },
+        {
           "time": "4:30 PM",
           "date": "2026-09-14",
           "date_label": "Monday, September 14",
@@ -491,7 +377,49 @@
           "booking_id": "md4gcb4l2s00cl"
         }
       ]
+    },
+    {
+      "date": "2026-09-15",
+      "label": "Tuesday, September 15",
+      "appointments": [
+        {
+          "time": "12:00 PM",
+          "date": "2026-09-15",
+          "date_label": "Tuesday, September 15",
+          "name": "Dani Donaldson",
+          "phone": "+17808196625",
+          "email": "",
+          "service": "Treatment",
+          "areas": "",
+          "duration_min": 30,
+          "visit": "Unknown visit",
+          "visit_num": null,
+          "payment": "See Square",
+          "flags": [],
+          "raw_note": "",
+          "status": "ACCEPTED",
+          "booking_id": "o7k4pxlb7c6506"
+        },
+        {
+          "time": "3:00 PM",
+          "date": "2026-09-15",
+          "date_label": "Tuesday, September 15",
+          "name": "Amita Kumari",
+          "phone": "+18255231139",
+          "email": "rupithakur223352@gmail.com",
+          "service": "Treatment",
+          "areas": "",
+          "duration_min": 120,
+          "visit": "Unknown visit",
+          "visit_num": null,
+          "payment": "See Square",
+          "flags": [],
+          "raw_note": "",
+          "status": "ACCEPTED",
+          "booking_id": "kw9ym5ps80apd7"
+        }
+      ]
     }
   ],
-  "total_week": 21
+  "total_week": 20
 }
