@@ -1,9 +1,82 @@
 {
   "fetched_at": "07:00 AM MDT",
-  "today": "2026-09-13",
-  "week_start": "2026-09-13",
-  "week_end": "2026-09-19",
-  "appointments": [],
+  "today": "2026-09-14",
+  "week_start": "2026-09-14",
+  "week_end": "2026-09-20",
+  "appointments": [
+    {
+      "time": "10:00 AM",
+      "date": "2026-09-14",
+      "date_label": "Monday, September 14",
+      "name": "Roni Van Manen",
+      "phone": "+17809183878",
+      "email": "",
+      "service": "Treatment",
+      "areas": "",
+      "duration_min": 30,
+      "visit": "Unknown visit",
+      "visit_num": null,
+      "payment": "See Square",
+      "flags": [],
+      "raw_note": "spider vein",
+      "status": "ACCEPTED",
+      "booking_id": "czvinz80xnen9z"
+    },
+    {
+      "time": "10:30 AM",
+      "date": "2026-09-14",
+      "date_label": "Monday, September 14",
+      "name": "Leanne De Guzman",
+      "phone": "(780) 690-7680",
+      "email": "leannegailed@gmail.com",
+      "service": "Treatment",
+      "areas": "",
+      "duration_min": 120,
+      "visit": "Unknown visit",
+      "visit_num": null,
+      "payment": "See Square",
+      "flags": [],
+      "raw_note": "",
+      "status": "ACCEPTED",
+      "booking_id": "9tgrsd03v61yqg"
+    },
+    {
+      "time": "2:30 PM",
+      "date": "2026-09-14",
+      "date_label": "Monday, September 14",
+      "name": "Paige Hornung",
+      "phone": "(780) 719-9145",
+      "email": "paige.hornung@hotmail.com",
+      "service": "Treatment",
+      "areas": "",
+      "duration_min": 120,
+      "visit": "Unknown visit",
+      "visit_num": null,
+      "payment": "See Square",
+      "flags": [],
+      "raw_note": "",
+      "status": "ACCEPTED",
+      "booking_id": "gv11c5of77ecjm"
+    },
+    {
+      "time": "4:30 PM",
+      "date": "2026-09-14",
+      "date_label": "Monday, September 14",
+      "name": "Benny Li",
+      "phone": "+15879382374",
+      "email": "bennyli8531@gmail.com",
+      "service": "Treatment",
+      "areas": "",
+      "duration_min": 30,
+      "visit": "Unknown visit",
+      "visit_num": null,
+      "payment": "See Square",
+      "flags": [],
+      "raw_note": "",
+      "status": "ACCEPTED",
+      "booking_id": "md4gcb4l2s00cl"
+    }
+  ],
   "week": [
     {
       "date": "2026-09-14",
@@ -470,27 +543,9 @@
           "raw_note": "",
           "status": "ACCEPTED",
           "booking_id": "qcxxfhmty0rzpl"
-        },
-        {
-          "time": "3:30 PM",
-          "date": "2026-09-19",
-          "date_label": "Saturday, September 19",
-          "name": "Alexandra Doblado",
-          "phone": "(587) 974-5069",
-          "email": "asr.doblado@gmail.com",
-          "service": "Treatment",
-          "areas": "",
-          "duration_min": 60,
-          "visit": "Unknown visit",
-          "visit_num": null,
-          "payment": "See Square",
-          "flags": [],
-          "raw_note": "",
-          "status": "ACCEPTED",
-          "booking_id": "fxk8vz7zfpje4t"
         }
       ]
     }
   ],
-  "total_week": 25
+  "total_week": 24
 }
