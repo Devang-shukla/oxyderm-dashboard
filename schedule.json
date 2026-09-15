@@ -1,13 +1,13 @@
 {
   "fetched_at": "07:00 AM MDT",
-  "today": "2026-09-14",
-  "week_start": "2026-09-14",
-  "week_end": "2026-09-20",
+  "today": "2026-09-15",
+  "week_start": "2026-09-15",
+  "week_end": "2026-09-21",
   "appointments": [
     {
-      "time": "10:00 AM",
-      "date": "2026-09-14",
-      "date_label": "Monday, September 14",
+      "time": "10:30 AM",
+      "date": "2026-09-15",
+      "date_label": "Tuesday, September 15",
       "name": "Roni Van Manen",
       "phone": "+17809183878",
       "email": "",
@@ -18,17 +18,17 @@
       "visit_num": null,
       "payment": "See Square",
       "flags": [],
-      "raw_note": "spider vein",
+      "raw_note": "",
       "status": "ACCEPTED",
-      "booking_id": "czvinz80xnen9z"
+      "booking_id": "yi4q2qofnn7rkb"
     },
     {
-      "time": "10:30 AM",
-      "date": "2026-09-14",
-      "date_label": "Monday, September 14",
-      "name": "Leanne De Guzman",
-      "phone": "(780) 690-7680",
-      "email": "leannegailed@gmail.com",
+      "time": "11:00 AM",
+      "date": "2026-09-15",
+      "date_label": "Tuesday, September 15",
+      "name": "Maliha Rehan",
+      "phone": "+17786838817",
+      "email": "mrehan1@ualberta.ca",
       "service": "Treatment",
       "areas": "",
       "duration_min": 120,
@@ -38,33 +38,15 @@
       "flags": [],
       "raw_note": "",
       "status": "ACCEPTED",
-      "booking_id": "9tgrsd03v61yqg"
+      "booking_id": "rxxbnlgd9149r4"
     },
     {
-      "time": "2:30 PM",
-      "date": "2026-09-14",
-      "date_label": "Monday, September 14",
-      "name": "Paige Hornung",
-      "phone": "(780) 719-9145",
-      "email": "paige.hornung@hotmail.com",
-      "service": "Treatment",
-      "areas": "",
-      "duration_min": 120,
-      "visit": "Unknown visit",
-      "visit_num": null,
-      "payment": "See Square",
-      "flags": [],
-      "raw_note": "",
-      "status": "ACCEPTED",
-      "booking_id": "gv11c5of77ecjm"
-    },
-    {
-      "time": "4:30 PM",
-      "date": "2026-09-14",
-      "date_label": "Monday, September 14",
-      "name": "Benny Li",
-      "phone": "+15879382374",
-      "email": "bennyli8531@gmail.com",
+      "time": "12:00 PM",
+      "date": "2026-09-15",
+      "date_label": "Tuesday, September 15",
+      "name": "Dani Donaldson",
+      "phone": "+17808196625",
+      "email": "",
       "service": "Treatment",
       "areas": "",
       "duration_min": 30,
@@ -74,18 +56,36 @@
       "flags": [],
       "raw_note": "",
       "status": "ACCEPTED",
-      "booking_id": "md4gcb4l2s00cl"
+      "booking_id": "o7k4pxlb7c6506"
+    },
+    {
+      "time": "3:00 PM",
+      "date": "2026-09-15",
+      "date_label": "Tuesday, September 15",
+      "name": "Amita Kumari",
+      "phone": "+18255231139",
+      "email": "rupithakur223352@gmail.com",
+      "service": "Treatment",
+      "areas": "",
+      "duration_min": 120,
+      "visit": "Unknown visit",
+      "visit_num": null,
+      "payment": "See Square",
+      "flags": [],
+      "raw_note": "",
+      "status": "ACCEPTED",
+      "booking_id": "kw9ym5ps80apd7"
     }
   ],
   "week": [
     {
-      "date": "2026-09-14",
-      "label": "Monday, September 14",
+      "date": "2026-09-15",
+      "label": "Tuesday, September 15",
       "appointments": [
         {
-          "time": "10:00 AM",
-          "date": "2026-09-14",
-          "date_label": "Monday, September 14",
+          "time": "10:30 AM",
+          "date": "2026-09-15",
+          "date_label": "Tuesday, September 15",
           "name": "Roni Van Manen",
           "phone": "+17809183878",
           "email": "",
@@ -96,70 +96,10 @@
           "visit_num": null,
           "payment": "See Square",
           "flags": [],
-          "raw_note": "spider vein",
-          "status": "ACCEPTED",
-          "booking_id": "czvinz80xnen9z"
-        },
-        {
-          "time": "10:30 AM",
-          "date": "2026-09-14",
-          "date_label": "Monday, September 14",
-          "name": "Leanne De Guzman",
-          "phone": "(780) 690-7680",
-          "email": "leannegailed@gmail.com",
-          "service": "Treatment",
-          "areas": "",
-          "duration_min": 120,
-          "visit": "Unknown visit",
-          "visit_num": null,
-          "payment": "See Square",
-          "flags": [],
           "raw_note": "",
           "status": "ACCEPTED",
-          "booking_id": "9tgrsd03v61yqg"
+          "booking_id": "yi4q2qofnn7rkb"
         },
-        {
-          "time": "2:30 PM",
-          "date": "2026-09-14",
-          "date_label": "Monday, September 14",
-          "name": "Paige Hornung",
-          "phone": "(780) 719-9145",
-          "email": "paige.hornung@hotmail.com",
-          "service": "Treatment",
-          "areas": "",
-          "duration_min": 120,
-          "visit": "Unknown visit",
-          "visit_num": null,
-          "payment": "See Square",
-          "flags": [],
-          "raw_note": "",
-          "status": "ACCEPTED",
-          "booking_id": "gv11c5of77ecjm"
-        },
-        {
-          "time": "4:30 PM",
-          "date": "2026-09-14",
-          "date_label": "Monday, September 14",
-          "name": "Benny Li",
-          "phone": "+15879382374",
-          "email": "bennyli8531@gmail.com",
-          "service": "Treatment",
-          "areas": "",
-          "duration_min": 30,
-          "visit": "Unknown visit",
-          "visit_num": null,
-          "payment": "See Square",
-          "flags": [],
-          "raw_note": "",
-          "status": "ACCEPTED",
-          "booking_id": "md4gcb4l2s00cl"
-        }
-      ]
-    },
-    {
-      "date": "2026-09-15",
-      "label": "Tuesday, September 15",
-      "appointments": [
         {
           "time": "11:00 AM",
           "date": "2026-09-15",
@@ -255,24 +195,6 @@
           "raw_note": "",
           "status": "ACCEPTED",
           "booking_id": "y782ergezg8exu"
-        },
-        {
-          "time": "12:30 PM",
-          "date": "2026-09-16",
-          "date_label": "Wednesday, September 16",
-          "name": "Corinne Filipiak",
-          "phone": "+17809068040",
-          "email": "filipiakcd@gmail.com",
-          "service": "Treatment",
-          "areas": "",
-          "duration_min": 120,
-          "visit": "Unknown visit",
-          "visit_num": null,
-          "payment": "See Square",
-          "flags": [],
-          "raw_note": "",
-          "status": "ACCEPTED",
-          "booking_id": "jvqca1dg4rsjxb"
         }
       ]
     },
@@ -315,6 +237,24 @@
           "raw_note": "",
           "status": "ACCEPTED",
           "booking_id": "uaf5oh6zbx2s7z"
+        },
+        {
+          "time": "12:30 PM",
+          "date": "2026-09-17",
+          "date_label": "Thursday, September 17",
+          "name": "Ella Jagorin",
+          "phone": "+17809074476",
+          "email": "",
+          "service": "Treatment",
+          "areas": "",
+          "duration_min": 30,
+          "visit": "Unknown visit",
+          "visit_num": null,
+          "payment": "See Square",
+          "flags": [],
+          "raw_note": "",
+          "status": "ACCEPTED",
+          "booking_id": "1pwhmaxbht2fu7"
         },
         {
           "time": "4:30 PM",
@@ -509,24 +449,6 @@
           "booking_id": "jm3qb1jscsx3hw"
         },
         {
-          "time": "2:00 PM",
-          "date": "2026-09-19",
-          "date_label": "Saturday, September 19",
-          "name": "Terrecia McPherson",
-          "phone": "+15873340721",
-          "email": "mcphersonterrecia@gmail.com",
-          "service": "Treatment",
-          "areas": "",
-          "duration_min": 30,
-          "visit": "Unknown visit",
-          "visit_num": null,
-          "payment": "See Square",
-          "flags": [],
-          "raw_note": "",
-          "status": "ACCEPTED",
-          "booking_id": "kiqwh1phzkcorn"
-        },
-        {
           "time": "2:30 PM",
           "date": "2026-09-19",
           "date_label": "Saturday, September 19",
@@ -545,7 +467,67 @@
           "booking_id": "qcxxfhmty0rzpl"
         }
       ]
+    },
+    {
+      "date": "2026-09-21",
+      "label": "Monday, September 21",
+      "appointments": [
+        {
+          "time": "1:30 PM",
+          "date": "2026-09-21",
+          "date_label": "Monday, September 21",
+          "name": "Jaskaran Sandhu",
+          "phone": "+17806262626",
+          "email": "",
+          "service": "Treatment",
+          "areas": "",
+          "duration_min": 120,
+          "visit": "Unknown visit",
+          "visit_num": null,
+          "payment": "See Square",
+          "flags": [],
+          "raw_note": "",
+          "status": "ACCEPTED",
+          "booking_id": "ofgi9vso8xg10g"
+        },
+        {
+          "time": "3:00 PM",
+          "date": "2026-09-21",
+          "date_label": "Monday, September 21",
+          "name": "Carol Marian-Dyer",
+          "phone": "(587) 987-7009",
+          "email": "ccdyer@shaw.ca",
+          "service": "Treatment",
+          "areas": "",
+          "duration_min": 30,
+          "visit": "Unknown visit",
+          "visit_num": null,
+          "payment": "See Square",
+          "flags": [],
+          "raw_note": "",
+          "status": "ACCEPTED",
+          "booking_id": "up4c0xw6wv4b1d"
+        },
+        {
+          "time": "5:15 PM",
+          "date": "2026-09-21",
+          "date_label": "Monday, September 21",
+          "name": "Jagdeep Grewal",
+          "phone": "(587) 434-2747",
+          "email": "jgrewal.honey@gmail.com",
+          "service": "Treatment",
+          "areas": "",
+          "duration_min": 30,
+          "visit": "Unknown visit",
+          "visit_num": null,
+          "payment": "See Square",
+          "flags": [],
+          "raw_note": "",
+          "status": "ACCEPTED",
+          "booking_id": "sn0jidii8on0dj"
+        }
+      ]
     }
   ],
-  "total_week": 24
+  "total_week": 23
 }
