@@ -1,34 +1,16 @@
 {
   "fetched_at": "07:00 AM MDT",
-  "today": "2026-09-15",
-  "week_start": "2026-09-15",
-  "week_end": "2026-09-21",
+  "today": "2026-09-16",
+  "week_start": "2026-09-16",
+  "week_end": "2026-09-22",
   "appointments": [
     {
-      "time": "10:30 AM",
-      "date": "2026-09-15",
-      "date_label": "Tuesday, September 15",
-      "name": "Roni Van Manen",
-      "phone": "+17809183878",
-      "email": "",
-      "service": "Treatment",
-      "areas": "",
-      "duration_min": 30,
-      "visit": "Unknown visit",
-      "visit_num": null,
-      "payment": "See Square",
-      "flags": [],
-      "raw_note": "",
-      "status": "ACCEPTED",
-      "booking_id": "yi4q2qofnn7rkb"
-    },
-    {
       "time": "11:00 AM",
-      "date": "2026-09-15",
-      "date_label": "Tuesday, September 15",
-      "name": "Maliha Rehan",
-      "phone": "+17786838817",
-      "email": "mrehan1@ualberta.ca",
+      "date": "2026-09-16",
+      "date_label": "Wednesday, September 16",
+      "name": "Saloni Pandya",
+      "phone": "+16478547013",
+      "email": "salonipandya26@gmail.com",
       "service": "Treatment",
       "areas": "",
       "duration_min": 120,
@@ -38,124 +20,28 @@
       "flags": [],
       "raw_note": "",
       "status": "ACCEPTED",
-      "booking_id": "rxxbnlgd9149r4"
+      "booking_id": "mw9yj3slhn61az"
     },
     {
       "time": "12:00 PM",
-      "date": "2026-09-15",
-      "date_label": "Tuesday, September 15",
-      "name": "Dani Donaldson",
-      "phone": "+17808196625",
-      "email": "",
+      "date": "2026-09-16",
+      "date_label": "Wednesday, September 16",
+      "name": "Berkley Johnson",
+      "phone": "(780) 240-0344",
+      "email": "berkj478@hotmail.com",
       "service": "Treatment",
       "areas": "",
-      "duration_min": 30,
+      "duration_min": 45,
       "visit": "Unknown visit",
       "visit_num": null,
       "payment": "See Square",
       "flags": [],
       "raw_note": "",
       "status": "ACCEPTED",
-      "booking_id": "o7k4pxlb7c6506"
-    },
-    {
-      "time": "3:00 PM",
-      "date": "2026-09-15",
-      "date_label": "Tuesday, September 15",
-      "name": "Amita Kumari",
-      "phone": "+18255231139",
-      "email": "rupithakur223352@gmail.com",
-      "service": "Treatment",
-      "areas": "",
-      "duration_min": 120,
-      "visit": "Unknown visit",
-      "visit_num": null,
-      "payment": "See Square",
-      "flags": [],
-      "raw_note": "",
-      "status": "ACCEPTED",
-      "booking_id": "kw9ym5ps80apd7"
+      "booking_id": "y782ergezg8exu"
     }
   ],
   "week": [
-    {
-      "date": "2026-09-15",
-      "label": "Tuesday, September 15",
-      "appointments": [
-        {
-          "time": "10:30 AM",
-          "date": "2026-09-15",
-          "date_label": "Tuesday, September 15",
-          "name": "Roni Van Manen",
-          "phone": "+17809183878",
-          "email": "",
-          "service": "Treatment",
-          "areas": "",
-          "duration_min": 30,
-          "visit": "Unknown visit",
-          "visit_num": null,
-          "payment": "See Square",
-          "flags": [],
-          "raw_note": "",
-          "status": "ACCEPTED",
-          "booking_id": "yi4q2qofnn7rkb"
-        },
-        {
-          "time": "11:00 AM",
-          "date": "2026-09-15",
-          "date_label": "Tuesday, September 15",
-          "name": "Maliha Rehan",
-          "phone": "+17786838817",
-          "email": "mrehan1@ualberta.ca",
-          "service": "Treatment",
-          "areas": "",
-          "duration_min": 120,
-          "visit": "Unknown visit",
-          "visit_num": null,
-          "payment": "See Square",
-          "flags": [],
-          "raw_note": "",
-          "status": "ACCEPTED",
-          "booking_id": "rxxbnlgd9149r4"
-        },
-        {
-          "time": "12:00 PM",
-          "date": "2026-09-15",
-          "date_label": "Tuesday, September 15",
-          "name": "Dani Donaldson",
-          "phone": "+17808196625",
-          "email": "",
-          "service": "Treatment",
-          "areas": "",
-          "duration_min": 30,
-          "visit": "Unknown visit",
-          "visit_num": null,
-          "payment": "See Square",
-          "flags": [],
-          "raw_note": "",
-          "status": "ACCEPTED",
-          "booking_id": "o7k4pxlb7c6506"
-        },
-        {
-          "time": "3:00 PM",
-          "date": "2026-09-15",
-          "date_label": "Tuesday, September 15",
-          "name": "Amita Kumari",
-          "phone": "+18255231139",
-          "email": "rupithakur223352@gmail.com",
-          "service": "Treatment",
-          "areas": "",
-          "duration_min": 120,
-          "visit": "Unknown visit",
-          "visit_num": null,
-          "payment": "See Square",
-          "flags": [],
-          "raw_note": "",
-          "status": "ACCEPTED",
-          "booking_id": "kw9ym5ps80apd7"
-        }
-      ]
-    },
     {
       "date": "2026-09-16",
       "label": "Wednesday, September 16",
@@ -221,6 +107,26 @@
           "booking_id": "hgkll1yl9r9fjz"
         },
         {
+          "time": "11:00 AM",
+          "date": "2026-09-17",
+          "date_label": "Thursday, September 17",
+          "name": "Maliha Rehan",
+          "phone": "+17786838817",
+          "email": "mrehan1@ualberta.ca",
+          "service": "Laser Hair Removal",
+          "areas": "full body",
+          "duration_min": 120,
+          "visit": "5th visit",
+          "visit_num": 5,
+          "payment": "Paid 1st and last (6th) instalments, $250 each, in Oct 2025",
+          "flags": [
+            "Left Google review"
+          ],
+          "raw_note": "Tx5\nTreatment area: full body\n\n$250 each multiple LHR treatment in 6 treatments package\nMembership started in Oct 2025 expires in March 2026\nPaid 1st and last (6th) instalments, $250 each, in Oct 2025\nPaying $250 every time at clinic\nPaid $59.99 Xmas promo for micro RF in advance in Dec 2025\n*given google review in Apr 2026\n*ask testimonial video in Tx5 \n\nHetisha did treatment",
+          "status": "ACCEPTED",
+          "booking_id": "rxxbnlgd9149r4"
+        },
+        {
           "time": "12:00 PM",
           "date": "2026-09-17",
           "date_label": "Thursday, September 17",
@@ -255,24 +161,6 @@
           "raw_note": "",
           "status": "ACCEPTED",
           "booking_id": "1pwhmaxbht2fu7"
-        },
-        {
-          "time": "4:30 PM",
-          "date": "2026-09-17",
-          "date_label": "Thursday, September 17",
-          "name": "Kirandeep Kaur",
-          "phone": "(289) 623-6172",
-          "email": "kiran654deepkaur@gmail.com",
-          "service": "Treatment",
-          "areas": "",
-          "duration_min": 55,
-          "visit": "Unknown visit",
-          "visit_num": null,
-          "payment": "See Square",
-          "flags": [],
-          "raw_note": "",
-          "status": "ACCEPTED",
-          "booking_id": "4vmnj1yhcgm4bx"
         }
       ]
     },
@@ -280,24 +168,6 @@
       "date": "2026-09-18",
       "label": "Friday, September 18",
       "appointments": [
-        {
-          "time": "10:00 AM",
-          "date": "2026-09-18",
-          "date_label": "Friday, September 18",
-          "name": "Esther Mustapha",
-          "phone": "+16473544588",
-          "email": "edivasther@yahoo.com",
-          "service": "Treatment",
-          "areas": "",
-          "duration_min": 30,
-          "visit": "Unknown visit",
-          "visit_num": null,
-          "payment": "See Square",
-          "flags": [],
-          "raw_note": "",
-          "status": "ACCEPTED",
-          "booking_id": "mgs0hug1q3du54"
-        },
         {
           "time": "10:30 AM",
           "date": "2026-09-18",
@@ -431,24 +301,6 @@
           "booking_id": "rnxjjwboa2lvp7"
         },
         {
-          "time": "12:30 PM",
-          "date": "2026-09-19",
-          "date_label": "Saturday, September 19",
-          "name": "Anja Eliason",
-          "phone": "(780) 913-7517",
-          "email": "eliasonanja18@gmail.com",
-          "service": "Treatment",
-          "areas": "",
-          "duration_min": 120,
-          "visit": "Unknown visit",
-          "visit_num": null,
-          "payment": "See Square",
-          "flags": [],
-          "raw_note": "",
-          "status": "ACCEPTED",
-          "booking_id": "jm3qb1jscsx3hw"
-        },
-        {
           "time": "2:30 PM",
           "date": "2026-09-19",
           "date_label": "Saturday, September 19",
@@ -472,6 +324,24 @@
       "date": "2026-09-21",
       "label": "Monday, September 21",
       "appointments": [
+        {
+          "time": "12:45 PM",
+          "date": "2026-09-21",
+          "date_label": "Monday, September 21",
+          "name": "Anja Eliason",
+          "phone": "(780) 913-7517",
+          "email": "eliasonanja18@gmail.com",
+          "service": "Treatment",
+          "areas": "",
+          "duration_min": 120,
+          "visit": "Unknown visit",
+          "visit_num": null,
+          "payment": "See Square",
+          "flags": [],
+          "raw_note": "",
+          "status": "ACCEPTED",
+          "booking_id": "jm3qb1jscsx3hw"
+        },
         {
           "time": "1:30 PM",
           "date": "2026-09-21",
@@ -527,7 +397,67 @@
           "booking_id": "sn0jidii8on0dj"
         }
       ]
+    },
+    {
+      "date": "2026-09-22",
+      "label": "Tuesday, September 22",
+      "appointments": [
+        {
+          "time": "10:00 AM",
+          "date": "2026-09-22",
+          "date_label": "Tuesday, September 22",
+          "name": "Janelle Dutra",
+          "phone": "(778) 846-4286",
+          "email": "JanelleDutra@outlook.com",
+          "service": "Treatment",
+          "areas": "",
+          "duration_min": 45,
+          "visit": "Unknown visit",
+          "visit_num": null,
+          "payment": "See Square",
+          "flags": [],
+          "raw_note": "",
+          "status": "ACCEPTED",
+          "booking_id": "zafpq89cs4pdbj"
+        },
+        {
+          "time": "10:30 AM",
+          "date": "2026-09-22",
+          "date_label": "Tuesday, September 22",
+          "name": "Ayesha Masud",
+          "phone": "+16476483706",
+          "email": "ayesha.m.chaudhry@outlook.com",
+          "service": "Treatment",
+          "areas": "",
+          "duration_min": 60,
+          "visit": "Unknown visit",
+          "visit_num": null,
+          "payment": "See Square",
+          "flags": [],
+          "raw_note": "",
+          "status": "ACCEPTED",
+          "booking_id": "680wglbbicovao"
+        },
+        {
+          "time": "12:00 PM",
+          "date": "2026-09-22",
+          "date_label": "Tuesday, September 22",
+          "name": "Pushpa Bali",
+          "phone": "+17808869281",
+          "email": "pushpab@telus.net",
+          "service": "Treatment",
+          "areas": "",
+          "duration_min": 60,
+          "visit": "Unknown visit",
+          "visit_num": null,
+          "payment": "See Square",
+          "flags": [],
+          "raw_note": "",
+          "status": "ACCEPTED",
+          "booking_id": "0vdg28x4kcfea3"
+        }
+      ]
     }
   ],
-  "total_week": 23
+  "total_week": 21
 }
