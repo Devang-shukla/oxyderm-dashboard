@@ -346,6 +346,21 @@ html,body{height:100%;background:var(--bg);color:var(--fg);font-family:-apple-sy
       <button class="btn btn-sm" onclick="loadAgentNotes('scheduler')">Scheduler</button>
       <button class="btn btn-sm" onclick="loadAgentNotes('social')">Social</button>
       <button class="btn btn-sm" onclick="loadAgentNotes('sarah')">Sarah</button>
+      <button class="btn btn-sm" onclick="loadAgentNotes('marketing')">Marketing</button>
+      <button class="btn btn-sm" onclick="loadAgentNotes('competitor')">Competitor</button>
+      <button class="btn btn-sm" onclick="loadAgentNotes('content-calendar')">Content</button>
+      <button class="btn btn-sm" onclick="loadAgentNotes('email-sms')">Email/SMS</button>
+      <button class="btn btn-sm" onclick="loadAgentNotes('trending')">Trending</button>
+      <button class="btn btn-sm" onclick="loadAgentNotes('keyword-research')">Keywords</button>
+      <button class="btn btn-sm" onclick="loadAgentNotes('crm-pipeline')">CRM</button>
+      <button class="btn btn-sm" onclick="loadAgentNotes('forms-funnel')">Funnel</button>
+      <button class="btn btn-sm" onclick="loadAgentNotes('automation')">Automation</button>
+      <button class="btn btn-sm" onclick="loadAgentNotes('video-script')">Video</button>
+      <button class="btn btn-sm" onclick="loadAgentNotes('youtube')">YouTube</button>
+      <button class="btn btn-sm" onclick="loadAgentNotes('image')">Image</button>
+      <button class="btn btn-sm" onclick="loadAgentNotes('preauth')">Pre-Auth</button>
+      <button class="btn btn-sm" onclick="loadAgentNotes('client')">Client</button>
+      <button class="btn btn-sm" onclick="loadAgentNotes('editor')">Editor</button>
     </div>
     <div id="agent-notes-view" class="card">
       <div class="empty">Select an agent above to view their learning notes.</div>
@@ -504,210 +519,101 @@ html,body{height:100%;background:var(--bg);color:var(--fg);font-family:-apple-sy
 
   <!-- ADD CLIENT MODAL -->
   <div id="add-client-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:200;overflow-y:auto">
-    <div style="max-width:540px;margin:40px auto;padding:24px;background:var(--card);border-radius:12px;border:1px solid var(--border)">
+    <div style="max-width:480px;margin:40px auto;padding:24px;background:var(--card);border-radius:12px;border:1px solid var(--border)">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
-        <div style="font-size:16px;font-weight:800">Onboard New Client</div>
+        <div style="font-size:16px;font-weight:800">Add Client</div>
         <button class="btn btn-sm btn-outline" onclick="hideAddClient()">Close</button>
       </div>
 
-      <!-- Step 1: Basic info -->
-      <div style="margin-bottom:20px">
-        <div style="font-size:11px;font-weight:700;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:1px">1. Business Info</div>
-        <div style="display:grid;gap:8px">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-            <div>
-              <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:3px">Business Name *</label>
-              <input class="inp" id="nc-name" placeholder="e.g. City Laser Clinic">
-            </div>
-            <div>
-              <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:3px">Owner Name</label>
-              <input class="inp" id="nc-owner" placeholder="e.g. Sarah Johnson">
-            </div>
-          </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-            <div>
-              <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:3px">City / Location</label>
-              <input class="inp" id="nc-location" placeholder="Edmonton, AB">
-            </div>
-            <div>
-              <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:3px">Primary Service</label>
-              <input class="inp" id="nc-service" placeholder="e.g. Laser Hair Removal">
-            </div>
-          </div>
-          <div>
-            <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:3px">Client Slug (used in URLs, no spaces) *</label>
-            <input class="inp" id="nc-slug" placeholder="e.g. city-laser" oninput="this.value=this.value.toLowerCase().replace(/[^a-z0-9-]/g,'-')">
-          </div>
+      <!-- 3 required fields — that's it -->
+      <div style="display:grid;gap:10px;margin-bottom:16px">
+        <div>
+          <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:3px">Business Name *</label>
+          <input class="inp" id="nc-name" placeholder="e.g. City Laser Clinic">
         </div>
-      </div>
-
-      <!-- Step 2: Website -->
-      <div style="margin-bottom:20px">
-        <div style="font-size:11px;font-weight:700;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:1px">2. Website</div>
-        <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">
-          <label style="font-size:13px;flex:1">Does the client have a website?</label>
-          <label style="font-size:12px;display:flex;align-items:center;gap:4px;cursor:pointer">
-            <input type="radio" name="nc-has-website" value="yes" onchange="ncToggleWebsite(true)"> Yes
-          </label>
-          <label style="font-size:12px;display:flex;align-items:center;gap:4px;cursor:pointer">
-            <input type="radio" name="nc-has-website" value="no" onchange="ncToggleWebsite(false)" checked> No
-          </label>
+        <div>
+          <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:3px">Industry</label>
+          <select class="inp" id="nc-industry">
+            <option value="laser_clinic">Laser Clinic</option>
+            <option value="med_spa">Med Spa</option>
+            <option value="dental">Dental</option>
+            <option value="chiro">Chiro / Physio</option>
+            <option value="salon">Salon / Beauty</option>
+            <option value="gym">Gym / Fitness</option>
+            <option value="restaurant">Restaurant</option>
+            <option value="real_estate">Real Estate</option>
+            <option value="ecommerce">E-commerce</option>
+            <option value="other">Other</option>
+          </select>
         </div>
-        <div id="nc-website-fields" style="display:none;display:grid;gap:8px">
+        <div>
+          <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:3px">Website</label>
           <input class="inp" id="nc-website-url" placeholder="https://theirclinic.com">
-          <input class="inp" id="nc-wp-url" placeholder="WordPress URL (if WP site) e.g. https://theirclinic.com/wp-json">
-          <input class="inp" id="nc-wp-pass" placeholder="WordPress App Password (Settings → Users → Application Passwords)" type="password">
-        </div>
-        <div id="nc-no-website-note" style="font-size:11px;color:var(--muted)">No website — we will generate one. Funnel pages will go to a subdomain.</div>
-        <div style="margin-top:8px">
-          <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:3px">Funnel subdomain (e.g. offers.theirclinic.com)</label>
-          <input class="inp" id="nc-funnel-domain" placeholder="offers.theirclinic.com">
-          <div style="font-size:10px;color:var(--muted);margin-top:3px">Client adds a CNAME record pointing to your server after setup.</div>
         </div>
       </div>
 
-      <!-- Step 3: Social accounts -->
-      <div style="margin-bottom:20px">
-        <div style="font-size:11px;font-weight:700;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:1px">3. Social Accounts</div>
-        <div style="display:grid;gap:8px">
-          <div id="nc-social-facebook" class="nc-social-row" style="display:flex;align-items:center;gap:8px;padding:8px;background:var(--bg);border-radius:6px;border:1px solid var(--border)">
-            <span style="font-size:16px">📘</span>
-            <span style="font-size:13px;flex:1">Facebook</span>
-            <input class="inp" id="nc-fb-url" placeholder="facebook.com/theirpage" style="max-width:180px;font-size:11px">
-            <button class="btn btn-sm" onclick="ncConnectSocial('facebook','meta')" id="nc-btn-facebook">Connect</button>
-            <span id="nc-status-facebook" style="font-size:10px;color:var(--muted)"></span>
-          </div>
-          <div id="nc-social-instagram" class="nc-social-row" style="display:flex;align-items:center;gap:8px;padding:8px;background:var(--bg);border-radius:6px;border:1px solid var(--border)">
-            <span style="font-size:16px">📷</span>
-            <span style="font-size:13px;flex:1">Instagram</span>
-            <input class="inp" id="nc-ig-url" placeholder="@theirhandle" style="max-width:180px;font-size:11px">
-            <button class="btn btn-sm" onclick="ncConnectSocial('instagram','meta')" id="nc-btn-instagram">Connect</button>
-            <span id="nc-status-instagram" style="font-size:10px;color:var(--muted)"></span>
-          </div>
-          <div id="nc-social-tiktok" class="nc-social-row" style="display:flex;align-items:center;gap:8px;padding:8px;background:var(--bg);border-radius:6px;border:1px solid var(--border)">
-            <span style="font-size:16px">🎵</span>
-            <span style="font-size:13px;flex:1">TikTok</span>
-            <input class="inp" id="nc-tiktok-url" placeholder="@theirhandle" style="max-width:180px;font-size:11px">
-            <button class="btn btn-sm btn-outline" onclick="ncConnectSocial('tiktok','tiktok')" id="nc-btn-tiktok">Connect via n8n</button>
-            <span id="nc-status-tiktok" style="font-size:10px;color:var(--muted)"></span>
-          </div>
-          <div id="nc-social-linkedin" class="nc-social-row" style="display:flex;align-items:center;gap:8px;padding:8px;background:var(--bg);border-radius:6px;border:1px solid var(--border)">
-            <span style="font-size:16px">💼</span>
-            <span style="font-size:13px;flex:1">LinkedIn</span>
-            <input class="inp" id="nc-li-url" placeholder="linkedin.com/company/..." style="max-width:180px;font-size:11px">
-            <button class="btn btn-sm btn-outline" onclick="ncConnectSocial('linkedin','linkedin')" id="nc-btn-linkedin">Connect via n8n</button>
-            <span id="nc-status-linkedin" style="font-size:10px;color:var(--muted)"></span>
-          </div>
-          <div id="nc-social-youtube" class="nc-social-row" style="display:flex;align-items:center;gap:8px;padding:8px;background:var(--bg);border-radius:6px;border:1px solid var(--border)">
-            <span style="font-size:16px">▶️</span>
-            <span style="font-size:13px;flex:1">YouTube</span>
-            <input class="inp" id="nc-yt-url" placeholder="youtube.com/@theirchannel" style="max-width:180px;font-size:11px">
-            <button class="btn btn-sm btn-outline" onclick="ncConnectSocial('youtube','youtube')" id="nc-btn-youtube">Connect via n8n</button>
-            <span id="nc-status-youtube" style="font-size:10px;color:var(--muted)"></span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Step 4: Booking -->
-      <div style="margin-bottom:20px">
-        <div style="font-size:11px;font-weight:700;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:1px">4. Booking System</div>
-        <select class="inp" id="nc-booking-type" onchange="ncToggleBooking(this.value)" style="margin-bottom:8px">
-          <option value="">Select booking system...</option>
-          <option value="square">Square Appointments</option>
-          <option value="calendly">Calendly</option>
-          <option value="other">Other (paste link)</option>
-          <option value="none">No booking system</option>
-        </select>
-        <div id="nc-booking-fields" style="display:none">
-          <input class="inp" id="nc-booking-url" placeholder="Booking URL or ID">
-        </div>
-        <div id="nc-booking-square-note" style="display:none;font-size:11px;color:var(--muted);margin-top:4px">Square: paste the booking link from your Square dashboard.</div>
-      </div>
-
-      <!-- Step 5: Tracking -->
-      <div style="margin-bottom:20px">
-        <div style="font-size:11px;font-weight:700;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:1px">5. Tracking (optional)</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-          <div>
-            <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:3px">GA4 Measurement ID</label>
-            <input class="inp" id="nc-ga4" placeholder="G-XXXXXXXXXX">
+      <!-- Optional details toggle -->
+      <div style="margin-bottom:16px">
+        <button class="btn btn-sm btn-outline" onclick="var el=document.getElementById('nc-optional');el.style.display=el.style.display==='none'?'block':'none';" style="width:100%;font-size:11px">+ More details (optional)</button>
+        <div id="nc-optional" style="display:none;margin-top:12px;display:grid;gap:8px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+            <div>
+              <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:3px">Plan</label>
+              <select class="inp" id="nc-plan">
+                <option value="Starter">Starter</option>
+                <option value="Growth">Growth</option>
+                <option value="Pro">Pro</option>
+              </select>
+            </div>
+            <div>
+              <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:3px">City</label>
+              <input class="inp" id="nc-city" placeholder="e.g. Edmonton">
+            </div>
           </div>
           <div>
-            <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:3px">Meta Pixel ID</label>
-            <input class="inp" id="nc-pixel" placeholder="XXXXXXXXXXXXXXX">
-          </div>
-        </div>
-      </div>
-
-      <!-- Step 6: Google Business -->
-      <div style="margin-bottom:24px">
-        <div style="font-size:11px;font-weight:700;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:1px">6. Google Business</div>
-        <div style="display:flex;gap:8px;align-items:center">
-          <input class="inp" id="nc-review-url" placeholder="Google Review URL (g.page/r/...)" style="flex:1">
-          <button class="btn btn-sm" onclick="ncConnectGoogle()" id="nc-btn-google">Connect GBP</button>
-          <span id="nc-status-google" style="font-size:10px;color:var(--muted)"></span>
-        </div>
-      </div>
-
-      <!-- Step 7: Automation (n8n / Make / Zapier) -->
-      <div style="margin-bottom:20px">
-        <div style="font-size:11px;font-weight:700;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:1px">7. Automation (n8n / Make / Zapier)</div>
-        <div style="display:grid;gap:8px">
-          <div>
-            <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:3px">n8n Publish Webhook URL</label>
-            <div style="display:flex;gap:8px">
+            <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:3px">n8n Webhook URL</label>
+            <div style="display:flex;gap:6px">
               <input class="inp" id="nc-n8n-webhook" placeholder="http://localhost:5678/webhook/..." style="flex:1">
               <button class="btn btn-sm" onclick="ncTestWebhook('n8n')">Test</button>
-              <span id="nc-status-n8n" style="font-size:10px;color:var(--muted)"></span>
+              <span id="nc-status-n8n" style="font-size:10px;color:var(--muted);line-height:32px"></span>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+            <div>
+              <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:3px">Facebook Page</label>
+              <input class="inp" id="nc-fb-url" placeholder="facebook.com/...">
+            </div>
+            <div>
+              <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:3px">Instagram Handle</label>
+              <input class="inp" id="nc-ig-url" placeholder="@handle">
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+            <div>
+              <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:3px">GA4 Measurement ID</label>
+              <input class="inp" id="nc-ga4" placeholder="G-XXXXXXXXXX">
+            </div>
+            <div>
+              <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:3px">Meta Pixel ID</label>
+              <input class="inp" id="nc-pixel" placeholder="XXXXXXXXXXXXXXX">
             </div>
           </div>
           <div>
-            <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:3px">Make.com Webhook URL (optional)</label>
-            <input class="inp" id="nc-make-webhook" placeholder="https://hook.eu1.make.com/...">
+            <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:3px">Google Review URL</label>
+            <input class="inp" id="nc-review-url" placeholder="g.page/r/...">
           </div>
           <div>
-            <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:3px">Zapier Webhook URL (optional)</label>
-            <input class="inp" id="nc-zapier-webhook" placeholder="https://hooks.zapier.com/...">
+            <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:3px">WordPress App Password</label>
+            <input class="inp" id="nc-wp-pass" placeholder="xxxx xxxx xxxx xxxx xxxx xxxx" type="password">
           </div>
         </div>
       </div>
-
-      <!-- Step 8: Email -->
-      <div style="margin-bottom:20px">
-        <div style="font-size:11px;font-weight:700;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:1px">8. Email</div>
-        <div style="display:grid;gap:8px">
-          <div>
-            <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:3px">Email provider</label>
-            <select class="inp" id="nc-email-provider">
-              <option value="">None</option>
-              <option value="resend">Resend</option>
-              <option value="sendgrid">SendGrid</option>
-              <option value="mailchimp">Mailchimp</option>
-              <option value="ghl">GoHighLevel</option>
-              <option value="smtp">Custom SMTP</option>
-            </select>
-          </div>
-          <div>
-            <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:3px">API Key / SMTP Password</label>
-            <input class="inp" id="nc-email-key" type="password" placeholder="Stored locally — never shared">
-          </div>
-          <div>
-            <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:3px">From email address</label>
-            <input class="inp" id="nc-email-from" placeholder="hello@theirclinic.com">
-          </div>
-        </div>
-      </div>
-
 
       <div id="nc-save-error" style="color:var(--red);font-size:12px;margin-bottom:8px;display:none"></div>
-      <div style="display:flex;gap:8px">
-        <button class="btn btn-gold" onclick="saveNewClient()" id="nc-save-btn" style="flex:1">Create Client + Save All</button>
-        <button class="btn btn-sm btn-outline" onclick="ncCopyOnboardLink()" title="Get a link to send to the client to fill in themselves">Send to Client</button>
-      </div>
-      <div id="nc-onboard-link" style="display:none;margin-top:8px;font-size:11px;background:var(--bg);padding:8px;border-radius:6px;word-break:break-all"></div>
+      <button class="btn btn-gold" onclick="saveNewClient()" id="nc-save-btn" style="width:100%">Create Client →</button>
     </div>
   </div>
-</div>
+
 
 <!-- BUILDS TAB — 5-Build Client Intelligence Engine -->
 <div class="pnl" id="pnl-builds">
@@ -2584,10 +2490,9 @@ function ncConnectGoogle() {
 function saveNewClient() {
   var btn = document.getElementById('nc-save-btn');
   var errEl = document.getElementById('nc-save-error');
-  var name = document.getElementById('nc-name').value.trim();
-  var slug = document.getElementById('nc-slug').value.trim();
-  if (!name || !slug) {
-    errEl.textContent = 'Business Name and Client Slug are required.';
+  var name = (document.getElementById('nc-name') || {}).value.trim();
+  if (!name) {
+    errEl.textContent = 'Business Name is required.';
     errEl.style.display = 'block';
     return;
   }
@@ -2595,31 +2500,30 @@ function saveNewClient() {
   btn.disabled = true;
   btn.textContent = 'Creating...';
 
-  var hasWebsite = document.querySelector('input[name="nc-has-website"]:checked').value === 'yes';
+  // Auto-generate slug from name
+  var slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  var industry = (document.getElementById('nc-industry') || {}).value || 'other';
+  var plan = (document.getElementById('nc-plan') || {}).value || 'Starter';
+
+  function gv(id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
+
   var payload = {
     org_id: slug,
     name: name,
-    owner_name: document.getElementById('nc-owner').value.trim(),
-    location: document.getElementById('nc-location').value.trim(),
-    primary_service: document.getElementById('nc-service').value.trim(),
-    plan: 'Starter',
+    industry: industry,
+    plan: plan,
     plan_active: true,
-    has_website: hasWebsite,
-    website_url: document.getElementById('nc-website-url').value.trim(),
-    wp_url: document.getElementById('nc-wp-url').value.trim(),
-    funnel_domain: document.getElementById('nc-funnel-domain').value.trim(),
+    website_url: gv('nc-website-url'),
+    location: gv('nc-city'),
+    n8n_webhook: gv('nc-n8n-webhook'),
     social_handles: {
-      facebook: document.getElementById('nc-fb-url').value.trim(),
-      instagram: document.getElementById('nc-ig-url').value.trim(),
-      tiktok: document.getElementById('nc-tiktok-url').value.trim(),
-      linkedin: document.getElementById('nc-li-url').value.trim(),
-      youtube: document.getElementById('nc-yt-url').value.trim()
+      facebook: gv('nc-fb-url'),
+      instagram: gv('nc-ig-url')
     },
-    booking_type: document.getElementById('nc-booking-type').value,
-    booking_url: document.getElementById('nc-booking-url').value.trim(),
-    ga4_measurement_id: document.getElementById('nc-ga4').value.trim(),
-    meta_pixel_id: document.getElementById('nc-pixel').value.trim(),
-    review_url: document.getElementById('nc-review-url').value.trim(),
+    ga4_measurement_id: gv('nc-ga4'),
+    meta_pixel_id: gv('nc-pixel'),
+    review_url: gv('nc-review-url'),
+    wp_app_pass: gv('nc-wp-pass'),
     created_at: new Date().toISOString()
   };
 
