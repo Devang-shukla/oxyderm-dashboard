@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<title>Oxyderm</title>
+<title>Omniflow</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 :root{
   --bg:#00172D;--card:#001f3d;--card2:#002448;--border:#1a3a5c;
-  --fg:#f0f4f8;--muted:#7a9ab8;--gold:#c9a96e;--green:#2ecc71;
+  --fg:#f0f4f8;--muted:#7a9ab8;--gold:#4f8ef7;--green:#2ecc71;
   --yellow:#f39c12;--red:#e74c3c;--blue:#3498db;
 }
 html,body{height:100%;background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:15px}
@@ -185,7 +185,7 @@ html,body{height:100%;background:var(--bg);color:var(--fg);font-family:-apple-sy
 <!-- AUTH -->
 <div class="auth" id="auth">
   <div class="auth-box">
-    <div class="auth-logo">Oxy<span>derm</span></div>
+    <div class="auth-logo">Omni<span>flow</span></div>
     <input type="password" id="auth-pw" placeholder="Password" onkeydown="if(event.key==='Enter')doAuth()">
     <button onclick="doAuth()">Enter</button>
     <div class="auth-err" id="auth-err">Incorrect password</div>
@@ -197,7 +197,7 @@ html,body{height:100%;background:var(--bg);color:var(--fg);font-family:-apple-sy
 
 <div class="hdr">
   <div>
-    <div class="hdr-logo" id="hdr-logo">Oxy<span>derm</span></div>
+    <div class="hdr-logo" id="hdr-logo">Omni<span>flow</span></div>
     <div class="hdr-date" id="hdr-date"></div>
   </div>
   <button class="btn btn-sm" onclick="refreshSchedule()" id="refresh-btn">Refresh</button>
@@ -588,22 +588,22 @@ html,body{height:100%;background:var(--bg);color:var(--fg);font-family:-apple-sy
             <span style="font-size:16px">🎵</span>
             <span style="font-size:13px;flex:1">TikTok</span>
             <input class="inp" id="nc-tiktok-url" placeholder="@theirhandle" style="max-width:180px;font-size:11px">
-            <button class="btn btn-sm btn-outline" style="opacity:0.5" disabled>Soon</button>
-            <span id="nc-status-tiktok" style="font-size:10px;color:var(--muted)">Coming soon</span>
+            <button class="btn btn-sm btn-outline" onclick="ncConnectSocial('tiktok','tiktok')" id="nc-btn-tiktok">Connect via n8n</button>
+            <span id="nc-status-tiktok" style="font-size:10px;color:var(--muted)"></span>
           </div>
           <div id="nc-social-linkedin" class="nc-social-row" style="display:flex;align-items:center;gap:8px;padding:8px;background:var(--bg);border-radius:6px;border:1px solid var(--border)">
             <span style="font-size:16px">💼</span>
             <span style="font-size:13px;flex:1">LinkedIn</span>
             <input class="inp" id="nc-li-url" placeholder="linkedin.com/company/..." style="max-width:180px;font-size:11px">
-            <button class="btn btn-sm btn-outline" style="opacity:0.5" disabled>Soon</button>
-            <span id="nc-status-linkedin" style="font-size:10px;color:var(--muted)">Coming soon</span>
+            <button class="btn btn-sm btn-outline" onclick="ncConnectSocial('linkedin','linkedin')" id="nc-btn-linkedin">Connect via n8n</button>
+            <span id="nc-status-linkedin" style="font-size:10px;color:var(--muted)"></span>
           </div>
           <div id="nc-social-youtube" class="nc-social-row" style="display:flex;align-items:center;gap:8px;padding:8px;background:var(--bg);border-radius:6px;border:1px solid var(--border)">
             <span style="font-size:16px">▶️</span>
             <span style="font-size:13px;flex:1">YouTube</span>
             <input class="inp" id="nc-yt-url" placeholder="youtube.com/@theirchannel" style="max-width:180px;font-size:11px">
-            <button class="btn btn-sm btn-outline" style="opacity:0.5" disabled>Soon</button>
-            <span id="nc-status-youtube" style="font-size:10px;color:var(--muted)">Coming soon</span>
+            <button class="btn btn-sm btn-outline" onclick="ncConnectSocial('youtube','youtube')" id="nc-btn-youtube">Connect via n8n</button>
+            <span id="nc-status-youtube" style="font-size:10px;color:var(--muted)"></span>
           </div>
         </div>
       </div>
@@ -649,7 +649,56 @@ html,body{height:100%;background:var(--bg);color:var(--fg);font-family:-apple-sy
         </div>
       </div>
 
-      <!-- Save -->
+      <!-- Step 7: Automation (n8n / Make / Zapier) -->
+      <div style="margin-bottom:20px">
+        <div style="font-size:11px;font-weight:700;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:1px">7. Automation (n8n / Make / Zapier)</div>
+        <div style="display:grid;gap:8px">
+          <div>
+            <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:3px">n8n Publish Webhook URL</label>
+            <div style="display:flex;gap:8px">
+              <input class="inp" id="nc-n8n-webhook" placeholder="http://localhost:5678/webhook/..." style="flex:1">
+              <button class="btn btn-sm" onclick="ncTestWebhook('n8n')">Test</button>
+              <span id="nc-status-n8n" style="font-size:10px;color:var(--muted)"></span>
+            </div>
+          </div>
+          <div>
+            <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:3px">Make.com Webhook URL (optional)</label>
+            <input class="inp" id="nc-make-webhook" placeholder="https://hook.eu1.make.com/...">
+          </div>
+          <div>
+            <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:3px">Zapier Webhook URL (optional)</label>
+            <input class="inp" id="nc-zapier-webhook" placeholder="https://hooks.zapier.com/...">
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 8: Email -->
+      <div style="margin-bottom:20px">
+        <div style="font-size:11px;font-weight:700;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:1px">8. Email</div>
+        <div style="display:grid;gap:8px">
+          <div>
+            <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:3px">Email provider</label>
+            <select class="inp" id="nc-email-provider">
+              <option value="">None</option>
+              <option value="resend">Resend</option>
+              <option value="sendgrid">SendGrid</option>
+              <option value="mailchimp">Mailchimp</option>
+              <option value="ghl">GoHighLevel</option>
+              <option value="smtp">Custom SMTP</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:3px">API Key / SMTP Password</label>
+            <input class="inp" id="nc-email-key" type="password" placeholder="Stored locally — never shared">
+          </div>
+          <div>
+            <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:3px">From email address</label>
+            <input class="inp" id="nc-email-from" placeholder="hello@theirclinic.com">
+          </div>
+        </div>
+      </div>
+
+
       <div id="nc-save-error" style="color:var(--red);font-size:12px;margin-bottom:8px;display:none"></div>
       <div style="display:flex;gap:8px">
         <button class="btn btn-gold" onclick="saveNewClient()" id="nc-save-btn" style="flex:1">Create Client + Save All</button>
@@ -682,6 +731,9 @@ html,body{height:100%;background:var(--bg);color:var(--fg);font-family:-apple-sy
     <button class="builds-step-btn" id="bstep-3" onclick="buildsGoStep(3)">3 · Offer</button>
     <button class="builds-step-btn" id="bstep-4" onclick="buildsGoStep(4)">4 · Funnel</button>
     <button class="builds-step-btn" id="bstep-5" onclick="buildsGoStep(5)">5 · Content</button>
+    <button class="builds-step-btn" id="bstep-6" onclick="buildsGoStep(6)">6 · Ads</button>
+    <button class="builds-step-btn" id="bstep-7" onclick="buildsGoStep(7)">7 · Sales</button>
+    <button class="builds-step-btn" id="bstep-8" onclick="buildsGoStep(8)">8 · Delivery</button>
   </div>
 
   <!-- ── BUILD 1: BRAND DNA ── -->
@@ -974,6 +1026,138 @@ html,body{height:100%;background:var(--bg);color:var(--fg);font-family:-apple-sy
   </div>
   <div id="builds-save-error" style="color:var(--red);font-size:12px;margin-top:8px;display:none"></div>
   <div id="builds-onboard-link" style="display:none;margin-top:12px;font-size:11px;background:var(--bg);padding:10px;border-radius:6px"></div>
+
+  <!-- ── BUILD 6: ADS ── -->
+  <div id="build-6" style="display:none">
+    <div class="sec-label">Meta / Google Ad Strategy</div>
+    <div class="field"><label class="blbl">Primary ad platform</label>
+      <select class="inp" id="b6-platform">
+        <option value="meta">Meta (Facebook + Instagram)</option>
+        <option value="google">Google Ads</option>
+        <option value="both">Both Meta + Google</option>
+        <option value="tiktok">TikTok Ads</option>
+      </select></div>
+    <div class="field"><label class="blbl">Monthly ad budget (CAD)</label>
+      <input class="inp" id="b6-budget" placeholder="e.g. 500"></div>
+    <div class="field"><label class="blbl">Campaign objective</label>
+      <select class="inp" id="b6-objective">
+        <option value="leads">Lead generation (form fills)</option>
+        <option value="traffic">Website traffic</option>
+        <option value="calls">Phone calls</option>
+        <option value="messages">DM / WhatsApp messages</option>
+        <option value="awareness">Brand awareness</option>
+      </select></div>
+    <div class="field"><label class="blbl">Target geographic area</label>
+      <input class="inp" id="b6-geo" placeholder="e.g. Edmonton + 25km radius"></div>
+    <div class="field"><label class="blbl">Target age range</label>
+      <input class="inp" id="b6-age" placeholder="e.g. 25-54"></div>
+    <div class="field"><label class="blbl">Target gender</label>
+      <select class="inp" id="b6-gender">
+        <option value="all">All genders</option>
+        <option value="female">Female</option>
+        <option value="male">Male</option>
+      </select></div>
+    <div class="field"><label class="blbl">Primary offer / hook for the ad</label>
+      <textarea class="inp" id="b6-hook" rows="3" placeholder="e.g. Free consultation + 20% off first session"></textarea></div>
+    <div class="field"><label class="blbl">Landing page URL (or leave blank to build one)</label>
+      <input class="inp" id="b6-lp" placeholder="https://"></div>
+    <div class="field"><label class="blbl">Competitors to research for ad inspiration</label>
+      <input class="inp" id="b6-competitors" placeholder="e.g. Clinic A, Clinic B (names or URLs)"></div>
+    <div class="field"><label class="blbl">Ad creative style</label>
+      <select class="inp" id="b6-creative">
+        <option value="before_after">Before/after results</option>
+        <option value="testimonial">Client testimonials</option>
+        <option value="education">Educational / problem-aware</option>
+        <option value="offer">Direct offer / discount</option>
+        <option value="ugc">UGC-style (authentic, low-fi)</option>
+      </select></div>
+    <div class="field"><label class="blbl">Notes / anything else for the ad strategy</label>
+      <textarea class="inp" id="b6-notes" rows="2" placeholder="Any restrictions, past campaigns, seasonal pushes..."></textarea></div>
+  </div>
+
+  <!-- ── BUILD 7: SALES ── -->
+  <div id="build-7" style="display:none">
+    <div class="sec-label">Sales Conversion System</div>
+    <div class="field"><label class="blbl">Primary sales channel</label>
+      <select class="inp" id="b7-channel">
+        <option value="phone">Phone / inbound calls</option>
+        <option value="dm">DM / social inbox</option>
+        <option value="email">Email follow-up</option>
+        <option value="sms">SMS follow-up</option>
+        <option value="in_person">In-person consultation</option>
+      </select></div>
+    <div class="field"><label class="blbl">Average time to close (days)</label>
+      <input class="inp" id="b7-close-time" placeholder="e.g. 1-3 days"></div>
+    <div class="field"><label class="blbl">Average deal / booking value (CAD)</label>
+      <input class="inp" id="b7-deal-value" placeholder="e.g. 300"></div>
+    <div class="field"><label class="blbl">Top 3 objections you hear most</label>
+      <textarea class="inp" id="b7-objections" rows="3" placeholder="e.g. Too expensive, Need to think about it, Not sure if it works"></textarea></div>
+    <div class="field"><label class="blbl">Current follow-up process (what happens after a lead comes in?)</label>
+      <textarea class="inp" id="b7-current-followup" rows="2" placeholder="e.g. We call once, then email. No structured sequence."></textarea></div>
+    <div class="field"><label class="blbl">Speed-to-lead target (how fast should first contact happen?)</label>
+      <select class="inp" id="b7-speed">
+        <option value="5min">Within 5 minutes</option>
+        <option value="1hr">Within 1 hour</option>
+        <option value="same_day">Same day</option>
+        <option value="next_day">Next business day</option>
+      </select></div>
+    <div class="field"><label class="blbl">Who handles sales? (owner, staff, AI + human)</label>
+      <input class="inp" id="b7-who" placeholder="e.g. Owner handles all calls, receptionist books"></div>
+    <div class="field"><label class="blbl">Closing offer / incentive to push hesitant leads</label>
+      <input class="inp" id="b7-incentive" placeholder="e.g. Limited spots, bonus session, price lock"></div>
+    <div class="field"><label class="blbl">CRM in use (or none)</label>
+      <select class="inp" id="b7-crm">
+        <option value="none">None yet</option>
+        <option value="ghl">GoHighLevel</option>
+        <option value="hubspot">HubSpot</option>
+        <option value="this">This dashboard</option>
+        <option value="other">Other</option>
+      </select></div>
+    <div class="field"><label class="blbl">Additional notes</label>
+      <textarea class="inp" id="b7-notes" rows="2" placeholder="Anything specific about how clients decide..."></textarea></div>
+  </div>
+
+  <!-- ── BUILD 8: DELIVERY ── -->
+  <div id="build-8" style="display:none">
+    <div class="sec-label">30-Day Delivery Plan</div>
+    <div class="field"><label class="blbl">Service / product being delivered</label>
+      <input class="inp" id="b8-service" placeholder="e.g. Laser hair removal packages, skincare memberships"></div>
+    <div class="field"><label class="blbl">Onboarding method</label>
+      <select class="inp" id="b8-onboarding">
+        <option value="in_person">In-person welcome appointment</option>
+        <option value="video_call">Video call onboarding</option>
+        <option value="email_sequence">Email sequence</option>
+        <option value="sms">SMS onboarding</option>
+        <option value="self_serve">Self-serve (client books themselves)</option>
+      </select></div>
+    <div class="field"><label class="blbl">Key milestones in first 30 days</label>
+      <textarea class="inp" id="b8-milestones" rows="3" placeholder="e.g. Day 1: welcome email, Day 3: first session, Day 7: check-in, Day 30: review + rebook"></textarea></div>
+    <div class="field"><label class="blbl">Platform used to deliver / track service</label>
+      <select class="inp" id="b8-platform">
+        <option value="square">Square Appointments</option>
+        <option value="ghl">GoHighLevel</option>
+        <option value="jane">Jane App</option>
+        <option value="cliniko">Cliniko</option>
+        <option value="manual">Manual / phone booking</option>
+        <option value="other">Other</option>
+      </select></div>
+    <div class="field"><label class="blbl">Retention / rebooking strategy</label>
+      <textarea class="inp" id="b8-retention" rows="2" placeholder="e.g. Post-treatment SMS at day 7, rebooking offer at day 28"></textarea></div>
+    <div class="field"><label class="blbl">Review / referral ask timing</label>
+      <select class="inp" id="b8-review-timing">
+        <option value="after_first">After first session</option>
+        <option value="after_results">After visible results (session 3+)</option>
+        <option value="day30">Day 30 milestone</option>
+        <option value="completion">After full package completion</option>
+      </select></div>
+    <div class="field"><label class="blbl">Pricing floors (minimum to charge)</label>
+      <input class="inp" id="b8-pricing" placeholder="e.g. $997 one-time build, $97/month platform"></div>
+    <div class="field"><label class="blbl">Handoff / offboarding process</label>
+      <textarea class="inp" id="b8-handoff" rows="2" placeholder="e.g. Final report, login credentials delivered, 30-day support window"></textarea></div>
+    <div class="field"><label class="blbl">Additional delivery notes</label>
+      <textarea class="inp" id="b8-notes" rows="2" placeholder="Anything specific about how you deliver..."></textarea></div>
+  </div>
+
 </div>
 
 <!-- WEB DESIGN TAB -->
@@ -2006,7 +2190,10 @@ var BUILDS_META = {
   2: { title: 'Build 2 — Ideal Customer Avatar', subtitle: 'Who they are, what they want, where they are' },
   3: { title: 'Build 3 — Irresistible Offer', subtitle: 'What you sell, why they buy, how you win' },
   4: { title: 'Build 4 — Funnel Strategy', subtitle: 'Lead capture, pages, sequences, follow-up' },
-  5: { title: 'Build 5 — Content System', subtitle: 'Platforms, pillars, content types, rules' }
+  5: { title: 'Build 5 — Content System', subtitle: 'Platforms, pillars, content types, rules' },
+  6: { title: 'Build 6 — Ads', subtitle: 'Meta / Google campaigns, budget, targeting, creative' },
+  7: { title: 'Build 7 — Sales', subtitle: 'Lead conversion, follow-up, objections, closing' },
+  8: { title: 'Build 8 — Delivery', subtitle: '30-day client delivery, onboarding, retention, handoff' }
 };
 
 function loadDNA() {
@@ -2030,8 +2217,8 @@ function loadDNA() {
 
 function buildsGoStep(step) {
   _buildsStep = step;
-  [1,2,3,4,5].forEach(function(s) {
-    var panel = document.getElementById('build-step-' + s);
+  [1,2,3,4,5,6,7,8].forEach(function(s) {
+    var panel = document.getElementById('build-step-' + s) || document.getElementById('build-' + s);
     var btn = document.getElementById('bstep-' + s);
     if (panel) panel.style.display = s === step ? 'block' : 'none';
     if (btn) { btn.classList.toggle('active', s === step); }
@@ -2047,8 +2234,8 @@ function buildsGoStep(step) {
   // Save vs Finish
   var saveBtn = document.getElementById('builds-save-btn');
   var finBtn = document.getElementById('builds-finish-btn');
-  if (saveBtn) saveBtn.style.display = step < 5 ? 'inline-flex' : 'none';
-  if (finBtn) finBtn.style.display = step === 5 ? 'inline-flex' : 'none';
+  if (saveBtn) saveBtn.style.display = step < 8 ? 'inline-flex' : 'none';
+  if (finBtn) finBtn.style.display = step === 8 ? 'inline-flex' : 'none';
   // Fill fields from saved data
   buildsPopulateStep(step);
   // Clear status
@@ -2151,7 +2338,7 @@ function buildsSaveStep() {
     if (err) { err.textContent = 'Engine offline — saved locally only.'; err.style.display = 'block'; }
     if (status) status.textContent = '';
     // Still advance
-    if (step < 5) setTimeout(function(){ buildsGoStep(step + 1); }, 800);
+    if (step < 8) setTimeout(function(){ buildsGoStep(step + 1); }, 800);
   });
 }
 
@@ -2326,6 +2513,21 @@ function ncToggleWebsite(hasIt) {
   document.getElementById('nc-no-website-note').style.display = hasIt ? 'none' : 'block';
 }
 
+function ncTestWebhook(type) {
+  var urlEl = document.getElementById('nc-n8n-webhook');
+  var statusEl = document.getElementById('nc-status-n8n');
+  var url = urlEl ? urlEl.value.trim() : '';
+  if (!url) { if (statusEl) { statusEl.textContent = 'Enter URL first'; statusEl.style.color = 'var(--red)'; } return; }
+  if (statusEl) { statusEl.textContent = 'Testing...'; statusEl.style.color = 'var(--muted)'; }
+  fetch(url, { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({test:true, source:'omniflow'}), signal: AbortSignal.timeout(8000) })
+    .then(function(r) {
+      if (statusEl) { statusEl.textContent = r.ok ? '✓ Connected' : '✗ HTTP ' + r.status; statusEl.style.color = r.ok ? 'var(--green)' : 'var(--red)'; }
+    })
+    .catch(function(e) {
+      if (statusEl) { statusEl.textContent = '✗ Unreachable'; statusEl.style.color = 'var(--red)'; }
+    });
+}
+
 function ncToggleBooking(val) {
   var fields = document.getElementById('nc-booking-fields');
   var note = document.getElementById('nc-booking-square-note');
@@ -2458,14 +2660,14 @@ function ncCopyOnboardLink() {
 }
 
 // ---- CONNECT WIZARD ----
-var _activeOrg = 'oxyderm';
-var _activeOrgName = 'Oxyderm Laser Clinic';
+var _activeOrg = '';
+var _activeOrgName = '';
 
-function getActiveOrgId() { return _activeOrg || 'oxyderm'; }
+function getActiveOrgId() { return _activeOrg || ''; }
 
 function setActiveOrg(orgId, orgName) {
-  _activeOrg = orgId || 'oxyderm';
-  _activeOrgName = orgName || orgId || 'Agency OS';
+  _activeOrg = orgId || '';
+  _activeOrgName = orgName || orgId || 'Omniflow';
   // Update header — show first word plain, rest in gold span
   var logo = document.getElementById('hdr-logo');
   if (logo) {
@@ -2509,7 +2711,7 @@ function renderOrgs(orgs) {
         '<div style="font-size:11px;color:var(--muted);margin-top:4px">org_id: ' + o.org_id + '</div>' +
       '</div>';
     }).join('') +
-    '<div style="font-size:11px;color:var(--muted);margin-top:8px">Tenant #1 (Oxyderm) and Tenant #2 (Demo) are isolated — data does not cross between orgs.</div>';
+    '<div style="font-size:11px;color:var(--muted);margin-top:8px">Client #1 and Client #2 are isolated — data does not cross between orgs.</div>';
 
   // Load active org wizard
   if (orgs.length) selectOrg(_activeOrg || orgs[0].org_id);
