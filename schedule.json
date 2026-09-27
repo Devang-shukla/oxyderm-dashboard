@@ -1,249 +1,10 @@
 {
-  "fetched_at": "10:06 PM MDT",
-  "today": "2026-09-26",
-  "week_start": "2026-09-26",
-  "week_end": "2026-10-02",
-  "appointments": [
-    {
-      "time": "10:00 AM",
-      "date": "2026-09-26",
-      "date_label": "Saturday, September 26",
-      "name": "Alexandra Doblado",
-      "phone": "(587) 974-5069",
-      "email": "asr.doblado@gmail.com",
-      "service": "Treatment",
-      "areas": "legs, toes, fingers, arms, underarms",
-      "duration_min": 60,
-      "visit": "8th visit",
-      "visit_num": 8,
-      "payment": "Paid 1st instalment $199.99 in Dec 2025",
-      "flags": [
-        "Minor - parent in room",
-        "No face on social media",
-        "Left Google review"
-      ],
-      "raw_note": "Tx8  membership\nTreatment area: legs, toes, fingers, arms, underarms\n\n*She is 17 yrs so mom is coming to the treatment room with her\nPaid 1st instalment $199.99 in Dec 2025\nPaid 12th instalment $199.99 in Jan 2026\nMembership started in Jan 2026 expires Dec 2026\nPaying $199.99 every time in clinic\n*given google review in Mar 2026 ($5 off for google review given)\n*her mom said she prefers no face of her daughter in social media\n4 treatments left to use from oct 2026 \nHetisha did treatment",
-      "status": "ACCEPTED",
-      "booking_id": "fxk8vz7zfpje4t"
-    },
-    {
-      "time": "11:00 AM",
-      "date": "2026-09-26",
-      "date_label": "Saturday, September 26",
-      "name": "Huba  Razzeq",
-      "phone": "+17802336588",
-      "email": "razzaq@ualberta.ca",
-      "service": "Treatment",
-      "areas": "Face ( microdermabrasion ,IPL)",
-      "duration_min": 60,
-      "visit": "36th visit",
-      "visit_num": 36,
-      "payment": "See Square",
-      "flags": [
-        "Left Google review"
-      ],
-      "raw_note": "Tx36 \nTreatment area: Face ( microdermabrasion ,IPL)\n\nPaying $75 single treatment, if b/w $10 single treatment, then $85\n*Given $5 off for google review\nTreatment was performed on Formax\nMicroneedling treatment $199.99 single session in Aug 2025\nBought Image mineral SPF small $85 in Aug 2025\n\nOnly with Hetisha",
-      "status": "ACCEPTED",
-      "booking_id": "8bnba3lfy4e2sz"
-    },
-    {
-      "time": "12:00 PM",
-      "date": "2026-09-26",
-      "date_label": "Saturday, September 26",
-      "name": "Asal Shahin",
-      "phone": "+18255221372",
-      "email": "asal_shahin@outlook.com",
-      "service": "Laser Hair Removal",
-      "areas": "LHR - legs, arms, underasrms, linea, lower back, Brazilian, bums, upper lip",
-      "duration_min": 75,
-      "visit": "7th visit",
-      "visit_num": 7,
-      "payment": "Paid 1st instalment $199.99 in Nov 2025",
-      "flags": [
-        "Left Google review"
-      ],
-      "raw_note": "Tx7 LHR membership Tx4 silver membership\nTreatment area: \nLHR - legs, arms, underasrms, linea, lower back, Brazilian, bums, upper lip\n\n12 months multiple LHR membership\nPaid 1st instalment $199.99 in Nov 2025\nPaid last (12th) instalment $199.99 in Nov 2025\nrest payment, paying every time at clinic $199.99 \n*Silver membership -  (microderm, chem peel, RF face)\n**She has friends who recommended our clinic (Mahsa Sanoubar and Sahar Heidari)\nSilver membership - 5  left to use from oct  2026\n*given g",
-      "status": "ACCEPTED",
-      "booking_id": "iy0j3aro460r6p"
-    },
-    {
-      "time": "2:00 PM",
-      "date": "2026-09-26",
-      "date_label": "Saturday, September 26",
-      "name": "Sakina Jibril",
-      "phone": "+17058211305",
-      "email": "sakina.larai@outlook.com",
-      "service": "Treatment",
-      "areas": "lega,arma,underarms,abdomen,chest,shoulders,lower face,front neck, top brazilian African type 6",
-      "duration_min": 120,
-      "visit": "5th visit",
-      "visit_num": 5,
-      "payment": "Paid 1st and last (6th) instalments, $250 each, in Apr 2026 (e-transfer)",
-      "flags": [],
-      "raw_note": "Tx5    membership\nTreatment area: lega,arma,underarms,abdomen,chest,shoulders,lower face,front neck, top brazilian African type 6\n\nuntreated in laser genesis as well\nMembership started in May 2026 expires in Oct 2026\nPaid 1st and last (6th) instalments, $250 each, in Apr 2026 (e-transfer)\nBought Aloe Gel $24.99 in May 2026\n*doesn't want autopayment, she will pay every time at clinic $250\nPaid  2nd instalment $250 in June 2026\nPaid  3rd instalment $250 in July 2026\nPaid 4th instalment $250 in Aug",
-      "status": "ACCEPTED",
-      "booking_id": "n16iet3ggvd3sq"
-    },
-    {
-      "time": "3:39 PM",
-      "date": "2026-09-26",
-      "date_label": "Saturday, September 26",
-      "name": "Mary Saeidi",
-      "phone": "(587) 501-3019",
-      "email": "mehrdokhtsaeidi99@gmail.com",
-      "service": "Treatment",
-      "areas": "",
-      "duration_min": 5,
-      "visit": "Unknown visit",
-      "visit_num": null,
-      "payment": "See Square",
-      "flags": [],
-      "raw_note": "",
-      "status": "ACCEPTED",
-      "booking_id": "qrqpgizurtrh6f"
-    },
-    {
-      "time": "5:15 PM",
-      "date": "2026-09-26",
-      "date_label": "Saturday, September 26",
-      "name": "Simranjeet Pahwa",
-      "phone": "+1 825-365-8452",
-      "email": "doctersim@gmail.com",
-      "service": "Laser Hair Removal",
-      "areas": "under chin",
-      "duration_min": 30,
-      "visit": "11th visit",
-      "visit_num": 11,
-      "payment": "Paid $200 6 chin LHR treatment package",
-      "flags": [],
-      "raw_note": "Tx11 \nTreatment area: under chin\n\nPaid $200 6 chin LHR treatment package\nPaid in 2 instalments, $100 each\nPaid 1st instalment $100 in Sept 2025\nPaid 2nd instalment $100 in Oct 2025\nAll paid - all used in Apr 2026\n\nPaying another $200 six chin LHR treatment package\nPaying in 2 instalments, $100 each\nPaid 1st instalment $100 in Apr 2026\nPaid 2nd instalment $100 in May 2026\nAll paid in May 2026 -1   left to use from oct 2026\n\nHetisha did treatment",
-      "status": "ACCEPTED",
-      "booking_id": "q0qsr91hl9halt"
-    }
-  ],
+  "fetched_at": "02:07 PM MDT",
+  "today": "2026-09-27",
+  "week_start": "2026-09-27",
+  "week_end": "2026-10-03",
+  "appointments": [],
   "week": [
-    {
-      "date": "2026-09-26",
-      "label": "Saturday, September 26",
-      "appointments": [
-        {
-          "time": "10:00 AM",
-          "date": "2026-09-26",
-          "date_label": "Saturday, September 26",
-          "name": "Alexandra Doblado",
-          "phone": "(587) 974-5069",
-          "email": "asr.doblado@gmail.com",
-          "service": "Treatment",
-          "areas": "legs, toes, fingers, arms, underarms",
-          "duration_min": 60,
-          "visit": "8th visit",
-          "visit_num": 8,
-          "payment": "Paid 1st instalment $199.99 in Dec 2025",
-          "flags": [
-            "Minor - parent in room",
-            "No face on social media",
-            "Left Google review"
-          ],
-          "raw_note": "Tx8  membership\nTreatment area: legs, toes, fingers, arms, underarms\n\n*She is 17 yrs so mom is coming to the treatment room with her\nPaid 1st instalment $199.99 in Dec 2025\nPaid 12th instalment $199.99 in Jan 2026\nMembership started in Jan 2026 expires Dec 2026\nPaying $199.99 every time in clinic\n*given google review in Mar 2026 ($5 off for google review given)\n*her mom said she prefers no face of her daughter in social media\n4 treatments left to use from oct 2026 \nHetisha did treatment",
-          "status": "ACCEPTED",
-          "booking_id": "fxk8vz7zfpje4t"
-        },
-        {
-          "time": "11:00 AM",
-          "date": "2026-09-26",
-          "date_label": "Saturday, September 26",
-          "name": "Huba  Razzeq",
-          "phone": "+17802336588",
-          "email": "razzaq@ualberta.ca",
-          "service": "Treatment",
-          "areas": "Face ( microdermabrasion ,IPL)",
-          "duration_min": 60,
-          "visit": "36th visit",
-          "visit_num": 36,
-          "payment": "See Square",
-          "flags": [
-            "Left Google review"
-          ],
-          "raw_note": "Tx36 \nTreatment area: Face ( microdermabrasion ,IPL)\n\nPaying $75 single treatment, if b/w $10 single treatment, then $85\n*Given $5 off for google review\nTreatment was performed on Formax\nMicroneedling treatment $199.99 single session in Aug 2025\nBought Image mineral SPF small $85 in Aug 2025\n\nOnly with Hetisha",
-          "status": "ACCEPTED",
-          "booking_id": "8bnba3lfy4e2sz"
-        },
-        {
-          "time": "12:00 PM",
-          "date": "2026-09-26",
-          "date_label": "Saturday, September 26",
-          "name": "Asal Shahin",
-          "phone": "+18255221372",
-          "email": "asal_shahin@outlook.com",
-          "service": "Laser Hair Removal",
-          "areas": "LHR - legs, arms, underasrms, linea, lower back, Brazilian, bums, upper lip",
-          "duration_min": 75,
-          "visit": "7th visit",
-          "visit_num": 7,
-          "payment": "Paid 1st instalment $199.99 in Nov 2025",
-          "flags": [
-            "Left Google review"
-          ],
-          "raw_note": "Tx7 LHR membership Tx4 silver membership\nTreatment area: \nLHR - legs, arms, underasrms, linea, lower back, Brazilian, bums, upper lip\n\n12 months multiple LHR membership\nPaid 1st instalment $199.99 in Nov 2025\nPaid last (12th) instalment $199.99 in Nov 2025\nrest payment, paying every time at clinic $199.99 \n*Silver membership -  (microderm, chem peel, RF face)\n**She has friends who recommended our clinic (Mahsa Sanoubar and Sahar Heidari)\nSilver membership - 5  left to use from oct  2026\n*given g",
-          "status": "ACCEPTED",
-          "booking_id": "iy0j3aro460r6p"
-        },
-        {
-          "time": "2:00 PM",
-          "date": "2026-09-26",
-          "date_label": "Saturday, September 26",
-          "name": "Sakina Jibril",
-          "phone": "+17058211305",
-          "email": "sakina.larai@outlook.com",
-          "service": "Treatment",
-          "areas": "lega,arma,underarms,abdomen,chest,shoulders,lower face,front neck, top brazilian African type 6",
-          "duration_min": 120,
-          "visit": "5th visit",
-          "visit_num": 5,
-          "payment": "Paid 1st and last (6th) instalments, $250 each, in Apr 2026 (e-transfer)",
-          "flags": [],
-          "raw_note": "Tx5    membership\nTreatment area: lega,arma,underarms,abdomen,chest,shoulders,lower face,front neck, top brazilian African type 6\n\nuntreated in laser genesis as well\nMembership started in May 2026 expires in Oct 2026\nPaid 1st and last (6th) instalments, $250 each, in Apr 2026 (e-transfer)\nBought Aloe Gel $24.99 in May 2026\n*doesn't want autopayment, she will pay every time at clinic $250\nPaid  2nd instalment $250 in June 2026\nPaid  3rd instalment $250 in July 2026\nPaid 4th instalment $250 in Aug",
-          "status": "ACCEPTED",
-          "booking_id": "n16iet3ggvd3sq"
-        },
-        {
-          "time": "3:39 PM",
-          "date": "2026-09-26",
-          "date_label": "Saturday, September 26",
-          "name": "Mary Saeidi",
-          "phone": "(587) 501-3019",
-          "email": "mehrdokhtsaeidi99@gmail.com",
-          "service": "Treatment",
-          "areas": "",
-          "duration_min": 5,
-          "visit": "Unknown visit",
-          "visit_num": null,
-          "payment": "See Square",
-          "flags": [],
-          "raw_note": "",
-          "status": "ACCEPTED",
-          "booking_id": "qrqpgizurtrh6f"
-        },
-        {
-          "time": "5:15 PM",
-          "date": "2026-09-26",
-          "date_label": "Saturday, September 26",
-          "name": "Simranjeet Pahwa",
-          "phone": "+1 825-365-8452",
-          "email": "doctersim@gmail.com",
-          "service": "Laser Hair Removal",
-          "areas": "under chin",
-          "duration_min": 30,
-          "visit": "11th visit",
-          "visit_num": 11,
-          "payment": "Paid $200 6 chin LHR treatment package",
-          "flags": [],
-          "raw_note": "Tx11 \nTreatment area: under chin\n\nPaid $200 6 chin LHR treatment package\nPaid in 2 instalments, $100 each\nPaid 1st instalment $100 in Sept 2025\nPaid 2nd instalment $100 in Oct 2025\nAll paid - all used in Apr 2026\n\nPaying another $200 six chin LHR treatment package\nPaying in 2 instalments, $100 each\nPaid 1st instalment $100 in Apr 2026\nPaid 2nd instalment $100 in May 2026\nAll paid in May 2026 -1   left to use from oct 2026\n\nHetisha did treatment",
-          "status": "ACCEPTED",
-          "booking_id": "q0qsr91hl9halt"
-        }
-      ]
-    },
     {
       "date": "2026-09-28",
       "label": "Monday, September 28",
@@ -607,6 +368,24 @@
           "raw_note": "",
           "status": "CANCELLED_BY_CUSTOMER",
           "booking_id": "csh6uxgwoe0f5g"
+        },
+        {
+          "time": "11:00 AM",
+          "date": "2026-10-01",
+          "date_label": "Thursday, October 01",
+          "name": "Manpreet Chahal",
+          "phone": "+17802635700",
+          "email": "manpreetchahal2580@gmail.com",
+          "service": "Treatment",
+          "areas": "",
+          "duration_min": 120,
+          "visit": "Unknown visit",
+          "visit_num": null,
+          "payment": "See Square",
+          "flags": [],
+          "raw_note": "",
+          "status": "ACCEPTED",
+          "booking_id": "or70jtjveg0ura"
         }
       ]
     },
@@ -669,7 +448,67 @@
           "booking_id": "x5xx4eayouvm3i"
         }
       ]
+    },
+    {
+      "date": "2026-10-03",
+      "label": "Saturday, October 03",
+      "appointments": [
+        {
+          "time": "11:00 AM",
+          "date": "2026-10-03",
+          "date_label": "Saturday, October 03",
+          "name": "Mary Saeidi",
+          "phone": "(587) 501-3019",
+          "email": "mehrdokhtsaeidi99@gmail.com",
+          "service": "Treatment",
+          "areas": "",
+          "duration_min": 120,
+          "visit": "Unknown visit",
+          "visit_num": null,
+          "payment": "See Square",
+          "flags": [],
+          "raw_note": "",
+          "status": "ACCEPTED",
+          "booking_id": "s8kwabnaw8363q"
+        },
+        {
+          "time": "12:00 PM",
+          "date": "2026-10-03",
+          "date_label": "Saturday, October 03",
+          "name": "Samira Misbah",
+          "phone": "+15875012847",
+          "email": "",
+          "service": "Treatment",
+          "areas": "",
+          "duration_min": 120,
+          "visit": "Unknown visit",
+          "visit_num": null,
+          "payment": "See Square",
+          "flags": [],
+          "raw_note": "",
+          "status": "ACCEPTED",
+          "booking_id": "7s2b0p4d9ysiyy"
+        },
+        {
+          "time": "2:00 PM",
+          "date": "2026-10-03",
+          "date_label": "Saturday, October 03",
+          "name": "Mashal Shafi",
+          "phone": "+17806552167",
+          "email": "s.mashal097@gmail.com",
+          "service": "Treatment",
+          "areas": "",
+          "duration_min": 120,
+          "visit": "Unknown visit",
+          "visit_num": null,
+          "payment": "See Square",
+          "flags": [],
+          "raw_note": "",
+          "status": "ACCEPTED",
+          "booking_id": "acde2a0fatozmh"
+        }
+      ]
     }
   ],
-  "total_week": 28
+  "total_week": 26
 }
