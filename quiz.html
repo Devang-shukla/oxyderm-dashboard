@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Is Laser Hair Removal Right For You? — Oxyderm Quiz</title>
+<style>
+  :root {
+    --gold: #c5a059;
+    --gold-hover: #b08d47;
+    --dark: #121417;
+    --card: #1c2025;
+    --text: #ffffff;
+    --muted: #94a3b8;
+    --border: #2d3748;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--dark);
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+  }
+  .quiz-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    max-width: 520px;
+    width: 100%;
+    padding: 32px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  }
+  .badge {
+    display: inline-block;
+    background: rgba(197, 160, 89, 0.15);
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+  }
+  h2 { margin: 0 0 8px 0; font-size: 24px; font-weight: 600; }
+  p { color: var(--muted); font-size: 14px; margin-bottom: 24px; line-height: 1.5; }
+  .option-btn {
+    display: block;
+    width: 100%;
+    background: #252b33;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 14px 18px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    text-align: left;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .option-btn:hover {
+    border-color: var(--gold);
+    background: #2d3540;
+    transform: translateY(-1px);
+  }
+  .btn-primary {
+    display: inline-block;
+    background: var(--gold);
+    color: #000;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 14px 24px;
+    border-radius: 8px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 16px;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold-hover); }
+  .step { display: none; }
+  .step.active { display: block; }
+</style>
+</head>
+<body>
+
+<div class="quiz-card">
+  <!-- Step 1 -->
+  <div id="step-1" class="step active">
+    <span class="badge">Question 1 of 3</span>
+    <h2>Which area are you considering treating?</h2>
+    <p>Select your primary area of focus.</p>
+    <button class="option-btn" onclick="nextStep(2)">Face / Chin / Upper Lip</button>
+    <button class="option-btn" onclick="nextStep(2)">Underarms / Bikini / Brazilian</button>
+    <button class="option-btn" onclick="nextStep(2)">Legs / Arms</button>
+    <button class="option-btn" onclick="nextStep(2)">Back / Chest / Shoulders</button>
+  </div>
+
+  <!-- Step 2 -->
+  <div id="step-2" class="step">
+    <span class="badge">Question 2 of 3</span>
+    <h2>What is your skin tone?</h2>
+    <p>We operate dual-wavelength lasers (Nd:YAG & Alexandrite) tailored specifically to your melanin level.</p>
+    <button class="option-btn" onclick="nextStep(3)">Fair to Light (Burns easily, tans minimally)</button>
+    <button class="option-btn" onclick="nextStep(3)">Medium to Olive (Tans easily, rarely burns)</button>
+    <button class="option-btn" onclick="nextStep(3)">Deep Brown to Dark (Rich melanin, Fitzpatrick V-VI)</button>
+  </div>
+
+  <!-- Step 3 -->
+  <div id="step-3" class="step">
+    <span class="badge">Question 3 of 3</span>
+    <h2>What is your main goal?</h2>
+    <p>Help us customize your clinical treatment plan.</p>
+    <button class="option-btn" onclick="showResult()">Stop shaving & waxing completely</button>
+    <button class="option-btn" onclick="showResult()">Eliminate painful ingrown hairs & bumps</button>
+    <button class="option-btn" onclick="showResult()">Brighten skin & reduce hyperpigmentation</button>
+  </div>
+
+  <!-- Result -->
+  <div id="result" class="step">
+    <span class="badge">Assessment Complete</span>
+    <h2>You Are a Great Candidate! ✨</h2>
+    <p>Based on your selections, our medical-grade Nd:YAG or Alexandrite laser technology is an ideal match for your skin tone and goals.</p>
+    <p style="color: var(--gold); font-size: 13px; font-weight: 500;">
+      ✓ Includes 100% Free Consultation<br>
+      ✓ Includes Safe In-Person Test Patch<br>
+      ✓ Personalized Quote with No Obligation
+    </p>
+    <a href="https://book.squareup.com/appointments/dkt5it2zn9eyr0/location/SA5CTAH41JNY2/services/VU4R6ZVWFLJIT5H6IVW6DZ2Y" class="btn-primary">Claim Your Free Test Patch & Consult</a>
+  </div>
+</div>
+
+<script>
+  function nextStep(stepNum) {
+    document.querySelectorAll('.step').forEach(el => el.classList.remove('active'));
+    document.getElementById('step-' + stepNum).classList.add('active');
+  }
+  function showResult() {
+    document.querySelectorAll('.step').forEach(el => el.classList.remove('active'));
+    document.getElementById('result').classList.add('active');
+  }
+</script>
+
+</body>
+</html>
