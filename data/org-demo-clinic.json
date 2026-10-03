@@ -1,0 +1,16 @@
+{
+  "org_id": "demo-clinic",
+  "name": "Demo Clinic (Tenant #2)",
+  "plan": "Starter",
+  "stripe_customer_id": null,
+  "stripe_subscription_id": null,
+  "plan_active": false,
+  "connections": {
+    "meta": "needs_setup",
+    "square": "needs_setup",
+    "stripe": "needs_setup"
+  },
+  "dna_version": 0,
+  "dna_path": null,
+  "created_at": "2026-09-14"
+}

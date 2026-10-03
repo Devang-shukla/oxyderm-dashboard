@@ -1,0 +1,58 @@
+[
+  {
+    "agent": "Lead Scout",
+    "kpi": "leads_created",
+    "score": 1,
+    "events": [
+      {
+        "event": "lead_created_test",
+        "delta": 1,
+        "at": "2026-09-14T17:15:05.192Z"
+      }
+    ],
+    "last_event": "2026-09-14T17:15:05.192Z",
+    "org_id": "oxyderm"
+  },
+  {
+    "agent": "Nurture",
+    "kpi": "nurture_sequences_started",
+    "score": 0,
+    "events": [],
+    "org_id": "oxyderm"
+  },
+  {
+    "agent": "Scheduler",
+    "kpi": "bookings_made",
+    "score": 0,
+    "events": [],
+    "org_id": "oxyderm"
+  },
+  {
+    "agent": "Automation",
+    "kpi": "no_show_recoveries_triggered",
+    "score": 0,
+    "events": [],
+    "org_id": "oxyderm"
+  },
+  {
+    "agent": "Content",
+    "kpi": "posts_approved",
+    "score": 0,
+    "events": [],
+    "org_id": "oxyderm"
+  },
+  {
+    "agent": "Reputation",
+    "kpi": "review_requests_queued",
+    "score": 0,
+    "events": [],
+    "org_id": "oxyderm"
+  },
+  {
+    "agent": "Research",
+    "kpi": "learnings_logged",
+    "score": 0,
+    "events": [],
+    "org_id": "oxyderm"
+  }
+]

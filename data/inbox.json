@@ -1,0 +1,76 @@
+[
+  {
+    "id": "thread_f_1789407499670",
+    "org_id": "oxyderm",
+    "contact": "hetisha shukla",
+    "phone": "7802219872",
+    "email": "heti_pharma@outlook.com",
+    "channel": "sms",
+    "human_takeover": false,
+    "messages": [
+      {
+        "id": "msg_1789407499670",
+        "direction": "inbound",
+        "body": "Funnel lead: interested in Laser Hair Removal",
+        "channel": "sms",
+        "at": "2026-09-14T17:38:19.670Z",
+        "status": "received"
+      }
+    ],
+    "last_message": "Funnel lead: Laser Hair Removal",
+    "last_at": "2026-09-14T17:38:19.670Z",
+    "linked_lead": "fl_1789407499669"
+  },
+  {
+    "id": "thread_f_1789407348621",
+    "org_id": "oxyderm",
+    "contact": "Test Funnel Lead",
+    "phone": "7801234567",
+    "email": "test@test.com",
+    "channel": "sms",
+    "human_takeover": false,
+    "messages": [
+      {
+        "id": "msg_1789407348621",
+        "direction": "inbound",
+        "body": "Funnel lead: interested in Laser Hair Removal",
+        "channel": "sms",
+        "at": "2026-09-14T17:35:48.621Z",
+        "status": "received"
+      }
+    ],
+    "last_message": "Funnel lead: Laser Hair Removal",
+    "last_at": "2026-09-14T17:35:48.621Z",
+    "linked_lead": "fl_1789407348619"
+  },
+  {
+    "id": "thread_1789406821478",
+    "org_id": "oxyderm",
+    "contact": "Jane Smith",
+    "phone": "7805551234",
+    "email": "",
+    "channel": "sms",
+    "human_takeover": false,
+    "messages": [
+      {
+        "id": "msg_1789406821478",
+        "direction": "inbound",
+        "body": "Lead created via Sarah. Service: laser underarms",
+        "channel": "sms",
+        "at": "2026-09-14T17:27:01.478Z",
+        "status": "received"
+      },
+      {
+        "id": "msg_1789406933349",
+        "direction": "outbound",
+        "body": "hi\nmove to win",
+        "channel": "sms",
+        "at": "2026-09-14T17:28:53.349Z",
+        "status": "queued"
+      }
+    ],
+    "last_message": "hi\nmove to win",
+    "last_at": "2026-09-14T17:28:53.349Z",
+    "linked_lead": null
+  }
+]

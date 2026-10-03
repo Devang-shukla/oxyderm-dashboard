@@ -1,0 +1,18 @@
+{
+  "org_id": "oxyderm",
+  "facebook": {
+    "status": "not_connected",
+    "note": "Wire Meta OAuth in engine to enable"
+  },
+  "instagram": {
+    "status": "not_connected",
+    "note": "Shares Meta OAuth with Facebook"
+  },
+  "google_gbp": {
+    "status": "not_connected",
+    "note": "Wire Google OAuth in engine to enable"
+  },
+  "ga4_measurement_id": "",
+  "meta_pixel_id": "",
+  "updated_at": "2026-09-15T04:20:49.581Z"
+}

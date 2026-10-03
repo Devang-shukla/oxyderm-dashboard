@@ -1,0 +1,24 @@
+[
+  {
+    "id": "fl_1789407499669",
+    "org_id": "oxyderm",
+    "name": "hetisha shukla",
+    "phone": "7802219872",
+    "email": "heti_pharma@outlook.com",
+    "service": "Laser Hair Removal",
+    "source": "funnel",
+    "status": "New",
+    "date": "2026-09-14T17:38:19.669Z"
+  },
+  {
+    "id": "fl_1789407348619",
+    "org_id": "oxyderm",
+    "name": "Test Funnel Lead",
+    "phone": "7801234567",
+    "email": "test@test.com",
+    "service": "Laser Hair Removal",
+    "source": "funnel",
+    "status": "New",
+    "date": "2026-09-14T17:35:48.619Z"
+  }
+]

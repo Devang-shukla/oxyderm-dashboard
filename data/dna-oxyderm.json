@@ -1,0 +1,18 @@
+{
+  "org_id": "oxyderm",
+  "version": 1,
+  "saved_at": "2026-09-14T00:00:00.000Z",
+  "business_name": "Oxyderm Laser Clinic",
+  "owner_name": "Hetisha Shukla",
+  "location": "Edmonton, AB, Canada",
+  "website": "https://www.oxydermlaserclinic.ca",
+  "primary_service": "Laser Hair Removal",
+  "secondary_services": "Microneedling, Hyperpigmentation Treatment, Laser Acne Treatment, Radiofrequency, IPL Photofacial, Chemical Peels",
+  "price_range": "$100–$250/session",
+  "origin_story": "Hetisha built Oxyderm to give Edmonton clients access to professional laser and aesthetic treatments in a warm, approachable clinic environment — no corporate feel, real results.",
+  "target_client": "Women 25–45 in Edmonton interested in laser hair removal, skin care, and aesthetic treatments",
+  "voice_tone": "warm",
+  "goal_12m": "Fill the appointment book with recurring clients and reduce manual follow-up time",
+  "review_url": "https://g.page/r/oxyderm-review",
+  "google_business_url": "https://business.google.com/oxyderm"
+}

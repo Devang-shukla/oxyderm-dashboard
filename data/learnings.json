@@ -1,0 +1,3472 @@
+[
+  {
+    "date": "2026-10-03",
+    "summary": "Daily digest for 2026-10-03",
+    "scores": "Lead Scout: 1 pts",
+    "jobs": "5 automation job(s) created: no_show_recovery",
+    "agent_learnings": [
+      {
+        "agent": "automation",
+        "recent": [
+          "- 2026-09-26: === CLINIC_NEWS ===",
+          "- 2026-09-26: YouTube trends scraped 2026-09-26:",
+          "- 2026-09-27: === CLINIC_NEWS ===",
+          "- 2026-09-27: YouTube trends scraped 2026-09-27:",
+          "- 2026-09-29: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-29. Services: laser hair removal, skin resurfacing, package, sessions. "
+        ]
+      },
+      {
+        "agent": "client",
+        "recent": [
+          "- 2026-09-26: === CLINIC_NEWS ===",
+          "- 2026-09-26: YouTube trends scraped 2026-09-26:",
+          "- 2026-09-27: === CLINIC_NEWS ===",
+          "- 2026-09-27: YouTube trends scraped 2026-09-27:",
+          "- 2026-09-29: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-29. Services: laser hair removal, skin resurfacing, package, sessions. "
+        ]
+      },
+      {
+        "agent": "competitor",
+        "recent": [
+          "- 2026-09-26: === CLINIC_NEWS ===",
+          "- 2026-09-26: YouTube trends scraped 2026-09-26:",
+          "- 2026-09-27: === CLINIC_NEWS ===",
+          "- 2026-09-27: YouTube trends scraped 2026-09-27:",
+          "- 2026-09-29: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-29. Services: laser hair removal, skin resurfacing, package, sessions. "
+        ]
+      },
+      {
+        "agent": "content-calendar",
+        "recent": [
+          "- 2026-09-26: === CLINIC_NEWS ===",
+          "- 2026-09-26: YouTube trends scraped 2026-09-26:",
+          "- 2026-09-27: === CLINIC_NEWS ===",
+          "- 2026-09-27: YouTube trends scraped 2026-09-27:",
+          "- 2026-09-29: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-29. Services: laser hair removal, skin resurfacing, package, sessions. "
+        ]
+      },
+      {
+        "agent": "crm-pipeline",
+        "recent": [
+          "- 2026-09-26: === CLINIC_NEWS ===",
+          "- 2026-09-26: YouTube trends scraped 2026-09-26:",
+          "- 2026-09-27: === CLINIC_NEWS ===",
+          "- 2026-09-27: YouTube trends scraped 2026-09-27:",
+          "- 2026-09-29: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-29. Services: laser hair removal, skin resurfacing, package, sessions. "
+        ]
+      },
+      {
+        "agent": "editor",
+        "recent": [
+          "- 2026-09-26: === CLINIC_NEWS ===",
+          "- 2026-09-26: YouTube trends scraped 2026-09-26:",
+          "- 2026-09-27: === CLINIC_NEWS ===",
+          "- 2026-09-27: YouTube trends scraped 2026-09-27:",
+          "- 2026-09-29: WEEKLY CONTENT PLAN — Week of October 05, 2026"
+        ]
+      },
+      {
+        "agent": "email-sms",
+        "recent": [
+          "- 2026-09-26: === CLINIC_NEWS ===",
+          "- 2026-09-26: YouTube trends scraped 2026-09-26:",
+          "- 2026-09-27: === CLINIC_NEWS ===",
+          "- 2026-09-27: YouTube trends scraped 2026-09-27:",
+          "- 2026-09-29: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-29. Services: laser hair removal, skin resurfacing, package, sessions. "
+        ]
+      },
+      {
+        "agent": "forms-funnel",
+        "recent": [
+          "- 2026-09-26: === CLINIC_NEWS ===",
+          "- 2026-09-26: YouTube trends scraped 2026-09-26:",
+          "- 2026-09-27: === CLINIC_NEWS ===",
+          "- 2026-09-27: YouTube trends scraped 2026-09-27:",
+          "- 2026-09-29: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-29. Services: laser hair removal, skin resurfacing, package, sessions. "
+        ]
+      },
+      {
+        "agent": "image",
+        "recent": [
+          "- 2026-09-26: === CLINIC_NEWS ===",
+          "- 2026-09-26: YouTube trends scraped 2026-09-26:",
+          "- 2026-09-27: === CLINIC_NEWS ===",
+          "- 2026-09-27: YouTube trends scraped 2026-09-27:",
+          "- 2026-09-29: WEEKLY CONTENT PLAN — Week of October 05, 2026"
+        ]
+      },
+      {
+        "agent": "keyword-research",
+        "recent": [
+          "- 2026-09-26: === CLINIC_NEWS ===",
+          "- 2026-09-26: YouTube trends scraped 2026-09-26:",
+          "- 2026-09-27: === CLINIC_NEWS ===",
+          "- 2026-09-27: YouTube trends scraped 2026-09-27:",
+          "- 2026-09-29: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-29. Services: laser hair removal, skin resurfacing, package, sessions. "
+        ]
+      },
+      {
+        "agent": "marketing",
+        "recent": [
+          "- 2026-09-26: === CLINIC_NEWS ===",
+          "- 2026-09-26: YouTube trends scraped 2026-09-26:",
+          "- 2026-09-27: === CLINIC_NEWS ===",
+          "- 2026-09-27: YouTube trends scraped 2026-09-27:",
+          "- 2026-09-29: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-29. Services: laser hair removal, skin resurfacing, package, sessions. "
+        ]
+      },
+      {
+        "agent": "planning",
+        "recent": [
+          "- 2026-09-26: === CLINIC_NEWS ===",
+          "- 2026-09-26: YouTube trends scraped 2026-09-26:",
+          "- 2026-09-27: === CLINIC_NEWS ===",
+          "- 2026-09-27: YouTube trends scraped 2026-09-27:",
+          "- 2026-09-29: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-29. Services: laser hair removal, skin resurfacing, package, sessions. "
+        ]
+      },
+      {
+        "agent": "preauth",
+        "recent": [
+          "- 2026-09-26: === CLINIC_NEWS ===",
+          "- 2026-09-26: YouTube trends scraped 2026-09-26:",
+          "- 2026-09-27: === CLINIC_NEWS ===",
+          "- 2026-09-27: YouTube trends scraped 2026-09-27:",
+          "- 2026-09-29: WEEKLY CONTENT PLAN — Week of October 05, 2026"
+        ]
+      },
+      {
+        "agent": "research",
+        "recent": [
+          "- 2026-09-26: === CLINIC_NEWS ===",
+          "- 2026-09-26: YouTube trends scraped 2026-09-26:",
+          "- 2026-09-27: === CLINIC_NEWS ===",
+          "- 2026-09-27: YouTube trends scraped 2026-09-27:",
+          "- 2026-09-29: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-29. Services: laser hair removal, skin resurfacing, package, sessions. "
+        ]
+      },
+      {
+        "agent": "sarah",
+        "recent": [
+          "- 2026-09-26: === CLINIC_NEWS ===",
+          "- 2026-09-26: YouTube trends scraped 2026-09-26:",
+          "- 2026-09-27: === CLINIC_NEWS ===",
+          "- 2026-09-27: YouTube trends scraped 2026-09-27:",
+          "- 2026-09-29: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-29. Services: laser hair removal, skin resurfacing, package, sessions. "
+        ]
+      },
+      {
+        "agent": "scheduler",
+        "recent": [
+          "- 2026-09-26: === CLINIC_NEWS ===",
+          "- 2026-09-26: YouTube trends scraped 2026-09-26:",
+          "- 2026-09-27: === CLINIC_NEWS ===",
+          "- 2026-09-27: YouTube trends scraped 2026-09-27:",
+          "- 2026-09-29: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-29. Services: laser hair removal, skin resurfacing, package, sessions. "
+        ]
+      },
+      {
+        "agent": "social",
+        "recent": [
+          "- 2026-09-26: === CLINIC_NEWS ===",
+          "- 2026-09-26: YouTube trends scraped 2026-09-26:",
+          "- 2026-09-27: === CLINIC_NEWS ===",
+          "- 2026-09-27: YouTube trends scraped 2026-09-27:",
+          "- 2026-09-29: WEEKLY CONTENT PLAN — Week of October 05, 2026"
+        ]
+      },
+      {
+        "agent": "trending",
+        "recent": [
+          "- 2026-09-26: === CLINIC_NEWS ===",
+          "- 2026-09-26: YouTube trends scraped 2026-09-26:",
+          "- 2026-09-27: === CLINIC_NEWS ===",
+          "- 2026-09-27: YouTube trends scraped 2026-09-27:",
+          "- 2026-09-29: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-29. Services: laser hair removal, skin resurfacing, package, sessions. "
+        ]
+      },
+      {
+        "agent": "video-script",
+        "recent": [
+          "- 2026-09-26: === CLINIC_NEWS ===",
+          "- 2026-09-26: YouTube trends scraped 2026-09-26:",
+          "- 2026-09-27: === CLINIC_NEWS ===",
+          "- 2026-09-27: YouTube trends scraped 2026-09-27:",
+          "- 2026-09-29: WEEKLY CONTENT PLAN — Week of October 05, 2026"
+        ]
+      },
+      {
+        "agent": "youtube",
+        "recent": [
+          "- 2026-09-26: === CLINIC_NEWS ===",
+          "- 2026-09-26: YouTube trends scraped 2026-09-26:",
+          "- 2026-09-27: === CLINIC_NEWS ===",
+          "- 2026-09-27: YouTube trends scraped 2026-09-27:",
+          "- 2026-09-29: WEEKLY CONTENT PLAN — Week of October 05, 2026"
+        ]
+      }
+    ],
+    "generated_at": "2026-10-03T16:00:46.122Z"
+  },
+  {
+    "date": "2026-10-02",
+    "summary": "Daily digest for 2026-10-02",
+    "scores": "Lead Scout: 1 pts",
+    "jobs": "4 automation job(s) created: no_show_recovery",
+    "agent_learnings": [
+      {
+        "agent": "automation",
+        "recent": [
+          "- 2026-09-25: === CLINIC_NEWS ===",
+          "- 2026-09-25: YouTube trends scraped 2026-09-25:",
+          "- 2026-09-26: === CLINIC_NEWS ===",
+          "- 2026-09-26: YouTube trends scraped 2026-09-26:",
+          "- 2026-09-27: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "client",
+        "recent": [
+          "- 2026-09-25: === CLINIC_NEWS ===",
+          "- 2026-09-25: YouTube trends scraped 2026-09-25:",
+          "- 2026-09-26: === CLINIC_NEWS ===",
+          "- 2026-09-26: YouTube trends scraped 2026-09-26:",
+          "- 2026-09-27: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "competitor",
+        "recent": [
+          "- 2026-09-25: === CLINIC_NEWS ===",
+          "- 2026-09-25: YouTube trends scraped 2026-09-25:",
+          "- 2026-09-26: === CLINIC_NEWS ===",
+          "- 2026-09-26: YouTube trends scraped 2026-09-26:",
+          "- 2026-09-27: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "content-calendar",
+        "recent": [
+          "- 2026-09-25: === CLINIC_NEWS ===",
+          "- 2026-09-25: YouTube trends scraped 2026-09-25:",
+          "- 2026-09-26: === CLINIC_NEWS ===",
+          "- 2026-09-26: YouTube trends scraped 2026-09-26:",
+          "- 2026-09-27: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "crm-pipeline",
+        "recent": [
+          "- 2026-09-25: === CLINIC_NEWS ===",
+          "- 2026-09-25: YouTube trends scraped 2026-09-25:",
+          "- 2026-09-26: === CLINIC_NEWS ===",
+          "- 2026-09-26: YouTube trends scraped 2026-09-26:",
+          "- 2026-09-27: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "editor",
+        "recent": [
+          "- 2026-09-25: === CLINIC_NEWS ===",
+          "- 2026-09-25: YouTube trends scraped 2026-09-25:",
+          "- 2026-09-26: === CLINIC_NEWS ===",
+          "- 2026-09-26: YouTube trends scraped 2026-09-26:",
+          "- 2026-09-27: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "email-sms",
+        "recent": [
+          "- 2026-09-25: === CLINIC_NEWS ===",
+          "- 2026-09-25: YouTube trends scraped 2026-09-25:",
+          "- 2026-09-26: === CLINIC_NEWS ===",
+          "- 2026-09-26: YouTube trends scraped 2026-09-26:",
+          "- 2026-09-27: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "forms-funnel",
+        "recent": [
+          "- 2026-09-25: === CLINIC_NEWS ===",
+          "- 2026-09-25: YouTube trends scraped 2026-09-25:",
+          "- 2026-09-26: === CLINIC_NEWS ===",
+          "- 2026-09-26: YouTube trends scraped 2026-09-26:",
+          "- 2026-09-27: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "image",
+        "recent": [
+          "- 2026-09-25: === CLINIC_NEWS ===",
+          "- 2026-09-25: YouTube trends scraped 2026-09-25:",
+          "- 2026-09-26: === CLINIC_NEWS ===",
+          "- 2026-09-26: YouTube trends scraped 2026-09-26:",
+          "- 2026-09-27: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "keyword-research",
+        "recent": [
+          "- 2026-09-25: === CLINIC_NEWS ===",
+          "- 2026-09-25: YouTube trends scraped 2026-09-25:",
+          "- 2026-09-26: === CLINIC_NEWS ===",
+          "- 2026-09-26: YouTube trends scraped 2026-09-26:",
+          "- 2026-09-27: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "marketing",
+        "recent": [
+          "- 2026-09-25: === CLINIC_NEWS ===",
+          "- 2026-09-25: YouTube trends scraped 2026-09-25:",
+          "- 2026-09-26: === CLINIC_NEWS ===",
+          "- 2026-09-26: YouTube trends scraped 2026-09-26:",
+          "- 2026-09-27: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "planning",
+        "recent": [
+          "- 2026-09-25: === CLINIC_NEWS ===",
+          "- 2026-09-25: YouTube trends scraped 2026-09-25:",
+          "- 2026-09-26: === CLINIC_NEWS ===",
+          "- 2026-09-26: YouTube trends scraped 2026-09-26:",
+          "- 2026-09-27: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "preauth",
+        "recent": [
+          "- 2026-09-25: === CLINIC_NEWS ===",
+          "- 2026-09-25: YouTube trends scraped 2026-09-25:",
+          "- 2026-09-26: === CLINIC_NEWS ===",
+          "- 2026-09-26: YouTube trends scraped 2026-09-26:",
+          "- 2026-09-27: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "research",
+        "recent": [
+          "- 2026-09-25: === CLINIC_NEWS ===",
+          "- 2026-09-25: YouTube trends scraped 2026-09-25:",
+          "- 2026-09-26: === CLINIC_NEWS ===",
+          "- 2026-09-26: YouTube trends scraped 2026-09-26:",
+          "- 2026-09-27: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "sarah",
+        "recent": [
+          "- 2026-09-25: === CLINIC_NEWS ===",
+          "- 2026-09-25: YouTube trends scraped 2026-09-25:",
+          "- 2026-09-26: === CLINIC_NEWS ===",
+          "- 2026-09-26: YouTube trends scraped 2026-09-26:",
+          "- 2026-09-27: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "scheduler",
+        "recent": [
+          "- 2026-09-25: === CLINIC_NEWS ===",
+          "- 2026-09-25: YouTube trends scraped 2026-09-25:",
+          "- 2026-09-26: === CLINIC_NEWS ===",
+          "- 2026-09-26: YouTube trends scraped 2026-09-26:",
+          "- 2026-09-27: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "social",
+        "recent": [
+          "- 2026-09-25: === CLINIC_NEWS ===",
+          "- 2026-09-25: YouTube trends scraped 2026-09-25:",
+          "- 2026-09-26: === CLINIC_NEWS ===",
+          "- 2026-09-26: YouTube trends scraped 2026-09-26:",
+          "- 2026-09-27: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "trending",
+        "recent": [
+          "- 2026-09-25: === CLINIC_NEWS ===",
+          "- 2026-09-25: YouTube trends scraped 2026-09-25:",
+          "- 2026-09-26: === CLINIC_NEWS ===",
+          "- 2026-09-26: YouTube trends scraped 2026-09-26:",
+          "- 2026-09-27: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "video-script",
+        "recent": [
+          "- 2026-09-25: === CLINIC_NEWS ===",
+          "- 2026-09-25: YouTube trends scraped 2026-09-25:",
+          "- 2026-09-26: === CLINIC_NEWS ===",
+          "- 2026-09-26: YouTube trends scraped 2026-09-26:",
+          "- 2026-09-27: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "youtube",
+        "recent": [
+          "- 2026-09-25: === CLINIC_NEWS ===",
+          "- 2026-09-25: YouTube trends scraped 2026-09-25:",
+          "- 2026-09-26: === CLINIC_NEWS ===",
+          "- 2026-09-26: YouTube trends scraped 2026-09-26:",
+          "- 2026-09-27: === CLINIC_NEWS ==="
+        ]
+      }
+    ],
+    "generated_at": "2026-10-02T16:00:46.485Z"
+  },
+  {
+    "date": "2026-10-01",
+    "summary": "Daily digest for 2026-10-01",
+    "scores": "Lead Scout: 1 pts",
+    "jobs": "4 automation job(s) created: no_show_recovery",
+    "agent_learnings": [
+      {
+        "agent": "automation",
+        "recent": [
+          "- 2026-09-24: === CLINIC_NEWS ===",
+          "- 2026-09-24: YouTube trends scraped 2026-09-24:",
+          "- 2026-09-25: === CLINIC_NEWS ===",
+          "- 2026-09-25: YouTube trends scraped 2026-09-25:",
+          "- 2026-09-26: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "client",
+        "recent": [
+          "- 2026-09-24: === CLINIC_NEWS ===",
+          "- 2026-09-24: YouTube trends scraped 2026-09-24:",
+          "- 2026-09-25: === CLINIC_NEWS ===",
+          "- 2026-09-25: YouTube trends scraped 2026-09-25:",
+          "- 2026-09-26: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "competitor",
+        "recent": [
+          "- 2026-09-24: === CLINIC_NEWS ===",
+          "- 2026-09-24: YouTube trends scraped 2026-09-24:",
+          "- 2026-09-25: === CLINIC_NEWS ===",
+          "- 2026-09-25: YouTube trends scraped 2026-09-25:",
+          "- 2026-09-26: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "content-calendar",
+        "recent": [
+          "- 2026-09-24: === CLINIC_NEWS ===",
+          "- 2026-09-24: YouTube trends scraped 2026-09-24:",
+          "- 2026-09-25: === CLINIC_NEWS ===",
+          "- 2026-09-25: YouTube trends scraped 2026-09-25:",
+          "- 2026-09-26: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "crm-pipeline",
+        "recent": [
+          "- 2026-09-24: === CLINIC_NEWS ===",
+          "- 2026-09-24: YouTube trends scraped 2026-09-24:",
+          "- 2026-09-25: === CLINIC_NEWS ===",
+          "- 2026-09-25: YouTube trends scraped 2026-09-25:",
+          "- 2026-09-26: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "editor",
+        "recent": [
+          "- 2026-09-24: === CLINIC_NEWS ===",
+          "- 2026-09-24: YouTube trends scraped 2026-09-24:",
+          "- 2026-09-25: === CLINIC_NEWS ===",
+          "- 2026-09-25: YouTube trends scraped 2026-09-25:",
+          "- 2026-09-26: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "email-sms",
+        "recent": [
+          "- 2026-09-24: === CLINIC_NEWS ===",
+          "- 2026-09-24: YouTube trends scraped 2026-09-24:",
+          "- 2026-09-25: === CLINIC_NEWS ===",
+          "- 2026-09-25: YouTube trends scraped 2026-09-25:",
+          "- 2026-09-26: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "forms-funnel",
+        "recent": [
+          "- 2026-09-24: === CLINIC_NEWS ===",
+          "- 2026-09-24: YouTube trends scraped 2026-09-24:",
+          "- 2026-09-25: === CLINIC_NEWS ===",
+          "- 2026-09-25: YouTube trends scraped 2026-09-25:",
+          "- 2026-09-26: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "image",
+        "recent": [
+          "- 2026-09-24: === CLINIC_NEWS ===",
+          "- 2026-09-24: YouTube trends scraped 2026-09-24:",
+          "- 2026-09-25: === CLINIC_NEWS ===",
+          "- 2026-09-25: YouTube trends scraped 2026-09-25:",
+          "- 2026-09-26: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "keyword-research",
+        "recent": [
+          "- 2026-09-24: === CLINIC_NEWS ===",
+          "- 2026-09-24: YouTube trends scraped 2026-09-24:",
+          "- 2026-09-25: === CLINIC_NEWS ===",
+          "- 2026-09-25: YouTube trends scraped 2026-09-25:",
+          "- 2026-09-26: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "marketing",
+        "recent": [
+          "- 2026-09-24: === CLINIC_NEWS ===",
+          "- 2026-09-24: YouTube trends scraped 2026-09-24:",
+          "- 2026-09-25: === CLINIC_NEWS ===",
+          "- 2026-09-25: YouTube trends scraped 2026-09-25:",
+          "- 2026-09-26: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "planning",
+        "recent": [
+          "- 2026-09-24: === CLINIC_NEWS ===",
+          "- 2026-09-24: YouTube trends scraped 2026-09-24:",
+          "- 2026-09-25: === CLINIC_NEWS ===",
+          "- 2026-09-25: YouTube trends scraped 2026-09-25:",
+          "- 2026-09-26: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "preauth",
+        "recent": [
+          "- 2026-09-24: === CLINIC_NEWS ===",
+          "- 2026-09-24: YouTube trends scraped 2026-09-24:",
+          "- 2026-09-25: === CLINIC_NEWS ===",
+          "- 2026-09-25: YouTube trends scraped 2026-09-25:",
+          "- 2026-09-26: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "research",
+        "recent": [
+          "- 2026-09-24: === CLINIC_NEWS ===",
+          "- 2026-09-24: YouTube trends scraped 2026-09-24:",
+          "- 2026-09-25: === CLINIC_NEWS ===",
+          "- 2026-09-25: YouTube trends scraped 2026-09-25:",
+          "- 2026-09-26: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "sarah",
+        "recent": [
+          "- 2026-09-24: === CLINIC_NEWS ===",
+          "- 2026-09-24: YouTube trends scraped 2026-09-24:",
+          "- 2026-09-25: === CLINIC_NEWS ===",
+          "- 2026-09-25: YouTube trends scraped 2026-09-25:",
+          "- 2026-09-26: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "scheduler",
+        "recent": [
+          "- 2026-09-24: === CLINIC_NEWS ===",
+          "- 2026-09-24: YouTube trends scraped 2026-09-24:",
+          "- 2026-09-25: === CLINIC_NEWS ===",
+          "- 2026-09-25: YouTube trends scraped 2026-09-25:",
+          "- 2026-09-26: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "social",
+        "recent": [
+          "- 2026-09-24: === CLINIC_NEWS ===",
+          "- 2026-09-24: YouTube trends scraped 2026-09-24:",
+          "- 2026-09-25: === CLINIC_NEWS ===",
+          "- 2026-09-25: YouTube trends scraped 2026-09-25:",
+          "- 2026-09-26: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "trending",
+        "recent": [
+          "- 2026-09-24: === CLINIC_NEWS ===",
+          "- 2026-09-24: YouTube trends scraped 2026-09-24:",
+          "- 2026-09-25: === CLINIC_NEWS ===",
+          "- 2026-09-25: YouTube trends scraped 2026-09-25:",
+          "- 2026-09-26: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "video-script",
+        "recent": [
+          "- 2026-09-24: === CLINIC_NEWS ===",
+          "- 2026-09-24: YouTube trends scraped 2026-09-24:",
+          "- 2026-09-25: === CLINIC_NEWS ===",
+          "- 2026-09-25: YouTube trends scraped 2026-09-25:",
+          "- 2026-09-26: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "youtube",
+        "recent": [
+          "- 2026-09-24: === CLINIC_NEWS ===",
+          "- 2026-09-24: YouTube trends scraped 2026-09-24:",
+          "- 2026-09-25: === CLINIC_NEWS ===",
+          "- 2026-09-25: YouTube trends scraped 2026-09-25:",
+          "- 2026-09-26: === CLINIC_NEWS ==="
+        ]
+      }
+    ],
+    "generated_at": "2026-10-01T06:28:37.460Z"
+  },
+  {
+    "date": "2026-09-29",
+    "summary": "Daily digest for 2026-09-29",
+    "scores": "Lead Scout: 1 pts",
+    "jobs": "2 automation job(s) created: no_show_recovery",
+    "agent_learnings": [
+      {
+        "agent": "automation",
+        "recent": [
+          "- 2026-09-22: === CLINIC_NEWS ===",
+          "- 2026-09-22: YouTube trends scraped 2026-09-22:",
+          "- 2026-09-23: === CLINIC_NEWS ===",
+          "- 2026-09-23: YouTube trends scraped 2026-09-23:",
+          "- 2026-09-24: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "client",
+        "recent": [
+          "- 2026-09-22: === CLINIC_NEWS ===",
+          "- 2026-09-22: YouTube trends scraped 2026-09-22:",
+          "- 2026-09-23: === CLINIC_NEWS ===",
+          "- 2026-09-23: YouTube trends scraped 2026-09-23:",
+          "- 2026-09-24: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "competitor",
+        "recent": [
+          "- 2026-09-22: === CLINIC_NEWS ===",
+          "- 2026-09-22: YouTube trends scraped 2026-09-22:",
+          "- 2026-09-23: === CLINIC_NEWS ===",
+          "- 2026-09-23: YouTube trends scraped 2026-09-23:",
+          "- 2026-09-24: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "content-calendar",
+        "recent": [
+          "- 2026-09-22: === CLINIC_NEWS ===",
+          "- 2026-09-22: YouTube trends scraped 2026-09-22:",
+          "- 2026-09-22 (Tuesday run): Published \"Brazilian Laser Hair Removal in Edmonton: What to Expect, Preparation, and Results\" to content/blog/2026-09-22-brazilian-laser-hair-removal-edmonton.md and content/blogs/week-6/brazilian-laser-hair-removal-edmonton.md. Word count: 991 words. Targeted primary keyword: \"laser hair removal brazilian edmonton\" from Cluster 1 long-tail backlog. No em-dashes, no emojis, no pricing figures. Next backlog items: Best Laser Clinic Edmonton 2026 (Cluster 1 long-tail), Winter Skin Treatment Edmonton (Seasonal), Laser Hair Removal for the Holidays (Seasonal).",
+          "- 2026-09-23: === CLINIC_NEWS ===",
+          "- 2026-09-23: YouTube trends scraped 2026-09-23:"
+        ]
+      },
+      {
+        "agent": "crm-pipeline",
+        "recent": [
+          "- 2026-09-22: === CLINIC_NEWS ===",
+          "- 2026-09-22: YouTube trends scraped 2026-09-22:",
+          "- 2026-09-23: === CLINIC_NEWS ===",
+          "- 2026-09-23: YouTube trends scraped 2026-09-23:",
+          "- 2026-09-24: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "editor",
+        "recent": [
+          "- 2026-09-22: === CLINIC_NEWS ===",
+          "- 2026-09-22: YouTube trends scraped 2026-09-22:",
+          "- 2026-09-23: === CLINIC_NEWS ===",
+          "- 2026-09-23: YouTube trends scraped 2026-09-23:",
+          "- 2026-09-24: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "email-sms",
+        "recent": [
+          "- 2026-09-22: === CLINIC_NEWS ===",
+          "- 2026-09-22: YouTube trends scraped 2026-09-22:",
+          "- 2026-09-23: === CLINIC_NEWS ===",
+          "- 2026-09-23: YouTube trends scraped 2026-09-23:",
+          "- 2026-09-24: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "forms-funnel",
+        "recent": [
+          "- 2026-09-22: === CLINIC_NEWS ===",
+          "- 2026-09-22: YouTube trends scraped 2026-09-22:",
+          "- 2026-09-23: === CLINIC_NEWS ===",
+          "- 2026-09-23: YouTube trends scraped 2026-09-23:",
+          "- 2026-09-24: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "image",
+        "recent": [
+          "- 2026-09-22: === CLINIC_NEWS ===",
+          "- 2026-09-22: YouTube trends scraped 2026-09-22:",
+          "- 2026-09-23: === CLINIC_NEWS ===",
+          "- 2026-09-23: YouTube trends scraped 2026-09-23:",
+          "- 2026-09-24: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "keyword-research",
+        "recent": [
+          "- 2026-09-22: === CLINIC_NEWS ===",
+          "- 2026-09-22: YouTube trends scraped 2026-09-22:",
+          "- 2026-09-23: === CLINIC_NEWS ===",
+          "- 2026-09-23: YouTube trends scraped 2026-09-23:",
+          "- 2026-09-24: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "marketing",
+        "recent": [
+          "- 2026-09-22: === CLINIC_NEWS ===",
+          "- 2026-09-22: YouTube trends scraped 2026-09-22:",
+          "- 2026-09-23: === CLINIC_NEWS ===",
+          "- 2026-09-23: YouTube trends scraped 2026-09-23:",
+          "- 2026-09-24: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "planning",
+        "recent": [
+          "- 2026-09-22: === CLINIC_NEWS ===",
+          "- 2026-09-22: YouTube trends scraped 2026-09-22:",
+          "- 2026-09-22 (Tuesday run): Published \"Brazilian Laser Hair Removal in Edmonton: What to Expect, Preparation, and Results\" to content/blog/2026-09-22-brazilian-laser-hair-removal-edmonton.md and content/blogs/week-6/brazilian-laser-hair-removal-edmonton.md. Word count: 991 words. Targeted primary keyword: \"laser hair removal brazilian edmonton\" from Cluster 1 long-tail backlog. No em-dashes, no emojis, no pricing figures. Next backlog items: Best Laser Clinic Edmonton 2026 (Cluster 1 long-tail), Winter Skin Treatment Edmonton (Seasonal), Laser Hair Removal for the Holidays (Seasonal).",
+          "- 2026-09-23: === CLINIC_NEWS ===",
+          "- 2026-09-23: YouTube trends scraped 2026-09-23:"
+        ]
+      },
+      {
+        "agent": "preauth",
+        "recent": [
+          "- 2026-09-22: === CLINIC_NEWS ===",
+          "- 2026-09-22: YouTube trends scraped 2026-09-22:",
+          "- 2026-09-23: === CLINIC_NEWS ===",
+          "- 2026-09-23: YouTube trends scraped 2026-09-23:",
+          "- 2026-09-24: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "research",
+        "recent": [
+          "- 2026-09-22: === CLINIC_NEWS ===",
+          "- 2026-09-22: YouTube trends scraped 2026-09-22:",
+          "- 2026-09-23: === CLINIC_NEWS ===",
+          "- 2026-09-23: YouTube trends scraped 2026-09-23:",
+          "- 2026-09-24: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "sarah",
+        "recent": [
+          "- 2026-09-22: Sarah routed a question to this agent: \"hi\" (question_id 24). Run the Oxyderm Brain Poller cron to get the answer, then call /sarah/agent-answer?question_id=24.",
+          "- 2026-09-22: === CLINIC_NEWS ===",
+          "- 2026-09-22: YouTube trends scraped 2026-09-22:",
+          "- 2026-09-23: === CLINIC_NEWS ===",
+          "- 2026-09-23: YouTube trends scraped 2026-09-23:"
+        ]
+      },
+      {
+        "agent": "scheduler",
+        "recent": [
+          "- 2026-09-22: === CLINIC_NEWS ===",
+          "- 2026-09-22: YouTube trends scraped 2026-09-22:",
+          "- 2026-09-23: === CLINIC_NEWS ===",
+          "- 2026-09-23: YouTube trends scraped 2026-09-23:",
+          "- 2026-09-24: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "social",
+        "recent": [
+          "- 2026-09-22: === CLINIC_NEWS ===",
+          "- 2026-09-22: YouTube trends scraped 2026-09-22:",
+          "- 2026-09-23: === CLINIC_NEWS ===",
+          "- 2026-09-23: YouTube trends scraped 2026-09-23:",
+          "- 2026-09-24: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "trending",
+        "recent": [
+          "- 2026-09-22: === CLINIC_NEWS ===",
+          "- 2026-09-22: YouTube trends scraped 2026-09-22:",
+          "- 2026-09-23: === CLINIC_NEWS ===",
+          "- 2026-09-23: YouTube trends scraped 2026-09-23:",
+          "- 2026-09-24: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "video-script",
+        "recent": [
+          "- 2026-09-22: === CLINIC_NEWS ===",
+          "- 2026-09-22: YouTube trends scraped 2026-09-22:",
+          "- 2026-09-23: === CLINIC_NEWS ===",
+          "- 2026-09-23: YouTube trends scraped 2026-09-23:",
+          "- 2026-09-24: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "youtube",
+        "recent": [
+          "- 2026-09-22: === CLINIC_NEWS ===",
+          "- 2026-09-22: YouTube trends scraped 2026-09-22:",
+          "- 2026-09-23: === CLINIC_NEWS ===",
+          "- 2026-09-23: YouTube trends scraped 2026-09-23:",
+          "- 2026-09-24: === CLINIC_NEWS ==="
+        ]
+      }
+    ],
+    "generated_at": "2026-09-29T20:52:49.302Z"
+  },
+  {
+    "date": "2026-09-28",
+    "summary": "Daily digest for 2026-09-28",
+    "scores": "Lead Scout: 1 pts",
+    "jobs": "3 automation job(s) created: no_show_recovery",
+    "agent_learnings": [
+      {
+        "agent": "automation",
+        "recent": [
+          "- 2026-09-21: === CLINIC_NEWS ===",
+          "- 2026-09-21: YouTube trends scraped 2026-09-21:",
+          "- 2026-09-21: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-21. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-21: Competitor Bella Vita Laser Clinic: Scraped 2026-09-21. ",
+          "- 2026-09-21: Competitor Serene Radiance Laser Center: Scraped 2026-09-21. "
+        ]
+      },
+      {
+        "agent": "client",
+        "recent": [
+          "- 2026-09-21: === CLINIC_NEWS ===",
+          "- 2026-09-21: YouTube trends scraped 2026-09-21:",
+          "- 2026-09-21: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-21. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-21: Competitor Bella Vita Laser Clinic: Scraped 2026-09-21. ",
+          "- 2026-09-21: Competitor Serene Radiance Laser Center: Scraped 2026-09-21. "
+        ]
+      },
+      {
+        "agent": "competitor",
+        "recent": [
+          "- 2026-09-21: === CLINIC_NEWS ===",
+          "- 2026-09-21: YouTube trends scraped 2026-09-21:",
+          "- 2026-09-21: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-21. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-21: Competitor Bella Vita Laser Clinic: Scraped 2026-09-21. ",
+          "- 2026-09-21: Competitor Serene Radiance Laser Center: Scraped 2026-09-21. "
+        ]
+      },
+      {
+        "agent": "content-calendar",
+        "recent": [
+          "- 2026-09-21: === CLINIC_NEWS ===",
+          "- 2026-09-21: YouTube trends scraped 2026-09-21:",
+          "- 2026-09-21: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-21. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-21: Competitor Bella Vita Laser Clinic: Scraped 2026-09-21. ",
+          "- 2026-09-21: Competitor Serene Radiance Laser Center: Scraped 2026-09-21. "
+        ]
+      },
+      {
+        "agent": "crm-pipeline",
+        "recent": [
+          "- 2026-09-21: === CLINIC_NEWS ===",
+          "- 2026-09-21: YouTube trends scraped 2026-09-21:",
+          "- 2026-09-21: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-21. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-21: Competitor Bella Vita Laser Clinic: Scraped 2026-09-21. ",
+          "- 2026-09-21: Competitor Serene Radiance Laser Center: Scraped 2026-09-21. "
+        ]
+      },
+      {
+        "agent": "editor",
+        "recent": [
+          "- 2026-09-21: === CLINIC_NEWS ===",
+          "- 2026-09-21: YouTube trends scraped 2026-09-21:",
+          "- 2026-09-21: Competitor analysis 2026-09-21:",
+          "- 2026-09-21: WEEKLY CONTENT PLAN — Week of September 28, 2026",
+          "- 2026-09-22: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "email-sms",
+        "recent": [
+          "- 2026-09-21: === CLINIC_NEWS ===",
+          "- 2026-09-21: YouTube trends scraped 2026-09-21:",
+          "- 2026-09-21: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-21. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-21: Competitor Bella Vita Laser Clinic: Scraped 2026-09-21. ",
+          "- 2026-09-21: Competitor Serene Radiance Laser Center: Scraped 2026-09-21. "
+        ]
+      },
+      {
+        "agent": "forms-funnel",
+        "recent": [
+          "- 2026-09-21: === CLINIC_NEWS ===",
+          "- 2026-09-21: YouTube trends scraped 2026-09-21:",
+          "- 2026-09-21: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-21. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-21: Competitor Bella Vita Laser Clinic: Scraped 2026-09-21. ",
+          "- 2026-09-21: Competitor Serene Radiance Laser Center: Scraped 2026-09-21. "
+        ]
+      },
+      {
+        "agent": "image",
+        "recent": [
+          "- 2026-09-21: === CLINIC_NEWS ===",
+          "- 2026-09-21: YouTube trends scraped 2026-09-21:",
+          "- 2026-09-21: Competitor analysis 2026-09-21:",
+          "- 2026-09-21: WEEKLY CONTENT PLAN — Week of September 28, 2026",
+          "- 2026-09-22: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "keyword-research",
+        "recent": [
+          "- 2026-09-21: === CLINIC_NEWS ===",
+          "- 2026-09-21: YouTube trends scraped 2026-09-21:",
+          "- 2026-09-21: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-21. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-21: Competitor Bella Vita Laser Clinic: Scraped 2026-09-21. ",
+          "- 2026-09-21: Competitor Serene Radiance Laser Center: Scraped 2026-09-21. "
+        ]
+      },
+      {
+        "agent": "marketing",
+        "recent": [
+          "- 2026-09-21: === CLINIC_NEWS ===",
+          "- 2026-09-21: YouTube trends scraped 2026-09-21:",
+          "- 2026-09-21: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-21. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-21: Competitor Bella Vita Laser Clinic: Scraped 2026-09-21. ",
+          "- 2026-09-21: Competitor Serene Radiance Laser Center: Scraped 2026-09-21. "
+        ]
+      },
+      {
+        "agent": "planning",
+        "recent": [
+          "- 2026-09-21: === CLINIC_NEWS ===",
+          "- 2026-09-21: YouTube trends scraped 2026-09-21:",
+          "- 2026-09-21: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-21. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-21: Competitor Bella Vita Laser Clinic: Scraped 2026-09-21. ",
+          "- 2026-09-21: Competitor Serene Radiance Laser Center: Scraped 2026-09-21. "
+        ]
+      },
+      {
+        "agent": "preauth",
+        "recent": [
+          "- 2026-09-21: === CLINIC_NEWS ===",
+          "- 2026-09-21: YouTube trends scraped 2026-09-21:",
+          "- 2026-09-21: Competitor analysis 2026-09-21:",
+          "- 2026-09-21: WEEKLY CONTENT PLAN — Week of September 28, 2026",
+          "- 2026-09-22: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "research",
+        "recent": [
+          "- 2026-09-21: === CLINIC_NEWS ===",
+          "- 2026-09-21: YouTube trends scraped 2026-09-21:",
+          "- 2026-09-21: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-21. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-21: Competitor Bella Vita Laser Clinic: Scraped 2026-09-21. ",
+          "- 2026-09-21: Competitor Serene Radiance Laser Center: Scraped 2026-09-21. "
+        ]
+      },
+      {
+        "agent": "sarah",
+        "recent": [
+          "- 2026-09-21: === CLINIC_NEWS ===",
+          "- 2026-09-21: YouTube trends scraped 2026-09-21:",
+          "- 2026-09-21: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-21. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-21: Competitor Bella Vita Laser Clinic: Scraped 2026-09-21. ",
+          "- 2026-09-21: Competitor Serene Radiance Laser Center: Scraped 2026-09-21. "
+        ]
+      },
+      {
+        "agent": "scheduler",
+        "recent": [
+          "- 2026-09-21: === CLINIC_NEWS ===",
+          "- 2026-09-21: YouTube trends scraped 2026-09-21:",
+          "- 2026-09-21: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-21. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-21: Competitor Bella Vita Laser Clinic: Scraped 2026-09-21. ",
+          "- 2026-09-21: Competitor Serene Radiance Laser Center: Scraped 2026-09-21. "
+        ]
+      },
+      {
+        "agent": "social",
+        "recent": [
+          "- 2026-09-21: === CLINIC_NEWS ===",
+          "- 2026-09-21: YouTube trends scraped 2026-09-21:",
+          "- 2026-09-21: Competitor analysis 2026-09-21:",
+          "- 2026-09-21: WEEKLY CONTENT PLAN — Week of September 28, 2026",
+          "- 2026-09-22: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "trending",
+        "recent": [
+          "- 2026-09-21: === CLINIC_NEWS ===",
+          "- 2026-09-21: YouTube trends scraped 2026-09-21:",
+          "- 2026-09-21: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-21. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-21: Competitor Bella Vita Laser Clinic: Scraped 2026-09-21. ",
+          "- 2026-09-21: Competitor Serene Radiance Laser Center: Scraped 2026-09-21. "
+        ]
+      },
+      {
+        "agent": "video-script",
+        "recent": [
+          "- 2026-09-21: === CLINIC_NEWS ===",
+          "- 2026-09-21: YouTube trends scraped 2026-09-21:",
+          "- 2026-09-21: Competitor analysis 2026-09-21:",
+          "- 2026-09-21: WEEKLY CONTENT PLAN — Week of September 28, 2026",
+          "- 2026-09-22: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "youtube",
+        "recent": [
+          "- 2026-09-21: === CLINIC_NEWS ===",
+          "- 2026-09-21: YouTube trends scraped 2026-09-21:",
+          "- 2026-09-21: Competitor analysis 2026-09-21:",
+          "- 2026-09-21: WEEKLY CONTENT PLAN — Week of September 28, 2026",
+          "- 2026-09-22: === CLINIC_NEWS ==="
+        ]
+      }
+    ],
+    "generated_at": "2026-09-28T06:58:24.769Z"
+  },
+  {
+    "date": "2026-09-27",
+    "summary": "Daily digest for 2026-09-27",
+    "scores": "Lead Scout: 1 pts",
+    "jobs": "3 automation job(s) created: no_show_recovery",
+    "agent_learnings": [
+      {
+        "agent": "automation",
+        "recent": [
+          "- 2026-09-20: === CLINIC_NEWS ===",
+          "- 2026-09-20: YouTube trends scraped 2026-09-20:",
+          "- 2026-09-21: === CLINIC_NEWS ===",
+          "- 2026-09-21: YouTube trends scraped 2026-09-21:",
+          "- 2026-09-21: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-21. Services: laser hair removal, skin resurfacing, package, sessions. "
+        ]
+      },
+      {
+        "agent": "client",
+        "recent": [
+          "- 2026-09-20: === CLINIC_NEWS ===",
+          "- 2026-09-20: YouTube trends scraped 2026-09-20:",
+          "- 2026-09-21: === CLINIC_NEWS ===",
+          "- 2026-09-21: YouTube trends scraped 2026-09-21:",
+          "- 2026-09-21: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-21. Services: laser hair removal, skin resurfacing, package, sessions. "
+        ]
+      },
+      {
+        "agent": "competitor",
+        "recent": [
+          "- 2026-09-20: === CLINIC_NEWS ===",
+          "- 2026-09-20: YouTube trends scraped 2026-09-20:",
+          "- 2026-09-21: === CLINIC_NEWS ===",
+          "- 2026-09-21: YouTube trends scraped 2026-09-21:",
+          "- 2026-09-21: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-21. Services: laser hair removal, skin resurfacing, package, sessions. "
+        ]
+      },
+      {
+        "agent": "content-calendar",
+        "recent": [
+          "- 2026-09-20: === CLINIC_NEWS ===",
+          "- 2026-09-20: YouTube trends scraped 2026-09-20:",
+          "- 2026-09-21: === CLINIC_NEWS ===",
+          "- 2026-09-21: YouTube trends scraped 2026-09-21:",
+          "- 2026-09-21: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-21. Services: laser hair removal, skin resurfacing, package, sessions. "
+        ]
+      },
+      {
+        "agent": "crm-pipeline",
+        "recent": [
+          "- 2026-09-20: === CLINIC_NEWS ===",
+          "- 2026-09-20: YouTube trends scraped 2026-09-20:",
+          "- 2026-09-21: === CLINIC_NEWS ===",
+          "- 2026-09-21: YouTube trends scraped 2026-09-21:",
+          "- 2026-09-21: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-21. Services: laser hair removal, skin resurfacing, package, sessions. "
+        ]
+      },
+      {
+        "agent": "editor",
+        "recent": [
+          "- 2026-09-20: === CLINIC_NEWS ===",
+          "- 2026-09-20: YouTube trends scraped 2026-09-20:",
+          "- 2026-09-21: === CLINIC_NEWS ===",
+          "- 2026-09-21: YouTube trends scraped 2026-09-21:",
+          "- 2026-09-21: Competitor analysis 2026-09-21:"
+        ]
+      },
+      {
+        "agent": "email-sms",
+        "recent": [
+          "- 2026-09-20: === CLINIC_NEWS ===",
+          "- 2026-09-20: YouTube trends scraped 2026-09-20:",
+          "- 2026-09-21: === CLINIC_NEWS ===",
+          "- 2026-09-21: YouTube trends scraped 2026-09-21:",
+          "- 2026-09-21: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-21. Services: laser hair removal, skin resurfacing, package, sessions. "
+        ]
+      },
+      {
+        "agent": "forms-funnel",
+        "recent": [
+          "- 2026-09-20: === CLINIC_NEWS ===",
+          "- 2026-09-20: YouTube trends scraped 2026-09-20:",
+          "- 2026-09-21: === CLINIC_NEWS ===",
+          "- 2026-09-21: YouTube trends scraped 2026-09-21:",
+          "- 2026-09-21: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-21. Services: laser hair removal, skin resurfacing, package, sessions. "
+        ]
+      },
+      {
+        "agent": "image",
+        "recent": [
+          "- 2026-09-20: === CLINIC_NEWS ===",
+          "- 2026-09-20: YouTube trends scraped 2026-09-20:",
+          "- 2026-09-21: === CLINIC_NEWS ===",
+          "- 2026-09-21: YouTube trends scraped 2026-09-21:",
+          "- 2026-09-21: Competitor analysis 2026-09-21:"
+        ]
+      },
+      {
+        "agent": "keyword-research",
+        "recent": [
+          "- 2026-09-20: === CLINIC_NEWS ===",
+          "- 2026-09-20: YouTube trends scraped 2026-09-20:",
+          "- 2026-09-21: === CLINIC_NEWS ===",
+          "- 2026-09-21: YouTube trends scraped 2026-09-21:",
+          "- 2026-09-21: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-21. Services: laser hair removal, skin resurfacing, package, sessions. "
+        ]
+      },
+      {
+        "agent": "marketing",
+        "recent": [
+          "- 2026-09-20: === CLINIC_NEWS ===",
+          "- 2026-09-20: YouTube trends scraped 2026-09-20:",
+          "- 2026-09-21: === CLINIC_NEWS ===",
+          "- 2026-09-21: YouTube trends scraped 2026-09-21:",
+          "- 2026-09-21: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-21. Services: laser hair removal, skin resurfacing, package, sessions. "
+        ]
+      },
+      {
+        "agent": "planning",
+        "recent": [
+          "- 2026-09-20: === CLINIC_NEWS ===",
+          "- 2026-09-20: YouTube trends scraped 2026-09-20:",
+          "- 2026-09-21: === CLINIC_NEWS ===",
+          "- 2026-09-21: YouTube trends scraped 2026-09-21:",
+          "- 2026-09-21: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-21. Services: laser hair removal, skin resurfacing, package, sessions. "
+        ]
+      },
+      {
+        "agent": "preauth",
+        "recent": [
+          "- 2026-09-20: === CLINIC_NEWS ===",
+          "- 2026-09-20: YouTube trends scraped 2026-09-20:",
+          "- 2026-09-21: === CLINIC_NEWS ===",
+          "- 2026-09-21: YouTube trends scraped 2026-09-21:",
+          "- 2026-09-21: Competitor analysis 2026-09-21:"
+        ]
+      },
+      {
+        "agent": "research",
+        "recent": [
+          "- 2026-09-20: === CLINIC_NEWS ===",
+          "- 2026-09-20: YouTube trends scraped 2026-09-20:",
+          "- 2026-09-21: === CLINIC_NEWS ===",
+          "- 2026-09-21: YouTube trends scraped 2026-09-21:",
+          "- 2026-09-21: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-21. Services: laser hair removal, skin resurfacing, package, sessions. "
+        ]
+      },
+      {
+        "agent": "sarah",
+        "recent": [
+          "- 2026-09-20: === CLINIC_NEWS ===",
+          "- 2026-09-20: YouTube trends scraped 2026-09-20:",
+          "- 2026-09-21: === CLINIC_NEWS ===",
+          "- 2026-09-21: YouTube trends scraped 2026-09-21:",
+          "- 2026-09-21: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-21. Services: laser hair removal, skin resurfacing, package, sessions. "
+        ]
+      },
+      {
+        "agent": "scheduler",
+        "recent": [
+          "- 2026-09-20: === CLINIC_NEWS ===",
+          "- 2026-09-20: YouTube trends scraped 2026-09-20:",
+          "- 2026-09-21: === CLINIC_NEWS ===",
+          "- 2026-09-21: YouTube trends scraped 2026-09-21:",
+          "- 2026-09-21: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-21. Services: laser hair removal, skin resurfacing, package, sessions. "
+        ]
+      },
+      {
+        "agent": "social",
+        "recent": [
+          "- 2026-09-20: === CLINIC_NEWS ===",
+          "- 2026-09-20: YouTube trends scraped 2026-09-20:",
+          "- 2026-09-21: === CLINIC_NEWS ===",
+          "- 2026-09-21: YouTube trends scraped 2026-09-21:",
+          "- 2026-09-21: Competitor analysis 2026-09-21:"
+        ]
+      },
+      {
+        "agent": "trending",
+        "recent": [
+          "- 2026-09-20: === CLINIC_NEWS ===",
+          "- 2026-09-20: YouTube trends scraped 2026-09-20:",
+          "- 2026-09-21: === CLINIC_NEWS ===",
+          "- 2026-09-21: YouTube trends scraped 2026-09-21:",
+          "- 2026-09-21: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-21. Services: laser hair removal, skin resurfacing, package, sessions. "
+        ]
+      },
+      {
+        "agent": "video-script",
+        "recent": [
+          "- 2026-09-20: === CLINIC_NEWS ===",
+          "- 2026-09-20: YouTube trends scraped 2026-09-20:",
+          "- 2026-09-21: === CLINIC_NEWS ===",
+          "- 2026-09-21: YouTube trends scraped 2026-09-21:",
+          "- 2026-09-21: Competitor analysis 2026-09-21:"
+        ]
+      },
+      {
+        "agent": "youtube",
+        "recent": [
+          "- 2026-09-20: === CLINIC_NEWS ===",
+          "- 2026-09-20: YouTube trends scraped 2026-09-20:",
+          "- 2026-09-21: === CLINIC_NEWS ===",
+          "- 2026-09-21: YouTube trends scraped 2026-09-21:",
+          "- 2026-09-21: Competitor analysis 2026-09-21:"
+        ]
+      }
+    ],
+    "generated_at": "2026-09-27T04:10:32.355Z"
+  },
+  {
+    "date": "2026-09-26",
+    "summary": "Daily digest for 2026-09-26",
+    "scores": "Lead Scout: 1 pts",
+    "jobs": "3 automation job(s) created: no_show_recovery",
+    "agent_learnings": [
+      {
+        "agent": "automation",
+        "recent": [
+          "- 2026-09-19: === CLINIC_NEWS ===",
+          "- 2026-09-19: YouTube trends scraped 2026-09-19:",
+          "- 2026-09-20: === CLINIC_NEWS ===",
+          "- 2026-09-20: YouTube trends scraped 2026-09-20:",
+          "- 2026-09-21: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "client",
+        "recent": [
+          "- 2026-09-19: === CLINIC_NEWS ===",
+          "- 2026-09-19: YouTube trends scraped 2026-09-19:",
+          "- 2026-09-20: === CLINIC_NEWS ===",
+          "- 2026-09-20: YouTube trends scraped 2026-09-20:",
+          "- 2026-09-21: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "competitor",
+        "recent": [
+          "- 2026-09-19: === CLINIC_NEWS ===",
+          "- 2026-09-19: YouTube trends scraped 2026-09-19:",
+          "- 2026-09-20: === CLINIC_NEWS ===",
+          "- 2026-09-20: YouTube trends scraped 2026-09-20:",
+          "- 2026-09-21: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "content-calendar",
+        "recent": [
+          "- 2026-09-19: === CLINIC_NEWS ===",
+          "- 2026-09-19: YouTube trends scraped 2026-09-19:",
+          "- 2026-09-20: === CLINIC_NEWS ===",
+          "- 2026-09-20: YouTube trends scraped 2026-09-20:",
+          "- 2026-09-21: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "crm-pipeline",
+        "recent": [
+          "- 2026-09-19: === CLINIC_NEWS ===",
+          "- 2026-09-19: YouTube trends scraped 2026-09-19:",
+          "- 2026-09-20: === CLINIC_NEWS ===",
+          "- 2026-09-20: YouTube trends scraped 2026-09-20:",
+          "- 2026-09-21: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "editor",
+        "recent": [
+          "- 2026-09-19: === CLINIC_NEWS ===",
+          "- 2026-09-19: YouTube trends scraped 2026-09-19:",
+          "- 2026-09-20: === CLINIC_NEWS ===",
+          "- 2026-09-20: YouTube trends scraped 2026-09-20:",
+          "- 2026-09-21: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "email-sms",
+        "recent": [
+          "- 2026-09-19: === CLINIC_NEWS ===",
+          "- 2026-09-19: YouTube trends scraped 2026-09-19:",
+          "- 2026-09-20: === CLINIC_NEWS ===",
+          "- 2026-09-20: YouTube trends scraped 2026-09-20:",
+          "- 2026-09-21: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "forms-funnel",
+        "recent": [
+          "- 2026-09-19: === CLINIC_NEWS ===",
+          "- 2026-09-19: YouTube trends scraped 2026-09-19:",
+          "- 2026-09-20: === CLINIC_NEWS ===",
+          "- 2026-09-20: YouTube trends scraped 2026-09-20:",
+          "- 2026-09-21: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "image",
+        "recent": [
+          "- 2026-09-19: === CLINIC_NEWS ===",
+          "- 2026-09-19: YouTube trends scraped 2026-09-19:",
+          "- 2026-09-20: === CLINIC_NEWS ===",
+          "- 2026-09-20: YouTube trends scraped 2026-09-20:",
+          "- 2026-09-21: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "keyword-research",
+        "recent": [
+          "- 2026-09-19: === CLINIC_NEWS ===",
+          "- 2026-09-19: YouTube trends scraped 2026-09-19:",
+          "- 2026-09-20: === CLINIC_NEWS ===",
+          "- 2026-09-20: YouTube trends scraped 2026-09-20:",
+          "- 2026-09-21: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "marketing",
+        "recent": [
+          "- 2026-09-19: === CLINIC_NEWS ===",
+          "- 2026-09-19: YouTube trends scraped 2026-09-19:",
+          "- 2026-09-20: === CLINIC_NEWS ===",
+          "- 2026-09-20: YouTube trends scraped 2026-09-20:",
+          "- 2026-09-21: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "planning",
+        "recent": [
+          "- 2026-09-19: === CLINIC_NEWS ===",
+          "- 2026-09-19: YouTube trends scraped 2026-09-19:",
+          "- 2026-09-20: === CLINIC_NEWS ===",
+          "- 2026-09-20: YouTube trends scraped 2026-09-20:",
+          "- 2026-09-21: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "preauth",
+        "recent": [
+          "- 2026-09-19: === CLINIC_NEWS ===",
+          "- 2026-09-19: YouTube trends scraped 2026-09-19:",
+          "- 2026-09-20: === CLINIC_NEWS ===",
+          "- 2026-09-20: YouTube trends scraped 2026-09-20:",
+          "- 2026-09-21: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "research",
+        "recent": [
+          "- 2026-09-19: === CLINIC_NEWS ===",
+          "- 2026-09-19: YouTube trends scraped 2026-09-19:",
+          "- 2026-09-20: === CLINIC_NEWS ===",
+          "- 2026-09-20: YouTube trends scraped 2026-09-20:",
+          "- 2026-09-21: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "sarah",
+        "recent": [
+          "- 2026-09-19: === CLINIC_NEWS ===",
+          "- 2026-09-19: YouTube trends scraped 2026-09-19:",
+          "- 2026-09-20: === CLINIC_NEWS ===",
+          "- 2026-09-20: YouTube trends scraped 2026-09-20:",
+          "- 2026-09-21: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "scheduler",
+        "recent": [
+          "- 2026-09-19: === CLINIC_NEWS ===",
+          "- 2026-09-19: YouTube trends scraped 2026-09-19:",
+          "- 2026-09-20: === CLINIC_NEWS ===",
+          "- 2026-09-20: YouTube trends scraped 2026-09-20:",
+          "- 2026-09-21: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "social",
+        "recent": [
+          "- 2026-09-19: === CLINIC_NEWS ===",
+          "- 2026-09-19: YouTube trends scraped 2026-09-19:",
+          "- 2026-09-20: === CLINIC_NEWS ===",
+          "- 2026-09-20: YouTube trends scraped 2026-09-20:",
+          "- 2026-09-21: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "trending",
+        "recent": [
+          "- 2026-09-19: === CLINIC_NEWS ===",
+          "- 2026-09-19: YouTube trends scraped 2026-09-19:",
+          "- 2026-09-20: === CLINIC_NEWS ===",
+          "- 2026-09-20: YouTube trends scraped 2026-09-20:",
+          "- 2026-09-21: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "video-script",
+        "recent": [
+          "- 2026-09-19: === CLINIC_NEWS ===",
+          "- 2026-09-19: YouTube trends scraped 2026-09-19:",
+          "- 2026-09-20: === CLINIC_NEWS ===",
+          "- 2026-09-20: YouTube trends scraped 2026-09-20:",
+          "- 2026-09-21: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "youtube",
+        "recent": [
+          "- 2026-09-19: === CLINIC_NEWS ===",
+          "- 2026-09-19: YouTube trends scraped 2026-09-19:",
+          "- 2026-09-20: === CLINIC_NEWS ===",
+          "- 2026-09-20: YouTube trends scraped 2026-09-20:",
+          "- 2026-09-21: === CLINIC_NEWS ==="
+        ]
+      }
+    ],
+    "generated_at": "2026-09-26T04:10:32.821Z"
+  },
+  {
+    "date": "2026-09-25",
+    "summary": "Daily digest for 2026-09-25",
+    "scores": "Lead Scout: 1 pts",
+    "jobs": "3 automation job(s) created: no_show_recovery",
+    "agent_learnings": [
+      {
+        "agent": "automation",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "client",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "competitor",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "content-calendar",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "crm-pipeline",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "editor",
+        "recent": [
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:",
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor analysis 2026-09-18:"
+        ]
+      },
+      {
+        "agent": "email-sms",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "forms-funnel",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "image",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor analysis 2026-09-18:",
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:",
+          "- 2026-09-18: WEEKLY CONTENT PLAN — Week of September 21, 2026"
+        ]
+      },
+      {
+        "agent": "keyword-research",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "marketing",
+        "recent": [
+          "- 2026-09-18: Edmonton market intel (2026-09-18):",
+          "- 2026-09-18: Edmonton market (2026-09-18):",
+          "- 2026-09-18: WEEKLY CONTENT PLAN — Week of September 21, 2026",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "planning",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "preauth",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor analysis 2026-09-18:",
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:",
+          "- 2026-09-18: WEEKLY CONTENT PLAN — Week of September 21, 2026"
+        ]
+      },
+      {
+        "agent": "research",
+        "recent": [
+          "- 2026-09-18: === REDDIT ===",
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:",
+          "- 2026-09-18: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. "
+        ]
+      },
+      {
+        "agent": "sarah",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "scheduler",
+        "recent": [
+          "- 2026-09-18: Reddit hot posts (2026-09-18):",
+          "- 2026-09-18: Consumer questions & pain points (2026-09-18):",
+          "- 2026-09-18: WEEKLY CONTENT PLAN — Week of September 21, 2026",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "social",
+        "recent": [
+          "- 2026-09-18: Trending hashtag intel (2026-09-18):",
+          "- 2026-09-18: Top performing YouTube hooks (2026-09-18):",
+          "- 2026-09-18: Proven high-performers: #LaserHairRemoval #LHR #BeforeAndAfter #SkincareTok #EdmontonBeauty #PermanentHairRemoval #HairFree #BeautyTok #SmoothSkin #NoMoreShaving #LaserClinic #SkinTok #Microneedling #GlowUp #EdmontonYEG #SkinGoals #LaserTreatment #AestheticClinic #SkincareCommunity #BeautyTreatment",
+          "- 2026-09-18: Top performing YouTube hooks (2026-09-18):",
+          "- 2026-09-18: WEEKLY CONTENT PLAN — Week of September 21, 2026"
+        ]
+      },
+      {
+        "agent": "trending",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "video-script",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor analysis 2026-09-18:",
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:",
+          "- 2026-09-18: WEEKLY CONTENT PLAN — Week of September 21, 2026"
+        ]
+      },
+      {
+        "agent": "youtube",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor analysis 2026-09-18:",
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:",
+          "- 2026-09-18: WEEKLY CONTENT PLAN — Week of September 21, 2026"
+        ]
+      }
+    ],
+    "generated_at": "2026-09-25T04:00:37.511Z"
+  },
+  {
+    "date": "2026-09-24",
+    "summary": "Daily digest for 2026-09-24",
+    "scores": "Lead Scout: 1 pts",
+    "jobs": "4 automation job(s) created: no_show_recovery",
+    "agent_learnings": [
+      {
+        "agent": "automation",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "client",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "competitor",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "content-calendar",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "crm-pipeline",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "editor",
+        "recent": [
+          "- 2026-09-17: YouTube trends scraped 2026-09-17:",
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:",
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "email-sms",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "forms-funnel",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "image",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor analysis 2026-09-18:",
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:",
+          "- 2026-09-18: WEEKLY CONTENT PLAN — Week of September 21, 2026"
+        ]
+      },
+      {
+        "agent": "keyword-research",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "marketing",
+        "recent": [
+          "- 2026-09-17: Edmonton market intel (2026-09-16):",
+          "- 2026-09-17: Edmonton market intel (2026-09-17):",
+          "- 2026-09-18: Edmonton market intel (2026-09-18):",
+          "- 2026-09-18: Edmonton market (2026-09-18):",
+          "- 2026-09-18: WEEKLY CONTENT PLAN — Week of September 21, 2026"
+        ]
+      },
+      {
+        "agent": "planning",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "preauth",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor analysis 2026-09-18:",
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:",
+          "- 2026-09-18: WEEKLY CONTENT PLAN — Week of September 21, 2026"
+        ]
+      },
+      {
+        "agent": "research",
+        "recent": [
+          "- 2026-09-17: === REDDIT ===",
+          "- 2026-09-17: YouTube trends scraped 2026-09-17:",
+          "- 2026-09-17: === REDDIT ===",
+          "- 2026-09-18: === REDDIT ===",
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:"
+        ]
+      },
+      {
+        "agent": "sarah",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "scheduler",
+        "recent": [
+          "- 2026-09-17: Reddit hot posts (2026-09-16):",
+          "- 2026-09-17: Reddit hot posts (2026-09-17):",
+          "- 2026-09-18: Reddit hot posts (2026-09-18):",
+          "- 2026-09-18: Consumer questions & pain points (2026-09-18):",
+          "- 2026-09-18: WEEKLY CONTENT PLAN — Week of September 21, 2026"
+        ]
+      },
+      {
+        "agent": "social",
+        "recent": [
+          "- 2026-09-17: Trending hashtag intel (2026-09-16):",
+          "- 2026-09-17: Top performing YouTube hooks (2026-09-17):",
+          "- 2026-09-17: Trending hashtag intel (2026-09-17):",
+          "- 2026-09-18: Trending hashtag intel (2026-09-18):",
+          "- 2026-09-18: Top performing YouTube hooks (2026-09-18):"
+        ]
+      },
+      {
+        "agent": "trending",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "video-script",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor analysis 2026-09-18:",
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:",
+          "- 2026-09-18: WEEKLY CONTENT PLAN — Week of September 21, 2026"
+        ]
+      },
+      {
+        "agent": "youtube",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor analysis 2026-09-18:",
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:",
+          "- 2026-09-18: WEEKLY CONTENT PLAN — Week of September 21, 2026"
+        ]
+      }
+    ],
+    "generated_at": "2026-09-24T04:00:37.857Z"
+  },
+  {
+    "date": "2026-09-23",
+    "summary": "Daily digest for 2026-09-23",
+    "scores": "Lead Scout: 1 pts",
+    "jobs": "4 automation job(s) created: no_show_recovery",
+    "agent_learnings": [
+      {
+        "agent": "automation",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "client",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "competitor",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "content-calendar",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "crm-pipeline",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "editor",
+        "recent": [
+          "- 2026-09-17: YouTube trends scraped 2026-09-17:",
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:",
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "email-sms",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "forms-funnel",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "image",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor analysis 2026-09-18:",
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:",
+          "- 2026-09-18: WEEKLY CONTENT PLAN — Week of September 21, 2026"
+        ]
+      },
+      {
+        "agent": "keyword-research",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "marketing",
+        "recent": [
+          "- 2026-09-17: Edmonton market intel (2026-09-16):",
+          "- 2026-09-17: Edmonton market intel (2026-09-17):",
+          "- 2026-09-18: Edmonton market intel (2026-09-18):",
+          "- 2026-09-18: Edmonton market (2026-09-18):",
+          "- 2026-09-18: WEEKLY CONTENT PLAN — Week of September 21, 2026"
+        ]
+      },
+      {
+        "agent": "planning",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "preauth",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor analysis 2026-09-18:",
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:",
+          "- 2026-09-18: WEEKLY CONTENT PLAN — Week of September 21, 2026"
+        ]
+      },
+      {
+        "agent": "research",
+        "recent": [
+          "- 2026-09-17: === REDDIT ===",
+          "- 2026-09-17: YouTube trends scraped 2026-09-17:",
+          "- 2026-09-17: === REDDIT ===",
+          "- 2026-09-18: === REDDIT ===",
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:"
+        ]
+      },
+      {
+        "agent": "sarah",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "scheduler",
+        "recent": [
+          "- 2026-09-17: Reddit hot posts (2026-09-16):",
+          "- 2026-09-17: Reddit hot posts (2026-09-17):",
+          "- 2026-09-18: Reddit hot posts (2026-09-18):",
+          "- 2026-09-18: Consumer questions & pain points (2026-09-18):",
+          "- 2026-09-18: WEEKLY CONTENT PLAN — Week of September 21, 2026"
+        ]
+      },
+      {
+        "agent": "social",
+        "recent": [
+          "- 2026-09-17: Trending hashtag intel (2026-09-16):",
+          "- 2026-09-17: Top performing YouTube hooks (2026-09-17):",
+          "- 2026-09-17: Trending hashtag intel (2026-09-17):",
+          "- 2026-09-18: Trending hashtag intel (2026-09-18):",
+          "- 2026-09-18: Top performing YouTube hooks (2026-09-18):"
+        ]
+      },
+      {
+        "agent": "trending",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "video-script",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor analysis 2026-09-18:",
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:",
+          "- 2026-09-18: WEEKLY CONTENT PLAN — Week of September 21, 2026"
+        ]
+      },
+      {
+        "agent": "youtube",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor analysis 2026-09-18:",
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:",
+          "- 2026-09-18: WEEKLY CONTENT PLAN — Week of September 21, 2026"
+        ]
+      }
+    ],
+    "generated_at": "2026-09-23T03:44:02.958Z"
+  },
+  {
+    "date": "2026-09-22",
+    "summary": "Daily digest for 2026-09-22",
+    "scores": "Lead Scout: 1 pts",
+    "jobs": "4 automation job(s) created: no_show_recovery",
+    "agent_learnings": [
+      {
+        "agent": "automation",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "client",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "competitor",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "content-calendar",
+        "recent": [
+          "- 2026-09-15 (Tuesday run): Published \"Korean Glass Skin: Can You Get It in Edmonton? (Treatments That Work)\" to content/blogs/week-6/korean-glass-skin-edmonton-treatments.md. Word count: 1,617. Week-6 Tuesday slot. Priority source: keyword-report.md Cluster 3 Recommended Blog Topics + long-tail keyword \"korean glass skin facial edmonton\". All services covered (microneedling, chemical peels, IPL, microdermabrasion, radiofrequency) are confirmed current Oxyderm services. No injectable references. Backlog remaining for Friday run: Brazilian LHR Edmonton (Cluster 1 long-tail, strong candidate), Best Laser Clinic Edmonton 2026 (Cluster 1 long-tail), seasonal: \"Winter Skin Treatment Edmonton\", \"Laser Hair Removal for the Holidays\".",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "crm-pipeline",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "editor",
+        "recent": [
+          "- 2026-09-17: YouTube trends scraped 2026-09-17:",
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:",
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "email-sms",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "forms-funnel",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "image",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor analysis 2026-09-18:",
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:",
+          "- 2026-09-18: WEEKLY CONTENT PLAN — Week of September 21, 2026"
+        ]
+      },
+      {
+        "agent": "keyword-research",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "marketing",
+        "recent": [
+          "- 2026-09-17: Edmonton market intel (2026-09-16):",
+          "- 2026-09-17: Edmonton market intel (2026-09-17):",
+          "- 2026-09-18: Edmonton market intel (2026-09-18):",
+          "- 2026-09-18: Edmonton market (2026-09-18):",
+          "- 2026-09-18: WEEKLY CONTENT PLAN — Week of September 21, 2026"
+        ]
+      },
+      {
+        "agent": "planning",
+        "recent": [
+          "- 2026-09-15: Blog writer selected \"Korean Glass Skin: Can You Get It in Edmonton? (Treatments That Work)\" as week-6 Tuesday post. Priority source: keyword-report.md Cluster 3 Recommended Blog Topics (\"Korean Glass Skin: Can You Get It in Edmonton?\") and long-tail (\"korean glass skin facial edmonton\"). All services referenced (microneedling, chemical peels, IPL, microdermabrasion, radiofrequency) are confirmed current Oxyderm offerings. Saved to: content/blogs/week-6/korean-glass-skin-edmonton-treatments.md. Backlog remaining: Brazilian LHR Edmonton (Cluster 1 long-tail), Best Laser Clinic Edmonton 2026 (Cluster 1 long-tail), plus seasonal: \"Laser Hair Removal for the Holidays\" (fall/winter window), \"Winter Skin Treatment Edmonton\".",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "preauth",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor analysis 2026-09-18:",
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:",
+          "- 2026-09-18: WEEKLY CONTENT PLAN — Week of September 21, 2026"
+        ]
+      },
+      {
+        "agent": "research",
+        "recent": [
+          "- 2026-09-17: === REDDIT ===",
+          "- 2026-09-17: YouTube trends scraped 2026-09-17:",
+          "- 2026-09-17: === REDDIT ===",
+          "- 2026-09-18: === REDDIT ===",
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:"
+        ]
+      },
+      {
+        "agent": "sarah",
+        "recent": [
+          "- 2026-09-15: Sarah routed a question to this agent: \"hi\" (question_id 17). Run the Oxyderm Brain Poller cron to get the answer, then call /sarah/agent-answer?question_id=17.",
+          "- 2026-09-15: Sarah routed a question to this agent: \"what do you know\" (question_id 18). Run the Oxyderm Brain Poller cron to get the answer, then call /sarah/agent-answer?question_id=18.",
+          "- 2026-09-15: Sarah routed a question to this agent: \"Who is Sarah and what does she do?\" (question_id 19). Run the Oxyderm Brain Poller cron to get the answer, then call /sarah/agent-answer?question_id=19.",
+          "- 2026-09-15: Sarah routed a question to this agent: \"hi\" (question_id 20). Run the Oxyderm Brain Poller cron to get the answer, then call /sarah/agent-answer?question_id=20.",
+          "- 2026-09-15: Sarah routed a question to this agent: \"hi\" (question_id 21). Run the Oxyderm Brain Poller cron to get the answer, then call /sarah/agent-answer?question_id=21."
+        ]
+      },
+      {
+        "agent": "scheduler",
+        "recent": [
+          "- 2026-09-17: Reddit hot posts (2026-09-16):",
+          "- 2026-09-17: Reddit hot posts (2026-09-17):",
+          "- 2026-09-18: Reddit hot posts (2026-09-18):",
+          "- 2026-09-18: Consumer questions & pain points (2026-09-18):",
+          "- 2026-09-18: WEEKLY CONTENT PLAN — Week of September 21, 2026"
+        ]
+      },
+      {
+        "agent": "social",
+        "recent": [
+          "- 2026-09-17: Trending hashtag intel (2026-09-16):",
+          "- 2026-09-17: Top performing YouTube hooks (2026-09-17):",
+          "- 2026-09-17: Trending hashtag intel (2026-09-17):",
+          "- 2026-09-18: Trending hashtag intel (2026-09-18):",
+          "- 2026-09-18: Top performing YouTube hooks (2026-09-18):"
+        ]
+      },
+      {
+        "agent": "trending",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "video-script",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor analysis 2026-09-18:",
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:",
+          "- 2026-09-18: WEEKLY CONTENT PLAN — Week of September 21, 2026"
+        ]
+      },
+      {
+        "agent": "youtube",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor analysis 2026-09-18:",
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:",
+          "- 2026-09-18: WEEKLY CONTENT PLAN — Week of September 21, 2026"
+        ]
+      }
+    ],
+    "generated_at": "2026-09-22T03:44:03.120Z"
+  },
+  {
+    "date": "2026-09-21",
+    "summary": "Daily digest for 2026-09-21",
+    "scores": "Lead Scout: 1 pts",
+    "jobs": "7 automation job(s) created: no_show_recovery, payment_recovery, nurture",
+    "agent_learnings": [
+      {
+        "agent": "automation",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "client",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "competitor",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "content-calendar",
+        "recent": [
+          "- 2026-09-14: Content angle \"Before/After Results\" marked reinforce: High engagement on these posts",
+          "- 2026-09-14: Content angle \"Generic stock photos\" marked kill: Low engagement vs real clinic photos",
+          "- 2026-09-15 (Tuesday run): Published \"Korean Glass Skin: Can You Get It in Edmonton? (Treatments That Work)\" to content/blogs/week-6/korean-glass-skin-edmonton-treatments.md. Word count: 1,617. Week-6 Tuesday slot. Priority source: keyword-report.md Cluster 3 Recommended Blog Topics + long-tail keyword \"korean glass skin facial edmonton\". All services covered (microneedling, chemical peels, IPL, microdermabrasion, radiofrequency) are confirmed current Oxyderm services. No injectable references. Backlog remaining for Friday run: Brazilian LHR Edmonton (Cluster 1 long-tail, strong candidate), Best Laser Clinic Edmonton 2026 (Cluster 1 long-tail), seasonal: \"Winter Skin Treatment Edmonton\", \"Laser Hair Removal for the Holidays\".",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "crm-pipeline",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "editor",
+        "recent": [
+          "- 2026-09-17: YouTube trends scraped 2026-09-17:",
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:",
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "email-sms",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "finance",
+        "recent": [
+          "- 2026-09-14: Payment request created for Jane Smith: $750 CAD — status: needs_setup",
+          "- 2026-09-14: Payment FAILED for Jane Smith $750 — recovery job created"
+        ]
+      },
+      {
+        "agent": "forms-funnel",
+        "recent": [
+          "- 2026-09-14: Funnel lead received: Test Funnel Lead (7801234567) — Laser Hair Removal",
+          "- 2026-09-14: Funnel lead received: hetisha shukla (7802219872) — Laser Hair Removal",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. "
+        ]
+      },
+      {
+        "agent": "image",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor analysis 2026-09-18:",
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:",
+          "- 2026-09-18: WEEKLY CONTENT PLAN — Week of September 21, 2026"
+        ]
+      },
+      {
+        "agent": "keyword-research",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "marketing",
+        "recent": [
+          "- 2026-09-14: Review request queued for Roni Van Manen (sms) — appointment czvinz80xnen9z",
+          "- 2026-09-17: Edmonton market intel (2026-09-16):",
+          "- 2026-09-17: Edmonton market intel (2026-09-17):",
+          "- 2026-09-18: Edmonton market intel (2026-09-18):",
+          "- 2026-09-18: Edmonton market (2026-09-18):"
+        ]
+      },
+      {
+        "agent": "planning",
+        "recent": [
+          "- 2026-09-15: Blog writer selected \"Korean Glass Skin: Can You Get It in Edmonton? (Treatments That Work)\" as week-6 Tuesday post. Priority source: keyword-report.md Cluster 3 Recommended Blog Topics (\"Korean Glass Skin: Can You Get It in Edmonton?\") and long-tail (\"korean glass skin facial edmonton\"). All services referenced (microneedling, chemical peels, IPL, microdermabrasion, radiofrequency) are confirmed current Oxyderm offerings. Saved to: content/blogs/week-6/korean-glass-skin-edmonton-treatments.md. Backlog remaining: Brazilian LHR Edmonton (Cluster 1 long-tail), Best Laser Clinic Edmonton 2026 (Cluster 1 long-tail), plus seasonal: \"Laser Hair Removal for the Holidays\" (fall/winter window), \"Winter Skin Treatment Edmonton\".",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "preauth",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor analysis 2026-09-18:",
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:",
+          "- 2026-09-18: WEEKLY CONTENT PLAN — Week of September 21, 2026"
+        ]
+      },
+      {
+        "agent": "research",
+        "recent": [
+          "- 2026-09-14: Observed: blog topics performing well on LHR Edmonton. Will change: prioritize seasonal topics for next 4 weeks.",
+          "- 2026-09-17: === REDDIT ===",
+          "- 2026-09-17: YouTube trends scraped 2026-09-17:",
+          "- 2026-09-17: === REDDIT ===",
+          "- 2026-09-18: === REDDIT ==="
+        ]
+      },
+      {
+        "agent": "sarah",
+        "recent": [
+          "- 2026-09-14: Sarah routed a question to this agent: \"hi\" (question_id 12). Run the Oxyderm Brain Poller cron to get the answer, then call /sarah/agent-answer?question_id=12.",
+          "- 2026-09-14: Sarah routed a question to this agent: \"hi\" (question_id 13). Run the Oxyderm Brain Poller cron to get the answer, then call /sarah/agent-answer?question_id=13.",
+          "- 2026-09-14: Sarah routed a question to this agent: \"hello how are you\" (question_id 14). Run the Oxyderm Brain Poller cron to get the answer, then call /sarah/agent-answer?question_id=14.",
+          "- 2026-09-14: Sarah routed a question to this agent: \"hi\" (question_id 15). Run the Oxyderm Brain Poller cron to get the answer, then call /sarah/agent-answer?question_id=15.",
+          "- 2026-09-14: Sarah routed a question to this agent: \"Show me today's appointments\" (question_id 16). Run the Oxyderm Brain Poller cron to get the answer, then call /sarah/agent-answer?question_id=16."
+        ]
+      },
+      {
+        "agent": "scheduler",
+        "recent": [
+          "- 2026-09-14: Sarah booking FAILED for Jane Smith (laser underarms): \"No service found matching \\\"laser underarms\\\". Ask the client to confirm the exact treatment name.\"",
+          "- 2026-09-14: Sarah booking FAILED for Jane Smith (underarms): [{\"category\":\"AUTHENTICATION_ERROR\",\"code\":\"FORBIDDEN\",\"detail\":\"Merchant subscription does not support write operations.\"}]",
+          "- 2026-09-14: Sarah booking FAILED for Jane Smith (underarms): [{\"category\":\"AUTHENTICATION_ERROR\",\"code\":\"FORBIDDEN\",\"detail\":\"Merchant subscription does not support write operations.\"}]",
+          "- 2026-09-14: Sarah booking FAILED for Jane Smith (underarms): [{\"category\":\"AUTHENTICATION_ERROR\",\"code\":\"FORBIDDEN\",\"detail\":\"Merchant subscription does not support write operations.\"}]",
+          "- 2026-09-14: Sarah booking FAILED for Jane Smith (underarms): [{\"category\":\"AUTHENTICATION_ERROR\",\"code\":\"FORBIDDEN\",\"detail\":\"Merchant subscription does not support write operations.\"}]"
+        ]
+      },
+      {
+        "agent": "social",
+        "recent": [
+          "- 2026-09-17: Trending hashtag intel (2026-09-16):",
+          "- 2026-09-17: Top performing YouTube hooks (2026-09-17):",
+          "- 2026-09-17: Trending hashtag intel (2026-09-17):",
+          "- 2026-09-18: Trending hashtag intel (2026-09-18):",
+          "- 2026-09-18: Top performing YouTube hooks (2026-09-18):"
+        ]
+      },
+      {
+        "agent": "trending",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "video-script",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor analysis 2026-09-18:",
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:",
+          "- 2026-09-18: WEEKLY CONTENT PLAN — Week of September 21, 2026"
+        ]
+      },
+      {
+        "agent": "youtube",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor analysis 2026-09-18:",
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:",
+          "- 2026-09-18: WEEKLY CONTENT PLAN — Week of September 21, 2026"
+        ]
+      }
+    ],
+    "generated_at": "2026-09-21T03:44:04.178Z"
+  },
+  {
+    "date": "2026-09-19",
+    "summary": "Daily digest for 2026-09-19",
+    "scores": "Lead Scout: 1 pts",
+    "jobs": "7 automation job(s) created: no_show_recovery, payment_recovery, nurture",
+    "agent_learnings": [
+      {
+        "agent": "automation",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "client",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "competitor",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "content-calendar",
+        "recent": [
+          "- 2026-09-14: Content angle \"Before/After Results\" marked reinforce: High engagement on these posts",
+          "- 2026-09-14: Content angle \"Generic stock photos\" marked kill: Low engagement vs real clinic photos",
+          "- 2026-09-15 (Tuesday run): Published \"Korean Glass Skin: Can You Get It in Edmonton? (Treatments That Work)\" to content/blogs/week-6/korean-glass-skin-edmonton-treatments.md. Word count: 1,617. Week-6 Tuesday slot. Priority source: keyword-report.md Cluster 3 Recommended Blog Topics + long-tail keyword \"korean glass skin facial edmonton\". All services covered (microneedling, chemical peels, IPL, microdermabrasion, radiofrequency) are confirmed current Oxyderm services. No injectable references. Backlog remaining for Friday run: Brazilian LHR Edmonton (Cluster 1 long-tail, strong candidate), Best Laser Clinic Edmonton 2026 (Cluster 1 long-tail), seasonal: \"Winter Skin Treatment Edmonton\", \"Laser Hair Removal for the Holidays\".",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "crm-pipeline",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "editor",
+        "recent": [
+          "- 2026-09-17: YouTube trends scraped 2026-09-17:",
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:",
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ==="
+        ]
+      },
+      {
+        "agent": "email-sms",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "finance",
+        "recent": [
+          "- 2026-09-14: Payment request created for Jane Smith: $750 CAD — status: needs_setup",
+          "- 2026-09-14: Payment FAILED for Jane Smith $750 — recovery job created"
+        ]
+      },
+      {
+        "agent": "forms-funnel",
+        "recent": [
+          "- 2026-09-14: Funnel lead received: Test Funnel Lead (7801234567) — Laser Hair Removal",
+          "- 2026-09-14: Funnel lead received: hetisha shukla (7802219872) — Laser Hair Removal",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. "
+        ]
+      },
+      {
+        "agent": "image",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor analysis 2026-09-18:",
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:",
+          "- 2026-09-18: WEEKLY CONTENT PLAN — Week of September 21, 2026"
+        ]
+      },
+      {
+        "agent": "keyword-research",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "marketing",
+        "recent": [
+          "- 2026-09-14: Review request queued for Roni Van Manen (sms) — appointment czvinz80xnen9z",
+          "- 2026-09-17: Edmonton market intel (2026-09-16):",
+          "- 2026-09-17: Edmonton market intel (2026-09-17):",
+          "- 2026-09-18: Edmonton market intel (2026-09-18):",
+          "- 2026-09-18: Edmonton market (2026-09-18):"
+        ]
+      },
+      {
+        "agent": "planning",
+        "recent": [
+          "- 2026-09-15: Blog writer selected \"Korean Glass Skin: Can You Get It in Edmonton? (Treatments That Work)\" as week-6 Tuesday post. Priority source: keyword-report.md Cluster 3 Recommended Blog Topics (\"Korean Glass Skin: Can You Get It in Edmonton?\") and long-tail (\"korean glass skin facial edmonton\"). All services referenced (microneedling, chemical peels, IPL, microdermabrasion, radiofrequency) are confirmed current Oxyderm offerings. Saved to: content/blogs/week-6/korean-glass-skin-edmonton-treatments.md. Backlog remaining: Brazilian LHR Edmonton (Cluster 1 long-tail), Best Laser Clinic Edmonton 2026 (Cluster 1 long-tail), plus seasonal: \"Laser Hair Removal for the Holidays\" (fall/winter window), \"Winter Skin Treatment Edmonton\".",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "preauth",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor analysis 2026-09-18:",
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:",
+          "- 2026-09-18: WEEKLY CONTENT PLAN — Week of September 21, 2026"
+        ]
+      },
+      {
+        "agent": "research",
+        "recent": [
+          "- 2026-09-14: Observed: blog topics performing well on LHR Edmonton. Will change: prioritize seasonal topics for next 4 weeks.",
+          "- 2026-09-17: === REDDIT ===",
+          "- 2026-09-17: YouTube trends scraped 2026-09-17:",
+          "- 2026-09-17: === REDDIT ===",
+          "- 2026-09-18: === REDDIT ==="
+        ]
+      },
+      {
+        "agent": "sarah",
+        "recent": [
+          "- 2026-09-14: Sarah routed a question to this agent: \"hi\" (question_id 12). Run the Oxyderm Brain Poller cron to get the answer, then call /sarah/agent-answer?question_id=12.",
+          "- 2026-09-14: Sarah routed a question to this agent: \"hi\" (question_id 13). Run the Oxyderm Brain Poller cron to get the answer, then call /sarah/agent-answer?question_id=13.",
+          "- 2026-09-14: Sarah routed a question to this agent: \"hello how are you\" (question_id 14). Run the Oxyderm Brain Poller cron to get the answer, then call /sarah/agent-answer?question_id=14.",
+          "- 2026-09-14: Sarah routed a question to this agent: \"hi\" (question_id 15). Run the Oxyderm Brain Poller cron to get the answer, then call /sarah/agent-answer?question_id=15.",
+          "- 2026-09-14: Sarah routed a question to this agent: \"Show me today's appointments\" (question_id 16). Run the Oxyderm Brain Poller cron to get the answer, then call /sarah/agent-answer?question_id=16."
+        ]
+      },
+      {
+        "agent": "scheduler",
+        "recent": [
+          "- 2026-09-14: Sarah booking FAILED for Jane Smith (laser underarms): \"No service found matching \\\"laser underarms\\\". Ask the client to confirm the exact treatment name.\"",
+          "- 2026-09-14: Sarah booking FAILED for Jane Smith (underarms): [{\"category\":\"AUTHENTICATION_ERROR\",\"code\":\"FORBIDDEN\",\"detail\":\"Merchant subscription does not support write operations.\"}]",
+          "- 2026-09-14: Sarah booking FAILED for Jane Smith (underarms): [{\"category\":\"AUTHENTICATION_ERROR\",\"code\":\"FORBIDDEN\",\"detail\":\"Merchant subscription does not support write operations.\"}]",
+          "- 2026-09-14: Sarah booking FAILED for Jane Smith (underarms): [{\"category\":\"AUTHENTICATION_ERROR\",\"code\":\"FORBIDDEN\",\"detail\":\"Merchant subscription does not support write operations.\"}]",
+          "- 2026-09-14: Sarah booking FAILED for Jane Smith (underarms): [{\"category\":\"AUTHENTICATION_ERROR\",\"code\":\"FORBIDDEN\",\"detail\":\"Merchant subscription does not support write operations.\"}]"
+        ]
+      },
+      {
+        "agent": "social",
+        "recent": [
+          "- 2026-09-17: Trending hashtag intel (2026-09-16):",
+          "- 2026-09-17: Top performing YouTube hooks (2026-09-17):",
+          "- 2026-09-17: Trending hashtag intel (2026-09-17):",
+          "- 2026-09-18: Trending hashtag intel (2026-09-18):",
+          "- 2026-09-18: Top performing YouTube hooks (2026-09-18):"
+        ]
+      },
+      {
+        "agent": "trending",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor Bush Whacked Laser Edmonton: Scraped 2026-09-18. Services: laser hair removal, skin resurfacing, package, sessions. ",
+          "- 2026-09-18: Competitor Bella Vita Laser Clinic: Scraped 2026-09-18. ",
+          "- 2026-09-18: Competitor Serene Radiance Laser Center: Scraped 2026-09-18. "
+        ]
+      },
+      {
+        "agent": "video-script",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor analysis 2026-09-18:",
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:",
+          "- 2026-09-18: WEEKLY CONTENT PLAN — Week of September 21, 2026"
+        ]
+      },
+      {
+        "agent": "youtube",
+        "recent": [
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: === CLINIC_NEWS ===",
+          "- 2026-09-18: Competitor analysis 2026-09-18:",
+          "- 2026-09-18: YouTube trends scraped 2026-09-18:",
+          "- 2026-09-18: WEEKLY CONTENT PLAN — Week of September 21, 2026"
+        ]
+      }
+    ],
+    "generated_at": "2026-09-19T22:26:23.244Z"
+  },
+  {
+    "date": "2026-09-18",
+    "summary": "Daily digest for 2026-09-18",
+    "scores": "Lead Scout: 1 pts",
+    "jobs": "6 automation job(s) created: no_show_recovery, payment_recovery, nurture",
+    "agent_learnings": [
+      {
+        "agent": "content-calendar",
+        "recent": [
+          "- 2026-09-11 (Friday run): Published \"Why Fall Is the Best Time to Start Laser Hair Removal in Edmonton\" to content/blogs/week-5/fall-best-time-laser-hair-removal-edmonton.md. Word count: 1,664. This is the week-5 Friday slot (week-5 Tuesday slot = Lip Filler vs Lip Flip, written previous run). Priority source: keyword-report.md Seasonal section + Week 3 calendar backlog. Skipped all remaining Cluster 2 Botox/injectable topics (Botox for Jaw Slimming, How to Prepare for First Botox) as Oxyderm does not offer injectables. NOTE: Prior writer published two injectable-topic posts (botox-cost-edmonton-2026.md in week-2, lip-filler-vs-lip-flip-edmonton.md in week-5); flag these for Hetisha review before publishing since they reference services Oxyderm doesn't offer. Backlog remaining: Korean Glass Skin (Cluster 3), Brazilian LHR Edmonton (Cluster 1 long-tail), Best Laser Clinic Edmonton 2026 (Cluster 1 long-tail).",
+          "- 2026-09-14: Content angle \"Before/After Results\" marked reinforce: High engagement on these posts",
+          "- 2026-09-14: Content angle \"Generic stock photos\" marked kill: Low engagement vs real clinic photos",
+          "- 2026-09-15 (Tuesday run): Published \"Korean Glass Skin: Can You Get It in Edmonton? (Treatments That Work)\" to content/blogs/week-6/korean-glass-skin-edmonton-treatments.md. Word count: 1,617. Week-6 Tuesday slot. Priority source: keyword-report.md Cluster 3 Recommended Blog Topics + long-tail keyword \"korean glass skin facial edmonton\". All services covered (microneedling, chemical peels, IPL, microdermabrasion, radiofrequency) are confirmed current Oxyderm services. No injectable references. Backlog remaining for Friday run: Brazilian LHR Edmonton (Cluster 1 long-tail, strong candidate), Best Laser Clinic Edmonton 2026 (Cluster 1 long-tail), seasonal: \"Winter Skin Treatment Edmonton\", \"Laser Hair Removal for the Holidays\"."
+        ]
+      },
+      {
+        "agent": "editor",
+        "recent": [
+          "- 2026-09-17: YouTube trends scraped 2026-09-17:"
+        ]
+      },
+      {
+        "agent": "finance",
+        "recent": [
+          "- 2026-09-14: Payment request created for Jane Smith: $750 CAD — status: needs_setup",
+          "- 2026-09-14: Payment FAILED for Jane Smith $750 — recovery job created"
+        ]
+      },
+      {
+        "agent": "forms-funnel",
+        "recent": [
+          "- 2026-09-14: Funnel lead received: Test Funnel Lead (7801234567) — Laser Hair Removal",
+          "- 2026-09-14: Funnel lead received: hetisha shukla (7802219872) — Laser Hair Removal"
+        ]
+      },
+      {
+        "agent": "marketing",
+        "recent": [
+          "- 2026-09-14: Review request queued for Roni Van Manen (sms) — appointment czvinz80xnen9z",
+          "- 2026-09-17: Edmonton market intel (2026-09-16):",
+          "- 2026-09-17: Edmonton market intel (2026-09-17):"
+        ]
+      },
+      {
+        "agent": "planning",
+        "recent": [
+          "- 2026-09-11: Blog writer selected \"Why Fall Is the Best Time to Start Laser Hair Removal in Edmonton\" as the week-5 Friday post. Topic sourced from keyword-report.md Seasonal section (\"laser hair removal winter edmonton\") and Week 3 calendar. September timing makes this highly relevant. All Botox/injectable topics from Cluster 2 were skipped because Oxyderm does not currently offer injectables. Week-5 folder already existed (Lip Filler post from Tuesday slot). Saved to: content/blogs/week-5/fall-best-time-laser-hair-removal-edmonton.md. Next unwritten topics: Korean Glass Skin (Cluster 3), Brazilian LHR Edmonton (Cluster 1 long-tail), best laser clinic Edmonton 2026 (Cluster 1 long-tail).",
+          "- 2026-09-15: Blog writer selected \"Korean Glass Skin: Can You Get It in Edmonton? (Treatments That Work)\" as week-6 Tuesday post. Priority source: keyword-report.md Cluster 3 Recommended Blog Topics (\"Korean Glass Skin: Can You Get It in Edmonton?\") and long-tail (\"korean glass skin facial edmonton\"). All services referenced (microneedling, chemical peels, IPL, microdermabrasion, radiofrequency) are confirmed current Oxyderm offerings. Saved to: content/blogs/week-6/korean-glass-skin-edmonton-treatments.md. Backlog remaining: Brazilian LHR Edmonton (Cluster 1 long-tail), Best Laser Clinic Edmonton 2026 (Cluster 1 long-tail), plus seasonal: \"Laser Hair Removal for the Holidays\" (fall/winter window), \"Winter Skin Treatment Edmonton\"."
+        ]
+      },
+      {
+        "agent": "research",
+        "recent": [
+          "- 2026-09-14: Observed: blog topics performing well on LHR Edmonton. Will change: prioritize seasonal topics for next 4 weeks.",
+          "- 2026-09-17: === REDDIT ===",
+          "- 2026-09-17: YouTube trends scraped 2026-09-17:",
+          "- 2026-09-17: === REDDIT ==="
+        ]
+      },
+      {
+        "agent": "sarah",
+        "recent": [
+          "- 2026-09-14: Sarah routed a question to this agent: \"hi\" (question_id 12). Run the Oxyderm Brain Poller cron to get the answer, then call /sarah/agent-answer?question_id=12.",
+          "- 2026-09-14: Sarah routed a question to this agent: \"hi\" (question_id 13). Run the Oxyderm Brain Poller cron to get the answer, then call /sarah/agent-answer?question_id=13.",
+          "- 2026-09-14: Sarah routed a question to this agent: \"hello how are you\" (question_id 14). Run the Oxyderm Brain Poller cron to get the answer, then call /sarah/agent-answer?question_id=14.",
+          "- 2026-09-14: Sarah routed a question to this agent: \"hi\" (question_id 15). Run the Oxyderm Brain Poller cron to get the answer, then call /sarah/agent-answer?question_id=15.",
+          "- 2026-09-14: Sarah routed a question to this agent: \"Show me today's appointments\" (question_id 16). Run the Oxyderm Brain Poller cron to get the answer, then call /sarah/agent-answer?question_id=16."
+        ]
+      },
+      {
+        "agent": "scheduler",
+        "recent": [
+          "- 2026-09-14: Sarah booking FAILED for Jane Smith (laser underarms): \"No service found matching \\\"laser underarms\\\". Ask the client to confirm the exact treatment name.\"",
+          "- 2026-09-14: Sarah booking FAILED for Jane Smith (underarms): [{\"category\":\"AUTHENTICATION_ERROR\",\"code\":\"FORBIDDEN\",\"detail\":\"Merchant subscription does not support write operations.\"}]",
+          "- 2026-09-14: Sarah booking FAILED for Jane Smith (underarms): [{\"category\":\"AUTHENTICATION_ERROR\",\"code\":\"FORBIDDEN\",\"detail\":\"Merchant subscription does not support write operations.\"}]",
+          "- 2026-09-14: Sarah booking FAILED for Jane Smith (underarms): [{\"category\":\"AUTHENTICATION_ERROR\",\"code\":\"FORBIDDEN\",\"detail\":\"Merchant subscription does not support write operations.\"}]",
+          "- 2026-09-14: Sarah booking FAILED for Jane Smith (underarms): [{\"category\":\"AUTHENTICATION_ERROR\",\"code\":\"FORBIDDEN\",\"detail\":\"Merchant subscription does not support write operations.\"}]"
+        ]
+      },
+      {
+        "agent": "social",
+        "recent": [
+          "- 2026-09-17: Trending hashtag intel (2026-09-16):",
+          "- 2026-09-17: Top performing YouTube hooks (2026-09-17):",
+          "- 2026-09-17: Trending hashtag intel (2026-09-17):"
+        ]
+      }
+    ],
+    "generated_at": "2026-09-18T05:27:15.898Z"
+  },
+  {
+    "date": "2026-09-17",
+    "summary": "Daily digest for 2026-09-17",
+    "scores": "Lead Scout: 1 pts",
+    "jobs": "4 automation job(s) created: payment_recovery, no_show_recovery, nurture",
+    "agent_learnings": [
+      {
+        "agent": "automation",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "client",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "competitor",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "content-calendar",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md).",
+          "- 2026-09-11 (Friday run): Published \"Why Fall Is the Best Time to Start Laser Hair Removal in Edmonton\" to content/blogs/week-5/fall-best-time-laser-hair-removal-edmonton.md. Word count: 1,664. This is the week-5 Friday slot (week-5 Tuesday slot = Lip Filler vs Lip Flip, written previous run). Priority source: keyword-report.md Seasonal section + Week 3 calendar backlog. Skipped all remaining Cluster 2 Botox/injectable topics (Botox for Jaw Slimming, How to Prepare for First Botox) as Oxyderm does not offer injectables. NOTE: Prior writer published two injectable-topic posts (botox-cost-edmonton-2026.md in week-2, lip-filler-vs-lip-flip-edmonton.md in week-5); flag these for Hetisha review before publishing since they reference services Oxyderm doesn't offer. Backlog remaining: Korean Glass Skin (Cluster 3), Brazilian LHR Edmonton (Cluster 1 long-tail), Best Laser Clinic Edmonton 2026 (Cluster 1 long-tail).",
+          "- 2026-09-14: Content angle \"Before/After Results\" marked reinforce: High engagement on these posts",
+          "- 2026-09-14: Content angle \"Generic stock photos\" marked kill: Low engagement vs real clinic photos",
+          "- 2026-09-15 (Tuesday run): Published \"Korean Glass Skin: Can You Get It in Edmonton? (Treatments That Work)\" to content/blogs/week-6/korean-glass-skin-edmonton-treatments.md. Word count: 1,617. Week-6 Tuesday slot. Priority source: keyword-report.md Cluster 3 Recommended Blog Topics + long-tail keyword \"korean glass skin facial edmonton\". All services covered (microneedling, chemical peels, IPL, microdermabrasion, radiofrequency) are confirmed current Oxyderm services. No injectable references. Backlog remaining for Friday run: Brazilian LHR Edmonton (Cluster 1 long-tail, strong candidate), Best Laser Clinic Edmonton 2026 (Cluster 1 long-tail), seasonal: \"Winter Skin Treatment Edmonton\", \"Laser Hair Removal for the Holidays\"."
+        ]
+      },
+      {
+        "agent": "crm-pipeline",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "editor",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "email-sms",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "expense",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "finance",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md).",
+          "- 2026-09-14: Payment request created for Jane Smith: $750 CAD — status: needs_setup",
+          "- 2026-09-14: Payment FAILED for Jane Smith $750 — recovery job created"
+        ]
+      },
+      {
+        "agent": "forms-funnel",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md).",
+          "- 2026-09-14: Funnel lead received: Test Funnel Lead (7801234567) — Laser Hair Removal",
+          "- 2026-09-14: Funnel lead received: hetisha shukla (7802219872) — Laser Hair Removal"
+        ]
+      },
+      {
+        "agent": "image",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "keyword-research",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "marketing",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md).",
+          "- 2026-09-14: Review request queued for Roni Van Manen (sms) — appointment czvinz80xnen9z",
+          "- 2026-09-17: Edmonton market intel (2026-09-16):"
+        ]
+      },
+      {
+        "agent": "planning",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md).",
+          "- 2026-09-11: Blog writer selected \"Why Fall Is the Best Time to Start Laser Hair Removal in Edmonton\" as the week-5 Friday post. Topic sourced from keyword-report.md Seasonal section (\"laser hair removal winter edmonton\") and Week 3 calendar. September timing makes this highly relevant. All Botox/injectable topics from Cluster 2 were skipped because Oxyderm does not currently offer injectables. Week-5 folder already existed (Lip Filler post from Tuesday slot). Saved to: content/blogs/week-5/fall-best-time-laser-hair-removal-edmonton.md. Next unwritten topics: Korean Glass Skin (Cluster 3), Brazilian LHR Edmonton (Cluster 1 long-tail), best laser clinic Edmonton 2026 (Cluster 1 long-tail).",
+          "- 2026-09-15: Blog writer selected \"Korean Glass Skin: Can You Get It in Edmonton? (Treatments That Work)\" as week-6 Tuesday post. Priority source: keyword-report.md Cluster 3 Recommended Blog Topics (\"Korean Glass Skin: Can You Get It in Edmonton?\") and long-tail (\"korean glass skin facial edmonton\"). All services referenced (microneedling, chemical peels, IPL, microdermabrasion, radiofrequency) are confirmed current Oxyderm offerings. Saved to: content/blogs/week-6/korean-glass-skin-edmonton-treatments.md. Backlog remaining: Brazilian LHR Edmonton (Cluster 1 long-tail), Best Laser Clinic Edmonton 2026 (Cluster 1 long-tail), plus seasonal: \"Laser Hair Removal for the Holidays\" (fall/winter window), \"Winter Skin Treatment Edmonton\"."
+        ]
+      },
+      {
+        "agent": "preauth",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "research",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md).",
+          "- 2026-09-14: Observed: blog topics performing well on LHR Edmonton. Will change: prioritize seasonal topics for next 4 weeks.",
+          "- 2026-09-17: === REDDIT ==="
+        ]
+      },
+      {
+        "agent": "sarah",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md).",
+          "- 2026-09-14: Sarah routed a question to this agent: \"hi\" (question_id 12). Run the Oxyderm Brain Poller cron to get the answer, then call /sarah/agent-answer?question_id=12.",
+          "- 2026-09-14: Sarah routed a question to this agent: \"hi\" (question_id 13). Run the Oxyderm Brain Poller cron to get the answer, then call /sarah/agent-answer?question_id=13.",
+          "- 2026-09-14: Sarah routed a question to this agent: \"hello how are you\" (question_id 14). Run the Oxyderm Brain Poller cron to get the answer, then call /sarah/agent-answer?question_id=14.",
+          "- 2026-09-14: Sarah routed a question to this agent: \"hi\" (question_id 15). Run the Oxyderm Brain Poller cron to get the answer, then call /sarah/agent-answer?question_id=15."
+        ]
+      },
+      {
+        "agent": "scheduler",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md).",
+          "- 2026-09-14: Sarah booking FAILED for Jane Smith (laser underarms): \"No service found matching \\\"laser underarms\\\". Ask the client to confirm the exact treatment name.\"",
+          "- 2026-09-14: Sarah booking FAILED for Jane Smith (underarms): [{\"category\":\"AUTHENTICATION_ERROR\",\"code\":\"FORBIDDEN\",\"detail\":\"Merchant subscription does not support write operations.\"}]",
+          "- 2026-09-14: Sarah booking FAILED for Jane Smith (underarms): [{\"category\":\"AUTHENTICATION_ERROR\",\"code\":\"FORBIDDEN\",\"detail\":\"Merchant subscription does not support write operations.\"}]",
+          "- 2026-09-14: Sarah booking FAILED for Jane Smith (underarms): [{\"category\":\"AUTHENTICATION_ERROR\",\"code\":\"FORBIDDEN\",\"detail\":\"Merchant subscription does not support write operations.\"}]"
+        ]
+      },
+      {
+        "agent": "social",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md).",
+          "- 2026-09-10: Loop mtuux38i approved: \"Write 1 Instagram reel about laser hair removal for dark ski\"",
+          "- 2026-09-10: Loop mtuux38i approved: \"Write 1 Instagram reel about laser hair removal for dark ski\"",
+          "- 2026-09-10: Loop mtuux38i approved: \"Write 1 Instagram reel about laser hair removal for dark ski\"",
+          "- 2026-09-10: Loop mtuux38i approved: \"Write 1 Instagram reel about laser hair removal for dark ski\""
+        ]
+      },
+      {
+        "agent": "trending",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "video-script",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "youtube",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      }
+    ],
+    "generated_at": "2026-09-17T05:28:16.266Z"
+  },
+  {
+    "date": "2026-09-16",
+    "summary": "Daily digest for 2026-09-16",
+    "scores": "Lead Scout: 1 pts",
+    "jobs": "4 automation job(s) created: payment_recovery, no_show_recovery, nurture",
+    "agent_learnings": [
+      {
+        "agent": "automation",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "client",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "competitor",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "content-calendar",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md).",
+          "- 2026-09-11 (Friday run): Published \"Why Fall Is the Best Time to Start Laser Hair Removal in Edmonton\" to content/blogs/week-5/fall-best-time-laser-hair-removal-edmonton.md. Word count: 1,664. This is the week-5 Friday slot (week-5 Tuesday slot = Lip Filler vs Lip Flip, written previous run). Priority source: keyword-report.md Seasonal section + Week 3 calendar backlog. Skipped all remaining Cluster 2 Botox/injectable topics (Botox for Jaw Slimming, How to Prepare for First Botox) as Oxyderm does not offer injectables. NOTE: Prior writer published two injectable-topic posts (botox-cost-edmonton-2026.md in week-2, lip-filler-vs-lip-flip-edmonton.md in week-5); flag these for Hetisha review before publishing since they reference services Oxyderm doesn't offer. Backlog remaining: Korean Glass Skin (Cluster 3), Brazilian LHR Edmonton (Cluster 1 long-tail), Best Laser Clinic Edmonton 2026 (Cluster 1 long-tail).",
+          "- 2026-09-14: Content angle \"Before/After Results\" marked reinforce: High engagement on these posts",
+          "- 2026-09-14: Content angle \"Generic stock photos\" marked kill: Low engagement vs real clinic photos",
+          "- 2026-09-15 (Tuesday run): Published \"Korean Glass Skin: Can You Get It in Edmonton? (Treatments That Work)\" to content/blogs/week-6/korean-glass-skin-edmonton-treatments.md. Word count: 1,617. Week-6 Tuesday slot. Priority source: keyword-report.md Cluster 3 Recommended Blog Topics + long-tail keyword \"korean glass skin facial edmonton\". All services covered (microneedling, chemical peels, IPL, microdermabrasion, radiofrequency) are confirmed current Oxyderm services. No injectable references. Backlog remaining for Friday run: Brazilian LHR Edmonton (Cluster 1 long-tail, strong candidate), Best Laser Clinic Edmonton 2026 (Cluster 1 long-tail), seasonal: \"Winter Skin Treatment Edmonton\", \"Laser Hair Removal for the Holidays\"."
+        ]
+      },
+      {
+        "agent": "crm-pipeline",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "editor",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "email-sms",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "expense",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "finance",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md).",
+          "- 2026-09-14: Payment request created for Jane Smith: $750 CAD — status: needs_setup",
+          "- 2026-09-14: Payment FAILED for Jane Smith $750 — recovery job created"
+        ]
+      },
+      {
+        "agent": "forms-funnel",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md).",
+          "- 2026-09-14: Funnel lead received: Test Funnel Lead (7801234567) — Laser Hair Removal",
+          "- 2026-09-14: Funnel lead received: hetisha shukla (7802219872) — Laser Hair Removal"
+        ]
+      },
+      {
+        "agent": "image",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "keyword-research",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "marketing",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md).",
+          "- 2026-09-14: Review request queued for Roni Van Manen (sms) — appointment czvinz80xnen9z"
+        ]
+      },
+      {
+        "agent": "planning",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md).",
+          "- 2026-09-11: Blog writer selected \"Why Fall Is the Best Time to Start Laser Hair Removal in Edmonton\" as the week-5 Friday post. Topic sourced from keyword-report.md Seasonal section (\"laser hair removal winter edmonton\") and Week 3 calendar. September timing makes this highly relevant. All Botox/injectable topics from Cluster 2 were skipped because Oxyderm does not currently offer injectables. Week-5 folder already existed (Lip Filler post from Tuesday slot). Saved to: content/blogs/week-5/fall-best-time-laser-hair-removal-edmonton.md. Next unwritten topics: Korean Glass Skin (Cluster 3), Brazilian LHR Edmonton (Cluster 1 long-tail), best laser clinic Edmonton 2026 (Cluster 1 long-tail).",
+          "- 2026-09-15: Blog writer selected \"Korean Glass Skin: Can You Get It in Edmonton? (Treatments That Work)\" as week-6 Tuesday post. Priority source: keyword-report.md Cluster 3 Recommended Blog Topics (\"Korean Glass Skin: Can You Get It in Edmonton?\") and long-tail (\"korean glass skin facial edmonton\"). All services referenced (microneedling, chemical peels, IPL, microdermabrasion, radiofrequency) are confirmed current Oxyderm offerings. Saved to: content/blogs/week-6/korean-glass-skin-edmonton-treatments.md. Backlog remaining: Brazilian LHR Edmonton (Cluster 1 long-tail), Best Laser Clinic Edmonton 2026 (Cluster 1 long-tail), plus seasonal: \"Laser Hair Removal for the Holidays\" (fall/winter window), \"Winter Skin Treatment Edmonton\"."
+        ]
+      },
+      {
+        "agent": "preauth",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "research",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md).",
+          "- 2026-09-14: Observed: blog topics performing well on LHR Edmonton. Will change: prioritize seasonal topics for next 4 weeks."
+        ]
+      },
+      {
+        "agent": "sarah",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md).",
+          "- 2026-09-14: Sarah routed a question to this agent: \"hi\" (question_id 12). Run the Oxyderm Brain Poller cron to get the answer, then call /sarah/agent-answer?question_id=12.",
+          "- 2026-09-14: Sarah routed a question to this agent: \"hi\" (question_id 13). Run the Oxyderm Brain Poller cron to get the answer, then call /sarah/agent-answer?question_id=13.",
+          "- 2026-09-14: Sarah routed a question to this agent: \"hello how are you\" (question_id 14). Run the Oxyderm Brain Poller cron to get the answer, then call /sarah/agent-answer?question_id=14.",
+          "- 2026-09-14: Sarah routed a question to this agent: \"hi\" (question_id 15). Run the Oxyderm Brain Poller cron to get the answer, then call /sarah/agent-answer?question_id=15."
+        ]
+      },
+      {
+        "agent": "scheduler",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md).",
+          "- 2026-09-14: Sarah booking FAILED for Jane Smith (laser underarms): \"No service found matching \\\"laser underarms\\\". Ask the client to confirm the exact treatment name.\"",
+          "- 2026-09-14: Sarah booking FAILED for Jane Smith (underarms): [{\"category\":\"AUTHENTICATION_ERROR\",\"code\":\"FORBIDDEN\",\"detail\":\"Merchant subscription does not support write operations.\"}]",
+          "- 2026-09-14: Sarah booking FAILED for Jane Smith (underarms): [{\"category\":\"AUTHENTICATION_ERROR\",\"code\":\"FORBIDDEN\",\"detail\":\"Merchant subscription does not support write operations.\"}]",
+          "- 2026-09-14: Sarah booking FAILED for Jane Smith (underarms): [{\"category\":\"AUTHENTICATION_ERROR\",\"code\":\"FORBIDDEN\",\"detail\":\"Merchant subscription does not support write operations.\"}]"
+        ]
+      },
+      {
+        "agent": "social",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md).",
+          "- 2026-09-10: Loop mtuux38i approved: \"Write 1 Instagram reel about laser hair removal for dark ski\"",
+          "- 2026-09-10: Loop mtuux38i approved: \"Write 1 Instagram reel about laser hair removal for dark ski\"",
+          "- 2026-09-10: Loop mtuux38i approved: \"Write 1 Instagram reel about laser hair removal for dark ski\"",
+          "- 2026-09-10: Loop mtuux38i approved: \"Write 1 Instagram reel about laser hair removal for dark ski\""
+        ]
+      },
+      {
+        "agent": "trending",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "video-script",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "youtube",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      }
+    ],
+    "generated_at": "2026-09-16T04:03:57.822Z"
+  },
+  {
+    "date": "2026-09-15",
+    "summary": "Daily digest for 2026-09-15",
+    "scores": "Lead Scout: 1 pts",
+    "jobs": "4 automation job(s) created: payment_recovery, no_show_recovery, nurture",
+    "agent_learnings": [
+      {
+        "agent": "automation",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "client",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "competitor",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "content-calendar",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md).",
+          "- 2026-09-11 (Friday run): Published \"Why Fall Is the Best Time to Start Laser Hair Removal in Edmonton\" to content/blogs/week-5/fall-best-time-laser-hair-removal-edmonton.md. Word count: 1,664. This is the week-5 Friday slot (week-5 Tuesday slot = Lip Filler vs Lip Flip, written previous run). Priority source: keyword-report.md Seasonal section + Week 3 calendar backlog. Skipped all remaining Cluster 2 Botox/injectable topics (Botox for Jaw Slimming, How to Prepare for First Botox) as Oxyderm does not offer injectables. NOTE: Prior writer published two injectable-topic posts (botox-cost-edmonton-2026.md in week-2, lip-filler-vs-lip-flip-edmonton.md in week-5); flag these for Hetisha review before publishing since they reference services Oxyderm doesn't offer. Backlog remaining: Korean Glass Skin (Cluster 3), Brazilian LHR Edmonton (Cluster 1 long-tail), Best Laser Clinic Edmonton 2026 (Cluster 1 long-tail).",
+          "- 2026-09-14: Content angle \"Before/After Results\" marked reinforce: High engagement on these posts",
+          "- 2026-09-14: Content angle \"Generic stock photos\" marked kill: Low engagement vs real clinic photos"
+        ]
+      },
+      {
+        "agent": "crm-pipeline",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "editor",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "email-sms",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "expense",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "finance",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md).",
+          "- 2026-09-14: Payment request created for Jane Smith: $750 CAD — status: needs_setup",
+          "- 2026-09-14: Payment FAILED for Jane Smith $750 — recovery job created"
+        ]
+      },
+      {
+        "agent": "forms-funnel",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md).",
+          "- 2026-09-14: Funnel lead received: Test Funnel Lead (7801234567) — Laser Hair Removal",
+          "- 2026-09-14: Funnel lead received: hetisha shukla (7802219872) — Laser Hair Removal"
+        ]
+      },
+      {
+        "agent": "image",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "keyword-research",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "marketing",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md).",
+          "- 2026-09-14: Review request queued for Roni Van Manen (sms) — appointment czvinz80xnen9z"
+        ]
+      },
+      {
+        "agent": "planning",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md).",
+          "- 2026-09-11: Blog writer selected \"Why Fall Is the Best Time to Start Laser Hair Removal in Edmonton\" as the week-5 Friday post. Topic sourced from keyword-report.md Seasonal section (\"laser hair removal winter edmonton\") and Week 3 calendar. September timing makes this highly relevant. All Botox/injectable topics from Cluster 2 were skipped because Oxyderm does not currently offer injectables. Week-5 folder already existed (Lip Filler post from Tuesday slot). Saved to: content/blogs/week-5/fall-best-time-laser-hair-removal-edmonton.md. Next unwritten topics: Korean Glass Skin (Cluster 3), Brazilian LHR Edmonton (Cluster 1 long-tail), best laser clinic Edmonton 2026 (Cluster 1 long-tail)."
+        ]
+      },
+      {
+        "agent": "preauth",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "research",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md).",
+          "- 2026-09-14: Observed: blog topics performing well on LHR Edmonton. Will change: prioritize seasonal topics for next 4 weeks."
+        ]
+      },
+      {
+        "agent": "sarah",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md).",
+          "- 2026-09-14: Sarah routed a question to this agent: \"hi\" (question_id 12). Run the Oxyderm Brain Poller cron to get the answer, then call /sarah/agent-answer?question_id=12.",
+          "- 2026-09-14: Sarah routed a question to this agent: \"hi\" (question_id 13). Run the Oxyderm Brain Poller cron to get the answer, then call /sarah/agent-answer?question_id=13.",
+          "- 2026-09-14: Sarah routed a question to this agent: \"hello how are you\" (question_id 14). Run the Oxyderm Brain Poller cron to get the answer, then call /sarah/agent-answer?question_id=14.",
+          "- 2026-09-14: Sarah routed a question to this agent: \"hi\" (question_id 15). Run the Oxyderm Brain Poller cron to get the answer, then call /sarah/agent-answer?question_id=15."
+        ]
+      },
+      {
+        "agent": "scheduler",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md).",
+          "- 2026-09-14: Sarah booking FAILED for Jane Smith (laser underarms): \"No service found matching \\\"laser underarms\\\". Ask the client to confirm the exact treatment name.\"",
+          "- 2026-09-14: Sarah booking FAILED for Jane Smith (underarms): [{\"category\":\"AUTHENTICATION_ERROR\",\"code\":\"FORBIDDEN\",\"detail\":\"Merchant subscription does not support write operations.\"}]",
+          "- 2026-09-14: Sarah booking FAILED for Jane Smith (underarms): [{\"category\":\"AUTHENTICATION_ERROR\",\"code\":\"FORBIDDEN\",\"detail\":\"Merchant subscription does not support write operations.\"}]",
+          "- 2026-09-14: Sarah booking FAILED for Jane Smith (underarms): [{\"category\":\"AUTHENTICATION_ERROR\",\"code\":\"FORBIDDEN\",\"detail\":\"Merchant subscription does not support write operations.\"}]"
+        ]
+      },
+      {
+        "agent": "social",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md).",
+          "- 2026-09-10: Loop mtuux38i approved: \"Write 1 Instagram reel about laser hair removal for dark ski\"",
+          "- 2026-09-10: Loop mtuux38i approved: \"Write 1 Instagram reel about laser hair removal for dark ski\"",
+          "- 2026-09-10: Loop mtuux38i approved: \"Write 1 Instagram reel about laser hair removal for dark ski\"",
+          "- 2026-09-10: Loop mtuux38i approved: \"Write 1 Instagram reel about laser hair removal for dark ski\""
+        ]
+      },
+      {
+        "agent": "trending",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "video-script",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "youtube",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      }
+    ],
+    "generated_at": "2026-09-15T03:50:22.751Z"
+  },
+  {
+    "date": "2026-09-14",
+    "summary": "Daily digest for 2026-09-14",
+    "scores": "Lead Scout: 1 pts",
+    "jobs": "3 automation job(s) created: no_show_recovery, nurture",
+    "agent_learnings": [
+      {
+        "agent": "automation",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "client",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "competitor",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "content-calendar",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md).",
+          "- 2026-09-11 (Friday run): Published \"Why Fall Is the Best Time to Start Laser Hair Removal in Edmonton\" to content/blogs/week-5/fall-best-time-laser-hair-removal-edmonton.md. Word count: 1,664. This is the week-5 Friday slot (week-5 Tuesday slot = Lip Filler vs Lip Flip, written previous run). Priority source: keyword-report.md Seasonal section + Week 3 calendar backlog. Skipped all remaining Cluster 2 Botox/injectable topics (Botox for Jaw Slimming, How to Prepare for First Botox) as Oxyderm does not offer injectables. NOTE: Prior writer published two injectable-topic posts (botox-cost-edmonton-2026.md in week-2, lip-filler-vs-lip-flip-edmonton.md in week-5); flag these for Hetisha review before publishing since they reference services Oxyderm doesn't offer. Backlog remaining: Korean Glass Skin (Cluster 3), Brazilian LHR Edmonton (Cluster 1 long-tail), Best Laser Clinic Edmonton 2026 (Cluster 1 long-tail)."
+        ]
+      },
+      {
+        "agent": "crm-pipeline",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "editor",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "email-sms",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "expense",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "finance",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "forms-funnel",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "image",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "keyword-research",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "marketing",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "planning",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md).",
+          "- 2026-09-11: Blog writer selected \"Why Fall Is the Best Time to Start Laser Hair Removal in Edmonton\" as the week-5 Friday post. Topic sourced from keyword-report.md Seasonal section (\"laser hair removal winter edmonton\") and Week 3 calendar. September timing makes this highly relevant. All Botox/injectable topics from Cluster 2 were skipped because Oxyderm does not currently offer injectables. Week-5 folder already existed (Lip Filler post from Tuesday slot). Saved to: content/blogs/week-5/fall-best-time-laser-hair-removal-edmonton.md. Next unwritten topics: Korean Glass Skin (Cluster 3), Brazilian LHR Edmonton (Cluster 1 long-tail), best laser clinic Edmonton 2026 (Cluster 1 long-tail)."
+        ]
+      },
+      {
+        "agent": "preauth",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "research",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "sarah",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md).",
+          "- 2026-09-14: Sarah routed a question to this agent: \"hi\" (question_id 12). Run the Oxyderm Brain Poller cron to get the answer, then call /sarah/agent-answer?question_id=12.",
+          "- 2026-09-14: Sarah routed a question to this agent: \"hi\" (question_id 13). Run the Oxyderm Brain Poller cron to get the answer, then call /sarah/agent-answer?question_id=13.",
+          "- 2026-09-14: Sarah routed a question to this agent: \"hello how are you\" (question_id 14). Run the Oxyderm Brain Poller cron to get the answer, then call /sarah/agent-answer?question_id=14."
+        ]
+      },
+      {
+        "agent": "scheduler",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md).",
+          "- 2026-09-14: Sarah booking FAILED for Jane Smith (laser underarms): \"No service found matching \\\"laser underarms\\\". Ask the client to confirm the exact treatment name.\"",
+          "- 2026-09-14: Sarah booking FAILED for Jane Smith (underarms): [{\"category\":\"AUTHENTICATION_ERROR\",\"code\":\"FORBIDDEN\",\"detail\":\"Merchant subscription does not support write operations.\"}]",
+          "- 2026-09-14: Sarah booking FAILED for Jane Smith (underarms): [{\"category\":\"AUTHENTICATION_ERROR\",\"code\":\"FORBIDDEN\",\"detail\":\"Merchant subscription does not support write operations.\"}]",
+          "- 2026-09-14: Sarah booking FAILED for Jane Smith (underarms): [{\"category\":\"AUTHENTICATION_ERROR\",\"code\":\"FORBIDDEN\",\"detail\":\"Merchant subscription does not support write operations.\"}]"
+        ]
+      },
+      {
+        "agent": "social",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md).",
+          "- 2026-09-10: Loop mtuux38i approved: \"Write 1 Instagram reel about laser hair removal for dark ski\"",
+          "- 2026-09-10: Loop mtuux38i approved: \"Write 1 Instagram reel about laser hair removal for dark ski\"",
+          "- 2026-09-10: Loop mtuux38i approved: \"Write 1 Instagram reel about laser hair removal for dark ski\"",
+          "- 2026-09-10: Loop mtuux38i approved: \"Write 1 Instagram reel about laser hair removal for dark ski\""
+        ]
+      },
+      {
+        "agent": "trending",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "video-script",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      },
+      {
+        "agent": "youtube",
+        "recent": [
+          "- 2026-09-10: Agent trained with full Oxyderm business knowledge from brand files (context.md, offer-output.md, verified-claims.md, ica-output.md, policy.md)."
+        ]
+      }
+    ],
+    "generated_at": "2026-09-14T17:18:12.800Z"
+  }
+]

@@ -1,0 +1,184 @@
+{
+  "past_client_reactivations": [
+    {
+      "contact_id": 1,
+      "name": "Test Lead",
+      "phone": "7805551234",
+      "trigger": "8_WEEK_CYCLE_CHECKIN",
+      "scheduled_send_time": "7:00 PM MT",
+      "sms_body": "Hi Test, it's Hetisha at Oxyderm Laser Clinic. How is your skin feeling since your last laser session? Your hair follicle cycle is at the ideal window for your next treatment to prevent regrowth. Would you like me to hold a spot for you this Thursday or Saturday? Reply YES or book at oxydermlaserclinic.ca",
+      "status": "READY_FOR_7PM_BATCH"
+    },
+    {
+      "contact_id": 2,
+      "name": "Cron Test",
+      "phone": "7801112222",
+      "trigger": "12_WEEK_BOOSTER_CREDIT",
+      "scheduled_send_time": "7:00 PM MT",
+      "sms_body": "Hi Cron, we miss you at Oxyderm! We added a $30 treatment booster credit on your file valid through this month for your next laser or microdermabrasion session. Text back CLAIM to apply it to your appointment this week!",
+      "status": "READY_FOR_7PM_BATCH"
+    },
+    {
+      "contact_id": 10,
+      "name": "Rachel Yesudasan",
+      "phone": "+17806048261",
+      "trigger": "8_WEEK_CYCLE_CHECKIN",
+      "scheduled_send_time": "7:00 PM MT",
+      "sms_body": "Hi Rachel, it's Hetisha at Oxyderm Laser Clinic. How is your skin feeling since your last laser session? Your hair follicle cycle is at the ideal window for your next treatment to prevent regrowth. Would you like me to hold a spot for you this Thursday or Saturday? Reply YES or book at oxydermlaserclinic.ca",
+      "status": "READY_FOR_7PM_BATCH"
+    },
+    {
+      "contact_id": 32,
+      "name": "Jodie  Bakker",
+      "phone": "+15877856866",
+      "trigger": "12_WEEK_BOOSTER_CREDIT",
+      "scheduled_send_time": "7:00 PM MT",
+      "sms_body": "Hi Jodie, we miss you at Oxyderm! We added a $30 treatment booster credit on your file valid through this month for your next laser or microdermabrasion session. Text back CLAIM to apply it to your appointment this week!",
+      "status": "READY_FOR_7PM_BATCH"
+    },
+    {
+      "contact_id": 47,
+      "name": "Chanelle Lebreton",
+      "phone": "+15875968818",
+      "trigger": "8_WEEK_CYCLE_CHECKIN",
+      "scheduled_send_time": "7:00 PM MT",
+      "sms_body": "Hi Chanelle, it's Hetisha at Oxyderm Laser Clinic. How is your skin feeling since your last laser session? Your hair follicle cycle is at the ideal window for your next treatment to prevent regrowth. Would you like me to hold a spot for you this Thursday or Saturday? Reply YES or book at oxydermlaserclinic.ca",
+      "status": "READY_FOR_7PM_BATCH"
+    },
+    {
+      "contact_id": 58,
+      "name": "Sonia Khangura",
+      "phone": "+17802640470",
+      "trigger": "12_WEEK_BOOSTER_CREDIT",
+      "scheduled_send_time": "7:00 PM MT",
+      "sms_body": "Hi Sonia, we miss you at Oxyderm! We added a $30 treatment booster credit on your file valid through this month for your next laser or microdermabrasion session. Text back CLAIM to apply it to your appointment this week!",
+      "status": "READY_FOR_7PM_BATCH"
+    },
+    {
+      "contact_id": 108,
+      "name": "Shaina  Kher",
+      "phone": "780 700 8422",
+      "trigger": "8_WEEK_CYCLE_CHECKIN",
+      "scheduled_send_time": "7:00 PM MT",
+      "sms_body": "Hi Shaina, it's Hetisha at Oxyderm Laser Clinic. How is your skin feeling since your last laser session? Your hair follicle cycle is at the ideal window for your next treatment to prevent regrowth. Would you like me to hold a spot for you this Thursday or Saturday? Reply YES or book at oxydermlaserclinic.ca",
+      "status": "READY_FOR_7PM_BATCH"
+    },
+    {
+      "contact_id": 110,
+      "name": "Janine  Cabrera",
+      "phone": "+17809642521",
+      "trigger": "12_WEEK_BOOSTER_CREDIT",
+      "scheduled_send_time": "7:00 PM MT",
+      "sms_body": "Hi Janine, we miss you at Oxyderm! We added a $30 treatment booster credit on your file valid through this month for your next laser or microdermabrasion session. Text back CLAIM to apply it to your appointment this week!",
+      "status": "READY_FOR_7PM_BATCH"
+    },
+    {
+      "contact_id": 141,
+      "name": "Marriane Murray",
+      "phone": "+17809991237",
+      "trigger": "8_WEEK_CYCLE_CHECKIN",
+      "scheduled_send_time": "7:00 PM MT",
+      "sms_body": "Hi Marriane, it's Hetisha at Oxyderm Laser Clinic. How is your skin feeling since your last laser session? Your hair follicle cycle is at the ideal window for your next treatment to prevent regrowth. Would you like me to hold a spot for you this Thursday or Saturday? Reply YES or book at oxydermlaserclinic.ca",
+      "status": "READY_FOR_7PM_BATCH"
+    },
+    {
+      "contact_id": 146,
+      "name": "Anh Lam",
+      "phone": "+17809355539",
+      "trigger": "12_WEEK_BOOSTER_CREDIT",
+      "scheduled_send_time": "7:00 PM MT",
+      "sms_body": "Hi Anh, we miss you at Oxyderm! We added a $30 treatment booster credit on your file valid through this month for your next laser or microdermabrasion session. Text back CLAIM to apply it to your appointment this week!",
+      "status": "READY_FOR_7PM_BATCH"
+    },
+    {
+      "contact_id": 150,
+      "name": "Hetisha Shukla",
+      "phone": "+1 780-863-7561",
+      "trigger": "8_WEEK_CYCLE_CHECKIN",
+      "scheduled_send_time": "7:00 PM MT",
+      "sms_body": "Hi Hetisha, it's Hetisha at Oxyderm Laser Clinic. How is your skin feeling since your last laser session? Your hair follicle cycle is at the ideal window for your next treatment to prevent regrowth. Would you like me to hold a spot for you this Thursday or Saturday? Reply YES or book at oxydermlaserclinic.ca",
+      "status": "READY_FOR_7PM_BATCH"
+    },
+    {
+      "contact_id": 151,
+      "name": "Het S",
+      "phone": "+17802219872",
+      "trigger": "12_WEEK_BOOSTER_CREDIT",
+      "scheduled_send_time": "7:00 PM MT",
+      "sms_body": "Hi Het, we miss you at Oxyderm! We added a $30 treatment booster credit on your file valid through this month for your next laser or microdermabrasion session. Text back CLAIM to apply it to your appointment this week!",
+      "status": "READY_FOR_7PM_BATCH"
+    },
+    {
+      "contact_id": 154,
+      "name": "Laraib Khaliqdina",
+      "phone": "+17802637520",
+      "trigger": "8_WEEK_CYCLE_CHECKIN",
+      "scheduled_send_time": "7:00 PM MT",
+      "sms_body": "Hi Laraib, it's Hetisha at Oxyderm Laser Clinic. How is your skin feeling since your last laser session? Your hair follicle cycle is at the ideal window for your next treatment to prevent regrowth. Would you like me to hold a spot for you this Thursday or Saturday? Reply YES or book at oxydermlaserclinic.ca",
+      "status": "READY_FOR_7PM_BATCH"
+    },
+    {
+      "contact_id": 155,
+      "name": "Gloria MacMillan",
+      "phone": "780 908 3189",
+      "trigger": "12_WEEK_BOOSTER_CREDIT",
+      "scheduled_send_time": "7:00 PM MT",
+      "sms_body": "Hi Gloria, we miss you at Oxyderm! We added a $30 treatment booster credit on your file valid through this month for your next laser or microdermabrasion session. Text back CLAIM to apply it to your appointment this week!",
+      "status": "READY_FOR_7PM_BATCH"
+    },
+    {
+      "contact_id": 169,
+      "name": "Ashleigh Scott",
+      "phone": "+17802979548",
+      "trigger": "8_WEEK_CYCLE_CHECKIN",
+      "scheduled_send_time": "7:00 PM MT",
+      "sms_body": "Hi Ashleigh, it's Hetisha at Oxyderm Laser Clinic. How is your skin feeling since your last laser session? Your hair follicle cycle is at the ideal window for your next treatment to prevent regrowth. Would you like me to hold a spot for you this Thursday or Saturday? Reply YES or book at oxydermlaserclinic.ca",
+      "status": "READY_FOR_7PM_BATCH"
+    },
+    {
+      "contact_id": 173,
+      "name": "Colleen Newby",
+      "phone": "+17802357339",
+      "trigger": "12_WEEK_BOOSTER_CREDIT",
+      "scheduled_send_time": "7:00 PM MT",
+      "sms_body": "Hi Colleen, we miss you at Oxyderm! We added a $30 treatment booster credit on your file valid through this month for your next laser or microdermabrasion session. Text back CLAIM to apply it to your appointment this week!",
+      "status": "READY_FOR_7PM_BATCH"
+    },
+    {
+      "contact_id": 213,
+      "name": "Simmi Sandhu (Sindhu)",
+      "phone": "+13062030973",
+      "trigger": "8_WEEK_CYCLE_CHECKIN",
+      "scheduled_send_time": "7:00 PM MT",
+      "sms_body": "Hi Simmi, it's Hetisha at Oxyderm Laser Clinic. How is your skin feeling since your last laser session? Your hair follicle cycle is at the ideal window for your next treatment to prevent regrowth. Would you like me to hold a spot for you this Thursday or Saturday? Reply YES or book at oxydermlaserclinic.ca",
+      "status": "READY_FOR_7PM_BATCH"
+    },
+    {
+      "contact_id": 227,
+      "name": "Mazhar Pasha",
+      "phone": "+17806048995",
+      "trigger": "12_WEEK_BOOSTER_CREDIT",
+      "scheduled_send_time": "7:00 PM MT",
+      "sms_body": "Hi Mazhar, we miss you at Oxyderm! We added a $30 treatment booster credit on your file valid through this month for your next laser or microdermabrasion session. Text back CLAIM to apply it to your appointment this week!",
+      "status": "READY_FOR_7PM_BATCH"
+    },
+    {
+      "contact_id": 239,
+      "name": "Teodora Zlateva",
+      "phone": "+17802973242",
+      "trigger": "8_WEEK_CYCLE_CHECKIN",
+      "scheduled_send_time": "7:00 PM MT",
+      "sms_body": "Hi Teodora, it's Hetisha at Oxyderm Laser Clinic. How is your skin feeling since your last laser session? Your hair follicle cycle is at the ideal window for your next treatment to prevent regrowth. Would you like me to hold a spot for you this Thursday or Saturday? Reply YES or book at oxydermlaserclinic.ca",
+      "status": "READY_FOR_7PM_BATCH"
+    },
+    {
+      "contact_id": 243,
+      "name": "Kairan Wang",
+      "phone": "+17807007823",
+      "trigger": "12_WEEK_BOOSTER_CREDIT",
+      "scheduled_send_time": "7:00 PM MT",
+      "sms_body": "Hi Kairan, we miss you at Oxyderm! We added a $30 treatment booster credit on your file valid through this month for your next laser or microdermabrasion session. Text back CLAIM to apply it to your appointment this week!",
+      "status": "READY_FOR_7PM_BATCH"
+    }
+  ]
+}

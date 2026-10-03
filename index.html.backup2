@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Oxyderm</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+  --bg:#00172D;--card:#001f3d;--card2:#002448;--border:#1a3a5c;
+  --fg:#f0f4f8;--muted:#7a9ab8;--gold:#c9a96e;--green:#2ecc71;
+  --yellow:#f39c12;--red:#e74c3c;--blue:#3498db;
+}
+html,body{height:100%;background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:15px}
+
+/* AUTH */
+.auth{position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:24px}
+.auth-box{width:100%;max-width:320px}
+.auth-logo{font-size:28px;font-weight:800;text-align:center;margin-bottom:32px;letter-spacing:-0.5px}
+.auth-logo span{color:var(--gold)}
+.auth input{width:100%;padding:14px;margin-bottom:12px;border-radius:10px;border:1px solid var(--border);background:var(--card2);color:var(--fg);font-size:16px}
+.auth input:focus{outline:none;border-color:var(--gold)}
+.auth button{width:100%;padding:14px;border-radius:10px;border:none;background:var(--gold);color:#000;font-size:16px;font-weight:700;cursor:pointer}
+.auth-err{color:var(--red);font-size:13px;text-align:center;margin-top:8px;display:none}
+
+/* HEADER */
+.hdr{background:var(--card);border-bottom:2px solid var(--gold);padding:14px 16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.hdr-logo{font-size:20px;font-weight:800;letter-spacing:-0.5px}
+.hdr-logo span{color:var(--gold)}
+.hdr-date{font-size:12px;color:var(--muted);margin-top:2px}
+
+/* TABS */
+.tabs{display:flex;background:var(--card);border-bottom:1px solid var(--border);position:sticky;top:57px;z-index:90;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:1;min-width:60px;padding:12px 6px;font-size:12px;font-weight:700;color:var(--muted);background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;text-align:center;white-space:nowrap;text-transform:uppercase;letter-spacing:.4px}
+.tab.active{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* PANELS */
+.pnl{display:none;padding:16px;min-height:calc(100vh - 120px)}
+.pnl.active{display:block}
+
+/* CARDS */
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:10px}
+.card-row{display:flex;align-items:flex-start;gap:12px}
+.card-time{font-size:22px;font-weight:800;color:var(--gold);min-width:60px;line-height:1}
+.card-ampm{font-size:11px;color:var(--muted);font-weight:600}
+.card-info{flex:1}
+.card-name{font-size:15px;font-weight:700;margin-bottom:3px}
+.card-service{font-size:13px;color:var(--muted)}
+.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;margin-top:6px}
+.badge-green{background:rgba(46,204,113,.15);color:var(--green)}
+.badge-yellow{background:rgba(243,156,18,.15);color:var(--yellow)}
+.badge-red{background:rgba(231,76,60,.15);color:var(--red)}
+.badge-blue{background:rgba(52,152,219,.15);color:var(--blue)}
+.badge-muted{background:rgba(122,154,184,.1);color:var(--muted)}
+
+/* SECTION LABEL */
+.sec-label{font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.6px;margin:18px 0 10px}
+
+/* EMPTY STATE */
+.empty{color:var(--muted);font-size:14px;padding:40px;text-align:center}
+
+/* BUTTONS */
+.btn{padding:10px 16px;border-radius:10px;border:1px solid var(--border);background:var(--card2);color:var(--fg);font-size:13px;font-weight:600;cursor:pointer}
+.btn-gold{background:var(--gold);border-color:var(--gold);color:#000}
+.btn-sm{padding:7px 12px;font-size:12px}
+.btn-block{width:100%;display:block;text-align:center}
+.btn-outline{background:transparent;border-color:var(--gold);color:var(--gold)}
+
+/* TODAY TAB */
+.today-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.today-count{font-size:13px;color:var(--muted)}
+.appt-actions{display:flex;gap:8px;margin-top:10px}
+
+/* SARAH / CHAT TAB */
+.chat-wrap{display:flex;flex-direction:column;height:calc(100vh - 180px)}
+.chat-msgs{flex:1;overflow-y:auto;padding:0 0 12px}
+.chat-msg{margin-bottom:12px;display:flex;flex-direction:column}
+.chat-msg.user{align-items:flex-end}
+.chat-msg.sarah{align-items:flex-start}
+.bubble{padding:11px 14px;border-radius:16px;max-width:85%;font-size:14px;line-height:1.55}
+.bubble-user{background:var(--gold);color:#000;border-bottom-right-radius:4px}
+.bubble-sarah{background:var(--card);border:1px solid var(--border);border-bottom-left-radius:4px}
+.bubble-who{font-size:11px;color:var(--muted);margin-bottom:4px;font-weight:600}
+.chat-input-row{display:flex;gap:8px;align-items:center;padding-top:12px;border-top:1px solid var(--border)}
+.chat-input{flex:1;padding:12px 14px;border-radius:10px;border:1px solid var(--border);background:var(--card2);color:var(--fg);font-size:15px}
+.chat-input:focus{outline:none;border-color:var(--gold)}
+.chat-send{padding:12px 16px;border-radius:10px;border:none;background:var(--gold);color:#000;font-weight:700;font-size:15px;cursor:pointer}
+.quick-btns{display:flex;gap:6px;overflow-x:auto;padding:10px 0;scrollbar-width:none}
+.quick-btns::-webkit-scrollbar{display:none}
+.quick-btn{padding:7px 12px;border-radius:20px;border:1px solid var(--border);background:var(--card2);color:var(--muted);font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;flex-shrink:0}
+.quick-btn:hover{border-color:var(--gold);color:var(--gold)}
+.sarah-typing{color:var(--muted);font-size:13px;padding:8px 0;display:none}
+
+/* POST TAB */
+.post-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+@media(min-width:600px){.post-grid{grid-template-columns:repeat(3,1fr)}}
+.post-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer}
+.post-thumb{width:100%;height:110px;object-fit:cover;background:var(--card2);display:block}
+.post-thumb-placeholder{width:100%;height:110px;display:flex;align-items:center;justify-content:center;font-size:28px;background:linear-gradient(135deg,var(--card2),#003060)}
+.post-body{padding:10px}
+.post-platform{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:4px}
+.post-caption{font-size:12px;color:var(--fg);line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.post-status{margin-top:6px}
+
+/* PLATFORM ICONS */
+.platform-meta{color:#1877f2}
+.platform-tiktok{color:#ff0050}
+.platform-linkedin{color:#0a66c2}
+.platform-youtube{color:#ff0000}
+.platform-gbp{color:#34a853}
+
+/* NEW POST MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,20,.85);z-index:500;display:none;align-items:flex-end;justify-content:center}
+.modal-overlay.open{display:flex}
+.modal{background:var(--card);border-radius:20px 20px 0 0;padding:20px;width:100%;max-width:600px;max-height:90vh;overflow-y:auto}
+.modal-title{font-size:17px;font-weight:800;margin-bottom:16px}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:12px;color:var(--muted);font-weight:700;text-transform:uppercase;margin-bottom:6px}
+.field input,.field textarea,.field select{width:100%;padding:11px;border-radius:10px;border:1px solid var(--border);background:var(--card2);color:var(--fg);font-size:14px}
+.field textarea{min-height:90px;resize:vertical}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--gold)}
+.platform-checks{display:flex;flex-wrap:wrap;gap:8px}
+.platform-check{display:flex;align-items:center;gap:6px;padding:8px 12px;border-radius:8px;border:1px solid var(--border);cursor:pointer;font-size:13px;font-weight:600}
+.platform-check input{width:16px;height:16px;accent-color:var(--gold)}
+.platform-check.checked{border-color:var(--gold);background:rgba(201,169,110,.08)}
+.thumb-preview{width:100%;height:160px;object-fit:cover;border-radius:10px;margin-top:8px;display:none}
+.modal-actions{display:flex;gap:10px;margin-top:6px}
+
+/* LEADS TAB */
+.lead-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:10px}
+.lead-name{font-size:15px;font-weight:700}
+.lead-phone{font-size:13px;color:var(--muted);margin-top:2px}
+.lead-service{font-size:13px;color:var(--gold);margin-top:4px}
+.lead-footer{display:flex;align-items:center;justify-content:space-between;margin-top:10px}
+.lead-date{font-size:11px;color:var(--muted)}
+.lead-status{padding:5px 10px;border-radius:8px;border:1px solid var(--border);background:var(--card2);color:var(--fg);font-size:12px;font-weight:600}
+
+/* CLIENTS TAB */
+.client-search{display:flex;gap:8px;margin-bottom:16px}
+.client-search input{flex:1;padding:12px;border-radius:10px;border:1px solid var(--border);background:var(--card2);color:var(--fg);font-size:15px}
+.client-search input:focus{outline:none;border-color:var(--gold)}
+.client-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px}
+.client-name{font-size:18px;font-weight:800}
+.client-phone{font-size:14px;color:var(--muted);margin-top:3px}
+.client-row{display:flex;justify-content:space-between;margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
+.client-stat{text-align:center}
+.client-stat-val{font-size:20px;font-weight:800;color:var(--gold)}
+.client-stat-lbl{font-size:11px;color:var(--muted);margin-top:2px}
+.client-treatments{margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
+.client-treat-lbl{font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;margin-bottom:6px}
+.client-treat-item{font-size:13px;color:var(--fg);padding:4px 0}
+.client-actions{display:flex;gap:8px;margin-top:14px}
+
+/* REFRESH SPINNER */
+.spin{animation:spin .8s linear infinite;display:inline-block}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* FOOTER */
+.footer{text-align:center;padding:24px;font-size:11px;color:var(--border)}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--green);color:#000;padding:10px 20px;border-radius:20px;font-weight:700;font-size:13px;z-index:9000;opacity:0;transition:opacity .3s;pointer-events:none}
+.toast.show{opacity:1}
+</style>
+</head>
+<body>
+
+<!-- AUTH -->
+<div class="auth" id="auth">
+  <div class="auth-box">
+    <div class="auth-logo">Oxy<span>derm</span></div>
+    <input type="password" id="auth-pw" placeholder="Password" onkeydown="if(event.key==='Enter')doAuth()">
+    <button onclick="doAuth()">Enter</button>
+    <div class="auth-err" id="auth-err">Incorrect password</div>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app" style="display:none">
+
+<div class="hdr">
+  <div>
+    <div class="hdr-logo">Oxy<span>derm</span></div>
+    <div class="hdr-date" id="hdr-date"></div>
+  </div>
+  <button class="btn btn-sm" onclick="refreshSchedule()" id="refresh-btn">Refresh</button>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="goTab('today',this)">Today</button>
+  <button class="tab" onclick="goTab('sarah',this)">Sarah</button>
+  <button class="tab" onclick="goTab('post',this)">Post</button>
+  <button class="tab" onclick="goTab('leads',this)">Leads</button>
+  <button class="tab" onclick="goTab('clients',this)">Clients</button>
+</div>
+
+<!-- TODAY -->
+<div class="pnl active" id="pnl-today">
+  <div class="today-header">
+    <div class="sec-label" style="margin:0" id="today-label">Loading schedule...</div>
+    <span class="today-count" id="today-count"></span>
+  </div>
+  <div id="schedule-list"><div class="empty">Loading appointments...</div></div>
+</div>
+
+<!-- SARAH -->
+<div class="pnl" id="pnl-sarah">
+  <div class="chat-wrap">
+    <div class="quick-btns">
+      <button class="quick-btn" onclick="sarahSend('Who is next?')">Who is next?</button>
+      <button class="quick-btn" onclick="sarahSend('Show me today\'s appointments')">Today's list</button>
+      <button class="quick-btn" onclick="promptBook()">Book a client</button>
+      <button class="quick-btn" onclick="promptLink()">Get booking link</button>
+      <button class="quick-btn" onclick="promptCancel()">Cancel booking</button>
+      <button class="quick-btn" onclick="promptFind()">Look up client</button>
+    </div>
+    <div class="chat-msgs" id="sarah-msgs">
+      <div class="chat-msg sarah">
+        <div class="bubble-who">Sarah</div>
+        <div class="bubble bubble-sarah">Hi Hetisha. I am ready to help. You can ask me to book appointments, look up clients, get a booking link, or answer questions about today's schedule.</div>
+      </div>
+    </div>
+    <div class="sarah-typing" id="sarah-typing">Sarah is thinking...</div>
+    <div class="chat-input-row">
+      <input class="chat-input" id="sarah-input" placeholder="Ask Sarah anything..." onkeydown="if(event.key==='Enter')sarahSend()">
+      <button class="chat-send" onclick="sarahSend()">Send</button>
+    </div>
+  </div>
+</div>
+
+<!-- POST -->
+<div class="pnl" id="pnl-post">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+    <div class="sec-label" style="margin:0">Content Queue</div>
+    <button class="btn btn-gold btn-sm" onclick="openNewPost()">+ New Post</button>
+  </div>
+  <div class="post-grid" id="post-grid"></div>
+  <div id="post-empty" class="empty" style="display:none">No posts yet. Tap New Post to create one.</div>
+</div>
+
+<!-- LEADS -->
+<div class="pnl" id="pnl-leads">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+    <div class="sec-label" style="margin:0">Leads</div>
+    <button class="btn btn-gold btn-sm" onclick="openNewLead()">+ Add Lead</button>
+  </div>
+  <div id="leads-list"></div>
+</div>
+
+<!-- CLIENTS -->
+<div class="pnl" id="pnl-clients">
+  <div class="client-search">
+    <input type="tel" id="client-phone" placeholder="Search by phone number" oninput="clientSearch(this.value)">
+  </div>
+  <div id="client-result"></div>
+  <div class="empty" id="client-hint">Enter a phone number to look up a client.</div>
+</div>
+
+<!-- NEW POST MODAL -->
+<div class="modal-overlay" id="post-modal">
+  <div class="modal">
+    <div class="modal-title">New Post</div>
+    <div class="field">
+      <label>Platforms</label>
+      <div class="platform-checks" id="platform-checks">
+        <label class="platform-check" onclick="togglePlatform(this)"><input type="checkbox" value="meta"> <span class="platform-meta">Meta (IG + FB)</span></label>
+        <label class="platform-check" onclick="togglePlatform(this)"><input type="checkbox" value="tiktok"> <span class="platform-tiktok">TikTok</span></label>
+        <label class="platform-check" onclick="togglePlatform(this)"><input type="checkbox" value="linkedin"> <span class="platform-linkedin">LinkedIn</span></label>
+        <label class="platform-check" onclick="togglePlatform(this)"><input type="checkbox" value="youtube"> <span class="platform-youtube">YouTube</span></label>
+        <label class="platform-check" onclick="togglePlatform(this)"><input type="checkbox" value="gbp"> <span class="platform-gbp">Google Business</span></label>
+      </div>
+    </div>
+    <div class="field">
+      <label>Caption</label>
+      <textarea id="post-caption" placeholder="Write your caption here..."></textarea>
+    </div>
+    <div class="field">
+      <label>Media URL (image or video)</label>
+      <input type="url" id="post-media" placeholder="https://..." oninput="previewMedia(this.value)">
+      <img id="post-thumb-preview" class="thumb-preview" alt="">
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-sm" onclick="closeNewPost()" style="flex:1">Cancel</button>
+      <button class="btn btn-gold btn-sm" onclick="submitPost()" style="flex:2">Post Now</button>
+    </div>
+  </div>
+</div>
+
+<!-- NEW LEAD MODAL -->
+<div class="modal-overlay" id="lead-modal">
+  <div class="modal">
+    <div class="modal-title">Add Lead</div>
+    <div class="field"><label>Name</label><input id="lead-name" placeholder="Full name"></div>
+    <div class="field"><label>Phone</label><input id="lead-phone" type="tel" placeholder="780-555-0000"></div>
+    <div class="field"><label>Service Interest</label>
+      <select id="lead-service">
+        <option>Laser Hair Removal</option>
+        <option>Microneedling</option>
+        <option>Full Body LHR</option>
+        <option>Brazilian LHR</option>
+        <option>Underarm LHR</option>
+        <option>Facial LHR</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="field"><label>Notes</label><textarea id="lead-notes" placeholder="How did they hear about us, any questions, etc."></textarea></div>
+    <div class="modal-actions">
+      <button class="btn btn-sm" onclick="closeNewLead()" style="flex:1">Cancel</button>
+      <button class="btn btn-gold btn-sm" onclick="submitLead()" style="flex:2">Save Lead</button>
+    </div>
+  </div>
+</div>
+
+<div class="footer">Built with Agency OS</div>
+<div class="toast" id="toast"></div>
+
+</div><!-- /app -->
+
+<script>
+var ENGINE_BASE = 'http://localhost:4790';
+var SARAH_WORKER = 'https://agency-os-engine.dev-agencyos.workers.dev/api/oxyderm/sarah';
+var PUBLISH_WEBHOOK = 'https://automation.oxydermlaserclinic.ca/webhook/oxyderm-publish';
+var PUBLISH_AUTH = 'Basic ' + btoa('devang:pzPZ61cRzGeRblzQv9Xb');
+
+// ---- AUTH ----
+function doAuth() {
+  var pw = document.getElementById('auth-pw').value;
+  if (pw === 'hetisha') {
+    document.getElementById('auth').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    init();
+  } else {
+    document.getElementById('auth-err').style.display = 'block';
+  }
+}
+
+// ---- TABS ----
+function goTab(id, el) {
+  document.querySelectorAll('.pnl').forEach(function(p){ p.classList.remove('active'); });
+  document.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('active'); });
+  document.getElementById('pnl-' + id).classList.add('active');
+  if (el) el.classList.add('active');
+  if (id === 'post') renderPosts();
+  if (id === 'leads') renderLeads();
+}
+
+// ---- INIT ----
+function init() {
+  var now = new Date();
+  var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  document.getElementById('hdr-date').textContent = days[now.getDay()] + ', ' + months[now.getMonth()] + ' ' + now.getDate();
+  loadSchedule();
+  renderPosts();
+  renderLeads();
+}
+
+// ---- SCHEDULE ----
+function loadSchedule() {
+  fetch(ENGINE_BASE + '/status', {signal: AbortSignal.timeout(8000)})
+    .then(function(r){ return r.json(); })
+    .then(function(d){ renderSchedule(d); })
+    .catch(function(){ renderSchedule(null); });
+}
+
+function refreshSchedule() {
+  var btn = document.getElementById('refresh-btn');
+  btn.textContent = 'Refreshing...';
+  loadSchedule();
+  setTimeout(function(){ btn.textContent = 'Refresh'; }, 2000);
+}
+
+function renderSchedule(data) {
+  var list = document.getElementById('schedule-list');
+  var label = document.getElementById('today-label');
+  var count = document.getElementById('today-count');
+
+  var appts = [];
+  if (data && data.schedule && Array.isArray(data.schedule)) {
+    appts = data.schedule;
+  } else if (data && data.appointments && Array.isArray(data.appointments)) {
+    appts = data.appointments;
+  }
+
+  // Try local schedule.json as fallback
+  if (!appts.length) {
+    fetch('schedule.json', {signal: AbortSignal.timeout(4000)})
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        var found = d.appointments || d.schedule || d || [];
+        if (Array.isArray(found)) renderAppts(found);
+        else renderAppts([]);
+      })
+      .catch(function(){ renderAppts([]); });
+    return;
+  }
+  renderAppts(appts);
+}
+
+function renderAppts(appts) {
+  var list = document.getElementById('schedule-list');
+  var label = document.getElementById('today-label');
+  var count = document.getElementById('today-count');
+
+  var confirmed = appts.filter(function(a){ return (a.status || '').toLowerCase() !== 'cancelled'; });
+  label.textContent = "Today's Appointments";
+  count.textContent = confirmed.length + ' booked';
+
+  if (!appts.length) {
+    list.innerHTML = '<div class="empty">No appointments today. Enjoy the quiet!</div>';
+    return;
+  }
+
+  list.innerHTML = appts.map(function(a) {
+    var timeStr = formatTime(a.start_at || a.startAt || a.time || '');
+    var status = (a.status || 'Confirmed').toLowerCase();
+    var badgeClass = status === 'cancelled' ? 'badge-red' : status === 'no-show' ? 'badge-yellow' : 'badge-green';
+    var badgeText = a.status || 'Confirmed';
+    var service = a.service_name || a.serviceName || a.service || 'Appointment';
+    var name = a.customer_name || a.customerName || a.name || 'Client';
+    var phone = a.customer_phone || a.customerPhone || a.phone || '';
+    var parts = timeStr.split(' ');
+    return '<div class="card">' +
+      '<div class="card-row">' +
+        '<div class="card-time">' + (parts[0]||timeStr) + '<div class="card-ampm">' + (parts[1]||'') + '</div></div>' +
+        '<div class="card-info">' +
+          '<div class="card-name">' + name + '</div>' +
+          '<div class="card-service">' + service + (phone ? ' &bull; ' + phone : '') + '</div>' +
+          '<span class="badge ' + badgeClass + '">' + badgeText + '</span>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+}
+
+function formatTime(raw) {
+  if (!raw) return '';
+  try {
+    var d = new Date(raw);
+    if (isNaN(d)) return raw;
+    var h = d.getHours(), m = d.getMinutes();
+    var ampm = h >= 12 ? 'PM' : 'AM';
+    h = h % 12 || 12;
+    return h + ':' + (m < 10 ? '0' : '') + m + ' ' + ampm;
+  } catch(e){ return raw; }
+}
+
+// ---- SARAH CHAT ----
+function sarahFetch(path, opts) {
+  return fetch(SARAH_WORKER + path, Object.assign({}, opts, {signal: AbortSignal.timeout(8000)}))
+    .then(function(r) {
+      return r.clone().json().then(function(j) {
+        if (!j || j.ok === false) throw new Error('worker-error');
+        return r;
+      }).catch(function() { throw new Error('worker-error'); });
+    })
+    .catch(function() {
+      return fetch(ENGINE_BASE + '/sarah' + path, opts);
+    });
+}
+
+function sarahSend(msg) {
+  var input = document.getElementById('sarah-input');
+  var text = msg || input.value.trim();
+  if (!text) return;
+  input.value = '';
+  addBubble('user', text);
+  showTyping(true);
+  routeSarah(text);
+}
+
+function addBubble(who, text) {
+  var msgs = document.getElementById('sarah-msgs');
+  var div = document.createElement('div');
+  div.className = 'chat-msg ' + who;
+  div.innerHTML = '<div class="bubble-who">' + (who === 'user' ? 'You' : 'Sarah') + '</div>' +
+    '<div class="bubble bubble-' + who + '">' + text + '</div>';
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function showTyping(show) {
+  document.getElementById('sarah-typing').style.display = show ? 'block' : 'none';
+}
+
+function routeSarah(q) {
+  var ql = q.toLowerCase();
+
+  // Book intent
+  var bookMatch = q.match(/book\s+(.+?)\s+(\d[\d\-\s()]+)\s+(.+?)\s+(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec|\d+\/\d+)/i);
+  if (bookMatch || /book\b/.test(ql)) {
+    if (bookMatch) {
+      doBook(bookMatch[1].trim(), bookMatch[2].replace(/\D/g,''), bookMatch[3].trim(), q);
+    } else {
+      showTyping(false);
+      addBubble('sarah', 'To book an appointment, say: "Book [name] [phone] [service] [date time]". Example: Book Jane Smith 7805551234 laser underarms Sept 20 2pm');
+    }
+    return;
+  }
+
+  // Cancel intent
+  if (/cancel/.test(ql)) {
+    var phoneMatch = q.match(/\d{10}/);
+    if (phoneMatch) {
+      doCancel(phoneMatch[0]);
+    } else {
+      showTyping(false);
+      addBubble('sarah', 'To cancel, say: "Cancel booking for [phone number]". Example: Cancel booking for 7805551234');
+    }
+    return;
+  }
+
+  // Booking link
+  if (/link|booking link/.test(ql)) {
+    var svc = '';
+    if (/underarm/.test(ql)) svc = 'underarms';
+    else if (/brazilian|bikini/.test(ql)) svc = 'brazilian';
+    else if (/leg/.test(ql)) svc = 'legs';
+    else if (/facial|face/.test(ql)) svc = 'facial';
+    else if (/full body|full-body/.test(ql)) svc = 'full-body';
+    doLink(svc);
+    return;
+  }
+
+  // Find / look up client
+  if (/find|look up|lookup|search|who is|client/.test(ql)) {
+    var phoneMatch = q.match(/\d{10}/);
+    if (phoneMatch) {
+      doFind(phoneMatch[0]);
+    } else {
+      showTyping(false);
+      addBubble('sarah', 'To look up a client, say: "Find [phone number]". Example: Find 7805551234');
+    }
+    return;
+  }
+
+  // General question -> /sarah-ask (synchronous, uses hermes -z on Mac engine)
+  // Try Worker /sarah/chat first, fall back to local /sarah-ask
+  var workerChatUrl = SARAH_WORKER + '/chat';
+  fetch(workerChatUrl, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({message: q}),
+    signal: AbortSignal.timeout(8000)
+  })
+  .then(function(r){ return r.json(); })
+  .then(function(d){
+    if (!d || d.ok === false) throw new Error('worker-no-answer');
+    var reply = (d.turn && d.turn.reply) || d.reply || d.answer || '';
+    if (!reply) throw new Error('worker-empty-reply');
+    showTyping(false);
+    addBubble('sarah', reply);
+  })
+  .catch(function(){
+    // Fall back to local engine synchronous /sarah-ask
+    fetch(ENGINE_BASE + '/sarah-ask', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({agent: 'sarah', question: q}),
+      signal: AbortSignal.timeout(30000)
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      showTyping(false);
+      addBubble('sarah', d.answer || d.reply || 'I was not able to get an answer. Please try again.');
+    })
+    .catch(function(){
+      showTyping(false);
+      addBubble('sarah', 'I could not reach the system. Make sure the Mac is on and try again.');
+    });
+  });
+}
+
+function doBook(name, phone, service, raw) {
+  // Parse date/time from raw string - ask engine
+  sarahFetch('/ask-agent', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({agent: 'sarah', question: 'Book appointment: ' + raw})
+  })
+  .then(function(r){ return r.json(); })
+  .then(function(d){
+    showTyping(false);
+    addBubble('sarah', d.answer || d.reply || 'Booking request sent. Check Square for confirmation.');
+  })
+  .catch(function(){
+    showTyping(false);
+    addBubble('sarah', 'Could not reach booking system. Is the Mac engine running?');
+  });
+}
+
+function doCancel(phone) {
+  sarahFetch('/find-bookings', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({phone: phone})
+  })
+  .then(function(r){ return r.json(); })
+  .then(function(d){
+    showTyping(false);
+    var bookings = d.bookings || d.appointments || [];
+    if (!bookings.length) {
+      addBubble('sarah', 'No upcoming bookings found for ' + phone);
+      return;
+    }
+    var b = bookings[0];
+    addBubble('sarah', 'Found: ' + (b.customer_name || 'Client') + ' on ' + formatTime(b.start_at || b.startAt) + ' for ' + (b.service_name || 'appointment') + '. Cancelling...');
+    return sarahFetch('/cancel', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({bookingId: b.id, reason: 'Cancelled via dashboard'})
+    });
+  })
+  .then(function(r){ if (r) { return r.json(); } })
+  .then(function(d){ if (d) addBubble('sarah', 'Booking cancelled.'); })
+  .catch(function(){
+    showTyping(false);
+    addBubble('sarah', 'Could not reach booking system. Is the Mac engine running?');
+  });
+}
+
+function doLink(svc) {
+  var path = '/link?link_type=booking' + (svc ? '&service=' + encodeURIComponent(svc) : '') + '&source=dashboard';
+  sarahFetch(path)
+  .then(function(r){ return r.json(); })
+  .then(function(d){
+    showTyping(false);
+    var url = d.url || d.link || d.booking_url || '';
+    if (url) {
+      addBubble('sarah', 'Here is the booking link' + (svc ? ' for ' + svc : '') + ': <a href="' + url + '" target="_blank" style="color:var(--gold)">' + url + '</a>');
+    } else {
+      addBubble('sarah', 'Got it: ' + JSON.stringify(d));
+    }
+  })
+  .catch(function(){
+    showTyping(false);
+    addBubble('sarah', 'Could not get booking link. Is the Mac engine running?');
+  });
+}
+
+function doFind(phone) {
+  sarahFetch('/customer-lookup?phone=' + encodeURIComponent(phone))
+  .then(function(r){ return r.json(); })
+  .then(function(d){
+    showTyping(false);
+    if (!d || !d.name) {
+      addBubble('sarah', 'No client found for ' + phone + '. They may not be in the system yet.');
+      return;
+    }
+    var info = d.name + ' (' + phone + ')';
+    if (d.treatments && d.treatments.length) info += '. Treatments: ' + d.treatments.join(', ');
+    if (d.last_visit) info += '. Last visit: ' + d.last_visit;
+    addBubble('sarah', info);
+  })
+  .catch(function(){
+    showTyping(false);
+    addBubble('sarah', 'Could not reach client database. Is the Mac engine running?');
+  });
+}
+
+function promptBook() {
+  document.getElementById('sarah-input').value = 'Book ';
+  document.getElementById('sarah-input').focus();
+}
+function promptLink() { sarahSend('Get booking link'); }
+function promptCancel() {
+  document.getElementById('sarah-input').value = 'Cancel booking for ';
+  document.getElementById('sarah-input').focus();
+}
+function promptFind() {
+  document.getElementById('sarah-input').value = 'Find ';
+  document.getElementById('sarah-input').focus();
+}
+
+// ---- POSTS ----
+var PLATFORM_LABELS = {meta:'Meta',tiktok:'TikTok',linkedin:'LinkedIn',youtube:'YouTube',gbp:'Google Business'};
+var PLATFORM_COLORS = {meta:'#1877f2',tiktok:'#ff0050',linkedin:'#0a66c2',youtube:'#ff0000',gbp:'#34a853'};
+
+function getPosts() {
+  try { return JSON.parse(localStorage.getItem('ox-posts') || '[]'); } catch(e){ return []; }
+}
+function savePosts(posts) { localStorage.setItem('ox-posts', JSON.stringify(posts)); }
+
+function renderPosts() {
+  // Load from server file first, merge with localStorage additions
+  fetch('data/posts.json', {signal: AbortSignal.timeout(5000)})
+    .then(function(r){ return r.json(); })
+    .then(function(serverPosts) {
+      var local = getPosts();
+      // Local posts not in server list (user-added) go on top
+      var serverIds = serverPosts.map(function(p){ return p.id; });
+      var localOnly = local.filter(function(p){ return !serverIds.includes(p.id); });
+      var merged = localOnly.concat(serverPosts);
+      renderPostCards(merged);
+    })
+    .catch(function(){
+      renderPostCards(getPosts());
+    });
+}
+
+function renderPostCards(posts) {
+  var grid = document.getElementById('post-grid');
+  var empty = document.getElementById('post-empty');
+  if (!posts.length) {
+    grid.innerHTML = '';
+    empty.style.display = 'block';
+    return;
+  }
+  empty.style.display = 'none';
+  grid.innerHTML = posts.map(function(p, i) {
+    var platforms = (p.platforms || []).join(', ');
+    var color = PLATFORM_COLORS[(p.platforms||[])[0]] || '#c9a96e';
+    var thumb = p.media_url ? '<img class="post-thumb" src="' + p.media_url + '" onerror="this.style.display=\'none\'">' :
+      '<div class="post-thumb-placeholder" style="background:linear-gradient(135deg,#001f3d,' + color + '33)"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="' + color + '" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>';
+    var statusClass = p.status === 'posted' ? 'badge-green' : p.status === 'failed' ? 'badge-red' : 'badge-blue';
+    var statusText = p.status || 'queued';
+    return '<div class="post-card" onclick="viewPost(' + i + ')">' +
+      thumb +
+      '<div class="post-body">' +
+        '<div class="post-platform" style="color:' + color + '">' + platforms + '</div>' +
+        '<div class="post-caption">' + (p.caption || '') + '</div>' +
+        (p.scheduled ? '<div style="font-size:11px;color:var(--muted);margin-top:4px">' + p.scheduled + '</div>' : '') +
+        '<div class="post-status"><span class="badge ' + statusClass + '">' + statusText + '</span></div>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+}
+
+function viewPost(i) {
+  var p = getPosts()[i];
+  if (!p) return;
+  alert((p.platforms||[]).join(', ') + '\n\n' + p.caption + (p.media_url ? '\n\nMedia: ' + p.media_url : '') + '\n\nStatus: ' + (p.status || 'queued'));
+}
+
+function openNewPost() {
+  document.getElementById('post-modal').classList.add('open');
+}
+function closeNewPost() {
+  document.getElementById('post-modal').classList.remove('open');
+  document.getElementById('post-caption').value = '';
+  document.getElementById('post-media').value = '';
+  document.getElementById('post-thumb-preview').style.display = 'none';
+  document.querySelectorAll('#platform-checks .platform-check').forEach(function(el){
+    el.classList.remove('checked');
+    el.querySelector('input').checked = false;
+  });
+}
+
+function togglePlatform(el) {
+  var cb = el.querySelector('input');
+  setTimeout(function(){
+    if (cb.checked) el.classList.add('checked');
+    else el.classList.remove('checked');
+  }, 0);
+}
+
+function previewMedia(url) {
+  var img = document.getElementById('post-thumb-preview');
+  if (url && (url.match(/\.(jpg|jpeg|png|gif|webp)/i) || url.includes('unsplash') || url.includes('cloudinary'))) {
+    img.src = url;
+    img.style.display = 'block';
+  } else {
+    img.style.display = 'none';
+  }
+}
+
+function submitPost() {
+  var platforms = [];
+  document.querySelectorAll('#platform-checks input:checked').forEach(function(cb){ platforms.push(cb.value); });
+  var caption = document.getElementById('post-caption').value.trim();
+  var mediaUrl = document.getElementById('post-media').value.trim();
+
+  if (!platforms.length) { showToast('Select at least one platform'); return; }
+  if (!caption) { showToast('Add a caption'); return; }
+
+  var payload = {platforms: platforms, caption: caption};
+  if (mediaUrl) {
+    payload.media_url = mediaUrl;
+    payload.media_type = mediaUrl.match(/\.(mp4|mov|avi)/i) ? 'REELS' : 'IMAGE';
+  }
+
+  fetch(PUBLISH_WEBHOOK, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json', 'Authorization': PUBLISH_AUTH},
+    body: JSON.stringify(payload)
+  })
+  .then(function(r){ return r.json(); })
+  .then(function(d){
+    var posts = getPosts();
+    posts.unshift(Object.assign({}, payload, {status: d.status === 'success' ? 'posted' : 'queued', ts: new Date().toISOString()}));
+    savePosts(posts);
+    closeNewPost();
+    renderPosts();
+    showToast('Posted successfully!');
+  })
+  .catch(function(){
+    var posts = getPosts();
+    posts.unshift(Object.assign({}, payload, {status: 'queued', ts: new Date().toISOString()}));
+    savePosts(posts);
+    closeNewPost();
+    renderPosts();
+    showToast('Saved to queue');
+  });
+}
+
+// ---- LEADS ----
+function getLeads() {
+  try { return JSON.parse(localStorage.getItem('ox-leads') || '[]'); } catch(e){ return []; }
+}
+function saveLeads(leads) { localStorage.setItem('ox-leads', JSON.stringify(leads)); }
+
+function renderLeads() {
+  var leads = getLeads();
+  var list = document.getElementById('leads-list');
+  if (!leads.length) {
+    list.innerHTML = '<div class="empty">No leads yet. Add one when someone reaches out.</div>';
+    return;
+  }
+  list.innerHTML = leads.map(function(l, i) {
+    var statusOptions = ['New','Contacted','Booked','Lost'].map(function(s){
+      return '<option' + (l.status === s ? ' selected' : '') + '>' + s + '</option>';
+    }).join('');
+    return '<div class="lead-card">' +
+      '<div class="lead-name">' + (l.name || 'Unknown') + '</div>' +
+      '<div class="lead-phone">' + (l.phone || '') + '</div>' +
+      '<div class="lead-service">' + (l.service || '') + '</div>' +
+      '<div class="lead-footer">' +
+        '<div class="lead-date">' + (l.date ? new Date(l.date).toLocaleDateString() : '') + '</div>' +
+        '<select class="lead-status" onchange="updateLeadStatus(' + i + ', this.value)">' + statusOptions + '</select>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+}
+
+function updateLeadStatus(i, val) {
+  var leads = getLeads();
+  leads[i].status = val;
+  saveLeads(leads);
+}
+
+function openNewLead() {
+  document.getElementById('lead-modal').classList.add('open');
+}
+function closeNewLead() {
+  document.getElementById('lead-modal').classList.remove('open');
+  ['lead-name','lead-phone','lead-notes'].forEach(function(id){ document.getElementById(id).value = ''; });
+}
+function submitLead() {
+  var name = document.getElementById('lead-name').value.trim();
+  var phone = document.getElementById('lead-phone').value.trim();
+  var service = document.getElementById('lead-service').value;
+  var notes = document.getElementById('lead-notes').value.trim();
+  if (!name) { showToast('Enter a name'); return; }
+  var leads = getLeads();
+  leads.unshift({name: name, phone: phone, service: service, notes: notes, status: 'New', date: new Date().toISOString()});
+  saveLeads(leads);
+  closeNewLead();
+  renderLeads();
+  showToast('Lead added');
+}
+
+// ---- CLIENTS ----
+var clientTimer = null;
+function clientSearch(val) {
+  var digits = val.replace(/\D/g,'');
+  document.getElementById('client-hint').style.display = digits.length >= 10 ? 'none' : 'block';
+  clearTimeout(clientTimer);
+  if (digits.length < 10) { document.getElementById('client-result').innerHTML = ''; return; }
+  clientTimer = setTimeout(function(){ doClientSearch(digits); }, 400);
+}
+
+function doClientSearch(phone) {
+  document.getElementById('client-result').innerHTML = '<div class="empty">Looking up...</div>';
+  fetch(ENGINE_BASE + '/sarah/customer-lookup?phone=' + encodeURIComponent(phone), {signal: AbortSignal.timeout(8000)})
+  .then(function(r){ return r.json(); })
+  .then(function(d){ renderClient(d, phone); })
+  .catch(function(){ renderClient(null, phone); });
+}
+
+function renderClient(d, phone) {
+  var el = document.getElementById('client-result');
+  if (!d || !d.name) {
+    el.innerHTML = '<div class="empty">No client found for ' + phone + '.<br>They may not be in the system yet.</div>';
+    return;
+  }
+  var treatments = (d.treatments || []).map(function(t){ return '<div class="client-treat-item">' + t + '</div>'; }).join('');
+  el.innerHTML = '<div class="client-card">' +
+    '<div class="client-name">' + d.name + '</div>' +
+    '<div class="client-phone">' + phone + '</div>' +
+    '<div class="client-row">' +
+      '<div class="client-stat"><div class="client-stat-val">' + (d.visit_count || d.visits || 0) + '</div><div class="client-stat-lbl">Visits</div></div>' +
+      '<div class="client-stat"><div class="client-stat-val">' + (d.last_visit ? new Date(d.last_visit).toLocaleDateString('en-CA',{month:'short',day:'numeric'}) : 'N/A') + '</div><div class="client-stat-lbl">Last Visit</div></div>' +
+      '<div class="client-stat"><div class="client-stat-val">' + (d.consent_marketing ? 'Yes' : 'No') + '</div><div class="client-stat-lbl">Marketing</div></div>' +
+    '</div>' +
+    (treatments ? '<div class="client-treatments"><div class="client-treat-lbl">Treatments</div>' + treatments + '</div>' : '') +
+    (d.retarget_notes ? '<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border);font-size:13px;color:var(--muted)">' + d.retarget_notes + '</div>' : '') +
+    '<div class="client-actions">' +
+      '<button class="btn btn-outline btn-sm" onclick="sarahSend(\'Get booking link\')">Send Booking Link</button>' +
+      '<button class="btn btn-sm" onclick="goTab(\'sarah\', document.querySelector(\'.tab:nth-child(2)\'))">Ask Sarah</button>' +
+    '</div>' +
+  '</div>';
+}
+
+// ---- TOAST ----
+function showToast(msg) {
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); }, 2500);
+}
+
+// Close modals on overlay click
+document.getElementById('post-modal').addEventListener('click', function(e){ if(e.target===this) closeNewPost(); });
+document.getElementById('lead-modal').addEventListener('click', function(e){ if(e.target===this) closeNewLead(); });
+</script>
+</body>
+</html>

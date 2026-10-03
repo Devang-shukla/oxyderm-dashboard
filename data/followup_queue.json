@@ -1,0 +1,126 @@
+{
+  "unbooked_nudges": [
+    {
+      "lead_id": "lead_nudge_0142",
+      "contact_name": "Priya Sharma",
+      "phone": "780-555-0142",
+      "service": "Laser Hair Removal (Full Legs & Underarms)",
+      "scheduled_send_time": "7:00 PM MT",
+      "trigger": "24H_UNBOOKED_SLOT_NUDGE",
+      "sms_body": "Hi Priya, it's Hetisha at Oxyderm Laser Clinic. Following up on your Laser Hair Removal (Full Legs & Underarms) inquiry! I have 2 consultation openings open this Thursday at 2:00 PM and Saturday at 11:30 AM. Would either of those work for you? Reply YES or book at oxydermlaserclinic.ca",
+      "status": "QUEUED_FOR_7PM_SEND"
+    },
+    {
+      "lead_id": "lead_nudge_0188",
+      "contact_name": "Jaspreet Kaur",
+      "phone": "780-555-0188",
+      "service": "Hyperpigmentation & Melasma Facial",
+      "scheduled_send_time": "7:00 PM MT",
+      "trigger": "24H_UNBOOKED_SLOT_NUDGE",
+      "sms_body": "Hi Jaspreet, it's Hetisha at Oxyderm Laser Clinic. Following up on your Hyperpigmentation & Melasma Facial inquiry! I have 2 consultation openings open this Thursday at 2:00 PM and Saturday at 11:30 AM. Would either of those work for you? Reply YES or book at oxydermlaserclinic.ca",
+      "status": "QUEUED_FOR_7PM_SEND"
+    },
+    {
+      "lead_id": "lead_nudge_0199",
+      "contact_name": "Fatima Al-Mansoor",
+      "phone": "780-555-0199",
+      "service": "Nd:YAG Skin Rejuvenation",
+      "scheduled_send_time": "7:00 PM MT",
+      "trigger": "24H_UNBOOKED_SLOT_NUDGE",
+      "sms_body": "Hi Fatima, it's Hetisha at Oxyderm Laser Clinic. Following up on your Nd:YAG Skin Rejuvenation inquiry! I have 2 consultation openings open this Thursday at 2:00 PM and Saturday at 11:30 AM. Would either of those work for you? Reply YES or book at oxydermlaserclinic.ca",
+      "status": "QUEUED_FOR_7PM_SEND"
+    }
+  ],
+  "mid_protocol_education": [
+    {
+      "contact_id": 6,
+      "name": "Shannon Caron",
+      "phone": "(780) 722-6655",
+      "trigger": "MID_PROTOCOL_FOLLICLE_EDUCATION",
+      "scheduled_send_time": "7:00 PM MT",
+      "sms_body": "Hi Shannon, just checking in! If you noticed your hair thinning out after recent sessions, that means the Nd:YAG laser is actively disabling the root. To lock in long-term reduction, consistent timing between sessions 4-8 is key. Reply with any questions or text BOOK to reserve your next visit!",
+      "status": "READY_FOR_7PM_BATCH"
+    },
+    {
+      "contact_id": 34,
+      "name": "Deandra Pepterson",
+      "phone": "+17802008731",
+      "trigger": "MID_PROTOCOL_FOLLICLE_EDUCATION",
+      "scheduled_send_time": "7:00 PM MT",
+      "sms_body": "Hi Deandra, just checking in! If you noticed your hair thinning out after recent sessions, that means the Nd:YAG laser is actively disabling the root. To lock in long-term reduction, consistent timing between sessions 4-8 is key. Reply with any questions or text BOOK to reserve your next visit!",
+      "status": "READY_FOR_7PM_BATCH"
+    },
+    {
+      "contact_id": 89,
+      "name": "Diana pham",
+      "phone": "+17809138705",
+      "trigger": "MID_PROTOCOL_FOLLICLE_EDUCATION",
+      "scheduled_send_time": "7:00 PM MT",
+      "sms_body": "Hi Diana, just checking in! If you noticed your hair thinning out after recent sessions, that means the Nd:YAG laser is actively disabling the root. To lock in long-term reduction, consistent timing between sessions 4-8 is key. Reply with any questions or text BOOK to reserve your next visit!",
+      "status": "READY_FOR_7PM_BATCH"
+    },
+    {
+      "contact_id": 114,
+      "name": "Huba  Razzeq",
+      "phone": "+17802336588",
+      "trigger": "MID_PROTOCOL_FOLLICLE_EDUCATION",
+      "scheduled_send_time": "7:00 PM MT",
+      "sms_body": "Hi Huba, just checking in! If you noticed your hair thinning out after recent sessions, that means the Nd:YAG laser is actively disabling the root. To lock in long-term reduction, consistent timing between sessions 4-8 is key. Reply with any questions or text BOOK to reserve your next visit!",
+      "status": "READY_FOR_7PM_BATCH"
+    },
+    {
+      "contact_id": 148,
+      "name": "Sayeeda Kermalli",
+      "phone": "+17807007860",
+      "trigger": "MID_PROTOCOL_FOLLICLE_EDUCATION",
+      "scheduled_send_time": "7:00 PM MT",
+      "sms_body": "Hi Sayeeda, just checking in! If you noticed your hair thinning out after recent sessions, that means the Nd:YAG laser is actively disabling the root. To lock in long-term reduction, consistent timing between sessions 4-8 is key. Reply with any questions or text BOOK to reserve your next visit!",
+      "status": "READY_FOR_7PM_BATCH"
+    },
+    {
+      "contact_id": 152,
+      "name": "Manan",
+      "phone": "+17802219872",
+      "trigger": "MID_PROTOCOL_FOLLICLE_EDUCATION",
+      "scheduled_send_time": "7:00 PM MT",
+      "sms_body": "Hi Manan, just checking in! If you noticed your hair thinning out after recent sessions, that means the Nd:YAG laser is actively disabling the root. To lock in long-term reduction, consistent timing between sessions 4-8 is key. Reply with any questions or text BOOK to reserve your next visit!",
+      "status": "READY_FOR_7PM_BATCH"
+    },
+    {
+      "contact_id": 161,
+      "name": "Brenna Hodgins",
+      "phone": "+16137905991",
+      "trigger": "MID_PROTOCOL_FOLLICLE_EDUCATION",
+      "scheduled_send_time": "7:00 PM MT",
+      "sms_body": "Hi Brenna, just checking in! If you noticed your hair thinning out after recent sessions, that means the Nd:YAG laser is actively disabling the root. To lock in long-term reduction, consistent timing between sessions 4-8 is key. Reply with any questions or text BOOK to reserve your next visit!",
+      "status": "READY_FOR_7PM_BATCH"
+    },
+    {
+      "contact_id": 188,
+      "name": "Ida Lucila",
+      "phone": "780 885 0505",
+      "trigger": "MID_PROTOCOL_FOLLICLE_EDUCATION",
+      "scheduled_send_time": "7:00 PM MT",
+      "sms_body": "Hi Ida, just checking in! If you noticed your hair thinning out after recent sessions, that means the Nd:YAG laser is actively disabling the root. To lock in long-term reduction, consistent timing between sessions 4-8 is key. Reply with any questions or text BOOK to reserve your next visit!",
+      "status": "READY_FOR_7PM_BATCH"
+    },
+    {
+      "contact_id": 229,
+      "name": "Harpreet Aulakeh (Auklakh)",
+      "phone": "+17809029165",
+      "trigger": "MID_PROTOCOL_FOLLICLE_EDUCATION",
+      "scheduled_send_time": "7:00 PM MT",
+      "sms_body": "Hi Harpreet, just checking in! If you noticed your hair thinning out after recent sessions, that means the Nd:YAG laser is actively disabling the root. To lock in long-term reduction, consistent timing between sessions 4-8 is key. Reply with any questions or text BOOK to reserve your next visit!",
+      "status": "READY_FOR_7PM_BATCH"
+    },
+    {
+      "contact_id": 246,
+      "name": "Robert Neveu",
+      "phone": "(587) 982-7074",
+      "trigger": "MID_PROTOCOL_FOLLICLE_EDUCATION",
+      "scheduled_send_time": "7:00 PM MT",
+      "sms_body": "Hi Robert, just checking in! If you noticed your hair thinning out after recent sessions, that means the Nd:YAG laser is actively disabling the root. To lock in long-term reduction, consistent timing between sessions 4-8 is key. Reply with any questions or text BOOK to reserve your next visit!",
+      "status": "READY_FOR_7PM_BATCH"
+    }
+  ]
+}

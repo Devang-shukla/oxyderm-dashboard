@@ -1,0 +1,22 @@
+{
+  "org_id": "oxyderm",
+  "name": "Oxyderm Laser Clinic",
+  "plan": "Growth",
+  "stripe_customer_id": null,
+  "stripe_subscription_id": null,
+  "plan_active": true,
+  "connections": {
+    "meta": "connected",
+    "youtube": "connected",
+    "gbp": "connected",
+    "linkedin": "connected",
+    "tiktok": "connected",
+    "square": "connected",
+    "stripe": "needs_setup",
+    "twilio_sms": "needs_setup",
+    "google_drive": "needs_setup"
+  },
+  "dna_version": 1,
+  "dna_path": "/Users/genesis/brand/oxyderm/context.md",
+  "created_at": "2026-09-14"
+}

@@ -1,0 +1,341 @@
+[
+  {
+    "id": "job_noshow_b9r5p9em1k9fs8",
+    "org_id": "oxyderm",
+    "recipe": "no_show_recovery",
+    "booking_id": "b9r5p9em1k9fs8",
+    "lead_name": "Manpreet Chahal",
+    "lead_phone": "",
+    "trigger": "cancelled",
+    "created_at": "2026-10-03T16:10:21.008Z",
+    "steps": [
+      {
+        "step": 1,
+        "label": "No-show recovery",
+        "channel": "sms",
+        "template": "Hi Manpreet Chahal, we missed you today! Life happens — rebook anytime: https://square.site/book/SA5CTAH41JNY2/oxyderm-laser-clinic-academy-edmonton-ab",
+        "scheduled_at": "2026-10-03T17:10:21.008Z",
+        "status": "pending_provider"
+      }
+    ]
+  },
+  {
+    "id": "job_noshow_0eggfziagzjlx3",
+    "org_id": "oxyderm",
+    "recipe": "no_show_recovery",
+    "booking_id": "0eggfziagzjlx3",
+    "lead_name": "Mashal Shafi",
+    "lead_phone": "",
+    "trigger": "cancelled",
+    "created_at": "2026-10-03T16:10:20.839Z",
+    "steps": [
+      {
+        "step": 1,
+        "label": "No-show recovery",
+        "channel": "sms",
+        "template": "Hi Mashal Shafi, we missed you today! Life happens — rebook anytime: https://square.site/book/SA5CTAH41JNY2/oxyderm-laser-clinic-academy-edmonton-ab",
+        "scheduled_at": "2026-10-03T17:10:20.839Z",
+        "status": "pending_provider"
+      }
+    ]
+  },
+  {
+    "id": "job_noshow_qg8ys56406zgti",
+    "org_id": "oxyderm",
+    "recipe": "no_show_recovery",
+    "booking_id": "qg8ys56406zgti",
+    "lead_name": "Mrudula Santhosh",
+    "lead_phone": "",
+    "trigger": "cancelled",
+    "created_at": "2026-10-02T18:16:13.540Z",
+    "steps": [
+      {
+        "step": 1,
+        "label": "No-show recovery",
+        "channel": "sms",
+        "template": "Hi Mrudula Santhosh, we missed you today! Life happens — rebook anytime: https://square.site/book/SA5CTAH41JNY2/oxyderm-laser-clinic-academy-edmonton-ab",
+        "scheduled_at": "2026-10-02T19:16:13.540Z",
+        "status": "pending_provider"
+      }
+    ]
+  },
+  {
+    "id": "job_noshow_csh6uxgwoe0f5g",
+    "org_id": "oxyderm",
+    "recipe": "no_show_recovery",
+    "booking_id": "csh6uxgwoe0f5g",
+    "lead_name": "Kevin Bergmann",
+    "lead_phone": "",
+    "trigger": "cancelled",
+    "created_at": "2026-10-01T16:30:47.339Z",
+    "steps": [
+      {
+        "step": 1,
+        "label": "No-show recovery",
+        "channel": "sms",
+        "template": "Hi Kevin Bergmann, we missed you today! Life happens — rebook anytime: https://square.site/book/SA5CTAH41JNY2/oxyderm-laser-clinic-academy-edmonton-ab",
+        "scheduled_at": "2026-10-01T17:30:47.339Z",
+        "status": "pending_provider"
+      }
+    ]
+  },
+  {
+    "id": "job_noshow_f7q1k6dj5laeuw",
+    "org_id": "oxyderm",
+    "recipe": "no_show_recovery",
+    "booking_id": "f7q1k6dj5laeuw",
+    "lead_name": "Sonia R.",
+    "lead_phone": "",
+    "trigger": "cancelled",
+    "created_at": "2026-10-01T06:28:08.071Z",
+    "steps": [
+      {
+        "step": 1,
+        "label": "No-show recovery",
+        "channel": "sms",
+        "template": "Hi Sonia R., we missed you today! Life happens — rebook anytime: https://square.site/book/SA5CTAH41JNY2/oxyderm-laser-clinic-academy-edmonton-ab",
+        "scheduled_at": "2026-10-01T07:28:08.071Z",
+        "status": "pending_provider"
+      }
+    ]
+  },
+  {
+    "id": "job_noshow_eb5c0o90iv8em5",
+    "org_id": "oxyderm",
+    "recipe": "no_show_recovery",
+    "booking_id": "eb5c0o90iv8em5",
+    "lead_name": "Mene Mene",
+    "lead_phone": "",
+    "trigger": "no_show",
+    "created_at": "2026-10-01T06:28:07.924Z",
+    "steps": [
+      {
+        "step": 1,
+        "label": "No-show recovery",
+        "channel": "sms",
+        "template": "Hi Mene Mene, we missed you today! Life happens — rebook anytime: https://square.site/book/SA5CTAH41JNY2/oxyderm-laser-clinic-academy-edmonton-ab",
+        "scheduled_at": "2026-10-01T07:28:07.924Z",
+        "status": "pending_provider"
+      }
+    ]
+  },
+  {
+    "id": "job_noshow_tb9za04f63ol6t",
+    "org_id": "oxyderm",
+    "recipe": "no_show_recovery",
+    "booking_id": "tb9za04f63ol6t",
+    "lead_name": "Molka Stastny",
+    "lead_phone": "",
+    "trigger": "cancelled",
+    "created_at": "2026-09-27T04:05:44.645Z",
+    "steps": [
+      {
+        "step": 1,
+        "label": "No-show recovery",
+        "channel": "sms",
+        "template": "Hi Molka Stastny, we missed you today! Life happens — rebook anytime: https://square.site/book/SA5CTAH41JNY2/oxyderm-laser-clinic-academy-edmonton-ab",
+        "scheduled_at": "2026-09-27T05:05:44.645Z",
+        "status": "pending_provider"
+      }
+    ]
+  },
+  {
+    "id": "job_noshow_eixsn3a5948p9d",
+    "org_id": "oxyderm",
+    "recipe": "no_show_recovery",
+    "booking_id": "eixsn3a5948p9d",
+    "lead_name": "Linda",
+    "lead_phone": "",
+    "trigger": "cancelled",
+    "created_at": "2026-09-24T04:00:38.399Z",
+    "steps": [
+      {
+        "step": 1,
+        "label": "No-show recovery",
+        "channel": "sms",
+        "template": "Hi Linda, we missed you today! Life happens — rebook anytime: https://square.site/book/SA5CTAH41JNY2/oxyderm-laser-clinic-academy-edmonton-ab",
+        "scheduled_at": "2026-09-24T05:00:38.399Z",
+        "status": "pending_provider"
+      }
+    ]
+  },
+  {
+    "id": "job_noshow_67sxoevo3s0son",
+    "org_id": "oxyderm",
+    "recipe": "no_show_recovery",
+    "booking_id": "67sxoevo3s0son",
+    "lead_name": "Scott Robinson",
+    "lead_phone": "",
+    "trigger": "no_show",
+    "created_at": "2026-09-21T21:58:12.825Z",
+    "steps": [
+      {
+        "step": 1,
+        "label": "No-show recovery",
+        "channel": "sms",
+        "template": "Hi Scott Robinson, we missed you today! Life happens — rebook anytime: https://square.site/book/SA5CTAH41JNY2/oxyderm-laser-clinic-academy-edmonton-ab",
+        "scheduled_at": "2026-09-21T22:58:12.825Z",
+        "status": "pending_provider"
+      }
+    ]
+  },
+  {
+    "id": "job_noshow_5tvmg6vfus1m5w",
+    "org_id": "oxyderm",
+    "recipe": "no_show_recovery",
+    "booking_id": "5tvmg6vfus1m5w",
+    "lead_name": "Sonia Rurangirwa",
+    "lead_phone": "",
+    "trigger": "no_show",
+    "created_at": "2026-09-19T18:10:53.637Z",
+    "steps": [
+      {
+        "step": 1,
+        "label": "No-show recovery",
+        "channel": "sms",
+        "template": "Hi Sonia Rurangirwa, we missed you today! Life happens — rebook anytime: https://square.site/book/SA5CTAH41JNY2/oxyderm-laser-clinic-academy-edmonton-ab",
+        "scheduled_at": "2026-09-19T19:10:53.637Z",
+        "status": "pending_provider"
+      }
+    ]
+  },
+  {
+    "id": "job_noshow_4vmnj1yhcgm4bx",
+    "org_id": "oxyderm",
+    "recipe": "no_show_recovery",
+    "booking_id": "4vmnj1yhcgm4bx",
+    "lead_name": "Kirandeep Kaur",
+    "lead_phone": "",
+    "trigger": "cancelled",
+    "created_at": "2026-09-17T22:38:17.504Z",
+    "steps": [
+      {
+        "step": 1,
+        "label": "No-show recovery",
+        "channel": "sms",
+        "template": "Hi Kirandeep Kaur, we missed you today! Life happens — rebook anytime: https://square.site/book/SA5CTAH41JNY2/oxyderm-laser-clinic-academy-edmonton-ab",
+        "scheduled_at": "2026-09-17T23:38:17.504Z",
+        "status": "pending_provider"
+      }
+    ]
+  },
+  {
+    "id": "job_noshow_anev6r7kfow8ln",
+    "org_id": "oxyderm",
+    "recipe": "no_show_recovery",
+    "booking_id": "anev6r7kfow8ln",
+    "lead_name": "Hafiba Benhamou",
+    "lead_phone": "",
+    "trigger": "cancelled",
+    "created_at": "2026-09-17T16:22:34.332Z",
+    "steps": [
+      {
+        "step": 1,
+        "label": "No-show recovery",
+        "channel": "sms",
+        "template": "Hi Hafiba Benhamou, we missed you today! Life happens — rebook anytime: https://square.site/book/SA5CTAH41JNY2/oxyderm-laser-clinic-academy-edmonton-ab",
+        "scheduled_at": "2026-09-17T17:22:34.332Z",
+        "status": "pending_provider"
+      }
+    ]
+  },
+  {
+    "id": "job_payfail_1789408273619",
+    "org_id": "oxyderm",
+    "recipe": "payment_recovery",
+    "payment_id": "pay_1789408273573",
+    "lead_name": "Jane Smith",
+    "lead_phone": "",
+    "trigger": "payment_failed",
+    "created_at": "2026-09-14T17:51:13.619Z",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Failed payment follow-up",
+        "channel": "sms",
+        "template": "Hi Jane Smith, your payment of $750 CAD for Oxyderm didn't go through. Please retry: https://square.site/pay/example",
+        "scheduled_at": "2026-09-14T18:51:13.619Z",
+        "status": "pending_provider"
+      },
+      {
+        "step": 2,
+        "label": "Final follow-up",
+        "channel": "email",
+        "template": "Hi Jane Smith, we noticed your payment of $750 CAD is still outstanding. Please get in touch so we can help: info@oxydermlaserclinic.ca",
+        "scheduled_at": "2026-09-15T17:51:13.619Z",
+        "status": "pending_provider"
+      }
+    ]
+  },
+  {
+    "id": "job_noshow_hmeb2g6zpumvuf",
+    "org_id": "oxyderm",
+    "recipe": "no_show_recovery",
+    "booking_id": "hmeb2g6zpumvuf",
+    "lead_name": "Nikita Bhatia",
+    "lead_phone": "",
+    "trigger": "cancelled",
+    "created_at": "2026-09-14T17:11:45.369Z",
+    "steps": [
+      {
+        "step": 1,
+        "label": "No-show recovery",
+        "channel": "sms",
+        "template": "Hi Nikita Bhatia, we missed you today! Life happens — rebook anytime: https://square.site/book/SA5CTAH41JNY2/oxyderm-laser-clinic-academy-edmonton-ab",
+        "scheduled_at": "2026-09-14T18:11:45.369Z",
+        "status": "pending_provider"
+      }
+    ]
+  },
+  {
+    "id": "job_noshow_hmeb2g6zpu",
+    "org_id": "oxyderm",
+    "recipe": "no_show_recovery",
+    "booking_id": "hmeb2g6zpu",
+    "lead_name": "Client",
+    "lead_phone": "",
+    "trigger": "cancelled",
+    "created_at": "2026-09-14T17:09:15Z",
+    "steps": [
+      {
+        "step": 1,
+        "label": "No-show recovery",
+        "channel": "sms",
+        "scheduled_at": "2026-09-14T18:09:15Z",
+        "status": "pending_provider"
+      }
+    ]
+  },
+  {
+    "id": "job_jane_1",
+    "org_id": "oxyderm",
+    "recipe": "nurture",
+    "lead_name": "Jane Smith",
+    "lead_phone": "7805551234",
+    "trigger": "lead_created",
+    "created_at": "2026-09-14T06:00:00Z",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Welcome message",
+        "channel": "sms",
+        "scheduled_at": "2026-09-14T06:00:00Z",
+        "status": "pending_provider"
+      },
+      {
+        "step": 2,
+        "label": "Follow-up",
+        "channel": "sms",
+        "scheduled_at": "2026-09-15T06:00:00Z",
+        "status": "pending_provider"
+      },
+      {
+        "step": 3,
+        "label": "Last touch",
+        "channel": "sms",
+        "scheduled_at": "2026-09-17T06:00:00Z",
+        "status": "pending_provider"
+      }
+    ]
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "org_id": "demo-clinic",
+  "facebook": { "status": "not_connected" },
+  "instagram": { "status": "not_connected" },
+  "google_gbp": { "status": "not_connected" },
+  "ga4_measurement_id": "",
+  "meta_pixel_id": "",
+  "updated_at": null
+}
