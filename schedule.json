@@ -1,9 +1,28 @@
 {
-  "fetched_at": "03:49 PM MDT",
-  "today": "2026-10-04",
-  "week_start": "2026-10-04",
-  "week_end": "2026-10-10",
-  "appointments": [],
+  "fetched_at": "07:00 AM MDT",
+  "today": "2026-10-05",
+  "week_start": "2026-10-05",
+  "week_end": "2026-10-11",
+  "appointments": [
+    {
+      "time": "10:00 AM",
+      "date": "2026-10-05",
+      "date_label": "Monday, October 05",
+      "name": "Rachna",
+      "phone": "+17802453089",
+      "email": "devirachna89@yahoo.in",
+      "service": "Treatment",
+      "areas": "",
+      "duration_min": 120,
+      "visit": "Unknown visit",
+      "visit_num": null,
+      "payment": "See Square",
+      "flags": [],
+      "raw_note": "",
+      "status": "ACCEPTED",
+      "booking_id": "bdtz3jdo2dpqx1"
+    }
+  ],
   "week": [
     {
       "date": "2026-10-05",
@@ -207,6 +226,24 @@
       "date": "2026-10-08",
       "label": "Thursday, October 08",
       "appointments": [
+        {
+          "time": "3:00 PM",
+          "date": "2026-10-08",
+          "date_label": "Thursday, October 08",
+          "name": "Anastasia Sizov",
+          "phone": "+14034712237",
+          "email": "anastasiaa457@gmail.com",
+          "service": "Treatment",
+          "areas": "",
+          "duration_min": 120,
+          "visit": "Unknown visit",
+          "visit_num": null,
+          "payment": "See Square",
+          "flags": [],
+          "raw_note": "",
+          "status": "ACCEPTED",
+          "booking_id": "fmb50i84fnw0m2"
+        },
         {
           "time": "4:00 PM",
           "date": "2026-10-08",
@@ -510,5 +547,5 @@
       ]
     }
   ],
-  "total_week": 26
+  "total_week": 27
 }
