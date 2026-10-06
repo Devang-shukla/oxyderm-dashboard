@@ -1,16 +1,16 @@
 {
   "fetched_at": "07:00 AM MDT",
-  "today": "2026-10-05",
-  "week_start": "2026-10-05",
-  "week_end": "2026-10-11",
+  "today": "2026-10-06",
+  "week_start": "2026-10-06",
+  "week_end": "2026-10-12",
   "appointments": [
     {
       "time": "10:00 AM",
-      "date": "2026-10-05",
-      "date_label": "Monday, October 05",
-      "name": "Rachna",
-      "phone": "+17802453089",
-      "email": "devirachna89@yahoo.in",
+      "date": "2026-10-06",
+      "date_label": "Tuesday, October 06",
+      "name": "Allan Pearson",
+      "phone": "(780) 938-1144",
+      "email": "allanpearson@hotmail.com",
       "service": "Treatment",
       "areas": "",
       "duration_min": 120,
@@ -20,58 +20,70 @@
       "flags": [],
       "raw_note": "",
       "status": "ACCEPTED",
-      "booking_id": "bdtz3jdo2dpqx1"
+      "booking_id": "97f7f2ms1uz1f0"
+    },
+    {
+      "time": "11:30 AM",
+      "date": "2026-10-06",
+      "date_label": "Tuesday, October 06",
+      "name": "Chantel Wayling",
+      "phone": "+12506082070",
+      "email": "crwayling@gmail.com",
+      "service": "Treatment",
+      "areas": "",
+      "duration_min": 120,
+      "visit": "Unknown visit",
+      "visit_num": null,
+      "payment": "See Square",
+      "flags": [],
+      "raw_note": "",
+      "status": "ACCEPTED",
+      "booking_id": "ww12fr6l5z0txq"
+    },
+    {
+      "time": "12:45 PM",
+      "date": "2026-10-06",
+      "date_label": "Tuesday, October 06",
+      "name": "Reshika Dhoomon",
+      "phone": "+17803943144",
+      "email": "reshikadhoomon@yahoo.com",
+      "service": "Treatment",
+      "areas": "",
+      "duration_min": 120,
+      "visit": "Unknown visit",
+      "visit_num": null,
+      "payment": "See Square",
+      "flags": [],
+      "raw_note": "",
+      "status": "ACCEPTED",
+      "booking_id": "c2tz9lffyvmljn"
+    },
+    {
+      "time": "1:30 PM",
+      "date": "2026-10-06",
+      "date_label": "Tuesday, October 06",
+      "name": "Harpreet Saini",
+      "phone": "+14038261902",
+      "email": "hsaini936@gmail.com",
+      "service": "Treatment",
+      "areas": "",
+      "duration_min": 30,
+      "visit": "Unknown visit",
+      "visit_num": null,
+      "payment": "See Square",
+      "flags": [],
+      "raw_note": "",
+      "status": "ACCEPTED",
+      "booking_id": "gu9px61w8dnbxo"
     }
   ],
   "week": [
-    {
-      "date": "2026-10-05",
-      "label": "Monday, October 05",
-      "appointments": [
-        {
-          "time": "10:00 AM",
-          "date": "2026-10-05",
-          "date_label": "Monday, October 05",
-          "name": "Rachna",
-          "phone": "+17802453089",
-          "email": "devirachna89@yahoo.in",
-          "service": "Treatment",
-          "areas": "",
-          "duration_min": 120,
-          "visit": "Unknown visit",
-          "visit_num": null,
-          "payment": "See Square",
-          "flags": [],
-          "raw_note": "",
-          "status": "ACCEPTED",
-          "booking_id": "bdtz3jdo2dpqx1"
-        }
-      ]
-    },
     {
       "date": "2026-10-06",
       "label": "Tuesday, October 06",
       "appointments": [
         {
           "time": "10:00 AM",
-          "date": "2026-10-06",
-          "date_label": "Tuesday, October 06",
-          "name": "Yolanda Vriz",
-          "phone": "+14035813568",
-          "email": "yolz_briz@yahoo.com",
-          "service": "Treatment",
-          "areas": "",
-          "duration_min": 30,
-          "visit": "Unknown visit",
-          "visit_num": null,
-          "payment": "See Square",
-          "flags": [],
-          "raw_note": "",
-          "status": "ACCEPTED",
-          "booking_id": "3dzx4i9iqwbm0i"
-        },
-        {
-          "time": "10:30 AM",
           "date": "2026-10-06",
           "date_label": "Tuesday, October 06",
           "name": "Allan Pearson",
@@ -123,6 +135,24 @@
           "raw_note": "",
           "status": "ACCEPTED",
           "booking_id": "c2tz9lffyvmljn"
+        },
+        {
+          "time": "1:30 PM",
+          "date": "2026-10-06",
+          "date_label": "Tuesday, October 06",
+          "name": "Harpreet Saini",
+          "phone": "+14038261902",
+          "email": "hsaini936@gmail.com",
+          "service": "Treatment",
+          "areas": "",
+          "duration_min": 30,
+          "visit": "Unknown visit",
+          "visit_num": null,
+          "payment": "See Square",
+          "flags": [],
+          "raw_note": "",
+          "status": "ACCEPTED",
+          "booking_id": "gu9px61w8dnbxo"
         }
       ]
     },
@@ -165,6 +195,24 @@
           "raw_note": "",
           "status": "ACCEPTED",
           "booking_id": "0vdg28x4kcfea3"
+        },
+        {
+          "time": "3:45 PM",
+          "date": "2026-10-07",
+          "date_label": "Wednesday, October 07",
+          "name": "Shilpa Khan",
+          "phone": "+17809529733",
+          "email": "",
+          "service": "Treatment",
+          "areas": "",
+          "duration_min": 30,
+          "visit": "Unknown visit",
+          "visit_num": null,
+          "payment": "See Square",
+          "flags": [],
+          "raw_note": "",
+          "status": "ACCEPTED",
+          "booking_id": "qzfmv4ls1woa88"
         },
         {
           "time": "4:00 PM",
@@ -226,6 +274,60 @@
       "date": "2026-10-08",
       "label": "Thursday, October 08",
       "appointments": [
+        {
+          "time": "10:00 AM",
+          "date": "2026-10-08",
+          "date_label": "Thursday, October 08",
+          "name": "Yolanda Vriz",
+          "phone": "+14035813568",
+          "email": "yolz_briz@yahoo.com",
+          "service": "Treatment",
+          "areas": "",
+          "duration_min": 30,
+          "visit": "Unknown visit",
+          "visit_num": null,
+          "payment": "See Square",
+          "flags": [],
+          "raw_note": "",
+          "status": "ACCEPTED",
+          "booking_id": "3dzx4i9iqwbm0i"
+        },
+        {
+          "time": "12:15 PM",
+          "date": "2026-10-08",
+          "date_label": "Thursday, October 08",
+          "name": "Pardeep Jhund",
+          "phone": "+17802337931",
+          "email": "kaur.pardeep52@yahoo.ca",
+          "service": "Treatment",
+          "areas": "",
+          "duration_min": 60,
+          "visit": "Unknown visit",
+          "visit_num": null,
+          "payment": "See Square",
+          "flags": [],
+          "raw_note": "",
+          "status": "ACCEPTED",
+          "booking_id": "9qfk9oqzw0tsnq"
+        },
+        {
+          "time": "2:30 PM",
+          "date": "2026-10-08",
+          "date_label": "Thursday, October 08",
+          "name": "Branden Laqua",
+          "phone": "+17802326385",
+          "email": "brandenlaqua@msn.com",
+          "service": "Treatment",
+          "areas": "",
+          "duration_min": 30,
+          "visit": "Unknown visit",
+          "visit_num": null,
+          "payment": "See Square",
+          "flags": [],
+          "raw_note": "",
+          "status": "ACCEPTED",
+          "booking_id": "2qhkwid8oxko99"
+        },
         {
           "time": "3:00 PM",
           "date": "2026-10-08",
@@ -545,7 +647,31 @@
           "booking_id": "7s2b0p4d9ysiyy"
         }
       ]
+    },
+    {
+      "date": "2026-10-12",
+      "label": "Monday, October 12",
+      "appointments": [
+        {
+          "time": "10:00 AM",
+          "date": "2026-10-12",
+          "date_label": "Monday, October 12",
+          "name": "Hetisha Shukla",
+          "phone": "+1 780-863-7561",
+          "email": "oxyderm@outlook.com",
+          "service": "Treatment",
+          "areas": "",
+          "duration_min": 480,
+          "visit": "Unknown visit",
+          "visit_num": null,
+          "payment": "See Square",
+          "flags": [],
+          "raw_note": "",
+          "status": "ACCEPTED",
+          "booking_id": "8oqqstjfywx0dm"
+        }
+      ]
     }
   ],
-  "total_week": 27
+  "total_week": 31
 }
